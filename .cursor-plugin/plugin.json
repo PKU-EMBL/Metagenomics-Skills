@@ -1,0 +1,8 @@
+{
+  "name": "metagenomics-skills",
+  "version": "1.0.0",
+  "description": "Cursor-compatible shotgun metagenomics skills (Agent Skills / SKILL.md standard)",
+  "skills": "./skills/",
+  "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
+  "license": "MIT"
+}

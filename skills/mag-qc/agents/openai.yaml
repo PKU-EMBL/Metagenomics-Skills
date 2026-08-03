@@ -1,0 +1,7 @@
+interface:
+  display_name: "MAG QC"
+  short_description: "CheckM2 thresholds and MAG acceptance criteria"
+  default_prompt: "Use $mag-qc to set completeness, contamination, and dRep filters for MAG catalogues."
+
+policy:
+  allow_implicit_invocation: true

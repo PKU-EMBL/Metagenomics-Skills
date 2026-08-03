@@ -1,0 +1,16 @@
+{
+  "name": "metagenomics-skills",
+  "version": "1.0.0",
+  "description": "Claude Code skills for shotgun metagenomics — profiling, gene catalogues, classical MAG recovery, and BASALT refined workflows",
+  "owner": {
+    "name": "PKU-EMBL",
+    "url": "https://github.com/PKU-EMBL/Metagenomics-Skills"
+  },
+  "plugins": [
+    {
+      "name": "metagenomics",
+      "description": "All 11 metagenomics skills",
+      "source": "./"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "metagenomics-skills",
+  "version": "1.0.0",
+  "description": "Shotgun metagenomics skills for Codex — study design, profiling, gene catalogues, MAG recovery, and BASALT",
+  "author": {
+    "name": "PKU-EMBL",
+    "url": "https://github.com/PKU-EMBL"
+  },
+  "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
+  "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
+  "license": "MIT",
+  "keywords": ["metagenomics", "MAG", "BASALT", "binning", "shotgun"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Metagenomics Skills",
+    "shortDescription": "Shotgun metagenomics analysis protocols",
+    "longDescription": "Modular skills for study design, preprocessing, read-based profiling, gene catalogues, classical MAG recovery, BASALT refined MAGs, QC, and visualization.",
+    "developerName": "PKU-EMBL",
+    "category": "Science",
+    "capabilities": ["Interactive", "Write"],
+    "websiteURL": "https://github.com/PKU-EMBL/Metagenomics-Skills",
+    "defaultPrompt": [
+      "Design a shotgun metagenomics analysis plan for my paired-end samples",
+      "Route my MAG recovery to classical binning or BASALT",
+      "Write a reproducible BASALT short-read pilot command"
+    ],
+    "brandColor": "#0F766E"
+  }
+}

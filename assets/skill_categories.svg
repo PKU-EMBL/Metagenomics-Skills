@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="320" viewBox="0 0 960 320">
+<rect width="960" height="320" fill="#0f172a"/>
+<text x="48" y="64" fill="#99f6e4" font-family="Helvetica,Arial,sans-serif" font-size="28">Metagenomics Skills</text>
+<text x="48" y="120" fill="#e2e8f0" font-family="Helvetica,Arial,sans-serif" font-size="18">Analysis · Evaluation · Utilities · Orchestration</text>
+<rect x="48" y="160" width="180" height="96" rx="12" fill="#134e4a"/><text x="68" y="216" fill="#ccfbf1" font-size="16" font-family="Helvetica,Arial,sans-serif">analysis-tools</text>
+<rect x="252" y="160" width="180" height="96" rx="12" fill="#1e3a5f"/><text x="288" y="216" fill="#dbeafe" font-size="16" font-family="Helvetica,Arial,sans-serif">evaluation</text>
+<rect x="456" y="160" width="180" height="96" rx="12" fill="#3b0764"/><text x="508" y="216" fill="#f3e8ff" font-size="16" font-family="Helvetica,Arial,sans-serif">utilities</text>
+<rect x="660" y="160" width="180" height="96" rx="12" fill="#713f12"/><text x="690" y="216" fill="#fef3c7" font-size="16" font-family="Helvetica,Arial,sans-serif">orchestration</text>
+</svg>

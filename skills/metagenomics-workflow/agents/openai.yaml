@@ -1,0 +1,7 @@
+interface:
+  display_name: "Metagenomics Workflow"
+  short_description: "End-to-end shotgun metagenomics pipeline guidance"
+  default_prompt: "Use $metagenomics-workflow to plan a full shotgun metagenomics analysis from metadata to MAGs."
+
+policy:
+  allow_implicit_invocation: true

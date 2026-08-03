@@ -1,0 +1,7 @@
+interface:
+  display_name: "Read-Based Profiling"
+  short_description: "HUMAnN, MetaPhlAn, and Kraken2 profiling"
+  default_prompt: "Use $read-based to choose and run MetaPhlAn/HUMAnN/Kraken profiling on dehosted reads."
+
+policy:
+  allow_implicit_invocation: true

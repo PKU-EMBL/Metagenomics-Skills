@@ -1,1 +1,30 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+.venv/
+venv/
+
+# Local agent settings / installed skill mirrors
+.claude/
 .cursor/
+.agents/
+.kimi-code/
+.grok/
+.codex/
+
+# Logs and temp
+*.log
+*.tmp

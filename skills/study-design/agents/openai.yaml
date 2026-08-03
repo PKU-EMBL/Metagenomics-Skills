@@ -1,0 +1,7 @@
+interface:
+  display_name: "Study Design"
+  short_description: "Co-assembly, strata, and sample manifests for metagenomics"
+  default_prompt: "Use $study-design to decide co-assembly versus sample-specific assembly and build a provenance manifest."
+
+policy:
+  allow_implicit_invocation: true

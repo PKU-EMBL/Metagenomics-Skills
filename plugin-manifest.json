@@ -1,0 +1,48 @@
+{
+  "name": "Metagenomics Skills",
+  "description": "Shotgun metagenomics skills for agent coding tools — study design, preprocessing, read-based profiling, gene catalogues, classical MAG recovery, and BASALT refined MAG workflows",
+  "version": "1.0.0",
+  "author": "PKU-EMBL",
+  "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
+  "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
+  "license": "MIT",
+  "categories": ["science", "biology", "metagenomics", "computational-biology"],
+  "keywords": [
+    "metagenomics",
+    "MAG",
+    "BASALT",
+    "binning",
+    "HUMAnN",
+    "MetaPhlAn",
+    "Kraken2",
+    "MetaWRAP",
+    "shotgun"
+  ],
+  "requirements": {
+    "linux": "recommended for production pipelines",
+    "conda_or_micromamba": "recommended for tool environments",
+    "gpu": "optional (BASALT refinement may use GPU)"
+  },
+  "skills_count": 11,
+  "skill_categories": {
+    "analysis-tools": 5,
+    "evaluation": 2,
+    "utilities": 1,
+    "orchestration": 3
+  },
+  "featured_skills": [
+    "metagenomics-workflow",
+    "basalt",
+    "read-based",
+    "mag-classical",
+    "tool-selection"
+  ],
+  "platforms": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "kimi-code",
+    "grok-build",
+    "agentskills"
+  ]
+}

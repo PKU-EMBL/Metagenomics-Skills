@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="220" viewBox="0 0 960 220">
+<rect width="960" height="220" fill="#0f172a"/>
+<text x="40" y="50" fill="#99f6e4" font-size="22" font-family="Helvetica,Arial,sans-serif">Standard shotgun pipeline</text>
+<text x="40" y="120" fill="#e2e8f0" font-size="16" font-family="Helvetica,Arial,sans-serif">preprocessing → read-based / gene-catalogue → mag-classical|basalt → mag-qc → visualization</text>
+</svg>

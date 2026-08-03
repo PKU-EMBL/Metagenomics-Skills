@@ -1,0 +1,7 @@
+interface:
+  display_name: "Visualization"
+  short_description: "Diversity, composition, and MAG figures"
+  default_prompt: "Use $visualization to plan statistical plots for profiling or MAG results."
+
+policy:
+  allow_implicit_invocation: true

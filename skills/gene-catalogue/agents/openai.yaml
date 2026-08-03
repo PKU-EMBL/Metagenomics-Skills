@@ -1,0 +1,7 @@
+interface:
+  display_name: "Gene Catalogue"
+  short_description: "Assembly, ORF clustering, quantification, and annotation"
+  default_prompt: "Use $gene-catalogue to assemble metagenomes and build a non-redundant gene catalogue."
+
+policy:
+  allow_implicit_invocation: true
