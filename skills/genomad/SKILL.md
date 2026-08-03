@@ -93,5 +93,5 @@ MGE / virus goal?
 ## Related skills
 
 `checkv` · `virsorter2` · `vcontact` · `plasmaag` · `mobileog` · `isescan` ·
-`integronfinder` · `mob-suite` · `rgi` · `antismash` · `microbial-mining` ·
-`megahit`
+`integronfinder` · `mob-suite` · `cge-finders` · `plasmidfinder` · `staramr` ·
+`rgi` · `resfinder` · `antismash` · `microbial-mining` · `megahit`
