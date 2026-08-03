@@ -193,18 +193,29 @@ Total: **100** skills.
 | `caduceus` | [Caduceus](https://github.com/kuleshov-group/caduceus) | Bi-directional equivariant long-range DNA language model. |
 | `evo2` | [Evo 2](https://github.com/ArcInstitute/evo2) | Long-context DNA LM for modeling/design across all domains of life. |
 
+## Protein language models
+
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `protein-language-model` | — | Route protein language models: ESM, ProstT5, PLM search, PLM phylogeny. |
+| `esm` | [ESM](https://github.com/facebookresearch/esm) | ESM-2 family embeddings; ESMFold / ESM Atlas context. |
+| `prostt5` | [ProstT5](https://github.com/mheinzinger/ProstT5) | AA ↔ Foldseek 3Di bilingual PLM (from ProtT5). |
+| `plmsearch` | [PLMSearch](https://github.com/maovshao/PLMSearch) | PLM embeddings for fast remote homology protein search. |
+| `deepblast` | [DeepBLAST](https://github.com/flatironinstitute/deepblast) | TM-Vec + DeepBLAST remote homology and structural alignment from sequence. |
+
 ## AI / language models & structure search
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
 | `metagenomics-llm` | — | Route genome/protein LMs and Steinegger structure/sequence search. |
 | `genome-language-model` | — | Genome language model routing — also under Genome language models. |
+| `protein-language-model` | — | Protein language model routing — also under Protein language models. |
 | `omg` | [OMG](https://github.com/TattaBio/OMG) | Open MetaGenomic corpus + gLM2 — also under Genome language models. |
 | `mmseqs2` | [MMseqs2](https://github.com/soedinglab/MMseqs2) | Sequence search, Linclust NR, contig taxonomy — also under Function. |
 | `foldseek` | [Foldseek](https://github.com/steineggerlab/foldseek) | Ultrafast 3Di structure search, clustering, Foldseek-Multimer, ProstT5. |
 | `folddisco` | [Folddisco](https://github.com/steineggerlab/folddisco) | Fast discontinuous structural motif search (AFDB/PDB/ESM30). |
-| `plmsearch` | [PLMSearch](https://github.com/maovshao/PLMSearch) | PLM embeddings for fast remote homology protein search. |
-| `deepblast` | [DeepBLAST](https://github.com/flatironinstitute/deepblast) | TM-Vec + DeepBLAST remote homology and structural alignment from sequence. |
+| `plmsearch` | [PLMSearch](https://github.com/maovshao/PLMSearch) | PLM remote homology — also under Protein language models. |
+| `deepblast` | [DeepBLAST](https://github.com/flatironinstitute/deepblast) | TM-Vec + DeepBLAST — also under Protein language models. |
 | `spacedust` | [Spacedust](https://github.com/soedinglab/Spacedust) | De novo conserved gene clusters via Foldseek-aware neighborhood discovery. |
 | `alphagem` | [AlphaGEM](https://github.com/hongzhonglu/AlphaGEM) | GEMs with structure alignment and DL dark-metabolism mining. |
 
@@ -218,6 +229,7 @@ Total: **100** skills.
 | `homology-search` | — | Route all homology/search paradigms (also under Homology search). |
 | `phylogenomics` | — | Route phylogeny / evolutionary analyses (also under Phylogenomics). |
 | `genome-language-model` | — | Route genome language models (also under Genome language models). |
+| `protein-language-model` | — | Route protein language models (also under Protein language models). |
 | `metagenomics-llm` | — | Route LMs and Foldseek/MMseqs structure–sequence search (also under AI). |
 
 ## Other

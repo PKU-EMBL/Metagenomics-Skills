@@ -6,7 +6,7 @@ description: >
   for BLAST/MMseqs, (2) Structure search is unavailable but structural
   similarity is expected, (3) Screening large query–target protein pairs.
   Upstream: https://github.com/maovshao/PLMSearch.
-  Web: https://dmiip.sjtu.edu.cn/PLMSearch. Route via metagenomics-llm.
+  Web: https://dmiip.sjtu.edu.cn/PLMSearch. Route via protein-language-model.
 license: MIT
 category: analysis-tools
 tags: [PLM, remote-homology, search, protein]
@@ -64,5 +64,6 @@ Protein search sensitivity need?
 
 ## Related skills
 
-`metagenomics-llm` · `foldseek` · `folddisco` · `deepblast` · `mmseqs2` ·
-`diamond` · `eggnog-mapper` · `spacedust` · `tool-selection`
+`protein-language-model` · `esm` · `prostt5` · `metagenomics-llm` ·
+`foldseek` · `folddisco` · `deepblast` · `mmseqs2` · `diamond` ·
+`eggnog-mapper` · `spacedust` · `tool-selection`

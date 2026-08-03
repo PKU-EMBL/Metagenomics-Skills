@@ -72,5 +72,5 @@ Phylogeny without reliable MSA?
 
 ## Related skills
 
-`phylogenomics` · `iqtree` · `phylophlan` · `metagenomics-llm` · `omg` ·
-`gtdbtk` · `tool-selection`
+`phylogenomics` · `protein-language-model` · `esm` · `iqtree` · `phylophlan` ·
+`metagenomics-llm` · `omg` · `gtdbtk` · `tool-selection`

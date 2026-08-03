@@ -68,5 +68,6 @@ not validated compounds, phenotypes, or complete phages unless QC says so
 | Public data | `sra-ena`, `cami`, `progenomes`, `kegg`, `insilicoseq`, … |
 | Report | `visualization` |
 | Genome language models | `genome-language-model`, `omg`, `nucleotide-transformer`, `dnabert2`, `caduceus`, `evo2` |
+| Protein language models | `protein-language-model`, `esm`, `prostt5`, `plmsearch`, `deepblast` |
 | AI / LMs & structure search | `metagenomics-llm`, `omg`, `mmseqs2`, `foldseek`, `folddisco`, `plmsearch`, `deepblast`, `spacedust`, `alphagem` |
-| Routing | `tool-selection`, `metagenomics-workflow`, `metagenomics-llm`, `genome-language-model`, `homology-search`, `phylogenomics` |
+| Routing | `tool-selection`, `metagenomics-workflow`, `metagenomics-llm`, `genome-language-model`, `protein-language-model`, `homology-search`, `phylogenomics` |

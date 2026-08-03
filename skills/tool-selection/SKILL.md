@@ -138,12 +138,22 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | Long-range RC-aware DNA LM | `caduceus` |
 | Generative long-context DNA (Evo 2) | `evo2` |
 
+## Protein language models
+
+| Need | Prefer |
+|------|--------|
+| Route protein language models | `protein-language-model` |
+| ESM-2 / ESM family embeddings | `esm` |
+| AA ↔ 3Di / Foldseek from FASTA | `prostt5` (± `foldseek`) |
+| Remote protein homology (PLM search) | `plmsearch` / `deepblast` |
+| Alignment-free PLM phylogeny | `lucaphylo` |
+
 ## AI / LM & structure search (Steinegger + PLMs)
 
 | Need | Prefer |
 |------|--------|
 | Route LM / Foldseek stack | `metagenomics-llm` |
-| Remote protein homology (PLM) | `plmsearch` / `deepblast` |
+| Protein LM detail menu | `protein-language-model` |
 | Conserved gene clusters (structure-aware) | `spacedust` |
 | GEM + structure/dark metabolism | `alphagem` |
 
@@ -171,4 +181,5 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 ## Related skills
 
 `metagenomics-workflow` · `microbial-mining` · `homology-search` · `phylogenomics` ·
-`genome-language-model` · `metagenomics-llm` · `study-design` · `public-databases`
+`genome-language-model` · `protein-language-model` · `metagenomics-llm` ·
+`study-design` · `public-databases`

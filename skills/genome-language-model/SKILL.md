@@ -7,7 +7,7 @@ description: >
   gLM2). Use when choosing DNA embeddings, generation, or functional-track
   prediction — not for classical profilers or Foldseek. Child skills: omg,
   nucleotide-transformer, dnabert2, caduceus, evo2. Protein LMs via
-  metagenomics-llm / plmsearch. Trees via phylogenomics / lucaphylo.
+  protein-language-model. Trees via phylogenomics / lucaphylo.
 license: MIT
 category: orchestration
 tags: [genome-language-model, gLM, NTv3, DNABERT, Caduceus, Evo2, OMG, gLM2]
@@ -26,7 +26,7 @@ NTv3-style taxonomy of DNA modeling:
 | Representation gLM | Embeddings / MLM | `nucleotide-transformer` · `dnabert2` · `caduceus` |
 | Generative (AR / diffusion) | Sequence design / long context | `evo2` (± Evo 1) |
 | Mixed-modality metagenomic LM | CDS AA + intergenic DNA | `omg` (gLM2) |
-| Protein LM search | Remote AA homology | `plmsearch` / `deepblast` |
+| Protein language models | Remote AA homology / embeddings | `protein-language-model` |
 | seq2fun tracks (Borzoi-class) | Dense functional genomics | Not default MAG tools |
 
 ## Analytical thinking
@@ -38,7 +38,7 @@ NTv3-style taxonomy of DNA modeling:
 | Efficient multi-species DNA LM + GUE | `dnabert2` | Taxonomy profiler |
 | Long-range bi-directional DNA (Mamba) | `caduceus` | Contig assembler |
 | Generative / 1 Mb-scale DNA design | `evo2` | MAG QC |
-| Protein remote homology | `homology-search` / PLMs | Genome LM logits as hits |
+| Protein remote homology | `protein-language-model` | Genome LM logits as hits |
 | Phylogeny | `phylogenomics` / `lucaphylo` | Raw LM distances as trees |
 
 Hard rules:
@@ -59,7 +59,7 @@ Genome language model need?
 ├─ Efficient multi-species representation / GUE → dnabert2
 ├─ Long-range RC-aware DNA LM (Caduceus) → caduceus
 ├─ Generative long-context (all domains) → evo2
-├─ Protein LM search → plmsearch / deepblast / homology-search
+├─ Protein language models → protein-language-model
 ├─ Structure search → foldseek
 ├─ Trees → phylogenomics
 └─ Unsure → this hub + metagenomics-llm
@@ -68,5 +68,5 @@ Genome language model need?
 ## Related skills
 
 `omg` · `nucleotide-transformer` · `dnabert2` · `caduceus` · `evo2` ·
-`metagenomics-llm` · `lucaphylo` · `homology-search` · `phylogenomics` ·
-`public-databases` · `tool-selection`
+`protein-language-model` · `metagenomics-llm` · `lucaphylo` ·
+`homology-search` · `phylogenomics` · `public-databases` · `tool-selection`

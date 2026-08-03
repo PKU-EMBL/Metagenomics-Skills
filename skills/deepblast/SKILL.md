@@ -7,7 +7,7 @@ description: >
   similarity in large sequence DBs, (2) Aligning remote homologs for annotation,
   (3) Complementing PLMSearch / Foldseek workflows. Upstream:
   https://github.com/tymor22/tm-vec and
-  https://github.com/flatironinstitute/deepblast. Route via metagenomics-llm.
+  https://github.com/flatironinstitute/deepblast. Route via protein-language-model.
 license: MIT
 category: analysis-tools
 tags: [DeepBLAST, TM-Vec, remote-homology, structure, PLM]
@@ -58,5 +58,6 @@ Remote homology workflow?
 
 ## Related skills
 
-`metagenomics-llm` · `plmsearch` · `foldseek` · `folddisco` · `spacedust` ·
-`mmseqs2` · `eggnog-mapper` · `tool-selection`
+`protein-language-model` · `esm` · `plmsearch` · `metagenomics-llm` ·
+`foldseek` · `folddisco` · `spacedust` · `mmseqs2` · `eggnog-mapper` ·
+`tool-selection`

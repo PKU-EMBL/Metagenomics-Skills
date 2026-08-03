@@ -1,3 +1,14 @@
+## [1.14.0] - 2026-08-03
+
+### Added
+- Protein language model layer: `protein-language-model` hub, `esm` (ESM-2),
+  `prostt5` (ProstT5 / ProtT5)
+- References 102–104
+
+### Changed
+- Routed `plmsearch` / `deepblast` / LucaPhylo via `protein-language-model`
+- Skills catalog total: 125; package version 1.14.0
+
 ## [1.13.0] - 2026-08-03
 
 ### Added

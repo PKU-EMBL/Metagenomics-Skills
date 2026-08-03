@@ -15,8 +15,8 @@ stage: function
 # Homology search routing
 
 Shotgun projects need **many search paradigms**. This hub chooses among them.
-For LM dark-matter framing also see `metagenomics-llm`. For trees see
-`phylogenomics`.
+For LM dark-matter framing also see `metagenomics-llm`. For protein LMs see
+`protein-language-model`. For trees see `phylogenomics`.
 
 ## Steinegger / Söding search stack
 
@@ -38,7 +38,7 @@ For LM dark-matter framing also see `metagenomics-llm`. For trees see
 
 | Paradigm | Prefer |
 |----------|--------|
-| PLM embedding search | `plmsearch` · `deepblast` |
+| PLM embedding search | `protein-language-model` → `plmsearch` · `deepblast` |
 | Vector DB + rerank | `erast` |
 | Phylogeny-compressed genomes | `phylign` |
 | Gene vs million genomes | `lexicmap` |
@@ -61,7 +61,8 @@ What are you searching / recovering?
 │   ├─ Profile remote homology / MSA for folding → hh-suite
 │   ├─ Structures or ProstT5 / AFDB → foldseek (± folddisco / foldmason / foldcomp)
 │   ├─ Peta-scale protein targets → petasearch
-│   ├─ Sequence-only PLM → plmsearch / deepblast
+│   ├─ Sequence-only PLM → protein-language-model (plmsearch / deepblast)
+│   ├─ AA embeddings / ProstT5 → protein-language-model (esm / prostt5)
 │   └─ Billion-scale vector retrieval → erast
 ├─ Recover more proteins from reads → plass
 ├─ Eukaryotic genes on contigs → metaeuk
@@ -77,4 +78,5 @@ What are you searching / recovering?
 `mmseqs2` · `hh-suite` · `plass` · `metaeuk` · `foldcomp` · `foldseek` ·
 `folddisco` · `foldmason` · `petasearch` · `spacedust` ·
 `plmsearch` · `deepblast` · `erast` · `phylign` · `lexicmap` · `diamond` ·
-`metagenomics-llm` · `phylogenomics` · `unicore` · `tool-selection`
+`protein-language-model` · `metagenomics-llm` · `phylogenomics` · `unicore` ·
+`tool-selection`

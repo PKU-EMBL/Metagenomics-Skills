@@ -58,9 +58,9 @@ skill.
 ## AI / language-model & structure-search data
 
 For genome language models start at `genome-language-model` (`omg`,
-`nucleotide-transformer`, `dnabert2`, `caduceus`, `evo2`). For PLM-assisted
-annotation also see `metagenomics-llm`. For AFDB/PDB/ESM Atlas structure
-indexes use `foldseek` /
+`nucleotide-transformer`, `dnabert2`, `caduceus`, `evo2`). For protein language
+models start at `protein-language-model` (`esm`, `prostt5`, `plmsearch`,
+`deepblast`). For AFDB/PDB/ESM Atlas structure indexes use `foldseek` /
 `folddisco`. For vector-DB homology use `erast`; for phylogeny-compressed
 genome search collections use `phylign` (see also `homology-search`). These are
 **ML corpora / structure / search indexes**, not substitutes for SRA reanalysis

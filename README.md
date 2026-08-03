@@ -89,9 +89,14 @@ After MAGs: `microbial-mining` → `antismash` / `rgi` / `dram` / …
 `genome-language-model` → `omg` / `nucleotide-transformer` (NTv3) /
 `dnabert2` / `caduceus` / `evo2`
 
+> Protein language models
+
+`protein-language-model` → `esm` / `prostt5` / `plmsearch` / `deepblast`
+
 > AI / LMs & structure search (Foldseek · PLMs)
 
-`metagenomics-llm` → `foldseek` / `plmsearch` / `deepblast` / `spacedust` / …
+`metagenomics-llm` → `genome-language-model` / `protein-language-model` /
+`foldseek` / `spacedust` / …
 
 ---
 

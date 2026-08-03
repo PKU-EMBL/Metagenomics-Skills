@@ -244,6 +244,14 @@ the canonical papers to reference.
 
 101. Schiff, Y. *et al.* Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling. *arXiv* https://doi.org/10.48550/arXiv.2403.03234 (2024).
 
+## Protein language models
+
+102. Lin, Z. *et al.* Evolutionary-scale prediction of atomic-level protein structure with a language model. *Science* **379**, 1123–1130 (2023). https://doi.org/10.1126/science.ade2574
+
+103. Elnaggar, A. *et al.* ProtTrans: Toward Understanding the Language of Life Through Self-Supervised Learning. *IEEE Trans. Pattern Anal. Mach. Intell.* **44**, 7112–7127 (2022). https://doi.org/10.1109/TPAMI.2021.3095381
+
+104. Heinzinger, M. *et al.* Bilingual language model for protein sequence and structure. *NAR Genom. Bioinform.* **6**, lqae150 (2024). https://doi.org/10.1093/nargab/lqae150
+
 
 ---
 
