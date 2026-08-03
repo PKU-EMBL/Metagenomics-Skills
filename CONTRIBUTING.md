@@ -1,9 +1,9 @@
 # Contributing to Metagenomics Skills
 
-Thank you for contributing. This repository follows the packaging pattern of
+Thank you for contributing. This repository packages **Metagenomics Skills** as
 portable Agent Skills (see [agentskills.io](https://agentskills.io) and
-[Anthropic Skills](https://github.com/anthropics/skills)), structured similarly
-to [protein-design-skills](https://github.com/adaptyvbio/protein-design-skills).
+[Anthropic Skills](https://github.com/anthropics/skills)): one directory per
+skill under `skills/`, plus docs and multi-platform plugin manifests.
 
 ## Skill structure
 

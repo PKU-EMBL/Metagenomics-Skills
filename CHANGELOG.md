@@ -3,7 +3,7 @@
 ## [1.0.0] - 2026-08-03
 
 ### Added
-- Initial 11-skill package following Agent Skills + protein-design-skills layout
+- Initial 11-skill Metagenomics Skills package (Agent Skills layout)
 - Analysis tools: `preprocessing`, `read-based`, `gene-catalogue`, `mag-classical`, `basalt`
 - Evaluation: `mag-qc`, `visualization`
 - Utilities: `setup`

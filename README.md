@@ -104,4 +104,3 @@ MIT
 - [BASALT](https://github.com/PKU-EMBL/BASALT) · [BASALT-Air](https://github.com/PKU-EMBL/BASALT-Air)
 - [Agent Skills](https://agentskills.io)
 - [Anthropic Skills](https://github.com/anthropics/skills)
-- Packaging template: [adaptyvbio/protein-design-skills](https://github.com/adaptyvbio/protein-design-skills)
