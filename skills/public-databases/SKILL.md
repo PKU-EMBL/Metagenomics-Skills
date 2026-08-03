@@ -86,8 +86,8 @@ Need public metagenomics data/reference?
 │     → kraken2
 ├─ eggNOG / CARD / CheckM2
 │     → eggnog-mapper / rgi / checkm2
-├─ Genomic LM corpus / gLM2
-│     → omg / metagenomics-llm
+├─ Genome language model corpus / gLM2
+│     → omg / genome-language-model
 └─ Unsure
       → this skill + tool-selection
 ```
