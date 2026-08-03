@@ -256,6 +256,24 @@ the canonical papers to reference.
 
 106. Su, J. *et al.* SaProt: Protein Language Modeling with Structure-aware Vocabulary. *International Conference on Learning Representations* (ICLR) (2024). https://openreview.net/forum?id=6MRm3G4NiU · preprint https://doi.org/10.1101/2023.10.01.560349
 
+## Element cycling, defenseome, MGEs & signaling
+
+107. Zhou, Z. *et al.* METABOLIC: high-throughput profiling of microbial genomes for functional traits, metabolism, biogeochemistry, and community-scale functional networks. *Microbiome* **10**, 33 (2022). https://doi.org/10.1186/s40168-021-01213-8
+
+108. De Anda, V. *et al.* MEBS, a software platform to evaluate large (meta)genomic collections according to their metabolic machinery: unraveling the sulfur cycle. *Gigascience* **6**, 1–17 (2017). https://doi.org/10.1093/gigascience/gix096
+
+109. Garber, A. I. *et al.* FeGenie: A Comprehensive Tool for the Identification of Iron Genes and Iron Gene Neighborhoods in Genome and Metagenome Assemblies. *Front. Microbiol.* **11**, 37 (2020). https://doi.org/10.3389/fmicb.2020.00037
+
+110. Payne, L. J. *et al.* Identification and classification of antiviral defence systems in bacteria and archaea with PADLOC reveals new system types. *Nucleic Acids Res.* **49**, 10868–10878 (2021). https://doi.org/10.1093/nar/gkab883
+
+111. Brown, C. L. *et al.* mobileOG-db: a Manually Curated Database of Protein Families Mediating the Life Cycle of Bacterial Mobile Genetic Elements. *Appl. Environ. Microbiol.* **88**, e00991-22 (2022). https://doi.org/10.1128/aem.00991-22
+
+112. Xie, Z. & Tang, H. ISEScan: automated identification of insertion sequence elements in prokaryotic genomes. *Bioinformatics* **33**, 3340–3347 (2017). https://doi.org/10.1093/bioinformatics/btx433
+
+113. Néron, B. *et al.* IntegronFinder 2.0: Identification and Analysis of Integrons across Bacteria, with a Focus on Antibiotic Resistance in Klebsiella. *Microorganisms* **10**, 700 (2022). https://doi.org/10.3390/microorganisms10040700
+
+114. Robertson, J. & Nash, J. H. E. MOB-suite: software tools for clustering, reconstruction and typing of plasmids from draft assemblies. *Microb. Genom.* **4**, e000206 (2018). https://doi.org/10.1099/mgen.0.000206
+
 
 ---
 

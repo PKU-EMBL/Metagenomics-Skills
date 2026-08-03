@@ -31,7 +31,9 @@ markers + neural networks. Use it to:
 3. Separate plasmid-borne ARGs (`rgi` hits on plasmid contigs)
 
 Do not equate “plasmid score high” with a complete circular plasmid. For viruses,
-always run **CheckV** before publishing vMAG completeness.
+always run **CheckV** before publishing vMAG completeness. For finer MGE detail
+use `mobileog` (proteins), `isescan` (IS), `integronfinder` (integrons), and
+`mob-suite` (MOB/replicon typing).
 
 Can run on **full assemblies** (pre-binning) or on bins; pre-binning catches
 MGEs that never enter bacterial bins.
@@ -90,5 +92,6 @@ MGE / virus goal?
 
 ## Related skills
 
-`checkv` · `virsorter2` · `rgi` · `antismash` · `microbial-mining` · `megahit`
-`vcontact` · `plasmaag`
+`checkv` · `virsorter2` · `vcontact` · `plasmaag` · `mobileog` · `isescan` ·
+`integronfinder` · `mob-suite` · `rgi` · `antismash` · `microbial-mining` ·
+`megahit`

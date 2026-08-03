@@ -106,20 +106,30 @@ Total: **100** skills.
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `microbial-mining` | — | Route microbial / genome mining after assembly or binning: biosynthetic gene clusters (antiSMASH, BiG-SCAPE), AMR (RGI, DeepARG), mobile elements and viruses (geNomad, VirSorter2, CheckV), antimicrobial peptides (Macrel), metabolism (DRAM, gapseq, dbCAN), defense systems (DefenseFinder), and genome annotation substrates (Bakta/Prokka). |
+| `microbial-mining` | — | Route mining: BGCs, AMR, MGEs, element cycling, defense, QS, metabolism. |
 | `antismash` | [antismash](https://github.com/antismash/antismash) | Detect and annotate biosynthetic gene clusters (BGCs) on genomes and MAGs. |
-| `bigscape` | [bigscape](https://github.com/medema-group/BiG-SCAPE) | Cluster and compare biosynthetic gene clusters across genomes with BiG-SCAPE (similarity networks of antiSMASH regions). |
-| `genomad` | [genomad](https://github.com/apcamargo/genomad) | Identify plasmids, viruses, and other mobile genetic elements in assemblies or genomes. |
+| `bigscape` | [bigscape](https://github.com/medema-group/BiG-SCAPE) | Cluster and compare biosynthetic gene clusters across genomes with BiG-SCAPE. |
+| `genomad` | [genomad](https://github.com/apcamargo/genomad) | Identify plasmids, viruses, and other mobile genetic elements. |
 | `virsorter2` | [virsorter2](https://github.com/jiarong/VirSorter2) | Viral sequence identification from metagenomic assemblies. |
 | `checkv` | [checkv](https://bitbucket.org/berkeleylab/checkv) | Quality assessment of metagenome-assembled viral genomes. |
 | `vcontact` | [vcontact](https://bitbucket.org/MAVERICLab/vcontact3) | vConTACT2/3 gene-sharing / ML hierarchical virus taxonomy. |
+| `mobileog` | [mobileOG-db](https://github.com/clb21565/mobileOG-db) | Annotate MGE life-cycle protein families (mobileOG-db). |
+| `isescan` | [ISEScan](https://github.com/xiezhq/ISEScan) | Insertion sequence (IS) element annotation. |
+| `integronfinder` | [Integron_Finder](https://github.com/gem-pasteur/Integron_Finder) | Detect integrons and gene cassettes. |
+| `mob-suite` | [mob-suite](https://github.com/phac-nml/mob-suite) | Plasmid reconstruction and MOB/replicon typing. |
 | `plasmaag` | [plasmaag](https://github.com/RasmussenLab/PlasMAAG) | Plasmid and organism reconstruction via assembly–alignment graphs. |
 | `macrel` | [macrel](https://github.com/BigDataBiology/macrel) | Screen genomes and metagenomes for antimicrobial peptides (AMPs). |
-| `dram` | [dram](https://github.com/WrightonLabCSU/DRAM) | Distill microbial metabolism annotations for MAGs/genomes into curated product tables (DRAM annotate + distill). |
-| `dbcan` | [dbcan](https://github.com/linnabrown/run_dbcan) | Annotate carbohydrate-active enzymes (CAZymes) with dbCAN/run_dbcan on genomes or protein sets. |
-| `gapseq` | [gapseq](https://github.com/jotech/gapseq) | Predict bacterial metabolic pathways and reconstruct genome-scale metabolic models. |
-| `deeparg` | [deeparg](https://github.com/gaarangoa/DeepARG) | Deep-learning prediction of antibiotic resistance genes from metagenomic data. |
+| `element-cycling` | — | Route C/N/S/Fe/P/H₂/CH₄ elemental cycling annotation. |
+| `metabolic` | [METABOLIC](https://github.com/AnantharamanLab/METABOLIC) | Multi-element biogeochemical trait profiling (C/N/S/…). |
+| `mebs` | [MEBS](https://github.com/valdeanda/mebs) | Entropy scores for S (and N/O/CH₄/Fe) cycle machinery. |
+| `fegenie` | [FeGenie](https://github.com/Arkadiy-Garber/FeGenie) | Iron genes, siderophores, Fe redox, magnetosome neighborhoods. |
+| `dram` | [dram](https://github.com/WrightonLabCSU/DRAM) | Distill microbial metabolism annotations for MAGs/genomes. |
+| `dbcan` | [dbcan](https://github.com/linnabrown/run_dbcan) | Annotate carbohydrate-active enzymes (CAZymes). |
+| `gapseq` | [gapseq](https://github.com/jotech/gapseq) | Predict pathways and reconstruct genome-scale metabolic models. |
+| `deeparg` | [deeparg](https://github.com/gaarangoa/DeepARG) | Deep-learning prediction of antibiotic resistance genes. |
 | `defensefinder` | [defensefinder](https://github.com/mdmparis/defense-finder) | Detect anti-phage defense systems in prokaryotic genomes. |
+| `padloc` | [PADLOC](https://github.com/padlocbio/padloc) | Prokaryotic antiviral defence locator (HMM + synteny). |
+| `qsap` | [QSAP](https://github.com/chunxiao-dcx/QSAP) | Quorum-sensing related gene annotation (QSP database). |
 
 ## Strain / microdiversity
 
@@ -230,6 +240,7 @@ Total: **100** skills.
 | `study-design` | — | Study design for shotgun metagenomics across QC, assembly, binning, and annotation. |
 | `homology-search` | — | Route all homology/search paradigms (also under Homology search). |
 | `phylogenomics` | — | Route phylogeny / evolutionary analyses (also under Phylogenomics). |
+| `element-cycling` | — | Route elemental / biogeochemical cycling (also under Microbial mining). |
 | `genome-language-model` | — | Route genome language models (also under Genome language models). |
 | `protein-language-model` | — | Route protein language models (also under Protein language models). |
 | `metagenomics-llm` | — | Route LMs and Foldseek/MMseqs structure–sequence search (also under AI). |

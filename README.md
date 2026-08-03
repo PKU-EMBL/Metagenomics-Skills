@@ -65,14 +65,15 @@ recommended) → (± `anvio` / `deepurify`) → **taxonomy** / **function** →
 
 Auto-bins → `anvio` refine → `checkm2` / `gunc` / `mag-qc` → `gtdbtk`
 
-> Viral / plasmid mining
+> Viral / plasmid / MGE mining
 
-Contigs → `genomad` / `virsorter2` → `checkv` → `vcontact` · plasmids:
-`plasmaag`
+Contigs → `genomad` / `virsorter2` → `checkv` → `vcontact` ·
+`mobileog` / `isescan` / `integronfinder` / `mob-suite` · plasmids: `plasmaag`
 
-> Microbial mining (BGCs / AMR / metabolism)
+> Microbial mining (BGCs / AMR / element cycling / defense / QS)
 
-After MAGs: `microbial-mining` → `antismash` / `rgi` / `dram` / …
+After MAGs: `microbial-mining` → `antismash` / `rgi` / `element-cycling` /
+`dram` / `defensefinder` / `padloc` / `qsap` / …
 
 > Homology search (Steinegger/Söding · vector DB · compressed genomes)
 

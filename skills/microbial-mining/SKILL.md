@@ -1,15 +1,16 @@
 ---
 name: microbial-mining
 description: >
-  Route microbial / genome mining after assembly or binning: biosynthetic gene
-  clusters (antiSMASH, BiG-SCAPE), AMR (RGI, DeepARG), mobile elements and
-  viruses (geNomad, VirSorter2, CheckV), antimicrobial peptides (Macrel),
-  metabolism (DRAM, gapseq, dbCAN), defense systems (DefenseFinder), and
-  genome annotation substrates (Bakta/Prokka). Use when the question is
+  Route microbial / genome mining after assembly or binning: BGCs (antiSMASH,
+  BiG-SCAPE), AMR (RGI, DeepARG), mobile elements (geNomad, VirSorter2, CheckV,
+  mobileOG-db, ISEScan, IntegronFinder, MOB-suite), antimicrobial peptides
+  (Macrel), element cycling (METABOLIC, MEBS, FeGenie), metabolism (DRAM,
+  gapseq, dbCAN), defense systems (DefenseFinder, PADLOC), quorum sensing
+  (QSAP), and annotation substrates (Bakta/Prokka). Use when the question is
   discovery of functional elements, not community tables alone.
 license: MIT
 category: orchestration
-tags: [genome-mining, BGC, AMR, MGE, virus, metabolism, routing]
+tags: [genome-mining, BGC, AMR, MGE, virus, metabolism, element-cycling, defense, QS, routing]
 stage: mining
 ---
 
@@ -24,18 +25,21 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 |------------|--------|---------|
 | Natural products / BGCs | `antismash` → `bigscape` | Cluster ≠ characterized compound |
 | AMR / resistome | `rgi` (± `deeparg`) | Hit ≠ expression / phenotype |
-| Plasmids / viruses / MGEs | `genomad`, `virsorter2`, `checkv`, `vcontact` | CheckV before taxonomy |
+| Plasmids / viruses (contig) | `genomad`, `virsorter2`, `checkv`, `vcontact` | CheckV before viral taxonomy |
+| MGE protein machinery | `mobileog` | Category hit ≠ complete element |
+| Insertion sequences | `isescan` | IS ≠ plasmid |
+| Integrons / cassettes | `integronfinder` | Cassette ≠ expressed ARG |
+| Plasmid MOB / replicon typing | `mob-suite` | Typing ≠ wet-lab Inc assay |
 | Plasmid genome recovery | `plasmaag` | Multi-sample graphs help |
 | Antimicrobial peptides | `macrel` | High candidate FDR |
+| Element cycling (C/N/S/Fe/P/…) | `element-cycling` → `metabolic` / `mebs` / `fegenie` | Potential ≠ flux |
 | Distilled metabolism | `dram` | Needs decent completeness |
 | CAZymes | `dbcan` | Consensus evidence rules |
-| Genome-scale models | `gapseq` (± `vmh`) | HQ MAGs only |
-| Anti-phage defense | `defensefinder` | Annotate proteins first |
+| Genome-scale models | `gapseq` (± `vmh` / `alphagem`) | HQ MAGs only |
+| Anti-phage defense | `defensefinder` · `padloc` | Annotate proteins first; models differ |
+| Quorum sensing / autoinducers | `qsap` | Genes ≠ measured signals |
 | De novo conserved clusters | `spacedust` | Complement known-system tools |
 | Structure search (AFDB/PDB) | `foldseek` | Via `metagenomics-llm` |
-| Structural motifs | `folddisco` | Motif ≠ proven activity |
-| Remote homology / LM search | `plmsearch` / `deepblast` | Via `metagenomics-llm` |
-| Structure-aware GEMs | `alphagem` | HQ genomes only |
 | Annotation substrate | `bakta` / `prokka` | Feed other miners |
 
 ## Decision tree
@@ -43,17 +47,24 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 ```text
 Mining goal?
 ├─ BGCs → antismash → (many genomes) bigscape
-├─ Resistome → rgi (± deeparg); intersect genomad plasmids if relevant
+├─ Resistome → rgi (± deeparg); intersect genomad / integronfinder if relevant
 ├─ Plasmids / viruses → genomad (± virsorter2) → checkv → vcontact
+├─ MGE detail
+│   ├─ Protein machinery → mobileog
+│   ├─ IS elements → isescan
+│   ├─ Integrons → integronfinder
+│   └─ Plasmid MOB/replicon typing → mob-suite
 ├─ Plasmid MAGs → plasmaag (± genomad)
 ├─ AMP smORFs → macrel
+├─ Element cycling (C, N, S, Fe, P, H₂, CH₄, …) → element-cycling
 ├─ Metabolism distillate → dram (± dbcan)
 ├─ GEMs → gapseq
-├─ Defense systems → bakta/prokka → defensefinder
+├─ Defense systems → bakta/prokka → defensefinder and/or padloc
+├─ Quorum sensing → qsap
 ├─ Dark modules / neighborhoods → spacedust
 ├─ Structure / motif search → foldseek / folddisco
-├─ Vector DB / warehouse search → homology-search → erast / phylign / lexicmap
-├─ LM remote homology → metagenomics-llm → plmsearch / deepblast
+├─ Vector DB / warehouse search → homology-search
+├─ LM remote homology → metagenomics-llm / protein-language-model
 └─ Unsure → bakta on HQ MAGs, then branch
 ```
 
@@ -64,10 +75,13 @@ bins/MAGs (checkm2 / mag-qc / gunc)
    → bakta | prokka
    ├─→ antismash → bigscape
    ├─→ rgi (± deeparg)
+   ├─→ element-cycling → metabolic / mebs / fegenie
    ├─→ dram → dbcan / gapseq
-   └─→ defensefinder
+   ├─→ defensefinder / padloc
+   └─→ qsap
 contigs
    → genomad | virsorter2 → checkv → vcontact
+   → mobileog / isescan / integronfinder / mob-suite
    → plasmaag (multi-sample plasmid recovery)
    → macrel
 ```
@@ -78,10 +92,13 @@ contigs
 - Publish viral genomes without CheckV
 - Merge mining hits with HUMAnN abundances unlabeled
 - Mine failed/low-quality bins without stating filters
+- Claim elemental fluxes from HMM presence alone
 
 ## Related skills
 
-`antismash` · `bigscape` · `genomad` · `virsorter2` · `checkv` · `macrel` ·
-`dram` · `dbcan` · `bakta` · `rgi` · `deeparg` · `gapseq` · `vmh` · `defensefinder` ·
-`vcontact` · `plasmaag` · `spacedust` · `foldseek` · `folddisco` ·
-`homology-search` · `erast` · `phylign` · `metagenomics-llm` · `tool-selection`
+`antismash` · `bigscape` · `genomad` · `virsorter2` · `checkv` · `vcontact` ·
+`mobileog` · `isescan` · `integronfinder` · `mob-suite` · `plasmaag` ·
+`macrel` · `element-cycling` · `metabolic` · `mebs` · `fegenie` · `dram` ·
+`dbcan` · `bakta` · `rgi` · `deeparg` · `gapseq` · `vmh` · `defensefinder` ·
+`padloc` · `qsap` · `spacedust` · `foldseek` · `folddisco` ·
+`homology-search` · `metagenomics-llm` · `tool-selection`

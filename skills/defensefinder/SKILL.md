@@ -24,7 +24,9 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Mines **defense systems** (CRISPR and beyond). Complements viral MGE mining (geNomad/VirSorter2) for host–virus interaction stories.
+Mines **defense systems** (CRISPR and beyond). Complements `padloc` (different
+system models — often run both for surveys) and viral MGE mining
+(`genomad` / `virsorter2`) for host–virus interaction stories.
 
 ## How to run
 
@@ -47,4 +49,5 @@ defense-finder run genome.faa --out temp/defense/${id}
 
 ## Related skills
 
-genomad · virsorter2 · bakta · antismash · `microbial-mining` · `tool-selection` · `metagenomics-workflow`
+`padloc` · `genomad` · `virsorter2` · `spacedust` · `bakta` · `antismash` ·
+`microbial-mining` · `tool-selection` · `metagenomics-workflow`

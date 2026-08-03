@@ -30,7 +30,9 @@ Start from the **stage**, then the deliverable.
 6 Function humann · prodigal · bakta · prokka · cd-hit · mmseqs2 · salmon
            · eggnog-mapper · rgi · homology-search
 7 Mining   microbial-mining → antismash · bigscape · genomad · virsorter2 · checkv · vcontact
-           · plasmaag · macrel · dram · dbcan · gapseq · vmh · deeparg · defensefinder
+           · mobileog · isescan · integronfinder · mob-suite · plasmaag · macrel
+           · element-cycling · metabolic · mebs · fegenie · dram · dbcan · gapseq
+           · vmh · deeparg · defensefinder · padloc · qsap
 ```
 
 ## Mapping head-to-head
@@ -71,12 +73,16 @@ Start from the **stage**, then the deliverable.
 | BGCs / natural products | `antismash` → `bigscape` |
 | Resistome | `rgi` (± `deeparg`) |
 | Plasmids / viruses / MGEs | `genomad` (± `virsorter2` → `checkv` → `vcontact`) |
+| MGE proteins / IS / integrons | `mobileog` / `isescan` / `integronfinder` |
+| Plasmid MOB / replicon typing | `mob-suite` |
 | Plasmid genome recovery | `plasmaag` |
 | AMPs | `macrel` |
+| Element cycling (C/N/S/Fe/P/…) | `element-cycling` |
 | Distilled metabolism | `dram` |
 | CAZymes | `dbcan` |
 | Metabolic models | `gapseq` |
-| Defense systems | `defensefinder` |
+| Defense systems | `defensefinder` / `padloc` |
+| Quorum sensing | `qsap` |
 
 ## Ensemble binning
 
@@ -184,4 +190,4 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 
 `metagenomics-workflow` · `microbial-mining` · `homology-search` · `phylogenomics` ·
 `genome-language-model` · `protein-language-model` · `metagenomics-llm` ·
-`study-design` · `public-databases`
+`element-cycling` · `study-design` · `public-databases`

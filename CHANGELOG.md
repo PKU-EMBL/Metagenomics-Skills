@@ -1,3 +1,17 @@
+## [1.16.0] - 2026-08-03
+
+### Added
+- Element cycling layer: `element-cycling` hub, `metabolic` (METABOLIC),
+  `mebs`, `fegenie` (C/N/S/Fe/P/H₂/CH₄/…)
+- Defenseome: `padloc` (with DefenseFinder)
+- MGE refinement: `mobileog`, `isescan`, `integronfinder`, `mob-suite`
+- Quorum sensing: `qsap`
+- References 107–114
+
+### Changed
+- Expanded `microbial-mining` / `tool-selection` routing
+- Skills catalog total: 137; package version 1.16.0
+
 ## [1.15.0] - 2026-08-03
 
 ### Added
