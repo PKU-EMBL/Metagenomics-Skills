@@ -24,27 +24,56 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Modern single-binner alternative/ensemble member. Prefer SemiBin2 over SemiBin1. Still combine with ensemble refinement for catalogues when possible.
+SemiBin1 used **semi-supervised** contrastive learning with contig annotation —
+costly and reference-biased. SemiBin2 switches to **self-supervised** embeddings
+from contigs alone, improving HQ MAG counts while cutting runtime (~25%) and
+peak memory (~11%) vs SemiBin1 on real short-read samples in the paper.
+
+For long reads, SemiBin2 adds an **ensemble-based DBSCAN** clustering path
+(reported 13–26% more HQ genomes than the next-best long-read binner in that
+study). Compare with dedicated `lorbin` on long-read assemblies.
+
+Still a **single binner**: for catalogues, feed into `basalt` ★ / `metawrap` /
+`dastool`. Prefer multi-sample coverage when related samples exist.
 
 ## How to run
 
 ```bash
 conda install -c bioconda semibin2  # if packaged; else follow upstream
 
-SemiBin2 single_easy_bin -i contigs.fa -b temp/map/*.bam -o temp/bins/semibin2 -t 16
+# short-read / general easy mode
+SemiBin2 single_easy_bin \
+  -i contigs.fa \
+  -b temp/map/*.bam \
+  -o temp/bins/semibin2 \
+  -t 16
+
+# multi-sample / long-read modes: see SemiBin2 docs (environment + DBSCAN options)
 ```
 
 ## Key parameters
 
-| `single_easy_bin` | one sample | |
-| multi-sample modes | see docs | Related samples |
+| Mode | When |
+|------|------|
+| `single_easy_bin` | One assembly + BAMs |
+| multi-sample modes | Related samples with shared genomes |
+| long-read / DBSCAN path | Long-read contigs — verify flags in upstream |
+
+## Literature notes
+
+- Prefer SemiBin2 over SemiBin1 unless reproducing an old Methods block.
+- Self-supervision removes annotation bottleneck but does not remove need for
+  CheckM2/GUNC.
+- Ensemble with classical binners increases recovery diversity (DAS Tool /
+  MetaWRAP / BASALT logic).
 
 ## Decision notes
 
-- Stage: **binning** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Stage: **binning**
+- Long-read alternative/complement: `lorbin`
+- Ensemble: `basalt` ★ · `metawrap` · `dastool`
 
 ## Related skills
 
-metabat2 · vamb · dastool · basalt · bowtie2 · `tool-selection` · `metagenomics-workflow`
+`metabat2` · `vamb` · `comebin` · `lorbin` · `dastool` · `basalt` · `bowtie2` ·
+`tool-selection` · `metagenomics-workflow`

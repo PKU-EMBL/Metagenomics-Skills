@@ -21,10 +21,11 @@ Start from the **stage**, then the deliverable.
 1 QC       fastp · kneaddata · fastqc · cutadapt · trimmomatic
 2 Assembly megahit · metaspades · metaflye · metamdbg  (+ quast)
            polish: racon (long) · pilon (short)
+           coassembly planning: binchicken (low-abundance / novelty)
 3 Mapping  strobealign | bowtie2 | bwa-mem2 | bwa | minimap2 · samtools · diamond
-4 Binning  metabat2 · maxbin2 · concoct · semibin2 · vamb
+4 Binning  metabat2 · maxbin2 · concoct · semibin2 · vamb · comebin · lorbin
            → basalt ★ · metawrap · dastool → drep · skani · coverm · checkm2 · gunc
-5 Taxonomy metaphlan · kraken2+bracken · motus · sylph · kaiju · gtdbtk
+5 Taxonomy metaphlan · kraken2+bracken · motus · sylph · metabuli · kaiju · gtdbtk
 6 Function humann · prodigal · bakta · prokka · cd-hit · mmseqs2 · salmon
            · eggnog-mapper · rgi
 7 Mining   microbial-mining → antismash · bigscape · genomad · virsorter2 · checkv
@@ -60,6 +61,16 @@ Start from the **stage**, then the deliverable.
 | `basalt` | **Recommended** multi-assembly refinement |
 | `metawrap` | Packaged multi-binner suite |
 | `dastool` | Aggregate contig2bin tables |
+
+Single-binner diversity for ensembles: `metabat2` · `semibin2` · `vamb` · `comebin` · `lorbin` (long-read).
+
+## Coverage for binning
+
+| Practice | Prefer |
+|----------|--------|
+| Related samples available | **Multi-coverage** BAMs into binners |
+| Only one sample | Single-coverage (acknowledge hidden contamination risk) |
+| Huge public cohorts / rare taxa | `binchicken` targeted coassembly → then bin |
 
 ## Never
 

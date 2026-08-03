@@ -24,27 +24,37 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Requires high-quality mapping to genomes/MAGs. Run after binning+dRep; not a replacement for species profiling.
+Species-level profilers (MetaPhlAn, Kraken, sylph) and MAG catalogues do not
+resolve **within-species** SNP microdiversity or prove strain sharing across
+samples. inStrain profiles diversity from reads mapped to genomes/MAGs and
+detects shared strains with sensitive comparisons.
+
+Requirements for trustworthy results:
+
+- High-quality mapping to **dereplicated**, preferably high-completeness genomes
+- Adequate breadth/depth of coverage (tool filters — report them)
+- Not a replacement for species profiling or for ANI catalogue building (`drep` /
+  `skani`)
+
+Typical order: bin → CheckM2/GUNC → dRep → map reads → `inStrain profile` →
+optional compare for shared strains.
 
 ## How to run
 
 ```bash
-conda install -c bioconda instrain  # if packaged; else follow upstream
-
 inStrain profile temp/map/${id}.bam genomes.fa -o temp/instrain/${id} -p 16
+# inStrain compare ... for cross-sample strain sharing
 ```
 
 ## Key parameters
 
-| BAM | to dereplicated genomes | |
-| coverage filters | see docs | |
-
-## Decision notes
-
-- Stage: **strain** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+| Input | Notes |
+|-------|-------|
+| BAM | To dereplicated references; consistent mapper |
+| Coverage / breadth filters | Follow upstream defaults or justify changes |
+| `compare` | Shared-strain detection across profiles |
 
 ## Related skills
 
-bowtie2 · drep · coverm · metaphlan · `tool-selection` · `metagenomics-workflow`
+`bowtie2` · `strobealign` · `drep` · `skani` · `coverm` · `metaphlan` ·
+`tool-selection` · `metagenomics-workflow`

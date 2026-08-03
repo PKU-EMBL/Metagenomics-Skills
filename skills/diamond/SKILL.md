@@ -24,7 +24,16 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Use for gene→UniRef/NR/eggNOG-scale protein search and contig taxonomy helpers. Not a substitute for Bowtie2 coverage mapping.
+DIAMOND provides sensitive protein alignments at proteome/tree-of-life scale
+(Buchfink *et al.*, 2021) — the workhorse behind many functional and taxonomic
+protein searches (eggNOG-mapper, DAS Tool protein search, custom NR/UniRef).
+
+- Use `blastx`/`blastp` for genes/proteins; not a substitute for nucleotide
+  coverage mappers (`strobealign` / `bowtie2`) needed for binning.
+- Sensitivity modes (`--fast` → `--ultra-sensitive`) trade speed for remote
+  homolog recall — state the mode in Methods.
+- Tabular `-f 6` is pipeline-friendly; keep DB version pinned.
+
 
 ## How to run
 
@@ -39,12 +48,6 @@ diamond blastp -q query.faa -d ref -o hits.tsv -p 16 -f 6
 
 | `blastp/blastx` | mode | |
 | `-f 6` | tabular | BLAST-like |
-
-## Decision notes
-
-- Stage: **mapping** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
 
 ## Related skills
 

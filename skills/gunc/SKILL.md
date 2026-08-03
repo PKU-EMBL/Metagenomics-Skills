@@ -24,7 +24,22 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Complement CheckM2: GUNC targets **clade separation / chimerism**. Use both before publication claims on novel lineages.
+CheckM-style metrics estimate surplus marker copies but under-detect some
+**clade-level chimeras** (contigs from distinct lineages merged into one bin).
+GUNC was built for those underdetected contamination types; the paper
+conservatively estimated substantial residual contamination in public genomes
+even after conventional QC.
+
+Use GUNC **with** CheckM2 before strong claims on novel lineages, GEMs, or
+BGCs tied to a single MAG. Contamination types to keep distinct in text:
+
+| Type | Rough meaning |
+|------|----------------|
+| Redundant | Extra copies from related genome content |
+| Non-redundant / chimeric | Foreign-lineage fragments in one “genome” |
+
+Single-coverage binning can hide co-abundant contaminants within one sample —
+multi-coverage binning + GUNC is a strong pair (Mattock & Watson 2023).
 
 ## How to run
 
@@ -36,15 +51,12 @@ gunc run -i bins/ --db_file $GUNC_DB -r temp/gunc -t 16
 
 ## Key parameters
 
-| DB | gunc download | Pin |
-| with CheckM2 | combine filters | |
-
-## Decision notes
-
-- Stage: **assessment** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+| Item | Notes |
+|------|-------|
+| DB | Download/pin GUNC DB |
+| With CheckM2 | Combine filters; discordant calls → manual review |
+| Novel lineages | Higher scrutiny; GUNC DB taxonomy limits apply |
 
 ## Related skills
 
-checkm2 · mag-qc · drep · basalt · `tool-selection` · `metagenomics-workflow`
+`checkm2` · `mag-qc` · `drep` · `basalt` · `study-design` · `tool-selection`

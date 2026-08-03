@@ -24,28 +24,36 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Run **after** Kraken2 with a matching Bracken DB built from the same Kraken DB. Do not mix MetaPhlAn and Bracken tables unlabeled.
+Bracken redistributes Kraken-classified reads to a target taxonomic level using
+a Bayesian model conditioned on genome lengths / k-mer uniqueness in the **same**
+database build. It answers: “given Kraken’s read assignments, what are smoothed
+abundances at rank L?” — not “is species X truly present?”
+
+Caveats:
+
+- Must use a Bracken index built from the **same** Kraken2 DB.
+- `-r` read length should match sequencing.
+- Rare taxa remain false-positive-prone; MetaPhlAn papers have criticized high
+  FP rates for some Bracken setups — report confidence/thresholds carefully.
+- Never paste Bracken and MetaPhlAn columns into one “species abundance” matrix
+  without a method factor.
 
 ## How to run
 
 ```bash
-conda install -c bioconda bracken  # if packaged; else follow upstream
-
-bracken -d $KRAKEN2_DB -i temp/kraken/${id}.report -o temp/kraken/${id}.bracken -r 150 -l S
+bracken -d $KRAKEN2_DB -i temp/kraken/${id}.report \
+  -o temp/kraken/${id}.bracken -r 150 -l S
 ```
 
 ## Key parameters
 
-| `-d` | same as Kraken DB | Required |
-| `-r` | read length | Match data |
-| `-l` | taxonomic level | S/G/… |
-
-## Decision notes
-
-- Stage: **taxonomy** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+| Flag | Notes |
+|------|-------|
+| `-d` | Same DB root as Kraken2 |
+| `-r` | Read length used to build Bracken files |
+| `-l` | Rank (S/G/…) |
+| `-t` | Min reads threshold (if used) — affects rare taxa |
 
 ## Related skills
 
-kraken2 · metaphlan · visualization · `tool-selection` · `metagenomics-workflow`
+`kraken2` · `metaphlan` · `metabuli` · `visualization` · `tool-selection`

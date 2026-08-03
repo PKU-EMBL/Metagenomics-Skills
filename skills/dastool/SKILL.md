@@ -98,6 +98,24 @@ Ensemble MAG recovery?
 └─ Classical SCG aggregation of existing contig2bin sets → dastool
 ```
 
+
+## Literature notes (Nat. Microbiol. 2018)
+
+Sieber *et al.* motivate DAS Tool with observations still true operationally:
+
+- **No single binner wins on all ecosystems**; tools reconstruct different genomes
+  at different completeness — combining predictions recovers more near-complete
+  genomes than any single method.
+- Early work showed manual/curated multi-binner merges help; naive automation can
+  reduce contamination **and** completeness — DAS Tool’s SCG scoring aims for an
+  optimized non-redundant set from one assembly.
+- Input is **contig2bin tables on one assembly**, not cross-assembly DL refinement
+  (contrast `basalt`).
+
+Practical rule from the paper’s logic: diversify binners (MetaBAT2 + MaxBin2 +
+CONCOCT/SemiBin2/VAMB/COMEBin), then aggregate — do not run DAS Tool on a
+single contig2bin table expecting magic.
+
 ## Related skills
 
 `metawrap` · `basalt` · `megahit` · `metaspades` · `checkm2` · `drep` · `mag-qc` · `tool-selection`

@@ -24,27 +24,35 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Marker-based alternative/complement to MetaPhlAn. Pin mOTUs DB version; do not merge with Kraken without labels.
+mOTUs profiles communities with a curated set of **universal single-copy
+phylogenetic marker genes**, updated with cultivation-independent genomes so
+environmental / non-human biomes are better covered than early gut-centric
+releases.
+
+Compared with MetaPhlAn:
+
+| | mOTUs | MetaPhlAn 4 |
+|--|-------|-------------|
+| Marker philosophy | Mostly universal SCGs → mOTU clusters | Clade-/SGB-specific marker packs |
+| Strength | Cross-environment comparability | Fine SGB resolution incl. unknowns |
+| Merge rule | Do not average with Kraken/MetaPhlAn unlabeled |
+
+Pin mOTUs DB version; host-deplete first.
 
 ## How to run
 
 ```bash
-conda install -c bioconda motus  # if packaged; else follow upstream
-
 motus profile -f clean_1.fq.gz -r clean_2.fq.gz -t 16 -o temp/motus/${id}.motus
 ```
 
 ## Key parameters
 
-| DB | motus download-db | Pin version |
-| `-t` | threads | |
-
-## Decision notes
-
-- Stage: **taxonomy** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+| Item | Notes |
+|------|-------|
+| DB | `motus download-db` — pin version |
+| `-t` | Threads |
+| Downstream | Diversity / ecology tables — not MAG taxonomy (`gtdbtk`) |
 
 ## Related skills
 
-metaphlan · kraken2 · sylph · `tool-selection` · `metagenomics-workflow`
+`metaphlan` · `kraken2` · `sylph` · `metabuli` · `tool-selection` · `metagenomics-workflow`

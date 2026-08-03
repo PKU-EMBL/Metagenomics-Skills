@@ -126,6 +126,27 @@ assemblies + reads → coverage/connectivity → multi-binner candidates
 3. Resume only with identical inputs/code/models/DBs
 4. Do not invent flags — verify against guide/`--help`
 
+
+## Literature notes (Nat. Commun. 2024)
+
+From Qiu *et al.* (BASALT paper), useful operational points:
+
+- **Problem framed**: mis-clustering, genome splitting, and multi-genome mega-bins
+  yield redundant/artificial/contaminated MAGs that poison downstream analyses.
+- **Strategy**: multiple binners × multiple thresholds → neural-network core-sequence
+  identification → redundant-bin removal → non-redundant refinement; supports
+  short-read and short+long assemblies.
+- **Coverage correlation coefficient (CCC)**: IQR-based contig coverage used in
+  selection/refinement — multi-sample abundance structure is first-class evidence.
+- **Reported gains** (same assemblies): up to ~2× MAGs vs VAMB / DAS Tool /
+  MetaWRAP on CAMI; ~30% more MAGs than MetaWRAP on lake sediment, including
+  unique class-level lineages; ~47.6% more non-redundant ORFs than MetaWRAP on
+  that dataset. Treat as **paper benchmarks**, not a promise for every biome.
+- **Quality language in paper**: baseline gates such as completeness ≥35 /
+  contamination ≤20 for refinement entry; high-quality often completeness ≥90 /
+  contamination ≤5. Keep refinement entry gates distinct from publication filters
+  in Methods (`mag-qc`).
+
 ## Related skills
 
-`dastool` · `metawrap` · `study-design` · `megahit` · `metaspades` · `kneaddata` · `checkm2` · `mag-qc` · `drep`
+`dastool` · `metawrap` · `lorbin` · `comebin` · `semibin2` · `vamb` · `study-design` · `megahit` · `metaspades` · `kneaddata` · `checkm2` · `mag-qc` · `drep`

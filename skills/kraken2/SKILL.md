@@ -17,16 +17,24 @@ Bracken: [jenniferlu717/Bracken](https://github.com/jenniferlu717/Bracken)
 
 Wood, D. E., Lu, J. & Langmead, B. Improved metagenomic analysis with Kraken 2. *Genome Biol.* **20**, 257 (2019). https://doi.org/10.1186/s13059-019-1891-0
 
+Lu, J., Breitwieser, F. P., Thielen, P. & Salzberg, S. L. Bracken: estimating species abundance in metagenomics data. *PeerJ Comput. Sci.* **3**, e104 (2017). https://doi.org/10.7717/peerj-cs.104
+
 See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Kraken2 classifies each read by k-mer LCA against a database. Sensitivity and
-false positives are **database-dominated**. Bracken re-estimates abundances at a
-chosen rank; it does not magically validate rare taxa.
+Kraken2 classifies each read by **minimizer / k-mer LCA** against a database.
+Sensitivity and false positives are **database-dominated** (RefSeq completeness,
+eukaryotic host contamination in DB, custom biome DBs).
 
-Use Kraken2 when you need speed, custom DBs, or contig classification. Prefer
-MetaPhlAn when marker specificity matters more than breadth.
+Bracken re-estimates abundances at a chosen rank from Kraken reports; it does
+not validate rare taxa. MetaPhlAn 4 comparisons reported elevated false-positive
+rates for some Bracken configurations — keep method-specific Results and avoid
+“species X confirmed by both” unless thresholds are pre-registered.
+
+Use Kraken2 for speed, custom DBs, or contig classification. Prefer MetaPhlAn
+for marker specificity; Metabuli when joint DNA+AA classification is desired;
+sylph for sketch containment against genome sets.
 
 ## Prerequisites
 
@@ -45,21 +53,21 @@ kraken2 --db $KRAKEN2_DB --paired \
   --output result/kraken2/${id}.kraken \
   --threads 16
 
-# abundance re-estimation (install Bracken separately)
 bracken -d $KRAKEN2_DB -i result/kraken2/${id}.report \
-  -o result/kraken2/${id}.bracken -l S
+  -o result/kraken2/${id}.bracken -r 150 -l S
 ```
 
 ## Decision tree
 
 ```text
 Classification goal?
-├─ Broad/custom DB → kraken2
+├─ Broad/custom DNA DB → kraken2
 ├─ Species abundance smoothing → bracken after kraken2
-└─ Marker-based clades → metaphlan
+├─ Marker SGBs → metaphlan
+├─ Joint DNA+AA → metabuli
+└─ Genome containment sketches → sylph
 ```
 
 ## Related skills
 
-`metaphlan` · `humann` · `visualization` · `metawrap` (can wrap Kraken modules)
-
+`bracken` · `metaphlan` · `metabuli` · `kaiju` · `sylph` · `visualization` · `tool-selection`

@@ -1,3 +1,18 @@
+## [1.4.0] - 2026-08-03
+
+### Added
+- New skills from curated literature: `lorbin`, `comebin`, `binchicken`, `metabuli`
+- Literature-grounded expansions for ensemble binning, QC, taxonomy, coverage,
+  strain, and viral QC skills (BASALT, MetaWRAP, DAS Tool, SemiBin2, VAMB,
+  CoverM, CheckM2, GUNC, MetaPhlAn, Kraken2/Bracken, mOTUs, sylph, inStrain,
+  CheckV, CONCOCT, GTDB-Tk, DIAMOND)
+- Study-design notes on multi-coverage binning and targeted coassembly
+- References 39–50 in `docs/references.md`
+
+### Changed
+- Tool-selection routes updated for long-read binning, Metabuli, Bin Chicken
+- Skills catalog total: 79
+
 ## [1.3.1] - 2026-08-03
 
 ### Added

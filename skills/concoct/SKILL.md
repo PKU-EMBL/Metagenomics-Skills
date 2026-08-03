@@ -24,7 +24,18 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Strong ensemble member; cut contigs to chunks before clustering per CONCOCT docs. Memory-heavy on complex communities.
+CONCOCT (Alneberg *et al.*, 2014) pioneered joint **composition + multi-sample
+coverage** clustering (Gaussian mixture models). It remains a valuable **ensemble
+member** because its inductive bias differs from MetaBAT2/MaxBin2/DL binners.
+
+Operational rules:
+
+- Cut long contigs into chunks (commonly ~10 kb) before clustering, then merge
+  cutup clusters back to contigs — required by the CONCOCT workflow.
+- Multi-coverage inputs matter (Mattock & Watson 2023); single-sample coverage
+  weakens the method’s original strength.
+- Memory-heavy on complex communities; often optional inside MetaWRAP.
+
 
 ## How to run
 

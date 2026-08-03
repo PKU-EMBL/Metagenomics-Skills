@@ -1,7 +1,7 @@
 {
   "name": "Metagenomics Skills",
   "description": "Shotgun metagenomics Agent Skills \u2014 QC, assembly, mapping, binning, taxonomy, function, and microbial mining",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "author": "PKU-EMBL",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
@@ -23,7 +23,7 @@
     "MGnify",
     "GTDB"
   ],
-  "skills_count": 75,
+  "skills_count": 79,
   "skill_categories": {
     "analysis-tools": 19,
     "evaluation": 2,

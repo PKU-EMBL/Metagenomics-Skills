@@ -2,7 +2,7 @@
 
 Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining).
 
-Total: **75** skills.
+Total: **79** skills.
 
 ---
 
@@ -27,6 +27,7 @@ Total: **75** skills.
 | `racon` | [racon](https://github.com/lbcb-sci/racon) | Ultrafast consensus polishing of assemblies using mapped long (or short) reads. |
 | `pilon` | [pilon](https://github.com/broadinstitute/pilon) | Polish genome assemblies and fix small errors using short-read BAM evidence. |
 | `quast` | [quast](https://github.com/ablab/quast) | Assembly quality assessment (contiguity, misassemblies; metaQUAST for metagenomes). |
+| `binchicken` | [binchicken](https://github.com/AroneyS/binchicken) | Targeted coassembly planning (SingleM markers) to recover low-abundance / novel genomes. |
 
 ## 3. Mapping
 
@@ -50,6 +51,8 @@ Total: **75** skills.
 | `concoct` | [concoct](https://github.com/BinPro/CONCOCT) | Composition and coverage binning of metagenomic contigs. |
 | `semibin2` | [semibin2](https://github.com/BigDataBiology/SemiBin) | Self-supervised contrastive learning binning for short- and long-read assemblies. |
 | `vamb` | [vamb](https://github.com/RasmussenLab/vamb) | Deep variational autoencoder binning of metagenome contigs. |
+| `comebin` | [comebin](https://github.com/ziyewang/COMEBin) | Contrastive multi-view representation learning for contig binning. |
+| `lorbin` | [lorbin](https://github.com/LorMeBioAI/LorBin) | Unsupervised long-read metagenome binning with multiscale adaptive clustering. |
 | `basalt` | [basalt](https://github.com/PKU-EMBL/BASALT) | PKU-EMBL BASALT and BASALT-Air — recommended ensemble MAG recovery across one or more assemblies (multi-binner + refinement). |
 | `metawrap` | [metawrap](https://github.com/bxlab/metaWRAP) | MetaWRAP suite for multi-binner MAG recovery and CheckM-style bin refinement — one option in the ensemble binning family (with DAS Tool and BASALT). |
 | `dastool` | [dastool](https://github.com/cmks/DAS_Tool) | DAS Tool (Dereplication, Aggregation and Scoring) integrates multiple binning predictions into one non-redundant MAG set for a single assembly. |
@@ -69,6 +72,7 @@ Total: **75** skills.
 | `bracken` | [bracken](https://github.com/jenniferlu717/Bracken) | Bayesian re-estimation of abundance from Kraken2 reports. |
 | `motus` | [motus](https://github.com/motu-tool/mOTUs) | Marker-gene taxonomic profiling across environments (mOTUs3). |
 | `sylph` | [sylph](https://github.com/bluenote-1577/sylph) | Rapid species-level metagenome profiling and containment estimation. |
+| `metabuli` | [metabuli](https://github.com/steineggerlab/Metabuli) | Joint DNA + amino-acid metagenomic taxonomic classification (metamers). |
 | `kaiju` | [kaiju](https://github.com/bioinformatics-centre/kaiju) | Fast sensitive taxonomic classification via protein-level matches. |
 | `gtdbtk` | [gtdbtk](https://github.com/Ecogenomics/GTDBTk) | Assign bacterial/archaeal taxonomy to MAGs with GTDB. |
 | `gtdb` | [gtdb](https://gtdb.ecogenomic.org/) | Use the Genome Taxonomy Database (GTDB) public releases — taxonomy tables, trees, metadata, and representative genomes. |

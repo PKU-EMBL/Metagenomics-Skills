@@ -24,27 +24,31 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Analogous to CheckM2 but for **viruses**. Completeness/contamination estimates guide which viral bins to trust. Always report CheckV DB version.
+Prokaryotic CheckM/CheckM2 marker logic does **not** transfer to viruses. CheckV
+estimates viral genome completeness/contamination using viral-specific AAI
+databases and contig QC, guiding which viral MAGs/contigs to trust.
+
+Use after `genomad` / `virsorter2` (or similar) nomination. Always report CheckV
+DB version. Completeness tiers in the paper (e.g. high-/medium-quality viral
+genomes) should be stated explicitly in Methods — do not call every viral hit a
+“complete phage genome.”
+
+Host prediction / taxonomy are separate tools; CheckV is quality-centric.
 
 ## How to run
 
 ```bash
-conda install -c bioconda checkv  # if packaged; else follow upstream docs
-
 checkv end_to_end viral_contigs.fa temp/checkv -t 16 -d $CHECKVDB
 ```
 
 ## Key parameters
 
-| `$CHECKVDB` | required | Pin |
-| input | putative viral seqs | From VirSorter2/geNomad |
-
-## Decision notes
-
-- Run mining on **QC-filtered genomes/MAGs** (or contigs for MGE/virus screens)
-- Computational hits are hypotheses — state validation limits in Methods
-- Pin software + database releases
+| Item | Notes |
+|------|-------|
+| `$CHECKVDB` | Required — pin release |
+| Input | Putative viral sequences from VirSorter2/geNomad |
+| Output tiers | Use CheckV quality categories in Results filters |
 
 ## Related skills
 
-virsorter2 · genomad · mag-qc · `microbial-mining` · `tool-selection` · `metagenomics-workflow`
+`virsorter2` · `genomad` · `mag-qc` · `microbial-mining` · `tool-selection`

@@ -57,6 +57,14 @@ metawrap bin_refinement -o temp/bin_refine -t 32 \
 
 Modes: mixed co-assembly, per-sample, or subgroup binning for huge cohorts.
 
+## Key parameters
+
+| Module flag | Typical | Thinking |
+|-------------|---------|----------|
+| `--metabat2 --maxbin2` | on | Core pair; add CONCOCT if affordable |
+| `bin_refinement -c/-x` | 50 / 10 | Publication-oriented; stricter → fewer bins |
+| `reassemble_bins` | optional | Per-bin reassembly; validate with CheckM2 |
+
 ## Decision tree
 
 ```text
@@ -65,6 +73,24 @@ Ensemble MAG recovery?
 ├─ Packaged multi-binner + CheckM refinement suite → metawrap
 └─ Classical SCG aggregation of contig2bin sets → dastool
 ```
+
+
+## Literature notes (Microbiome 2018)
+
+Uritskiy *et al.* position MetaWRAP as a **modular suite** (raw reads → bins →
+bin analysis) with hybrid consolidation that outperformed individual binners and
+other consolidation tools on synthetic and real data in that paper.
+
+Operational takeaways for this package:
+
+- Critical MAG path: `binning` → `bin_refinement` (± `reassemble_bins`).
+- Refinement `-c/-x` (completeness/contamination) are **scientific thresholds** —
+  report them; they are not universal truth.
+- Modules are standalone — you may use refinement on bins from outside MetaWRAP.
+- Reassembly can improve bins but costs CPU/IO; reserve for priority genomes.
+- For related multi-assembly refinement beyond classical MetaBAT/MaxBin suites,
+  prefer **`basalt`**; keep MetaWRAP when you want the packaged CheckM-era
+  refinement catalogue.
 
 ## Related skills
 

@@ -65,6 +65,25 @@ then compare bins/genomes with declared ANI threshold
 
 Subgroup when samples > ~30 or data > ~300 Gb.
 
+## Multi-coverage vs single-coverage binning
+
+Mattock & Watson (*Nat. Methods* 2023) compared single- vs multi-coverage
+binning on the **same** per-sample assemblies: multi-coverage recovered more
+filtered bins and exposed contaminant/chimeric structure that single-coverage
+misses (co-abundant contigs within one sample look “genome-like” without
+cross-sample contrast).
+
+Practical rule: when related samples exist, map **all** relevant samples to each
+assembly for binning coverage — even if you keep sample-specific assemblies.
+Single-coverage is a resource compromise, not a scientific default.
+
+## Low-abundance / novelty coassembly
+
+Blind pooling is costly and can worsen assemblies. For large cohorts aimed at
+rare/novel genomes, consider **`binchicken`** (targeted coassembly via shared
+SingleM markers, optional novelty prioritization). Still enforce stratum rules
+above — targeting is not a license to mix unrelated biology into one contrast.
+
 ## Pilot evaluation
 
 Compare designs on retained bins under fixed completeness/contamination,
@@ -75,3 +94,5 @@ redundancy (ANI), taxonomy, contiguity, and compute cost — not raw bin count.
 - `tool-selection` — stage routing; ensemble binning choice
 - `metagenomics-workflow` — QC → assembly → binning → taxonomy → function
 - `basalt` · `metawrap` · `dastool` — binning stage
+- `binchicken` — targeted coassembly planning for low-abundance recovery
+- `lorbin` · `comebin` · `semibin2` · `vamb` — single binners

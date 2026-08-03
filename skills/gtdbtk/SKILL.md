@@ -20,9 +20,17 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-GTDB-Tk places genomes into the Genome Taxonomy Database hierarchy. Taxonomy is
-a **separate claim layer** from binning labels. Pin `GTDBTK_DATA_PATH` to a
-specific GTDB release and cite it.
+GTDB-Tk places genomes into the Genome Taxonomy Database hierarchy (bacterial/
+archaeal). Taxonomy is a **separate claim layer** from binning labels and from
+read profilers (MetaPhlAn/Kraken/sylph).
+
+- Pin `GTDBTK_DATA_PATH` to a specific GTDB release and cite both GTDB-Tk and
+  GTDB (`gtdb` skill).
+- Low-quality / chimeric MAGs get misleading placements — filter with CheckM2 +
+  GUNC first.
+- “Novel” high-rank lineages require phylogenetic evidence beyond a single
+  classify_wf row (trees, redundancy checks, literature).
+
 
 ## How to run
 
