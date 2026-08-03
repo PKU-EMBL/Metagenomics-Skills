@@ -37,7 +37,7 @@ when sequence annotation covers only a fraction of genes.
 Paper-scale demonstration: all-vs-all on >1k bacterial genomes recovered large
 fractions of genes in conserved clusters and most PADLOC-annotated antiviral
 defense clusters — still validate priority systems with specialized tools
-(`defensefinder`, `antismash`, experiments).
+(`defensefinder`, `padloc`, `antismash`, experiments).
 
 | vs | Notes |
 |----|-------|
