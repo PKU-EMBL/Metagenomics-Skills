@@ -32,6 +32,8 @@ Start from the **stage**, then the deliverable.
            · eggnog-mapper · rgi · homology-search
 7 Mining   microbial-mining → antismash · bigscape · genomad · virsorter2 · checkv · vcontact
            · mobileog · isescan · integronfinder · mob-suite · plasmaag · macrel
+           · cge-finders · plasmidfinder · resfinder · pointfinder
+           · virulencefinder · mobileelementfinder · staramr
            · element-cycling · metabolic · mebs · fegenie · dom-biosurfactant
            · hadeg · biosurfdb · dram · dbcan · gapseq · vmh · deeparg
            · defensefinder · padloc · qsap
@@ -76,10 +78,11 @@ Start from the **stage**, then the deliverable.
 | Goal | Prefer |
 |------|--------|
 | BGCs / natural products | `antismash` → `bigscape` |
-| Resistome | `rgi` (± `deeparg`) |
+| Resistome | `rgi` (± `deeparg`); isolates `resfinder` / `staramr` |
 | Plasmids / viruses / MGEs | `genomad` (± `virsorter2` → `checkv` → `vcontact`) |
 | MGE proteins / IS / integrons | `mobileog` / `isescan` / `integronfinder` |
-| Plasmid MOB / replicon typing | `mob-suite` |
+| CGE Finders (replicon / AMR / VF / MGE) | `cge-finders` |
+| Plasmid MOB / replicon typing | `mob-suite` / `plasmidfinder` |
 | Plasmid genome recovery | `plasmaag` |
 | AMPs | `macrel` |
 | Element cycling (C/N/S/Fe/P/…) | `element-cycling` |
@@ -215,5 +218,6 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 
 `metagenomics-workflow` · `microbial-mining` · `homology-search` · `phylogenomics` ·
 `genome-language-model` · `protein-language-model` · `metagenomics-llm` ·
-`element-cycling` · `dom-biosurfactant` · `research-analysis` · `study-design` ·
+`element-cycling` · `dom-biosurfactant` · `cge-finders` · `research-analysis` ·
+`study-design` ·
 `public-databases`

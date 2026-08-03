@@ -2,7 +2,7 @@
 
 Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining → research analysis), plus homology, phylogenomics, and language-model hubs.
 
-Total: **152** skills.
+Total: **159** skills.
 
 ---
 
@@ -118,6 +118,13 @@ Total: **152** skills.
 | `integronfinder` | [Integron_Finder](https://github.com/gem-pasteur/Integron_Finder) | Detect integrons and gene cassettes. |
 | `mob-suite` | [mob-suite](https://github.com/phac-nml/mob-suite) | Plasmid reconstruction and MOB/replicon typing. |
 | `plasmaag` | [plasmaag](https://github.com/RasmussenLab/PlasMAAG) | Plasmid and organism reconstruction via assembly–alignment graphs. |
+| `cge-finders` | — | Route CGE Finder screens (plasmid / AMR / virulence / MGE). |
+| `plasmidfinder` | [PlasmidFinder](https://github.com/genomicepidemiology/plasmidfinder) | CGE replicon / plasmid typing. |
+| `resfinder` | [ResFinder](https://github.com/genomicepidemiology/resfinder) | CGE acquired AMR genes (± PointFinder / DisinFinder). |
+| `pointfinder` | [pointfinder_db](https://bitbucket.org/genomicepidemiology/pointfinder_db) | Chromosomal AMR point mutations (via ResFinder/staramr). |
+| `virulencefinder` | [VirulenceFinder](https://bitbucket.org/genomicepidemiology/virulencefinder) | CGE virulence gene markers (supported species). |
+| `mobileelementfinder` | [MobileElementFinder](https://pypi.org/project/MobileElementFinder/) | Named MGEs (IS/Tn/ICE/IME/…). |
+| `staramr` | [staramr](https://github.com/phac-nml/staramr) | Combined ResFinder + PointFinder + PlasmidFinder scan. |
 | `macrel` | [macrel](https://github.com/BigDataBiology/macrel) | Screen genomes and metagenomes for antimicrobial peptides (AMPs). |
 | `element-cycling` | — | Route C/N/S/Fe/P/H₂/CH₄ elemental cycling annotation. |
 | `metabolic` | [METABOLIC](https://github.com/AnantharamanLab/METABOLIC) | Multi-element biogeochemical trait profiling (C/N/S/…). |
@@ -264,6 +271,7 @@ Total: **152** skills.
 | `phylogenomics` | — | Route phylogeny / evolutionary analyses (also under Phylogenomics). |
 | `element-cycling` | — | Route elemental / biogeochemical cycling (also under Microbial mining). |
 | `dom-biosurfactant` | — | Route DOM / biosurfactant / HC biodegradation (also under Microbial mining). |
+| `cge-finders` | — | Route CGE Finder suite (also under Microbial mining). |
 | `research-analysis` | — | Route stats / figures / networks / workflow managers (also under Research analysis). |
 | `genome-language-model` | — | Route genome language models (also under Genome language models). |
 | `protein-language-model` | — | Route protein language models (also under Protein language models). |

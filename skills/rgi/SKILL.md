@@ -26,7 +26,8 @@ or clinical breakpoints.
 
 Prefer protein mode on NR or MAG proteomes. Intersect with `genomad`/`plasmaag`
 when claiming plasmid-borne AMR. Optional ML/complement: `deeparg` (different
-model — do not merge unlabeled).
+model — do not merge unlabeled). Isolate CGE screens: `resfinder` / `staramr`
+(ResFinder DB — keep separate from CARD).
 
 ## How to run
 
@@ -49,12 +50,15 @@ rgi main -i proteins.faa -t protein -n 8 -a DIAMOND --clean \
 ```text
 Resistome claim?
 ├─ Homology to CARD → rgi
+├─ CGE ResFinder DB (isolates) → resfinder / staramr
+├─ Chromosomal AMR SNPs → pointfinder
 ├─ ML complement → deeparg (separate table)
-├─ On plasmids? → intersect genomad / plasmaag
+├─ On plasmids? → intersect genomad / plasmaag / plasmidfinder
 └─ Phenotype → needs experiments / MICs (out of scope)
 ```
 
 ## Related skills
 
-`deeparg` · `genomad` · `plasmaag` · `eggnog-mapper` · `prodigal` ·
+`deeparg` · `resfinder` · `pointfinder` · `staramr` · `cge-finders` ·
+`genomad` · `plasmaag` · `plasmidfinder` · `eggnog-mapper` · `prodigal` ·
 `microbial-mining` · `visualization` · `tool-selection`

@@ -21,9 +21,10 @@ Shotgun metagenomics stages — not a MAG-first workflow.
                       genes/genomes: prodigal|bakta|prokka → cd-hit|mmseqs2
                                     → salmon → eggnog-mapper / diamond (± rgi)
 7. Microbial mining   BGCs: antismash → bigscape
-                      AMR: rgi / deeparg
+                      AMR: rgi / deeparg; isolates: resfinder / staramr
                       MGE/virus: genomad / virsorter2 → checkv → vcontact
-                      plasmids: plasmaag (± genomad)
+                      plasmids: plasmaag (± genomad); CGE: plasmidfinder
+                      CGE Finders: cge-finders (VF / MobileElementFinder / …)
                       AMP: macrel
                       metabolism: dram / dbcan / gapseq (± vmh)
                       defense: defensefinder
@@ -63,7 +64,7 @@ not validated compounds, phenotypes, or complete phages unless QC says so
 | 4 Binning | `metabat2`, `maxbin2`, `concoct`, `semibin2`, `vamb`, `aamb`, `taxvamb`, `comebin`, `metabinner`, `lorbin`, `basalt`, `metawrap`, `dastool`, `anvio`, `deepurify`, `drep`, `skani`, `fastani`, `coverm`, `checkm2`, `gunc`, `mag-qc` |
 | 5 Taxonomy | `metaphlan`, `singlem`, `kraken2`, `bracken`, `motus`, `sylph`, `metabuli`, `kaiju`, `gtdbtk`, `gtdb`, `mgnify`, `phylogenomics`, `phylophlan`, `unicore`, `iqtree`, `fasttree`, `lucaphylo` |
 | 6 Function | `humann`, `prodigal`, `prokka`, `bakta`, `cd-hit`, `mmseqs2`, `hh-suite`, `metaeuk`, `salmon`, `eggnog-mapper`, `rgi`, `barrnap`, `foldcomp`, `foldseek`, `foldmason`, `petasearch`, `homology-search`, `erast` |
-| 7 Mining | `microbial-mining`, `antismash`, `bigscape`, `genomad`, `virsorter2`, `checkv`, `vcontact`, `mobileog`, `isescan`, `integronfinder`, `mob-suite`, `plasmaag`, `macrel`, `element-cycling`, `metabolic`, `mebs`, `fegenie`, `dom-biosurfactant`, `hadeg`, `biosurfdb`, `dram`, `dbcan`, `gapseq`, `vmh`, `deeparg`, `defensefinder`, `padloc`, `qsap`, `folddisco`, `spacedust` |
+| 7 Mining | `microbial-mining`, `antismash`, `bigscape`, `genomad`, `virsorter2`, `checkv`, `vcontact`, `mobileog`, `isescan`, `integronfinder`, `mob-suite`, `plasmaag`, `cge-finders`, `plasmidfinder`, `resfinder`, `pointfinder`, `virulencefinder`, `mobileelementfinder`, `staramr`, `macrel`, `element-cycling`, `metabolic`, `mebs`, `fegenie`, `dom-biosurfactant`, `hadeg`, `biosurfdb`, `dram`, `dbcan`, `gapseq`, `vmh`, `deeparg`, `defensefinder`, `padloc`, `qsap`, `folddisco`, `spacedust` |
 | Strain | `instrain` |
 | Public data | `sra-ena`, `cami`, `progenomes`, `kegg`, `insilicoseq`, … |
 | Report / research analysis | `research-analysis`, `visualization`, `microeco`, `phyloseq`, `maaslin2`, `ancombc`, `lefse`, `stamp`, `sparcc`, `spieceasi`, `multiqc`, `nextflow`, `snakemake` |

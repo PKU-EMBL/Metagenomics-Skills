@@ -1,7 +1,7 @@
 {
   "name": "metagenomics-skills",
-  "version": "1.19.1",
-  "description": "Claude Code skills for shotgun metagenomics — QC through mining, language models, research analysis, and public databases",
+  "version": "1.20.0",
+  "description": "Claude Code skills for shotgun metagenomics — QC through mining, CGE Finders, language models, research analysis, and public databases",
   "owner": {
     "name": "PKU-EMBL",
     "url": "https://github.com/PKU-EMBL/Metagenomics-Skills"

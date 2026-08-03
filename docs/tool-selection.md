@@ -21,8 +21,8 @@ Route by **scientific stage**, then deliverable. Full detail:
 | 5 Taxonomy | Read-based | `metaphlan` / `singlem` / `kraken2` |
 | 5 Taxonomy | Genome taxonomy | `gtdbtk` (+ `gtdb`) |
 | 6 Function | Read pathways | `humann` (+ `biobakery-databases`) |
-| 6 Function | Orthology / AMR | `eggnog-mapper` · `rgi` |
-| 7 Mining | BGCs / MGE / cycling / DOM / defense | `microbial-mining` |
+| 6 Function | Orthology / AMR | `eggnog-mapper` · `rgi` (± `resfinder` isolates) |
+| 7 Mining | BGCs / MGE / CGE Finders / cycling / DOM / defense | `microbial-mining` · `cge-finders` |
 | Report | Stats / figures / networks | `research-analysis` |
 | Data | Public raw reads | `sra-ena` |
 | Workflows | Portable DAGs | `nextflow` / `snakemake` |
@@ -35,6 +35,7 @@ Route by **scientific stage**, then deliverable. Full detail:
 | `phylogenomics` | Trees / evolutionary placement |
 | `element-cycling` | C/N/S/Fe/P biogeochemistry |
 | `dom-biosurfactant` | Glycan DOM / biosurfactants / HC degradation |
+| `cge-finders` | PlasmidFinder / ResFinder / PointFinder / VF / MEF / staramr |
 | `genome-language-model` | DNA gLMs |
 | `protein-language-model` | Protein LMs |
 | `metagenomics-llm` | LM + Foldseek stack overview |

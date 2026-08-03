@@ -274,6 +274,22 @@ the canonical papers to reference.
 
 114. Robertson, J. & Nash, J. H. E. MOB-suite: software tools for clustering, reconstruction and typing of plasmids from draft assemblies. *Microb. Genom.* **4**, e000206 (2018). https://doi.org/10.1099/mgen.0.000206
 
+## CGE Finders (plasmid · AMR · virulence · MGE)
+
+129. Carattoli, A. *et al.* In Silico Detection and Typing of Plasmids using PlasmidFinder and Plasmid Multilocus Sequence Typing. *Antimicrob. Agents Chemother.* **58**, 3895–3903 (2014). https://doi.org/10.1128/AAC.02412-14
+
+130. Zankari, E. *et al.* Identification of acquired antimicrobial resistance genes. *J. Antimicrob. Chemother.* **67**, 2640–2644 (2012). https://doi.org/10.1093/jac/dks261
+
+131. Bortolaia, V. *et al.* ResFinder 4.0 for predictions of phenotypes from genotypes. *J. Antimicrob. Chemother.* **75**, 3491–3500 (2020). https://doi.org/10.1093/jac/dkaa345
+
+132. Zankari, E. *et al.* PointFinder: a novel web tool for WGS-based detection of antimicrobial resistance associated with chromosomal point mutations in bacterial pathogens. *J. Antimicrob. Chemother.* **72**, 2764–2768 (2017). https://doi.org/10.1093/jac/dkx217
+
+133. Joensen, K. G. *et al.* Real-time whole-genome sequencing for routine typing, surveillance, and outbreak detection of verotoxigenic *Escherichia coli*. *J. Clin. Microbiol.* **52**, 4214–4220 (2014). https://doi.org/10.1128/JCM.02452-14
+
+134. Johansson, M. H. K. *et al.* Detection of mobile genetic elements associated with antibiotic resistance in *Salmonella enterica* using a newly developed web tool: MobileElementFinder. *J. Antimicrob. Chemother.* **76**, 101–109 (2021). https://doi.org/10.1093/jac/dkaa390
+
+135. Bharat, A. *et al.* Correlation between Phenotypic and In Silico Detection of Antimicrobial Resistance in *Salmonella enterica* in Canada Using Staramr. *Microorganisms* **10**, 292 (2022). https://doi.org/10.3390/microorganisms10020292
+
 ## DOM, biosurfactants & biodegradation
 
 115. Rojas-Vargas, J., Castelán-Sánchez, H. G. & Pardo-López, L. HADEG: A curated hydrocarbon aerobic degradation enzymes and genes database. *Comput. Biol. Chem.* **107**, 107966 (2023). https://doi.org/10.1016/j.compbiolchem.2023.107966

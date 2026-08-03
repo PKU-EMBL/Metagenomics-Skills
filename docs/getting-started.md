@@ -71,6 +71,7 @@ Example prompts:
 | Genome-resolved catalogue | QC → assembly → mapping → `basalt` ★ → `mag-qc` → `gtdbtk` |
 | Interactive MAG polish | bins → `anvio` → re-QC |
 | Viral / MGE ecology | `genomad` → `checkv` → `vcontact` (± `mobileog` / `mob-suite`) |
+| Isolate CGE Finders | `cge-finders` → `staramr` / `plasmidfinder` / `resfinder` / … |
 | Mining (BGC / AMR / cycling / DOM) | `microbial-mining` |
 | Paper stats & figures | `research-analysis` → `microeco` / `maaslin2` / … |
 | DNA / protein LMs | `genome-language-model` / `protein-language-model` |

@@ -1,7 +1,7 @@
 {
   "name": "Metagenomics Skills",
-  "description": "Shotgun metagenomics Agent Skills \u2014 QC, assembly, mapping, binning, taxonomy, function, microbial mining, language models, and research analysis",
-  "version": "1.19.1",
+  "description": "Shotgun metagenomics Agent Skills \u2014 QC, assembly, mapping, binning, taxonomy, function, microbial mining, CGE Finders, language models, and research analysis",
+  "version": "1.20.0",
   "author": "PKU-EMBL",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
@@ -59,6 +59,13 @@
     "biosurfactant",
     "HADEG",
     "BioSurfDB",
+    "CGE",
+    "PlasmidFinder",
+    "ResFinder",
+    "PointFinder",
+    "VirulenceFinder",
+    "MobileElementFinder",
+    "staramr",
     "research-analysis",
     "MultiQC",
     "MaAsLin2",
@@ -72,11 +79,11 @@
     "Nextflow",
     "Snakemake"
   ],
-  "skills_count": 152,
+  "skills_count": 159,
   "skill_categories": {
-    "analysis-tools": 116,
+    "analysis-tools": 122,
     "evaluation": 10,
-    "orchestration": 12,
+    "orchestration": 13,
     "utilities": 14
   },
   "featured_skills": [
@@ -85,6 +92,7 @@
     "research-analysis",
     "homology-search",
     "microbial-mining",
+    "cge-finders",
     "element-cycling",
     "dom-biosurfactant",
     "genome-language-model",

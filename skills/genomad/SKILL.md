@@ -33,7 +33,7 @@ markers + neural networks. Use it to:
 Do not equate “plasmid score high” with a complete circular plasmid. For viruses,
 always run **CheckV** before publishing vMAG completeness. For finer MGE detail
 use `mobileog` (proteins), `isescan` (IS), `integronfinder` (integrons), and
-`mob-suite` (MOB/replicon typing).
+`mob-suite` (MOB/replicon typing) or `plasmidfinder` / `staramr` (CGE replicons).
 
 Can run on **full assemblies** (pre-binning) or on bins; pre-binning catches
 MGEs that never enter bacterial bins.

@@ -1,7 +1,7 @@
 {
   "name": "metagenomics-skills",
-  "version": "1.19.1",
-  "description": "Shotgun metagenomics skills for Codex — QC through mining, language models, and research analysis",
+  "version": "1.20.0",
+  "description": "Shotgun metagenomics skills for Codex — QC through mining, CGE Finders, language models, and research analysis",
   "author": {
     "name": "PKU-EMBL",
     "url": "https://github.com/PKU-EMBL"

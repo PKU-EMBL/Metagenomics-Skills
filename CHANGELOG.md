@@ -1,3 +1,14 @@
+## [1.20.0] - 2026-08-03
+
+### Added
+- CGE Finder layer: `cge-finders` hub, `plasmidfinder`, `resfinder`,
+  `pointfinder`, `virulencefinder`, `mobileelementfinder`, `staramr`
+- References 129–135
+
+### Changed
+- Skills catalog total: 159; package version 1.20.0
+- Wired CGE Finders into microbial-mining / tool-selection / docs
+
 ## [1.19.1] - 2026-08-03
 
 ### Changed

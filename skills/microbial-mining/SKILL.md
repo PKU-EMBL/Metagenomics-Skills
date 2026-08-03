@@ -2,13 +2,13 @@
 name: microbial-mining
 description: >
   Route microbial / genome mining after assembly or binning: BGCs (antiSMASH,
-  BiG-SCAPE), AMR (RGI, DeepARG), mobile elements (geNomad, VirSorter2, CheckV,
-  mobileOG-db, ISEScan, IntegronFinder, MOB-suite), antimicrobial peptides
-  (Macrel), element cycling (METABOLIC, MEBS, FeGenie), DOM/biosurfactant/HC
-  biodegradation (dbCAN, HADEG, BioSurfDB), metabolism (DRAM, gapseq), defense
-  (DefenseFinder, PADLOC), quorum sensing (QSAP), and annotation substrates
-  (Bakta/Prokka). Use when the question is discovery of functional elements,
-  not community tables alone.
+  BiG-SCAPE), AMR (RGI, DeepARG, ResFinder), mobile elements (geNomad,
+  VirSorter2, CheckV, mobileOG-db, ISEScan, IntegronFinder, MOB-suite, CGE
+  Finders), antimicrobial peptides (Macrel), element cycling (METABOLIC, MEBS,
+  FeGenie), DOM/biosurfactant/HC biodegradation (dbCAN, HADEG, BioSurfDB),
+  metabolism (DRAM, gapseq), defense (DefenseFinder, PADLOC), quorum sensing
+  (QSAP), and annotation substrates (Bakta/Prokka). Use when the question is
+  discovery of functional elements, not community tables alone.
 license: MIT
 category: orchestration
 tags: [genome-mining, BGC, AMR, MGE, virus, metabolism, element-cycling, DOM, biosurfactant, defense, QS, routing]
@@ -25,12 +25,13 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 | Claim type | Prefer | Caution |
 |------------|--------|---------|
 | Natural products / BGCs | `antismash` → `bigscape` | Cluster ≠ characterized compound |
-| AMR / resistome | `rgi` (± `deeparg`) | Hit ≠ expression / phenotype |
+| AMR / resistome | `rgi` (± `deeparg`); isolates also `resfinder` / `staramr` | Hit ≠ expression / phenotype; keep CARD vs ResFinder separate |
 | Plasmids / viruses (contig) | `genomad`, `virsorter2`, `checkv`, `vcontact` | CheckV before viral taxonomy |
 | MGE protein machinery | `mobileog` | Category hit ≠ complete element |
 | Insertion sequences | `isescan` | IS ≠ plasmid |
 | Integrons / cassettes | `integronfinder` | Cassette ≠ expressed ARG |
-| Plasmid MOB / replicon typing | `mob-suite` | Typing ≠ wet-lab Inc assay |
+| CGE Finders (replicon / AMR / VF / MGE) | `cge-finders` | Best on isolates / HQ MAGs |
+| Plasmid MOB / replicon typing | `mob-suite` · `plasmidfinder` | Typing ≠ wet-lab Inc assay |
 | Plasmid genome recovery | `plasmaag` | Multi-sample graphs help |
 | Antimicrobial peptides | `macrel` | High candidate FDR |
 | Element cycling (C/N/S/Fe/P/…) | `element-cycling` → `metabolic` / `mebs` / `fegenie` | Potential ≠ flux |
@@ -49,14 +50,17 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 ```text
 Mining goal?
 ├─ BGCs → antismash → (many genomes) bigscape
-├─ Resistome → rgi (± deeparg); intersect genomad / integronfinder if relevant
+├─ Resistome → rgi (± deeparg); isolates → resfinder / staramr (± pointfinder)
 ├─ Plasmids / viruses → genomad (± virsorter2) → checkv → vcontact
 ├─ MGE detail
 │   ├─ Protein machinery → mobileog
 │   ├─ IS elements → isescan
 │   ├─ Integrons → integronfinder
-│   └─ Plasmid MOB/replicon typing → mob-suite
+│   ├─ CGE Finders → cge-finders (plasmidfinder · resfinder · …)
+│   └─ Plasmid MOB/replicon typing → mob-suite / plasmidfinder
 ├─ Plasmid MAGs → plasmaag (± genomad)
+├─ Virulence markers (supported taxa) → virulencefinder
+├─ Named MGEs (CGE library) → mobileelementfinder
 ├─ AMP smORFs → macrel
 ├─ Element cycling (C, N, S, Fe, P, H₂, CH₄, …) → element-cycling
 ├─ DOM / biosurfactant / HC biodegradation → dom-biosurfactant
@@ -77,7 +81,7 @@ Mining goal?
 bins/MAGs (checkm2 / mag-qc / gunc)
    → bakta | prokka
    ├─→ antismash → bigscape
-   ├─→ rgi (± deeparg)
+   ├─→ rgi (± deeparg); isolates → cge-finders / staramr
    ├─→ element-cycling → metabolic / mebs / fegenie
    ├─→ dom-biosurfactant → dbcan / hadeg / biosurfdb
    ├─→ dram → dbcan / gapseq
@@ -86,6 +90,7 @@ bins/MAGs (checkm2 / mag-qc / gunc)
 contigs
    → genomad | virsorter2 → checkv → vcontact
    → mobileog / isescan / integronfinder / mob-suite
+   → cge-finders (plasmidfinder · resfinder · virulencefinder · …)
    → plasmaag (multi-sample plasmid recovery)
    → macrel
 ```
@@ -102,8 +107,10 @@ contigs
 
 `antismash` · `bigscape` · `genomad` · `virsorter2` · `checkv` · `vcontact` ·
 `mobileog` · `isescan` · `integronfinder` · `mob-suite` · `plasmaag` ·
-`macrel` · `element-cycling` · `metabolic` · `mebs` · `fegenie` ·
-`dom-biosurfactant` · `hadeg` · `biosurfdb` · `dram` · `dbcan` · `bakta` ·
-`rgi` · `deeparg` · `gapseq` · `vmh` · `defensefinder` · `padloc` · `qsap` ·
-`spacedust` · `foldseek` · `folddisco` · `homology-search` ·
-`metagenomics-llm` · `tool-selection`
+`cge-finders` · `plasmidfinder` · `resfinder` · `pointfinder` ·
+`virulencefinder` · `mobileelementfinder` · `staramr` · `macrel` ·
+`element-cycling` · `metabolic` · `mebs` · `fegenie` · `dom-biosurfactant` ·
+`hadeg` · `biosurfdb` · `dram` · `dbcan` · `bakta` · `rgi` · `deeparg` ·
+`gapseq` · `vmh` · `defensefinder` · `padloc` · `qsap` · `spacedust` ·
+`foldseek` · `folddisco` · `homology-search` · `metagenomics-llm` ·
+`tool-selection`

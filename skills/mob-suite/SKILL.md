@@ -49,13 +49,15 @@ mob_typer --infile plasmid.fasta --out mob_typer.tsv
 ```text
 Plasmid typing / reconstruction?
 ├─ Contig plasmid/virus flags → genomad
+├─ CGE replicon typing → plasmidfinder / staramr
 ├─ Replicon / MOB typing → mob-suite
 ├─ Multi-sample plasmid MAGs → plasmaag
 ├─ MGE protein functions → mobileog
-└─ ARG on plasmids → rgi ∩ mob-suite/genomad
+└─ ARG on plasmids → resfinder / rgi ∩ mob-suite/genomad
 ```
 
 ## Related skills
 
-`genomad` · `plasmaag` · `mobileog` · `integronfinder` · `rgi` ·
-`microbial-mining` · `tool-selection`
+`cge-finders` · `plasmidfinder` · `staramr` · `genomad` · `plasmaag` ·
+`mobileog` · `integronfinder` · `rgi` · `resfinder` · `microbial-mining` ·
+`tool-selection`
