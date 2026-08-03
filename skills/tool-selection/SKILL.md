@@ -2,13 +2,14 @@
 name: tool-selection
 description: >
   Choose shotgun tools by stage: QC, assembly, mapping, binning, taxonomic
-  annotation, functional annotation, and microbial mining. Use when deciding
-  which skill to load — mappers, assemblers, ensemble binning (BASALT
-  recommended), profilers, or miners (antiSMASH, geNomad, DRAM, RGI, …).
-  For stage order use metagenomics-workflow. For mining goals use microbial-mining.
+  annotation, functional annotation, microbial mining, and research analysis
+  (stats/figures). Use when deciding which skill to load — mappers, assemblers,
+  ensemble binning (BASALT recommended), profilers, miners, or DA/plotting
+  tools. For stage order use metagenomics-workflow. For mining use
+  microbial-mining; for stats/figures use research-analysis.
 license: MIT
 category: orchestration
-tags: [guidance, tool-selection, mapping, binning, mining, workflow]
+tags: [guidance, tool-selection, mapping, binning, mining, research-analysis, workflow]
 ---
 
 # Tool Selection
@@ -34,6 +35,9 @@ Start from the **stage**, then the deliverable.
            · element-cycling · metabolic · mebs · fegenie · dom-biosurfactant
            · hadeg · biosurfdb · dram · dbcan · gapseq · vmh · deeparg
            · defensefinder · padloc · qsap
+8 Report   research-analysis → multiqc · microeco · phyloseq · visualization
+           · maaslin2 · ancombc · lefse · stamp · sparcc · spieceasi
+           · nextflow · snakemake
 ```
 
 ## Mapping head-to-head

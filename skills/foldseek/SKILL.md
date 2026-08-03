@@ -7,7 +7,8 @@ description: >
   complex search for distant systems (e.g. CRISPR–Cas), (3) Structure
   clustering at AFDB scale, (4) Sequence→structure search with ProstT5.
   Upstream: https://github.com/steineggerlab/foldseek.
-  Web: https://search.foldseek.com. Route via metagenomics-llm; pairs with
+  Web: https://search.foldseek.com. Route via homology-search /
+  metagenomics-llm; pairs with
   mmseqs2 (sequence) and folddisco (motifs).
 license: MIT
 category: analysis-tools

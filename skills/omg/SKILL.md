@@ -6,7 +6,7 @@ description: >
   Use when: (1) Pretraining or evaluating genomic LMs, (2) Using gLM2 embeddings
   for function / coevolution / regulatory syntax, (3) Distinguishing ML corpora
   from study reanalysis. Hugging Face: tattabio/OMG, tattabio/gLM2_650M.
-  Upstream: https://github.com/TattaBio/OMG. Route via metagenomics-llm.
+  Upstream: https://github.com/TattaBio/OMG. Route via genome-language-model.
 license: MIT
 category: utilities
 tags: [OMG, gLM2, foundation-model, pretraining, HuggingFace]

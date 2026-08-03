@@ -6,7 +6,8 @@ description: >
   fingers / other short motifs in AFDB/PDB/ESM30, (2) Motif-level annotation
   after Foldseek fold hits, (3) Mining conserved geometry in MAG protein
   structures. Upstream: https://github.com/steineggerlab/folddisco.
-  Web: https://search.foldseek.com/folddisco. Route via metagenomics-llm;
+  Web: https://search.foldseek.com/folddisco. Route via homology-search /
+  metagenomics-llm;
   complement foldseek (full-chain) and mmseqs2 (sequence).
 license: MIT
 category: analysis-tools

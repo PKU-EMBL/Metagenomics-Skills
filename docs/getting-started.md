@@ -37,6 +37,7 @@ mkdir -p meta/{seq,temp,result,logs}
 ```
 
 Follow `setup` and `public-databases` for software and reference installs.
+For portable DAGs see `nextflow` / `snakemake`.
 
 ## Step 3: Add metadata and reads
 
@@ -58,18 +59,24 @@ Example prompts:
 - "Environmental samples with many unknowns — SingleM vs MetaPhlAn?"
 - "After binning: Deepurify or Anvi'o before GTDB-Tk?"
 - "Viral contigs: geNomad → CheckV → vConTACT workflow"
+- "Element cycling (N/S/Fe) on MAGs — METABOLIC vs FeGenie vs DRAM?"
+- "Downstream stats and figures after MetaPhlAn — microeco vs MaAsLin2?"
+- "Route protein language models for remote homology"
 
 ### Common analysis paths
 
 | Goal | Skills path |
 |------|-------------|
-| Composition only | QC → `metaphlan` / `singlem` / `kraken2` → `visualization` |
+| Composition only | QC → `metaphlan` / `singlem` / `kraken2` → `research-analysis` |
 | Genome-resolved catalogue | QC → assembly → mapping → `basalt` ★ → `mag-qc` → `gtdbtk` |
 | Interactive MAG polish | bins → `anvio` → re-QC |
-| Viral ecology | `genomad` → `checkv` → `vcontact` |
+| Viral / MGE ecology | `genomad` → `checkv` → `vcontact` (± `mobileog` / `mob-suite`) |
+| Mining (BGC / AMR / cycling / DOM) | `microbial-mining` |
+| Paper stats & figures | `research-analysis` → `microeco` / `maaslin2` / … |
+| DNA / protein LMs | `genome-language-model` / `protein-language-model` |
 
 Expected routing: `tool-selection` / `metagenomics-workflow` / `study-design`
-→ stage skills.
+→ stage skills → `research-analysis` for delivery figures.
 
 ## Next
 

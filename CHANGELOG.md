@@ -1,3 +1,12 @@
+## [1.19.1] - 2026-08-03
+
+### Changed
+- Polished routing docs: README, getting-started, docs/tool-selection aligned
+  with research-analysis / LM / mining hubs
+- Clarified OMG → `genome-language-model`; Foldseek family → homology-search
+- Catalogued `busco` in docs/skills.md; refreshed workflow/tool-selection blurbs
+- Package version 1.19.1 (152 skills)
+
 ## [1.19.0] - 2026-08-03
 
 ### Added

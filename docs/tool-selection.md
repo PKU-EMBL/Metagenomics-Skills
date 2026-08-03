@@ -1,31 +1,45 @@
 # Tool selection
 
-Route by **scientific stage**, then deliverable. Details:
-`skills/tool-selection/SKILL.md`, `skills/public-databases/SKILL.md`.
+Route by **scientific stage**, then deliverable. Full detail:
+`skills/tool-selection/SKILL.md`. Also see `public-databases`,
+`microbial-mining`, `research-analysis`, `homology-search`,
+`genome-language-model`, `protein-language-model`.
 
-## Stage → skill
+## Stage → skill (summary)
 
 | Stage | Deliverable | Skill(s) |
 |-------|-------------|----------|
-| 1 QC | Adapter/quality trim | `fastp` |
+| Design | Strata / co-assembly plan | `study-design` |
+| 1 QC | Adapter/quality trim | `fastp` (± `fastqc` / `multiqc`) |
 | 1 QC | Host depletion | `kneaddata` |
 | 2 Assembly | Fast contigs | `megahit` |
-| 2 Assembly | Heavier / hybrid | `metaspades` |
-| 3 Binning | Recommended ensemble | `basalt` |
-| 3 Binning | Suite multi-binner | `metawrap` → `drep` |
-| 3 Binning | Contig2bin consensus | `dastool` |
-| 3 Binning | Dereplicate / abundance / QC | `drep`, `coverm`, `checkm2`, `mag-qc` |
-| 4 Taxonomy | Read-based markers | `metaphlan` |
-| 4 Taxonomy | Read-based k-mers | `kraken2` |
-| 4 Taxonomy | Genome taxonomy | `gtdbtk` (+ `gtdb`) |
-| 4 Taxonomy | Biome catalogue context | `mgnify` |
-| 5 Function | Read pathways | `humann` (+ `biobakery-databases`) |
-| 5 Function | Gene catalogue | `prodigal` → `cd-hit` → `salmon` |
-| 5 Function | Orthology / AMR | `eggnog-mapper`, `rgi` |
+| 2 Assembly | Heavier / hybrid | `metaspades` / `metaflye` |
+| 3 Mapping | Contig coverage | `strobealign` / `bowtie2` / `bwa-mem2` |
+| 4 Binning | Recommended ensemble | `basalt` |
+| 4 Binning | Suite / consensus | `metawrap` / `dastool` → `drep` |
+| 4 Binning | QC / abundance | `checkm2` · `gunc` · `mag-qc` · `coverm` |
+| 5 Taxonomy | Read-based | `metaphlan` / `singlem` / `kraken2` |
+| 5 Taxonomy | Genome taxonomy | `gtdbtk` (+ `gtdb`) |
+| 6 Function | Read pathways | `humann` (+ `biobakery-databases`) |
+| 6 Function | Orthology / AMR | `eggnog-mapper` · `rgi` |
+| 7 Mining | BGCs / MGE / cycling / DOM / defense | `microbial-mining` |
+| Report | Stats / figures / networks | `research-analysis` |
 | Data | Public raw reads | `sra-ena` |
-| Report | Figures | `visualization` |
+| Workflows | Portable DAGs | `nextflow` / `snakemake` |
 
-## Binning family (stage 3)
+## Parallel hubs (not a linear stage)
+
+| Hub | When |
+|-----|------|
+| `homology-search` | Sequence / structure / vector-DB / warehouse search |
+| `phylogenomics` | Trees / evolutionary placement |
+| `element-cycling` | C/N/S/Fe/P biogeochemistry |
+| `dom-biosurfactant` | Glycan DOM / biosurfactants / HC degradation |
+| `genome-language-model` | DNA gLMs |
+| `protein-language-model` | Protein LMs |
+| `metagenomics-llm` | LM + Foldseek stack overview |
+
+## Binning family
 
 | Situation | Skill |
 |-----------|-------|

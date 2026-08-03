@@ -6,7 +6,8 @@ description: >
   statistics. Use when: (1) Finding conserved neighborhoods / modules in MAG
   collections, (2) Annotating dark genes via genomic context, (3) Recovering
   defense or other systems as clusters. Upstream:
-  https://github.com/soedinglab/Spacedust. Route via metagenomics-llm;
+  https://github.com/soedinglab/Spacedust. Route via microbial-mining /
+  metagenomics-llm;
   complement defensefinder / antismash for known systems.
 license: MIT
 category: analysis-tools

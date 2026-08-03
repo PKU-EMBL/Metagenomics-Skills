@@ -2,10 +2,11 @@
 
 Agent Skills for shotgun metagenomics, organized by scientific stage:
 
-**QC → assembly → mapping → binning → taxonomy → function → microbial mining**
+**QC → assembly → mapping → binning → taxonomy → function → microbial mining → research analysis**
 
 One skill per core tool (mappers, assemblers, binners, profilers, miners such as
-antiSMASH / geNomad / DRAM, …) plus databases, orchestration, and visualization.
+antiSMASH / geNomad / DRAM, …) plus databases, language-model hubs, homology /
+phylogenomics routing, and paper-facing stats/figures (`research-analysis`).
 
 [Getting started](docs/getting-started.md) ·
 [Skills](docs/skills.md) ·

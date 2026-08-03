@@ -1,7 +1,7 @@
 {
   "name": "metagenomics-skills",
-  "version": "1.2.0",
-  "description": "Shotgun metagenomics skills for Codex — QC, assembly, binning, taxonomy, function, and public databases",
+  "version": "1.19.1",
+  "description": "Shotgun metagenomics skills for Codex — QC through mining, language models, and research analysis",
   "author": {
     "name": "PKU-EMBL",
     "url": "https://github.com/PKU-EMBL"
@@ -9,20 +9,30 @@
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "license": "MIT",
-  "keywords": ["metagenomics", "QC", "assembly", "binning", "taxonomy", "function"],
+  "keywords": [
+    "metagenomics",
+    "QC",
+    "assembly",
+    "binning",
+    "taxonomy",
+    "function",
+    "research-analysis",
+    "genome-language-model",
+    "protein-language-model"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Metagenomics Skills",
-    "shortDescription": "Five-stage shotgun metagenomics protocols",
-    "longDescription": "Modular skills for QC, assembly, ensemble binning (BASALT recommended; MetaWRAP; DAS Tool), taxonomic and functional annotation, public databases, and visualization.",
+    "shortDescription": "Stage-routed shotgun metagenomics protocols",
+    "longDescription": "Modular skills for QC, assembly, mapping, ensemble binning (BASALT recommended), taxonomic and functional annotation, microbial mining, language models, public databases, and research analysis (stats/figures).",
     "developerName": "PKU-EMBL",
     "category": "Science",
     "capabilities": ["Interactive", "Write"],
     "websiteURL": "https://github.com/PKU-EMBL/Metagenomics-Skills",
     "defaultPrompt": [
-      "Plan QC → assembly → binning → taxonomy → function for my PE samples",
+      "Plan QC → assembly → binning → taxonomy → function → research-analysis for my PE samples",
       "Choose ensemble binning: BASALT vs MetaWRAP vs DAS Tool",
-      "Route public databases for UHGG context and GTDB taxonomy"
+      "Route research-analysis after MetaPhlAn for diversity and DA figures"
     ],
     "brandColor": "#0F766E"
   }

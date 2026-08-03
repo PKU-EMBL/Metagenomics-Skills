@@ -7,7 +7,7 @@ description: >
   (3) Building a sample/assembly/coverage manifest, (4) Planning multi-assembly
   binning (e.g. BASALT), (5) Avoiding invalid pooling of unrelated samples.
   For tool routing, use tool-selection.
-  For five-stage order, use metagenomics-workflow.
+  For stage order, use metagenomics-workflow.
 license: MIT
 category: orchestration
 tags: [study-design, co-assembly, pooling, provenance]
@@ -92,7 +92,7 @@ redundancy (ANI), taxonomy, contiguity, and compute cost — not raw bin count.
 ## Related skills
 
 - `tool-selection` — stage routing; ensemble binning choice
-- `metagenomics-workflow` — QC → assembly → binning → taxonomy → function
+- `metagenomics-workflow` — QC → assembly → binning → taxonomy → function → mining → research-analysis
 - `basalt` · `metawrap` · `dastool` — binning stage
 - `binchicken` — targeted coassembly planning for low-abundance recovery
 - `lorbin` · `comebin` · `semibin2` · `vamb` — single binners

@@ -1,8 +1,8 @@
 # Skills
 
-Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining).
+Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining → research analysis), plus homology, phylogenomics, and language-model hubs.
 
-Total: **100** skills.
+Total: **152** skills.
 
 ---
 
@@ -257,21 +257,23 @@ Total: **100** skills.
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `tool-selection` | — | Choose shotgun tools by stage: QC, assembly, mapping, binning, taxonomic annotation, functional annotation, and microbial mining. |
-| `metagenomics-workflow` | — | End-to-end shotgun metagenomics: quality control, assembly, mapping, binning, taxonomic annotation, functional annotation, and microbial mining (BGCs, AMR, MGEs/viruses, AMPs, metabolism, defense). |
-| `study-design` | — | Study design for shotgun metagenomics across QC, assembly, binning, and annotation. |
+| `tool-selection` | — | Choose shotgun tools by stage through research analysis (stats/figures). |
+| `metagenomics-workflow` | — | End-to-end shotgun path including mining and research-analysis delivery. |
+| `study-design` | — | Study design for shotgun metagenomics across QC, assembly, binning, annotation, and reporting. |
 | `homology-search` | — | Route all homology/search paradigms (also under Homology search). |
 | `phylogenomics` | — | Route phylogeny / evolutionary analyses (also under Phylogenomics). |
 | `element-cycling` | — | Route elemental / biogeochemical cycling (also under Microbial mining). |
 | `dom-biosurfactant` | — | Route DOM / biosurfactant / HC biodegradation (also under Microbial mining). |
-| `research-analysis` | — | Route stats / figures / QC reports (also under Research analysis). |
+| `research-analysis` | — | Route stats / figures / networks / workflow managers (also under Research analysis). |
 | `genome-language-model` | — | Route genome language models (also under Genome language models). |
 | `protein-language-model` | — | Route protein language models (also under Protein language models). |
 | `metagenomics-llm` | — | Route LMs and Foldseek/MMseqs structure–sequence search (also under AI). |
 
 ## Other
 
-- `busco`
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `busco` | [BUSCO](https://gitlab.com/ezlab/busco) | Ortholog-based assembly/genome completeness (eukaryote-oriented; use CheckM2 for prokaryotic MAGs). |
 
 ---
 

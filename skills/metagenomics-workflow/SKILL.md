@@ -2,13 +2,14 @@
 name: metagenomics-workflow
 description: >
   End-to-end shotgun metagenomics: quality control, assembly, mapping, binning,
-  taxonomic annotation, functional annotation, and microbial mining (BGCs, AMR,
-  MGEs/viruses, AMPs, metabolism, defense). Use when starting a project or
-  ordering stages. For tool choice use tool-selection. For mining routes use
-  microbial-mining. For public DBs use public-databases.
+  taxonomic annotation, functional annotation, microbial mining (BGCs, AMR,
+  MGEs, element cycling, DOM, defense), and research analysis (stats/figures).
+  Use when starting a project or ordering stages. For tool choice use
+  tool-selection. For mining use microbial-mining; for paper stats use
+  research-analysis. For public DBs use public-databases.
 license: MIT
 category: orchestration
-tags: [guidance, pipeline, workflow, QC, assembly, mapping, binning, taxonomy, function, mining]
+tags: [guidance, pipeline, workflow, QC, assembly, mapping, binning, taxonomy, function, mining, research-analysis]
 ---
 
 # Metagenomics Workflow
