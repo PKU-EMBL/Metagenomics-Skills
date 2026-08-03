@@ -1,3 +1,14 @@
+## [1.8.0] - 2026-08-03
+
+### Added
+- AI / language-model layer: `metagenomics-llm`, `omg` (OMG+gLM2), `plmsearch`,
+  `deepblast` (TM-Vec), `spacedust`, `alphagem`
+- Docs/routing hooks in public-databases, tool-selection, microbial-mining, README
+- References 74–79
+
+### Changed
+- Skills catalog total: 100; package version 1.8.0
+
 ## [1.7.0] - 2026-08-03
 
 ### Changed

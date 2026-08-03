@@ -27,6 +27,7 @@ in your disk layout:
 | Gold-standard benchmarks / simulators | CAMI / CAMI II, CAMISIM | `cami` |
 | Pathway / ortholog knowledge bases | KEGG, eggNOG, MetaCyc | `kegg` · `eggnog-mapper` · `biobakery-databases` |
 | Tool runtime indexes | Kraken, CheckM2, ChocoPhlAn, CARD | tool skills |
+| ML pretraining corpora / genomic LMs | OMG, gLM2 | `omg` · `metagenomics-llm` |
 
 ## Analytical thinking
 
@@ -83,6 +84,8 @@ Need public metagenomics data/reference?
 │     → kraken2
 ├─ eggNOG / CARD / CheckM2
 │     → eggnog-mapper / rgi / checkm2
+├─ Genomic LM corpus / gLM2
+│     → omg / metagenomics-llm
 └─ Unsure
       → this skill + tool-selection
 ```
@@ -105,5 +108,5 @@ Need public metagenomics data/reference?
 ## Related skills
 
 `sra-ena` · `mgnify` · `gtdb` · `progenomes` · `cami` · `kegg` ·
-`biobakery-databases` · `setup` · `tool-selection` · `kraken2` · `metaphlan` ·
+`biobakery-databases` · `omg` · `metagenomics-llm` · `setup` · `tool-selection` · `kraken2` · `metaphlan` ·
 `humann` · `eggnog-mapper` · `rgi` · `gtdbtk` · `checkm2`

@@ -176,6 +176,21 @@ the canonical papers to reference.
 73. Shen, W., Lees, J. A. & Iqbal, Z. Efficient sequence alignment against millions of prokaryotic genomes with LexicMap. *Nat. Biotechnol.* (2025). https://doi.org/10.1038/s41587-025-02812-8
 
 
+## AI / genomic & protein language models
+
+74. Cornman, A. *et al.* The OMG dataset: An Open MetaGenomic corpus for mixed-modality genomic language modeling. *bioRxiv* https://doi.org/10.1101/2024.08.14.607850 (2024).
+
+75. Liu, W. *et al.* PLMSearch: Protein language model powers accurate and fast sequence search for remote homology. *Nat. Commun.* **15**, 2775 (2024). https://doi.org/10.1038/s41467-024-46808-5
+
+76. Hamamsy, T. *et al.* Protein remote homology detection and structural alignment using deep learning. *Nat. Biotechnol.* **42**, 975–985 (2024). https://doi.org/10.1038/s41587-023-01917-2
+
+77. Zhang, R., Mirdita, M. & Söding, J. De novo discovery of conserved gene clusters in microbial genomes with Spacedust. *Nat. Methods* (2025). https://doi.org/10.1038/s41592-025-02816-x
+
+78. Han, W. *et al.* AlphaGEM enables precise genome-scale metabolic modelling by integrating protein structure alignment with deep-learning-based dark metabolism mining. *Nat. Commun.* (2026). https://doi.org/10.1038/s41467-026-75549-w
+
+79. Palsson, B. O., Lee, S. Y. & Kim, G. B. Approaches for accelerating microbial gene function discovery using artificial intelligence. *Nat. Microbiol.* (2025). https://doi.org/10.1038/s41564-025-02214-1
+
+
 ---
 
 ## How to cite in Methods (example)

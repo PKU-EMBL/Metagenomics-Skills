@@ -16,6 +16,7 @@ skill.
 | KEGG (KO / pathways; license applies) | `kegg` | Orthology & pathway reference |
 | Virtual Metabolic Human | `vmh` | Human/gut metabolism knowledge for GEMs |
 | InSilicoSeq | `insilicoseq` | Illumina metagenome read simulation |
+| OMG / gLM2 | `omg` | Metagenomic LM pretraining corpus + mixed-modality gLM |
 | ChocoPhlAn / UniRef / MetaCyc | `biobakery-databases` | MetaPhlAn / HUMAnN indexes |
 | Kraken2 indexes | `kraken2` | k-mer classification DBs |
 | eggNOG | `eggnog-mapper` | Orthology DB for annotation |
@@ -54,13 +55,11 @@ skill.
 5. CAMI “best tool” is dataset-conditioned — report which challenge set you used
 6. Sequence abundance ≠ taxonomic abundance in profiler benchmarks
 
-## Optional ML corpus
+## AI / language-model data
 
-The **OMG** (Open Metagenome Genome) corpus on Hugging Face is a large
-metagenomic sequence resource for representation learning — useful for ML
-methods work, not a drop-in replacement for SRA study reanalysis or GTDB
-taxonomy. Cite the OMG/gLM publication if you use it; keep it out of clinical
-or catalogue-novelty claims unless justified.
+For OMG/gLM2 and PLM-assisted annotation, start at `metagenomics-llm` and
+`omg`. These are **ML corpora / models**, not substitutes for SRA reanalysis
+or GTDB taxonomy claims.
 
 ## See also
 

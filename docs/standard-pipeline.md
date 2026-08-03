@@ -67,4 +67,5 @@ not validated compounds, phenotypes, or complete phages unless QC says so
 | Strain | `instrain` |
 | Public data | `sra-ena`, `cami`, `progenomes`, `kegg`, `insilicoseq`, … |
 | Report | `visualization` |
-| Routing | `tool-selection`, `metagenomics-workflow` |
+| AI / LMs | `metagenomics-llm`, `omg`, `plmsearch`, `deepblast`, `spacedust`, `alphagem` |
+| Routing | `tool-selection`, `metagenomics-workflow`, `metagenomics-llm` |

@@ -2,7 +2,7 @@
 
 Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining).
 
-Total: **94** skills.
+Total: **100** skills.
 
 ---
 
@@ -149,6 +149,18 @@ Total: **94** skills.
 | `visualization` | — | Statistical visualization for shotgun metagenomics across QC, taxonomy, function, and binning outputs. |
 | `setup` | — | First-time environment and database setup for shotgun metagenomics tool skills. |
 
+
+## AI / language models
+
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `metagenomics-llm` | — | Route genomic/protein LMs and AI-assisted annotation for metagenomics. |
+| `omg` | [OMG](https://github.com/TattaBio/OMG) | Open MetaGenomic corpus + gLM2 mixed-modality genomic language model. |
+| `plmsearch` | [PLMSearch](https://github.com/maovshao/PLMSearch) | PLM embeddings for fast remote homology protein search. |
+| `deepblast` | [DeepBLAST](https://github.com/flatironinstitute/deepblast) | TM-Vec + DeepBLAST remote homology and structural alignment from sequence. |
+| `spacedust` | [Spacedust](https://github.com/soedinglab/Spacedust) | De novo conserved gene clusters via Foldseek-aware neighborhood discovery. |
+| `alphagem` | [AlphaGEM](https://github.com/hongzhonglu/AlphaGEM) | GEMs with structure alignment and DL dark-metabolism mining. |
+
 ## Orchestration
 
 | Skill | Upstream | Purpose |
@@ -156,6 +168,7 @@ Total: **94** skills.
 | `tool-selection` | — | Choose shotgun tools by stage: QC, assembly, mapping, binning, taxonomic annotation, functional annotation, and microbial mining. |
 | `metagenomics-workflow` | — | End-to-end shotgun metagenomics: quality control, assembly, mapping, binning, taxonomic annotation, functional annotation, and microbial mining (BGCs, AMR, MGEs/viruses, AMPs, metabolism, defense). |
 | `study-design` | — | Study design for shotgun metagenomics across QC, assembly, binning, and annotation. |
+| `metagenomics-llm` | — | Route genomic/protein language models for metagenomics (also under AI / language models). |
 
 ## Other
 

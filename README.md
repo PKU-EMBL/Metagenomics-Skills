@@ -74,6 +74,10 @@ Contigs → `genomad` / `virsorter2` → `checkv` → `vcontact` · plasmids:
 
 After MAGs: `microbial-mining` → `antismash` / `rgi` / `dram` / …
 
+> AI / language models (remote homology, gLM, gene clusters)
+
+`metagenomics-llm` → `omg` / `plmsearch` / `deepblast` / `spacedust` / …
+
 ---
 
 ## Contributing

@@ -72,5 +72,5 @@ study-design + setup (+ public-databases)
 
 ## Related skills
 
-`tool-selection` · `microbial-mining` · `public-databases` · `study-design` ·
+`tool-selection` · `microbial-mining` · `metagenomics-llm` · `public-databases` · `study-design` ·
 `mag-qc` · stage skills under `skills/`

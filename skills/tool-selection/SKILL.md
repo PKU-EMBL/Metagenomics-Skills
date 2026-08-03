@@ -97,6 +97,16 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | Only one sample | Single-coverage (acknowledge hidden contamination risk) |
 | Huge public cohorts / rare taxa | `binchicken` targeted coassembly → then bin |
 
+## AI / language models
+
+| Need | Prefer |
+|------|--------|
+| Route LM/PLM tools | `metagenomics-llm` |
+| Pretrain corpus / gLM2 | `omg` |
+| Remote protein homology (PLM) | `plmsearch` / `deepblast` |
+| Conserved gene clusters (structure-aware) | `spacedust` |
+| GEM + structure/dark metabolism | `alphagem` |
+
 ## Never
 
 - Skip mapping when binning needs coverage
@@ -120,4 +130,4 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 
 ## Related skills
 
-`metagenomics-workflow` · `microbial-mining` · `study-design` · `public-databases`
+`metagenomics-workflow` · `microbial-mining` · `metagenomics-llm` · `study-design` · `public-databases`
