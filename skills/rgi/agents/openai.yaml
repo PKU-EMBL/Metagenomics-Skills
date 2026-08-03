@@ -1,0 +1,7 @@
+interface:
+  display_name: "RGI / CARD"
+  short_description: "Antibiotic resistance gene annotation against CARD"
+  default_prompt: "Use $rgi for Antibiotic resistance gene annotation against CARD."
+
+policy:
+  allow_implicit_invocation: true

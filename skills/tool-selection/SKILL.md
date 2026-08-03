@@ -1,14 +1,13 @@
 ---
 name: tool-selection
 description: >
-  Guidance for choosing shotgun metagenomics analysis routes and tools.
-  Use this skill when: (1) Deciding read-based vs assembly vs MAG recovery,
-  (2) Choosing classical MetaWRAP-style binning vs BASALT,
-  (3) Selecting MetaPhlAn vs Kraken vs HUMAnN,
-  (4) Planning compute and deliverables for a new study.
-
-  For detailed parameters, use the specific tool skills
-  (preprocessing, read-based, gene-catalogue, mag-classical, basalt).
+  Choose shotgun metagenomics tools and routes by scientific deliverable.
+  Use this skill when: (1) Deciding which software skill to load,
+  (2) Choosing MetaPhlAn vs Kraken vs HUMAnN,
+  (3) Choosing MEGAHIT vs metaSPAdes,
+  (4) Choosing MetaWRAP vs BASALT for MAGs,
+  (5) Planning a multi-tool analysis path.
+  For end-to-end ordering, use metagenomics-workflow.
 license: MIT
 category: orchestration
 tags: [guidance, tool-selection, workflow]
@@ -19,41 +18,39 @@ tags: [guidance, tool-selection, workflow]
 ## Start from the deliverable
 
 ```text
-What must the paper/table/genome set contain?
+Deliverable?
 │
-├─ Species/pathway tables from reads → read-based
-│     ├─ Marker clades → MetaPhlAn4
-│     ├─ Pathways/gene families → HUMAnN4
-│     └─ k-mer / custom DB → Kraken2+Bracken
-│
-├─ Gene catalogue + function → gene-catalogue
-│
-├─ MAG catalogue
-│     ├─ Classical multi-binner baseline → mag-classical
-│     └─ Refined multi-assembly recovery → basalt
-│
-└─ Unsure → metagenomics-workflow + study-design
+├─ Clean PE reads
+│     fastp → kneaddata
+├─ Taxonomic composition from reads
+│     metaphlan  OR  kraken2 (+ bracken)
+├─ Pathways / gene families from reads
+│     humann
+├─ Contigs
+│     megahit (default) OR metaspades (heavier)
+├─ Gene catalogue + function
+│     prodigal → cd-hit → salmon → eggnog-mapper (± rgi)
+├─ Classical MAG catalogue
+│     metawrap → drep → coverm → gtdbtk  (+ checkm2 / mag-qc)
+└─ Refined multi-assembly MAGs
+      basalt  (+ checkm2 / mag-qc)
 ```
 
-## Classical MAG vs BASALT
+## Head-to-head thinking
 
-| Need | Prefer |
-|------|--------|
-| Standard MetaWRAP → dRep → GTDB catalogue | `mag-classical` |
-| Cross-assembly selection + contig refinement + reassembly | `basalt` |
-| New deployment with absolute paths / isolated outdirs | BASALT-Air (`basalt` skill) |
-| Resume old Conda checkpoints | Conda BASALT |
+| Choice | Prefer A when… | Prefer B when… |
+|--------|----------------|----------------|
+| MetaPhlAn vs Kraken2 | Marker specificity | Custom DB / speed / contig classify |
+| MEGAHIT vs metaSPAdes | Time/memory limited | Continuity / hybrid assembly budget |
+| MetaWRAP vs BASALT | Standard multi-binner catalogue | Related multi-assembly refinement |
+| Conda BASALT vs Air | Resume old runs | New absolute-path deployments |
 
-## Comparison snapshot
+## Never
 
-| Route | Strengths | Weaknesses |
-|-------|-----------|------------|
-| Read-based | Fast composition/function | No genomes |
-| Gene catalogue | Community gene content | Assembly bias |
-| Classical MAGs | Mature ecosystem | Weaker cross-assembly refinement |
-| BASALT | Multi-assembly refinement | Heavier setup/compute |
+- Merge MetaPhlAn and Kraken into one unlabeled table
+- Treat `more-sensitive` / more binners as guaranteed better MAGs
+- Pool unrelated samples only to increase assembly depth
 
 ## Related skills
 
-- `metagenomics-workflow` — ordered pipeline
-- Individual tool skills for parameters
+Every tool skill under `skills/` · `metagenomics-workflow` · `study-design`

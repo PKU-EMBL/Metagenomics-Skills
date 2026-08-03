@@ -1,7 +1,7 @@
 {
   "name": "Metagenomics Skills",
-  "description": "Shotgun metagenomics skills for agent coding tools — study design, preprocessing, read-based profiling, gene catalogues, classical MAG recovery, and BASALT refined MAG workflows",
-  "version": "1.0.0",
+  "description": "Shotgun metagenomics Agent Skills — per-tool workflows for QC, profiling, assembly, annotation, MAG recovery, and BASALT refinement",
+  "version": "1.1.0",
   "author": "PKU-EMBL",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
@@ -9,32 +9,29 @@
   "categories": ["science", "biology", "metagenomics", "computational-biology"],
   "keywords": [
     "metagenomics",
-    "MAG",
-    "BASALT",
-    "binning",
+    "fastp",
     "HUMAnN",
     "MetaPhlAn",
     "Kraken2",
+    "MEGAHIT",
     "MetaWRAP",
-    "shotgun"
+    "BASALT",
+    "MAG",
+    "CheckM2"
   ],
-  "requirements": {
-    "linux": "recommended for production pipelines",
-    "conda_or_micromamba": "recommended for tool environments",
-    "gpu": "optional (BASALT refinement may use GPU)"
-  },
-  "skills_count": 11,
+  "skills_count": 24,
   "skill_categories": {
-    "analysis-tools": 5,
+    "analysis-tools": 18,
     "evaluation": 2,
     "utilities": 1,
     "orchestration": 3
   },
   "featured_skills": [
-    "metagenomics-workflow",
     "basalt",
-    "read-based",
-    "mag-classical",
+    "metawrap",
+    "fastp",
+    "humann",
+    "megahit",
     "tool-selection"
   ],
   "platforms": [

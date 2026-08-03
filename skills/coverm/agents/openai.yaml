@@ -1,0 +1,7 @@
+interface:
+  display_name: "CoverM"
+  short_description: "Calculate coverage/relative abundance of genomes or contigs"
+  default_prompt: "Use $coverm for Calculate coverage/relative abundance of genomes or contigs."
+
+policy:
+  allow_implicit_invocation: true

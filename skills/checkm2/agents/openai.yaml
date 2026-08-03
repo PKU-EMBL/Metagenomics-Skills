@@ -1,0 +1,7 @@
+interface:
+  display_name: "CheckM2"
+  short_description: "ML-based MAG completeness and contamination estimation"
+  default_prompt: "Use $checkm2 for ML-based MAG completeness and contamination estimation."
+
+policy:
+  allow_implicit_invocation: true

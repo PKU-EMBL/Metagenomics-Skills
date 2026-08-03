@@ -1,0 +1,7 @@
+interface:
+  display_name: "Kraken2"
+  short_description: "k-mer taxonomic classification; pair with Bracken for abundance"
+  default_prompt: "Use $kraken2 for k-mer taxonomic classification; pair with Bracken for abunda."
+
+policy:
+  allow_implicit_invocation: true

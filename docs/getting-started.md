@@ -52,9 +52,9 @@ meta/
 
 Example prompts:
 
-- "Choose read-based vs MAG recovery for these samples"
+- "Choose MetaPhlAn/HUMAnN versus MAG recovery for these samples"
 - "Write a BASALT pilot command for one assembly + PE reads"
-- "Design a co-assembly vs sample-specific experiment"
+- "Decide MEGAHIT versus metaSPAdes for this cohort"
 
 Expected skill routing: `tool-selection` / `study-design` → stage skills.
 

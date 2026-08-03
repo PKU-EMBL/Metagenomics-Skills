@@ -1,0 +1,7 @@
+interface:
+  display_name: "fastp"
+  short_description: "Ultra-fast FASTQ QC/adapter trimming for Illumina/MGI short reads"
+  default_prompt: "Use $fastp for Ultra-fast FASTQ QC/adapter trimming for Illumina/MGI short ."
+
+policy:
+  allow_implicit_invocation: true

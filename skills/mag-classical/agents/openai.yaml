@@ -1,7 +1,0 @@
-interface:
-  display_name: "Classical MAG Recovery"
-  short_description: "MetaWRAP, dRep, CoverM, and GTDB-Tk catalogues"
-  default_prompt: "Use $mag-classical to recover and catalogue MAGs with MetaWRAP-style binning."
-
-policy:
-  allow_implicit_invocation: true

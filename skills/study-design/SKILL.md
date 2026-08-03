@@ -75,5 +75,5 @@ redundancy (ANI), taxonomy, contiguity, and compute cost — not raw bin count.
 ## Related skills
 
 - `tool-selection` — classical MAG vs BASALT
+- `metawrap` — MetaWRAP-style catalogues
 - `basalt` — multi-assembly execution
-- `mag-classical` — MetaWRAP-style catalogues

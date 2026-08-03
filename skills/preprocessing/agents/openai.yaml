@@ -1,7 +1,0 @@
-interface:
-  display_name: "Preprocessing"
-  short_description: "fastp QC and KneadData host depletion"
-  default_prompt: "Use $preprocessing to quality-control and host-deplete paired-end shotgun reads."
-
-policy:
-  allow_implicit_invocation: true

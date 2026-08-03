@@ -1,0 +1,7 @@
+interface:
+  display_name: "MEGAHIT"
+  short_description: "Ultra-fast memory-efficient metagenome assembler"
+  default_prompt: "Use $megahit for Ultra-fast memory-efficient metagenome assembler."
+
+policy:
+  allow_implicit_invocation: true

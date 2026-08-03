@@ -1,8 +1,9 @@
 # Metagenomics Skills
 
-**11 Agent Skills for shotgun metagenomics** — study design, preprocessing,
-read-based profiling, gene catalogues, classical MAG recovery, and PKU-EMBL
-BASALT / BASALT-Air refined workflows.
+**24 Agent Skills for shotgun metagenomics** — one skill per core tool (fastp,
+KneadData, MetaPhlAn, HUMAnN, Kraken2, MEGAHIT, metaSPAdes, Prodigal, CD-HIT,
+Salmon, eggNOG-mapper, RGI, MetaWRAP, dRep, CoverM, GTDB-Tk, CheckM2, BASALT)
+plus orchestration, QC policy, and visualization.
 
 [Getting started](docs/getting-started.md) ·
 [Skills](docs/skills.md) ·
@@ -20,13 +21,7 @@ BASALT / BASALT-Air refined workflows.
 /plugin install metagenomics@metagenomics-skills
 ```
 
-### Codex
-
-Clone this repository and register `.codex-plugin/plugin.json` through a Codex
-marketplace entry (`"skills": "./skills/"`). Each skill includes
-`agents/openai.yaml`.
-
-### Cursor / Kimi / Grok / shared Agents
+### Codex / Cursor / Kimi / Grok
 
 ```bash
 git clone https://github.com/PKU-EMBL/Metagenomics-Skills.git
@@ -34,66 +29,40 @@ cd Metagenomics-Skills
 ./scripts/install-platforms.sh --user all
 ```
 
-→ Full matrix: [docs/multi-platform.md](docs/multi-platform.md)
+→ [docs/multi-platform.md](docs/multi-platform.md)
 
 ---
 
-## Repository layout
+## Layout
 
 ```text
-skills/                      # one directory per skill (SKILL.md + optional references/)
-docs/                        # getting started, catalog, pipeline, platforms
-.claude-plugin/              # Claude Code marketplace
-.codex-plugin/               # Codex plugin manifest
-.cursor-plugin/              # Cursor helper manifest
-plugin-manifest.json         # package metadata
-scripts/install-platforms.sh # multi-platform symlinks
+skills/<tool>/SKILL.md     # per-software instructions + analytical thinking
+skills/<tool>/references/  # optional deep detail inside that skill only
+docs/                      # catalogs and pipelines
+.claude-plugin/ .codex-plugin/ .cursor-plugin/
+scripts/install-platforms.sh
 ```
-
-Skill-local `references/` folders are for progressive disclosure inside a skill.
-There is **no** repository-root skill `references/` tree.
-
----
-
-## Skills at a glance
-
-| Category | Skills |
-|----------|--------|
-| Analysis tools | `preprocessing`, `read-based`, `gene-catalogue`, `mag-classical`, `basalt` |
-| Evaluation | `mag-qc`, `visualization` |
-| Utilities | `setup` |
-| Orchestration | `tool-selection`, `metagenomics-workflow`, `study-design` |
-
-→ [docs/skills.md](docs/skills.md)
-
----
-
-## Pipeline
-
-```text
-preprocessing → read-based and/or gene-catalogue
-                      ↓
-               mag-classical or basalt
-                      ↓
-                  mag-qc → visualization
-```
-
-→ [docs/standard-pipeline.md](docs/standard-pipeline.md)
 
 ---
 
 ## Quick start
 
-> Plan a shotgun MAG analysis for related bioreactor time points
+> Recover refined MAGs from related bioreactor samples
 
-Expected routing: `study-design` + `tool-selection` → `preprocessing` →
-`gene-catalogue` → `basalt` or `mag-classical` → `mag-qc`.
+Expected routing: `study-design` → `fastp` → `kneaddata` → `megahit` → `basalt`
+→ `checkm2` / `mag-qc`.
+
+> Species + pathway tables only
+
+`fastp` → `kneaddata` → `humann` (or `metaphlan` / `kraken2`) → `visualization`.
 
 ---
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). New skills belong under `skills/<name>/`.
+See [CONTRIBUTING.md](CONTRIBUTING.md). New **software** skills go under
+`skills/<tool-name>/` with upstream GitHub links and a clear “Analytical thinking”
+section.
 
 ## License
 

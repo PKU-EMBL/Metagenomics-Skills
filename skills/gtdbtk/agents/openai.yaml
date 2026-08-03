@@ -1,0 +1,7 @@
+interface:
+  display_name: "GTDB-Tk"
+  short_description: "Assign bacterial/archaeal taxonomy to MAGs with GTDB"
+  default_prompt: "Use $gtdbtk for Assign bacterial/archaeal taxonomy to MAGs with GTDB."
+
+policy:
+  allow_implicit_invocation: true

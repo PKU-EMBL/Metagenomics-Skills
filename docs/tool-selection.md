@@ -1,35 +1,37 @@
 # Tool selection
 
-Guidance mirrored by the `tool-selection` skill.
+Per-software routing for Metagenomics Skills. Detailed rationale lives in
+`skills/tool-selection/SKILL.md`.
 
-## Deliverable router
+## Deliverable → skill
 
-| Deliverable | Primary skill |
-|-------------|---------------|
-| QC + host-depleted reads | `preprocessing` |
-| Taxonomic/functional tables from reads | `read-based` |
-| Non-redundant gene catalogue | `gene-catalogue` |
-| Classical MAG catalogue | `mag-classical` |
+| Deliverable | Skill(s) |
+|-------------|----------|
+| Adapter/QC trim | `fastp` |
+| Host depletion | `kneaddata` |
+| Marker taxonomy | `metaphlan` |
+| Pathways from reads | `humann` |
+| k-mer taxonomy | `kraken2` |
+| Fast assembly | `megahit` |
+| Heavier / hybrid assembly | `metaspades` |
+| ORF calling | `prodigal` |
+| NR gene catalogue | `cd-hit` |
+| Gene abundance | `salmon` |
+| Orthology/function | `eggnog-mapper` |
+| AMR genes | `rgi` |
+| Classical MAG binning | `metawrap` |
 | Refined multi-assembly MAGs | `basalt` |
-| Filters / Methods QC language | `mag-qc` |
+| Dereplicate genomes | `drep` |
+| Genome abundance | `coverm` |
+| GTDB taxonomy | `gtdbtk` |
+| Completeness/contamination | `checkm2` |
+| Filter policy | `mag-qc` |
 | Figures | `visualization` |
-| Full project plan | `metagenomics-workflow` |
 
 ## Classical MAG vs BASALT
 
-| Situation | Prefer |
-|-----------|--------|
-| MetaWRAP → dRep → CoverM → GTDB baseline | `mag-classical` |
-| Cross-assembly refinement + contig retrieval/reassembly | `basalt` |
-| Absolute paths / separate work+output dirs | BASALT-Air via `basalt` |
-| Resume existing Conda checkpoints | Conda BASALT via `basalt` |
-
-## Profiling method choice
-
-| Need | Prefer |
-|------|--------|
-| Marker clades | MetaPhlAn4 |
-| Pathways / gene families | HUMAnN4 |
-| Custom k-mer DB / speed | Kraken2 + Bracken |
-
-Never merge profiler outputs into one unlabeled abundance table.
+| Situation | Skill |
+|-----------|-------|
+| MetaWRAP binning + refinement catalogue | `metawrap` then `drep` |
+| Related samples, cross-assembly refinement | `basalt` |
+| Absolute paths / new deployment | BASALT-Air via `basalt` |

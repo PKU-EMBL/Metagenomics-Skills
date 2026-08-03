@@ -1,0 +1,7 @@
+interface:
+  display_name: "dRep"
+  short_description: "Dereplicate microbial genomes by ANI to species/strain catalogues"
+  default_prompt: "Use $drep for Dereplicate microbial genomes by ANI to species/strain catal."
+
+policy:
+  allow_implicit_invocation: true

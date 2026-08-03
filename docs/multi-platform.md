@@ -7,7 +7,7 @@ Metagenomics Skills uses the portable [Agent Skills](https://agentskills.io)
 
 ```text
 skills/
-  preprocessing/SKILL.md
+  fastp/SKILL.md
   basalt/SKILL.md
   ...
 .claude-plugin/marketplace.json   # Claude Code marketplace

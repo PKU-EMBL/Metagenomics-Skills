@@ -1,15 +1,12 @@
 ---
 name: metagenomics-workflow
 description: >
-  End-to-end guidance for shotgun metagenomics pipelines.
-  Use this skill when: (1) Starting a new metagenomics project,
-  (2) Need step-by-step workflow guidance,
-  (3) Integrating preprocessing, profiling, assembly, and MAG recovery,
-  (4) Planning compute resources and timelines,
-  (5) Assembling a Methods/provenance checklist.
-
-  For tool choice, use tool-selection.
-  For QC thresholds, use mag-qc.
+  End-to-end shotgun metagenomics pipeline guidance across individual tool skills.
+  Use this skill when: (1) Starting a new project, (2) Ordering stages,
+  (3) Integrating QC, profiling, assembly, and MAG recovery,
+  (4) Planning compute and provenance.
+  For choosing among tools, use tool-selection.
+  For assembly/pooling design, use study-design.
 license: MIT
 category: orchestration
 tags: [guidance, pipeline, workflow]
@@ -17,83 +14,57 @@ tags: [guidance, pipeline, workflow]
 
 # Metagenomics Workflow
 
-## Standard shotgun pipeline
+## Standard path (tool skills)
 
 ```text
-Metadata + PE reads
+study-design + setup
         │
         v
-   preprocessing  (fastp → KneadData)
+   fastp → kneaddata
         │
-        ├──────────────► read-based (MetaPhlAn/HUMAnN/Kraken)
-        │
-        v
-   gene-catalogue (MEGAHIT → Prodigal → cd-hit → salmon → annotation)
-        │
-        ├──────────────► mag-classical (MetaWRAP → dRep → CoverM → GTDB)
-        │
-        └──────────────► basalt (multi-assembly refined MAGs)
+        ├─► metaphlan / humann / kraken2 ─► visualization
         │
         v
-   mag-qc → visualization → Methods / provenance archive
+   megahit | metaspades
+        │
+        ├─► prodigal → cd-hit → salmon → eggnog-mapper (± rgi)
+        │
+        ├─► metawrap → drep → coverm → gtdbtk
+        │
+        └─► basalt
+        │
+        v
+   checkm2 + mag-qc → visualization → Methods archive
 ```
 
-## Phase 1: Design and setup
+## Phase checklist
 
-**Skills**: `study-design`, `setup`
+### 1. Design & setup
+- [ ] Manifest complete (`study-design`)
+- [ ] Envs/DBs ready (`setup`)
+- [ ] Acceptance criteria predeclared (`mag-qc`)
 
-- [ ] Manifest complete (sample, stratum, host, assembly, coverage)
-- [ ] Environments and databases verified
-- [ ] Acceptance criteria predeclared
+### 2. Reads
+- [ ] `fastp` reports archived
+- [ ] `kneaddata --reorder` + PE header check
 
-## Phase 2: Preprocessing
+### 3. Optional community tables
+- [ ] Choose profiler via `tool-selection`
+- [ ] Pin DB versions
 
-**Skill**: `preprocessing`
+### 4. Contigs / genes
+- [ ] Assembly mode matches strata
+- [ ] Catalogue thresholds reported (`cd-hit`)
 
-- [ ] fastp metrics archived
-- [ ] Host depletion with `--reorder`
-- [ ] PE headers verified
-- [ ] Dehosted reads checksummed
+### 5. Genomes
+- [ ] `metawrap` **or** `basalt` (not confused)
+- [ ] `drep` ANI stated if cataloguing
+- [ ] `checkm2` filters applied
 
-## Phase 3: Community tables (optional)
-
-**Skill**: `read-based`
-
-- [ ] Profiler + DB version recorded
-- [ ] No unlabeled merging of MetaPhlAn and Kraken
-
-## Phase 4: Assembly / genes (optional)
-
-**Skill**: `gene-catalogue`
-
-- [ ] Assembly mode matches study design
-- [ ] Clustering and quantification units stated
-
-## Phase 5: Genomes (optional)
-
-**Skills**: `mag-classical` or `basalt`, then `mag-qc`
-
-- [ ] Route chosen via `tool-selection`
-- [ ] Filters applied; not bin-count maximization
-
-## Phase 6: Report
-
-**Skill**: `visualization`
-
-- [ ] Figures labeled by method
+### 6. Report
+- [ ] Figures labeled by method (`visualization`)
 - [ ] Provenance bundle complete
-
-## Resource planning (order-of-magnitude)
-
-| Stage | Small (~6 Gb × 3) | Large (~10 Gb × 20) |
-|-------|-------------------|---------------------|
-| fastp | minutes | ~1 h |
-| KneadData | minutes–hours | hours |
-| HUMAnN | ~0.5–1 h | ~1 day |
-| MEGAHIT | minutes–hours | ~0.5–1 day |
-| MetaWRAP bin+refine | hours | ~1 day |
-| BASALT | hours–days | days (dataset-dependent) |
 
 ## Related skills
 
-All tool skills under this plugin; start with `tool-selection` if undecided.
+`tool-selection` lists every software skill; load only those required by the phase.

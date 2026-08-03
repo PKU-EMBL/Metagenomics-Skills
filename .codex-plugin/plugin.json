@@ -1,7 +1,7 @@
 {
   "name": "metagenomics-skills",
-  "version": "1.0.0",
-  "description": "Shotgun metagenomics skills for Codex — study design, profiling, gene catalogues, MAG recovery, and BASALT",
+  "version": "1.1.0",
+  "description": "Shotgun metagenomics skills for Codex — per-tool QC, profiling, assembly, MAG recovery, and BASALT",
   "author": {
     "name": "PKU-EMBL",
     "url": "https://github.com/PKU-EMBL"

@@ -1,39 +1,51 @@
 ---
 name: basalt
 description: >
-  PKU-EMBL BASALT and BASALT-Air refined MAG recovery across assemblies.
-  Use this skill when: (1) Running multi-binner candidate generation with BASALT,
-  (2) Cross-assembly selection and contig refinement,
-  (3) Choosing BASALT vs BASALT-Air,
-  (4) Resuming checkpointed runs,
-  (5) Reporting reproducible BASALT Methods.
-
-  For classical MetaWRAP catalogues, use mag-classical.
-  For study design of multi-assembly inputs, use study-design.
-  For QC thresholds, use mag-qc.
+  PKU-EMBL BASALT and BASALT-Air refined MAG recovery across one or more
+  assemblies. Use this skill when: (1) Running BASALT multi-binner recovery,
+  (2) Choosing Conda BASALT vs BASALT-Air, (3) Multi-assembly refinement,
+  (4) Resuming checkpoints, (5) Writing reproducible BASALT Methods.
+  Upstream: https://github.com/PKU-EMBL/BASALT and
+  https://github.com/PKU-EMBL/BASALT-Air.
+  For classical MetaWRAP catalogues, use metawrap.
+  For study design of assemblies, use study-design.
+  For QC thresholds, use checkm2 and mag-qc.
 license: MIT
 category: analysis-tools
 tags: [BASALT, MAG, refinement, multi-assembly, PKU-EMBL]
+upstream: https://github.com/PKU-EMBL/BASALT
 ---
 
 # BASALT / BASALT-Air
 
-## Authoritative docs
+Upstream: [PKU-EMBL/BASALT](https://github.com/PKU-EMBL/BASALT) ·
+[BASALT-Air](https://github.com/PKU-EMBL/BASALT-Air) ·
+Guide: https://basalt-guide.readthedocs.io/en/latest/ ·
+Paper: https://doi.org/10.1038/s41467-024-46539-7
 
-- Guide: https://basalt-guide.readthedocs.io/en/latest/
-- Paper: https://doi.org/10.1038/s41467-024-46539-7
-- Air: https://github.com/PKU-EMBL/BASALT-Air
+## Analytical thinking
+
+BASALT is not “another MetaWRAP”. It is designed for **coherent multi-assembly
+evidence**: sample-specific assemblies preserve restricted populations; a matched
+co-assembly can rescue shared low-abundance genomes; cross-sample coverage
+concordance informs selection and contig refinement.
+
+Use it when related samples share community continuity (reactors, longitudinal
+hosts, nearby sites, gradients). Do **not** pool unrelated strata just to feed
+BASALT more FASTAs.
+
+Refinement (MLP ensemble + connectivity retrieval) is **model- and
+feature-supported prediction**, not experimental proof of contamination removal.
+Report `BASALT_WEIGHT` checksums when refinement underpins claims.
 
 ## Edition choice
 
-| Capability | Conda `BASALT` | Air `basalt` |
-|------------|----------------|--------------|
-| Environment | Conda/Micromamba | Pixi |
-| Paths | Local/relative names preferred | Absolute paths first-class |
-| Work/output | CWD intermediates; `-o` name | `--workdir` / `--outdir` |
-| Best for | Resume existing Conda runs | New deployments |
+| Need | Prefer |
+|------|--------|
+| New deployment, absolute paths, separate work/out | **BASALT-Air** (`basalt`) |
+| Resume existing Conda checkpoints | **Conda BASALT** (`BASALT`) |
 
-**Checkpoints and CLIs are not interchangeable.**
+CLIs and checkpoints are **not interchangeable**.
 
 ## Prerequisites
 
@@ -42,20 +54,23 @@ tags: [BASALT, MAG, refinement, multi-assembly, PKU-EMBL]
 | OS | Linux x86_64 | Same |
 | RAM | 128 GB | 256 GB+ |
 | Threads | 8 | 32+ |
-| Models | `BASALT_WEIGHT` (5 ensemble CSVs) | Checksummed |
-| QC | CheckM2 DB | Version-pinned |
+| Models | `BASALT_WEIGHT` with 5 `*_ensemble.csv` | Checksummed |
+| QC DB | CheckM2 | Pinned |
+| Inputs | ≥1 assembly + coverage reads | From `megahit`/`metaspades` + `kneaddata` |
 
-## How to run (Conda edition)
+## How to run (Conda BASALT)
+
+Docs: [usage](https://basalt-guide.readthedocs.io/en/latest/usage.html)
 
 ```bash
 mkdir -p /project/basalt_runs/study_01 && cd /project/basalt_runs/study_01
 ln -s /data/assembly.fasta .
-ln -s /data/sample_R1.fastq .
-ln -s /data/sample_R2.fastq .
+ln -s /data/R1.fastq .
+ln -s /data/R2.fastq .
 
 BASALT \
   -a assembly.fasta \
-  -s sample_R1.fastq,sample_R2.fastq \
+  -s R1.fastq,R2.fastq \
   -t 32 -m 128 \
   --sensitive sensitive \
   --refinepara quick \
@@ -64,42 +79,33 @@ BASALT \
   -o study_01_basalt
 ```
 
-Multi-assembly PE delimiter: `,` within pairs, `/` between samples. HiFi → `-hf` only.
+PE syntax: `,` within a pair; `/` between samples. HiFi → `-hf` only (never `-l`).
 
 ## Key parameters
 
-| Option | Values | Role |
-|--------|--------|------|
-| `--sensitive` | quick / sensitive / more-sensitive | Candidate generators |
-| `--refinepara` | quick / deep | Retrieval depth |
-| `--min-cpn` / `--max-ctn` | e.g. 35 / 20 | Refinement entry gates |
-| `--mode` | new / continue | Init vs resume |
-| `-e` | m,v,l | MetaBinner / VAMB / LorBin |
-
-`-e l` requires the PKU-EMBL LorBin–BASALT fork; record its Git commit.
+| Option | Values | Thinking |
+|--------|--------|----------|
+| `--sensitive` | quick / sensitive / more-sensitive | Candidate diversity vs cost; not accuracy magic |
+| `--refinepara` | quick / deep | Deeper retrieval expands candidate space |
+| `--min-cpn` / `--max-ctn` | e.g. 35 / 20 | Refinement **entry** gates ≠ publication filters |
+| `--mode` | new / continue | Continue only if provenance unchanged |
+| `-e` | m / v / l | Extra binners; `-e l` needs PKU-EMBL LorBin fork commit |
 
 ## Pipeline stages
 
 ```text
-assemblies + reads
-  → coverage / connectivity
-  → multi-binner candidates
-  → within- then cross-assembly selection
-  → contig screening + retrieval (+ OLC)
-  → reassembly
-  → final MAG directory + QC report
+assemblies + reads → coverage/connectivity → multi-binner candidates
+  → within-/cross-assembly selection → contig screening/retrieval
+  → reassembly → final MAG dir + QC
 ```
 
 ## Hard rules
 
 1. One dedicated run directory; never two processes in one CWD
-2. Resume only with unchanged inputs/code/models/DBs
-3. Do not invent flags; verify with `--help` / guide
-4. Refinement is model-supported prediction, not experimental proof
+2. Prefer local/symlink names for Conda edition
+3. Resume only with identical inputs/code/models/DBs
+4. Do not invent flags — verify against guide/`--help`
 
 ## Related skills
 
-- `study-design` — whether assemblies belong in one run
-- `mag-qc` — publication filters vs refinement gates
-- `setup` — install and weights
-- `metagenomics-workflow` — end-to-end placement
+`study-design` · `megahit` · `metaspades` · `kneaddata` · `metawrap` · `checkm2` · `mag-qc` · `drep`

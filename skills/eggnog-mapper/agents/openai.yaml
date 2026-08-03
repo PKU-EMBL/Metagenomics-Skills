@@ -1,0 +1,7 @@
+interface:
+  display_name: "eggNOG-mapper"
+  short_description: "Orthology-based functional annotation (COG/KEGG/CAZy via eggNOG)"
+  default_prompt: "Use $eggnog-mapper for Orthology-based functional annotation (COG/KEGG/CAZy via egg."
+
+policy:
+  allow_implicit_invocation: true

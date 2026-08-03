@@ -1,7 +1,7 @@
 interface:
   display_name: "Tool Selection"
-  short_description: "Route metagenomics requests to the right skills"
-  default_prompt: "Use $tool-selection to choose between read-based, gene-catalogue, classical MAG, and BASALT routes."
+  short_description: "Route metagenomics requests to the right software skill"
+  default_prompt: "Use $tool-selection to choose among fastp, profilers, assemblers, MetaWRAP, and BASALT."
 
 policy:
   allow_implicit_invocation: true

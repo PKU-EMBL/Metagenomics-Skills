@@ -1,0 +1,7 @@
+interface:
+  display_name: "Salmon"
+  short_description: "Fast quantification of gene/transcript abundance; use --meta for metagenomes"
+  default_prompt: "Use $salmon for Fast quantification of gene/transcript abundance; use --meta."
+
+policy:
+  allow_implicit_invocation: true

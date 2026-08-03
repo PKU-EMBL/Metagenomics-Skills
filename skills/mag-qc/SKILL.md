@@ -8,7 +8,7 @@ description: >
   (4) Separating refinement gates from publication filters,
   (5) Ranking or reporting MAG catalogues.
 
-  For recovering MAGs, use mag-classical or basalt.
+  For recovering MAGs, use metawrap or basalt.
 license: MIT
 category: evaluation
 tags: [qc, checkm2, drep, completeness, contamination]
@@ -51,5 +51,5 @@ Prefer multi-criterion ranking:
 
 ## Related skills
 
-- `mag-classical` / `basalt` — produce bins
+- `metawrap` / `basalt` — produce bins
 - `visualization` — completeness–contamination plots

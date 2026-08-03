@@ -1,0 +1,7 @@
+interface:
+  display_name: "metaSPAdes"
+  short_description: "More sensitive metagenomic assembly via SPAdes meta mode"
+  default_prompt: "Use $metaspades for More sensitive metagenomic assembly via SPAdes meta mode."
+
+policy:
+  allow_implicit_invocation: true

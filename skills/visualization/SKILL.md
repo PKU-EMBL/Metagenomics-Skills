@@ -8,7 +8,7 @@ description: >
   (4) MAG quality and phylogeny plots,
   (5) Labeling figures by method (MetaPhlAn vs Kraken vs MAG).
 
-  For generating tables, use read-based, gene-catalogue, or mag-classical.
+  For generating tables, use metaphlan/humann/kraken2, salmon, or coverm.
 license: MIT
 category: evaluation
 tags: [visualization, diversity, statistics, figures]
@@ -44,5 +44,5 @@ tags: [visualization, diversity, statistics, figures]
 
 ## Related skills
 
-- `read-based` / `mag-classical` / `basalt` — data sources
+- `metaphlan` / `humann` / `kraken2` / `coverm` / `basalt` — data sources
 - `mag-qc` — filter before plotting catalogue claims
