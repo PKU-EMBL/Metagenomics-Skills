@@ -2,7 +2,7 @@
 
 Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining → research analysis), plus homology, phylogenomics, and language-model hubs.
 
-Total: **159** skills.
+Total: **163** skills.
 
 ---
 
@@ -120,11 +120,15 @@ Total: **159** skills.
 | `plasmaag` | [plasmaag](https://github.com/RasmussenLab/PlasMAAG) | Plasmid and organism reconstruction via assembly–alignment graphs. |
 | `cge-finders` | — | Route CGE Finder screens (plasmid / AMR / virulence / MGE). |
 | `plasmidfinder` | [PlasmidFinder](https://github.com/genomicepidemiology/plasmidfinder) | CGE replicon / plasmid typing. |
+| `pmlst` | [pmlst](https://github.com/ssi-dk/pmlst) | Plasmid multilocus sequence typing (pMLST schemes). |
+| `mlst` | [mlst](https://github.com/tseemann/mlst) | Chromosomal PubMLST sequence typing. |
 | `resfinder` | [ResFinder](https://github.com/genomicepidemiology/resfinder) | CGE acquired AMR genes (± PointFinder / DisinFinder). |
 | `pointfinder` | [pointfinder_db](https://bitbucket.org/genomicepidemiology/pointfinder_db) | Chromosomal AMR point mutations (via ResFinder/staramr). |
+| `disinfinder` | [disinfinder_db](https://bitbucket.org/genomicepidemiology/disinfinder_db) | Disinfectant / biocide resistance genes (via ResFinder). |
 | `virulencefinder` | [VirulenceFinder](https://bitbucket.org/genomicepidemiology/virulencefinder) | CGE virulence gene markers (supported species). |
 | `mobileelementfinder` | [MobileElementFinder](https://pypi.org/project/MobileElementFinder/) | Named MGEs (IS/Tn/ICE/IME/…). |
 | `staramr` | [staramr](https://github.com/phac-nml/staramr) | Combined ResFinder + PointFinder + PlasmidFinder scan. |
+| `abricate` | [ABRicate](https://github.com/tseemann/abricate) | Multi-DB mass screen (ResFinder/CARD/VFDB/PlasmidFinder/…). |
 | `macrel` | [macrel](https://github.com/BigDataBiology/macrel) | Screen genomes and metagenomes for antimicrobial peptides (AMPs). |
 | `element-cycling` | — | Route C/N/S/Fe/P/H₂/CH₄ elemental cycling annotation. |
 | `metabolic` | [METABOLIC](https://github.com/AnantharamanLab/METABOLIC) | Multi-element biogeochemical trait profiling (C/N/S/…). |

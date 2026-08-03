@@ -2,11 +2,11 @@
 name: resfinder
 description: >
   ResFinder — CGE identification of acquired antimicrobial resistance genes
-  (and optional PointFinder chromosomal mutations / DisinFinder) from assemblies
-  or reads. Use for isolate resistome typing with ResFinder DB phenotype
-  mapping. Upstream: https://github.com/genomicepidemiology/resfinder.
-  Route via cge-finders / microbial-mining; complement with rgi (CARD) and
-  deeparg — keep tables separate.
+  (and optional PointFinder chromosomal mutations / DisinFinder biocide genes)
+  from assemblies or reads. Use for isolate resistome typing with ResFinder DB
+  phenotype mapping. Upstream: https://github.com/genomicepidemiology/resfinder.
+  Route via cge-finders / microbial-mining; biocide-only → disinfinder;
+  complement with rgi (CARD) and deeparg — keep tables separate.
 license: MIT
 category: analysis-tools
 tags: [ResFinder, CGE, AMR, resistome, PointFinder, DisinFinder]
@@ -68,14 +68,16 @@ Pin ResFinder software and **all** DB versions used.
 Resistome claim?
 ├─ CGE acquired AMR (+ optional phenotype map) → resfinder
 ├─ Chromosomal AMR SNPs → pointfinder / resfinder -c
+├─ Biocide / disinfectant genes → disinfinder
 ├─ Combined Res+Point+Plasmid → staramr
+├─ Multi-DB screen → abricate
 ├─ CARD catalogue / meta gene catalogue → rgi
 ├─ ML complement → deeparg (separate table)
-└─ Plasmid context → plasmidfinder / genomad / mob-suite ∩ hits
+└─ Plasmid context → plasmidfinder / pmlst / genomad / mob-suite ∩ hits
 ```
 
 ## Related skills
 
-`cge-finders` · `pointfinder` · `plasmidfinder` · `staramr` · `rgi` ·
-`deeparg` · `virulencefinder` · `mobileelementfinder` · `genomad` ·
-`microbial-mining` · `tool-selection`
+`cge-finders` · `pointfinder` · `disinfinder` · `plasmidfinder` · `pmlst` ·
+`staramr` · `abricate` · `rgi` · `deeparg` · `virulencefinder` ·
+`mobileelementfinder` · `genomad` · `microbial-mining` · `tool-selection`

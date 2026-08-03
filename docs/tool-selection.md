@@ -35,7 +35,7 @@ Route by **scientific stage**, then deliverable. Full detail:
 | `phylogenomics` | Trees / evolutionary placement |
 | `element-cycling` | C/N/S/Fe/P biogeochemistry |
 | `dom-biosurfactant` | Glycan DOM / biosurfactants / HC degradation |
-| `cge-finders` | PlasmidFinder / ResFinder / PointFinder / VF / MEF / staramr |
+| `cge-finders` | PlasmidFinder / ResFinder / PointFinder / DisinFinder / VF / MEF / pMLST / mlst / staramr / ABRicate |
 | `genome-language-model` | DNA gLMs |
 | `protein-language-model` | Protein LMs |
 | `metagenomics-llm` | LM + Foldseek stack overview |

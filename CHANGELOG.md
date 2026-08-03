@@ -1,3 +1,14 @@
+## [1.21.0] - 2026-08-03
+
+### Added
+- CGE / isolate typing extensions: `disinfinder`, `pmlst`, `mlst`, `abricate`
+- References 136–138
+
+### Changed
+- Expanded `cge-finders` routing for biocide genes, plasmid/chromosomal ST,
+  and multi-DB mass screens
+- Skills catalog total: 163; package version 1.21.0
+
 ## [1.20.0] - 2026-08-03
 
 ### Added

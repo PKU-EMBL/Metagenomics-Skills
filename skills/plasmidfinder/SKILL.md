@@ -5,7 +5,7 @@ description: >
   reads (BLAST/KMA vs PlasmidFinder DB). Use for Inc/replicon markers on
   isolates and HQ genomes. Upstream:
   https://github.com/genomicepidemiology/plasmidfinder. Route via cge-finders /
-  microbial-mining; complement with genomad, plasmaag, mob-suite.
+  microbial-mining; plasmid ST → pmlst; complement genomad, plasmaag, mob-suite.
 license: MIT
 category: analysis-tools
 tags: [PlasmidFinder, CGE, plasmid, replicon, Inc, typing, MGE]
@@ -53,7 +53,9 @@ Exact flags vary by release — follow installed `--help` and pin DB commit/tag.
 ```text
 Plasmid claim?
 ├─ CGE replicon typing → plasmidfinder
+├─ Plasmid scheme ST → pmlst
 ├─ Combined isolate AMR+plasmid report → staramr
+├─ Multi-DB screen (incl. plasmidfinder DB) → abricate
 ├─ Contig plasmid/virus scores (meta) → genomad
 ├─ Plasmid MAG recovery → plasmaag
 ├─ MOB / relaxase typing → mob-suite
@@ -62,5 +64,6 @@ Plasmid claim?
 
 ## Related skills
 
-`cge-finders` · `staramr` · `resfinder` · `mob-suite` · `genomad` · `plasmaag` ·
-`mobileelementfinder` · `rgi` · `microbial-mining` · `tool-selection`
+`cge-finders` · `pmlst` · `mlst` · `staramr` · `abricate` · `resfinder` ·
+`mob-suite` · `genomad` · `plasmaag` · `mobileelementfinder` · `rgi` ·
+`microbial-mining` · `tool-selection`

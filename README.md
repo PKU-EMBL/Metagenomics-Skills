@@ -80,7 +80,7 @@ Auto-bins → `anvio` refine → `checkm2` / `gunc` / `mag-qc` → `gtdbtk`
 
 Contigs → `genomad` / `virsorter2` → `checkv` → `vcontact` ·
 `mobileog` / `isescan` / `integronfinder` / `mob-suite` · plasmids: `plasmaag` ·
-isolates: `cge-finders` (`plasmidfinder` / `resfinder` / `staramr` / …)
+isolates: `cge-finders` (`staramr` / `abricate` / `plasmidfinder` → `pmlst` / `mlst`)
 
 > Microbial mining (BGCs / AMR / element cycling / DOM / defense / QS)
 

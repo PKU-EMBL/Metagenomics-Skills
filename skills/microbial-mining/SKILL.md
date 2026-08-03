@@ -30,7 +30,7 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 | MGE protein machinery | `mobileog` | Category hit ≠ complete element |
 | Insertion sequences | `isescan` | IS ≠ plasmid |
 | Integrons / cassettes | `integronfinder` | Cassette ≠ expressed ARG |
-| CGE Finders (replicon / AMR / VF / MGE) | `cge-finders` | Best on isolates / HQ MAGs |
+| CGE Finders (+ pMLST / mlst / ABRicate) | `cge-finders` | Best on isolates / HQ MAGs |
 | Plasmid MOB / replicon typing | `mob-suite` · `plasmidfinder` | Typing ≠ wet-lab Inc assay |
 | Plasmid genome recovery | `plasmaag` | Multi-sample graphs help |
 | Antimicrobial peptides | `macrel` | High candidate FDR |
@@ -56,11 +56,12 @@ Mining goal?
 │   ├─ Protein machinery → mobileog
 │   ├─ IS elements → isescan
 │   ├─ Integrons → integronfinder
-│   ├─ CGE Finders → cge-finders (plasmidfinder · resfinder · …)
-│   └─ Plasmid MOB/replicon typing → mob-suite / plasmidfinder
+│   ├─ CGE Finders → cge-finders (plasmidfinder · resfinder · abricate · …)
+│   └─ Plasmid MOB/replicon typing → mob-suite / plasmidfinder (± pmlst)
 ├─ Plasmid MAGs → plasmaag (± genomad)
-├─ Virulence markers (supported taxa) → virulencefinder
+├─ Virulence markers (supported taxa) → virulencefinder / abricate
 ├─ Named MGEs (CGE library) → mobileelementfinder
+├─ Chromosomal / plasmid ST → mlst / pmlst
 ├─ AMP smORFs → macrel
 ├─ Element cycling (C, N, S, Fe, P, H₂, CH₄, …) → element-cycling
 ├─ DOM / biosurfactant / HC biodegradation → dom-biosurfactant
@@ -107,8 +108,9 @@ contigs
 
 `antismash` · `bigscape` · `genomad` · `virsorter2` · `checkv` · `vcontact` ·
 `mobileog` · `isescan` · `integronfinder` · `mob-suite` · `plasmaag` ·
-`cge-finders` · `plasmidfinder` · `resfinder` · `pointfinder` ·
-`virulencefinder` · `mobileelementfinder` · `staramr` · `macrel` ·
+`cge-finders` · `plasmidfinder` · `resfinder` · `pointfinder` · `disinfinder` ·
+`virulencefinder` · `mobileelementfinder` · `pmlst` · `mlst` · `staramr` ·
+`abricate` · `macrel` ·
 `element-cycling` · `metabolic` · `mebs` · `fegenie` · `dom-biosurfactant` ·
 `hadeg` · `biosurfdb` · `dram` · `dbcan` · `bakta` · `rgi` · `deeparg` ·
 `gapseq` · `vmh` · `defensefinder` · `padloc` · `qsap` · `spacedust` ·

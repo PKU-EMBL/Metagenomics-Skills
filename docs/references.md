@@ -290,6 +290,12 @@ the canonical papers to reference.
 
 135. Bharat, A. *et al.* Correlation between Phenotypic and In Silico Detection of Antimicrobial Resistance in *Salmonella enterica* in Canada Using Staramr. *Microorganisms* **10**, 292 (2022). https://doi.org/10.3390/microorganisms10020292
 
+136. Seemann, T. ABRicate: mass screening of contigs for antimicrobial and virulence genes. https://github.com/tseemann/abricate
+
+137. Seemann, T. mlst: scan contig files against PubMLST typing schemes. https://github.com/tseemann/mlst
+
+138. Jolley, K. A., Bray, J. E. & Maiden, M. C. J. Open-access bacterial population genomics: BIGSdb software, the PubMLST.org website and their applications. *Wellcome Open Res.* **3**, 124 (2018). https://doi.org/10.12688/wellcomeopenres.14826.1
+
 ## DOM, biosurfactants & biodegradation
 
 115. Rojas-Vargas, J., Castelán-Sánchez, H. G. & Pardo-López, L. HADEG: A curated hydrocarbon aerobic degradation enzymes and genes database. *Comput. Biol. Chem.* **107**, 107966 (2023). https://doi.org/10.1016/j.compbiolchem.2023.107966

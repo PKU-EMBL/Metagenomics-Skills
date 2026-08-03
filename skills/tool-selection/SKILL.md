@@ -33,7 +33,8 @@ Start from the **stage**, then the deliverable.
 7 Mining   microbial-mining → antismash · bigscape · genomad · virsorter2 · checkv · vcontact
            · mobileog · isescan · integronfinder · mob-suite · plasmaag · macrel
            · cge-finders · plasmidfinder · resfinder · pointfinder
-           · virulencefinder · mobileelementfinder · staramr
+           · disinfinder · virulencefinder · mobileelementfinder
+           · pmlst · mlst · staramr · abricate
            · element-cycling · metabolic · mebs · fegenie · dom-biosurfactant
            · hadeg · biosurfdb · dram · dbcan · gapseq · vmh · deeparg
            · defensefinder · padloc · qsap
@@ -81,8 +82,8 @@ Start from the **stage**, then the deliverable.
 | Resistome | `rgi` (± `deeparg`); isolates `resfinder` / `staramr` |
 | Plasmids / viruses / MGEs | `genomad` (± `virsorter2` → `checkv` → `vcontact`) |
 | MGE proteins / IS / integrons | `mobileog` / `isescan` / `integronfinder` |
-| CGE Finders (replicon / AMR / VF / MGE) | `cge-finders` |
-| Plasmid MOB / replicon typing | `mob-suite` / `plasmidfinder` |
+| CGE Finders (+ pMLST / mlst / ABRicate) | `cge-finders` |
+| Plasmid MOB / replicon typing | `mob-suite` / `plasmidfinder` (± `pmlst`) |
 | Plasmid genome recovery | `plasmaag` |
 | AMPs | `macrel` |
 | Element cycling (C/N/S/Fe/P/…) | `element-cycling` |

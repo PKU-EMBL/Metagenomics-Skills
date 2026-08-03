@@ -1,6 +1,6 @@
 {
   "name": "metagenomics-skills",
-  "version": "1.20.0",
+  "version": "1.21.0",
   "description": "Claude Code skills for shotgun metagenomics — QC through mining, CGE Finders, language models, research analysis, and public databases",
   "owner": {
     "name": "PKU-EMBL",

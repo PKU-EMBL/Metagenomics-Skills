@@ -1,26 +1,27 @@
 ---
 name: cge-finders
 description: >
-  Route Center for Genomic Epidemiology (CGE) Finder-style screens on bacterial
-  assemblies/isolates: PlasmidFinder, ResFinder, PointFinder, VirulenceFinder,
-  MobileElementFinder, plus staramr for combined Res/Point/Plasmid DB scans.
-  Use for clinical/One-Health isolate typing and plasmid-borne AMR context —
-  not community-wide dark-matter discovery. Child skills: plasmidfinder,
-  resfinder, pointfinder, virulencefinder, mobileelementfinder, staramr.
-  Complements genomad, mob-suite, rgi, mobileog. Route via microbial-mining.
+  Route Center for Genomic Epidemiology (CGE) Finder-style screens and related
+  isolate typing: PlasmidFinder, ResFinder, PointFinder, DisinFinder,
+  VirulenceFinder, MobileElementFinder, pMLST, plus staramr / ABRicate wrappers
+  and chromosomal mlst. Use for clinical/One-Health isolate typing and
+  plasmid-borne AMR context — not community-wide dark-matter discovery. Child
+  skills: plasmidfinder, resfinder, pointfinder, disinfinder, virulencefinder,
+  mobileelementfinder, pmlst, staramr, abricate, mlst. Complements genomad,
+  mob-suite, rgi, mobileog. Route via microbial-mining.
 license: MIT
 category: orchestration
-tags: [CGE, Finder, PlasmidFinder, ResFinder, PointFinder, VirulenceFinder, MobileElementFinder, staramr, AMR, plasmid, MGE]
+tags: [CGE, Finder, PlasmidFinder, ResFinder, PointFinder, DisinFinder, VirulenceFinder, MobileElementFinder, pMLST, staramr, ABRicate, MLST, AMR, plasmid, MGE]
 stage: mining
 ---
 
 # CGE Finders
 
-CGE **Finder** tools screen draft assemblies (or reads via KMA) against curated
-marker databases for plasmids, acquired AMR, chromosomal AMR SNPs, virulence
-genes, and named MGEs. Best for **isolates / HQ MAGs** with known taxa — not a
-replacement for metagenome-native contig classifiers (`genomad`) or CARD
-catalogues (`rgi`).
+CGE **Finder** tools (and close companions) screen draft assemblies against
+curated marker databases for plasmids, acquired AMR, chromosomal AMR SNPs,
+biocide genes, virulence genes, named MGEs, and sequence types. Best for
+**isolates / HQ MAGs** — not a replacement for metagenome-native contig
+classifiers (`genomad`) or CARD catalogues (`rgi`).
 
 Web hub: https://www.genomicepidemiology.org/
 
@@ -28,41 +29,50 @@ Web hub: https://www.genomicepidemiology.org/
 
 | Claim | Prefer | Caution |
 |-------|--------|---------|
-| Replicon / Inc-style plasmid typing (CGE DB) | `plasmidfinder` | DB bias to Enterobacterales / Gram+ sets; ≠ full plasmid MAG |
-| Acquired AMR genes (ResFinder DB) | `resfinder` | Genotype ≠ MIC; different ontology from CARD/`rgi` |
+| Replicon / Inc-style plasmid typing | `plasmidfinder` | ≠ complete plasmid MAG |
+| Plasmid scheme ST | `pmlst` | Must pick correct scheme |
+| Chromosomal PubMLST ST | `mlst` | Not plasmid ST |
+| Acquired AMR genes (ResFinder DB) | `resfinder` | ≠ CARD/`rgi` ontology |
 | Chromosomal AMR point mutations | `pointfinder` (± `resfinder -c`) | Species-limited panels |
-| Combined Res + Point + Plasmid reports | `staramr` | Convenience wrapper; pin DB versions |
-| Virulence gene markers | `virulencefinder` | Species DB coverage is narrow |
+| Disinfectant / biocide genes | `disinfinder` (via ResFinder) | ≠ antibiotic MIC |
+| Combined Res + Point + Plasmid | `staramr` | No VF / DisinFinder / pMLST |
+| Multi-DB mass screen | `abricate` | No PointFinder phenotype maps |
+| Virulence gene markers | `virulencefinder` (± `abricate --db vfdb`) | Narrow species DBs |
 | Named IS / Tn / ICE / IME / … | `mobileelementfinder` | Complements `isescan` / `mobileog` |
-| Plasmid contig discovery (meta) | `genomad` · `plasmaag` | Different task from replicon typing |
-| MOB / relaxase typing | `mob-suite` | Complements PlasmidFinder replicons |
-| Broad resistome (CARD) | `rgi` (± `deeparg`) | Do not merge unlabeled with ResFinder |
+| Meta plasmid/virus contigs | `genomad` · `plasmaag` | Different task |
+| MOB / relaxase typing | `mob-suite` | Complements replicons |
+| Broad resistome (CARD) | `rgi` (± `deeparg`) | Keep separate from ResFinder |
 
 Hard rules:
 
-1. Pin **software + database** versions for every Finder
+1. Pin **software + database** versions for every Finder / wrapper
 2. Prefer assembled contigs for isolate claims; state if using KMA on reads
 3. Do not equate Finder hits with phenotype or complete circular plasmids
-4. Keep ResFinder and RGI/CARD tables separate unless explicitly cross-mapped
+4. Keep ResFinder / DisinFinder / RGI-CARD tables separate unless cross-mapped
+5. Report chromosomal `mlst` ST and plasmid `pmlst` ST as distinct claims
 
 ## Decision tree
 
 ```text
-CGE / isolate Finder screen?
-├─ Replicons (PlasmidFinder DB) → plasmidfinder
-├─ Acquired AMR genes → resfinder
-├─ Chromosomal AMR SNPs → pointfinder (or resfinder with PointFinder DB)
-├─ One report: Res+Point+Plasmid → staramr
+Isolate / CGE-style screen?
+├─ Replicons → plasmidfinder
+├─ Plasmid ST → pmlst
+├─ Chromosomal ST → mlst
+├─ Acquired AMR → resfinder
+├─ Chromosomal AMR SNPs → pointfinder
+├─ Biocide genes → disinfinder
+├─ One report Res+Point+Plasmid → staramr
+├─ Multi-DB BLAST screen → abricate
 ├─ Virulence markers → virulencefinder
-├─ Named MGEs (IS/Tn/ICE/…) → mobileelementfinder
+├─ Named MGEs → mobileelementfinder
 ├─ Meta plasmid/virus contigs → genomad (± plasmaag)
-├─ MOB/replicon reconstruction → mob-suite
+├─ MOB / reconstruction → mob-suite
 └─ CARD resistome → rgi
 ```
 
 ## Related skills
 
-`plasmidfinder` · `resfinder` · `pointfinder` · `virulencefinder` ·
-`mobileelementfinder` · `staramr` · `genomad` · `mob-suite` · `plasmaag` ·
-`mobileog` · `isescan` · `integronfinder` · `rgi` · `deeparg` ·
-`microbial-mining` · `tool-selection`
+`plasmidfinder` · `pmlst` · `mlst` · `resfinder` · `pointfinder` ·
+`disinfinder` · `virulencefinder` · `mobileelementfinder` · `staramr` ·
+`abricate` · `genomad` · `mob-suite` · `plasmaag` · `mobileog` · `isescan` ·
+`integronfinder` · `rgi` · `deeparg` · `microbial-mining` · `tool-selection`

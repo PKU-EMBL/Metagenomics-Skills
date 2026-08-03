@@ -1,7 +1,7 @@
 {
   "name": "Metagenomics Skills",
   "description": "Shotgun metagenomics Agent Skills \u2014 QC, assembly, mapping, binning, taxonomy, function, microbial mining, CGE Finders, language models, and research analysis",
-  "version": "1.20.0",
+  "version": "1.21.0",
   "author": "PKU-EMBL",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
@@ -65,6 +65,10 @@
     "PointFinder",
     "VirulenceFinder",
     "MobileElementFinder",
+    "DisinFinder",
+    "pMLST",
+    "MLST",
+    "ABRicate",
     "staramr",
     "research-analysis",
     "MultiQC",
@@ -79,9 +83,9 @@
     "Nextflow",
     "Snakemake"
   ],
-  "skills_count": 159,
+  "skills_count": 163,
   "skill_categories": {
-    "analysis-tools": 122,
+    "analysis-tools": 126,
     "evaluation": 10,
     "orchestration": 13,
     "utilities": 14

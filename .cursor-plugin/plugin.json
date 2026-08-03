@@ -1,6 +1,6 @@
 {
   "name": "metagenomics-skills",
-  "version": "1.20.0",
+  "version": "1.21.0",
   "description": "Cursor-compatible shotgun metagenomics skills — QC through mining, CGE Finders, language models, and research analysis",
   "skills": "./skills/",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
