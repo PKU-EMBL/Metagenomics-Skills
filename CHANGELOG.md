@@ -1,3 +1,13 @@
+## [1.17.0] - 2026-08-03
+
+### Added
+- DOM / biosurfactant layer: `dom-biosurfactant` hub, `hadeg`, `biosurfdb`
+- Deepened `dbcan` for glycan DOM substrate / CGC prediction
+- References 115–117
+
+### Changed
+- Skills catalog total: 140; package version 1.17.0
+
 ## [1.16.0] - 2026-08-03
 
 ### Added

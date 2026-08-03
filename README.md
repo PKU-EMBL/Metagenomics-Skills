@@ -70,10 +70,10 @@ Auto-bins → `anvio` refine → `checkm2` / `gunc` / `mag-qc` → `gtdbtk`
 Contigs → `genomad` / `virsorter2` → `checkv` → `vcontact` ·
 `mobileog` / `isescan` / `integronfinder` / `mob-suite` · plasmids: `plasmaag`
 
-> Microbial mining (BGCs / AMR / element cycling / defense / QS)
+> Microbial mining (BGCs / AMR / element cycling / DOM / defense / QS)
 
 After MAGs: `microbial-mining` → `antismash` / `rgi` / `element-cycling` /
-`dram` / `defensefinder` / `padloc` / `qsap` / …
+`dom-biosurfactant` / `dram` / `defensefinder` / `padloc` / `qsap` / …
 
 > Homology search (Steinegger/Söding · vector DB · compressed genomes)
 

@@ -123,8 +123,11 @@ Total: **100** skills.
 | `metabolic` | [METABOLIC](https://github.com/AnantharamanLab/METABOLIC) | Multi-element biogeochemical trait profiling (C/N/S/…). |
 | `mebs` | [MEBS](https://github.com/valdeanda/mebs) | Entropy scores for S (and N/O/CH₄/Fe) cycle machinery. |
 | `fegenie` | [FeGenie](https://github.com/Arkadiy-Garber/FeGenie) | Iron genes, siderophores, Fe redox, magnetosome neighborhoods. |
+| `dom-biosurfactant` | — | Route DOM / glycan, biosurfactant, and HC/plastic biodegradation. |
+| `hadeg` | [HADEG](https://github.com/jarojasva/HADEG) | Curated HC/plastic degradation and biosurfactant genes. |
+| `biosurfdb` | [BioSurfDB](https://www.biosurfdb.org/) | Biosurfactant and biodegradation portal / pathways. |
 | `dram` | [dram](https://github.com/WrightonLabCSU/DRAM) | Distill microbial metabolism annotations for MAGs/genomes. |
-| `dbcan` | [dbcan](https://github.com/linnabrown/run_dbcan) | Annotate carbohydrate-active enzymes (CAZymes). |
+| `dbcan` | [dbcan](https://github.com/linnabrown/run_dbcan) | CAZymes + glycan substrate / CGC prediction (DOM polymers). |
 | `gapseq` | [gapseq](https://github.com/jotech/gapseq) | Predict pathways and reconstruct genome-scale metabolic models. |
 | `deeparg` | [deeparg](https://github.com/gaarangoa/DeepARG) | Deep-learning prediction of antibiotic resistance genes. |
 | `defensefinder` | [defensefinder](https://github.com/mdmparis/defense-finder) | Detect anti-phage defense systems in prokaryotic genomes. |
@@ -241,6 +244,7 @@ Total: **100** skills.
 | `homology-search` | — | Route all homology/search paradigms (also under Homology search). |
 | `phylogenomics` | — | Route phylogeny / evolutionary analyses (also under Phylogenomics). |
 | `element-cycling` | — | Route elemental / biogeochemical cycling (also under Microbial mining). |
+| `dom-biosurfactant` | — | Route DOM / biosurfactant / HC biodegradation (also under Microbial mining). |
 | `genome-language-model` | — | Route genome language models (also under Genome language models). |
 | `protein-language-model` | — | Route protein language models (also under Protein language models). |
 | `metagenomics-llm` | — | Route LMs and Foldseek/MMseqs structure–sequence search (also under AI). |

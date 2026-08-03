@@ -1,7 +1,7 @@
 {
   "name": "Metagenomics Skills",
   "description": "Shotgun metagenomics Agent Skills \u2014 QC, assembly, mapping, binning, taxonomy, function, and microbial mining",
-  "version": "1.16.0",
+  "version": "1.17.0",
   "author": "PKU-EMBL",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
@@ -54,14 +54,18 @@
     "Phylign",
     "IQ-TREE",
     "PhyloPhlAn",
-    "Unicore"
+    "Unicore",
+    "DOM",
+    "biosurfactant",
+    "HADEG",
+    "BioSurfDB"
   ],
-  "skills_count": 137,
+  "skills_count": 140,
   "skill_categories": {
-    "analysis-tools": 114,
+    "analysis-tools": 116,
     "evaluation": 2,
-    "utilities": 11,
-    "orchestration": 10
+    "orchestration": 11,
+    "utilities": 11
   },
   "featured_skills": [
     "metagenomics-workflow",
@@ -69,6 +73,7 @@
     "homology-search",
     "microbial-mining",
     "element-cycling",
+    "dom-biosurfactant",
     "genome-language-model",
     "protein-language-model",
     "phylogenomics",

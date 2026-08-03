@@ -31,8 +31,9 @@ Start from the **stage**, then the deliverable.
            · eggnog-mapper · rgi · homology-search
 7 Mining   microbial-mining → antismash · bigscape · genomad · virsorter2 · checkv · vcontact
            · mobileog · isescan · integronfinder · mob-suite · plasmaag · macrel
-           · element-cycling · metabolic · mebs · fegenie · dram · dbcan · gapseq
-           · vmh · deeparg · defensefinder · padloc · qsap
+           · element-cycling · metabolic · mebs · fegenie · dom-biosurfactant
+           · hadeg · biosurfdb · dram · dbcan · gapseq · vmh · deeparg
+           · defensefinder · padloc · qsap
 ```
 
 ## Mapping head-to-head
@@ -78,8 +79,9 @@ Start from the **stage**, then the deliverable.
 | Plasmid genome recovery | `plasmaag` |
 | AMPs | `macrel` |
 | Element cycling (C/N/S/Fe/P/…) | `element-cycling` |
+| DOM / biosurfactant / HC biodegradation | `dom-biosurfactant` |
 | Distilled metabolism | `dram` |
-| CAZymes | `dbcan` |
+| CAZymes / glycan DOM substrates | `dbcan` |
 | Metabolic models | `gapseq` |
 | Defense systems | `defensefinder` / `padloc` |
 | Quorum sensing | `qsap` |
@@ -190,4 +192,4 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 
 `metagenomics-workflow` · `microbial-mining` · `homology-search` · `phylogenomics` ·
 `genome-language-model` · `protein-language-model` · `metagenomics-llm` ·
-`element-cycling` · `study-design` · `public-databases`
+`element-cycling` · `dom-biosurfactant` · `study-design` · `public-databases`

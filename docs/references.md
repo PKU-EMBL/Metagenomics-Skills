@@ -274,6 +274,14 @@ the canonical papers to reference.
 
 114. Robertson, J. & Nash, J. H. E. MOB-suite: software tools for clustering, reconstruction and typing of plasmids from draft assemblies. *Microb. Genom.* **4**, e000206 (2018). https://doi.org/10.1099/mgen.0.000206
 
+## DOM, biosurfactants & biodegradation
+
+115. Rojas-Vargas, J., Castelán-Sánchez, H. G. & Pardo-López, L. HADEG: A curated hydrocarbon aerobic degradation enzymes and genes database. *Comput. Biol. Chem.* **107**, 107966 (2023). https://doi.org/10.1016/j.compbiolchem.2023.107966
+
+116. Oliveira, J. S. *et al.* BioSurfDB: knowledge and algorithms to support biosurfactants and biodegradation studies. *Database* **2015**, bav033 (2015). https://doi.org/10.1093/database/bav033
+
+117. Zheng, J. *et al.* dbCAN3: automated carbohydrate-active enzyme and substrate annotation. *Nucleic Acids Res.* **51**, W115–W121 (2023). https://doi.org/10.1093/nar/gkad328
+
 
 ---
 

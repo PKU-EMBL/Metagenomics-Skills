@@ -4,13 +4,14 @@ description: >
   Route microbial / genome mining after assembly or binning: BGCs (antiSMASH,
   BiG-SCAPE), AMR (RGI, DeepARG), mobile elements (geNomad, VirSorter2, CheckV,
   mobileOG-db, ISEScan, IntegronFinder, MOB-suite), antimicrobial peptides
-  (Macrel), element cycling (METABOLIC, MEBS, FeGenie), metabolism (DRAM,
-  gapseq, dbCAN), defense systems (DefenseFinder, PADLOC), quorum sensing
-  (QSAP), and annotation substrates (Bakta/Prokka). Use when the question is
-  discovery of functional elements, not community tables alone.
+  (Macrel), element cycling (METABOLIC, MEBS, FeGenie), DOM/biosurfactant/HC
+  biodegradation (dbCAN, HADEG, BioSurfDB), metabolism (DRAM, gapseq), defense
+  (DefenseFinder, PADLOC), quorum sensing (QSAP), and annotation substrates
+  (Bakta/Prokka). Use when the question is discovery of functional elements,
+  not community tables alone.
 license: MIT
 category: orchestration
-tags: [genome-mining, BGC, AMR, MGE, virus, metabolism, element-cycling, defense, QS, routing]
+tags: [genome-mining, BGC, AMR, MGE, virus, metabolism, element-cycling, DOM, biosurfactant, defense, QS, routing]
 stage: mining
 ---
 
@@ -33,8 +34,9 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 | Plasmid genome recovery | `plasmaag` | Multi-sample graphs help |
 | Antimicrobial peptides | `macrel` | High candidate FDR |
 | Element cycling (C/N/S/Fe/P/…) | `element-cycling` → `metabolic` / `mebs` / `fegenie` | Potential ≠ flux |
+| DOM / glycans / biosurfactants / HC | `dom-biosurfactant` → `dbcan` / `hadeg` / `biosurfdb` | Hit ≠ assay / rate |
 | Distilled metabolism | `dram` | Needs decent completeness |
-| CAZymes | `dbcan` | Consensus evidence rules |
+| CAZymes (glycan DOM) | `dbcan` | Consensus + substrate rules |
 | Genome-scale models | `gapseq` (± `vmh` / `alphagem`) | HQ MAGs only |
 | Anti-phage defense | `defensefinder` · `padloc` | Annotate proteins first; models differ |
 | Quorum sensing / autoinducers | `qsap` | Genes ≠ measured signals |
@@ -57,6 +59,7 @@ Mining goal?
 ├─ Plasmid MAGs → plasmaag (± genomad)
 ├─ AMP smORFs → macrel
 ├─ Element cycling (C, N, S, Fe, P, H₂, CH₄, …) → element-cycling
+├─ DOM / biosurfactant / HC biodegradation → dom-biosurfactant
 ├─ Metabolism distillate → dram (± dbcan)
 ├─ GEMs → gapseq
 ├─ Defense systems → bakta/prokka → defensefinder and/or padloc
@@ -76,6 +79,7 @@ bins/MAGs (checkm2 / mag-qc / gunc)
    ├─→ antismash → bigscape
    ├─→ rgi (± deeparg)
    ├─→ element-cycling → metabolic / mebs / fegenie
+   ├─→ dom-biosurfactant → dbcan / hadeg / biosurfdb
    ├─→ dram → dbcan / gapseq
    ├─→ defensefinder / padloc
    └─→ qsap
@@ -98,7 +102,8 @@ contigs
 
 `antismash` · `bigscape` · `genomad` · `virsorter2` · `checkv` · `vcontact` ·
 `mobileog` · `isescan` · `integronfinder` · `mob-suite` · `plasmaag` ·
-`macrel` · `element-cycling` · `metabolic` · `mebs` · `fegenie` · `dram` ·
-`dbcan` · `bakta` · `rgi` · `deeparg` · `gapseq` · `vmh` · `defensefinder` ·
-`padloc` · `qsap` · `spacedust` · `foldseek` · `folddisco` ·
-`homology-search` · `metagenomics-llm` · `tool-selection`
+`macrel` · `element-cycling` · `metabolic` · `mebs` · `fegenie` ·
+`dom-biosurfactant` · `hadeg` · `biosurfdb` · `dram` · `dbcan` · `bakta` ·
+`rgi` · `deeparg` · `gapseq` · `vmh` · `defensefinder` · `padloc` · `qsap` ·
+`spacedust` · `foldseek` · `folddisco` · `homology-search` ·
+`metagenomics-llm` · `tool-selection`
