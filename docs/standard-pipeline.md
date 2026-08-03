@@ -62,10 +62,10 @@ not validated compounds, phenotypes, or complete phages unless QC says so
 | 3 Mapping | `strobealign`, `bowtie2`, `bwa`, `bwa-mem2`, `minimap2`, `samtools`, `bbmap`, `diamond`, `lexicmap` |
 | 4 Binning | `metabat2`, `maxbin2`, `concoct`, `semibin2`, `vamb`, `aamb`, `taxvamb`, `comebin`, `metabinner`, `lorbin`, `basalt`, `metawrap`, `dastool`, `anvio`, `deepurify`, `drep`, `skani`, `fastani`, `coverm`, `checkm2`, `gunc`, `mag-qc` |
 | 5 Taxonomy | `metaphlan`, `singlem`, `kraken2`, `bracken`, `motus`, `sylph`, `metabuli`, `kaiju`, `gtdbtk`, `gtdb`, `mgnify` |
-| 6 Function | `humann`, `prodigal`, `prokka`, `bakta`, `cd-hit`, `mmseqs2`, `salmon`, `eggnog-mapper`, `rgi`, `barrnap` |
-| 7 Mining | `microbial-mining`, `antismash`, `bigscape`, `genomad`, `virsorter2`, `checkv`, `vcontact`, `plasmaag`, `macrel`, `dram`, `dbcan`, `gapseq`, `vmh`, `deeparg`, `defensefinder` |
+| 6 Function | `humann`, `prodigal`, `prokka`, `bakta`, `cd-hit`, `mmseqs2`, `salmon`, `eggnog-mapper`, `rgi`, `barrnap`, `foldseek` |
+| 7 Mining | `microbial-mining`, `antismash`, `bigscape`, `genomad`, `virsorter2`, `checkv`, `vcontact`, `plasmaag`, `macrel`, `dram`, `dbcan`, `gapseq`, `vmh`, `deeparg`, `defensefinder`, `folddisco`, `spacedust` |
 | Strain | `instrain` |
 | Public data | `sra-ena`, `cami`, `progenomes`, `kegg`, `insilicoseq`, … |
 | Report | `visualization` |
-| AI / LMs | `metagenomics-llm`, `omg`, `plmsearch`, `deepblast`, `spacedust`, `alphagem` |
+| AI / LMs & structure search | `metagenomics-llm`, `omg`, `mmseqs2`, `foldseek`, `folddisco`, `plmsearch`, `deepblast`, `spacedust`, `alphagem` |
 | Routing | `tool-selection`, `metagenomics-workflow`, `metagenomics-llm` |

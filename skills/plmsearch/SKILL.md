@@ -38,7 +38,8 @@ benchmarks.
 | Tool | When |
 |------|------|
 | `mmseqs2` / `diamond` | Default catalogue search |
-| `plmsearch` | Remote homology / dark proteins |
+| `foldseek` | Structures / ProstT5 available |
+| `plmsearch` | Remote homology / dark proteins (sequence-only PLM) |
 | `deepblast` | Structure-aware alignment + TM-score prediction (TM-Vec) |
 
 Hits remain computational — transfer annotation cautiously.
@@ -55,6 +56,7 @@ Hits remain computational — transfer annotation cautiously.
 ```text
 Protein search sensitivity need?
 ├─ Standard → mmseqs2 / diamond
+├─ Have structures → foldseek (± folddisco motifs)
 ├─ Remote homology, sequence-only → plmsearch
 ├─ Need explicit structural alignment from sequence → deepblast
 └─ Gene neighborhood modules → spacedust
@@ -62,5 +64,5 @@ Protein search sensitivity need?
 
 ## Related skills
 
-`metagenomics-llm` · `deepblast` · `mmseqs2` · `diamond` · `eggnog-mapper` ·
-`spacedust` · `tool-selection`
+`metagenomics-llm` · `foldseek` · `folddisco` · `deepblast` · `mmseqs2` ·
+`diamond` · `eggnog-mapper` · `spacedust` · `tool-selection`

@@ -52,11 +52,11 @@ structure search (Foldseek) when structures/pLDDT models exist.
 Remote homology workflow?
 ├─ Fast PLM embedding search → plmsearch
 ├─ TM-score search + structural alignment → deepblast (TM-Vec)
-├─ Have structures / AFDB → Foldseek (± spacedust)
+├─ Have structures / AFDB → foldseek (± folddisco / spacedust)
 └─ Close homologs → mmseqs2 / diamond
 ```
 
 ## Related skills
 
-`metagenomics-llm` · `plmsearch` · `spacedust` · `mmseqs2` · `eggnog-mapper` ·
-`tool-selection`
+`metagenomics-llm` · `plmsearch` · `foldseek` · `folddisco` · `spacedust` ·
+`mmseqs2` · `eggnog-mapper` · `tool-selection`

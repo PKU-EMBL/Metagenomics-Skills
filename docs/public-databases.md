@@ -55,11 +55,13 @@ skill.
 5. CAMI “best tool” is dataset-conditioned — report which challenge set you used
 6. Sequence abundance ≠ taxonomic abundance in profiler benchmarks
 
-## AI / language-model data
+## AI / language-model & structure-search data
 
 For OMG/gLM2 and PLM-assisted annotation, start at `metagenomics-llm` and
-`omg`. These are **ML corpora / models**, not substitutes for SRA reanalysis
-or GTDB taxonomy claims.
+`omg`. For AFDB/PDB/ESM Atlas structure indexes use `foldseek` /
+`folddisco` (`foldseek databases …`, Folddisco opendata indices). These are
+**ML corpora / structure DBs**, not substitutes for SRA reanalysis or GTDB
+taxonomy claims.
 
 ## See also
 

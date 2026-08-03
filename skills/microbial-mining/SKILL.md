@@ -32,6 +32,8 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 | Genome-scale models | `gapseq` (± `vmh`) | HQ MAGs only |
 | Anti-phage defense | `defensefinder` | Annotate proteins first |
 | De novo conserved clusters | `spacedust` | Complement known-system tools |
+| Structure search (AFDB/PDB) | `foldseek` | Via `metagenomics-llm` |
+| Structural motifs | `folddisco` | Motif ≠ proven activity |
 | Remote homology / LM search | `plmsearch` / `deepblast` | Via `metagenomics-llm` |
 | Structure-aware GEMs | `alphagem` | HQ genomes only |
 | Annotation substrate | `bakta` / `prokka` | Feed other miners |
@@ -49,6 +51,7 @@ Mining goal?
 ├─ GEMs → gapseq
 ├─ Defense systems → bakta/prokka → defensefinder
 ├─ Dark modules / neighborhoods → spacedust
+├─ Structure / motif search → foldseek / folddisco
 ├─ LM remote homology → metagenomics-llm → plmsearch / deepblast
 └─ Unsure → bakta on HQ MAGs, then branch
 ```
@@ -79,4 +82,5 @@ contigs
 
 `antismash` · `bigscape` · `genomad` · `virsorter2` · `checkv` · `macrel` ·
 `dram` · `dbcan` · `bakta` · `rgi` · `deeparg` · `gapseq` · `vmh` · `defensefinder` ·
-`vcontact` · `plasmaag` · `spacedust` · `metagenomics-llm` · `tool-selection`
+`vcontact` · `plasmaag` · `spacedust` · `foldseek` · `folddisco` ·
+`metagenomics-llm` · `tool-selection`

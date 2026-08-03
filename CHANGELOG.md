@@ -1,3 +1,15 @@
+## [1.9.0] - 2026-08-03
+
+### Added
+- Steinegger structure-search layer: `foldseek` (3Di search, Multimer, ProstT5,
+  clustering), `folddisco` (structural motifs)
+- References 80–83 (Foldseek, Foldseek-Multimer, Folddisco, AFDB clustering)
+
+### Changed
+- Expanded `metagenomics-llm` routing (sequence → fold → multimer → motif)
+- Deepened `mmseqs2` as sequence counterpart; cross-links in mining/tool-selection
+- Skills catalog total: 102; package version 1.9.0
+
 ## [1.8.0] - 2026-08-03
 
 ### Added

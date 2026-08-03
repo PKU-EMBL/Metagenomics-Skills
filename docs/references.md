@@ -190,6 +190,16 @@ the canonical papers to reference.
 
 79. Palsson, B. O., Lee, S. Y. & Kim, G. B. Approaches for accelerating microbial gene function discovery using artificial intelligence. *Nat. Microbiol.* (2025). https://doi.org/10.1038/s41564-025-02214-1
 
+## Structure search (Steinegger / Söding stack)
+
+80. van Kempen, M. *et al.* Fast and accurate protein structure search with Foldseek. *Nat. Biotechnol.* **42**, 243–246 (2024). https://doi.org/10.1038/s41587-023-01773-0
+
+81. Kim, W. *et al.* Rapid and sensitive protein complex alignment with Foldseek-Multimer. *Nat. Methods* **22**, 469–472 (2025). https://doi.org/10.1038/s41592-025-02593-7
+
+82. Kim, H., Kim, R. S., Mirdita, M., Yoon, J. & Steinegger, M. Structural motif search across the protein universe with Folddisco. *Nat. Biotechnol.* (2026). https://doi.org/10.1038/s41587-026-03162-9
+
+83. Barrio-Hernandez, I. *et al.* Clustering predicted structures at the scale of the known protein universe. *Nature* **622**, 637–645 (2023). https://doi.org/10.1038/s41586-023-06510-w
+
 
 ---
 

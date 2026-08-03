@@ -63,5 +63,5 @@ Dark genes / modules in MAG sets?
 
 ## Related skills
 
-`metagenomics-llm` · `defensefinder` · `antismash` · `eggnog-mapper` ·
-`deepblast` · `microbial-mining` · `tool-selection`
+`foldseek` · `folddisco` · `mmseqs2` · `metagenomics-llm` · `defensefinder` ·
+`antismash` · `eggnog-mapper` · `deepblast` · `microbial-mining` · `tool-selection`

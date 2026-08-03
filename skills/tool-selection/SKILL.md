@@ -97,11 +97,14 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | Only one sample | Single-coverage (acknowledge hidden contamination risk) |
 | Huge public cohorts / rare taxa | `binchicken` targeted coassembly → then bin |
 
-## AI / language models
+## AI / LM & structure search (Steinegger + PLMs)
 
 | Need | Prefer |
 |------|--------|
-| Route LM/PLM tools | `metagenomics-llm` |
+| Route LM / Foldseek stack | `metagenomics-llm` |
+| Sequence search / NR / contig tax | `mmseqs2` |
+| Structure search (AFDB/PDB) | `foldseek` |
+| Structural motifs | `folddisco` |
 | Pretrain corpus / gLM2 | `omg` |
 | Remote protein homology (PLM) | `plmsearch` / `deepblast` |
 | Conserved gene clusters (structure-aware) | `spacedust` |

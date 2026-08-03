@@ -95,7 +95,7 @@ Total: **100** skills.
 | `prokka` | [prokka](https://github.com/tseemann/prokka) | Rapid prokaryotic genome annotation (CDS/rRNA/tRNA). |
 | `bakta` | [bakta](https://github.com/oschwengers/bakta) | Rapid standardized annotation of bacterial genomes (alignment-free ID). |
 | `cd-hit` | [cd-hit](https://github.com/weizhongli/cdhit) | Cluster genes/proteins to build non-redundant catalogues. |
-| `mmseqs2` | [mmseqs2](https://github.com/soedinglab/MMseqs2) | Ultra-fast protein search, clustering, and contig taxonomy. |
+| `mmseqs2` | [mmseqs2](https://github.com/soedinglab/MMseqs2) | Ultra-fast protein search, clustering, and contig taxonomy (Steinegger stack). |
 | `salmon` | [salmon](https://github.com/COMBINE-lab/salmon) | Fast quantification of gene/transcript abundance; use --meta for metagenomes. |
 | `eggnog-mapper` | [eggnog-mapper](https://github.com/eggnogdb/eggnog-mapper) | Orthology-based functional annotation (COG/KEGG/CAZy via eggNOG). |
 | `rgi` | [rgi](https://github.com/arpcard/rgi) | Antibiotic resistance gene annotation against CARD. |
@@ -150,12 +150,15 @@ Total: **100** skills.
 | `setup` | — | First-time environment and database setup for shotgun metagenomics tool skills. |
 
 
-## AI / language models
+## AI / language models & structure search
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `metagenomics-llm` | — | Route genomic/protein LMs and AI-assisted annotation for metagenomics. |
+| `metagenomics-llm` | — | Route genomic/protein LMs and Steinegger structure/sequence search. |
 | `omg` | [OMG](https://github.com/TattaBio/OMG) | Open MetaGenomic corpus + gLM2 mixed-modality genomic language model. |
+| `mmseqs2` | [MMseqs2](https://github.com/soedinglab/MMseqs2) | Sequence search, Linclust NR, contig taxonomy — also under Function. |
+| `foldseek` | [Foldseek](https://github.com/steineggerlab/foldseek) | Ultrafast 3Di structure search, clustering, Foldseek-Multimer, ProstT5. |
+| `folddisco` | [Folddisco](https://github.com/steineggerlab/folddisco) | Fast discontinuous structural motif search (AFDB/PDB/ESM30). |
 | `plmsearch` | [PLMSearch](https://github.com/maovshao/PLMSearch) | PLM embeddings for fast remote homology protein search. |
 | `deepblast` | [DeepBLAST](https://github.com/flatironinstitute/deepblast) | TM-Vec + DeepBLAST remote homology and structural alignment from sequence. |
 | `spacedust` | [Spacedust](https://github.com/soedinglab/Spacedust) | De novo conserved gene clusters via Foldseek-aware neighborhood discovery. |
@@ -168,7 +171,7 @@ Total: **100** skills.
 | `tool-selection` | — | Choose shotgun tools by stage: QC, assembly, mapping, binning, taxonomic annotation, functional annotation, and microbial mining. |
 | `metagenomics-workflow` | — | End-to-end shotgun metagenomics: quality control, assembly, mapping, binning, taxonomic annotation, functional annotation, and microbial mining (BGCs, AMR, MGEs/viruses, AMPs, metabolism, defense). |
 | `study-design` | — | Study design for shotgun metagenomics across QC, assembly, binning, and annotation. |
-| `metagenomics-llm` | — | Route genomic/protein language models for metagenomics (also under AI / language models). |
+| `metagenomics-llm` | — | Route LMs and Foldseek/MMseqs structure–sequence search (also under AI). |
 
 ## Other
 

@@ -28,6 +28,7 @@ in your disk layout:
 | Pathway / ortholog knowledge bases | KEGG, eggNOG, MetaCyc | `kegg` · `eggnog-mapper` · `biobakery-databases` |
 | Tool runtime indexes | Kraken, CheckM2, ChocoPhlAn, CARD | tool skills |
 | ML pretraining corpora / genomic LMs | OMG, gLM2 | `omg` · `metagenomics-llm` |
+| Structure search indexes | AFDB, PDB, ESM Atlas (via Foldseek/Folddisco) | `foldseek` · `folddisco` · `metagenomics-llm` |
 
 ## Analytical thinking
 
