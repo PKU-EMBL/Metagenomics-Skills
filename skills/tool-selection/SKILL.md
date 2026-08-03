@@ -167,12 +167,24 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | Conserved gene clusters (structure-aware) | `spacedust` |
 | GEM + structure/dark metabolism | `alphagem` |
 
+## Research analysis (stats · figures · reports)
+
+| Need | Prefer |
+|------|--------|
+| Route stats / figures / QC reports | `research-analysis` |
+| Diversity + composition R workflow | `microeco` |
+| Multivariable differential abundance | `maaslin2` |
+| Classic LDA biomarkers | `lefse` |
+| Aggregated QC HTML | `multiqc` |
+| Figure checklist by stage | `visualization` |
+
 ## Never
 
 - Skip mapping when binning needs coverage
 - Merge taxonomy methods unlabeled
 - Treat mining hits as validated products/phenotypes
 - Call bins MAGs before QC filters
+- Run group statistics before inspecting batch / library-size structure
 
 ## Public data (short)
 
@@ -192,4 +204,5 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 
 `metagenomics-workflow` · `microbial-mining` · `homology-search` · `phylogenomics` ·
 `genome-language-model` · `protein-language-model` · `metagenomics-llm` ·
-`element-cycling` · `dom-biosurfactant` · `study-design` · `public-databases`
+`element-cycling` · `dom-biosurfactant` · `research-analysis` · `study-design` ·
+`public-databases`

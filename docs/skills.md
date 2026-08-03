@@ -155,11 +155,23 @@ Total: **100** skills.
 | `gtdb` | [gtdb](https://gtdb.ecogenomic.org/) | GTDB public releases — also under Taxonomy. |
 | `biobakery-databases` | [biobakery](https://github.com/biobakery/biobakery) | MetaPhlAn / HUMAnN reference indexes — also under Function. |
 
+## Research analysis (stats · figures · reports)
+
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `research-analysis` | — | Route QC reports, diversity/figures, and differential abundance for papers. |
+| `visualization` | — | Stage-wise figure checklist (pair with microeco / MaAsLin2 / LEfSe). |
+| `microeco` | [microeco](https://github.com/ChiLiubio/microeco) | R package for microbiome diversity, plots, DA, and networks. |
+| `maaslin2` | [Maaslin2](https://github.com/biobakery/Maaslin2) | Multivariable meta-omic associations (MaAsLin2/3). |
+| `lefse` | [LEfSe](https://github.com/SegataLab/lefse) | LDA effect-size biomarker discovery. |
+| `multiqc` | [MultiQC](https://github.com/MultiQC/MultiQC) | Aggregate FastQC/mapping/QUAST logs into one HTML report. |
+
 ## Report & utilities
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `visualization` | — | Statistical visualization for shotgun metagenomics across QC, taxonomy, function, and binning outputs. |
+| `research-analysis` | — | Research stats/figures routing — also under Research analysis. |
+| `visualization` | — | Statistical visualization checklist — also under Research analysis. |
 | `setup` | — | First-time environment and database setup for shotgun metagenomics tool skills. |
 
 
@@ -245,6 +257,7 @@ Total: **100** skills.
 | `phylogenomics` | — | Route phylogeny / evolutionary analyses (also under Phylogenomics). |
 | `element-cycling` | — | Route elemental / biogeochemical cycling (also under Microbial mining). |
 | `dom-biosurfactant` | — | Route DOM / biosurfactant / HC biodegradation (also under Microbial mining). |
+| `research-analysis` | — | Route stats / figures / QC reports (also under Research analysis). |
 | `genome-language-model` | — | Route genome language models (also under Genome language models). |
 | `protein-language-model` | — | Route protein language models (also under Protein language models). |
 | `metagenomics-llm` | — | Route LMs and Foldseek/MMseqs structure–sequence search (also under AI). |

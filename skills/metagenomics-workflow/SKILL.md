@@ -24,7 +24,7 @@ study-design + setup (+ public-databases)
         v
 1 QC      fastp → kneaddata
         │
-        ├─► 5 taxonomy / 6 function (reads) ─► visualization
+        ├─► 5 taxonomy / 6 function (reads) ─► research-analysis
         │
         v
 2 Assembly   megahit | metaspades | metaflye | metamdbg
@@ -45,14 +45,14 @@ study-design + setup (+ public-databases)
         └─► 7 microbial mining: antismash / genomad→checkv→vcontact / dram / …
         │
         v
-   visualization → Methods archive
+   research-analysis (multiqc · microeco · maaslin2 · …) → Methods archive
 ```
 
 ## Common paths
 
 | Goal | Route |
 |------|-------|
-| Composition only | QC → `metaphlan` / `singlem` / `kraken2` → visualization |
+| Composition only | QC → `metaphlan` / `singlem` / `kraken2` → `research-analysis` |
 | Genome-resolved catalogue | QC → assembly → mapping → `basalt` ★ → mag-qc → gtdbtk |
 | Interactive MAG polish | After auto-bins → `anvio` → re-QC |
 | Environmental unknowns | QC → `singlem` (± `binchicken` coassembly) |
@@ -70,9 +70,11 @@ study-design + setup (+ public-databases)
 - [ ] If mining: route via `microbial-mining`; pin DBs; state hypothesis limits
 - [ ] Homology search paradigm declared (`homology-search`) when annotating dark genes
 - [ ] If trees/evolution: route via `phylogenomics` (not ANI-as-tree)
+- [ ] Downstream stats/figures via `research-analysis` (pin transforms + FDR)
 - [ ] Provenance: software **and** database releases
 
 ## Related skills
 
-`tool-selection` · `microbial-mining` · `homology-search` · `phylogenomics` ·
-`metagenomics-llm` · `public-databases` · `study-design` · `mag-qc` · stage skills under `skills/`
+`tool-selection` · `research-analysis` · `microbial-mining` · `homology-search` ·
+`phylogenomics` · `metagenomics-llm` · `public-databases` · `study-design` ·
+`mag-qc` · stage skills under `skills/`

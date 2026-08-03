@@ -1,3 +1,13 @@
+## [1.18.0] - 2026-08-03
+
+### Added
+- Research analysis layer: `research-analysis` hub, `microeco`, `maaslin2`,
+  `lefse`, `multiqc`; deepened `visualization`
+- References 118–121
+
+### Changed
+- Skills catalog total: 145; package version 1.18.0
+
 ## [1.17.0] - 2026-08-03
 
 ### Added

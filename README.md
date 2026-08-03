@@ -53,13 +53,19 @@ scripts/install-platforms.sh
 
 > Full genome-resolved path
 
-`study-design` → **QC** → **assembly** → **mapping** → **binning** (`basalt`
-recommended) → (± `anvio` / `deepurify`) → **taxonomy** / **function** →
-`visualization`
+`study-design` → **QC** (± `multiqc`) → **assembly** → **mapping** →
+**binning** (`basalt` recommended) → (± `anvio` / `deepurify`) →
+**taxonomy** / **function** → `research-analysis` (`microeco` / `maaslin2` / …)
 
 > Community composition only (no assembly)
 
-**QC** → **taxonomy** (`metaphlan`, `singlem`, or `kraken2`) → `visualization`
+**QC** → **taxonomy** (`metaphlan`, `singlem`, or `kraken2`) →
+`research-analysis`
+
+> Research stats & figures
+
+`research-analysis` → `multiqc` / `microeco` / `visualization` / `maaslin2` /
+`lefse`
 
 > Genome-resolved + interactive polish
 

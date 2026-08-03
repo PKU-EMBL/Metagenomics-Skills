@@ -282,6 +282,16 @@ the canonical papers to reference.
 
 117. Zheng, J. *et al.* dbCAN3: automated carbohydrate-active enzyme and substrate annotation. *Nucleic Acids Res.* **51**, W115–W121 (2023). https://doi.org/10.1093/nar/gkad328
 
+## Research analysis (stats & figures)
+
+118. Ewels, P., Magnusson, M., Lundin, S. & Käller, M. MultiQC: summarize analysis results for multiple tools and samples in a single report. *Bioinformatics* **32**, 3047–3048 (2016). https://doi.org/10.1093/bioinformatics/btw354
+
+119. Mallick, H. *et al.* Multivariable association discovery in population-scale meta-omics studies. *PLoS Comput. Biol.* **17**, e1009442 (2021). https://doi.org/10.1371/journal.pcbi.1009442
+
+120. Segata, N. *et al.* Metagenomic biomarker discovery and explanation. *Genome Biol.* **12**, R60 (2011). https://doi.org/10.1186/gb-2011-12-6-r60
+
+121. Liu, C. *et al.* A workflow for statistical analysis and visualization of microbiome omics data using the R microeco package. *Nat. Protoc.* **21**, 1300–1324 (2026). https://doi.org/10.1038/s41596-025-01239-4
+
 
 ---
 
