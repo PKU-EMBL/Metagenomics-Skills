@@ -47,6 +47,12 @@ Prefer multi-criterion ranking:
 3. Prefer better contiguity and read support
 4. Prefer taxonomic consistency with study expectations
 
+## Decontamination tools
+
+- Score contamination: `checkm2`, `gunc`
+- Remove/split contaminants: `deepurify`
+- Interactive contig editing: `anvio`
+
 ## Related skills
 
 - `basalt` · `metawrap` · `dastool` — binning stage

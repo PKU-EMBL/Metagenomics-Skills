@@ -147,6 +147,35 @@ the canonical papers to reference.
 60. Sun, Z. *et al.* Challenges in benchmarking metagenomic profilers. *Nat. Methods* **18**, 618–626 (2021). https://doi.org/10.1038/s41592-021-01141-3
 
 
+## Platforms, ANI, viruses, plasmids, simulation & DL binning
+
+61. Eren, A. M. *et al.* Anvi'o: an advanced analysis and visualization platform for 'omics data. *PeerJ* **3**, e1319 (2015). https://doi.org/10.7717/peerj.1319
+
+62. Woodcroft, B. J. *et al.* Comprehensive taxonomic identification of microbial species in metagenomic data using SingleM and Sandpiper. *Nat. Biotechnol.* (2025). https://doi.org/10.1038/s41587-025-02738-1
+
+63. Jang, H. B. *et al.* Taxonomic assignment of uncultivated prokaryotic virus genomes is enabled by gene-sharing networks. *Nat. Biotechnol.* **37**, 632–639 (2019). https://doi.org/10.1038/s41587-019-0100-8
+
+64. Bolduc, B. *et al.* Machine learning enables scalable and systematic hierarchical virus taxonomy. *Nat. Biotechnol.* (2025). https://doi.org/10.1038/s41587-025-02946-9
+
+65. Zou, B. *et al.* A multi-modal deep language model for contaminant removal from metagenome-assembled genomes. *Nat. Mach. Intell.* **6**, 1245–1255 (2024). https://doi.org/10.1038/s42256-024-00908-5
+
+66. Jain, C., Rodriguez-R, L. M., Phillippy, A. M., Konstantinidis, K. T. & Aluru, S. High throughput ANI analysis of 90K prokaryotic genomes reveals clear species boundaries. *Nat. Commun.* **9**, 5114 (2018). https://doi.org/10.1038/s41467-018-07641-9
+
+67. Noronha, A. *et al.* The Virtual Metabolic Human database: integrating human and gut microbiome metabolism with nutrition and disease. *Nucleic Acids Res.* **47**, D614–D624 (2019). https://doi.org/10.1093/nar/gky992
+
+68. Gourlé, H., Karlsson-Lindsjö, O., Hayer, J. & Bongcam-Rudloff, E. Simulating Illumina metagenomic data with InSilicoSeq. *Bioinformatics* **35**, 521–522 (2019). https://doi.org/10.1093/bioinformatics/bty630
+
+69. Piera Líndez, P. *et al.* Accurate plasmid reconstruction from metagenomics data using assembly–alignment graphs and contrastive learning. *Nat. Biotechnol.* (2026). https://doi.org/10.1038/s41587-026-03005-7
+
+70. Piera Líndez, P. *et al.* Adversarial and variational autoencoders improve metagenomic binning. *Commun. Biol.* **6**, 1073 (2023). https://doi.org/10.1038/s42003-023-05452-3
+
+71. Kutuzova, S. *et al.* Improving metagenome binning by integrating intrinsic features and taxonomy. *Nat. Biotechnol.* (2026). https://doi.org/10.1038/s41587-026-03098-0
+
+72. Wang, Z. *et al.* MetaBinner: a high-performance and stand-alone ensemble binning method to recover individual genomes from complex microbial communities. *Genome Biol.* **24**, 1 (2023). https://doi.org/10.1186/s13059-022-02832-6
+
+73. Shen, W., Lees, J. A. & Iqbal, Z. Efficient sequence alignment against millions of prokaryotic genomes with LexicMap. *Nat. Biotechnol.* (2025). https://doi.org/10.1038/s41587-025-02812-8
+
+
 ---
 
 ## How to cite in Methods (example)

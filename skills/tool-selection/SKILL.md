@@ -22,14 +22,14 @@ Start from the **stage**, then the deliverable.
 2 Assembly megahit · metaspades · metaflye · metamdbg  (+ quast)
            polish: racon (long) · pilon (short)
            coassembly planning: binchicken (low-abundance / novelty)
-3 Mapping  strobealign | bowtie2 | bwa-mem2 | bwa | minimap2 · samtools · diamond
-4 Binning  metabat2 · maxbin2 · concoct · semibin2 · vamb · comebin · lorbin
-           → basalt ★ · metawrap · dastool → drep · skani · coverm · checkm2 · gunc
-5 Taxonomy metaphlan · kraken2+bracken · motus · sylph · metabuli · kaiju · gtdbtk
+3 Mapping  strobealign | bowtie2 | bwa-mem2 | bwa | minimap2 · lexicmap · samtools · diamond
+4 Binning  metabat2 · maxbin2 · concoct · semibin2 · vamb · aamb · taxvamb · comebin · metabinner · lorbin
+           → basalt ★ · metawrap · dastool → anvio / deepurify → drep · skani · fastani · coverm · checkm2 · gunc
+5 Taxonomy metaphlan · singlem · kraken2+bracken · motus · sylph · metabuli · kaiju · gtdbtk
 6 Function humann · prodigal · bakta · prokka · cd-hit · mmseqs2 · salmon
            · eggnog-mapper · rgi
-7 Mining   microbial-mining → antismash · bigscape · genomad · virsorter2 · checkv
-           · macrel · dram · dbcan · gapseq · deeparg · defensefinder
+7 Mining   microbial-mining → antismash · bigscape · genomad · virsorter2 · checkv · vcontact
+           · plasmaag · macrel · dram · dbcan · gapseq · vmh · deeparg · defensefinder
 ```
 
 ## Mapping head-to-head
@@ -47,7 +47,8 @@ Start from the **stage**, then the deliverable.
 |------|--------|
 | BGCs / natural products | `antismash` → `bigscape` |
 | Resistome | `rgi` (± `deeparg`) |
-| Plasmids / viruses / MGEs | `genomad` (± `virsorter2` → `checkv`) |
+| Plasmids / viruses / MGEs | `genomad` (± `virsorter2` → `checkv` → `vcontact`) |
+| Plasmid genome recovery | `plasmaag` |
 | AMPs | `macrel` |
 | Distilled metabolism | `dram` |
 | CAZymes | `dbcan` |
@@ -87,7 +88,9 @@ Single-binner diversity for ensembles: `metabat2` · `semibin2` · `vamb` · `co
 | Biome MAG catalogues | `mgnify` |
 | GTDB taxonomy | `gtdb` / `gtdbtk` |
 | Annotated genome warehouse | `progenomes` |
-| Gold-standard benchmarks | `cami` |
+| Gold-standard benchmarks | `cami` (± `insilicoseq`) |
+| Marker profiling (unknowns) | `singlem` |
+| Gene vs million genomes | `lexicmap` |
 | KEGG KO (licensed) | `kegg` |
 | Full map | `public-databases` |
 

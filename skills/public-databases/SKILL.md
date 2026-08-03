@@ -51,6 +51,7 @@ Ask before downloading:
 | Benchmark with gold standards | CAMI / CAMI II | `cami` |
 | Marker taxonomy / pathway indexes | ChocoPhlAn, UniRef, MetaCyc | `biobakery-databases` |
 | KO / KEGG pathways (licensed access) | KEGG | `kegg` |
+| Human/gut metabolic knowledge | VMH | `vmh` |
 | k-mer classification indexes | Kraken2 Standard / custom | `kraken2` |
 | Orthology (eggNOG) | eggNOG | `eggnog-mapper` |
 | AMR reference | CARD | `rgi` |

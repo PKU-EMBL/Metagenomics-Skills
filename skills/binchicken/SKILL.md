@@ -91,5 +91,5 @@ Low-abundance / novelty MAG recovery across many samples?
 
 ## Related skills
 
-`study-design` · `megahit` · `metaspades` · `basalt` · `coverm` · `gtdbtk` ·
+`singlem` · `study-design` · `megahit` · `metaspades` · `basalt` · `coverm` · `gtdbtk` ·
 `tool-selection` · `metagenomics-workflow`

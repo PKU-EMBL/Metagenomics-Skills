@@ -14,6 +14,8 @@ skill.
 | proGenomes4 | `progenomes` | ~2M QC'd annotated prokaryotic genomes |
 | CAMI / CAMI II (+ CAMISIM, AMBER, OPAL) | `cami` | Gold-standard benchmarks & evaluation |
 | KEGG (KO / pathways; license applies) | `kegg` | Orthology & pathway reference |
+| Virtual Metabolic Human | `vmh` | Human/gut metabolism knowledge for GEMs |
+| InSilicoSeq | `insilicoseq` | Illumina metagenome read simulation |
 | ChocoPhlAn / UniRef / MetaCyc | `biobakery-databases` | MetaPhlAn / HUMAnN indexes |
 | Kraken2 indexes | `kraken2` | k-mer classification DBs |
 | eggNOG | `eggnog-mapper` | Orthology DB for annotation |

@@ -26,11 +26,21 @@ https://doi.org/10.1038/s41592-023-02018-3
 skani estimates **ANI** quickly on incomplete MAGs better than many classic
 tools that assume near-complete genomes. Use for:
 
-- Dereplication cross-checks vs `drep`
+- Dereplication cross-checks vs `drep` · `fastani`
 - Novelty vs GTDB reps / UHGG (`mgnify`)
 - All-vs-all MAG similarity heatmaps
 
 95% ANI remains a common species-level heuristic — state your cutoff.
+
+## vs FastANI
+
+| | `skani` | `fastani` |
+|--|---------|------------|
+| Strength | Speed/robustness on incomplete MAGs; large catalogues | Classic literature-compatible ANI |
+| Prefer | New large MAG studies | Reproducing FastANI-based Methods |
+| Skill | this | `fastani` |
+
+Do not mix FastANI and skani values in one unlabeled matrix.
 
 ## How to run
 
@@ -44,4 +54,4 @@ skani dist bins_hq/query.fa bins_hq/*.fa > temp/ani/query_vs_all.tsv
 
 ## Related skills
 
-`drep` · `gtdb` · `mgnify` · `checkm2` · `gtdbtk` · `mag-qc`
+`fastani` · `drep` · `gtdb` · `mgnify` · `checkm2` · `gtdbtk` · `mag-qc`

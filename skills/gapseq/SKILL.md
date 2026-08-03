@@ -24,7 +24,7 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Downstream of genome annotation for **pathway/model mining**. Needs reasonably complete MAGs; low-completeness bins produce hollow models.
+Downstream of genome annotation for **pathway/model mining**. Needs reasonably complete MAGs; low-completeness bins produce hollow models. Interpret human/gut context with `vmh` when relevant.
 
 ## How to run
 

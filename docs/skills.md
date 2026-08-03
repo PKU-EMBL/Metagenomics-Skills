@@ -2,7 +2,7 @@
 
 Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining).
 
-Total: **82** skills.
+Total: **94** skills.
 
 ---
 
@@ -38,6 +38,7 @@ Total: **82** skills.
 | `bwa` | [bwa](https://github.com/lh3/bwa) | Burrows–Wheeler short-read alignment (BWA-MEM) to contigs/genomes. |
 | `bwa-mem2` | [bwa-mem2](https://github.com/bwa-mem2/bwa-mem2) | Architecture-aware faster BWA-MEM for Illumina reads to contigs/genomes. |
 | `minimap2` | [minimap2](https://github.com/lh3/minimap2) | Fast pairwise alignment for long reads and genome-to-genome maps. |
+| `lexicmap` | [lexicmap](https://github.com/shenwei356/LexicMap) | Align genes/plasmids/long queries against millions of prokaryotic genomes. |
 | `samtools` | [samtools](https://github.com/samtools/samtools) | SAM/BAM/CRAM processing for metagenomic mapping outputs — sort, index, flagstat, coverage, and filtering. |
 | `bbmap` | [bbmap](https://sourceforge.net/projects/bbmap/) | Fast splice-aware aligner and BBTools suite utilities (BBMerge, etc. |
 | `diamond` | [diamond](https://github.com/bbuchfink/diamond) | Ultra-fast protein alignment (BLASTP/X alternative) for functional/taxonomic searches. |
@@ -53,6 +54,12 @@ Total: **82** skills.
 | `vamb` | [vamb](https://github.com/RasmussenLab/vamb) | Deep variational autoencoder binning of metagenome contigs. |
 | `comebin` | [comebin](https://github.com/ziyewang/COMEBin) | Contrastive multi-view representation learning for contig binning. |
 | `lorbin` | [lorbin](https://github.com/LorMeBioAI/LorBin) | Unsupervised long-read metagenome binning with multiscale adaptive clustering. |
+| `aamb` | [aamb](https://github.com/RasmussenLab/vamb) | AAMB/AVAMB adversarial autoencoder binning (VAMB family ensemble). |
+| `taxvamb` | [taxvamb](https://github.com/RasmussenLab/vamb) | Taxonomy-informed VAMB-family binning (TaxVAMB). |
+| `metabinner` | [metabinner](https://github.com/ziyewang/MetaBinner) | Stand-alone multi-feature ensemble contig binning. |
+| `anvio` | [anvio](https://github.com/merenlab/anvio) | Interactive multi-omics platform for MAG refinement and visualization. |
+| `deepurify` | [deepurify](https://github.com/ericcombiolab/Deepurify) | Deep-learning MAG decontamination / chimera splitting. |
+| `fastani` | [fastani](https://github.com/ParBLiSS/FastANI) | Classic high-throughput ANI (pair with skani). |
 | `basalt` | [basalt](https://github.com/PKU-EMBL/BASALT) | PKU-EMBL BASALT and BASALT-Air — recommended ensemble MAG recovery across one or more assemblies (multi-binner + refinement). |
 | `metawrap` | [metawrap](https://github.com/bxlab/metaWRAP) | MetaWRAP suite for multi-binner MAG recovery and CheckM-style bin refinement — one option in the ensemble binning family (with DAS Tool and BASALT). |
 | `dastool` | [dastool](https://github.com/cmks/DAS_Tool) | DAS Tool (Dereplication, Aggregation and Scoring) integrates multiple binning predictions into one non-redundant MAG set for a single assembly. |
@@ -72,6 +79,7 @@ Total: **82** skills.
 | `bracken` | [bracken](https://github.com/jenniferlu717/Bracken) | Bayesian re-estimation of abundance from Kraken2 reports. |
 | `motus` | [motus](https://github.com/motu-tool/mOTUs) | Marker-gene taxonomic profiling across environments (mOTUs3). |
 | `sylph` | [sylph](https://github.com/bluenote-1577/sylph) | Rapid species-level metagenome profiling and containment estimation. |
+| `singlem` | [singlem](https://github.com/wwood/singlem) | Marker-window profiling including species without genomes; Sandpiper. |
 | `metabuli` | [metabuli](https://github.com/steineggerlab/Metabuli) | Joint DNA + amino-acid metagenomic taxonomic classification (metamers). |
 | `kaiju` | [kaiju](https://github.com/bioinformatics-centre/kaiju) | Fast sensitive taxonomic classification via protein-level matches. |
 | `gtdbtk` | [gtdbtk](https://github.com/Ecogenomics/GTDBTk) | Assign bacterial/archaeal taxonomy to MAGs with GTDB. |
@@ -104,6 +112,8 @@ Total: **82** skills.
 | `genomad` | [genomad](https://github.com/apcamargo/genomad) | Identify plasmids, viruses, and other mobile genetic elements in assemblies or genomes. |
 | `virsorter2` | [virsorter2](https://github.com/jiarong/VirSorter2) | Viral sequence identification from metagenomic assemblies. |
 | `checkv` | [checkv](https://bitbucket.org/berkeleylab/checkv) | Quality assessment of metagenome-assembled viral genomes. |
+| `vcontact` | [vcontact](https://bitbucket.org/MAVERICLab/vcontact3) | vConTACT2/3 gene-sharing / ML hierarchical virus taxonomy. |
+| `plasmaag` | [plasmaag](https://github.com/RasmussenLab/PlasMAAG) | Plasmid and organism reconstruction via assembly–alignment graphs. |
 | `macrel` | [macrel](https://github.com/BigDataBiology/macrel) | Screen genomes and metagenomes for antimicrobial peptides (AMPs). |
 | `dram` | [dram](https://github.com/WrightonLabCSU/DRAM) | Distill microbial metabolism annotations for MAGs/genomes into curated product tables (DRAM annotate + distill). |
 | `dbcan` | [dbcan](https://github.com/linnabrown/run_dbcan) | Annotate carbohydrate-active enzymes (CAZymes) with dbCAN/run_dbcan on genomes or protein sets. |
@@ -126,6 +136,8 @@ Total: **82** skills.
 | `cami` | [cami](https://cami-challenge.org/) | CAMI / CAMI II gold-standard benchmarks plus CAMISIM, AMBER, and OPAL evaluation. |
 | `progenomes` | [progenomes](https://progenomes.embl.de/) | proGenomes4 — ~2M consistently annotated high-quality prokaryotic genomes. |
 | `kegg` | [kegg](https://www.kegg.jp/) | KEGG KO / pathway reference for gene and protein annotation (license applies). |
+| `vmh` | [vmh](https://www.vmh.life) | Virtual Metabolic Human — human/gut metabolism knowledge for GEM interpretation. |
+| `insilicoseq` | [insilicoseq](https://github.com/HadrienG/InSilicoSeq) | Simulate Illumina metagenomic reads (pair with CAMI/CAMISIM). |
 | `mgnify` | [mgnify](https://github.com/EBI-Metagenomics) | MGnify analysed studies and biome genome catalogues (UHGG and others) — also under Taxonomy. |
 | `gtdb` | [gtdb](https://gtdb.ecogenomic.org/) | GTDB public releases — also under Taxonomy. |
 | `biobakery-databases` | [biobakery](https://github.com/biobakery/biobakery) | MetaPhlAn / HUMAnN reference indexes — also under Function. |

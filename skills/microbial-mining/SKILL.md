@@ -24,11 +24,12 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 |------------|--------|---------|
 | Natural products / BGCs | `antismash` → `bigscape` | Cluster ≠ characterized compound |
 | AMR / resistome | `rgi` (± `deeparg`) | Hit ≠ expression / phenotype |
-| Plasmids / viruses / MGEs | `genomad`, `virsorter2`, `checkv` | CheckV before vMAG claims |
+| Plasmids / viruses / MGEs | `genomad`, `virsorter2`, `checkv`, `vcontact` | CheckV before taxonomy |
+| Plasmid genome recovery | `plasmaag` | Multi-sample graphs help |
 | Antimicrobial peptides | `macrel` | High candidate FDR |
 | Distilled metabolism | `dram` | Needs decent completeness |
 | CAZymes | `dbcan` | Consensus evidence rules |
-| Genome-scale models | `gapseq` | HQ MAGs only |
+| Genome-scale models | `gapseq` (± `vmh`) | HQ MAGs only |
 | Anti-phage defense | `defensefinder` | Annotate proteins first |
 | Annotation substrate | `bakta` / `prokka` | Feed other miners |
 
@@ -38,7 +39,8 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 Mining goal?
 ├─ BGCs → antismash → (many genomes) bigscape
 ├─ Resistome → rgi (± deeparg); intersect genomad plasmids if relevant
-├─ Plasmids / viruses → genomad (± virsorter2) → checkv
+├─ Plasmids / viruses → genomad (± virsorter2) → checkv → vcontact
+├─ Plasmid MAGs → plasmaag (± genomad)
 ├─ AMP smORFs → macrel
 ├─ Metabolism distillate → dram (± dbcan)
 ├─ GEMs → gapseq
@@ -56,7 +58,8 @@ bins/MAGs (checkm2 / mag-qc / gunc)
    ├─→ dram → dbcan / gapseq
    └─→ defensefinder
 contigs
-   → genomad | virsorter2 → checkv
+   → genomad | virsorter2 → checkv → vcontact
+   → plasmaag (multi-sample plasmid recovery)
    → macrel
 ```
 
@@ -70,5 +73,5 @@ contigs
 ## Related skills
 
 `antismash` · `bigscape` · `genomad` · `virsorter2` · `checkv` · `macrel` ·
-`dram` · `dbcan` · `bakta` · `rgi` · `deeparg` · `gapseq` · `defensefinder` ·
-`tool-selection`
+`dram` · `dbcan` · `bakta` · `rgi` · `deeparg` · `gapseq` · `vmh` · `defensefinder` ·
+`vcontact` · `plasmaag` · `tool-selection`

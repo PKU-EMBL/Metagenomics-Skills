@@ -60,6 +60,7 @@ Use CAMI when you need:
 |------|----------|
 | Compare assemblers / binners / profilers under controlled truth | CAMI / CAMI II challenge data |
 | Generate custom gold-standard simulations | `CAMISIM` |
+| Lightweight Illumina read simulation | `insilicoseq` |
 | Score genome bins vs gold | `AMBER` |
 | Score taxonomic profiles vs gold | `OPAL` |
 | Submit / browse rankings | CAMI Benchmarking Portal |
@@ -150,5 +151,5 @@ Need public metagenome *data*?
 
 ## Related skills
 
-`public-databases` · `sra-ena` · `mgnify` · `gtdb` · `quast` · `metabat2` ·
+`insilicoseq` · `public-databases` · `sra-ena` · `mgnify` · `gtdb` · `quast` · `metabat2` ·
 `basalt` · `metaphlan` · `kraken2` · `tool-selection` · `study-design`

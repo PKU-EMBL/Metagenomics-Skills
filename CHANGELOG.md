@@ -1,3 +1,14 @@
+## [1.6.0] - 2026-08-03
+
+### Added
+- Priority skills: `anvio`, `singlem`, `vcontact`, `deepurify`, `fastani`
+- Secondary skills: `vmh`, `insilicoseq`, `plasmaag`, `aamb`, `taxvamb`, `metabinner`, `lexicmap`
+- skani↔FastANI comparison; mining/tool-selection/public-data routes updated
+- References 61–73
+
+### Changed
+- Skills catalog total: 94; package version 1.6.0
+
 ## [1.5.0] - 2026-08-03
 
 ### Added
