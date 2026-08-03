@@ -105,7 +105,13 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 |------|--------|
 | Route any homology search | `homology-search` |
 | Sequence / NR / contig tax | `mmseqs2` · `diamond` |
-| Structure / motif | `foldseek` · `folddisco` |
+| Profile HMM remote homology | `hh-suite` |
+| Protein-level assembly from reads | `plass` |
+| Eukaryotic gene call | `metaeuk` |
+| Structure prediction | `colabfold` |
+| Structure / motif / MSA | `foldseek` · `folddisco` · `foldmason` |
+| Structure archive | `foldcomp` |
+| Peta-scale protein search | `petasearch` |
 | Vector DB + embeddings | `erast` |
 | Phylogeny-compressed genomes | `phylign` |
 | Gene vs million genomes | `lexicmap` |
@@ -117,6 +123,7 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | Route trees / evolution | `phylogenomics` |
 | MAG taxonomy placement | `gtdbtk` |
 | MAG/genome phylogeny workflow | `phylophlan` |
+| Structural core-gene phylogeny | `unicore` |
 | Publication ML tree | `iqtree` |
 | Fast draft tree | `fasttree` |
 | Alignment-free PLM phylogeny | `lucaphylo` |

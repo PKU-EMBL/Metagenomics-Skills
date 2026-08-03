@@ -74,13 +74,15 @@ Contigs → `genomad` / `virsorter2` → `checkv` → `vcontact` · plasmids:
 
 After MAGs: `microbial-mining` → `antismash` / `rgi` / `dram` / …
 
-> Homology search (sequence · structure · vector DB · compressed genomes)
+> Homology search (Steinegger/Söding · vector DB · compressed genomes)
 
-`homology-search` → `mmseqs2` / `foldseek` / `erast` / `phylign` / `lexicmap` / …
+`homology-search` → `mmseqs2` / `hh-suite` / `foldseek` / `foldmason` /
+`colabfold` / `plass` / `petasearch` / `erast` / `phylign` / …
 
 > Phylogenomics / trees
 
-`phylogenomics` → `gtdbtk` / `phylophlan` / `iqtree` / `fasttree` / `lucaphylo`
+`phylogenomics` → `gtdbtk` / `phylophlan` / `unicore` / `iqtree` / `fasttree` /
+`lucaphylo`
 
 > AI / LMs & structure search (MMseqs2 · Foldseek · Folddisco · PLMs)
 

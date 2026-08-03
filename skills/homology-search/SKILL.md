@@ -1,62 +1,82 @@
 ---
 name: homology-search
 description: >
-  Route all homology / similarity search paradigms for shotgun metagenomics:
-  sequence heuristics (MMseqs2, DIAMOND), structure/motif (Foldseek, Folddisco),
-  PLM embeddings (PLMSearch, DeepBLAST), vector-database retrieval (ERAST),
-  phylogeny-compressed genome search (Phylign), and gene-vs-million-genomes
-  (LexicMap). Use when choosing how to search proteins, genes, or genomes —
-  not for read abundance profilers or MAG taxonomy placement (gtdbtk).
+  Route all homology / similarity search paradigms for shotgun metagenomics,
+  including the Steinegger/Söding stack (MMseqs2, HH-suite, Foldseek family,
+  ColabFold, PLASS, MetaEuk, Petasearch), vector DB (ERAST), and genome
+  warehouse search (Phylign, LexicMap). Use when choosing how to search
+  proteins, genes, or genomes.
 license: MIT
 category: orchestration
-tags: [homology, search, vector-DB, Foldseek, MMseqs2, ERAST, Phylign, routing]
+tags: [homology, search, Steinegger, Foldseek, MMseqs2, vector-DB, routing]
 stage: function
 ---
 
 # Homology search routing
 
 Shotgun projects need **many search paradigms**. This hub chooses among them.
-For LM/structure dark-matter framing also see `metagenomics-llm`. For trees /
-placement see `phylogenomics`.
+For LM dark-matter framing also see `metagenomics-llm`. For trees see
+`phylogenomics`.
 
-## Analytical thinking
+## Steinegger / Söding search stack
 
-| Paradigm | Prefer | Typical claim |
-|----------|--------|---------------|
-| Sequence heuristics (AA) | `mmseqs2` · `diamond` | Catalogue hits, NR, contig taxonomy |
-| Structure / fold | `foldseek` | AFDB/PDB remote homologs |
-| Structural motif | `folddisco` | Active-site / metal geometry |
-| PLM embedding (sequence-only) | `plmsearch` · `deepblast` | Twilight-zone without structures |
-| Vector DB + LLM rerank | `erast` | Billion-scale protein/nt retrieval |
-| Phylogeny-compressed genomes | `phylign` | BLAST-like vs ~661k bacteria on a laptop |
-| Gene/plasmid vs million genomes | `lexicmap` | Nucleotide alignment at warehouse scale |
+| Role | Prefer |
+|------|--------|
+| Sequence search / cluster / taxonomy | `mmseqs2` |
+| Profile HMM remote homology | `hh-suite` |
+| Protein-level assembly from reads | `plass` |
+| Eukaryotic gene call via homology | `metaeuk` |
+| Structure prediction for search | `colabfold` |
+| Structure compress/index | `foldcomp` |
+| Structure search / multimer / ProstT5 | `foldseek` |
+| Structural motifs | `folddisco` |
+| Multiple structure alignment | `foldmason` |
+| Peta-scale protein search | `petasearch` |
+| Conserved gene neighborhoods | `spacedust` |
+| Taxonomy (DNA/protein) | `metabuli` (separate taxonomy skill) |
+
+## Other paradigms
+
+| Paradigm | Prefer |
+|----------|--------|
+| PLM embedding search | `plmsearch` · `deepblast` |
+| Vector DB + rerank | `erast` |
+| Phylogeny-compressed genomes | `phylign` |
+| Gene vs million genomes | `lexicmap` |
+| Catalogue AA aligner | `diamond` |
 
 Hard rules:
 
-1. Do **not** merge BLAST/MMseqs, Foldseek, PLM, and vector-DB tables unlabeled
-2. Hits are hypotheses — pin software **and** database/index release
-3. Vector / PLM rankings ≠ experimental function
-4. Genome-scale search (`phylign` / `lexicmap`) ≠ short-read→contig mapping for binning
+1. Do not merge BLAST/MMseqs, HH-suite, Foldseek, PLM, and vector-DB tables unlabeled
+2. Pin software **and** database/index release
+3. Low pLDDT structures inflate Foldseek false positives
+4. `plass` proteins ≠ binnable contigs; `metaeuk` is for eukaryotes
 
 ## Decision tree
 
 ```text
-What are you searching?
+What are you searching / recovering?
 │
 ├─ Proteins / ORFs
 │   ├─ Close / catalogue-scale → mmseqs2 / diamond
-│   ├─ Have structures or ProstT5 → foldseek (± folddisco)
-│   ├─ Sequence-only remote homology → plmsearch / deepblast
+│   ├─ Profile remote homology / MSA for folding → hh-suite
+│   ├─ Structures or ProstT5 → foldseek (± folddisco / foldmason)
+│   ├─ Need to fold first → colabfold (± foldcomp archive)
+│   ├─ Peta-scale protein targets → petasearch
+│   ├─ Sequence-only PLM → plmsearch / deepblast
 │   └─ Billion-scale vector retrieval → erast
-├─ Genes / plasmids / long queries vs huge genome sets
-│   ├─ Phylogeny-compressed 661k-style BLAST-like → phylign
+├─ Recover more proteins from reads → plass
+├─ Eukaryotic genes on contigs → metaeuk
+├─ Genes / plasmids vs huge genome sets
+│   ├─ Phylogeny-compressed 661k-style → phylign
 │   └─ Million-genome nucleotide index → lexicmap
-├─ Dark modules / neighborhoods → spacedust (via metagenomics-llm)
+├─ Dark modules / neighborhoods → spacedust
 └─ Unsure → this hub + tool-selection
 ```
 
 ## Related skills
 
-`mmseqs2` · `diamond` · `foldseek` · `folddisco` · `plmsearch` · `deepblast` ·
-`erast` · `phylign` · `lexicmap` · `metagenomics-llm` · `phylogenomics` ·
-`eggnog-mapper` · `tool-selection`
+`mmseqs2` · `hh-suite` · `plass` · `metaeuk` · `colabfold` · `foldcomp` ·
+`foldseek` · `folddisco` · `foldmason` · `petasearch` · `spacedust` ·
+`plmsearch` · `deepblast` · `erast` · `phylign` · `lexicmap` · `diamond` ·
+`metagenomics-llm` · `phylogenomics` · `unicore` · `tool-selection`

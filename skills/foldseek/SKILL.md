@@ -117,6 +117,6 @@ Homology / structure need?
 
 ## Related skills
 
-`metagenomics-llm` · `folddisco` · `mmseqs2` · `spacedust` · `plmsearch` ·
-`deepblast` · `eggnog-mapper` · `defensefinder` · `microbial-mining` ·
-`tool-selection`
+`homology-search` · `colabfold` · `foldcomp` · `folddisco` · `foldmason` ·
+`unicore` · `mmseqs2` · `hh-suite` · `petasearch` · `spacedust` · `plmsearch` ·
+`deepblast` · `eggnog-mapper` · `microbial-mining` · `tool-selection`

@@ -23,6 +23,7 @@ This hub routes evolutionary analyses after HQ genomes/MAGs exist.
 |------|--------|-------|
 | Bacterial/archaeal MAG taxonomy | `gtdbtk` (+ `gtdb`) | Placement into GTDB; pin release |
 | Multi-genome / MAG phylogeny | `phylophlan` | Marker sets + tree; feed `iqtree`/`fasttree` |
+| Structural core-gene phylogeny | `unicore` | Foldseek/ProstT5 cores (Steinegger) |
 | Publication-grade ML tree | `iqtree` | ModelFinder, UFBoot; after MSA |
 | Fast approximate tree (large MSA) | `fasttree` | Screen / draft; upgrade to IQ-TREE for final |
 | Alignment-free PLM / hyperbolic phylo | `lucaphylo` | Divergent proteins; experimental vs classical MSA |
@@ -51,6 +52,7 @@ Evolutionary / tree need?
 ├─ Build genome phylogeny from many MAGs → phylophlan
 │     ├─ Draft / huge MSA → fasttree
 │     └─ Final ML tree → iqtree
+├─ Structural core genes / 3Di → unicore
 ├─ Species demarcation (ANI) → skani / fastani
 ├─ Highly divergent proteins, MSA fails → lucaphylo (± classical backup)
 └─ Homology search only (not a tree) → homology-search
@@ -58,6 +60,6 @@ Evolutionary / tree need?
 
 ## Related skills
 
-`gtdbtk` · `gtdb` · `phylophlan` · `iqtree` · `fasttree` · `lucaphylo` ·
-`skani` · `fastani` · `homology-search` · `metagenomics-llm` · `mag-qc` ·
-`tool-selection`
+`gtdbtk` · `gtdb` · `phylophlan` · `unicore` · `iqtree` · `fasttree` ·
+`lucaphylo` · `foldseek` · `foldmason` · `skani` · `fastani` ·
+`homology-search` · `metagenomics-llm` · `mag-qc` · `tool-selection`

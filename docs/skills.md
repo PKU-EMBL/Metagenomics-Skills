@@ -155,12 +155,19 @@ Total: **100** skills.
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
 | `homology-search` | — | Route sequence, structure, PLM, vector-DB, and genome-warehouse search. |
+| `mmseqs2` | [MMseqs2](https://github.com/soedinglab/MMseqs2) | Sequence search / clustering / contig taxonomy — also under Function. |
+| `hh-suite` | [HH-suite](https://github.com/soedinglab/hh-suite) | HHblits/HHsearch HMM–HMM remote homology. |
+| `plass` | [PLASS](https://github.com/soedinglab/plass) | Protein-level (and PenguiN) assembly from metagenomic reads. |
+| `metaeuk` | [MetaEuk](https://github.com/soedinglab/metaeuk) | Eukaryotic gene discovery/annotation via MMseqs2. |
+| `colabfold` | [ColabFold](https://github.com/sokrypton/ColabFold) | Accessible AlphaFold2 structure prediction + fast MSAs. |
+| `foldcomp` | [Foldcomp](https://github.com/steineggerlab/foldcomp) | Compress/index large protein structure sets. |
+| `foldseek` | [Foldseek](https://github.com/steineggerlab/foldseek) | 3Di structure search, Multimer, ProstT5 — also under AI. |
+| `folddisco` | [Folddisco](https://github.com/steineggerlab/folddisco) | Structural motif search — also under AI. |
+| `foldmason` | [FoldMason](https://github.com/steineggerlab/foldmason) | Multiple protein structure alignment at scale. |
+| `petasearch` | [Petasearch](https://github.com/steineggerlab/petasearch) | Parallelized peta-scale protein database search. |
 | `erast` | [ERAST](https://github.com/TencentAILabHealthcare/ERAST) | Billion-scale vector-DB homology search (protein + nucleotide). |
 | `phylign` | [Phylign](https://github.com/karel-brinda/phylign) | BLAST-like search on phylogeny-compressed microbial genome collections. |
 | `lexicmap` | [LexicMap](https://github.com/shenwei356/LexicMap) | Gene/plasmid alignment vs millions of genomes — also under Mapping. |
-| `mmseqs2` | [MMseqs2](https://github.com/soedinglab/MMseqs2) | Sequence search / clustering / contig taxonomy — also under Function. |
-| `foldseek` | [Foldseek](https://github.com/steineggerlab/foldseek) | 3Di structure search, Multimer, ProstT5 — also under AI. |
-| `folddisco` | [Folddisco](https://github.com/steineggerlab/folddisco) | Structural motif search — also under AI. |
 | `plmsearch` | [PLMSearch](https://github.com/maovshao/PLMSearch) | PLM remote homology — also under AI. |
 | `deepblast` | [DeepBLAST](https://github.com/flatironinstitute/deepblast) | TM-Vec + DeepBLAST — also under AI. |
 
@@ -170,6 +177,7 @@ Total: **100** skills.
 |-------|----------|---------|
 | `phylogenomics` | — | Route MAG trees, GTDB placement, classical vs AI phylogeny. |
 | `phylophlan` | [PhyloPhlAn](https://github.com/biobakery/phylophlan) | Marker-based phylogeny of isolates and MAGs. |
+| `unicore` | [Unicore](https://github.com/steineggerlab/unicore) | Structural core-gene phylogeny with Foldseek/ProstT5. |
 | `iqtree` | [IQ-TREE2](https://github.com/iqtree/iqtree2) | Maximum-likelihood trees with model selection / UFBoot. |
 | `fasttree` | [FastTree](http://www.microbesonline.org/fasttree/) | Fast approximate ML trees for large MSAs. |
 | `lucaphylo` | [LucaPhylo](https://github.com/NickShannn/LucaPhylo) | Alignment-free hyperbolic PLM phylogenetic inference. |
