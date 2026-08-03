@@ -26,6 +26,8 @@ Toolkit: [Ecogenomics/GTDBTk](https://github.com/Ecogenomics/GTDBTk)
 
 Parks, D. H. *et al.* A complete domain-to-species taxonomy for Bacteria and Archaea. *Nat. Biotechnol.* **38**, 1079–1086 (2020). https://doi.org/10.1038/s41587-020-0501-8
 
+Parks, D. H. *et al.* GTDB release 10: a complete and systematic taxonomy for 715 230 bacterial and 17 245 archaeal genomes. *Nucleic Acids Res.* **54**, D743–D754 (2026). https://doi.org/10.1093/nar/gkaf1040
+
 See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
@@ -41,8 +43,16 @@ Distinguish three packages people confuse:
 | `GTDBTK_DATA_PATH` / `gtdbtk_data.tar.gz` | Runtime DB for GTDB-Tk | Classify genomes with `gtdbtk` |
 | MGnify biome catalogues | Biome MAG catalogues (often GTDB-annotated) | Novelty / habitat context (`mgnify`) |
 
-Always pin the **GTDB release ID** (e.g. from `VERSION.txt` / release notes) next
-to GTDB-Tk software version.
+Always pin the **GTDB release ID** (e.g. R10-RS226 from `VERSION.txt` / release notes) next to GTDB-Tk software version.
+
+## GTDB release 10 (R10-RS226) notes
+
+From Parks *et al.* (*Nucleic Acids Res.* 2026):
+
+- ~715k bacterial + ~17k archaeal genomes; ~137k bacterial / ~7k archaeal **species clusters**
+- Major new deep lineages are rarer each release (diversity saturation signal), but **species discovery continues** (>95% species still ungenomed under their projections) — do not claim “GTDB is complete”
+- Website / ANI methodology updates (e.g. skani in recent releases) — match GTDB-Tk data package to the release you cite
+- Prefer `releases/<release>/` over assuming `latest/` stays frozen mid-study
 
 ## Prerequisites
 
@@ -87,4 +97,4 @@ GTDB-related task?
 
 ## Related skills
 
-`gtdbtk` · `public-databases` · `mgnify` · `checkm2` · `drep` · `mag-qc` · `visualization`
+`gtdbtk` · `public-databases` · `mgnify` · `progenomes` · `cami` · `checkm2` · `drep` · `mag-qc` · `visualization`

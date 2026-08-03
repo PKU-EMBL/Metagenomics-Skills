@@ -1,3 +1,14 @@
+## [1.5.0] - 2026-08-03
+
+### Added
+- Data-layer skills: `cami` (CAMI/CAMI II + CAMISIM/AMBER/OPAL), `progenomes`, `kegg`
+- Expanded `public-databases` hub and `docs/public-databases.md` (four data layers)
+- GTDB release 10 notes; richer MGnify catalogue guidance
+- References 51–60 (CAMI stack, GTDB R10, proGenomes4, KEGG, profiler abundance types)
+
+### Changed
+- Skills catalog total: 82; package version 1.5.0
+
 ## [1.4.0] - 2026-08-03
 
 ### Added

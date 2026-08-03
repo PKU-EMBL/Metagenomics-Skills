@@ -124,6 +124,29 @@ the canonical papers to reference.
 50. Lu, J., Breitwieser, F. P., Thielen, P. & Salzberg, S. L. Bracken: estimating species abundance in metagenomics data. *PeerJ Comput. Sci.* **3**, e104 (2017). https://doi.org/10.7717/peerj-cs.104
 
 
+## Public data & benchmarks
+
+51. Sczyrba, A. *et al.* Critical Assessment of Metagenome Interpretation—a benchmark of metagenomics software. *Nat. Methods* **14**, 1063–1071 (2017). https://doi.org/10.1038/nmeth.4458
+
+52. Meyer, F. *et al.* Critical Assessment of Metagenome Interpretation: the second round of challenges. *Nat. Methods* **19**, 429–440 (2022). https://doi.org/10.1038/s41592-022-01431-4
+
+53. Fritz, A. *et al.* CAMISIM: simulating metagenomes and microbial communities. *Microbiome* **7**, 17 (2019). https://doi.org/10.1186/s40168-019-0633-6
+
+54. Meyer, F. *et al.* AMBER: Assessment of Metagenome BinnERs. *GigaScience* **7**, giy069 (2018). https://doi.org/10.1093/gigascience/giy069
+
+55. Meyer, F. *et al.* Assessing taxonomic metagenome profilers with OPAL. *Genome Biol.* **20**, 51 (2019). https://doi.org/10.1186/s13059-019-1646-y
+
+56. Meyer, F. *et al.* CAMI Benchmarking Portal: online evaluation and ranking of metagenomic software. *Nucleic Acids Res.* **53**, W102–W109 (2025). https://doi.org/10.1093/nar/gkaf369
+
+57. Parks, D. H. *et al.* GTDB release 10: a complete and systematic taxonomy for 715 230 bacterial and 17 245 archaeal genomes. *Nucleic Acids Res.* **54**, D743–D754 (2026). https://doi.org/10.1093/nar/gkaf1040
+
+58. Fullam, A. *et al.* proGenomes4: providing 2 million accurately and consistently annotated high-quality prokaryotic genomes. *Nucleic Acids Res.* (2025). https://doi.org/10.1093/nar/gkaf1208
+
+59. Kanehisa, M., Sato, Y., Kawashima, M., Furumichi, M. & Tanabe, M. KEGG as a reference resource for gene and protein annotation. *Nucleic Acids Res.* **44**, D457–D462 (2016). https://doi.org/10.1093/nar/gkv1070
+
+60. Sun, Z. *et al.* Challenges in benchmarking metagenomic profilers. *Nat. Methods* **18**, 618–626 (2021). https://doi.org/10.1038/s41592-021-01141-3
+
+
 ---
 
 ## How to cite in Methods (example)

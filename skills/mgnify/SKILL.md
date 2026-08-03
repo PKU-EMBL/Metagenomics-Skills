@@ -46,6 +46,29 @@ sample without mapping/abundance evidence (`coverm`, profilers).
 Catalogue QC/dereplication rules (CheckM thresholds, dRep ANI) are **theirs** —
 state both their criteria and yours (`mag-qc`) when comparing.
 
+## Catalogue family (thinking)
+
+MGnify **Genomes** publishes multiple biome catalogues (human-gut / UHGG is the
+most cited; others cover e.g. oceans, various hosts/environments — check the
+live FTP/API list). Each catalogue version has its own:
+
+- species-representative set + all-genome metadata
+- protein catalogues at several AA identity cutoffs
+- sometimes prebuilt search indexes (Kraken2, etc.)
+
+Cross-catalogue rules:
+
+| Claim | Do |
+|-------|-----|
+| Novelty in human gut | Compare to current UHGG / human-gut catalogue version |
+| Non-gut biome | Use the matching biome catalogue, not UHGG alone |
+| Global taxonomy | Still run `gtdbtk` on your MAGs; catalogue labels are secondary |
+| Presence in *my* sample | Map/profile (`coverm`, MetaPhlAn, …) — catalogue hit ≠ local detection |
+
+MGnify analyses of public studies use **MGnify pipeline versions** — their
+taxonomy/function tables are not interchangeable with your MetaPhlAn/HUMAnN
+run unless you intentionally reanalyse the same ENA runs.
+
 ## Prerequisites
 
 | Need | Resource |
@@ -101,4 +124,4 @@ MGnify vs other public resources?
 
 ## Related skills
 
-`public-databases` · `sra-ena` · `gtdb` · `drep` · `coverm` · `gtdbtk` · `mag-qc` · `visualization`
+`public-databases` · `sra-ena` · `gtdb` · `progenomes` · `cami` · `drep` · `coverm` · `gtdbtk` · `mag-qc` · `visualization`

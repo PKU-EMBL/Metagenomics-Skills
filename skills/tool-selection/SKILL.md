@@ -79,6 +79,18 @@ Single-binner diversity for ensembles: `metabat2` · `semibin2` · `vamb` · `co
 - Treat mining hits as validated products/phenotypes
 - Call bins MAGs before QC filters
 
+## Public data (short)
+
+| Need | Skill |
+|------|-------|
+| Raw reads | `sra-ena` |
+| Biome MAG catalogues | `mgnify` |
+| GTDB taxonomy | `gtdb` / `gtdbtk` |
+| Annotated genome warehouse | `progenomes` |
+| Gold-standard benchmarks | `cami` |
+| KEGG KO (licensed) | `kegg` |
+| Full map | `public-databases` |
+
 ## Related skills
 
 `metagenomics-workflow` · `microbial-mining` · `study-design` · `public-databases`

@@ -1,7 +1,8 @@
 # Public databases
 
-Public metagenomics resources are a separate skill layer from analysis tools.
-Details live in `skills/public-databases/` and the per-resource skills below.
+Public metagenomics resources are a **data skill layer** separate from analysis
+tools. Start at `skills/public-databases/SKILL.md`, then open the per-resource
+skill.
 
 ## Resource → skill
 
@@ -9,7 +10,10 @@ Details live in `skills/public-databases/` and the per-resource skills below.
 |----------|-------|-------------|
 | NCBI SRA / EBI ENA | `sra-ena` | Download public shotgun reads |
 | MGnify (+ UHGG / biome catalogues) | `mgnify` | Analysed studies; MAG/protein catalogues |
-| GTDB releases | `gtdb` | Taxonomy tables, trees, genome reps |
+| GTDB releases (e.g. R10-RS226) | `gtdb` | Taxonomy tables, trees, genome reps |
+| proGenomes4 | `progenomes` | ~2M QC'd annotated prokaryotic genomes |
+| CAMI / CAMI II (+ CAMISIM, AMBER, OPAL) | `cami` | Gold-standard benchmarks & evaluation |
+| KEGG (KO / pathways; license applies) | `kegg` | Orthology & pathway reference |
 | ChocoPhlAn / UniRef / MetaCyc | `biobakery-databases` | MetaPhlAn / HUMAnN indexes |
 | Kraken2 indexes | `kraken2` | k-mer classification DBs |
 | eggNOG | `eggnog-mapper` | Orthology DB for annotation |
@@ -18,16 +22,47 @@ Details live in `skills/public-databases/` and the per-resource skills below.
 | Host Bowtie2 indexes | `kneaddata` | Host depletion |
 | BASALT weights | `basalt` / `setup` | Refinement models |
 
+## Four data layers (do not mix unlabeled)
+
+```text
+1. Raw archives          SRA / ENA
+2. Genome catalogues     MGnify biomes, GTDB reps, proGenomes
+3. Tool indexes          Kraken, ChocoPhlAn, CheckM2, CARD, GTDB-Tk data
+4. Benchmarks            CAMI / CAMI II gold standards (CAMISIM simulations)
+```
+
+## Quick chooser
+
+| You need… | Open |
+|-----------|------|
+| Reanalyse a published shotgun study | `sra-ena` (± `mgnify` for analysed context) |
+| Compare your MAGs to human-gut species | `mgnify` (UHGG) + `gtdbtk` |
+| Cite / update prokaryotic taxonomy | `gtdb` (pin release, e.g. R10) |
+| Build a large annotated reference genome set | `progenomes` |
+| Benchmark a binner/profiler with truth | `cami` |
+| KO / KEGG pathway maps | `kegg` (confirm access rights) |
+| Marker + pathway profiling indexes | `biobakery-databases` |
+
 ## Thinking checklist
 
-1. Separate **raw archives**, **genome catalogues**, and **tool indexes** in Methods
-2. Pin release / accession / download date (and checksum when available)
+1. Separate **raw archives**, **catalogues**, **tool indexes**, and **benchmarks**
+2. Pin release / accession / dataset DOI / download date (checksum when available)
 3. Do not merge MetaPhlAn, Kraken, and GTDB labels into one table
 4. UHGG/MGnify membership ≠ detection in your sample without abundance evidence
+5. CAMI “best tool” is dataset-conditioned — report which challenge set you used
+6. Sequence abundance ≠ taxonomic abundance in profiler benchmarks
+
+## Optional ML corpus
+
+The **OMG** (Open Metagenome Genome) corpus on Hugging Face is a large
+metagenomic sequence resource for representation learning — useful for ML
+methods work, not a drop-in replacement for SRA study reanalysis or GTDB
+taxonomy. Cite the OMG/gLM publication if you use it; keep it out of clinical
+or catalogue-novelty claims unless justified.
 
 ## See also
 
 - [Skills catalog](skills.md)
-- [Tool selection](tool-selection.md)
-- [Standard pipeline](standard-pipeline.md)
 - [References](references.md)
+- [Standard pipeline](standard-pipeline.md)
+- [Getting started](getting-started.md)

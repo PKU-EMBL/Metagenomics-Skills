@@ -1,79 +1,108 @@
 ---
 name: public-databases
 description: >
-  Route shotgun metagenomics work to the right public databases and catalogues.
-  Use this skill when: (1) Choosing which public resource to download or cite,
-  (2) Distinguishing raw-read archives vs genome catalogues vs tool reference DBs,
-  (3) Planning reproducible DB pinning for Methods, (4) Comparing UHGG/MGnify,
-  GTDB, SRA/ENA, bioBakery, CARD, eggNOG, Kraken, CheckM2.
-  For fetching reads use sra-ena. For biome MAG catalogues use mgnify.
-  For taxonomy releases use gtdb. For MetaPhlAn/HUMAnN indexes use
-  biobakery-databases. For software install, use setup.
+  Route shotgun metagenomics work to the right public databases, catalogues,
+  and benchmark datasets. Use when: (1) Choosing SRA/ENA vs MGnify vs GTDB vs
+  proGenomes vs CAMI, (2) Distinguishing raw archives, genome warehouses, biome
+  catalogues, tool indexes, and gold-standard benchmarks, (3) Pinning data
+  releases for Methods, (4) Planning downloads for UHGG, GTDB R10+, KEGG, CARD,
+  bioBakery, Kraken, CheckM2. Child skills: sra-ena, mgnify, gtdb, progenomes,
+  cami, kegg, biobakery-databases. For software install use setup.
 license: MIT
 category: utilities
-tags: [database, catalogue, UHGG, GTDB, MGnify, SRA, ENA, CARD, eggNOG]
+tags: [database, catalogue, UHGG, GTDB, MGnify, CAMI, proGenomes, SRA, ENA, KEGG]
 ---
 
 # Public databases
 
-Metagenomics needs **data archives**, **genome catalogues**, and **tool reference
-indexes**. Mixing these layers without labels is a common Methods error.
+Metagenomics “data” is not one thing. Separate these **layers** in Methods and
+in your disk layout:
+
+| Layer | Examples | Skills |
+|-------|----------|--------|
+| Raw / submitted reads | NCBI SRA, EBI ENA | `sra-ena` |
+| Analysed studies + biome MAG/protein catalogues | MGnify, UHGG | `mgnify` |
+| Rank-normalized taxonomy + species reps | GTDB (e.g. R10-RS226) | `gtdb` · `gtdbtk` |
+| Uniformly annotated genome warehouse | proGenomes4 | `progenomes` |
+| Gold-standard benchmarks / simulators | CAMI / CAMI II, CAMISIM | `cami` |
+| Pathway / ortholog knowledge bases | KEGG, eggNOG, MetaCyc | `kegg` · `eggnog-mapper` · `biobakery-databases` |
+| Tool runtime indexes | Kraken, CheckM2, ChocoPhlAn, CARD | tool skills |
 
 ## Analytical thinking
 
-Ask three questions before downloading anything:
+Ask before downloading:
 
-1. **What claim am I supporting?** Community composition ≠ MAG novelty ≠ AMR
-   gene presence.
-2. **Is this a primary public resource or a tool-bundled index?** GTDB release
-   files ≠ `GTDBTK_DATA_PATH` package; UHGG genomes ≠ Kraken UHGG DB.
-3. **Which release/version will I pin?** Always record accession + release ID +
-   download date/checksum when claims depend on the DB.
+1. **Claim type?** Reanalysis of public runs ≠ MAG novelty vs UHGG ≠ CAMI tool
+   ranking ≠ KO pathway reconstruction.
+2. **Primary resource vs tool-bundled index?** GTDB release files ≠
+   `GTDBTK_DATA_PATH`; UHGG genomes ≠ a Kraken UHGG DB; KEGG website ≠ a
+   redistributable local dump.
+3. **Which release?** Pin accession / catalogue version / GTDB release /
+   CAMI dataset DOI + download date (+ checksum).
 
 ## Map by purpose
 
 | Purpose | Prefer | Skill |
 |---------|--------|-------|
-| Public shotgun reads / study accession | NCBI SRA / EBI ENA | `sra-ena` |
-| Analysed microbiome studies + biome MAG catalogues (UHGG, …) | MGnify | `mgnify` |
-| Bacterial/archaeal taxonomy + representative genomes | GTDB | `gtdb` (+ `gtdbtk`) |
+| Public shotgun reads | SRA / ENA | `sra-ena` |
+| Analysed studies + biome MAG catalogues (UHGG, …) | MGnify | `mgnify` |
+| Bacterial/archaeal taxonomy release | GTDB | `gtdb` (+ `gtdbtk`) |
+| ~2M QC'd annotated prokaryotic genomes | proGenomes4 | `progenomes` |
+| Benchmark with gold standards | CAMI / CAMI II | `cami` |
 | Marker taxonomy / pathway indexes | ChocoPhlAn, UniRef, MetaCyc | `biobakery-databases` |
-| k-mer classification indexes | Kraken2 Standard / PlusPF / custom | `kraken2` |
-| Orthology / function | eggNOG | `eggnog-mapper` |
+| KO / KEGG pathways (licensed access) | KEGG | `kegg` |
+| k-mer classification indexes | Kraken2 Standard / custom | `kraken2` |
+| Orthology (eggNOG) | eggNOG | `eggnog-mapper` |
 | AMR reference | CARD | `rgi` |
 | MAG completeness models | CheckM2 DB | `checkm2` |
 | Host depletion indexes | Bowtie2 host genomes | `kneaddata` |
 | BASALT refinement weights | `BASALT_WEIGHT` | `basalt` / `setup` |
+| ML metagenome corpora (optional) | OMG (Hugging Face) | see docs note — not a Methods substitute for SRA |
 
 ## Decision tree
 
 ```text
 Need public metagenomics data/reference?
 │
-├─ Download / cite raw reads for a study
+├─ Raw FASTQ for a study / BioProject
 │     → sra-ena
-├─ Browse analysed studies or biome MAG catalogues (e.g. UHGG)
+├─ Analysed MGnify study or biome MAG/protein catalogue (UHGG, …)
 │     → mgnify
-├─ Taxonomy release, species reps, trees for genomes
-│     → gtdb  (classify with gtdbtk)
-├─ Run MetaPhlAn / HUMAnN
+├─ GTDB taxonomy tables / reps / classify my MAGs
+│     → gtdb / gtdbtk
+├─ Large consistently annotated genome set / pan-genomes
+│     → progenomes
+├─ Gold-standard benchmark or simulator
+│     → cami
+├─ MetaPhlAn / HUMAnN indexes
 │     → biobakery-databases
-├─ Run Kraken2 / Bracken
-│     → kraken2 (DB choice is the scientific lever)
-├─ Annotate genes / AMR / MAG QC
+├─ KEGG KO / pathways (check license)
+│     → kegg
+├─ Kraken2 / Bracken indexes
+│     → kraken2
+├─ eggNOG / CARD / CheckM2
 │     → eggnog-mapper / rgi / checkm2
 └─ Unsure
       → this skill + tool-selection
 ```
 
+## Provenance checklist (pin in Methods)
+
+- Resource name + **release / catalogue version / dataset ID**
+- Download URL or DOI + **date** (+ checksum)
+- Any filters (completeness, biome, habitat, ANI)
+- Whether you used primary files vs a **tool index** built from them
+
 ## Hard rules
 
-1. Never merge MetaPhlAn, Kraken, and GTDB labels into one unlabeled taxonomy table
-2. Never treat MGnify catalogue membership as experimental proof for *your* sample
-3. Pin DB versions next to software versions in the provenance bundle
-4. Prefer official FTP/API over mirrored unofficial dumps unless checksums match
+1. Never merge MetaPhlAn, Kraken, GTDB, and MGnify labels into one unlabeled table
+2. MGnify/UHGG membership ≠ detection in *your* sample without abundance evidence
+3. CAMI rankings ≠ production defaults for every biome
+4. Prefer official FTP/API; verify mirrors with checksums
+5. Respect KEGG and other license-restricted resources
 
 ## Related skills
 
-`sra-ena` · `mgnify` · `gtdb` · `biobakery-databases` · `setup` · `tool-selection` ·
-`kraken2` · `metaphlan` · `humann` · `eggnog-mapper` · `rgi` · `gtdbtk` · `checkm2`
+`sra-ena` · `mgnify` · `gtdb` · `progenomes` · `cami` · `kegg` ·
+`biobakery-databases` · `setup` · `tool-selection` · `kraken2` · `metaphlan` ·
+`humann` · `eggnog-mapper` · `rgi` · `gtdbtk` · `checkm2`

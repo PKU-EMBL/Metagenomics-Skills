@@ -2,7 +2,7 @@
 
 Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining).
 
-Total: **79** skills.
+Total: **82** skills.
 
 ---
 
@@ -75,7 +75,7 @@ Total: **79** skills.
 | `metabuli` | [metabuli](https://github.com/steineggerlab/Metabuli) | Joint DNA + amino-acid metagenomic taxonomic classification (metamers). |
 | `kaiju` | [kaiju](https://github.com/bioinformatics-centre/kaiju) | Fast sensitive taxonomic classification via protein-level matches. |
 | `gtdbtk` | [gtdbtk](https://github.com/Ecogenomics/GTDBTk) | Assign bacterial/archaeal taxonomy to MAGs with GTDB. |
-| `gtdb` | [gtdb](https://gtdb.ecogenomic.org/) | Use the Genome Taxonomy Database (GTDB) public releases — taxonomy tables, trees, metadata, and representative genomes. |
+| `gtdb` | [gtdb](https://gtdb.ecogenomic.org/) | Use the Genome Taxonomy Database (GTDB) public releases (e.g. R10) — taxonomy tables, trees, metadata, and representative genomes. |
 | `mgnify` | [mgnify](https://github.com/EBI-Metagenomics) | Use EMBL-EBI MGnify for analysed microbiome studies and biome genome catalogues (including UHGG / human-gut and other biomes). |
 
 ## 6. Functional annotation
@@ -121,8 +121,14 @@ Total: **79** skills.
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `public-databases` | — | Route shotgun metagenomics work to the right public databases and catalogues. |
+| `public-databases` | — | Route shotgun metagenomics work across raw archives, catalogues, tool indexes, and CAMI benchmarks. |
 | `sra-ena` | [sra-ena](https://github.com/ncbi/sra-tools) | Fetch and cite public shotgun metagenomic reads from NCBI SRA and EBI ENA. |
+| `cami` | [cami](https://cami-challenge.org/) | CAMI / CAMI II gold-standard benchmarks plus CAMISIM, AMBER, and OPAL evaluation. |
+| `progenomes` | [progenomes](https://progenomes.embl.de/) | proGenomes4 — ~2M consistently annotated high-quality prokaryotic genomes. |
+| `kegg` | [kegg](https://www.kegg.jp/) | KEGG KO / pathway reference for gene and protein annotation (license applies). |
+| `mgnify` | [mgnify](https://github.com/EBI-Metagenomics) | MGnify analysed studies and biome genome catalogues (UHGG and others) — also under Taxonomy. |
+| `gtdb` | [gtdb](https://gtdb.ecogenomic.org/) | GTDB public releases — also under Taxonomy. |
+| `biobakery-databases` | [biobakery](https://github.com/biobakery/biobakery) | MetaPhlAn / HUMAnN reference indexes — also under Function. |
 
 ## Report & utilities
 
