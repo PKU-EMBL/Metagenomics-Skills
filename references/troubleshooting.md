@@ -1,8 +1,7 @@
-# BASALT operational diagnostics
+# Module I — BASALT operational diagnostics
 
-For EasyMetagenome-specific KneadData, MetaWRAP, or HUMAnN installation failures,
-consult the appendices of upstream `0Install.sh` and `1Pipeline.sh` together with
-[easymetagenome.md](easymetagenome.md) before introducing ad hoc fixes.
+For Modules B–E, consult the corresponding module reference and the official
+manuals of the failing tool before introducing ad hoc fixes.
 
 Preserve diagnostic evidence before modifying files or re-running stages:
 

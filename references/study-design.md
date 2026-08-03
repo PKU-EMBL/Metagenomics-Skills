@@ -1,4 +1,4 @@
-# Study design for genome-resolved metagenomics
+# Module A — Study design for genome-resolved metagenomics
 
 ## Design principle
 

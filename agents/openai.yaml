@@ -1,7 +1,7 @@
 interface:
   display_name: "Metagenomics Analysis"
-  short_description: "Shotgun metagenomics protocols: EasyMetagenome and BASALT MAG recovery"
-  default_prompt: "Apply the metagenomics-analysis protocol to design a study with explicit deliverable routing (read-based profiling, gene catalogue, or MAG recovery), study-design constraints, and a provenance checklist."
+  short_description: "Modular shotgun metagenomics: profiling, gene catalogues, and BASALT MAG recovery"
+  default_prompt: "Apply the metagenomics-analysis protocol. Route the request to the correct module (study design, preprocessing, read-based profiling, gene catalogue, classical MAGs, or BASALT), then provide a provenance checklist."
 
 policy:
   allow_implicit_invocation: true
