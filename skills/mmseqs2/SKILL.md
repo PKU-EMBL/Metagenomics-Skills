@@ -18,36 +18,57 @@ Upstream: [MMseqs2](https://github.com/soedinglab/MMseqs2)
 
 ## Citation
 
-Mirdita, M. *et al.* Fast and sensitive taxonomic assignment to metagenomic contigs. *Bioinformatics* **37**, 3029–3031 (2021). https://doi.org/10.1093/bioinformatics/btab184
-
 Steinegger, M. & Söding, J. MMseqs2 enables sensitive protein sequence searching for the analysis of massive data sets. *Nat. Biotechnol.* **35**, 1026–1028 (2017). https://doi.org/10.1038/nbt.3988
+
+Mirdita, M. *et al.* Fast and sensitive taxonomic assignment to metagenomic contigs. *Bioinformatics* **37**, 3029–3031 (2021). https://doi.org/10.1093/bioinformatics/btab184
 
 See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Use for large-scale clustering (alternative/complement to CD-HIT) and `easy-taxonomy` on contigs. Memory/DB layout matters — pin release.
+Two common metagenome uses:
+
+| Mode | Role |
+|------|------|
+| `easy-cluster` / linclust | NR gene/protein catalogues (complement/alternative to `cd-hit`) |
+| `easy-taxonomy` | Contig-level taxonomy vs a taxDB |
+
+Also underlies many other tools' search stacks. Memory and DB layout matter —
+pin release and sensitivity (`-s`).
+
+| vs | Prefer MMseqs2 when |
+|----|---------------------|
+| `cd-hit` | Much larger catalogues / speed |
+| `diamond` | Need MMseqs taxonomy workflows or linclust-scale clustering |
+| `kraken2` | Contig taxonomy via proteins/profiles (different claim) |
 
 ## How to run
 
 ```bash
-conda install -c bioconda mmseqs2  # if packaged; else follow upstream
-
-mmseqs easy-cluster genes.faa temp/mmseqs/clu temp/mmseqs/tmp --min-seq-id 0.9 -c 0.8
+mmseqs easy-cluster genes.faa temp/mmseqs/clu temp/mmseqs/tmp \
+  --min-seq-id 0.9 -c 0.8 --cov-mode 1
 mmseqs easy-taxonomy contigs.fa taxonomyDB temp/mmseqs/tax temp/mmseqs/tmp
 ```
 
 ## Key parameters
 
-| easy-cluster | NR genes | |
-| easy-taxonomy | contigs | Needs taxDB |
+| Setting | Notes |
+|---------|-------|
+| `--min-seq-id` / `-c` | Catalogue identity & coverage — declare for NR |
+| taxDB | Required for easy-taxonomy; pin |
+| tmp dir | Fast local disk |
 
-## Decision notes
+## Decision tree
 
-- Stage: **function** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+```text
+Need clustering or contig taxonomy?
+├─ Huge protein NR → mmseqs2 easy-cluster
+├─ Classic small NR → cd-hit still fine
+├─ Contig taxonomy → mmseqs2 easy-taxonomy
+└─ BLASTP-like single search → diamond / mmseqs search
+```
 
 ## Related skills
 
-cd-hit · diamond · eggnog-mapper · kraken2 · `tool-selection` · `metagenomics-workflow`
+`cd-hit` · `diamond` · `eggnog-mapper` · `prodigal` · `kraken2` · `metabuli` ·
+`tool-selection`

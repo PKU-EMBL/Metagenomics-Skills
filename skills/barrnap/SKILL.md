@@ -40,9 +40,8 @@ barrnap bins/bin.fa > temp/barrnap/${id}.gff
 
 ## Decision notes
 
-- Stage: **gene** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Stage: **function** (rRNA prediction)
+- Prefer as a quick rRNA check on genomes/MAGs; not a substitute for full annotation (`bakta`/`prokka`)
 
 ## Related skills
 

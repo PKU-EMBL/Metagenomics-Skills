@@ -43,9 +43,9 @@ cutadapt -j 8 -a AGATCGGAAGAGC -A AGATCGGAAGAGC \
 
 ## Decision notes
 
-- Stage: **qc** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Stage: **QC** — adapter/primer trimming before host depletion / assembly
+- Prefer when custom adapters or amplicon primers matter; else `fastp` often enough
+- Keep trimmed PE pairing consistent for KneadData / assembly
 
 ## Related skills
 

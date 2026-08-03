@@ -45,9 +45,8 @@ minimap2 -ax map-ont -t 16 contigs.fa reads.fastq.gz \
 
 ## Decision notes
 
-- Stage: **mapping** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Stage: **mapping** (long reads / genome-to-genome)
+- Prefer for ONT/PacBio→contigs and assembly polish maps; not default Illumina coverage mapper
 
 ## Related skills
 

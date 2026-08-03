@@ -50,3 +50,4 @@ gapseq fill -m genome-draft.RDS -n genome-Medium.csv -c genome-rxnWeights.RDS -n
 ## Related skills
 
 dram · bakta · checkm2 · eggnog-mapper · `microbial-mining` · `tool-selection` · `metagenomics-workflow`
+`vmh`

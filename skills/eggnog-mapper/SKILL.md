@@ -20,9 +20,19 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Annotate **proteins** from the NR catalogue (or MAG proteomes). DIAMOND mode is
-the common metagenome default. Functional tables should be combined with salmon
-abundances carefully (sum TPM of genes mapping to a KO/COG).
+Annotate **proteins** from an NR gene catalogue or MAG proteomes via eggNOG
+orthology (COG/KEGG/CAZy fields, etc.). DIAMOND mode is the common metagenome
+default.
+
+Combine with abundances carefully: sum TPM/counts of genes mapping to a KO/COG
+only when the gene→function mapping is declared. Orthology hit ≠ experimental
+function.
+
+| vs other function layers | Notes |
+|--------------------------|-------|
+| `humann` | Read-level pathways (MetaCyc/UniRef) — different claim |
+| `dram` | Distilled MAG metabolism tables |
+| `kegg` | Direct KO maps (license) — may overlap fields |
 
 ## How to run
 
@@ -32,7 +42,30 @@ emapper.py --data_dir ${db}/eggnog \
   -o temp/eggnog/output
 ```
 
+## Key parameters
+
+| Flag | Notes |
+|------|-------|
+| `-m diamond` | Typical metagenome speed/sensitivity balance |
+| `--data_dir` | Pin eggNOG DB release |
+| Input | Proteins from `prodigal` / `bakta` |
+
+## Decision tree
+
+```text
+Functional annotation need?
+├─ Catalogue proteins → eggnog-mapper (+ salmon abundances)
+├─ Read pathways → humann
+├─ MAG metabolism distillate → dram
+└─ AMR specifically → rgi
+```
+
+## Methods caveats
+
+- Pin emapper + eggNOG DB versions
+- Do not label KEGG-like fields as full KEGG pathway proof without rules
+
 ## Related skills
 
-`prodigal` · `salmon` · `rgi` · `visualization`
-
+`prodigal` · `salmon` · `diamond` · `dram` · `kegg` · `rgi` · `visualization` ·
+`tool-selection`

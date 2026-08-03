@@ -28,35 +28,49 @@ study-design + setup (+ public-databases)
         │
         v
 2 Assembly   megahit | metaspades | metaflye | metamdbg
+             (± binchicken for targeted coassembly)
         │
         v
-3 Mapping    bowtie2 | bwa-mem2 | strobealign | minimap2 → samtools
+3 Mapping    strobealign | bowtie2 | bwa-mem2 | minimap2 → samtools
         │
         ├─► 6 function (genes)
         │
         v
 4 Binning    single binners → basalt ★ | metawrap | dastool
+             → (± anvio refine | deepurify clean)
              → drep → coverm → checkm2 / gunc / mag-qc
         │
         ├─► 5 taxonomy (genomes): gtdbtk
         ├─► 6 function (genomes): bakta / prokka / eggnog-mapper / rgi
-        └─► 7 microbial mining: antismash / genomad / dram / …
+        └─► 7 microbial mining: antismash / genomad→checkv→vcontact / dram / …
         │
         v
    visualization → Methods archive
 ```
 
+## Common paths
+
+| Goal | Route |
+|------|-------|
+| Composition only | QC → `metaphlan` / `singlem` / `kraken2` → visualization |
+| Genome-resolved catalogue | QC → assembly → mapping → `basalt` ★ → mag-qc → gtdbtk |
+| Interactive MAG polish | After auto-bins → `anvio` → re-QC |
+| Environmental unknowns | QC → `singlem` (± `binchicken` coassembly) |
+| Viral ecology | contigs → `genomad`/`virsorter2` → `checkv` → `vcontact` |
+
 ## Checklist
 
-- [ ] Design & DB plan
+- [ ] Design & DB plan (`study-design`, `public-databases`)
 - [ ] QC + PE order
 - [ ] Assembly + QUAST glance
-- [ ] Sorted BAM coverage
+- [ ] Sorted BAM coverage (multi-coverage when related samples exist)
 - [ ] Ensemble binning route declared (`basalt` recommended)
+- [ ] Optional refine/clean: `anvio` / `deepurify` then re-QC
 - [ ] Taxonomy / function layers not merged unlabeled
 - [ ] If mining: route via `microbial-mining`; pin DBs; state hypothesis limits
 - [ ] Provenance: software **and** database releases
 
 ## Related skills
 
-`tool-selection` · `microbial-mining` · `public-databases` · stage skills under `skills/`
+`tool-selection` · `microbial-mining` · `public-databases` · `study-design` ·
+`mag-qc` · stage skills under `skills/`

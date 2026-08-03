@@ -1,3 +1,16 @@
+## [1.7.0] - 2026-08-03
+
+### Changed
+- Quality/consistency pass: synced pipeline, workflow, tool-selection, README,
+  getting-started, and troubleshooting with the full skill set
+- Removed misleading ensemble-binning Decision notes from non-binning skills
+- Deepened high-traffic skills: kaiju, maxbin2, prokka, bakta, eggnog-mapper,
+  rgi, mmseqs2, quast, salmon, mag-qc
+- Cross-linked SingleM/Bin Chicken, vConTACT/CheckV, Deepurify/Anvi'o, ANI tools
+
+### Fixed
+- Duplicate Related skills headers introduced during cleanup
+
 ## [1.6.0] - 2026-08-03
 
 ### Added

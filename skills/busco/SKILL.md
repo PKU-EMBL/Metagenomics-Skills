@@ -41,8 +41,8 @@ busco -i genome.fa -l bacteria_odb10 -o temp/busco -m genome -c 16
 
 ## Decision notes
 
-- Stage: **assessment** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
+- Stage: **assessment** (gene-set completeness; complementary to CheckM2 for some lineages)
+- Prefer lineage-appropriate BUSCO DB; do not treat BUSCO % as MAG contamination
 - Pin software + DB versions in Methods
 
 ## Related skills

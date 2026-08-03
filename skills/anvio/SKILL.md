@@ -82,3 +82,4 @@ Need interactive MAG refinement / multi-omics viz?
 
 `basalt` · `metawrap` · `coverm` · `checkm2` · `gunc` · `deepurify` ·
 `visualization` · `tool-selection`
+`mag-qc`

@@ -46,9 +46,9 @@ trimmomatic PE -threads 8 \
 
 ## Decision notes
 
-- Stage: **qc** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Stage: **QC** (legacy Illumina trimmer)
+- Prefer `fastp` for new pipelines unless reproducing Trimmomatic Methods
+- Keep PE pairing; archive trim logs
 
 ## Related skills
 

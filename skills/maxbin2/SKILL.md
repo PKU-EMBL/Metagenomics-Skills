@@ -24,27 +24,45 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Complementary single-binner to MetaBAT2. Needs abundance/coverage inputs; slower on huge contig sets. Best used inside ensemble (MetaWRAP/DAS Tool/BASALT).
+MaxBin 2 uses **nucleotide composition + differential abundance** across samples
+(expectation-maximization). It is a classical workhorse and a valuable
+**ensemble member** because it often recovers different genomes than MetaBAT2.
+
+| vs MetaBAT2 | Notes |
+|-------------|-------|
+| Strength | Multi-sample abundance model; widely packaged in MetaWRAP |
+| Weakness | Slower / heavier on huge contig sets; fewer adaptive TNF tricks |
+
+Prefer multi-coverage abundance tables. Always QC with CheckM2; for catalogues
+feed into `basalt` ★ / `metawrap` / `dastool`.
 
 ## How to run
 
 ```bash
-conda install -c bioconda maxbin2  # if packaged; else follow upstream
-
-run_MaxBin.pl -contig contigs.fa -abund depth.txt -out temp/bins/maxbin -thread 16
+run_MaxBin.pl -contig contigs.fa -abund depth.txt \
+  -out temp/bins/maxbin -thread 16
+# multiple -abund for multi-sample; see MaxBin docs for format
 ```
 
 ## Key parameters
 
-| `-abund` | coverage | Compatible table |
-| `-thread` | threads | |
+| Flag | Notes |
+|------|-------|
+| `-abund` | Coverage table(s); IDs must match contig headers |
+| `-thread` | Threads |
+| min contig length | Follow upstream defaults or justify |
 
-## Decision notes
+## Decision tree
 
-- Stage: **binning** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+```text
+Single classical binner?
+├─ Adaptive TNF+coverage → metabat2
+├─ EM abundance+composition → maxbin2
+├─ GMM composition+coverage → concoct
+└─ Catalogue / multi-assembly → basalt ★
+```
 
 ## Related skills
 
-metabat2 · concoct · dastool · metawrap · `tool-selection` · `metagenomics-workflow`
+`metabat2` · `concoct` · `dastool` · `metawrap` · `basalt` · `checkm2` ·
+`tool-selection`

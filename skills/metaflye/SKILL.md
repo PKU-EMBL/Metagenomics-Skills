@@ -42,9 +42,9 @@ flye --meta --nano-raw reads.fastq.gz --out-dir temp/asm/flye -t 32
 
 ## Decision notes
 
-- Stage: **assembly** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Stage: **assembly** (long-read metagenomes)
+- Prefer ONT/PacBio community assemblies; polish when chemistry requires
+- Downstream: long-read-aware binning (`lorbin`, SemiBin2 LR)
 
 ## Related skills
 

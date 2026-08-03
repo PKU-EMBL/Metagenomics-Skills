@@ -52,3 +52,4 @@ checkv end_to_end viral_contigs.fa temp/checkv -t 16 -d $CHECKVDB
 ## Related skills
 
 `virsorter2` · `genomad` · `mag-qc` · `microbial-mining` · `tool-selection`
+`vcontact`

@@ -40,6 +40,27 @@ Start from the **stage**, then the deliverable.
 | Lab Bowtie2 / KneadData ecosystem | `bowtie2` |
 | BWA-MEM compatible + speed | `bwa-mem2` |
 | Long reads | `minimap2` |
+| Gene/plasmid vs millions of genomes | `lexicmap` |
+
+## Taxonomy head-to-head
+
+| Need | Prefer |
+|------|--------|
+| Marker SGBs / pathways with HUMAnN | `metaphlan` |
+| Unknowns / environments lacking genomes | `singlem` |
+| Fast DNA k-mer + abundance | `kraken2` + `bracken` |
+| Joint DNA+AA classification | `metabuli` |
+| Protein-level sensitivity | `kaiju` |
+| Sketch containment / coverage-adjusted ANI | `sylph` |
+| MAG taxonomy | `gtdbtk` |
+
+## ANI head-to-head
+
+| Need | Prefer |
+|------|--------|
+| Large MAG catalogues / incomplete genomes | `skani` |
+| Literature-compatible FastANI Methods | `fastani` |
+| Dereplication workflow | `drep` (± ANI backend) |
 
 ## Mining head-to-head
 
@@ -63,7 +84,10 @@ Start from the **stage**, then the deliverable.
 | `metawrap` | Packaged multi-binner suite |
 | `dastool` | Aggregate contig2bin tables |
 
-Single-binner diversity for ensembles: `metabat2` · `semibin2` · `vamb` · `comebin` · `lorbin` (long-read).
+Single-binner diversity for ensembles: `metabat2` · `semibin2` · `vamb` · `aamb` ·
+`taxvamb` · `comebin` · `metabinner` · `lorbin` (long-read).
+
+Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 
 ## Coverage for binning
 

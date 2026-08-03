@@ -91,3 +91,4 @@ MGE / virus goal?
 ## Related skills
 
 `checkv` · `virsorter2` · `rgi` · `antismash` · `microbial-mining` · `megahit`
+`vcontact` · `plasmaag`

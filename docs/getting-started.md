@@ -55,13 +55,26 @@ Example prompts:
 - "Read-based taxonomic annotation only — which tools after KneadData?"
 - "Recommended ensemble binning after MEGAHIT for related bioreactors"
 - "Functional annotation via gene catalogue vs HUMAnN"
+- "Environmental samples with many unknowns — SingleM vs MetaPhlAn?"
+- "After binning: Deepurify or Anvi'o before GTDB-Tk?"
+- "Viral contigs: geNomad → CheckV → vConTACT workflow"
+
+### Common analysis paths
+
+| Goal | Skills path |
+|------|-------------|
+| Composition only | QC → `metaphlan` / `singlem` / `kraken2` → `visualization` |
+| Genome-resolved catalogue | QC → assembly → mapping → `basalt` ★ → `mag-qc` → `gtdbtk` |
+| Interactive MAG polish | bins → `anvio` → re-QC |
+| Viral ecology | `genomad` → `checkv` → `vcontact` |
 
 Expected routing: `tool-selection` / `metagenomics-workflow` / `study-design`
 → stage skills.
 
 ## Next
 
-- [Standard pipeline (five stages)](standard-pipeline.md)
+- [Standard pipeline](standard-pipeline.md)
 - [Skills catalog](skills.md)
 - [Public databases](public-databases.md)
+- [Troubleshooting](troubleshooting.md)
 - [Compute setup](compute-setup.md)

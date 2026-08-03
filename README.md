@@ -54,15 +54,25 @@ scripts/install-platforms.sh
 > Full genome-resolved path
 
 `study-design` → **QC** → **assembly** → **mapping** → **binning** (`basalt`
-recommended) → **taxonomy** / **function** → `visualization`
-
-> Microbial mining (BGCs / AMR / MGEs / metabolism)
-
-After MAGs: `microbial-mining` → `antismash` / `rgi` / `genomad` / `dram` / …
+recommended) → (± `anvio` / `deepurify`) → **taxonomy** / **function** →
+`visualization`
 
 > Community composition only (no assembly)
 
-**QC** → **taxonomy** (`metaphlan` or `kraken2`) → `visualization`
+**QC** → **taxonomy** (`metaphlan`, `singlem`, or `kraken2`) → `visualization`
+
+> Genome-resolved + interactive polish
+
+Auto-bins → `anvio` refine → `checkm2` / `gunc` / `mag-qc` → `gtdbtk`
+
+> Viral / plasmid mining
+
+Contigs → `genomad` / `virsorter2` → `checkv` → `vcontact` · plasmids:
+`plasmaag`
+
+> Microbial mining (BGCs / AMR / metabolism)
+
+After MAGs: `microbial-mining` → `antismash` / `rgi` / `dram` / …
 
 ---
 

@@ -42,9 +42,8 @@ bbmap.sh ref=contigs.fa in1=clean_1.fq.gz in2=clean_2.fq.gz \
 
 ## Decision notes
 
-- Stage: **mapping** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Stage: **mapping** / utilities (BBTools suite)
+- Prefer for specialized BBMerge/BBDuk tasks; for Illumina→contigs coverage prefer `strobealign` / `bowtie2`
 
 ## Related skills
 

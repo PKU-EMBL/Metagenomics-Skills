@@ -9,7 +9,7 @@ license: MIT
 category: analysis-tools
 tags: ['annotation', 'genome-mining', 'prokaryote']
 upstream: https://github.com/oschwengers/bakta
-stage: mining
+stage: function
 ---
 
 # Bakta
@@ -24,27 +24,37 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Modern per-genome annotator preferred over Prokka for many new studies. Good substrate for antiSMASH/DRAM/RGI on polished MAGs.
+Bakta provides **rapid, standardized** bacterial genome annotation with
+alignment-free sequence identification — preferred substrate for many new
+studies over Prokka when the Bakta DB is available.
+
+Use on QC-filtered MAGs/genomes before `antismash`, `dram`, `rgi`,
+`defensefinder`. Not a substitute for catalogue-scale `prodigal`+clustering.
 
 ## How to run
 
 ```bash
-conda install -c bioconda bakta  # if packaged; else follow upstream docs
-
 bakta --db $BAKTA_DB --threads 8 --output temp/bakta/${id} genome.fa
 ```
 
 ## Key parameters
 
-| `$BAKTA_DB` | required | Pin |
-| input | complete/near-complete preferred | |
+| Item | Notes |
+|------|-------|
+| `$BAKTA_DB` | Required — pin release with software |
+| Input | Prefer near-complete, low-contamination genomes |
+| Threads | Scale with CPU |
 
-## Decision notes
+## Decision tree
 
-- Run mining on **QC-filtered genomes/MAGs** (or contigs for MGE/virus screens)
-- Computational hits are hypotheses — state validation limits in Methods
-- Pin software + database releases
+```text
+Genome annotation substrate?
+├─ Bacterial MAG/isolate, modern default → bakta
+├─ Minimal classic pipeline → prokka
+└─ Mining next → bakta/prokka → microbial-mining tools
+```
 
 ## Related skills
 
-prokka · prodigal · antismash · dram · rgi · `microbial-mining` · `tool-selection` · `metagenomics-workflow`
+`prokka` · `prodigal` · `antismash` · `dram` · `rgi` · `defensefinder` ·
+`mag-qc` · `microbial-mining` · `tool-selection`

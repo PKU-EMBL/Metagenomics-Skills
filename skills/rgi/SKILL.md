@@ -20,9 +20,13 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-RGI predicts AMR genes from proteins or contigs. Hits are **sequence homology /
-model matches**, not phenotypic resistance. Prefer protein mode on NR or MAG
-proteomes; record CARD DB version.
+RGI predicts AMR genes from proteins or contigs against **CARD**. Hits are
+sequence homology / model matches — **not phenotypic resistance**, expression,
+or clinical breakpoints.
+
+Prefer protein mode on NR or MAG proteomes. Intersect with `genomad`/`plasmaag`
+when claiming plasmid-borne AMR. Optional ML/complement: `deeparg` (different
+model — do not merge unlabeled).
 
 ## How to run
 
@@ -32,7 +36,25 @@ rgi main -i proteins.faa -t protein -n 8 -a DIAMOND --clean \
   -o result/card/protein
 ```
 
+## Key parameters
+
+| Flag | Notes |
+|------|-------|
+| `-t protein` / contig | Protein preferred for catalogues |
+| `-a DIAMOND` | Speed |
+| CARD version | Pin with RGI version |
+
+## Decision tree
+
+```text
+Resistome claim?
+├─ Homology to CARD → rgi
+├─ ML complement → deeparg (separate table)
+├─ On plasmids? → intersect genomad / plasmaag
+└─ Phenotype → needs experiments / MICs (out of scope)
+```
+
 ## Related skills
 
-`eggnog-mapper` · `prodigal` · `visualization`
-
+`deeparg` · `genomad` · `plasmaag` · `eggnog-mapper` · `prodigal` ·
+`microbial-mining` · `visualization` · `tool-selection`

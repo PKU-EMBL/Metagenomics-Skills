@@ -46,9 +46,9 @@ samtools index temp/map/${id}.bam
 
 ## Decision notes
 
-- Stage: **mapping** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Stage: **mapping** (short reads)
+- Prefer `bwa-mem2` for speed when compatible; keep BWA when Methods require BWA-MEM
+- Indexes ≠ Bowtie2 / strobealign
 
 ## Related skills
 

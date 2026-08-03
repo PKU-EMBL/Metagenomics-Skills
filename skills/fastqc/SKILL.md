@@ -41,9 +41,9 @@ fastqc seq/${id}_1.fq.gz seq/${id}_2.fq.gz -o temp/qc -t 8
 
 ## Decision notes
 
-- Stage: **qc** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Stage: **QC** (report-only)
+- Prefer before/after trimming for QC reports; does not modify reads
+- Pair with `fastp` JSON/HTML for actionable filters
 
 ## Related skills
 

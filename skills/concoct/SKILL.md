@@ -53,9 +53,9 @@ cut_up_fasta.py contigs.fa -c 10000 -o 0 -m > contigs_10k.fa
 
 ## Decision notes
 
-- Stage: **binning** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Stage: **binning** — strong ensemble member (composition + multi-coverage)
+- Cut contigs (~10 kb) before clustering; prefer multi-coverage inputs
+- Feed into `basalt` ★ / `metawrap` / `dastool` for catalogues
 
 ## Related skills
 

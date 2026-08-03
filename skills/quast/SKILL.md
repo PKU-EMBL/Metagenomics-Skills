@@ -24,28 +24,38 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Run after assembly **before** binning to catch fragmented/misassembled contigs. metaQUAST when references exist; otherwise QUAST stats only.
+Run after assembly **before** heavy binning to catch overly fragmented graphs.
+metaQUAST adds reference-based misassembly metrics when suitable genomes exist;
+without refs you still get contiguity stats (N50, length histograms).
+
+Contiguity ≠ biological correctness. Do **not** choose assemblers on N50 alone —
+combine with mapping rate, bin recovery (`mag-qc`), and compute cost.
 
 ## How to run
 
 ```bash
-conda install -c bioconda quast  # if packaged; else follow upstream
-
 metaquast.py contigs.fa -o temp/quast -t 16
 # or quast.py for generic stats without refs
 ```
 
 ## Key parameters
 
-| metaQUAST | needs refs optional | |
-| N50/L50 | report | |
+| Mode | When |
+|------|------|
+| `metaquast.py` | Metagenomes; optional reference set |
+| `quast.py` | Quick contiguity without refs |
+| Threads `-t` | Scale with CPU |
 
-## Decision notes
+## Decision tree
 
-- Stage: **assessment** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+```text
+Assembly assessment?
+├─ Have references → metaQUAST
+├─ No refs → QUAST stats + downstream bin QC
+└─ CAMI gold standards → cami / AMBER (not QUAST alone)
+```
 
 ## Related skills
 
-megahit · metaspades · metaflye · mag-qc · `tool-selection` · `metagenomics-workflow`
+`megahit` · `metaspades` · `metaflye` · `metamdbg` · `mag-qc` · `cami` ·
+`tool-selection`

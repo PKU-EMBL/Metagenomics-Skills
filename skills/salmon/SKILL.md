@@ -20,11 +20,18 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Quantify the **NR gene catalogue** with salmon using dehosted PE reads.
-For metagenomes pass **`--meta`**. Prefer TPM vs counts consciously—downstream
-stats must match the unit.
+Quantify a **non-redundant gene catalogue** (nucleotides) with dehosted PE reads.
+Typical catalogue path:
 
-Note: salmon 2.x (Rust) changed index format—rebuild indexes when upgrading;
+```text
+prodigal (contigs) → cd-hit | mmseqs2 (NR) → salmon quant --meta
+                   → eggnog-mapper on NR proteins
+```
+
+For metagenomes pass **`--meta`**. Prefer TPM vs counts consciously — downstream
+stats must match the unit. CoverM genome abundance ≠ gene catalogue TPM.
+
+Note: salmon 2.x (Rust) changed index format — rebuild indexes when upgrading;
 bioconda may still ship 1.x (`salmon-cpp`). Pin and document the version.
 
 ## How to run
@@ -41,7 +48,25 @@ salmon quantmerge --quants temp/salmon/*.quant --column NumReads \
   -o result/salmon/gene.count
 ```
 
+## Key parameters
+
+| Flag | Notes |
+|------|-------|
+| `--meta` | Metagenome mode — required for community catalogues |
+| `-l A` | Auto library type; verify if stranded protocols used |
+| Index | Rebuild after salmon major version change |
+
+## Decision tree
+
+```text
+Abundance need?
+├─ NR gene catalogue → salmon --meta
+├─ Genome/MAG relative abundance → coverm
+├─ Pathway/gene families from reads → humann
+└─ Contig coverage for binning → coverm contig / mapper depths
+```
+
 ## Related skills
 
-`cd-hit` · `eggnog-mapper` · `kneaddata`
-
+`prodigal` · `cd-hit` · `mmseqs2` · `eggnog-mapper` · `coverm` · `kneaddata` ·
+`humann` · `tool-selection`

@@ -41,9 +41,9 @@ metaMDBG asm --out temp/asm/metamdbg --in reads.fastq.gz --threads 32
 
 ## Decision notes
 
-- Stage: **assembly** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Stage: **assembly** (long accurate reads)
+- Prefer HiFi / accurate long reads; follow with long-read binning (`lorbin` / SemiBin2 LR)
+- Pin version; report polish status
 
 ## Related skills
 

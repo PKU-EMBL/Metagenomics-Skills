@@ -24,27 +24,42 @@ See also [docs/references.md](../../docs/references.md).
 
 ## Analytical thinking
 
-Convenient MAG/isolate annotator wrapping Prodigal + databases. For large gene catalogues prefer Prodigal→CD-HIT→eggNOG; use Prokka for per-genome GenBank/GFF.
+Prokka wraps Prodigal + feature predictors into GenBank/GFF — convenient for
+**per-genome** annotation of isolates/MAGs. For large non-redundant gene
+catalogues prefer `prodigal` → `cd-hit`/`mmseqs2` → `eggnog-mapper`.
+
+| Need | Prefer |
+|------|--------|
+| Standardized bacterial annotation + modern DBs | `bakta` |
+| Classic rapid GFF/GBK, minimal deps | `prokka` |
+| Catalogue-scale ORFs only | `prodigal` |
+
+Fragmented MAGs yield incomplete/wrong gene calls — filter with `mag-qc` first.
 
 ## How to run
 
 ```bash
-conda install -c bioconda prokka  # if packaged; else follow upstream
-
 prokka bins/bin.fa --outdir temp/prokka/${id} --prefix ${id} --cpus 8 --force
 ```
 
 ## Key parameters
 
-| `--cpus` | threads | |
-| kingdom | Bacteria default | |
+| Flag | Notes |
+|------|-------|
+| `--cpus` | Threads |
+| `--kingdom` | Bacteria default; set Archaea when appropriate |
+| `--compliant` | NCBI-oriented outputs when submitting |
 
-## Decision notes
+## Decision tree
 
-- Stage: **function** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+```text
+Annotate a bacterial/archaeal genome/MAG?
+├─ Modern standardized → bakta
+├─ Classic rapid GBK/GFF → prokka
+└─ Only proteins for catalogue → prodigal
+```
 
 ## Related skills
 
-prodigal · eggnog-mapper · barrnap · `tool-selection` · `metagenomics-workflow`
+`bakta` · `prodigal` · `eggnog-mapper` · `barrnap` · `antismash` · `dram` ·
+`tool-selection`
