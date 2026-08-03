@@ -159,7 +159,6 @@ Total: **100** skills.
 | `hh-suite` | [HH-suite](https://github.com/soedinglab/hh-suite) | HHblits/HHsearch HMM–HMM remote homology. |
 | `plass` | [PLASS](https://github.com/soedinglab/plass) | Protein-level (and PenguiN) assembly from metagenomic reads. |
 | `metaeuk` | [MetaEuk](https://github.com/soedinglab/metaeuk) | Eukaryotic gene discovery/annotation via MMseqs2. |
-| `colabfold` | [ColabFold](https://github.com/sokrypton/ColabFold) | Accessible AlphaFold2 structure prediction + fast MSAs. |
 | `foldcomp` | [Foldcomp](https://github.com/steineggerlab/foldcomp) | Compress/index large protein structure sets. |
 | `foldseek` | [Foldseek](https://github.com/steineggerlab/foldseek) | 3Di structure search, Multimer, ProstT5 — also under AI. |
 | `folddisco` | [Folddisco](https://github.com/steineggerlab/folddisco) | Structural motif search — also under AI. |

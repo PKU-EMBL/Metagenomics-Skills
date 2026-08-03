@@ -61,5 +61,5 @@ Phylogeny from many proteomes/MAGs?
 
 ## Related skills
 
-`phylogenomics` · `foldseek` · `foldmason` · `colabfold` · `phylophlan` ·
-`iqtree` · `gtdbtk` · `tool-selection`
+`phylogenomics` · `foldseek` · `foldmason` · `phylophlan` · `iqtree` ·
+`gtdbtk` · `tool-selection`

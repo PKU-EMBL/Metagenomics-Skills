@@ -108,7 +108,6 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | Profile HMM remote homology | `hh-suite` |
 | Protein-level assembly from reads | `plass` |
 | Eukaryotic gene call | `metaeuk` |
-| Structure prediction | `colabfold` |
 | Structure / motif / MSA | `foldseek` · `folddisco` · `foldmason` |
 | Structure archive | `foldcomp` |
 | Peta-scale protein search | `petasearch` |

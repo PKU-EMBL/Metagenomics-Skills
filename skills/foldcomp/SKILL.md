@@ -3,10 +3,10 @@ name: foldcomp
 description: >
   Foldcomp — compress and index large protein structure sets (Steinegger lab)
   for efficient storage and random access before Foldseek-scale searches. Use
-  when: (1) Archiving ColabFold/AFDB-scale PDB collections, (2) Reducing disk
-  for structure search pipelines, (3) Extracting sequences/pLDDT from Foldcomp
-  DBs. Upstream: https://github.com/steineggerlab/foldcomp.
-  Route via homology-search with foldseek / colabfold.
+  when: (1) Archiving AFDB-scale PDB collections, (2) Reducing disk for
+  structure search pipelines, (3) Extracting sequences/pLDDT from Foldcomp DBs.
+  Upstream: https://github.com/steineggerlab/foldcomp.
+  Route via homology-search with foldseek.
 license: MIT
 category: analysis-tools
 tags: [Foldcomp, structure, compression, AFDB, Foldseek]
@@ -47,10 +47,9 @@ foldcomp decompress structures.fcz out_dir/
 Many protein structures to store/search?
 ├─ Compress/index archive → foldcomp
 ├─ Search → foldseek / folddisco / foldmason
-└─ Predict missing models → colabfold
+└─ Sequence-only path → foldseek + ProstT5
 ```
 
 ## Related skills
 
-`foldseek` · `colabfold` · `foldmason` · `folddisco` · `homology-search` ·
-`tool-selection`
+`foldseek` · `foldmason` · `folddisco` · `homology-search` · `tool-selection`

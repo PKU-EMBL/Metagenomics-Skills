@@ -5,7 +5,7 @@ description: >
   alignment (Söding lab). Use when: (1) Sequence identity is too low for
   BLAST/MMseqs easy hits, (2) Building/searching profile HMMs (BFD, UniClust,
   Pfam-style DBs), (3) Feeding sensitive MSAs into structure prediction
-  (ColabFold). Upstream: https://github.com/soedinglab/hh-suite.
+  Upstream: https://github.com/soedinglab/hh-suite.
   Route via homology-search; complements mmseqs2 and foldseek.
 license: MIT
 category: analysis-tools
@@ -36,7 +36,7 @@ careful pinning.
 | vs | Prefer HH-suite when |
 |----|----------------------|
 | `mmseqs2` | Need iterative profile search / MSA for folding |
-| `foldseek` | No structures yet; building MSA for ColabFold |
+| `foldseek` | No structures yet; profile MSA / remote homology |
 | `plmsearch` | Classical HMM profiles preferred over PLM embeddings |
 
 ## How to run
@@ -60,5 +60,5 @@ Remote homology without structure?
 
 ## Related skills
 
-`homology-search` · `mmseqs2` · `colabfold` · `foldseek` · `plass` ·
-`plmsearch` · `tool-selection`
+`homology-search` · `mmseqs2` · `foldseek` · `plass` · `plmsearch` ·
+`tool-selection`

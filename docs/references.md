@@ -220,17 +220,15 @@ the canonical papers to reference.
 
 90. Remmert, M., Biegert, A., Hauser, A. & Söding, J. HHblits: lightning-fast iterative protein sequence searching by HMM-HMM alignment. *Nat. Methods* **9**, 173–175 (2012). https://doi.org/10.1038/nmeth.1818
 
-91. Mirdita, M. *et al.* ColabFold: making protein folding accessible to all. *Nat. Methods* **19**, 679–682 (2022). https://doi.org/10.1038/s41592-022-01488-1
+91. Steinegger, M., Mirdita, M. & Söding, J. Protein-level assembly increases protein sequence recovery from metagenomic samples manyfold. *Nat. Methods* **16**, 603–606 (2019). https://doi.org/10.1038/s41592-019-0437-4
 
-92. Steinegger, M., Mirdita, M. & Söding, J. Protein-level assembly increases protein sequence recovery from metagenomic samples manyfold. *Nat. Methods* **16**, 603–606 (2019). https://doi.org/10.1038/s41592-019-0437-4
+92. Levy Karin, E., Mirdita, M. & Söding, J. MetaEuk—sensitive, high-throughput gene discovery and annotation for large-scale eukaryotic metagenomics. *Microbiome* **8**, 48 (2020). https://doi.org/10.1186/s40168-020-00808-x
 
-93. Levy Karin, E., Mirdita, M. & Söding, J. MetaEuk—sensitive, high-throughput gene discovery and annotation for large-scale eukaryotic metagenomics. *Microbiome* **8**, 48 (2020). https://doi.org/10.1186/s40168-020-00808-x
+93. Kim, H., Mirdita, M. & Steinegger, M. Foldcomp: a library and format for compressing and indexing large protein structure sets. *Bioinformatics* **39**, btad153 (2023). https://doi.org/10.1093/bioinformatics/btad153
 
-94. Kim, H., Mirdita, M. & Steinegger, M. Foldcomp: a library and format for compressing and indexing large protein structure sets. *Bioinformatics* **39**, btad153 (2023). https://doi.org/10.1093/bioinformatics/btad153
+94. Gilchrist, C. L. M., Mirdita, M. & Steinegger, M. Multiple protein structure alignment at scale with FoldMason. *Science* **391**, 485–488 (2026). https://doi.org/10.1126/science.ads6733
 
-95. Gilchrist, C. L. M., Mirdita, M. & Steinegger, M. Multiple protein structure alignment at scale with FoldMason. *Science* **391**, 485–488 (2026). https://doi.org/10.1126/science.ads6733
-
-96. Kim, D., Park, S. & Steinegger, M. Unicore enables scalable and accurate phylogenetic reconstruction with structural core genes. *Genome Biol. Evol.* **17**, evaf109 (2025). https://doi.org/10.1093/gbe/evaf109
+95. Kim, D., Park, S. & Steinegger, M. Unicore enables scalable and accurate phylogenetic reconstruction with structural core genes. *Genome Biol. Evol.* **17**, evaf109 (2025). https://doi.org/10.1093/gbe/evaf109
 
 
 ---

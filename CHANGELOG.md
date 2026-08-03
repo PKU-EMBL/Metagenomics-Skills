@@ -1,9 +1,17 @@
+## [1.11.1] - 2026-08-03
+
+### Removed
+- `colabfold` skill (deferred; use AFDB / Foldseek+ProstT5 paths instead)
+
+### Changed
+- Skills catalog total: 117; package version 1.11.1
+
 ## [1.11.0] - 2026-08-03
 
 ### Added
 - Extended Steinegger/Söding search stack: `hh-suite`, `colabfold`, `plass`,
   `metaeuk`, `foldcomp`, `foldmason`, `petasearch`, `unicore`
-- References 90–96; expanded `homology-search` / `phylogenomics` routing
+- Expanded `homology-search` / `phylogenomics` routing
 
 ### Changed
 - Skills catalog total: 118; package version 1.11.0

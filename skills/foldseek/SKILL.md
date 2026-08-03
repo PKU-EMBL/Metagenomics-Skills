@@ -5,8 +5,8 @@ description: >
   structural alphabet (Steinegger / Söding labs). Use when: (1) Searching MAG
   or predicted structures against AFDB/PDB/ESM Atlas, (2) Foldseek-Multimer
   complex search for distant systems (e.g. CRISPR–Cas), (3) Structure
-  clustering at AFDB scale, (4) Sequence→structure search with ProstT5 without
-  ColabFold. Upstream: https://github.com/steineggerlab/foldseek.
+  clustering at AFDB scale, (4) Sequence→structure search with ProstT5.
+  Upstream: https://github.com/steineggerlab/foldseek.
   Web: https://search.foldseek.com. Route via metagenomics-llm; pairs with
   mmseqs2 (sequence) and folddisco (motifs).
 license: MIT
@@ -78,7 +78,7 @@ foldseek databases PDB pdb tmp
 # monomer structure search
 foldseek easy-search query.pdb afdb aln.m8 tmp
 
-# FASTA without structures → ProstT5 3Di (much faster than ColabFold-per-query)
+# FASTA without structures → ProstT5 3Di
 foldseek databases ProstT5 weights tmp
 foldseek easy-search QUERY.faa pdb res.m8 tmp --prostt5-model weights
 
@@ -117,6 +117,6 @@ Homology / structure need?
 
 ## Related skills
 
-`homology-search` · `colabfold` · `foldcomp` · `folddisco` · `foldmason` ·
-`unicore` · `mmseqs2` · `hh-suite` · `petasearch` · `spacedust` · `plmsearch` ·
+`homology-search` · `foldcomp` · `folddisco` · `foldmason` · `unicore` ·
+`mmseqs2` · `hh-suite` · `petasearch` · `spacedust` · `plmsearch` ·
 `deepblast` · `eggnog-mapper` · `microbial-mining` · `tool-selection`

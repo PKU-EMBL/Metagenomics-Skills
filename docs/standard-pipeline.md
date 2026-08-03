@@ -62,7 +62,7 @@ not validated compounds, phenotypes, or complete phages unless QC says so
 | 3 Mapping | `strobealign`, `bowtie2`, `bwa`, `bwa-mem2`, `minimap2`, `samtools`, `bbmap`, `diamond`, `lexicmap`, `phylign` |
 | 4 Binning | `metabat2`, `maxbin2`, `concoct`, `semibin2`, `vamb`, `aamb`, `taxvamb`, `comebin`, `metabinner`, `lorbin`, `basalt`, `metawrap`, `dastool`, `anvio`, `deepurify`, `drep`, `skani`, `fastani`, `coverm`, `checkm2`, `gunc`, `mag-qc` |
 | 5 Taxonomy | `metaphlan`, `singlem`, `kraken2`, `bracken`, `motus`, `sylph`, `metabuli`, `kaiju`, `gtdbtk`, `gtdb`, `mgnify`, `phylogenomics`, `phylophlan`, `unicore`, `iqtree`, `fasttree`, `lucaphylo` |
-| 6 Function | `humann`, `prodigal`, `prokka`, `bakta`, `cd-hit`, `mmseqs2`, `hh-suite`, `metaeuk`, `salmon`, `eggnog-mapper`, `rgi`, `barrnap`, `colabfold`, `foldcomp`, `foldseek`, `foldmason`, `petasearch`, `homology-search`, `erast` |
+| 6 Function | `humann`, `prodigal`, `prokka`, `bakta`, `cd-hit`, `mmseqs2`, `hh-suite`, `metaeuk`, `salmon`, `eggnog-mapper`, `rgi`, `barrnap`, `foldcomp`, `foldseek`, `foldmason`, `petasearch`, `homology-search`, `erast` |
 | 7 Mining | `microbial-mining`, `antismash`, `bigscape`, `genomad`, `virsorter2`, `checkv`, `vcontact`, `plasmaag`, `macrel`, `dram`, `dbcan`, `gapseq`, `vmh`, `deeparg`, `defensefinder`, `folddisco`, `spacedust` |
 | Strain | `instrain` |
 | Public data | `sra-ena`, `cami`, `progenomes`, `kegg`, `insilicoseq`, … |

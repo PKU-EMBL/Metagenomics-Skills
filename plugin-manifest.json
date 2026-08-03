@@ -1,7 +1,7 @@
 {
   "name": "Metagenomics Skills",
   "description": "Shotgun metagenomics Agent Skills \u2014 QC, assembly, mapping, binning, taxonomy, function, and microbial mining",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "author": "PKU-EMBL",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
@@ -31,7 +31,6 @@
     "Foldseek",
     "MMseqs2",
     "Folddisco",
-    "ColabFold",
     "HH-suite",
     "PLASS",
     "ERAST",
@@ -40,9 +39,9 @@
     "PhyloPhlAn",
     "Unicore"
   ],
-  "skills_count": 118,
+  "skills_count": 117,
   "skill_categories": {
-    "analysis-tools": 35,
+    "analysis-tools": 34,
     "evaluation": 2,
     "utilities": 6,
     "orchestration": 5

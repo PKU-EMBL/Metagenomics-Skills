@@ -3,9 +3,9 @@ name: homology-search
 description: >
   Route all homology / similarity search paradigms for shotgun metagenomics,
   including the Steinegger/Söding stack (MMseqs2, HH-suite, Foldseek family,
-  ColabFold, PLASS, MetaEuk, Petasearch), vector DB (ERAST), and genome
-  warehouse search (Phylign, LexicMap). Use when choosing how to search
-  proteins, genes, or genomes.
+  PLASS, MetaEuk, Petasearch), vector DB (ERAST), and genome warehouse search
+  (Phylign, LexicMap). Use when choosing how to search proteins, genes, or
+  genomes.
 license: MIT
 category: orchestration
 tags: [homology, search, Steinegger, Foldseek, MMseqs2, vector-DB, routing]
@@ -26,7 +26,6 @@ For LM dark-matter framing also see `metagenomics-llm`. For trees see
 | Profile HMM remote homology | `hh-suite` |
 | Protein-level assembly from reads | `plass` |
 | Eukaryotic gene call via homology | `metaeuk` |
-| Structure prediction for search | `colabfold` |
 | Structure compress/index | `foldcomp` |
 | Structure search / multimer / ProstT5 | `foldseek` |
 | Structural motifs | `folddisco` |
@@ -60,8 +59,7 @@ What are you searching / recovering?
 ├─ Proteins / ORFs
 │   ├─ Close / catalogue-scale → mmseqs2 / diamond
 │   ├─ Profile remote homology / MSA for folding → hh-suite
-│   ├─ Structures or ProstT5 → foldseek (± folddisco / foldmason)
-│   ├─ Need to fold first → colabfold (± foldcomp archive)
+│   ├─ Structures or ProstT5 / AFDB → foldseek (± folddisco / foldmason / foldcomp)
 │   ├─ Peta-scale protein targets → petasearch
 │   ├─ Sequence-only PLM → plmsearch / deepblast
 │   └─ Billion-scale vector retrieval → erast
@@ -76,7 +74,7 @@ What are you searching / recovering?
 
 ## Related skills
 
-`mmseqs2` · `hh-suite` · `plass` · `metaeuk` · `colabfold` · `foldcomp` ·
-`foldseek` · `folddisco` · `foldmason` · `petasearch` · `spacedust` ·
+`mmseqs2` · `hh-suite` · `plass` · `metaeuk` · `foldcomp` · `foldseek` ·
+`folddisco` · `foldmason` · `petasearch` · `spacedust` ·
 `plmsearch` · `deepblast` · `erast` · `phylign` · `lexicmap` · `diamond` ·
 `metagenomics-llm` · `phylogenomics` · `unicore` · `tool-selection`

@@ -2,7 +2,7 @@
 name: foldmason
 description: >
   FoldMason — multiple protein structure alignment at scale (Steinegger lab).
-  Use when: (1) Building structural MSAs from AFDB/ColabFold models,
+  Use when: (1) Building structural MSAs from AFDB / predicted models,
   (2) Comparing folds across MAG protein families after Foldseek clustering,
   (3) Preparing structure-aware alignments for phylogeny or motif work.
   Upstream: https://github.com/steineggerlab/foldmason.
@@ -59,5 +59,5 @@ Have a set of related structures?
 
 ## Related skills
 
-`foldseek` · `folddisco` · `colabfold` · `foldcomp` · `unicore` ·
-`homology-search` · `phylogenomics` · `tool-selection`
+`foldseek` · `folddisco` · `foldcomp` · `unicore` · `homology-search` ·
+`phylogenomics` · `tool-selection`
