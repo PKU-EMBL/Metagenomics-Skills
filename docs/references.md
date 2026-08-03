@@ -200,6 +200,22 @@ the canonical papers to reference.
 
 83. Barrio-Hernandez, I. *et al.* Clustering predicted structures at the scale of the known protein universe. *Nature* **622**, 637–645 (2023). https://doi.org/10.1038/s41586-023-06510-w
 
+## Homology search (vector DB & phylogeny-compressed)
+
+84. Jiang, Y. *et al.* Scalable homology detection with ERAST. *Nat. Biotechnol.* (2026). https://doi.org/10.1038/s41587-026-03051-1
+
+85. Břinda, K. *et al.* Efficient and robust search of microbial genomes via phylogenetic compression. *Nat. Methods* **22**, 692–697 (2025). https://doi.org/10.1038/s41592-025-02625-2
+
+## Phylogenomics
+
+86. Minh, B. Q. *et al.* IQ-TREE 2: new models and efficient methods for phylogenetic inference in the genomic era. *Mol. Biol. Evol.* **37**, 1530–1534 (2020). https://doi.org/10.1093/molbev/msaa015
+
+87. Price, M. N., Dehal, P. S. & Arkin, A. P. FastTree 2 — approximately maximum-likelihood trees for large alignments. *PLoS ONE* **5**, e9490 (2010). https://doi.org/10.1371/journal.pone.0009490
+
+88. Asnicar, F. *et al.* Precise phylogenetic analysis of microbial isolates and genomes from metagenomes using PhyloPhlAn 3.0. *Nat. Commun.* **11**, 2500 (2020). https://doi.org/10.1038/s41467-020-16366-7
+
+89. Shan, Y. *et al.* Alignment-free phylogenetic inference via hyperbolic protein language models. *bioRxiv* https://doi.org/10.64898/2026.05.26.723419 (2026).
+
 
 ---
 

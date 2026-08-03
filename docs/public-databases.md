@@ -59,9 +59,10 @@ skill.
 
 For OMG/gLM2 and PLM-assisted annotation, start at `metagenomics-llm` and
 `omg`. For AFDB/PDB/ESM Atlas structure indexes use `foldseek` /
-`folddisco` (`foldseek databases …`, Folddisco opendata indices). These are
-**ML corpora / structure DBs**, not substitutes for SRA reanalysis or GTDB
-taxonomy claims.
+`folddisco`. For vector-DB homology use `erast`; for phylogeny-compressed
+genome search collections use `phylign` (see also `homology-search`). These are
+**ML corpora / structure / search indexes**, not substitutes for SRA reanalysis
+or GTDB taxonomy claims.
 
 ## See also
 

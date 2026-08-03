@@ -1,3 +1,16 @@
+## [1.10.0] - 2026-08-03
+
+### Added
+- Homology-search layer: `homology-search` hub, `erast` (vector DB), `phylign`
+  (phylogenetic compression / MiniPhy+Phylign)
+- Phylogenomics layer: `phylogenomics` hub, `iqtree`, `fasttree`, `phylophlan`,
+  `lucaphylo`
+- References 84–89
+
+### Changed
+- Wired search/tree routing into tool-selection, workflow, mining, LLM hub, docs
+- Skills catalog total: 110; package version 1.10.0
+
 ## [1.9.0] - 2026-08-03
 
 ### Added

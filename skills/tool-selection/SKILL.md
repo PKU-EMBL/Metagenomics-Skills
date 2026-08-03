@@ -22,12 +22,13 @@ Start from the **stage**, then the deliverable.
 2 Assembly megahit · metaspades · metaflye · metamdbg  (+ quast)
            polish: racon (long) · pilon (short)
            coassembly planning: binchicken (low-abundance / novelty)
-3 Mapping  strobealign | bowtie2 | bwa-mem2 | bwa | minimap2 · lexicmap · samtools · diamond
+3 Mapping  strobealign | bowtie2 | bwa-mem2 | bwa | minimap2 · lexicmap · phylign · samtools · diamond
 4 Binning  metabat2 · maxbin2 · concoct · semibin2 · vamb · aamb · taxvamb · comebin · metabinner · lorbin
            → basalt ★ · metawrap · dastool → anvio / deepurify → drep · skani · fastani · coverm · checkm2 · gunc
 5 Taxonomy metaphlan · singlem · kraken2+bracken · motus · sylph · metabuli · kaiju · gtdbtk
+           phylogenomics → phylophlan · iqtree · fasttree · lucaphylo
 6 Function humann · prodigal · bakta · prokka · cd-hit · mmseqs2 · salmon
-           · eggnog-mapper · rgi
+           · eggnog-mapper · rgi · homology-search
 7 Mining   microbial-mining → antismash · bigscape · genomad · virsorter2 · checkv · vcontact
            · plasmaag · macrel · dram · dbcan · gapseq · vmh · deeparg · defensefinder
 ```
@@ -41,6 +42,7 @@ Start from the **stage**, then the deliverable.
 | BWA-MEM compatible + speed | `bwa-mem2` |
 | Long reads | `minimap2` |
 | Gene/plasmid vs millions of genomes | `lexicmap` |
+| Phylogeny-compressed 661k-style search | `phylign` |
 
 ## Taxonomy head-to-head
 
@@ -97,14 +99,33 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | Only one sample | Single-coverage (acknowledge hidden contamination risk) |
 | Huge public cohorts / rare taxa | `binchicken` targeted coassembly → then bin |
 
+## Homology search (all paradigms)
+
+| Need | Prefer |
+|------|--------|
+| Route any homology search | `homology-search` |
+| Sequence / NR / contig tax | `mmseqs2` · `diamond` |
+| Structure / motif | `foldseek` · `folddisco` |
+| Vector DB + embeddings | `erast` |
+| Phylogeny-compressed genomes | `phylign` |
+| Gene vs million genomes | `lexicmap` |
+
+## Phylogenomics / trees
+
+| Need | Prefer |
+|------|--------|
+| Route trees / evolution | `phylogenomics` |
+| MAG taxonomy placement | `gtdbtk` |
+| MAG/genome phylogeny workflow | `phylophlan` |
+| Publication ML tree | `iqtree` |
+| Fast draft tree | `fasttree` |
+| Alignment-free PLM phylogeny | `lucaphylo` |
+
 ## AI / LM & structure search (Steinegger + PLMs)
 
 | Need | Prefer |
 |------|--------|
 | Route LM / Foldseek stack | `metagenomics-llm` |
-| Sequence search / NR / contig tax | `mmseqs2` |
-| Structure search (AFDB/PDB) | `foldseek` |
-| Structural motifs | `folddisco` |
 | Pretrain corpus / gLM2 | `omg` |
 | Remote protein homology (PLM) | `plmsearch` / `deepblast` |
 | Conserved gene clusters (structure-aware) | `spacedust` |
@@ -133,4 +154,5 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 
 ## Related skills
 
-`metagenomics-workflow` · `microbial-mining` · `metagenomics-llm` · `study-design` · `public-databases`
+`metagenomics-workflow` · `microbial-mining` · `homology-search` · `phylogenomics` ·
+`metagenomics-llm` · `study-design` · `public-databases`

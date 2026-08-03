@@ -68,9 +68,11 @@ study-design + setup (+ public-databases)
 - [ ] Optional refine/clean: `anvio` / `deepurify` then re-QC
 - [ ] Taxonomy / function layers not merged unlabeled
 - [ ] If mining: route via `microbial-mining`; pin DBs; state hypothesis limits
+- [ ] Homology search paradigm declared (`homology-search`) when annotating dark genes
+- [ ] If trees/evolution: route via `phylogenomics` (not ANI-as-tree)
 - [ ] Provenance: software **and** database releases
 
 ## Related skills
 
-`tool-selection` · `microbial-mining` · `metagenomics-llm` · `public-databases` · `study-design` ·
-`mag-qc` · stage skills under `skills/`
+`tool-selection` · `microbial-mining` · `homology-search` · `phylogenomics` ·
+`metagenomics-llm` · `public-databases` · `study-design` · `mag-qc` · stage skills under `skills/`

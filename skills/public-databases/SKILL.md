@@ -29,6 +29,8 @@ in your disk layout:
 | Tool runtime indexes | Kraken, CheckM2, ChocoPhlAn, CARD | tool skills |
 | ML pretraining corpora / genomic LMs | OMG, gLM2 | `omg` · `metagenomics-llm` |
 | Structure search indexes | AFDB, PDB, ESM Atlas (via Foldseek/Folddisco) | `foldseek` · `folddisco` · `metagenomics-llm` |
+| Vector / embedding homology DBs | ERAST public vector DB | `erast` · `homology-search` |
+| Phylogeny-compressed genome search sets | 661k / MOF collections | `phylign` · `homology-search` |
 
 ## Analytical thinking
 

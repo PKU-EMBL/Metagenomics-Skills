@@ -59,13 +59,13 @@ not validated compounds, phenotypes, or complete phages unless QC says so
 | Design/setup | `study-design`, `setup`, `public-databases` |
 | 1 QC | `fastp`, `kneaddata`, `fastqc`, `cutadapt`, `trimmomatic` |
 | 2 Assembly | `megahit`, `metaspades`, `metaflye`, `metamdbg`, `racon`, `pilon`, `quast`, `binchicken` |
-| 3 Mapping | `strobealign`, `bowtie2`, `bwa`, `bwa-mem2`, `minimap2`, `samtools`, `bbmap`, `diamond`, `lexicmap` |
+| 3 Mapping | `strobealign`, `bowtie2`, `bwa`, `bwa-mem2`, `minimap2`, `samtools`, `bbmap`, `diamond`, `lexicmap`, `phylign` |
 | 4 Binning | `metabat2`, `maxbin2`, `concoct`, `semibin2`, `vamb`, `aamb`, `taxvamb`, `comebin`, `metabinner`, `lorbin`, `basalt`, `metawrap`, `dastool`, `anvio`, `deepurify`, `drep`, `skani`, `fastani`, `coverm`, `checkm2`, `gunc`, `mag-qc` |
-| 5 Taxonomy | `metaphlan`, `singlem`, `kraken2`, `bracken`, `motus`, `sylph`, `metabuli`, `kaiju`, `gtdbtk`, `gtdb`, `mgnify` |
-| 6 Function | `humann`, `prodigal`, `prokka`, `bakta`, `cd-hit`, `mmseqs2`, `salmon`, `eggnog-mapper`, `rgi`, `barrnap`, `foldseek` |
+| 5 Taxonomy | `metaphlan`, `singlem`, `kraken2`, `bracken`, `motus`, `sylph`, `metabuli`, `kaiju`, `gtdbtk`, `gtdb`, `mgnify`, `phylogenomics`, `phylophlan`, `iqtree`, `fasttree`, `lucaphylo` |
+| 6 Function | `humann`, `prodigal`, `prokka`, `bakta`, `cd-hit`, `mmseqs2`, `salmon`, `eggnog-mapper`, `rgi`, `barrnap`, `foldseek`, `homology-search`, `erast` |
 | 7 Mining | `microbial-mining`, `antismash`, `bigscape`, `genomad`, `virsorter2`, `checkv`, `vcontact`, `plasmaag`, `macrel`, `dram`, `dbcan`, `gapseq`, `vmh`, `deeparg`, `defensefinder`, `folddisco`, `spacedust` |
 | Strain | `instrain` |
 | Public data | `sra-ena`, `cami`, `progenomes`, `kegg`, `insilicoseq`, … |
 | Report | `visualization` |
 | AI / LMs & structure search | `metagenomics-llm`, `omg`, `mmseqs2`, `foldseek`, `folddisco`, `plmsearch`, `deepblast`, `spacedust`, `alphagem` |
-| Routing | `tool-selection`, `metagenomics-workflow`, `metagenomics-llm` |
+| Routing | `tool-selection`, `metagenomics-workflow`, `metagenomics-llm`, `homology-search`, `phylogenomics` |

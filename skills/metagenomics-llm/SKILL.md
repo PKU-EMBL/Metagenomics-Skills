@@ -73,6 +73,10 @@ AI / homology need in a metagenomics project?
 │     → alphagem  (± gapseq, vmh)
 ├─ Classical function at catalogue scale
 │     → eggnog-mapper / dram / humann
+├─ Full homology-search menu (vector DB, Phylign, …)
+│     → homology-search
+├─ Trees / phylogenomics
+│     → phylogenomics
 └─ Unsure
       → this skill + tool-selection
 ```
@@ -83,11 +87,14 @@ AI / homology need in a metagenomics project?
 contigs / MAG proteins (after QC)
    ├─ classical: eggnog-mapper · diamond · mmseqs2
    ├─ structure: foldseek · folddisco · spacedust
+   ├─ vector DB / genome warehouse search → homology-search
    └─ LM-assisted: plmsearch · deepblast · omg/gLM2
 genomic LM research / pretrain
    └─ omg (corpus) → gLM2 / other gLMs
 metabolic models
    └─ gapseq · alphagem · vmh
+trees / evolution
+   └─ phylogenomics
 ```
 
 ## Methods caveats
@@ -101,6 +108,7 @@ metabolic models
 
 ## Related skills
 
-`mmseqs2` · `foldseek` · `folddisco` · `omg` · `plmsearch` · `deepblast` ·
-`spacedust` · `alphagem` · `eggnog-mapper` · `diamond` · `dram` · `gapseq` ·
-`defensefinder` · `public-databases` · `tool-selection` · `metagenomics-workflow`
+`homology-search` · `phylogenomics` · `mmseqs2` · `foldseek` · `folddisco` ·
+`erast` · `omg` · `plmsearch` · `deepblast` · `spacedust` · `alphagem` ·
+`eggnog-mapper` · `diamond` · `dram` · `gapseq` · `defensefinder` ·
+`public-databases` · `tool-selection` · `metagenomics-workflow`

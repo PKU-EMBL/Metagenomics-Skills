@@ -46,5 +46,6 @@ Optional: `gtdbtk infer` for trees from MSA outputs.
 
 ## Related skills
 
-`drep` · `checkm2` · `visualization`
+`phylogenomics` · `gtdb` · `phylophlan` · `iqtree` · `drep` · `checkm2` ·
+`visualization`
 

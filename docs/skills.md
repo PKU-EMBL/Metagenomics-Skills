@@ -150,6 +150,31 @@ Total: **100** skills.
 | `setup` | — | First-time environment and database setup for shotgun metagenomics tool skills. |
 
 
+## Homology search
+
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `homology-search` | — | Route sequence, structure, PLM, vector-DB, and genome-warehouse search. |
+| `erast` | [ERAST](https://github.com/TencentAILabHealthcare/ERAST) | Billion-scale vector-DB homology search (protein + nucleotide). |
+| `phylign` | [Phylign](https://github.com/karel-brinda/phylign) | BLAST-like search on phylogeny-compressed microbial genome collections. |
+| `lexicmap` | [LexicMap](https://github.com/shenwei356/LexicMap) | Gene/plasmid alignment vs millions of genomes — also under Mapping. |
+| `mmseqs2` | [MMseqs2](https://github.com/soedinglab/MMseqs2) | Sequence search / clustering / contig taxonomy — also under Function. |
+| `foldseek` | [Foldseek](https://github.com/steineggerlab/foldseek) | 3Di structure search, Multimer, ProstT5 — also under AI. |
+| `folddisco` | [Folddisco](https://github.com/steineggerlab/folddisco) | Structural motif search — also under AI. |
+| `plmsearch` | [PLMSearch](https://github.com/maovshao/PLMSearch) | PLM remote homology — also under AI. |
+| `deepblast` | [DeepBLAST](https://github.com/flatironinstitute/deepblast) | TM-Vec + DeepBLAST — also under AI. |
+
+## Phylogenomics / trees
+
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `phylogenomics` | — | Route MAG trees, GTDB placement, classical vs AI phylogeny. |
+| `phylophlan` | [PhyloPhlAn](https://github.com/biobakery/phylophlan) | Marker-based phylogeny of isolates and MAGs. |
+| `iqtree` | [IQ-TREE2](https://github.com/iqtree/iqtree2) | Maximum-likelihood trees with model selection / UFBoot. |
+| `fasttree` | [FastTree](http://www.microbesonline.org/fasttree/) | Fast approximate ML trees for large MSAs. |
+| `lucaphylo` | [LucaPhylo](https://github.com/NickShannn/LucaPhylo) | Alignment-free hyperbolic PLM phylogenetic inference. |
+| `gtdbtk` | [GTDB-Tk](https://github.com/Ecogenomics/GTDBTk) | GTDB taxonomy placement — also under Taxonomy. |
+
 ## AI / language models & structure search
 
 | Skill | Upstream | Purpose |
@@ -171,6 +196,8 @@ Total: **100** skills.
 | `tool-selection` | — | Choose shotgun tools by stage: QC, assembly, mapping, binning, taxonomic annotation, functional annotation, and microbial mining. |
 | `metagenomics-workflow` | — | End-to-end shotgun metagenomics: quality control, assembly, mapping, binning, taxonomic annotation, functional annotation, and microbial mining (BGCs, AMR, MGEs/viruses, AMPs, metabolism, defense). |
 | `study-design` | — | Study design for shotgun metagenomics across QC, assembly, binning, and annotation. |
+| `homology-search` | — | Route all homology/search paradigms (also under Homology search). |
+| `phylogenomics` | — | Route phylogeny / evolutionary analyses (also under Phylogenomics). |
 | `metagenomics-llm` | — | Route LMs and Foldseek/MMseqs structure–sequence search (also under AI). |
 
 ## Other

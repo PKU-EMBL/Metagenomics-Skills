@@ -38,7 +38,8 @@ genome warehouses (`progenomes`, AllTheBacteria, GTDB reps).
 |------|--------|
 | Illumina reads → contigs (binning coverage) | `strobealign` / `bowtie2` |
 | Gene/plasmid vs million genomes | `lexicmap` |
-| Protein remote homology | `diamond` / `mmseqs2` |
+| Phylogeny-compressed 661k on a laptop | `phylign` |
+| Protein remote homology | `diamond` / `mmseqs2` / `erast` |
 | Species ANI between MAGs | `skani` / `fastani` |
 
 ## How to run
@@ -51,5 +52,6 @@ lexicmap search -d db/lexicmap_idx -q query.fa -o temp/lexicmap/hits.tsv
 
 ## Related skills
 
-`minimap2` · `diamond` · `mmseqs2` · `progenomes` · `gtdb` · `plasmaag` ·
+`homology-search` · `phylign` · `minimap2` · `diamond` · `mmseqs2` · `erast` ·
+`progenomes` · `gtdb` · `plasmaag` ·
 `tool-selection`

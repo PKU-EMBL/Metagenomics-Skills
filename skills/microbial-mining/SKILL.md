@@ -52,6 +52,7 @@ Mining goal?
 ├─ Defense systems → bakta/prokka → defensefinder
 ├─ Dark modules / neighborhoods → spacedust
 ├─ Structure / motif search → foldseek / folddisco
+├─ Vector DB / warehouse search → homology-search → erast / phylign / lexicmap
 ├─ LM remote homology → metagenomics-llm → plmsearch / deepblast
 └─ Unsure → bakta on HQ MAGs, then branch
 ```
@@ -83,4 +84,4 @@ contigs
 `antismash` · `bigscape` · `genomad` · `virsorter2` · `checkv` · `macrel` ·
 `dram` · `dbcan` · `bakta` · `rgi` · `deeparg` · `gapseq` · `vmh` · `defensefinder` ·
 `vcontact` · `plasmaag` · `spacedust` · `foldseek` · `folddisco` ·
-`metagenomics-llm` · `tool-selection`
+`homology-search` · `erast` · `phylign` · `metagenomics-llm` · `tool-selection`
