@@ -59,7 +59,6 @@ Ask before downloading:
 | MAG completeness models | CheckM2 DB | `checkm2` |
 | Host depletion indexes | Bowtie2 host genomes | `kneaddata` |
 | BASALT refinement weights | `BASALT_WEIGHT` | `basalt` / `setup` |
-| ML metagenome corpora (optional) | OMG (Hugging Face) | see docs note — not a Methods substitute for SRA |
 
 ## Decision tree
 
