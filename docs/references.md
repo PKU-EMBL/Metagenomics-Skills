@@ -252,6 +252,10 @@ the canonical papers to reference.
 
 104. Heinzinger, M. *et al.* Bilingual language model for protein sequence and structure. *NAR Genom. Bioinform.* **6**, lqae150 (2024). https://doi.org/10.1093/nargab/lqae150
 
+105. Candido, S. *et al.* Language Modeling Materializes a World Model of Protein Biology. *bioRxiv* https://doi.org/10.64898/2026.06.03.729735 (2026).
+
+106. Su, J. *et al.* SaProt: Protein Language Modeling with Structure-aware Vocabulary. *International Conference on Learning Representations* (ICLR) (2024). https://openreview.net/forum?id=6MRm3G4NiU · preprint https://doi.org/10.1101/2023.10.01.560349
+
 
 ---
 

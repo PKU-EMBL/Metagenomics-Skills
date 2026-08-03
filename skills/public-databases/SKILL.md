@@ -28,7 +28,7 @@ in your disk layout:
 | Pathway / ortholog knowledge bases | KEGG, eggNOG, MetaCyc | `kegg` · `eggnog-mapper` · `biobakery-databases` |
 | Tool runtime indexes | Kraken, CheckM2, ChocoPhlAn, CARD | tool skills |
 | Genome language model corpora / checkpoints | OMG, OpenGenome2, gLM2 / NT / DNABERT-2 / Caduceus / Evo | `genome-language-model` · `omg` · `evo2` |
-| Protein language model checkpoints | ESM-2, ProstT5 / ProtT5, PLMSearch weights | `protein-language-model` · `esm` · `prostt5` |
+| Protein language model checkpoints | ESM-2, ESM C, SaProt, ProstT5 / ProtT5, PLMSearch | `protein-language-model` · `esm` · `esmc` · `saprot` |
 | Structure search indexes | AFDB, PDB, ESM Atlas (via Foldseek/Folddisco) | `foldseek` · `folddisco` · `metagenomics-llm` |
 | Vector / embedding homology DBs | ERAST public vector DB | `erast` · `homology-search` |
 | Phylogeny-compressed genome search sets | 661k / MOF collections | `phylign` · `homology-search` |
@@ -89,8 +89,8 @@ Need public metagenomics data/reference?
 │     → eggnog-mapper / rgi / checkm2
 ├─ Genome language model corpus / gLM2
 │     → omg / genome-language-model
-├─ Protein language model checkpoints (ESM / ProstT5)
-│     → protein-language-model / esm / prostt5
+├─ Protein language model checkpoints (ESM / ESMC / SaProt / ProstT5)
+│     → protein-language-model / esm / esmc / saprot / prostt5
 └─ Unsure
       → this skill + tool-selection
 ```

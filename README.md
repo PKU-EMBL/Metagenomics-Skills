@@ -91,7 +91,8 @@ After MAGs: `microbial-mining` → `antismash` / `rgi` / `dram` / …
 
 > Protein language models
 
-`protein-language-model` → `esm` / `prostt5` / `plmsearch` / `deepblast`
+`protein-language-model` → `esm` / `esmc` / `saprot` / `prostt5` /
+`plmsearch` / `deepblast`
 
 > AI / LMs & structure search (Foldseek · PLMs)
 

@@ -6,8 +6,8 @@ description: >
   classical homology, (2) MMseqs2 vs Foldseek vs PLM search, (3) Spacedust /
   AlphaGEM, (4) Distinguishing foundation-model corpora from SRA/MGnify
   reanalysis. For DNA gLMs use genome-language-model; for protein LMs use
-  protein-language-model (esm, prostt5, plmsearch, deepblast). Classical
-  pipelines: metagenomics-workflow / tool-selection.
+  protein-language-model (esm, esmc, saprot, prostt5, plmsearch, deepblast).
+  Classical pipelines: metagenomics-workflow / tool-selection.
 license: MIT
 category: orchestration
 tags: [LLM, PLM, gLM, Foldseek, MMseqs2, Folddisco, structure-search, AI]
@@ -42,7 +42,7 @@ language models** prefer `protein-language-model`.
 | Genome language models (route all gLMs) | `genome-language-model` | Taxonomy or abundance tables |
 | Protein language models (route all PLMs) | `protein-language-model` | Taxonomy or abundance tables |
 | Metagenomic corpus + gLM2 | `omg` | ENA study reanalysis |
-| ESM-2 / ProstT5 foundation PLMs | `esm` / `prostt5` | Experimental structure proof |
+| ESM-2 / ESM C / SaProt / ProstT5 | `esm` / `esmc` / `saprot` / `prostt5` | Experimental structure proof |
 | Remote protein homology (sequence-only PLM) | `plmsearch`, `deepblast` | Experimental structure proof |
 | GEM + structure/dark metabolism | `alphagem` (± `gapseq`/`vmh`) | Flux measurements |
 | Classical KO/COG annotation | `eggnog-mapper`, `dram`, `kegg` | Obsolete — still primary for many papers |
@@ -62,7 +62,7 @@ AI / homology need in a metagenomics project?
 │
 ├─ Genome language models (NT, DNABERT-2, Caduceus, Evo 2, gLM2, …)
 │     → genome-language-model
-├─ Protein language models (ESM, ProstT5, PLMSearch, …)
+├─ Protein language models (ESM-2, ESMC, SaProt, ProstT5, PLMSearch, …)
 │     → protein-language-model
 ├─ Sequence catalogue / contig taxonomy
 │     → mmseqs2
@@ -94,7 +94,7 @@ contigs / MAG proteins (after QC)
    ├─ structure: foldseek · folddisco · spacedust
    ├─ vector DB / genome warehouse search → homology-search
    └─ protein language models
-         └─ protein-language-model → esm · prostt5 · plmsearch · deepblast
+         └─ protein-language-model → esm · esmc · saprot · prostt5 · plmsearch · deepblast
 genome language models
    └─ genome-language-model → omg · nucleotide-transformer · dnabert2 · caduceus · evo2
 metabolic models
@@ -116,6 +116,7 @@ trees / evolution
 
 `genome-language-model` · `protein-language-model` · `omg` ·
 `nucleotide-transformer` · `dnabert2` · `caduceus` · `evo2` · `esm` ·
-`prostt5` · `homology-search` · `phylogenomics` · `mmseqs2` · `foldseek` ·
-`folddisco` · `erast` · `plmsearch` · `deepblast` · `spacedust` · `alphagem` ·
-`eggnog-mapper` · `public-databases` · `tool-selection` · `metagenomics-workflow`
+`esmc` · `saprot` · `prostt5` · `homology-search` · `phylogenomics` ·
+`mmseqs2` · `foldseek` · `folddisco` · `erast` · `plmsearch` · `deepblast` ·
+`spacedust` · `alphagem` · `eggnog-mapper` · `public-databases` ·
+`tool-selection` · `metagenomics-workflow`

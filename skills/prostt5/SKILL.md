@@ -75,5 +75,6 @@ Need structure-aware protein search from FASTA?
 
 ## Related skills
 
-`protein-language-model` · `foldseek` · `esm` · `plmsearch` · `deepblast` ·
-`unicore` · `metagenomics-llm` · `homology-search` · `tool-selection`
+`protein-language-model` · `foldseek` · `esm` · `esmc` · `saprot` ·
+`plmsearch` · `deepblast` · `unicore` · `metagenomics-llm` ·
+`homology-search` · `tool-selection`

@@ -197,8 +197,10 @@ Total: **100** skills.
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `protein-language-model` | — | Route protein language models: ESM, ProstT5, PLM search, PLM phylogeny. |
+| `protein-language-model` | — | Route protein language models: ESM, ESMC, SaProt, ProstT5, PLM search. |
 | `esm` | [ESM](https://github.com/facebookresearch/esm) | ESM-2 family embeddings; ESMFold / ESM Atlas context. |
+| `esmc` | [evolutionaryscale/esm](https://github.com/evolutionaryscale/esm) | ESM C / Cambrian next-gen protein representation models. |
+| `saprot` | [SaProt](https://github.com/westlake-repl/SaProt) | Westlake structure-aware AA+3Di protein LM (ICLR 2024). |
 | `prostt5` | [ProstT5](https://github.com/mheinzinger/ProstT5) | AA ↔ Foldseek 3Di bilingual PLM (from ProtT5). |
 | `plmsearch` | [PLMSearch](https://github.com/maovshao/PLMSearch) | PLM embeddings for fast remote homology protein search. |
 | `deepblast` | [DeepBLAST](https://github.com/flatironinstitute/deepblast) | TM-Vec + DeepBLAST remote homology and structural alignment from sequence. |

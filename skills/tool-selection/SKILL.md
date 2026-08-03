@@ -143,7 +143,9 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | Need | Prefer |
 |------|--------|
 | Route protein language models | `protein-language-model` |
-| ESM-2 / ESM family embeddings | `esm` |
+| ESM-2 embeddings (pinned / Atlas-era) | `esm` |
+| ESM C / Cambrian embeddings | `esmc` |
+| Structure-aware AA+3Di PLM (Westlake) | `saprot` |
 | AA ↔ 3Di / Foldseek from FASTA | `prostt5` (± `foldseek`) |
 | Remote protein homology (PLM search) | `plmsearch` / `deepblast` |
 | Alignment-free PLM phylogeny | `lucaphylo` |

@@ -1,12 +1,12 @@
 ---
 name: esm
 description: >
-  ESM family protein language models (ESM-2 primary; note ESMFold / ESM Atlas /
-  later ESM variants). Use when: (1) Amino-acid embeddings or MLM scores for
-  metagenomic proteins, (2) Single-sequence structure context (ESMFold) or
-  ESM Metagenomic Atlas structures via Foldseek, (3) Backbone embeddings for
-  PLMSearch / LucaPhylo-style workflows. Upstream:
-  https://github.com/facebookresearch/esm. Route via protein-language-model.
+  ESM-2 family protein language models (ESMFold / ESM Atlas). Use when: (1)
+  Amino-acid embeddings or MLM scores pinned to ESM-2, (2) Single-sequence
+  structure context (ESMFold) or ESM Metagenomic Atlas via Foldseek, (3)
+  Backbone embeddings for PLMSearch / LucaPhylo-style workflows. For ESM C /
+  Cambrian prefer esmc. Upstream: https://github.com/facebookresearch/esm.
+  Route via protein-language-model.
 license: MIT
 category: analysis-tools
 tags: [ESM, ESM-2, ESMFold, PLM, protein-language-model, embeddings, HuggingFace]
@@ -34,16 +34,17 @@ remote-homology pipelines. Scaling enables **ESMFold** (single-sequence
 structure) and the **ESM Metagenomic Atlas** (hundreds of millions of predicted
 metagenomic structures — search via `foldseek`, not by re-folding every ORF).
 
-| vs | Prefer ESM when |
-|----|-----------------|
+| vs | Prefer ESM-2 when |
+|----|-------------------|
+| `esmc` | Reproducible / published ESM-2 pipelines |
+| `saprot` | Sequence-only embeddings without SA tokens |
 | `prostt5` | AA embeddings / MLM; not AA↔3Di translation |
 | `plmsearch` / `deepblast` | Need the foundation model itself vs a search wrapper |
 | `foldseek` | Embedding/property tasks; use Foldseek for Atlas/AFDB hits |
-| `lucaphylo` | Raw ESM embeddings vs hyperbolic placement product |
 
 Pin checkpoint (e.g. `esm2_t33_650M_UR50D` vs larger), truncation length, and that
-Atlas/pLDDT structures remain computational. Later ESM releases (ESM3 / ESM C)
-— cite their papers separately if used.
+Atlas/pLDDT structures remain computational. For ESM C see `esmc`; generative
+ESM3 — cite separately if used.
 
 ## How to run
 
@@ -59,7 +60,9 @@ Do not invent CLI flags — follow the installed package docs for the pinned tag
 
 ```text
 Protein LM / structure from sequence?
-├─ AA embeddings / scores → esm
+├─ Pinned ESM-2 embeddings → esm
+├─ ESM C / Cambrian → esmc
+├─ Structure-aware AA+3Di → saprot
 ├─ Sequence → 3Di for Foldseek → prostt5
 ├─ Remote homology wrappers → plmsearch / deepblast
 ├─ Search Atlas / AFDB structures → foldseek
@@ -68,5 +71,5 @@ Protein LM / structure from sequence?
 
 ## Related skills
 
-`protein-language-model` · `prostt5` · `plmsearch` · `deepblast` · `lucaphylo` ·
-`foldseek` · `metagenomics-llm` · `tool-selection`
+`protein-language-model` · `esmc` · `saprot` · `prostt5` · `plmsearch` ·
+`deepblast` · `lucaphylo` · `foldseek` · `metagenomics-llm` · `tool-selection`

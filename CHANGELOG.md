@@ -1,3 +1,12 @@
+## [1.15.0] - 2026-08-03
+
+### Added
+- `esmc` (ESM C / Cambrian) and `saprot` (Westlake SaProt) protein LM skills
+- References 105–106
+
+### Changed
+- Skills catalog total: 127; package version 1.15.0
+
 ## [1.14.0] - 2026-08-03
 
 ### Added
