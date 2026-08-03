@@ -2,13 +2,11 @@
 name: metagenomics-llm
 description: >
   Route genomic/protein language models and Steinegger-lab structure/sequence
-  search for shotgun metagenomics. Use when: (1) Choosing OMG/gLM2 vs classical
-  homology, (2) MMseqs2 vs Foldseek vs Folddisco vs PLM search, (3) Remote
-  homology with PLMSearch/DeepBLAST, (4) Spacedust gene-cluster discovery,
-  (5) Distinguishing foundation-model corpora from SRA/MGnify reanalysis.
-  Child skills: omg, mmseqs2, foldseek, folddisco, plmsearch, deepblast,
-  spacedust, alphagem. Classical pipelines: metagenomics-workflow /
-  tool-selection.
+  search for shotgun metagenomics. Use when: (1) Choosing gLMs vs PLMs vs
+  classical homology, (2) MMseqs2 vs Foldseek vs PLM search, (3) Spacedust /
+  AlphaGEM, (4) Distinguishing foundation-model corpora from SRA/MGnify
+  reanalysis. For DNA gLM family detail use genomic-lm (omg, nucleotide-transformer,
+  evo2). Classical pipelines: metagenomics-workflow / tool-selection.
 license: MIT
 category: orchestration
 tags: [LLM, PLM, gLM, Foldseek, MMseqs2, Folddisco, structure-search, AI]
@@ -20,6 +18,9 @@ Foundation models and **structure-aware search** (Steinegger / Söding stack)
 are a **parallel track** to QC→assembly→binning. They help when homology is
 remote, functions are dark, or you need embeddings — they do **not** replace
 CheckM2, GTDB-Tk, or abundance profilers.
+
+For **DNA / genomic LMs** (NT, NTv3, Evo 2, OMG/gLM2) prefer the dedicated
+hub `genomic-lm`.
 
 ## Analytical thinking
 
@@ -37,7 +38,10 @@ CheckM2, GTDB-Tk, or abundance profilers.
 
 | Claim type | Prefer | Do not treat as |
 |------------|--------|-----------------|
-| Pretrain / fine-tune genomic LMs | `omg` (OMG corpus, gLM2) | Your sample’s taxonomy table |
+| DNA / genomic LMs (route all gLMs) | `genomic-lm` | Taxonomy or abundance tables |
+| Metagenomic corpus + gLM2 | `omg` | ENA study reanalysis |
+| Nucleotide Transformer / NTv3 | `nucleotide-transformer` | Experimental genome annotation |
+| Generative long-context DNA (Evo 2) | `evo2` | Contig assembly quality |
 | Remote protein homology (sequence-only PLM) | `plmsearch`, `deepblast` | Experimental structure proof |
 | GEM + structure/dark metabolism | `alphagem` (± `gapseq`/`vmh`) | Flux measurements |
 | Classical KO/COG annotation | `eggnog-mapper`, `dram`, `kegg` | Obsolete — still primary for many papers |
@@ -55,8 +59,8 @@ Hard rules:
 ```text
 AI / homology need in a metagenomics project?
 │
-├─ Pretraining data or mixed-modality gLM (gLM2)
-│     → omg
+├─ DNA / genomic language models (NT, Evo 2, gLM2, …)
+│     → genomic-lm
 ├─ Sequence catalogue / contig taxonomy
 │     → mmseqs2
 ├─ Structure search (AFDB/PDB) or ProstT5 from FASTA
@@ -88,9 +92,9 @@ contigs / MAG proteins (after QC)
    ├─ classical: eggnog-mapper · diamond · mmseqs2
    ├─ structure: foldseek · folddisco · spacedust
    ├─ vector DB / genome warehouse search → homology-search
-   └─ LM-assisted: plmsearch · deepblast · omg/gLM2
-genomic LM research / pretrain
-   └─ omg (corpus) → gLM2 / other gLMs
+   └─ LM-assisted: plmsearch · deepblast
+genomic / DNA LMs
+   └─ genomic-lm → omg · nucleotide-transformer · evo2
 metabolic models
    └─ gapseq · alphagem · vmh
 trees / evolution
@@ -108,7 +112,7 @@ trees / evolution
 
 ## Related skills
 
-`homology-search` · `phylogenomics` · `mmseqs2` · `foldseek` · `folddisco` ·
-`erast` · `omg` · `plmsearch` · `deepblast` · `spacedust` · `alphagem` ·
-`eggnog-mapper` · `diamond` · `dram` · `gapseq` · `defensefinder` ·
+`genomic-lm` · `omg` · `nucleotide-transformer` · `evo2` · `homology-search` ·
+`phylogenomics` · `mmseqs2` · `foldseek` · `folddisco` · `erast` ·
+`plmsearch` · `deepblast` · `spacedust` · `alphagem` · `eggnog-mapper` ·
 `public-databases` · `tool-selection` · `metagenomics-workflow`

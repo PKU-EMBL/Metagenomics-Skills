@@ -84,10 +84,13 @@ After MAGs: `microbial-mining` → `antismash` / `rgi` / `dram` / …
 `phylogenomics` → `gtdbtk` / `phylophlan` / `unicore` / `iqtree` / `fasttree` /
 `lucaphylo`
 
-> AI / LMs & structure search (MMseqs2 · Foldseek · Folddisco · PLMs)
+> Genomic language models (DNA gLMs)
 
-`metagenomics-llm` → `mmseqs2` / `foldseek` / `folddisco` / `omg` /
-`plmsearch` / `deepblast` / `spacedust` / …
+`genomic-lm` → `omg` / `nucleotide-transformer` (NTv3) / `evo2`
+
+> AI / LMs & structure search (Foldseek · PLMs)
+
+`metagenomics-llm` → `foldseek` / `plmsearch` / `deepblast` / `spacedust` / …
 
 ---
 

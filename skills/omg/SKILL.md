@@ -31,9 +31,12 @@ See also [docs/references.md](../../docs/references.md) and `metagenomics-llm`.
 
 OMG aggregates and filters metagenomic sequence from **JGI IMG** and **EMBL
 MGnify** into a mixed-modality corpus (amino acids for CDS, nucleic acids for
-intergenic regions) for genomic language modeling. gLM2 is trained to use
-genomic context for functional representations and coevolutionary / regulatory
-signals.
+intergenic regions; ~3.1 Tbp + ~3.3B CDS in the preprint) for genomic language
+modeling. **gLM2** (Tatta Bio / Hwang et al.) uses genomic context for
+functional representations and can capture **cross-protein coevolutionary**
+signal better than single-protein ESM2 or short-context Evo-1 in the OMG/gLM2
+analyses — still not a substitute for experimental contacts or classical
+taxonomy.
 
 | Use | Yes | No |
 |-----|-----|-----|
@@ -60,11 +63,12 @@ Pin dataset revision + model checkpoint in Methods. Expect large disk and GPU.
 ```text
 Need metagenome-scale LM resources?
 ├─ Pretrain corpus / gLM2 embeddings → omg
+├─ DNA NT / NTv3 / Evo 2 → genomic-lm
 ├─ Protein remote search only → plmsearch / deepblast
 └─ Public study FASTQ → sra-ena / mgnify (not OMG)
 ```
 
 ## Related skills
 
-`metagenomics-llm` · `mgnify` · `public-databases` · `plmsearch` · `spacedust` ·
-`eggnog-mapper`
+`genomic-lm` · `metagenomics-llm` · `nucleotide-transformer` · `evo2` ·
+`mgnify` · `public-databases` · `plmsearch` · `spacedust` · `eggnog-mapper`

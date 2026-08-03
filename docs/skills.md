@@ -182,12 +182,22 @@ Total: **100** skills.
 | `lucaphylo` | [LucaPhylo](https://github.com/NickShannn/LucaPhylo) | Alignment-free hyperbolic PLM phylogenetic inference. |
 | `gtdbtk` | [GTDB-Tk](https://github.com/Ecogenomics/GTDBTk) | GTDB taxonomy placement — also under Taxonomy. |
 
+## Genomic language models
+
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `genomic-lm` | — | Route DNA/genomic LMs: representation, generative, metagenomic gLM2. |
+| `omg` | [OMG](https://github.com/TattaBio/OMG) | Open MetaGenomic corpus + gLM2 mixed-modality genomic LM. |
+| `nucleotide-transformer` | [nucleotide-transformer](https://github.com/instadeepai/nucleotide-transformer) | InstaDeep NT family including NTv3 multi-species foundation model. |
+| `evo2` | [Evo 2](https://github.com/ArcInstitute/evo2) | Long-context DNA LM for modeling/design across all domains of life. |
+
 ## AI / language models & structure search
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
 | `metagenomics-llm` | — | Route genomic/protein LMs and Steinegger structure/sequence search. |
-| `omg` | [OMG](https://github.com/TattaBio/OMG) | Open MetaGenomic corpus + gLM2 mixed-modality genomic language model. |
+| `genomic-lm` | — | DNA gLM routing — also under Genomic language models. |
+| `omg` | [OMG](https://github.com/TattaBio/OMG) | Open MetaGenomic corpus + gLM2 — also under Genomic language models. |
 | `mmseqs2` | [MMseqs2](https://github.com/soedinglab/MMseqs2) | Sequence search, Linclust NR, contig taxonomy — also under Function. |
 | `foldseek` | [Foldseek](https://github.com/steineggerlab/foldseek) | Ultrafast 3Di structure search, clustering, Foldseek-Multimer, ProstT5. |
 | `folddisco` | [Folddisco](https://github.com/steineggerlab/folddisco) | Fast discontinuous structural motif search (AFDB/PDB/ESM30). |
@@ -205,6 +215,7 @@ Total: **100** skills.
 | `study-design` | — | Study design for shotgun metagenomics across QC, assembly, binning, and annotation. |
 | `homology-search` | — | Route all homology/search paradigms (also under Homology search). |
 | `phylogenomics` | — | Route phylogeny / evolutionary analyses (also under Phylogenomics). |
+| `genomic-lm` | — | Route DNA/genomic language models (also under Genomic language models). |
 | `metagenomics-llm` | — | Route LMs and Foldseek/MMseqs structure–sequence search (also under AI). |
 
 ## Other

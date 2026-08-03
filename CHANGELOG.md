@@ -1,3 +1,12 @@
+## [1.12.0] - 2026-08-03
+
+### Added
+- Genomic LM layer: `genomic-lm` hub, `nucleotide-transformer` (NT/NTv3), `evo2`
+- Deepened `omg`/gLM2 notes; references 96–99
+
+### Changed
+- Skills catalog total: 120; package version 1.12.0
+
 ## [1.11.1] - 2026-08-03
 
 ### Removed
