@@ -1,3 +1,13 @@
+## [1.19.0] - 2026-08-03
+
+### Added
+- Research analysis extensions: `ancombc`, `sparcc`, `spieceasi`, `stamp`,
+  `phyloseq`, `nextflow`, `snakemake`
+- References 122–128
+
+### Changed
+- Skills catalog total: 152; package version 1.19.0
+
 ## [1.18.0] - 2026-08-03
 
 ### Added

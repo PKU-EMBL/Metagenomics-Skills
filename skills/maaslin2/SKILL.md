@@ -65,5 +65,6 @@ Differential / association analysis?
 
 ## Related skills
 
-`research-analysis` · `lefse` · `microeco` · `visualization` · `metaphlan` ·
-`humann` · `study-design` · `tool-selection`
+`research-analysis` · `ancombc` · `lefse` · `stamp` · `microeco` ·
+`phyloseq` · `visualization` · `metaphlan` · `humann` · `study-design` ·
+`tool-selection`

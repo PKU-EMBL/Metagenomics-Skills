@@ -64,8 +64,12 @@ scripts/install-platforms.sh
 
 > Research stats & figures
 
-`research-analysis` → `multiqc` / `microeco` / `visualization` / `maaslin2` /
-`lefse`
+`research-analysis` → `multiqc` / `microeco` / `phyloseq` / `visualization` /
+`maaslin2` / `ancombc` / `lefse` / `stamp` / `sparcc` / `spieceasi`
+
+> Workflow managers
+
+`nextflow` (± nf-core) · `snakemake`
 
 > Genome-resolved + interactive polish
 

@@ -155,16 +155,23 @@ Total: **100** skills.
 | `gtdb` | [gtdb](https://gtdb.ecogenomic.org/) | GTDB public releases — also under Taxonomy. |
 | `biobakery-databases` | [biobakery](https://github.com/biobakery/biobakery) | MetaPhlAn / HUMAnN reference indexes — also under Function. |
 
-## Research analysis (stats · figures · reports)
+## Research analysis (stats · figures · reports · workflows)
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `research-analysis` | — | Route QC reports, diversity/figures, and differential abundance for papers. |
-| `visualization` | — | Stage-wise figure checklist (pair with microeco / MaAsLin2 / LEfSe). |
+| `research-analysis` | — | Route QC reports, diversity/figures, DA, networks, and workflow managers. |
+| `visualization` | — | Stage-wise figure checklist. |
 | `microeco` | [microeco](https://github.com/ChiLiubio/microeco) | R package for microbiome diversity, plots, DA, and networks. |
+| `phyloseq` | [phyloseq](https://github.com/joey711/phyloseq) | Bioconductor microbiome data class and ggplot2 analysis. |
 | `maaslin2` | [Maaslin2](https://github.com/biobakery/Maaslin2) | Multivariable meta-omic associations (MaAsLin2/3). |
+| `ancombc` | [ANCOMBC](https://github.com/FrederickHuangLin/ANCOMBC) | Compositional DA with sampling-fraction bias correction. |
 | `lefse` | [LEfSe](https://github.com/SegataLab/lefse) | LDA effect-size biomarker discovery. |
+| `stamp` | [STAMP](https://github.com/dparks1134/STAMP) | GUI statistical analysis of taxonomic/functional profiles. |
+| `sparcc` | [SparCC](https://bitbucket.org/yonatanf/sparcc) | Compositional correlation networks. |
+| `spieceasi` | [SpiecEasi](https://github.com/zdk123/SpiecEasi) | Sparse compositionally robust association networks. |
 | `multiqc` | [MultiQC](https://github.com/MultiQC/MultiQC) | Aggregate FastQC/mapping/QUAST logs into one HTML report. |
+| `nextflow` | [Nextflow](https://github.com/nextflow-io/nextflow) | Portable containerized workflows (± nf-core). |
+| `snakemake` | [Snakemake](https://github.com/snakemake/snakemake) | Rule-based reproducible workflow DAGs. |
 
 ## Report & utilities
 

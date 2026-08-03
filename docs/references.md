@@ -292,6 +292,20 @@ the canonical papers to reference.
 
 121. Liu, C. *et al.* A workflow for statistical analysis and visualization of microbiome omics data using the R microeco package. *Nat. Protoc.* **21**, 1300–1324 (2026). https://doi.org/10.1038/s41596-025-01239-4
 
+122. Lin, H. & Peddada, S. D. Analysis of compositions of microbiomes with bias correction. *Nat. Commun.* **11**, 3514 (2020). https://doi.org/10.1038/s41467-020-17041-7
+
+123. Friedman, J. & Alm, E. J. Inferring correlation networks from genomic survey data. *PLoS Comput. Biol.* **8**, e1002687 (2012). https://doi.org/10.1371/journal.pcbi.1002687
+
+124. Kurtz, Z. D. *et al.* Sparse and compositionally robust inference of microbial ecological networks. *PLoS Comput. Biol.* **11**, e1004226 (2015). https://doi.org/10.1371/journal.pcbi.1004226
+
+125. Parks, D. H., Tyson, G. W., Hugenholtz, P. & Beiko, R. G. STAMP: statistical analysis of taxonomic and functional profiles. *Bioinformatics* **30**, 3123–3124 (2014). https://doi.org/10.1093/bioinformatics/btu494
+
+126. McMurdie, P. J. & Holmes, S. phyloseq: An R Package for Reproducible Interactive Analysis and Graphics of Microbiome Census Data. *PLoS ONE* **8**, e61217 (2013). https://doi.org/10.1371/journal.pone.0061217
+
+127. Di Tommaso, P. *et al.* Nextflow enables reproducible computational workflows. *Nat. Biotechnol.* **35**, 316–319 (2017). https://doi.org/10.1038/nbt.3820
+
+128. Mölder, F. *et al.* Sustainable data analysis with Snakemake. *F1000Res.* **10**, 33 (2021). https://doi.org/10.12688/f1000research.29032.2
+
 
 ---
 

@@ -167,16 +167,23 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | Conserved gene clusters (structure-aware) | `spacedust` |
 | GEM + structure/dark metabolism | `alphagem` |
 
-## Research analysis (stats · figures · reports)
+## Research analysis (stats · figures · reports · workflows)
 
 | Need | Prefer |
 |------|--------|
-| Route stats / figures / QC reports | `research-analysis` |
+| Route stats / figures / QC / workflows | `research-analysis` |
 | Diversity + composition R workflow | `microeco` |
+| phyloseq data class / classic plots | `phyloseq` |
 | Multivariable differential abundance | `maaslin2` |
+| Compositional bias-corrected DA | `ancombc` |
 | Classic LDA biomarkers | `lefse` |
+| GUI exploratory profile stats | `stamp` |
+| SparCC correlations | `sparcc` |
+| SPIEC-EASI networks | `spieceasi` |
 | Aggregated QC HTML | `multiqc` |
 | Figure checklist by stage | `visualization` |
+| Nextflow / nf-core pipelines | `nextflow` |
+| Snakemake rule DAGs | `snakemake` |
 
 ## Never
 

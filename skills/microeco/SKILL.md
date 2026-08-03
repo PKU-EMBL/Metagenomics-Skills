@@ -66,5 +66,6 @@ Need R diversity + paper figures?
 
 ## Related skills
 
-`research-analysis` · `visualization` · `maaslin2` · `lefse` · `metaphlan` ·
-`kraken2` · `humann` · `study-design` · `tool-selection`
+`research-analysis` · `phyloseq` · `visualization` · `maaslin2` · `ancombc` ·
+`lefse` · `spieceasi` · `sparcc` · `metaphlan` · `kraken2` · `humann` ·
+`study-design` · `tool-selection`

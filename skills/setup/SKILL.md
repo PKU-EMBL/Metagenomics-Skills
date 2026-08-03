@@ -53,4 +53,5 @@ micromamba run -n basalt bash install.sh
 
 ## Related skills
 
-`public-databases` · `tool-selection` · every software skill under `skills/`
+`public-databases` · `tool-selection` · `nextflow` · `snakemake` ·
+`research-analysis` · every software skill under `skills/`

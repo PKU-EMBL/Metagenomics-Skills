@@ -66,7 +66,7 @@ not validated compounds, phenotypes, or complete phages unless QC says so
 | 7 Mining | `microbial-mining`, `antismash`, `bigscape`, `genomad`, `virsorter2`, `checkv`, `vcontact`, `mobileog`, `isescan`, `integronfinder`, `mob-suite`, `plasmaag`, `macrel`, `element-cycling`, `metabolic`, `mebs`, `fegenie`, `dom-biosurfactant`, `hadeg`, `biosurfdb`, `dram`, `dbcan`, `gapseq`, `vmh`, `deeparg`, `defensefinder`, `padloc`, `qsap`, `folddisco`, `spacedust` |
 | Strain | `instrain` |
 | Public data | `sra-ena`, `cami`, `progenomes`, `kegg`, `insilicoseq`, … |
-| Report / research analysis | `research-analysis`, `visualization`, `microeco`, `maaslin2`, `lefse`, `multiqc` |
+| Report / research analysis | `research-analysis`, `visualization`, `microeco`, `phyloseq`, `maaslin2`, `ancombc`, `lefse`, `stamp`, `sparcc`, `spieceasi`, `multiqc`, `nextflow`, `snakemake` |
 | Genome language models | `genome-language-model`, `omg`, `nucleotide-transformer`, `dnabert2`, `caduceus`, `evo2` |
 | Protein language models | `protein-language-model`, `esm`, `esmc`, `saprot`, `prostt5`, `plmsearch`, `deepblast` |
 | AI / LMs & structure search | `metagenomics-llm`, `omg`, `mmseqs2`, `foldseek`, `folddisco`, `plmsearch`, `deepblast`, `spacedust`, `alphagem` |
