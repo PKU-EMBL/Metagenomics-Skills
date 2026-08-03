@@ -1,0 +1,7 @@
+interface:
+  display_name: "inStrain"
+  short_description: "Strain-level microdiversity and shared-strain detection from metagenomes"
+  default_prompt: "Use $instrain for Strain-level microdiversity and shared-strain detection from metagenomes"
+
+policy:
+  allow_implicit_invocation: true

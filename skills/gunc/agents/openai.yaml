@@ -1,0 +1,7 @@
+interface:
+  display_name: "GUNC"
+  short_description: "Detect chimerism/contamination in prokaryotic genomes/MAGs"
+  default_prompt: "Use $gunc for Detect chimerism/contamination in prokaryotic genomes/MAGs"
+
+policy:
+  allow_implicit_invocation: true

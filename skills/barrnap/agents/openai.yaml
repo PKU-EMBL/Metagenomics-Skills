@@ -1,0 +1,7 @@
+interface:
+  display_name: "Barrnap"
+  short_description: "Basic rapid ribosomal RNA predictor for genomes"
+  default_prompt: "Use $barrnap for Basic rapid ribosomal RNA predictor for genomes"
+
+policy:
+  allow_implicit_invocation: true

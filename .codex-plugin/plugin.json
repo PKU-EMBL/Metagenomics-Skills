@@ -1,7 +1,7 @@
 {
   "name": "metagenomics-skills",
-  "version": "1.1.0",
-  "description": "Shotgun metagenomics skills for Codex — per-tool QC, profiling, assembly, MAG recovery, and BASALT",
+  "version": "1.2.0",
+  "description": "Shotgun metagenomics skills for Codex — QC, assembly, binning, taxonomy, function, and public databases",
   "author": {
     "name": "PKU-EMBL",
     "url": "https://github.com/PKU-EMBL"
@@ -9,20 +9,20 @@
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "license": "MIT",
-  "keywords": ["metagenomics", "MAG", "BASALT", "binning", "shotgun"],
+  "keywords": ["metagenomics", "QC", "assembly", "binning", "taxonomy", "function"],
   "skills": "./skills/",
   "interface": {
     "displayName": "Metagenomics Skills",
-    "shortDescription": "Shotgun metagenomics analysis protocols",
-    "longDescription": "Modular skills for study design, preprocessing, read-based profiling, gene catalogues, classical MAG recovery, BASALT refined MAGs, QC, and visualization.",
+    "shortDescription": "Five-stage shotgun metagenomics protocols",
+    "longDescription": "Modular skills for QC, assembly, ensemble binning (BASALT recommended; MetaWRAP; DAS Tool), taxonomic and functional annotation, public databases, and visualization.",
     "developerName": "PKU-EMBL",
     "category": "Science",
     "capabilities": ["Interactive", "Write"],
     "websiteURL": "https://github.com/PKU-EMBL/Metagenomics-Skills",
     "defaultPrompt": [
-      "Design a shotgun metagenomics analysis plan for my paired-end samples",
-      "Route my MAG recovery to classical binning or BASALT",
-      "Write a reproducible BASALT short-read pilot command"
+      "Plan QC → assembly → binning → taxonomy → function for my PE samples",
+      "Choose ensemble binning: BASALT vs MetaWRAP vs DAS Tool",
+      "Route public databases for UHGG context and GTDB taxonomy"
     ],
     "brandColor": "#0F766E"
   }

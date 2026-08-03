@@ -12,6 +12,12 @@ upstream: https://github.com/ablab/spades
 
 Upstream: [ablab/spades](https://github.com/ablab/spades) (`metaspades.py`)
 
+## Citation
+
+Nurk, S., Meleshko, D., Korobeynikov, A. & Pevzner, P. A. metaSPAdes: a new versatile metagenomic assembler. *Genome Res.* **27**, 824–834 (2017). https://doi.org/10.1101/gr.213959.116
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 metaSPAdes often yields longer contigs than MEGAHIT at substantially higher

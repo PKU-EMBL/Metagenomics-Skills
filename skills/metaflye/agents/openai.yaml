@@ -1,0 +1,7 @@
+interface:
+  display_name: "metaFlye"
+  short_description: "Long-read metagenome assembly with Flye/metaFlye"
+  default_prompt: "Use $metaflye for Long-read metagenome assembly with Flye/metaFlye"
+
+policy:
+  allow_implicit_invocation: true

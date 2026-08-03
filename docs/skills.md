@@ -1,75 +1,145 @@
 # Skills
+Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining).
 
-Software-level and orchestration skills in **Metagenomics Skills**.
-
-Install once; categories are organizational only.
+Total: **70** skills.
 
 ---
 
-## Analysis tools — QC & host
+## 1. Quality control
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `fastp` | [OpenGene/fastp](https://github.com/OpenGene/fastp) | Short-read QC / trimming |
-| `kneaddata` | [biobakery/kneaddata](https://github.com/biobakery/kneaddata) | Host / contaminant depletion |
+| `fastp` | [fastp](https://github.com/OpenGene/fastp) | Ultra-fast FASTQ QC/adapter trimming for Illumina/MGI short reads. |
+| `kneaddata` | [kneaddata](https://github.com/biobakery/kneaddata) | QC wrapper focused on host (and contaminant) read removal via Bowtie2. |
+| `fastqc` | [fastqc](https://github.com/s-andrews/FastQC) | QC reports for Illumina FASTQ before/after trimming. |
+| `cutadapt` | [cutadapt](https://github.com/marcelm/cutadapt) | Adapter/primer trimming for short and long reads. |
+| `trimmomatic` | [trimmomatic](https://github.com/usadellab/Trimmomatic) | Flexible Illumina adapter/quality trimmer. |
 
-## Analysis tools — read-based profiling
-
-| Skill | Upstream | Purpose |
-|-------|----------|---------|
-| `metaphlan` | [biobakery/MetaPhlAn](https://github.com/biobakery/MetaPhlAn) | Marker taxonomic profiles |
-| `humann` | [biobakery/humann](https://github.com/biobakery/humann) | Gene-family / pathway profiles |
-| `kraken2` | [DerrickWood/kraken2](https://github.com/DerrickWood/kraken2) | k-mer classification (+ Bracken) |
-
-## Analysis tools — assembly & genes
+## 2. Assembly
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `megahit` | [voutcn/megahit](https://github.com/voutcn/megahit) | Fast metagenome assembly |
-| `metaspades` | [ablab/spades](https://github.com/ablab/spades) | metaSPAdes assembly |
-| `prodigal` | [hyattpd/Prodigal](https://github.com/hyattpd/Prodigal) | ORF prediction (`-p meta`) |
-| `cd-hit` | [weizhongli/cdhit](https://github.com/weizhongli/cdhit) | Gene clustering / NR catalogue |
-| `salmon` | [COMBINE-lab/salmon](https://github.com/COMBINE-lab/salmon) | Gene abundance quantification |
-| `eggnog-mapper` | [eggnogdb/eggnog-mapper](https://github.com/eggnogdb/eggnog-mapper) | Orthology / function |
-| `rgi` | [arpcard/rgi](https://github.com/arpcard/rgi) | CARD AMR annotation |
+| `megahit` | [megahit](https://github.com/voutcn/megahit) | Ultra-fast memory-efficient metagenome assembler. |
+| `metaspades` | [metaspades](https://github.com/ablab/spades) | More sensitive metagenomic assembly via SPAdes meta mode. |
+| `metaflye` | [metaflye](https://github.com/fenderglass/Flye) | Long-read metagenome assembly with Flye/metaFlye. |
+| `metamdbg` | [metamdbg](https://github.com/GaetanBenoitDev/metaMDBG) | High-quality metagenome assembly from long accurate reads. |
+| `quast` | [quast](https://github.com/ablab/quast) | Assembly quality assessment (contiguity, misassemblies; metaQUAST for metagenomes). |
 
-## Analysis tools — MAGs
+## 3. Mapping
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `metawrap` | [bxlab/metaWRAP](https://github.com/bxlab/metaWRAP) | Binning + refinement suite |
-| `basalt` | [PKU-EMBL/BASALT](https://github.com/PKU-EMBL/BASALT) | Multi-assembly refined MAGs |
-| `drep` | [MrOlm/drep](https://github.com/MrOlm/drep) | Genome dereplication |
-| `coverm` | [wwood/CoverM](https://github.com/wwood/CoverM) | Genome abundance |
-| `gtdbtk` | [Ecogenomics/GTDBTk](https://github.com/Ecogenomics/GTDBTk) | GTDB taxonomy |
-| `checkm2` | [chklovski/CheckM2](https://github.com/chklovski/CheckM2) | Completeness / contamination |
+| `bowtie2` | [bowtie2](https://github.com/BenLangmead/bowtie2) | Gapped short-read alignment to contigs/genomes (coverage for binning). |
+| `bwa` | [bwa](https://github.com/lh3/bwa) | Burrows–Wheeler short-read alignment (BWA-MEM) to contigs/genomes. |
+| `bwa-mem2` | [bwa-mem2](https://github.com/bwa-mem2/bwa-mem2) | Architecture-aware faster BWA-MEM for short-read mapping. |
+| `strobealign` | [strobealign](https://github.com/ksahlin/strobealign) | Ultra-fast short-read alignment with flexible seed size. |
+| `minimap2` | [minimap2](https://github.com/lh3/minimap2) | Fast pairwise alignment for long reads and genome-to-genome maps. |
+| `samtools` | [samtools](https://github.com/samtools/samtools) | SAM/BAM/CRAM processing for mapping outputs. |
+| `bbmap` | [bbmap](https://sourceforge.net/projects/bbmap/) | Fast splice-aware aligner and BBTools suite utilities (BBMerge, etc. |
+| `diamond` | [diamond](https://github.com/bbuchfink/diamond) | Ultra-fast protein alignment (BLASTP/X alternative) for functional/taxonomic searches. |
 
-## Evaluation
+## 4. Binning
 
-| Skill | Purpose |
-|-------|---------|
-| `mag-qc` | Acceptance criteria and filtering policy |
-| `visualization` | Diversity / composition / MAG figures |
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `metabat2` | [metabat2](https://bitbucket.org/berkeleylab/metabat) | Adaptive contig binning from composition + coverage. |
+| `maxbin2` | [maxbin2](https://sourceforge.net/projects/maxbin2/) | Automated multi-metagenome contig binning. |
+| `concoct` | [concoct](https://github.com/BinPro/CONCOCT) | Composition and coverage binning of metagenomic contigs. |
+| `semibin2` | [semibin2](https://github.com/BigDataBiology/SemiBin) | Self-supervised contrastive learning binning for short- and long-read assemblies. |
+| `vamb` | [vamb](https://github.com/RasmussenLab/vamb) | Deep variational autoencoder binning of metagenome contigs. |
+| `basalt` | [basalt](https://github.com/PKU-EMBL/BASALT) | PKU-EMBL BASALT and BASALT-Air — recommended ensemble MAG recovery across one or more assemblies (multi-binner + refinement). |
+| `metawrap` | [metawrap](https://github.com/bxlab/metaWRAP) | MetaWRAP suite for multi-binner MAG recovery and CheckM-style bin refinement — one option in the ensemble binning family (with DAS Tool and BASALT). |
+| `dastool` | [dastool](https://github.com/cmks/DAS_Tool) | DAS Tool (Dereplication, Aggregation and Scoring) integrates multiple binning predictions into one non-redundant MAG set for a single assembly. |
+| `drep` | [drep](https://github.com/MrOlm/drep) | Dereplicate microbial genomes by ANI to species/strain catalogues. |
+| `coverm` | [coverm](https://github.com/wwood/CoverM) | Calculate coverage/relative abundance of genomes or contigs. |
+| `checkm2` | [checkm2](https://github.com/chklovski/CheckM2) | ML-based MAG completeness and contamination estimation. |
+| `gunc` | [gunc](https://github.com/grp-bork/gunc) | Detect chimerism/contamination in prokaryotic genomes/MAGs. |
+| `mag-qc` | — | Quality thresholds after binning (completeness/contamination, dRep ANI, publication vs refinement gates). |
 
-## Utilities
+## 5. Taxonomic annotation
 
-| Skill | Purpose |
-|-------|---------|
-| `setup` | Environments, databases, BASALT weights |
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `metaphlan` | [metaphlan](https://github.com/biobakery/MetaPhlAn) | Marker-gene taxonomic profiling of metagenomes. |
+| `kraken2` | [kraken2](https://github.com/DerrickWood/kraken2) | k-mer taxonomic classification; pair with Bracken for abundance. |
+| `bracken` | [bracken](https://github.com/jenniferlu717/Bracken) | Bayesian re-estimation of abundance from Kraken2 reports. |
+| `motus` | [motus](https://github.com/motu-tool/mOTUs) | Marker-gene taxonomic profiling across environments (mOTUs3). |
+| `sylph` | [sylph](https://github.com/bluenote-1577/sylph) | Rapid species-level metagenome profiling and containment estimation. |
+| `kaiju` | [kaiju](https://github.com/bioinformatics-centre/kaiju) | Fast sensitive taxonomic classification via protein-level matches. |
+| `gtdbtk` | [gtdbtk](https://github.com/Ecogenomics/GTDBTk) | Assign bacterial/archaeal taxonomy to MAGs with GTDB. |
+| `gtdb` | https://gtdb.ecogenomic.org/ | Use the Genome Taxonomy Database (GTDB) public releases — taxonomy tables, trees, metadata, and representative genomes. |
+| `mgnify` | [mgnify](https://github.com/EBI-Metagenomics) | Use EMBL-EBI MGnify for analysed microbiome studies and biome genome catalogues (including UHGG / human-gut and other biomes). |
+
+## 6. Functional annotation
+
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `humann` | [humann](https://github.com/biobakery/humann) | Gene-family and pathway abundance profiling from metagenomes. |
+| `prodigal` | [prodigal](https://github.com/hyattpd/Prodigal) | Protein-coding gene prediction; use -p meta for metagenomes. |
+| `prokka` | [prokka](https://github.com/tseemann/prokka) | Rapid prokaryotic genome annotation (CDS/rRNA/tRNA). |
+| `bakta` | [bakta](https://github.com/oschwengers/bakta) | Rapid standardized annotation of bacterial genomes (alignment-free ID). |
+| `cd-hit` | [cd-hit](https://github.com/weizhongli/cdhit) | Cluster genes/proteins to build non-redundant catalogues. |
+| `mmseqs2` | [mmseqs2](https://github.com/soedinglab/MMseqs2) | Ultra-fast protein search, clustering, and contig taxonomy. |
+| `salmon` | [salmon](https://github.com/COMBINE-lab/salmon) | Fast quantification of gene/transcript abundance; use --meta for metagenomes. |
+| `eggnog-mapper` | [eggnog-mapper](https://github.com/eggnogdb/eggnog-mapper) | Orthology-based functional annotation (COG/KEGG/CAZy via eggNOG). |
+| `rgi` | [rgi](https://github.com/arpcard/rgi) | Antibiotic resistance gene annotation against CARD. |
+| `barrnap` | [barrnap](https://github.com/tseemann/barrnap) | Basic rapid ribosomal RNA predictor for genomes. |
+| `biobakery-databases` | [biobakery-databases](https://github.com/biobakery/biobakery) | Install and pin bioBakery reference databases for MetaPhlAn and HUMAnN (ChocoPhlAn markers, UniRef gene families, MetaCyc pathways, utility mapping). |
+
+## 7. Microbial mining
+
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `microbial-mining` | — | Route microbial / genome mining after assembly or binning: biosynthetic gene clusters (antiSMASH), AMR (RGI, DeepARG), mobile elements and viruses (geNomad, VirSorter2, CheckV), antimicrobial peptides (Macrel), metabolism (DRAM, gapseq), defense systems (DefenseFinder), and genome annotation substrates (Bakta/Prokka). |
+| `antismash` | [antismash](https://github.com/antismash/antismash) | Detect and annotate biosynthetic gene clusters (BGCs) in genomes and MAGs. |
+| `genomad` | [genomad](https://github.com/apcamargo/genomad) | Identify plasmids, viruses, and other mobile genetic elements in assemblies. |
+| `virsorter2` | [virsorter2](https://github.com/jiarong/VirSorter2) | Viral sequence identification from metagenomic assemblies. |
+| `checkv` | [checkv](https://bitbucket.org/berkeleylab/checkv) | Quality assessment of metagenome-assembled viral genomes. |
+| `macrel` | [macrel](https://github.com/BigDataBiology/macrel) | Screen genomes and metagenomes for antimicrobial peptides (AMPs). |
+| `dram` | [dram](https://github.com/WrightonLabCSU/DRAM) | Distill microbial metabolism annotations for microbiome genomes/MAGs. |
+| `gapseq` | [gapseq](https://github.com/jotech/gapseq) | Predict bacterial metabolic pathways and reconstruct genome-scale metabolic models. |
+| `deeparg` | [deeparg](https://github.com/gaarangoa/DeepARG) | Deep-learning prediction of antibiotic resistance genes from metagenomic data. |
+| `defensefinder` | [defensefinder](https://github.com/mdmparis/defense-finder) | Detect anti-phage defense systems in prokaryotic genomes. |
+
+## Strain / microdiversity
+
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `instrain` | [instrain](https://github.com/MrOlm/inStrain) | Strain-level microdiversity and shared-strain detection from metagenomes. |
+
+## Public data
+
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `public-databases` | — | Route shotgun metagenomics work to the right public databases and catalogues. |
+| `sra-ena` | [sra-ena](https://github.com/ncbi/sra-tools) | Fetch and cite public shotgun metagenomic reads from NCBI SRA and EBI ENA. |
+
+## Report & utilities
+
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `visualization` | — | Statistical visualization for shotgun metagenomics across QC, taxonomy, function, and binning outputs. |
+| `setup` | — | First-time environment and database setup for shotgun metagenomics tool skills. |
 
 ## Orchestration
 
-| Skill | Purpose |
-|-------|---------|
-| `tool-selection` | Which software skill to use |
-| `metagenomics-workflow` | End-to-end stage order |
-| `study-design` | Co-assembly / strata / manifests |
+| Skill | Upstream | Purpose |
+|-------|----------|---------|
+| `tool-selection` | — | Choose shotgun tools by stage: QC, assembly, mapping, binning, taxonomic annotation, functional annotation, and microbial mining. |
+| `metagenomics-workflow` | — | End-to-end shotgun metagenomics: quality control, assembly, mapping, binning, taxonomic annotation, functional annotation, and microbial mining (BGCs, AMR, MGEs/viruses, AMPs, metabolism, defense). |
+| `study-design` | — | Study design for shotgun metagenomics across QC, assembly, binning, and annotation. |
+
+## Other
+
+- `busco`
 
 ---
 
 ## See also
 
-- [Getting started](getting-started.md)
 - [Standard pipeline](standard-pipeline.md)
 - [Tool selection](tool-selection.md)
+- [Public databases](public-databases.md)
+- [References](references.md)
+- [Getting started](getting-started.md)
 - [Multi-platform](multi-platform.md)

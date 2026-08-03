@@ -1,0 +1,7 @@
+interface:
+  display_name: "FastQC"
+  short_description: "QC reports for Illumina FASTQ before/after trimming"
+  default_prompt: "Use $fastqc for QC reports for Illumina FASTQ before/after trimming"
+
+policy:
+  allow_implicit_invocation: true

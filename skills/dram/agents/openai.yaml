@@ -1,0 +1,7 @@
+interface:
+  display_name: "DRAM"
+  short_description: "Distill microbial metabolism annotations for microbiome genomes/MAGs"
+  default_prompt: "Use $dram for Distill microbial metabolism annotations for microbiome genomes/MAGs"
+
+policy:
+  allow_implicit_invocation: true

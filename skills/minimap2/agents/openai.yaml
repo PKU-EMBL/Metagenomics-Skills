@@ -1,0 +1,7 @@
+interface:
+  display_name: "Minimap2"
+  short_description: "Fast pairwise alignment for long reads and genome-to-genome maps"
+  default_prompt: "Use $minimap2 for Fast pairwise alignment for long reads and genome-to-genome maps"
+
+policy:
+  allow_implicit_invocation: true

@@ -12,6 +12,12 @@ upstream: https://github.com/biobakery/humann
 
 Upstream: [biobakery/humann](https://github.com/biobakery/humann)
 
+## Citation
+
+Beghini, F. *et al.* Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3. *eLife* **10**, e65088 (2021). https://doi.org/10.7554/eLife.65088
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 HUMAnN maps reads to a gene catalog (UniRef-based) and aggregates to pathways.

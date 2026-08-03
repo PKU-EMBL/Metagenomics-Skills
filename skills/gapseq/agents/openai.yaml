@@ -1,0 +1,7 @@
+interface:
+  display_name: "gapseq"
+  short_description: "Predict bacterial metabolic pathways and reconstruct genome-scale metabolic models"
+  default_prompt: "Use $gapseq for Predict bacterial metabolic pathways and reconstruct genome-scale metabolic models"
+
+policy:
+  allow_implicit_invocation: true

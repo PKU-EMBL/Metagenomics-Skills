@@ -1,7 +1,7 @@
 interface:
-  display_name: "Metagenomics Workflow"
-  short_description: "End-to-end shotgun metagenomics pipeline guidance"
-  default_prompt: "Use $metagenomics-workflow to plan a full shotgun metagenomics analysis from metadata to MAGs."
+  display_name: "Metagenomics workflow"
+  short_description: "Stage order: QC, assembly, mapping, binning, taxonomy, function, mining"
+  default_prompt: "Use $metagenomics-workflow to order the full shotgun path including mapping and microbial mining."
 
 policy:
   allow_implicit_invocation: true

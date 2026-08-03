@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.3.0] - 2026-08-03
+
+### Added
+- Mapping-stage tools (Bowtie2, BWA, BWA-MEM2, Minimap2, strobealign, Samtools, …)
+- Single binners (MetaBAT2, MaxBin2, CONCOCT, SemiBin2, VAMB) and long-read assemblers
+- Microbial mining skills: `microbial-mining`, `antismash`, `genomad`, `virsorter2`,
+  `checkv`, `macrel`, `dram`, `bakta`, `deeparg`, `gapseq`, `defensefinder`
+- Nature-style `docs/references.md` entries for mapping and mining papers
+
+### Changed
+- Pipeline framed as QC → assembly → mapping → binning → taxonomy → function → mining
+- Removed third-party list branding from skill/docs surfaces
+
+## [1.2.0] - 2026-08-03
+
+### Added
+- Public database skills: `public-databases`, `sra-ena`, `mgnify`, `gtdb`,
+  `biobakery-databases`
+- Ensemble binning peer skill: `dastool`
+- Docs: `docs/public-databases.md`
+
+### Changed
+- Reframed the package around five stages: **QC → assembly → binning →
+  taxonomic annotation → functional annotation** (bins/MAGs are binning
+  outcomes, not the sole pipeline axis)
+- Positioned `basalt`, `metawrap`, and `dastool` as an ensemble binning family
+  with **BASALT recommended**
+- Updated catalogs, workflow, README, SVG, and manifests (30 skills)
+
 ## [1.1.0] - 2026-08-03
 
 ### Added

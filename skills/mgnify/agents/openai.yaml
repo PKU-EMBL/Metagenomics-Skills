@@ -1,0 +1,7 @@
+interface:
+  display_name: "MGnify"
+  short_description: "MGnify analysed studies and biome MAG catalogues including UHGG"
+  default_prompt: "Use $mgnify for MGnify/UHGG catalogues and analysed microbiome studies."
+
+policy:
+  allow_implicit_invocation: true

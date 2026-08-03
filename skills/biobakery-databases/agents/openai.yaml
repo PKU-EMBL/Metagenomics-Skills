@@ -1,0 +1,7 @@
+interface:
+  display_name: "bioBakery databases"
+  short_description: "ChocoPhlAn, UniRef, and MetaCyc indexes for MetaPhlAn/HUMAnN"
+  default_prompt: "Use $biobakery-databases to install and pin MetaPhlAn/HUMAnN reference databases."
+
+policy:
+  allow_implicit_invocation: true

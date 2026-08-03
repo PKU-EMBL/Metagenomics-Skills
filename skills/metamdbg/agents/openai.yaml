@@ -1,0 +1,7 @@
+interface:
+  display_name: "metaMDBG"
+  short_description: "High-quality metagenome assembly from long accurate reads"
+  default_prompt: "Use $metamdbg for High-quality metagenome assembly from long accurate reads"
+
+policy:
+  allow_implicit_invocation: true

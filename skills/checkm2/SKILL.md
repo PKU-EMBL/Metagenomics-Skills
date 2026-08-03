@@ -12,6 +12,12 @@ upstream: https://github.com/chklovski/CheckM2
 
 Upstream: [chklovski/CheckM2](https://github.com/chklovski/CheckM2)
 
+## Citation
+
+Chklovski, A., Parks, D. H., Woodcroft, B. J. & Tyson, G. W. CheckM2: a rapid, scalable and accurate tool for assessing microbial genome quality using machine learning. *Nat. Methods* **20**, 1203–1212 (2023). https://doi.org/10.1038/s41592-023-01940-w
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 CheckM2 estimates completeness/contamination quickly with ML models. Values are

@@ -1,5 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="220" viewBox="0 0 960 220">
-<rect width="960" height="220" fill="#0f172a"/>
-<text x="40" y="50" fill="#99f6e4" font-size="22" font-family="Helvetica,Arial,sans-serif">Standard shotgun pipeline</text>
-<text x="40" y="120" fill="#e2e8f0" font-size="16" font-family="Helvetica,Arial,sans-serif">preprocessing → read-based / gene-catalogue → mag-classical|basalt → mag-qc → visualization</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="280" viewBox="0 0 980 280">
+<rect width="980" height="280" fill="#0f172a"/>
+<text x="36" y="36" fill="#99f6e4" font-size="18" font-family="Helvetica,Arial,sans-serif">Shotgun metagenomics — stages</text>
+<text x="36" y="72" fill="#e2e8f0" font-size="14" font-family="Helvetica,Arial,sans-serif">1 QC → 2 Assembly → 3 Mapping → 4 Binning → 5 Taxonomy → 6 Function → 7 Mining</text>
+<text x="36" y="108" fill="#94a3b8" font-size="13" font-family="Helvetica,Arial,sans-serif">QC: fastp, kneaddata</text>
+<text x="36" y="132" fill="#94a3b8" font-size="13" font-family="Helvetica,Arial,sans-serif">Assembly: megahit, metaspades, metaflye…</text>
+<text x="36" y="156" fill="#94a3b8" font-size="13" font-family="Helvetica,Arial,sans-serif">Mapping: bowtie2, bwa-mem2, strobealign, minimap2, samtools</text>
+<text x="36" y="180" fill="#94a3b8" font-size="13" font-family="Helvetica,Arial,sans-serif">Binning: basalt★, metawrap, dastool, metabat2…</text>
+<text x="36" y="204" fill="#94a3b8" font-size="13" font-family="Helvetica,Arial,sans-serif">Taxonomy / function: metaphlan, kraken2, gtdbtk, humann, eggnog-mapper…</text>
+<text x="36" y="228" fill="#94a3b8" font-size="13" font-family="Helvetica,Arial,sans-serif">Mining: antismash, genomad, dram, rgi, macrel, checkv…</text>
 </svg>
+
+# counts for manifest
+COUNT=$(ls -d skills/*/SKILL.md | wc -l | tr -d ' ')
+python3 - << PY
+import json
+from pathlib import Path
+count = int("${COUNT}")
+for path in ["plugin-manifest.json"]:
+    p = Path(path)
+    data = json.loads(p.read_text())
+    data["version"] = "1.3.0"
+    data["skills_count"] = count
+    data["description"] = "Shotgun metagenomics Agent Skills — QC, assembly, mapping, binning, taxonomy, function, and microbial mining"
+    data["keywords"] = ["metagenomics","QC","assembly","mapping","binning","taxonomy","function","mining","BASALT"]
+    data["featured_skills"] = ["metagenomics-workflow","tool-selection","microbial-mining","basalt","bowtie2","antismash"]
+    # rough category counts
+    data["skill_categories"] = {
+        "analysis-tools": max(count - 10, 0),
+        "evaluation": 2,
+        "utilities": 6,
+        "orchestration": 4
+    }
+    p.write_text(json.dumps(data, indent=2) + "\n")
+print("manifest skills_count", count)
+PY

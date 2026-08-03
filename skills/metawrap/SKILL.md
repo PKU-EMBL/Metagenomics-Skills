@@ -1,10 +1,16 @@
 ---
 name: metawrap
 description: >
-  Metagenomic wrapper for binning, refinement, reassembly, and related modules. Use this skill when working with metawrap: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/bxlab/metaWRAP. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  MetaWRAP suite for multi-binner MAG recovery and CheckM-style bin refinement —
+  one option in the ensemble binning family (with DAS Tool and BASALT). Use this
+  skill when working with metawrap: installing, choosing parameters, running
+  binning/bin_refinement/reassemble_bins, or troubleshooting. Upstream:
+  https://github.com/bxlab/metaWRAP. Prefer basalt as the recommended ensemble
+  default for related multi-assembly work; use dastool for classical contig2bin
+  aggregation. For routing, use tool-selection.
 license: MIT
 category: analysis-tools
-tags: ['MAG', 'binning', 'metabat', 'maxbin']
+tags: ['MAG', 'ensemble-binning', 'binning', 'metabat', 'maxbin']
 upstream: https://github.com/bxlab/metaWRAP
 ---
 
@@ -12,15 +18,26 @@ upstream: https://github.com/bxlab/metaWRAP
 
 Upstream: [bxlab/metaWRAP](https://github.com/bxlab/metaWRAP)
 
+## Citation
+
+Uritskiy, G. V., DiRuggiero, J. & Taylor, J. MetaWRAP—a flexible pipeline for
+genome-resolved metagenomic data analysis. *Microbiome* **6**, 158 (2018).
+https://doi.org/10.1186/s40168-018-0541-1
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
-MetaWRAP is a **module suite**. For MAG recovery the critical path is
+MetaWRAP is a **module suite** in the **ensemble binning** family (alongside
+DAS Tool and BASALT). For MAG recovery the critical path is
 `binning` → `bin_refinement` (± `reassemble_bins`). Refinement consolidates
 MetaBAT2/MaxBin2/(CONCOCT) predictions; refinement thresholds (`-c/-x`) are
 scientific choices, not mere software defaults.
 
-For cross-assembly refined recovery with contig-level DL screening, prefer
-`basalt` instead of stopping at MetaWRAP.
+**Recommended default in this package:** `basalt` (especially related samples /
+multi-assembly refinement). Choose MetaWRAP when you want a classical packaged
+multi-binner + refinement catalogue on a single assembly workflow. Choose
+`dastool` when you already have contig2bin tables and only need SCG aggregation.
 
 Depth guidance: ~≥6 Gb/sample typical; complex soils often ≥30 Gb.
 
@@ -43,12 +60,12 @@ Modes: mixed co-assembly, per-sample, or subgroup binning for huge cohorts.
 ## Decision tree
 
 ```text
-MAG route?
-├─ Classical multi-binner catalogue → metawrap (+ drep + coverm + gtdbtk)
-└─ Multi-assembly refinement → basalt
+Ensemble MAG recovery?
+├─ Recommended (related / multi-assembly) → basalt
+├─ Packaged multi-binner + CheckM refinement suite → metawrap
+└─ Classical SCG aggregation of contig2bin sets → dastool
 ```
 
 ## Related skills
 
-`megahit` · `drep` · `coverm` · `gtdbtk` · `checkm2` · `basalt`
-
+`basalt` · `dastool` · `megahit` · `drep` · `coverm` · `gtdbtk` · `checkm2` · `mag-qc`

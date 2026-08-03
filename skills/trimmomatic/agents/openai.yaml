@@ -1,0 +1,7 @@
+interface:
+  display_name: "Trimmomatic"
+  short_description: "Flexible Illumina adapter/quality trimmer"
+  default_prompt: "Use $trimmomatic for Flexible Illumina adapter/quality trimmer"
+
+policy:
+  allow_implicit_invocation: true

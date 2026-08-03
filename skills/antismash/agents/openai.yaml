@@ -1,0 +1,7 @@
+interface:
+  display_name: "antiSMASH"
+  short_description: "Detect and annotate biosynthetic gene clusters (BGCs) in genomes and MAGs"
+  default_prompt: "Use $antismash for Detect and annotate biosynthetic gene clusters (BGCs) in genomes and MAGs"
+
+policy:
+  allow_implicit_invocation: true

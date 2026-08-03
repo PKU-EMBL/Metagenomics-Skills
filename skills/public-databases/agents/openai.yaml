@@ -1,0 +1,7 @@
+interface:
+  display_name: "Public databases"
+  short_description: "Route to SRA/ENA, MGnify/UHGG, GTDB, bioBakery and tool DBs"
+  default_prompt: "Use $public-databases to choose and pin public metagenomics databases."
+
+policy:
+  allow_implicit_invocation: true

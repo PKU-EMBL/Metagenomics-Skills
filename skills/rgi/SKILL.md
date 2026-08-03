@@ -12,6 +12,12 @@ upstream: https://github.com/arpcard/rgi
 
 Upstream: [arpcard/rgi](https://github.com/arpcard/rgi) · CARD database
 
+## Citation
+
+Alcock, B. P. *et al.* CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. *Nucleic Acids Res.* **51**, D690–D699 (2023). https://doi.org/10.1093/nar/gkac920
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 RGI predicts AMR genes from proteins or contigs. Hits are **sequence homology /

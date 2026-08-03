@@ -1,0 +1,7 @@
+interface:
+  display_name: "Microbial mining"
+  short_description: "Route BGC AMR MGE virus metabolism mining"
+  default_prompt: "Use $microbial-mining for Route BGC AMR MGE virus metabolism mining"
+
+policy:
+  allow_implicit_invocation: true

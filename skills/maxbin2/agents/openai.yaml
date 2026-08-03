@@ -1,0 +1,7 @@
+interface:
+  display_name: "MaxBin 2"
+  short_description: "Automated multi-metagenome contig binning"
+  default_prompt: "Use $maxbin2 for Automated multi-metagenome contig binning"
+
+policy:
+  allow_implicit_invocation: true

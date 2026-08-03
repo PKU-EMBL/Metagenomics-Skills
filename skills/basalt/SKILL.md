@@ -1,18 +1,21 @@
 ---
 name: basalt
 description: >
-  PKU-EMBL BASALT and BASALT-Air refined MAG recovery across one or more
-  assemblies. Use this skill when: (1) Running BASALT multi-binner recovery,
-  (2) Choosing Conda BASALT vs BASALT-Air, (3) Multi-assembly refinement,
-  (4) Resuming checkpoints, (5) Writing reproducible BASALT Methods.
+  PKU-EMBL BASALT and BASALT-Air — recommended ensemble MAG recovery across one
+  or more assemblies (multi-binner + refinement). Use this skill when:
+  (1) Running BASALT multi-binner recovery, (2) Choosing Conda BASALT vs
+  BASALT-Air, (3) Multi-assembly refinement, (4) Resuming checkpoints,
+  (5) Writing reproducible BASALT Methods.
   Upstream: https://github.com/PKU-EMBL/BASALT and
   https://github.com/PKU-EMBL/BASALT-Air.
-  For classical MetaWRAP catalogues, use metawrap.
+  Ensemble peers: dastool (SCG aggregation), metawrap (binning+refinement suite).
+  Prefer basalt as the default ensemble route; use metawrap/dastool when a
+  classical suite or contig2bin consensus is enough.
   For study design of assemblies, use study-design.
   For QC thresholds, use checkm2 and mag-qc.
 license: MIT
 category: analysis-tools
-tags: [BASALT, MAG, refinement, multi-assembly, PKU-EMBL]
+tags: [BASALT, MAG, ensemble-binning, refinement, multi-assembly, PKU-EMBL]
 upstream: https://github.com/PKU-EMBL/BASALT
 ---
 
@@ -20,19 +23,36 @@ upstream: https://github.com/PKU-EMBL/BASALT
 
 Upstream: [PKU-EMBL/BASALT](https://github.com/PKU-EMBL/BASALT) ·
 [BASALT-Air](https://github.com/PKU-EMBL/BASALT-Air) ·
-Guide: https://basalt-guide.readthedocs.io/en/latest/ ·
-Paper: https://doi.org/10.1038/s41467-024-46539-7
+Guide: https://basalt-guide.readthedocs.io/en/latest/
 
+## Citation
+
+Qiu, Z. *et al.* BASALT refines binning from metagenomic data and increases
+resolution of genome-resolved metagenomic analysis. *Nat. Commun.* **15**, 2179
+(2024). https://doi.org/10.1038/s41467-024-46539-7
+
+See also [docs/references.md](../../docs/references.md).
 ## Analytical thinking
 
-BASALT is not “another MetaWRAP”. It is designed for **coherent multi-assembly
-evidence**: sample-specific assemblies preserve restricted populations; a matched
-co-assembly can rescue shared low-abundance genomes; cross-sample coverage
-concordance informs selection and contig refinement.
+BASALT is one member of the **ensemble binning** family, alongside DAS Tool and
+MetaWRAP: multiple binners propose candidates, then a refinement/selection step
+produces a non-redundant MAG set.
 
-Use it when related samples share community continuity (reactors, longitudinal
-hosts, nearby sites, gradients). Do **not** pool unrelated strata just to feed
-BASALT more FASTAs.
+Within that family, **BASALT is the recommended default** here — especially for
+related samples with coherent multi-assembly evidence (sample-specific assemblies
+preserve restricted populations; a matched co-assembly can rescue shared
+low-abundance genomes; cross-sample coverage informs selection and contig
+refinement).
+
+Peers (still valid):
+
+| Peer | Role |
+|------|------|
+| `basalt` | **Recommended** multi-assembly ensemble + DL/connectivity refinement |
+| `metawrap` | Packaged multi-binner + CheckM-style bin refinement suite |
+| `dastool` | Classical SCG scoring/aggregation of existing contig2bin tables |
+
+Do **not** pool unrelated strata just to feed BASALT more FASTAs.
 
 Refinement (MLP ensemble + connectivity retrieval) is **model- and
 feature-supported prediction**, not experimental proof of contamination removal.
@@ -108,4 +128,4 @@ assemblies + reads → coverage/connectivity → multi-binner candidates
 
 ## Related skills
 
-`study-design` · `megahit` · `metaspades` · `kneaddata` · `metawrap` · `checkm2` · `mag-qc` · `drep`
+`dastool` · `metawrap` · `study-design` · `megahit` · `metaspades` · `kneaddata` · `checkm2` · `mag-qc` · `drep`

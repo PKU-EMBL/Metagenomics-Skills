@@ -12,6 +12,12 @@ upstream: https://github.com/hyattpd/Prodigal
 
 Upstream: [hyattpd/Prodigal](https://github.com/hyattpd/Prodigal)
 
+## Citation
+
+Hyatt, D. *et al.* Prodigal: prokaryotic gene recognition and translation initiation site identification. *BMC Bioinformatics* **11**, 119 (2010). https://doi.org/10.1186/1471-2105-11-119
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 For metagenomes always use **`-p meta`**. Gene catalogues inherit assembly

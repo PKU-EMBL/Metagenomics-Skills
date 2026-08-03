@@ -1,0 +1,7 @@
+interface:
+  display_name: "DefenseFinder"
+  short_description: "Detect anti-phage defense systems in prokaryotic genomes"
+  default_prompt: "Use $defensefinder for Detect anti-phage defense systems in prokaryotic genomes"
+
+policy:
+  allow_implicit_invocation: true

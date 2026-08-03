@@ -1,0 +1,7 @@
+interface:
+  display_name: "Samtools"
+  short_description: "SAM/BAM/CRAM processing for mapping outputs"
+  default_prompt: "Use $samtools for SAM/BAM/CRAM processing for mapping outputs"
+
+policy:
+  allow_implicit_invocation: true

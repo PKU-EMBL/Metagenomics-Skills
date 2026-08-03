@@ -1,7 +1,7 @@
 {
   "name": "Metagenomics Skills",
-  "description": "Shotgun metagenomics Agent Skills — per-tool workflows for QC, profiling, assembly, annotation, MAG recovery, and BASALT refinement",
-  "version": "1.1.0",
+  "description": "Shotgun metagenomics Agent Skills — QC, assembly, binning, taxonomic annotation, functional annotation, and public databases",
+  "version": "1.2.0",
   "author": "PKU-EMBL",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
@@ -9,30 +9,29 @@
   "categories": ["science", "biology", "metagenomics", "computational-biology"],
   "keywords": [
     "metagenomics",
-    "fastp",
-    "HUMAnN",
-    "MetaPhlAn",
-    "Kraken2",
-    "MEGAHIT",
-    "MetaWRAP",
+    "QC",
+    "assembly",
+    "binning",
+    "taxonomy",
+    "function",
     "BASALT",
-    "MAG",
-    "CheckM2"
+    "MGnify",
+    "GTDB"
   ],
-  "skills_count": 24,
+  "skills_count": 30,
   "skill_categories": {
-    "analysis-tools": 18,
+    "analysis-tools": 19,
     "evaluation": 2,
-    "utilities": 1,
+    "utilities": 6,
     "orchestration": 3
   },
   "featured_skills": [
-    "basalt",
-    "metawrap",
+    "metagenomics-workflow",
+    "tool-selection",
     "fastp",
-    "humann",
     "megahit",
-    "tool-selection"
+    "basalt",
+    "public-databases"
   ],
   "platforms": [
     "claude-code",

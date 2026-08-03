@@ -1,0 +1,7 @@
+interface:
+  display_name: "BUSCO"
+  short_description: "Benchmarking Universal Single-Copy Orthologs for genome completeness"
+  default_prompt: "Use $busco for Benchmarking Universal Single-Copy Orthologs for genome completeness"
+
+policy:
+  allow_implicit_invocation: true

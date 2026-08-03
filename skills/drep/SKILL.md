@@ -12,6 +12,12 @@ upstream: https://github.com/MrOlm/drep
 
 Upstream: [MrOlm/drep](https://github.com/MrOlm/drep)
 
+## Citation
+
+Olm, M. R., Brown, C. T., Brooks, B. & Banfield, J. F. dRep: a tool for fast and accurate genomic comparisons that enables improved genome recovery from metagenomes through de-replication. *ISME J.* **11**, 2864–2868 (2017). https://doi.org/10.1038/ismej.2017.126
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 dRep collapses redundant MAGs into representatives. **`-sa 0.95`** ≈ species;

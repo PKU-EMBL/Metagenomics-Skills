@@ -12,6 +12,12 @@ upstream: https://github.com/weizhongli/cdhit
 
 Upstream: [weizhongli/cdhit](https://github.com/weizhongli/cdhit)
 
+## Citation
+
+Fu, L., Niu, B., Zhu, Z., Wu, S. & Li, W. CD-HIT: accelerated for clustering the next-generation sequencing data. *Bioinformatics* **28**, 3150–3152 (2012). https://doi.org/10.1093/bioinformatics/bts565
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 `cd-hit-est` collapses redundant nucleotide ORFs into a non-redundant catalogue.

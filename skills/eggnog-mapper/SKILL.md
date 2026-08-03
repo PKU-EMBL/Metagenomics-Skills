@@ -12,6 +12,12 @@ upstream: https://github.com/eggnogdb/eggnog-mapper
 
 Upstream: [eggnogdb/eggnog-mapper](https://github.com/eggnogdb/eggnog-mapper)
 
+## Citation
+
+Cantalapiedra, C. P., Hernández-Plaza, A., Letunic, I., Bork, P. & Huerta-Cepas, J. eggNOG-mapper v2: functional annotation, orthology assignments, and domain prediction at the metagenomic scale. *Mol. Biol. Evol.* **38**, 5825–5829 (2021). https://doi.org/10.1093/molbev/msab293
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 Annotate **proteins** from the NR catalogue (or MAG proteomes). DIAMOND mode is

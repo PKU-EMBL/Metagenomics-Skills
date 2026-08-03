@@ -1,0 +1,7 @@
+interface:
+  display_name: "sylph"
+  short_description: "Rapid species-level metagenome profiling and containment estimation"
+  default_prompt: "Use $sylph for Rapid species-level metagenome profiling and containment estimation"
+
+policy:
+  allow_implicit_invocation: true

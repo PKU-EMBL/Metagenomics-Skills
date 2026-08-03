@@ -12,6 +12,12 @@ upstream: https://github.com/Ecogenomics/GTDBTk
 
 Upstream: [Ecogenomics/GTDBTk](https://github.com/Ecogenomics/GTDBTk)
 
+## Citation
+
+Chaumeil, P.-A., Mussig, A. J., Hugenholtz, P. & Parks, D. H. GTDB-Tk v2: memory friendly classification with the Genome Taxonomy Database. *Bioinformatics* **38**, 5315–5316 (2022). https://doi.org/10.1093/bioinformatics/btac672
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 GTDB-Tk places genomes into the Genome Taxonomy Database hierarchy. Taxonomy is

@@ -12,6 +12,12 @@ upstream: https://github.com/COMBINE-lab/salmon
 
 Upstream: [COMBINE-lab/salmon](https://github.com/COMBINE-lab/salmon)
 
+## Citation
+
+Patro, R., Duggal, G., Love, M. I., Irizarry, R. A. & Kingsford, C. Salmon provides fast and bias-aware quantification of transcript expression. *Nat. Methods* **14**, 417–419 (2017). https://doi.org/10.1038/nmeth.4197
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 Quantify the **NR gene catalogue** with salmon using dehosted PE reads.

@@ -1,0 +1,7 @@
+interface:
+  display_name: "CONCOCT"
+  short_description: "Composition and coverage binning of metagenomic contigs"
+  default_prompt: "Use $concoct for Composition and coverage binning of metagenomic contigs"
+
+policy:
+  allow_implicit_invocation: true

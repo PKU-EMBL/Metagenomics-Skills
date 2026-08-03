@@ -12,6 +12,12 @@ upstream: https://github.com/OpenGene/fastp
 
 Upstream: [OpenGene/fastp](https://github.com/OpenGene/fastp)
 
+## Citation
+
+Chen, S., Zhou, Y., Chen, Y. & Gu, J. fastp: an ultra-fast all-in-one FASTQ preprocessor. *Bioinformatics* **34**, i884–i890 (2018). https://doi.org/10.1093/bioinformatics/bty560
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 Use fastp **before** host depletion or assembly so adapter/low-quality bases do

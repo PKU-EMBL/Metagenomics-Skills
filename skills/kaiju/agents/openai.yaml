@@ -1,0 +1,7 @@
+interface:
+  display_name: "Kaiju"
+  short_description: "Fast sensitive taxonomic classification via protein-level matches"
+  default_prompt: "Use $kaiju for Fast sensitive taxonomic classification via protein-level matches"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "MMseqs2"
+  short_description: "Ultra-fast protein search, clustering, and contig taxonomy"
+  default_prompt: "Use $mmseqs2 for Ultra-fast protein search, clustering, and contig taxonomy"
+
+policy:
+  allow_implicit_invocation: true

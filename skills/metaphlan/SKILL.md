@@ -12,6 +12,12 @@ upstream: https://github.com/biobakery/MetaPhlAn
 
 Upstream: [biobakery/MetaPhlAn](https://github.com/biobakery/MetaPhlAn)
 
+## Citation
+
+Blanco-Míguez, A. *et al.* Extending and improving metagenomic taxonomic profiling with uncharacterized species using MetaPhlAn 4. *Nat. Biotechnol.* **41**, 1633–1644 (2023). https://doi.org/10.1038/s41587-023-01688-w
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 MetaPhlAn estimates clade abundances from **clade-specific marker genes**. It is

@@ -12,6 +12,12 @@ upstream: https://github.com/voutcn/megahit
 
 Upstream: [voutcn/megahit](https://github.com/voutcn/megahit) (v1.2.9 widely used)
 
+## Citation
+
+Li, D., Liu, C.-M., Luo, R., Sadakane, K. & Lam, T.-W. MEGAHIT: an ultra-fast single-node solution for large and complex metagenomics assembly via succinct de Bruijn graph. *Bioinformatics* **31**, 1674–1676 (2015). https://doi.org/10.1093/bioinformatics/btv033
+
+See also [docs/references.md](../../docs/references.md).
+
 ## Analytical thinking
 
 MEGAHIT is the default **fast metagenome assembler** for Illumina PE when memory

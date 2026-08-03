@@ -32,12 +32,11 @@ See [multi-platform.md](multi-platform.md) for per-platform paths.
 Skills document **how** to run tools; they do not replace Conda environments.
 
 ```bash
-# example checks
 micromamba -V || conda -V
 mkdir -p meta/{seq,temp,result,logs}
 ```
 
-Follow the `setup` skill for database and BASALT weight installation.
+Follow `setup` and `public-databases` for software and reference installs.
 
 ## Step 3: Add metadata and reads
 
@@ -48,18 +47,21 @@ meta/
 └── result/metadata.txt
 ```
 
-## Step 4: Ask for a routed plan
+## Step 4: Ask for a stage-routed plan
 
 Example prompts:
 
-- "Choose MetaPhlAn/HUMAnN versus MAG recovery for these samples"
-- "Write a BASALT pilot command for one assembly + PE reads"
-- "Decide MEGAHIT versus metaSPAdes for this cohort"
+- "Plan QC → assembly → binning → taxonomy → function for these samples"
+- "Read-based taxonomic annotation only — which tools after KneadData?"
+- "Recommended ensemble binning after MEGAHIT for related bioreactors"
+- "Functional annotation via gene catalogue vs HUMAnN"
 
-Expected skill routing: `tool-selection` / `study-design` → stage skills.
+Expected routing: `tool-selection` / `metagenomics-workflow` / `study-design`
+→ stage skills.
 
 ## Next
 
+- [Standard pipeline (five stages)](standard-pipeline.md)
 - [Skills catalog](skills.md)
-- [Standard pipeline](standard-pipeline.md)
+- [Public databases](public-databases.md)
 - [Compute setup](compute-setup.md)

@@ -1,0 +1,7 @@
+interface:
+  display_name: "BBMap"
+  short_description: "Fast splice-aware aligner and BBTools suite utilities (BBMerge, etc"
+  default_prompt: "Use $bbmap for Fast splice-aware aligner and BBTools suite utilities (BBMerge, etc"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,51 @@
+---
+name: macrel
+description: >
+  Screen genomes and metagenomes for antimicrobial peptides (AMPs). Use this skill when working with macrel: installing, choosing
+  parameters, running commands, interpreting outputs, or troubleshooting.
+  Upstream: https://github.com/BigDataBiology/macrel. For routing across mining tasks use microbial-mining.
+  For stage order use metagenomics-workflow.
+license: MIT
+category: analysis-tools
+tags: ['AMP', 'antimicrobial-peptide', 'genome-mining']
+upstream: https://github.com/BigDataBiology/macrel
+stage: mining
+---
+
+# Macrel
+
+Upstream: [Macrel](https://github.com/BigDataBiology/macrel)
+
+## Citation
+
+Santos-Júnior, C. D., Pan, S., Zhao, X. & Coelho, L. P. Macrel: antimicrobial peptide screening in genomes and metagenomes. *PeerJ* **8**, e10555 (2020). https://doi.org/10.7717/peerj.10555
+
+See also [docs/references.md](../../docs/references.md).
+
+## Analytical thinking
+
+Macrel mines **small AMP-like peptides**. High false-discovery risk without experimental validation — report as computational candidates. Complementary to antiSMASH (BGCs) and RGI (AMR genes).
+
+## How to run
+
+```bash
+conda install -c bioconda macrel  # if packaged; else follow upstream docs
+
+macrel get-smorfs -f contigs.fa -o temp/macrel/${id} --threads 16
+macrel peptides -f temp/macrel/${id}.smorfs.faa -o temp/macrel/${id}_amp
+```
+
+## Key parameters
+
+| smORFs first | short ORFs | |
+| peptides | AMP classifier | |
+
+## Decision notes
+
+- Run mining on **QC-filtered genomes/MAGs** (or contigs for MGE/virus screens)
+- Computational hits are hypotheses — state validation limits in Methods
+- Pin software + database releases
+
+## Related skills
+
+antismash · rgi · prodigal · dram · `microbial-mining` · `tool-selection` · `metagenomics-workflow`

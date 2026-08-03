@@ -1,0 +1,7 @@
+interface:
+  display_name: "SRA / ENA"
+  short_description: "Fetch public shotgun reads from NCBI SRA and EBI ENA"
+  default_prompt: "Use $sra-ena to download and manifest public metagenomic runs."
+
+policy:
+  allow_implicit_invocation: true

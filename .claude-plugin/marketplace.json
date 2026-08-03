@@ -1,7 +1,7 @@
 {
   "name": "metagenomics-skills",
-  "version": "1.1.0",
-  "description": "Claude Code skills for shotgun metagenomics — per-tool QC, profiling, assembly, MAG recovery, and BASALT",
+  "version": "1.2.0",
+  "description": "Claude Code skills for shotgun metagenomics — QC, assembly, binning, taxonomy, function, and public databases",
   "owner": {
     "name": "PKU-EMBL",
     "url": "https://github.com/PKU-EMBL/Metagenomics-Skills"
@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "metagenomics",
-      "description": "All metagenomics software and orchestration skills",
+      "description": "Five-stage metagenomics software, database, and orchestration skills",
       "source": "./"
     }
   ]

@@ -1,0 +1,7 @@
+interface:
+  display_name: "CheckV"
+  short_description: "Quality assessment of metagenome-assembled viral genomes"
+  default_prompt: "Use $checkv for Quality assessment of metagenome-assembled viral genomes"
+
+policy:
+  allow_implicit_invocation: true

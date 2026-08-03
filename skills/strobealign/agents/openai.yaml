@@ -1,0 +1,7 @@
+interface:
+  display_name: "strobealign"
+  short_description: "Ultra-fast short-read alignment with flexible seed size"
+  default_prompt: "Use $strobealign for Ultra-fast short-read alignment with flexible seed size"
+
+policy:
+  allow_implicit_invocation: true

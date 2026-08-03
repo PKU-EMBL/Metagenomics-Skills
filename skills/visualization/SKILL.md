@@ -1,14 +1,12 @@
 ---
 name: visualization
 description: >
-  Statistical visualization for metagenomic profiles and MAG catalogues.
-  Use this skill when: (1) Alpha/beta diversity plots,
-  (2) Composition heatmaps and stacked bars,
-  (3) STAMP/LEfSe/MaAsLin2 comparative figures,
-  (4) MAG quality and phylogeny plots,
-  (5) Labeling figures by method (MetaPhlAn vs Kraken vs MAG).
-
-  For generating tables, use metaphlan/humann/kraken2, salmon, or coverm.
+  Statistical visualization for shotgun metagenomics across QC, taxonomy,
+  function, and binning outputs. Use this skill when: (1) Alpha/beta diversity,
+  (2) Composition heatmaps and stacked bars, (3) Comparative figures
+  (STAMP/LEfSe/MaAsLin2), (4) Bin quality and phylogeny plots, (5) Labeling
+  figures by stage and method. For generating tables, use the stage skills
+  (metaphlan, humann, kraken2, salmon, coverm, gtdbtk, …).
 license: MIT
 category: evaluation
 tags: [visualization, diversity, statistics, figures]
@@ -18,25 +16,24 @@ tags: [visualization, diversity, statistics, figures]
 
 ## Rules
 
-1. Label every figure with the upstream method and database release
+1. Label every figure with **stage + method + database release**
 2. Inspect batch structure before biological group tests
 3. Report normalization, rarefaction, test, and multiple-testing correction
+4. Do not plot bins as “high-quality genomes” before `mag-qc` / `checkm2` filters
 
-## Read-based figures
+## By stage
 
+### Taxonomic annotation (reads)
 - Alpha diversity boxplots
 - Beta PCoA / distance heatmaps
 - Taxon heatmaps and stacked bars
-- Differential features (STAMP, LEfSe, MaAsLin2)
-- Optional SparCC networks (compositionality caution)
+- Differential taxa (STAMP, LEfSe, MaAsLin2)
 
-## Functional figures
+### Functional annotation
+- HUMAnN pathway / gene-family heatmaps
+- eggNOG / AMR summary bars (pathway presence ≠ enzymatic activity)
 
-- Grouped HUMAnN pathway/gene-family heatmaps
-- Pathway presence ≠ enzymatic activity
-
-## MAG figures
-
+### Binning / genomes
 - Rarefaction / accumulation vs sample effort
 - Completeness–contamination scatter
 - GTDB phylogeny with quality annotations
@@ -44,5 +41,4 @@ tags: [visualization, diversity, statistics, figures]
 
 ## Related skills
 
-- `metaphlan` / `humann` / `kraken2` / `coverm` / `basalt` — data sources
-- `mag-qc` — filter before plotting catalogue claims
+`metaphlan` · `kraken2` · `humann` · `coverm` · `gtdbtk` · `basalt` · `metawrap` · `mag-qc`

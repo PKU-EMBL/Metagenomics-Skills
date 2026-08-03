@@ -1,56 +1,62 @@
 ---
 name: tool-selection
 description: >
-  Choose shotgun metagenomics tools and routes by scientific deliverable.
-  Use this skill when: (1) Deciding which software skill to load,
-  (2) Choosing MetaPhlAn vs Kraken vs HUMAnN,
-  (3) Choosing MEGAHIT vs metaSPAdes,
-  (4) Choosing MetaWRAP vs BASALT for MAGs,
-  (5) Planning a multi-tool analysis path.
-  For end-to-end ordering, use metagenomics-workflow.
+  Choose shotgun tools by stage: QC, assembly, mapping, binning, taxonomic
+  annotation, functional annotation, and microbial mining. Use when deciding
+  which skill to load — mappers, assemblers, ensemble binning (BASALT
+  recommended), profilers, or miners (antiSMASH, geNomad, DRAM, RGI, …).
+  For stage order use metagenomics-workflow. For mining goals use microbial-mining.
 license: MIT
 category: orchestration
-tags: [guidance, tool-selection, workflow]
+tags: [guidance, tool-selection, mapping, binning, mining, workflow]
 ---
 
 # Tool Selection
 
-## Start from the deliverable
+Start from the **stage**, then the deliverable.
+
+## By stage
 
 ```text
-Deliverable?
-│
-├─ Clean PE reads
-│     fastp → kneaddata
-├─ Taxonomic composition from reads
-│     metaphlan  OR  kraken2 (+ bracken)
-├─ Pathways / gene families from reads
-│     humann
-├─ Contigs
-│     megahit (default) OR metaspades (heavier)
-├─ Gene catalogue + function
-│     prodigal → cd-hit → salmon → eggnog-mapper (± rgi)
-├─ Classical MAG catalogue
-│     metawrap → drep → coverm → gtdbtk  (+ checkm2 / mag-qc)
-└─ Refined multi-assembly MAGs
-      basalt  (+ checkm2 / mag-qc)
+1 QC       fastp · kneaddata · fastqc · cutadapt · trimmomatic
+2 Assembly megahit · metaspades · metaflye · metamdbg  (+ quast)
+3 Mapping  strobealign | bowtie2 | bwa-mem2 | bwa | minimap2 · samtools · diamond
+4 Binning  metabat2 · maxbin2 · concoct · semibin2 · vamb
+           → basalt ★ · metawrap · dastool → drep · coverm · checkm2 · gunc
+5 Taxonomy metaphlan · kraken2+bracken · motus · sylph · kaiju · gtdbtk
+6 Function humann · prodigal · bakta · prokka · cd-hit · mmseqs2 · salmon
+           · eggnog-mapper · rgi
+7 Mining   microbial-mining → antismash · genomad · virsorter2 · checkv
+           · macrel · dram · gapseq · deeparg · defensefinder
 ```
 
-## Head-to-head thinking
+## Mining head-to-head
 
-| Choice | Prefer A when… | Prefer B when… |
-|--------|----------------|----------------|
-| MetaPhlAn vs Kraken2 | Marker specificity | Custom DB / speed / contig classify |
-| MEGAHIT vs metaSPAdes | Time/memory limited | Continuity / hybrid assembly budget |
-| MetaWRAP vs BASALT | Standard multi-binner catalogue | Related multi-assembly refinement |
-| Conda BASALT vs Air | Resume old runs | New absolute-path deployments |
+| Goal | Prefer |
+|------|--------|
+| BGCs / natural products | `antismash` |
+| Resistome | `rgi` (± `deeparg`) |
+| Plasmids / viruses / MGEs | `genomad` (± `virsorter2` → `checkv`) |
+| AMPs | `macrel` |
+| Distilled metabolism | `dram` |
+| Metabolic models | `gapseq` |
+| Defense systems | `defensefinder` |
+
+## Ensemble binning
+
+| Skill | When |
+|-------|------|
+| `basalt` | **Recommended** multi-assembly refinement |
+| `metawrap` | Packaged multi-binner suite |
+| `dastool` | Aggregate contig2bin tables |
 
 ## Never
 
-- Merge MetaPhlAn and Kraken into one unlabeled table
-- Treat `more-sensitive` / more binners as guaranteed better MAGs
-- Pool unrelated samples only to increase assembly depth
+- Skip mapping when binning needs coverage
+- Merge taxonomy methods unlabeled
+- Treat mining hits as validated products/phenotypes
+- Call bins MAGs before QC filters
 
 ## Related skills
 
-Every tool skill under `skills/` · `metagenomics-workflow` · `study-design`
+`metagenomics-workflow` · `microbial-mining` · `study-design` · `public-databases`

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Prokka"
+  short_description: "Rapid prokaryotic genome annotation (CDS/rRNA/tRNA)"
+  default_prompt: "Use $prokka for Rapid prokaryotic genome annotation (CDS/rRNA/tRNA)"
+
+policy:
+  allow_implicit_invocation: true

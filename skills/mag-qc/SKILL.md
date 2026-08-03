@@ -1,14 +1,12 @@
 ---
 name: mag-qc
 description: >
-  Quality control thresholds and acceptance criteria for MAGs.
-  Use this skill when: (1) Setting completeness/contamination filters,
-  (2) Choosing dRep ANI cutoffs,
-  (3) Interpreting CheckM2 reports,
-  (4) Separating refinement gates from publication filters,
-  (5) Ranking or reporting MAG catalogues.
-
-  For recovering MAGs, use metawrap or basalt.
+  Quality thresholds after binning (completeness/contamination, dRep ANI,
+  publication vs refinement gates). Use this skill when: (1) Setting filters
+  for bins before calling them MAGs, (2) Choosing dRep ANI cutoffs,
+  (3) Interpreting CheckM2 reports, (4) Separating refinement entry gates from
+  publication filters, (5) Ranking bin catalogues.
+  For binning, use basalt (recommended), metawrap, or dastool.
 license: MIT
 category: evaluation
 tags: [qc, checkm2, drep, completeness, contamination]
@@ -51,5 +49,7 @@ Prefer multi-criterion ranking:
 
 ## Related skills
 
-- `metawrap` / `basalt` — produce bins
+- `basalt` · `metawrap` · `dastool` — binning stage
+- `checkm2` · `drep` — metrics / dereplication
 - `visualization` — completeness–contamination plots
+- `metagenomics-workflow` — five-stage order

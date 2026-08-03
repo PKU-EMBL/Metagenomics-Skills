@@ -1,0 +1,7 @@
+interface:
+  display_name: "DIAMOND"
+  short_description: "Ultra-fast protein alignment (BLASTP/X alternative) for functional/taxonomic searches"
+  default_prompt: "Use $diamond for Ultra-fast protein alignment (BLASTP/X alternative) for functional/taxonomic searches"
+
+policy:
+  allow_implicit_invocation: true

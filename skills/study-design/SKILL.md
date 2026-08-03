@@ -1,15 +1,13 @@
 ---
 name: study-design
 description: >
-  Study design for shotgun metagenomics and genome-resolved analyses.
-  Use this skill when: (1) Deciding co-assembly vs sample-specific assembly,
-  (2) Defining biological strata (time, treatment, habitat, host),
-  (3) Building a sample/assembly/coverage manifest,
-  (4) Planning multi-assembly BASALT runs,
-  (5) Avoiding invalid pooling of unrelated samples.
-
+  Study design for shotgun metagenomics across QC, assembly, binning, and
+  annotation. Use this skill when: (1) Deciding co-assembly vs sample-specific
+  assembly, (2) Defining biological strata (time, treatment, habitat, host),
+  (3) Building a sample/assembly/coverage manifest, (4) Planning multi-assembly
+  binning (e.g. BASALT), (5) Avoiding invalid pooling of unrelated samples.
   For tool routing, use tool-selection.
-  For full pipeline steps, use metagenomics-workflow.
+  For five-stage order, use metagenomics-workflow.
 license: MIT
 category: orchestration
 tags: [study-design, co-assembly, pooling, provenance]
@@ -55,25 +53,25 @@ before/after intervention, related growth stages, continuous environmental gradi
 ## Patterns
 
 ```text
-# Related replicates
+# Related replicates (feeds stage 3 binning)
 sample-specific assemblies ─┐
-matched co-assembly ────────┴─> one BASALT / MAG run
+matched co-assembly ────────┴─> one ensemble binning run (basalt★ / metawrap)
 
 # Longitudinal / treatment
 stage1 → run1
 stage2 → run2
-then compare MAGs with declared ANI threshold
+then compare bins/genomes with declared ANI threshold
 ```
 
 Subgroup when samples > ~30 or data > ~300 Gb.
 
 ## Pilot evaluation
 
-Compare designs on retained MAGs under fixed completeness/contamination,
+Compare designs on retained bins under fixed completeness/contamination,
 redundancy (ANI), taxonomy, contiguity, and compute cost — not raw bin count.
 
 ## Related skills
 
-- `tool-selection` — classical MAG vs BASALT
-- `metawrap` — MetaWRAP-style catalogues
-- `basalt` — multi-assembly execution
+- `tool-selection` — stage routing; ensemble binning choice
+- `metagenomics-workflow` — QC → assembly → binning → taxonomy → function
+- `basalt` · `metawrap` · `dastool` — binning stage
