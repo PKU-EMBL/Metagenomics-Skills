@@ -230,7 +230,7 @@ the canonical papers to reference.
 
 95. Kim, D., Park, S. & Steinegger, M. Unicore enables scalable and accurate phylogenetic reconstruction with structural core genes. *Genome Biol. Evol.* **17**, evaf109 (2025). https://doi.org/10.1093/gbe/evaf109
 
-## Genomic language models (DNA gLMs)
+## Genome language models
 
 96. Dalla-Torre, H. *et al.* Nucleotide Transformer: building and evaluating robust foundation models for human genomics. *Nat. Methods* **22**, 287–297 (2025). https://doi.org/10.1038/s41592-024-02523-z
 
@@ -239,6 +239,10 @@ the canonical papers to reference.
 98. Nguyen, E. *et al.* Sequence modeling and design from molecular to genome scale with Evo. *Science* **386**, eado9336 (2024). https://doi.org/10.1126/science.ado9336
 
 99. Brixi, G. *et al.* Genome modelling and design across all domains of life with Evo 2. *Nature* https://doi.org/10.1038/s41586-026-10176-5 (2026).
+
+100. Zhou, Z. *et al.* DNABERT-2: Efficient Foundation Model and Benchmark for Multi-Species Genome. *arXiv* https://doi.org/10.48550/arXiv.2306.15006 (2023).
+
+101. Schiff, Y. *et al.* Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence Modeling. *arXiv* https://doi.org/10.48550/arXiv.2403.03234 (2024).
 
 
 ---

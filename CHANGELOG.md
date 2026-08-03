@@ -1,7 +1,18 @@
+## [1.13.0] - 2026-08-03
+
+### Added
+- `dnabert2`, `caduceus` genome language model skills
+- References 100–101
+
+### Changed
+- Renamed hub `genomic-lm` → `genome-language-model` (display: Genome language model)
+- Skills catalog total: 122; package version 1.13.0
+
 ## [1.12.0] - 2026-08-03
 
 ### Added
-- Genomic LM layer: `genomic-lm` hub, `nucleotide-transformer` (NT/NTv3), `evo2`
+- Genome language model layer: `genome-language-model` hub,
+  `nucleotide-transformer` (NT/NTv3), `evo2`
 - Deepened `omg`/gLM2 notes; references 96–99
 
 ### Changed

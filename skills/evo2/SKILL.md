@@ -6,7 +6,7 @@ description: >
   (1) Autoregressive DNA likelihoods or embeddings at up to ~1 Mb context,
   (2) Sequence generation / design, (3) Contrasting generative gLMs with
   Nucleotide Transformer or gLM2. Upstream: https://github.com/ArcInstitute/evo2.
-  Predecessor: Evo (Science 2024). Route via genomic-lm. Heavy GPU requirements.
+  Predecessor: Evo (Science 2024). Route via genome-language-model. Heavy GPU requirements.
 license: MIT
 category: analysis-tools
 tags: [Evo2, Evo, gLM, DNA, generative, OpenGenome2, Arc-Institute]
@@ -71,11 +71,12 @@ Also: NVIDIA hosted API / NIM options documented upstream.
 Long DNA LM / design?
 ├─ Generative + all-domains pretrain → evo2
 ├─ Multi-species tracks / NTv3 representation → nucleotide-transformer
+├─ Efficient / long-range representation → dnabert2 / caduceus
 ├─ Metagenomic gLM2 / OMG corpus → omg
 └─ Classical search → homology-search
 ```
 
 ## Related skills
 
-`genomic-lm` · `nucleotide-transformer` · `omg` · `metagenomics-llm` ·
-`lucaphylo` · `tool-selection`
+`genome-language-model` · `nucleotide-transformer` · `dnabert2` · `caduceus` ·
+`omg` · `metagenomics-llm` · `lucaphylo` · `tool-selection`

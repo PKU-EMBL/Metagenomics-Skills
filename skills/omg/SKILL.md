@@ -63,12 +63,13 @@ Pin dataset revision + model checkpoint in Methods. Expect large disk and GPU.
 ```text
 Need metagenome-scale LM resources?
 ├─ Pretrain corpus / gLM2 embeddings → omg
-├─ DNA NT / NTv3 / Evo 2 → genomic-lm
+├─ DNA NT / DNABERT-2 / Caduceus / Evo 2 → genome-language-model
 ├─ Protein remote search only → plmsearch / deepblast
 └─ Public study FASTQ → sra-ena / mgnify (not OMG)
 ```
 
 ## Related skills
 
-`genomic-lm` · `metagenomics-llm` · `nucleotide-transformer` · `evo2` ·
-`mgnify` · `public-databases` · `plmsearch` · `spacedust` · `eggnog-mapper`
+`genome-language-model` · `metagenomics-llm` · `nucleotide-transformer` ·
+`dnabert2` · `caduceus` · `evo2` · `mgnify` · `public-databases` ·
+`plmsearch` · `spacedust` · `eggnog-mapper`

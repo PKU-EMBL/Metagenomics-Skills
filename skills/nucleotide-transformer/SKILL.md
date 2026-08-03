@@ -7,7 +7,7 @@ description: >
   / genome-annotation style prediction with NTv3, (3) Contrasting representation
   gLMs vs generative Evo 2 or metagenomic gLM2. Upstream:
   https://github.com/instadeepai/nucleotide-transformer. HF: InstaDeepAI.
-  Route via genomic-lm. Check CC BY-NC-SA license for your use case.
+  Route via genome-language-model. Check CC BY-NC-SA license for your use case.
 license: MIT
 category: analysis-tools
 tags: [Nucleotide-Transformer, NTv3, gLM, DNA, InstaDeep, HuggingFace]
@@ -66,6 +66,8 @@ Pin exact checkpoint (e.g. NT-v2 vs NTv3 size) and max context in Methods.
 ```text
 DNA foundation model need?
 ├─ Embeddings / NTv3 tracks & annotation → nucleotide-transformer
+├─ Efficient multi-species / GUE → dnabert2
+├─ Long-range RC-aware → caduceus
 ├─ Long-context generative design (all domains) → evo2
 ├─ Metagenomic mixed-modality gLM2 → omg
 └─ Protein homology → homology-search / plmsearch
@@ -73,5 +75,5 @@ DNA foundation model need?
 
 ## Related skills
 
-`genomic-lm` · `evo2` · `omg` · `metagenomics-llm` · `homology-search` ·
-`tool-selection`
+`genome-language-model` · `dnabert2` · `caduceus` · `evo2` · `omg` ·
+`metagenomics-llm` · `homology-search` · `tool-selection`

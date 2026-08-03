@@ -127,13 +127,15 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | Fast draft tree | `fasttree` |
 | Alignment-free PLM phylogeny | `lucaphylo` |
 
-## Genomic language models (DNA gLMs)
+## Genome language models
 
 | Need | Prefer |
 |------|--------|
-| Route DNA / genomic LMs | `genomic-lm` |
+| Route genome language models | `genome-language-model` |
 | Metagenomic corpus + gLM2 | `omg` |
 | Nucleotide Transformer / NTv3 | `nucleotide-transformer` |
+| Multi-species efficient gLM (GUE) | `dnabert2` |
+| Long-range RC-aware DNA LM | `caduceus` |
 | Generative long-context DNA (Evo 2) | `evo2` |
 
 ## AI / LM & structure search (Steinegger + PLMs)
@@ -169,4 +171,4 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 ## Related skills
 
 `metagenomics-workflow` · `microbial-mining` · `homology-search` · `phylogenomics` ·
-`genomic-lm` · `metagenomics-llm` · `study-design` · `public-databases`
+`genome-language-model` · `metagenomics-llm` · `study-design` · `public-databases`

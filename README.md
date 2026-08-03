@@ -84,9 +84,10 @@ After MAGs: `microbial-mining` → `antismash` / `rgi` / `dram` / …
 `phylogenomics` → `gtdbtk` / `phylophlan` / `unicore` / `iqtree` / `fasttree` /
 `lucaphylo`
 
-> Genomic language models (DNA gLMs)
+> Genome language models
 
-`genomic-lm` → `omg` / `nucleotide-transformer` (NTv3) / `evo2`
+`genome-language-model` → `omg` / `nucleotide-transformer` (NTv3) /
+`dnabert2` / `caduceus` / `evo2`
 
 > AI / LMs & structure search (Foldseek · PLMs)
 
