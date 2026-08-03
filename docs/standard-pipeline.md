@@ -4,22 +4,22 @@ Shotgun metagenomics stages — not a MAG-first workflow.
 
 ```text
 1. QC                 fastp → kneaddata  (± fastqc / cutadapt / trimmomatic)
-2. Assembly           megahit | metaspades | metaflye | metamdbg
+2. Assembly           megahit | metaspades | metaflye | metamdbg  (± racon | pilon)
 3. Mapping            bowtie2 | bwa | bwa-mem2 | strobealign | minimap2
                         → samtools → (coverm depths)
 4. Binning            single: metabat2 / maxbin2 / concoct / semibin2 / vamb
                         ensemble: basalt ★ | metawrap | dastool
-                        → drep → coverm → checkm2 / gunc / mag-qc
+                        → drep / skani → coverm → checkm2 / gunc / mag-qc
 5. Taxonomic annot.   reads: metaphlan | kraken2+bracken | motus | sylph | kaiju
                       genomes: gtdbtk (+ gtdb / mgnify)
 6. Functional annot.  reads: humann
                       genes/genomes: prodigal|bakta|prokka → cd-hit|mmseqs2
                                     → salmon → eggnog-mapper / diamond (± rgi)
-7. Microbial mining   BGCs: antismash
+7. Microbial mining   BGCs: antismash → bigscape
                       AMR: rgi / deeparg
                       MGE/virus: genomad / virsorter2 → checkv
                       AMP: macrel
-                      metabolism: dram / gapseq
+                      metabolism: dram / dbcan / gapseq
                       defense: defensefinder
                       (route via microbial-mining)
 ```
@@ -48,12 +48,12 @@ QC says so (`checkv`, experimental follow-up).
 |-------|-------------------|
 | Design/setup | `study-design`, `setup`, `public-databases` |
 | 1 QC | `fastp`, `kneaddata`, `fastqc`, `cutadapt`, `trimmomatic` |
-| 2 Assembly | `megahit`, `metaspades`, `metaflye`, `metamdbg`, `quast` |
+| 2 Assembly | `megahit`, `metaspades`, `metaflye`, `metamdbg`, `racon`, `pilon`, `quast` |
 | 3 Mapping | `bowtie2`, `bwa`, `bwa-mem2`, `strobealign`, `minimap2`, `samtools`, `bbmap`, `diamond` |
-| 4 Binning | `metabat2`, `maxbin2`, `concoct`, `semibin2`, `vamb`, `basalt`, `metawrap`, `dastool`, `drep`, `coverm`, `checkm2`, `gunc`, `mag-qc` |
+| 4 Binning | `metabat2`, `maxbin2`, `concoct`, `semibin2`, `vamb`, `basalt`, `metawrap`, `dastool`, `drep`, `skani`, `coverm`, `checkm2`, `gunc`, `mag-qc` |
 | 5 Taxonomy | `metaphlan`, `kraken2`, `bracken`, `motus`, `sylph`, `kaiju`, `gtdbtk`, `gtdb`, `mgnify` |
 | 6 Function | `humann`, `prodigal`, `prokka`, `bakta`, `cd-hit`, `mmseqs2`, `salmon`, `eggnog-mapper`, `rgi`, `barrnap` |
-| 7 Mining | `microbial-mining`, `antismash`, `genomad`, `virsorter2`, `checkv`, `macrel`, `dram`, `gapseq`, `deeparg`, `defensefinder` |
+| 7 Mining | `microbial-mining`, `antismash`, `bigscape`, `genomad`, `virsorter2`, `checkv`, `macrel`, `dram`, `dbcan`, `gapseq`, `deeparg`, `defensefinder` |
 | Strain | `instrain` |
 | Report | `visualization` |
 | Routing | `tool-selection`, `metagenomics-workflow` |

@@ -1,7 +1,7 @@
 interface:
   display_name: "MetaBAT 2"
-  short_description: "Adaptive contig binning from composition + coverage"
-  default_prompt: "Use $metabat2 for Adaptive contig binning from composition + coverage"
+  short_description: "Coverage-composition contig binning"
+  default_prompt: "Use $metabat2 for Coverage-composition contig binning."
 
 policy:
   allow_implicit_invocation: true

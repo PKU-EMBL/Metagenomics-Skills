@@ -1,12 +1,17 @@
 {
   "name": "Metagenomics Skills",
-  "description": "Shotgun metagenomics Agent Skills — QC, assembly, binning, taxonomic annotation, functional annotation, and public databases",
-  "version": "1.2.0",
+  "description": "Shotgun metagenomics Agent Skills \u2014 QC, assembly, mapping, binning, taxonomy, function, and microbial mining",
+  "version": "1.3.1",
   "author": "PKU-EMBL",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "license": "MIT",
-  "categories": ["science", "biology", "metagenomics", "computational-biology"],
+  "categories": [
+    "science",
+    "biology",
+    "metagenomics",
+    "computational-biology"
+  ],
   "keywords": [
     "metagenomics",
     "QC",
@@ -18,7 +23,7 @@
     "MGnify",
     "GTDB"
   ],
-  "skills_count": 30,
+  "skills_count": 75,
   "skill_categories": {
     "analysis-tools": 19,
     "evaluation": 2,

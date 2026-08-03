@@ -1,0 +1,7 @@
+interface:
+  display_name: "dbCAN"
+  short_description: "CAZyme carbohydrate-active enzyme annotation"
+  default_prompt: "Use $dbcan for CAZyme carbohydrate-active enzyme annotation."
+
+policy:
+  allow_implicit_invocation: true

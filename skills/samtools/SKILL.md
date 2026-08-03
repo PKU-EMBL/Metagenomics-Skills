@@ -1,53 +1,69 @@
 ---
 name: samtools
 description: >
-  SAM/BAM/CRAM processing for mapping outputs. Use this skill when working with samtools: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/samtools/samtools. For stage routing use tool-selection /
-  metagenomics-workflow.
+  SAM/BAM/CRAM processing for metagenomic mapping outputs — sort, index,
+  flagstat, coverage, and filtering. Use whenever an aligner writes SAM/BAM
+  before CoverM, MetaBAT2, inStrain, or BASALT. Upstream:
+  https://github.com/samtools/samtools.
 license: MIT
 category: analysis-tools
-tags: ['mapping', 'bam', 'sam']
+tags: [mapping, bam, sam, qc]
 upstream: https://github.com/samtools/samtools
 stage: mapping
 ---
 
 # Samtools
 
-Upstream: [Samtools](https://github.com/samtools/samtools)
+Upstream: [samtools/samtools](https://github.com/samtools/samtools)
 
 ## Citation
 
-Danecek, P. *et al.* Twelve years of SAMtools and BCFtools. *GigaScience* **10**, giab008 (2021). https://doi.org/10.1093/gigascience/giab008
-
-See also [docs/references.md](../../docs/references.md).
+Danecek, P. *et al.* Twelve years of SAMtools and BCFtools. *GigaScience* **10**,
+giab008 (2021). https://doi.org/10.1093/gigascience/giab008
 
 ## Analytical thinking
 
-Always sort+index BAMs before CoverM/MetaBAT depth. Prefer streaming `aligner | samtools sort` to avoid huge unsorted SAM on disk.
+Aligners produce records; **samtools makes them usable**. Binning and CoverM
+expect coordinate-sorted, indexed BAMs. Always stream `aligner | samtools sort`
+to avoid multi-hundred-GB unsorted SAM files.
 
-## How to run
+flagstat / coverage are your first QC after mapping — catch wrong references
+before spending days on MetaBAT/BASALT.
+
+## Essential recipes
 
 ```bash
-conda install -c bioconda samtools  # if packaged; else follow upstream
-
-samtools sort -@ 8 -o out.bam in.sam
+# Sort + index (canonical)
+samtools sort -@ 8 -o out.bam in.sam   # or stdin from aligner
 samtools index out.bam
+
+# Mapping QC
 samtools flagstat out.bam
+samtools idxstats out.bam | head
 samtools coverage out.bam | head
+
+# Keep primary mapped only (optional cleanup)
+samtools view -@ 8 -b -F 0x900 out.bam > out.primary.bam
+
+# Merge lanes (same sample)
+samtools merge -@ 8 sample.bam L1.bam L2.bam && samtools index sample.bam
 ```
 
-## Key parameters
+## Key options
 
-| `sort/index` | required | For random access |
-| `flagstat` | QC | Mapping rate |
+| Option | Guidance |
+|--------|----------|
+| `-@` | Threads for CPU-heavy ops |
+| `-o` | Output path (sort/view) |
+| `-F/-f` | Flag filters; know 0x4 unmapped, 0x900 secondary/supplementary |
+| `TMPDIR` | Point to large scratch for sort |
 
 ## Decision notes
 
-- Stage: **mapping** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+- Never feed unsorted BAM to MetaBAT depth helpers expecting coordinate order
+- Archive flagstat next to BAM for provenance
+- CRAM saves space but ensure reference FASTA remains available
 
 ## Related skills
 
-bowtie2 · bwa · minimap2 · coverm · `tool-selection` · `metagenomics-workflow`
+`bowtie2` · `strobealign` · `bwa-mem2` · `minimap2` · `coverm` · `metabat2` · `instrain`

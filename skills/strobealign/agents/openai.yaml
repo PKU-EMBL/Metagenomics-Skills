@@ -1,7 +1,7 @@
 interface:
   display_name: "strobealign"
-  short_description: "Ultra-fast short-read alignment with flexible seed size"
-  default_prompt: "Use $strobealign for Ultra-fast short-read alignment with flexible seed size"
+  short_description: "Fast short-read metagenome mapping"
+  default_prompt: "Use $strobealign for Fast short-read metagenome mapping."
 
 policy:
   allow_implicit_invocation: true

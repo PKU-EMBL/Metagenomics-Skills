@@ -1,7 +1,7 @@
 interface:
   display_name: "Samtools"
-  short_description: "SAM/BAM/CRAM processing for mapping outputs"
-  default_prompt: "Use $samtools for SAM/BAM/CRAM processing for mapping outputs"
+  short_description: "BAM sort index and mapping QC"
+  default_prompt: "Use $samtools for BAM sort index and mapping QC."
 
 policy:
   allow_implicit_invocation: true

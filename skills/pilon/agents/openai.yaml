@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pilon"
+  short_description: "Short-read assembly polishing"
+  default_prompt: "Use $pilon for Short-read assembly polishing."
+
+policy:
+  allow_implicit_invocation: true

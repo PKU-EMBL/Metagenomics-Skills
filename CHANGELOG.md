@@ -1,3 +1,14 @@
+## [1.3.1] - 2026-08-03
+
+### Added
+- Deepened mapping skills: `bowtie2`, `strobealign`, `bwa-mem2`, `samtools`
+- Deepened mining/binning: `antismash`, `genomad`, `dram`, `metabat2`
+- New skills: `racon`, `pilon`, `skani`, `dbcan`, `bigscape`
+- Expanded troubleshooting and compute-setup by stage
+
+### Changed
+- Tool-selection / pipeline / references updated for polish, ANI, CAZyme, BGC networks
+
 # Changelog
 
 ## [1.3.0] - 2026-08-03

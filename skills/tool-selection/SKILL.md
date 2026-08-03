@@ -20,25 +20,36 @@ Start from the **stage**, then the deliverable.
 ```text
 1 QC       fastp · kneaddata · fastqc · cutadapt · trimmomatic
 2 Assembly megahit · metaspades · metaflye · metamdbg  (+ quast)
+           polish: racon (long) · pilon (short)
 3 Mapping  strobealign | bowtie2 | bwa-mem2 | bwa | minimap2 · samtools · diamond
 4 Binning  metabat2 · maxbin2 · concoct · semibin2 · vamb
-           → basalt ★ · metawrap · dastool → drep · coverm · checkm2 · gunc
+           → basalt ★ · metawrap · dastool → drep · skani · coverm · checkm2 · gunc
 5 Taxonomy metaphlan · kraken2+bracken · motus · sylph · kaiju · gtdbtk
 6 Function humann · prodigal · bakta · prokka · cd-hit · mmseqs2 · salmon
            · eggnog-mapper · rgi
-7 Mining   microbial-mining → antismash · genomad · virsorter2 · checkv
-           · macrel · dram · gapseq · deeparg · defensefinder
+7 Mining   microbial-mining → antismash · bigscape · genomad · virsorter2 · checkv
+           · macrel · dram · dbcan · gapseq · deeparg · defensefinder
 ```
+
+## Mapping head-to-head
+
+| Need | Prefer |
+|------|--------|
+| Fast Illumina → large contigs | `strobealign` |
+| Lab Bowtie2 / KneadData ecosystem | `bowtie2` |
+| BWA-MEM compatible + speed | `bwa-mem2` |
+| Long reads | `minimap2` |
 
 ## Mining head-to-head
 
 | Goal | Prefer |
 |------|--------|
-| BGCs / natural products | `antismash` |
+| BGCs / natural products | `antismash` → `bigscape` |
 | Resistome | `rgi` (± `deeparg`) |
 | Plasmids / viruses / MGEs | `genomad` (± `virsorter2` → `checkv`) |
 | AMPs | `macrel` |
 | Distilled metabolism | `dram` |
+| CAZymes | `dbcan` |
 | Metabolic models | `gapseq` |
 | Defense systems | `defensefinder` |
 

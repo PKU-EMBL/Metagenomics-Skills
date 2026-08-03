@@ -1,52 +1,87 @@
 ---
 name: strobealign
 description: >
-  Ultra-fast short-read alignment with flexible seed size. Use this skill when working with strobealign: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/ksahlin/strobealign. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Ultra-fast short-read alignment with flexible seed size for metagenome
+  coverage mapping. Use when mapping many Illumina samples to large contig
+  sets before binning, or when Bowtie2/BWA is the throughput bottleneck.
+  Upstream: https://github.com/ksahlin/strobealign. Pair with samtools.
 license: MIT
 category: analysis-tools
-tags: ['mapping', 'alignment', 'short-read']
+tags: [mapping, alignment, short-read, coverage]
 upstream: https://github.com/ksahlin/strobealign
 stage: mapping
 ---
 
 # strobealign
 
-Upstream: [strobealign](https://github.com/ksahlin/strobealign)
+Upstream: [ksahlin/strobealign](https://github.com/ksahlin/strobealign)
 
 ## Citation
 
-Sahlin, K. Strobealign: flexible seed size enables ultra-fast and accurate read alignment. *Genome Biol.* **23**, 260 (2022). https://doi.org/10.1186/s13059-022-02831-7
-
-See also [docs/references.md](../../docs/references.md).
+Sahlin, K. Strobealign: flexible seed size enables ultra-fast and accurate
+read alignment. *Genome Biol.* **23**, 260 (2022).
+https://doi.org/10.1186/s13059-022-02831-7
 
 ## Analytical thinking
 
-Strong option when mapping many samples to large contig sets for binning coverage — often faster than Bowtie2/BWA at similar accuracy for metagenomes.
+strobealign is built for **modern short-read → large reference** workloads
+typical of metagenomes (many Gb contigs × many samples). Accuracy is competitive
+with BWA-MEM for this use case while often much faster — prefer it when mapping
+dominates wall-clock before MetaBAT/SemiBin/VAMB.
+
+Still enforce: sorted+indexed BAM, same cleaned reads as assembly coverage
+design, and flagstat QC. Do not mix strobealign BAMs and Bowtie2 BAMs in one
+depth table without documenting the switch.
+
+## Prerequisites
+
+| Requirement | Minimum | Recommended |
+|-------------|---------|-------------|
+| strobealign | bioconda build | Pin version in Methods |
+| Contigs + PE reads | From assembly / KneadData | |
+| Threads | 8 | 16–64 |
 
 ## How to run
 
 ```bash
-conda install -c bioconda strobealign  # if packaged; else follow upstream
+conda install -c bioconda strobealign samtools
 
-strobealign -t 16 contigs.fa clean_1.fq.gz clean_2.fq.gz \
+strobealign -t 16 contigs.fa \
+  temp/hr/${id}_1.fastq temp/hr/${id}_2.fastq \
+  2> temp/map/${id}.strobealign.log \
   | samtools sort -@ 8 -o temp/map/${id}.bam
 samtools index temp/map/${id}.bam
+samtools flagstat temp/map/${id}.bam | tee temp/map/${id}.flagstat
 ```
+
+Reference indexing is handled internally / cached — follow version notes if
+you pin a shared index directory.
 
 ## Key parameters
 
-| `-t` | threads | |
-| reference | contigs.fa | Indexed on the fly / cached |
+| Option | Guidance |
+|--------|----------|
+| `-t` | Threads |
+| PE args | R1 R2 positional |
+| read group | Add via samtools if downstream needs SM tags |
 
-## Decision notes
+## Decision tree
 
-- Stage: **mapping** in QC → assembly → mapping → binning → taxonomy → function
-- Prefer ensemble binning (`basalt` recommended; `metawrap`; `dastool`) after single binners
-- Pin software + DB versions in Methods
+```text
+Need Illumina contig coverage for binning?
+├─ Many samples / huge assembly → strobealign
+├─ Match KneadData/Bowtie2 lab SOP → bowtie2
+└─ Need classic BWA ecosystem → bwa-mem2
+```
+
+## Troubleshooting
+
+| Symptom | Action |
+|---------|--------|
+| Version CLI differs | Check `strobealign --help` for your build |
+| Lower map rate vs Bowtie2 | Confirm same contigs/reads; compare flagstat |
+| Pipe breaks mid-run | Ensure samtools sort tempdir has space |
 
 ## Related skills
 
-bowtie2 · bwa · coverm · metabat2 · `tool-selection` · `metagenomics-workflow`
+`bowtie2` · `bwa-mem2` · `samtools` · `metabat2` · `coverm` · `basalt`

@@ -1,7 +1,7 @@
 interface:
   display_name: "geNomad"
-  short_description: "Identify plasmids, viruses, and other mobile genetic elements in assemblies"
-  default_prompt: "Use $genomad for Identify plasmids, viruses, and other mobile genetic elements in assemblies"
+  short_description: "Plasmid and virus MGE identification"
+  default_prompt: "Use $genomad for Plasmid and virus MGE identification."
 
 policy:
   allow_implicit_invocation: true

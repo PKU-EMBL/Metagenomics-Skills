@@ -1,7 +1,7 @@
 interface:
   display_name: "antiSMASH"
-  short_description: "Detect and annotate biosynthetic gene clusters (BGCs) in genomes and MAGs"
-  default_prompt: "Use $antismash for Detect and annotate biosynthetic gene clusters (BGCs) in genomes and MAGs"
+  short_description: "BGC natural-product genome mining"
+  default_prompt: "Use $antismash for BGC natural-product genome mining."
 
 policy:
   allow_implicit_invocation: true

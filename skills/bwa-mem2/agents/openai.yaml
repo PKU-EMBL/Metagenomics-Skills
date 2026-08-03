@@ -1,7 +1,7 @@
 interface:
   display_name: "BWA-MEM2"
-  short_description: "Architecture-aware faster BWA-MEM for short-read mapping"
-  default_prompt: "Use $bwa-mem2 for Architecture-aware faster BWA-MEM for short-read mapping"
+  short_description: "Faster BWA-MEM short-read mapping"
+  default_prompt: "Use $bwa-mem2 for Faster BWA-MEM short-read mapping."
 
 policy:
   allow_implicit_invocation: true

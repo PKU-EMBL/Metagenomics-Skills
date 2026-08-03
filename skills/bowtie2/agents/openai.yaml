@@ -1,7 +1,7 @@
 interface:
   display_name: "Bowtie 2"
-  short_description: "Gapped short-read alignment to contigs/genomes (coverage for binning)"
-  default_prompt: "Use $bowtie2 for Gapped short-read alignment to contigs/genomes (coverage for binning)"
+  short_description: "Short-read mapping for metagenome coverage"
+  default_prompt: "Use $bowtie2 for Short-read mapping for metagenome coverage."
 
 policy:
   allow_implicit_invocation: true

@@ -1,7 +1,8 @@
 # Skills
+
 Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining).
 
-Total: **70** skills.
+Total: **75** skills.
 
 ---
 
@@ -23,18 +24,20 @@ Total: **70** skills.
 | `metaspades` | [metaspades](https://github.com/ablab/spades) | More sensitive metagenomic assembly via SPAdes meta mode. |
 | `metaflye` | [metaflye](https://github.com/fenderglass/Flye) | Long-read metagenome assembly with Flye/metaFlye. |
 | `metamdbg` | [metamdbg](https://github.com/GaetanBenoitDev/metaMDBG) | High-quality metagenome assembly from long accurate reads. |
+| `racon` | [racon](https://github.com/lbcb-sci/racon) | Ultrafast consensus polishing of assemblies using mapped long (or short) reads. |
+| `pilon` | [pilon](https://github.com/broadinstitute/pilon) | Polish genome assemblies and fix small errors using short-read BAM evidence. |
 | `quast` | [quast](https://github.com/ablab/quast) | Assembly quality assessment (contiguity, misassemblies; metaQUAST for metagenomes). |
 
 ## 3. Mapping
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `bowtie2` | [bowtie2](https://github.com/BenLangmead/bowtie2) | Gapped short-read alignment to contigs/genomes (coverage for binning). |
+| `bowtie2` | [bowtie2](https://github.com/BenLangmead/bowtie2) | Gapped short-read alignment to contigs/genomes for coverage used in binning and abundance. |
+| `strobealign` | [strobealign](https://github.com/ksahlin/strobealign) | Ultra-fast short-read alignment with flexible seed size for metagenome coverage mapping. |
 | `bwa` | [bwa](https://github.com/lh3/bwa) | Burrows–Wheeler short-read alignment (BWA-MEM) to contigs/genomes. |
-| `bwa-mem2` | [bwa-mem2](https://github.com/bwa-mem2/bwa-mem2) | Architecture-aware faster BWA-MEM for short-read mapping. |
-| `strobealign` | [strobealign](https://github.com/ksahlin/strobealign) | Ultra-fast short-read alignment with flexible seed size. |
+| `bwa-mem2` | [bwa-mem2](https://github.com/bwa-mem2/bwa-mem2) | Architecture-aware faster BWA-MEM for Illumina reads to contigs/genomes. |
 | `minimap2` | [minimap2](https://github.com/lh3/minimap2) | Fast pairwise alignment for long reads and genome-to-genome maps. |
-| `samtools` | [samtools](https://github.com/samtools/samtools) | SAM/BAM/CRAM processing for mapping outputs. |
+| `samtools` | [samtools](https://github.com/samtools/samtools) | SAM/BAM/CRAM processing for metagenomic mapping outputs — sort, index, flagstat, coverage, and filtering. |
 | `bbmap` | [bbmap](https://sourceforge.net/projects/bbmap/) | Fast splice-aware aligner and BBTools suite utilities (BBMerge, etc. |
 | `diamond` | [diamond](https://github.com/bbuchfink/diamond) | Ultra-fast protein alignment (BLASTP/X alternative) for functional/taxonomic searches. |
 
@@ -42,7 +45,7 @@ Total: **70** skills.
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `metabat2` | [metabat2](https://bitbucket.org/berkeleylab/metabat) | Adaptive contig binning from composition + coverage. |
+| `metabat2` | [metabat2](https://bitbucket.org/berkeleylab/metabat) | Adaptive contig binning from tetranucleotide composition and multi-sample coverage. |
 | `maxbin2` | [maxbin2](https://sourceforge.net/projects/maxbin2/) | Automated multi-metagenome contig binning. |
 | `concoct` | [concoct](https://github.com/BinPro/CONCOCT) | Composition and coverage binning of metagenomic contigs. |
 | `semibin2` | [semibin2](https://github.com/BigDataBiology/SemiBin) | Self-supervised contrastive learning binning for short- and long-read assemblies. |
@@ -51,6 +54,7 @@ Total: **70** skills.
 | `metawrap` | [metawrap](https://github.com/bxlab/metaWRAP) | MetaWRAP suite for multi-binner MAG recovery and CheckM-style bin refinement — one option in the ensemble binning family (with DAS Tool and BASALT). |
 | `dastool` | [dastool](https://github.com/cmks/DAS_Tool) | DAS Tool (Dereplication, Aggregation and Scoring) integrates multiple binning predictions into one non-redundant MAG set for a single assembly. |
 | `drep` | [drep](https://github.com/MrOlm/drep) | Dereplicate microbial genomes by ANI to species/strain catalogues. |
+| `skani` | [skani](https://github.com/bluenote-1577/skani) | Fast robust average nucleotide identity (ANI) for metagenomic genomes and MAG comparisons. |
 | `coverm` | [coverm](https://github.com/wwood/CoverM) | Calculate coverage/relative abundance of genomes or contigs. |
 | `checkm2` | [checkm2](https://github.com/chklovski/CheckM2) | ML-based MAG completeness and contamination estimation. |
 | `gunc` | [gunc](https://github.com/grp-bork/gunc) | Detect chimerism/contamination in prokaryotic genomes/MAGs. |
@@ -67,7 +71,7 @@ Total: **70** skills.
 | `sylph` | [sylph](https://github.com/bluenote-1577/sylph) | Rapid species-level metagenome profiling and containment estimation. |
 | `kaiju` | [kaiju](https://github.com/bioinformatics-centre/kaiju) | Fast sensitive taxonomic classification via protein-level matches. |
 | `gtdbtk` | [gtdbtk](https://github.com/Ecogenomics/GTDBTk) | Assign bacterial/archaeal taxonomy to MAGs with GTDB. |
-| `gtdb` | https://gtdb.ecogenomic.org/ | Use the Genome Taxonomy Database (GTDB) public releases — taxonomy tables, trees, metadata, and representative genomes. |
+| `gtdb` | [gtdb](https://gtdb.ecogenomic.org/) | Use the Genome Taxonomy Database (GTDB) public releases — taxonomy tables, trees, metadata, and representative genomes. |
 | `mgnify` | [mgnify](https://github.com/EBI-Metagenomics) | Use EMBL-EBI MGnify for analysed microbiome studies and biome genome catalogues (including UHGG / human-gut and other biomes). |
 
 ## 6. Functional annotation
@@ -90,13 +94,15 @@ Total: **70** skills.
 
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
-| `microbial-mining` | — | Route microbial / genome mining after assembly or binning: biosynthetic gene clusters (antiSMASH), AMR (RGI, DeepARG), mobile elements and viruses (geNomad, VirSorter2, CheckV), antimicrobial peptides (Macrel), metabolism (DRAM, gapseq), defense systems (DefenseFinder), and genome annotation substrates (Bakta/Prokka). |
-| `antismash` | [antismash](https://github.com/antismash/antismash) | Detect and annotate biosynthetic gene clusters (BGCs) in genomes and MAGs. |
-| `genomad` | [genomad](https://github.com/apcamargo/genomad) | Identify plasmids, viruses, and other mobile genetic elements in assemblies. |
+| `microbial-mining` | — | Route microbial / genome mining after assembly or binning: biosynthetic gene clusters (antiSMASH, BiG-SCAPE), AMR (RGI, DeepARG), mobile elements and viruses (geNomad, VirSorter2, CheckV), antimicrobial peptides (Macrel), metabolism (DRAM, gapseq, dbCAN), defense systems (DefenseFinder), and genome annotation substrates (Bakta/Prokka). |
+| `antismash` | [antismash](https://github.com/antismash/antismash) | Detect and annotate biosynthetic gene clusters (BGCs) on genomes and MAGs. |
+| `bigscape` | [bigscape](https://github.com/medema-group/BiG-SCAPE) | Cluster and compare biosynthetic gene clusters across genomes with BiG-SCAPE (similarity networks of antiSMASH regions). |
+| `genomad` | [genomad](https://github.com/apcamargo/genomad) | Identify plasmids, viruses, and other mobile genetic elements in assemblies or genomes. |
 | `virsorter2` | [virsorter2](https://github.com/jiarong/VirSorter2) | Viral sequence identification from metagenomic assemblies. |
 | `checkv` | [checkv](https://bitbucket.org/berkeleylab/checkv) | Quality assessment of metagenome-assembled viral genomes. |
 | `macrel` | [macrel](https://github.com/BigDataBiology/macrel) | Screen genomes and metagenomes for antimicrobial peptides (AMPs). |
-| `dram` | [dram](https://github.com/WrightonLabCSU/DRAM) | Distill microbial metabolism annotations for microbiome genomes/MAGs. |
+| `dram` | [dram](https://github.com/WrightonLabCSU/DRAM) | Distill microbial metabolism annotations for MAGs/genomes into curated product tables (DRAM annotate + distill). |
+| `dbcan` | [dbcan](https://github.com/linnabrown/run_dbcan) | Annotate carbohydrate-active enzymes (CAZymes) with dbCAN/run_dbcan on genomes or protein sets. |
 | `gapseq` | [gapseq](https://github.com/jotech/gapseq) | Predict bacterial metabolic pathways and reconstruct genome-scale metabolic models. |
 | `deeparg` | [deeparg](https://github.com/gaarangoa/DeepARG) | Deep-learning prediction of antibiotic resistance genes from metagenomic data. |
 | `defensefinder` | [defensefinder](https://github.com/mdmparis/defense-finder) | Detect anti-phage defense systems in prokaryotic genomes. |
@@ -141,5 +147,5 @@ Total: **70** skills.
 - [Tool selection](tool-selection.md)
 - [Public databases](public-databases.md)
 - [References](references.md)
+- [Troubleshooting](troubleshooting.md)
 - [Getting started](getting-started.md)
-- [Multi-platform](multi-platform.md)

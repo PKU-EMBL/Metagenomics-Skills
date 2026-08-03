@@ -2,11 +2,11 @@
 name: microbial-mining
 description: >
   Route microbial / genome mining after assembly or binning: biosynthetic gene
-  clusters (antiSMASH), AMR (RGI, DeepARG), mobile elements and viruses
-  (geNomad, VirSorter2, CheckV), antimicrobial peptides (Macrel), metabolism
-  (DRAM, gapseq), defense systems (DefenseFinder), and genome annotation
-  substrates (Bakta/Prokka). Use when the scientific question is discovery of
-  functional elements, not community tables alone.
+  clusters (antiSMASH, BiG-SCAPE), AMR (RGI, DeepARG), mobile elements and
+  viruses (geNomad, VirSorter2, CheckV), antimicrobial peptides (Macrel),
+  metabolism (DRAM, gapseq, dbCAN), defense systems (DefenseFinder), and
+  genome annotation substrates (Bakta/Prokka). Use when the question is
+  discovery of functional elements, not community tables alone.
 license: MIT
 category: orchestration
 tags: [genome-mining, BGC, AMR, MGE, virus, metabolism, routing]
@@ -16,59 +16,59 @@ stage: mining
 # Microbial mining
 
 Mine assembled contigs and QC-filtered genomes/MAGs for **functional elements**.
-This is a parallel track after assembly/binning — not a replacement for
-taxonomy tables.
+Parallel track after assembly/binning — not a replacement for taxonomy tables.
 
 ## Analytical thinking
 
-Ask what is being claimed:
-
 | Claim type | Prefer | Caution |
 |------------|--------|---------|
-| Natural products / BGCs | `antismash` | Cluster ≠ characterized compound |
-| AMR / resistome | `rgi` (+ `deeparg`) | Hit ≠ expression / phenotype |
-| Plasmids / viruses / MGEs | `genomad`, `virsorter2`, `checkv` | Completeness via CheckV |
-| Antimicrobial peptides | `macrel` | High candidate false-positive risk |
-| Metabolic potential | `dram`, `gapseq` | Needs decent genome completeness |
-| Anti-phage defense | `defensefinder` | Annotate proteins first (`bakta`) |
-| Per-genome annotation substrate | `bakta` / `prokka` | Feed other miners |
+| Natural products / BGCs | `antismash` → `bigscape` | Cluster ≠ characterized compound |
+| AMR / resistome | `rgi` (± `deeparg`) | Hit ≠ expression / phenotype |
+| Plasmids / viruses / MGEs | `genomad`, `virsorter2`, `checkv` | CheckV before vMAG claims |
+| Antimicrobial peptides | `macrel` | High candidate FDR |
+| Distilled metabolism | `dram` | Needs decent completeness |
+| CAZymes | `dbcan` | Consensus evidence rules |
+| Genome-scale models | `gapseq` | HQ MAGs only |
+| Anti-phage defense | `defensefinder` | Annotate proteins first |
+| Annotation substrate | `bakta` / `prokka` | Feed other miners |
 
 ## Decision tree
 
 ```text
 Mining goal?
-├─ BGCs / secondary metabolism → antismash  (+ bakta)
-├─ Resistome / ARGs → rgi  (± deeparg)
-├─ Plasmids / viruses / MGEs → genomad  (± virsorter2 → checkv)
+├─ BGCs → antismash → (many genomes) bigscape
+├─ Resistome → rgi (± deeparg); intersect genomad plasmids if relevant
+├─ Plasmids / viruses → genomad (± virsorter2) → checkv
 ├─ AMP smORFs → macrel
-├─ Distilled metabolism → dram
-├─ Genome-scale models → gapseq (high-quality MAGs)
-├─ Defense systems → defensefinder
-└─ Unsure → start bakta/prokka on MAGs, then branch
+├─ Metabolism distillate → dram (± dbcan)
+├─ GEMs → gapseq
+├─ Defense systems → bakta/prokka → defensefinder
+└─ Unsure → bakta on HQ MAGs, then branch
 ```
 
 ## Typical order
 
 ```text
-bins/MAGs (checkm2 / mag-qc)
+bins/MAGs (checkm2 / mag-qc / gunc)
    → bakta | prokka
-   ├─→ antismash
+   ├─→ antismash → bigscape
    ├─→ rgi (± deeparg)
-   ├─→ dram → gapseq
+   ├─→ dram → dbcan / gapseq
    └─→ defensefinder
-contigs (pre- or post-binning)
+contigs
    → genomad | virsorter2 → checkv
-   → macrel (smORF/AMP)
+   → macrel
 ```
 
 ## Never
 
 - Treat antiSMASH regions as proven natural products
-- Merge viral contig counts with bacterial MAG catalogues unlabeled
-- Skip CheckV when publishing viral genomes
-- Run heavy mining on failed/low-quality bins without stating filters
+- Publish viral genomes without CheckV
+- Merge mining hits with HUMAnN abundances unlabeled
+- Mine failed/low-quality bins without stating filters
 
 ## Related skills
 
-`antismash` · `genomad` · `virsorter2` · `checkv` · `macrel` · `dram` · `bakta` ·
-`rgi` · `deeparg` · `gapseq` · `defensefinder` · `prokka` · `tool-selection`
+`antismash` · `bigscape` · `genomad` · `virsorter2` · `checkv` · `macrel` ·
+`dram` · `dbcan` · `bakta` · `rgi` · `deeparg` · `gapseq` · `defensefinder` ·
+`tool-selection`
