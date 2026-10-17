@@ -10,6 +10,9 @@ metadata:
   metagenomics.tags: "MultiQC, QC, report, FastQC, research-analysis"
   metagenomics.upstream: "https://github.com/MultiQC/MultiQC"
   metagenomics.stage: "qc"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # MultiQC
@@ -34,9 +37,14 @@ Pin MultiQC version; module support varies by log format.
 ## How to run
 
 ```bash
-pip install multiqc   # or conda install -c bioconda multiqc
-multiqc qc_logs/ -o multiqc_report
-# optional: multiqc -c multiqc_config.yaml …
+set -euo pipefail
+command -v multiqc >/dev/null
+multiqc --version
+[[ -d qc_logs ]] || exit 2
+mkdir -p multiqc_report
+multiqc qc_logs/ -o multiqc_report --force \
+  >multiqc_report/multiqc.stdout.log 2>multiqc_report/multiqc.stderr.log
+# Add `-c multiqc_config.yaml` when a versioned project config is present.
 ```
 
 ## Decision tree
@@ -47,6 +55,12 @@ Need aggregated QC HTML?
 ├─ Biological diversity / DA → research-analysis → microeco / maaslin2
 └─ Per-tool QC only → fastqc / fastp / quast skills
 ```
+
+## Validation, recovery, and provenance
+
+Require non-empty `multiqc_report.html` and `multiqc_data/`. Compare discovered sample/module counts with the manifest, inspect `multiqc_sources.txt` for source files, and review ignored/duplicate sample-name warnings. Missing modules usually mean absent, moved, or unsupported logs—not that QC passed. Define project-specific thresholds in a versioned config and retain outliers rather than hiding them.
+
+Generate into a clean/versioned directory; `--force` deliberately replaces files and should not mix runs. Record MultiQC version/plugins, config, invocation path(s), source-log checksums or manifest, stdout/stderr, and report/data checksums. MultiQC summarizes observed logs; it does not validate upstream execution or biological quality automatically.
 
 ## Related skills
 

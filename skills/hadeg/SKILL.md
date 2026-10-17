@@ -11,6 +11,10 @@ metadata:
   metagenomics.tags: "HADEG, hydrocarbon, biosurfactant, plastic, biodegradation, DOM"
   metagenomics.upstream: "https://github.com/jarojasva/HADEG"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "database 231119; snapshot 8f1ff8f"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "Proteinortho/R workflow reviewed against upstream; not executed here"
 ---
 
 # HADEG
@@ -42,13 +46,25 @@ Pin the HADEG FASTA release date — the GitHub DB grows over time.
 | `dbcan` | HC/surfactant/plastic genes vs glycan CAZymes |
 | `antismash` | Marker-gene presence vs full BGC regions |
 
-## How to run
+## Inputs and run
+
+Use unique predicted-protein FASTAs and an immutable HADEG checkout/database. The reviewed workflow uses Proteinortho's published `-identity=50 -conn=0.3` settings, whose reported sensitivity/specificity tradeoff is not a universal optimum.
 
 ```bash
-# download HADEG_protein_database_*.faa from upstream releases
-# typical: diamond blastp -q proteins.faa --db HADEG.dmnd -o hits.tsv …
-# or Proteinortho workflows in upstream README; then parse group tables
-# (Alkanes / Alkenes / Aromatics / Biosurfactants / Plastics)
+set -euo pipefail
+root=${HADEG_ROOT:?set HADEG_ROOT to the pinned HADEG checkout}
+[[ -s "$root/HADEG_protein_database_231119.faa" ]] || exit 2
+find proteomes -maxdepth 1 -name '*.faa' -size +0c | grep -q .
+mkdir -p result/hadeg/work
+cp proteomes/*.faa "$root/HADEG_protein_database_231119.faa" result/hadeg/work/
+(
+  cd result/hadeg/work
+  proteinortho ./*.faa -identity=50 -conn=0.3 -project=Results_HADEG
+)
+cp -R "$root/Scripts" result/hadeg/report
+cp result/hadeg/work/Results_HADEG.proteinortho.tsv result/hadeg/report/
+(cd result/hadeg/report && Rscript HADEG.R)
+test -s result/hadeg/report/3_table_HADEG_final.tsv
 ```
 
 ## Decision tree
@@ -60,6 +76,12 @@ HC / plastic / biosurfactant genes?
 ├─ Glycan DOM → dbcan
 └─ Surfactant BGCs → antismash
 ```
+
+## Validation, recovery, and provenance
+
+Require Proteinortho and all three general HADEG tables, reconcile every reported code to input protein/genome and curated database sequence, and inspect identity/connectivity tradeoffs, paralogy and pathway coverage. Keep zero-hit genomes and gene-level codes; a single marker does not establish a complete degradation pathway or biosurfactant product.
+
+Use a fresh work/report directory after changing proteomes, database or settings. Record HADEG commit/database date and checksum, Proteinortho/R versions, command, input manifest/checksums, thresholds, tables and plots. Orthology to experimentally characterized references supports genetic potential, not expression, substrate loss or rate.
 
 ## Related skills
 

@@ -43,10 +43,18 @@ processes.
 ## How to run
 
 ```bash
-# install Nextflow; then e.g.
-nextflow run nf-core/<pipeline> -profile singularity --input samplesheet.csv ...
-# or: nextflow run main.nf -resume
+set -euo pipefail
+[[ -s samplesheet.csv ]] || exit 2
+nextflow -version
+nextflow pull nf-core/mag -r 5.5.0
+nextflow run nf-core/mag -r 5.5.0 -profile singularity \
+  --input samplesheet.csv --outdir result/nf-core-mag \
+  -with-report result/nf-core-mag.execution-report.html \
+  -with-trace result/nf-core-mag.trace.tsv
+# A local pinned DSL2 project runs as: nextflow run main.nf -resume
 ```
+
+For the complete release-specific contract and output gates, use `$nf-core-mag` or `$nf-core-taxprofiler`; do not transfer parameters between pipelines.
 
 ## Decision tree
 

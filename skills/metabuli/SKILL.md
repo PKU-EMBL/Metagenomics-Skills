@@ -58,7 +58,8 @@ nucleotide/protein DBs.
 ## How to run
 
 ```bash
-# verify subcommands against upstream docs
+set -euo pipefail
+metabuli classify --help >/dev/null
 metabuli classify \
   $METABULI_DB \
   temp/hr/${id}_1.fastq temp/hr/${id}_2.fastq \

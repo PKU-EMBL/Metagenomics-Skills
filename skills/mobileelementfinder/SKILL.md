@@ -12,6 +12,10 @@ metadata:
   metagenomics.tags: "MobileElementFinder, CGE, MGE, IS, transposon, ICE, IME, mobilome"
   metagenomics.upstream: "https://pypi.org/project/MobileElementFinder/"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed-legacy"
+  metagenomics.upstream-version: "1.1.2"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "mefinder CLI reviewed against upstream source; not executed here"
 ---
 
 # MobileElementFinder
@@ -46,13 +50,18 @@ Hit ≠ proven mobilization event. Short-read assemblies under-resolve large ICE
 ## How to run
 
 ```bash
-# pip install MobileElementFinder (or docker per upstream)
-# mef / MobileElementFinder CLI — follow installed version help
-MobileElementFinder -i assembly.fasta -o mef_out
-# exact entrypoint may be mefinder / python -m … depending on release
+set -euo pipefail
+[[ -s assembly.fasta ]] || exit 2
+mkdir -p result/mefinder temp/mefinder
+mefinder --version
+mefinder find --contig assembly.fasta --threads 8 --json --gff \
+  --temp-dir temp/mefinder result/mefinder/sample
+test -s result/mefinder/sample.csv
+test -s result/mefinder/sample.json
+test -s result/mefinder/sample.gff
 ```
 
-Pin software + database versions from the installed package metadata.
+This targets MobileElementFinder 1.1.2's `mefinder find` entry point. Pin package and bundled MGEdb versions/checksums; reconcile all hits to input contig coordinates and retain explicit no-hit output.
 
 ## Decision tree
 

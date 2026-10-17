@@ -2,9 +2,9 @@
 
 [简体中文](README.zh-CN.md)
 
-Portable Agent Skills for reproducible shotgun metagenomics, organized by
-scientific stage and usable from Claude Code, Codex, Cursor, Kimi Code, ZCode,
-Qwen Code, and other compatible coding agents:
+A comprehensive collection of **201 portable Agent Skills** for reproducible
+shotgun metagenomics, organized by scientific stage and usable from Claude Code,
+Codex, Cursor, Kimi Code, ZCode, Qwen Code, and other compatible coding agents:
 
 **QC → assembly → mapping → binning → taxonomy → function → microbial mining → research analysis**
 
@@ -56,7 +56,11 @@ cd Metagenomics-Skills
 
 Use `--target PATH` for a new client, `--mode copy` when symlinks are not
 supported, `--dry-run` to preview, and `--prune` when switching an existing
-destination to a smaller profile. See
+destination to a smaller profile. The comprehensive library stays available via
+`full`; compact `routing`/`core` and task profiles (`contamination`, `long-read`,
+`virome`, `strain-resolved`, `eukaryotic`, `pangenome`,
+`metatranscriptomics`, `metabolic-modeling`, and `workflows`) limit loaded
+context. See
 [the complete platform matrix](docs/multi-platform.md).
 
 ---
@@ -110,9 +114,17 @@ Auto-bins → `anvio` refine → `checkm2` / `gunc` / `mag-qc` → `gtdbtk`
 
 > Viral / plasmid / MGE mining
 
-Contigs → `genomad` / `virsorter2` → `checkv` → `vcontact` ·
-`mobileog` / `isescan` / `integronfinder` / `mob-suite` · plasmids: `plasmaag` ·
-isolates: `cge-finders` (`staramr` / `abricate` / `plasmidfinder` → `pmlst` / `mlst`)
+`virome-analysis` → `genomad` / `virsorter2` / `vibrant` → `checkv` →
+`votu-workflow` → `vcontact` / `iphop` · `mobileog` / `isescan` /
+`integronfinder` / `mob-suite` · plasmids: `plasmaag` · isolates: `cge-finders`
+(`staramr` / `abricate` / `plasmidfinder` → `pmlst` / `mlst`)
+
+> Additional task routes
+
+Contamination: `contamination-control` · long reads: `long-read-qc` · strains:
+`strain-resolved-analysis` · microbial eukaryotes: `eukaryotic-metagenomics` ·
+pangenomes: `pangenome-analysis` · RNA: `metatranscriptomics` · community
+models: `community-metabolic-modeling` · source attribution: `source-tracking`
 
 > Microbial mining (BGCs / AMR / element cycling / DOM / defense / QS)
 

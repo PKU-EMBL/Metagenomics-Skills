@@ -8,6 +8,10 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "host-depletion, bowtie2, qc"
   metagenomics.upstream: "https://github.com/biobakery/kneaddata"
+  metagenomics.stage: "qc"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # KneadData
@@ -83,6 +87,12 @@ Host-associated matrix?
 | PE count mismatch downstream | Re-run with `--reorder`; compare headers |
 | Java/Trimmomatic errors | Align Java/Trimmomatic versions or bypass trim |
 | Almost all reads removed | Wrong host index or extremely host-dominated library |
+
+## Validation, recovery, and provenance
+
+Require two non-empty decontaminated mate files, equal record counts, synchronized normalized read IDs, and a completed KneadData log. Tabulate input, retained, host-mapped, orphan, and discarded reads; investigate near-total removal before downstream use. An exit code alone is insufficient because stale or partial FASTQs can remain.
+
+Keep raw inputs immutable. Rerun into a fresh sample directory after changing the host index or Bowtie2 options. Record KneadData/Bowtie2 versions, full command, host build and index checksums, input/output checksums, and observed retention. Host depletion reduces but does not prove elimination of host sequence.
 
 ## Related skills
 

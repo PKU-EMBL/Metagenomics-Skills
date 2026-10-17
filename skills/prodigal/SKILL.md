@@ -8,6 +8,7 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "genes, orf"
   metagenomics.upstream: "https://github.com/hyattpd/Prodigal"
+  metagenomics.stage: "gene"
 ---
 
 # Prodigal

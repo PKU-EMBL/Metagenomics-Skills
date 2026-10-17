@@ -37,7 +37,7 @@ cd Metagenomics-Skills
 # Shared location read by Codex, Kimi Code, and ZCode; plus Qwen's native path
 ./scripts/install-platforms.sh --user --profile core agents qwen
 
-# Every platform and all 163 skills (largest startup catalog)
+# Every platform and all 201 skills (largest startup catalog)
 ./scripts/install-platforms.sh --user --profile full all
 ```
 

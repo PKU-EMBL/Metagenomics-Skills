@@ -43,9 +43,9 @@ concentrations.
 ## How to run
 
 ```bash
-# install deps per QSAP README; example pattern
+# Run from a pinned QSAP checkout after dependency and QSP-database preflight.
 perl QSAP.pl -i input.list -o qsap_out -s sub -n 8
-# strategies: diamond / hmmscan / sub|union — follow upstream help
+# Record the selected DIAMOND/HMM strategy and sub/union integration rule.
 ```
 
 ## Decision tree

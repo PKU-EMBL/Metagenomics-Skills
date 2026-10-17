@@ -49,7 +49,7 @@ Validate outputs after hardware/config changes (upstream tests).
 ## How to run
 
 ```bash
-# light path: 7B without Transformer Engine — see upstream Installation
+# Reviewed light path: 7B checkpoint without Transformer Engine.
 pip install evo2   # after system CUDA / deps per README
 python - <<'PY'
 from evo2 import Evo2
@@ -59,7 +59,7 @@ sequence = 'ACGT'
 input_ids = torch.tensor(
     evo2_model.tokenizer.tokenize(sequence), dtype=torch.int
 ).unsqueeze(0).to('cuda:0')
-# forward / embeddings / generation — see upstream Usage sections
+# Pass `input_ids` to the pinned model API for the declared embedding/generation task.
 PY
 ```
 

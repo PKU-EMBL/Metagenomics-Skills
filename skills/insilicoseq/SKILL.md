@@ -39,7 +39,7 @@ challenge-grade gold standards for assembly/binning/profiling.
 ## How to run
 
 ```bash
-conda install -c bioconda insilicoseq  # if packaged
+conda install -c conda-forge -c bioconda insilicoseq
 iss generate --genomes genome1.fa genome2.fa --model NovaSeq \
   --abundance_file abundances.txt --output temp/iss/mock --n_reads 5M
 ```

@@ -10,6 +10,9 @@ metadata:
   metagenomics.tags: "ANCOM-BC, ANCOM-BC2, differential-abundance, compositionality, Bioconductor"
   metagenomics.upstream: "https://github.com/FrederickHuangLin/ANCOMBC"
   metagenomics.stage: "report"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "ANCOM-BC2 R API reviewed against upstream; not executed here"
 ---
 
 # ANCOM-BC / ANCOM-BC2
@@ -45,10 +48,29 @@ Often takes phyloseq / TreeSummarizedExperiment-style inputs.
 ## How to run
 
 ```r
-BiocManager::install("ANCOMBC")
 library(ANCOMBC)
-# ancombc(...) or ancombc2(...) — follow vignette for object class + formula
+counts <- as.matrix(read.delim("counts.tsv", row.names = 1, check.names = FALSE))
+meta <- read.delim("metadata.tsv", row.names = 1, check.names = FALSE)
+stopifnot(all(is.finite(counts)), all(counts >= 0), all(counts == floor(counts)))
+stopifnot(!anyDuplicated(colnames(counts)), !anyDuplicated(rownames(meta)))
+stopifnot(setequal(colnames(counts), rownames(meta)), all(c("group", "age") %in% names(meta)))
+meta <- meta[colnames(counts), , drop = FALSE]
+meta$group <- relevel(factor(meta$group), ref = "Control")
+set.seed(2024)
+fit <- ancombc2(
+  data = counts, meta_data = meta, fix_formula = "group + age",
+  rand_formula = NULL, p_adj_method = "holm", pseudo_sens = TRUE,
+  prv_cut = 0.10, lib_cut = 0, s0_perc = 0.05, group = "group",
+  struc_zero = TRUE, neg_lb = TRUE, alpha = 0.05, n_cl = 4,
+  verbose = TRUE, global = TRUE, pairwise = TRUE,
+  dunnet = FALSE, trend = FALSE)
+dir.create("result/ancombc2", recursive = TRUE, showWarnings = FALSE)
+write.csv(fit$res, "result/ancombc2/coefficients.csv", row.names = FALSE)
+write.csv(fit$res_pair, "result/ancombc2/pairwise.csv", row.names = FALSE)
+writeLines(capture.output(sessionInfo()), "result/ancombc2/sessionInfo.txt")
 ```
+
+This matrix route requires raw integer feature counts with taxa as rows and samples as columns. For repeated measures or phyloseq/TreeSummarizedExperiment input, use the pinned ANCOM-BC2 vignette and declare the random-effects formula.
 
 ## Decision tree
 
@@ -59,6 +81,12 @@ Differential abundance?
 ├─ Classic LDA → lefse
 └─ GUI exploratory → stamp
 ```
+
+## Validation, recovery, and provenance
+
+Validate sample alignment, integer counts, library sizes, prevalence, group replication, factor references, design rank and confounding before fitting. Inspect convergence/warnings, sensitivity scores, structural-zero calls, effect direction, confidence/standard errors, adjusted p-values, global/pairwise multiplicity families, and taxa removed by filters. Repeat key conclusions under justified prevalence/library thresholds and with/without problematic samples.
+
+Save original counts/metadata, exclusions, exact function call and seed, result objects/tables, Bioconductor lockfile, and `sessionInfo()`. Report estimates and uncertainty with the correction family; do not compare ANCOM-BC log-fold changes directly with ordinary relative-abundance fold changes. Results are model-dependent associations, not causal or absolute-load evidence.
 
 ## Related skills
 

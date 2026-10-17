@@ -10,6 +10,7 @@ license: MIT
 metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "study-design, co-assembly, pooling, provenance"
+  metagenomics.stage: "utilities"
 ---
 
 # Study Design
@@ -33,7 +34,9 @@ Record these before tool selection:
 | Primary contrast | One predeclared comparison and direction; secondary contrasts labeled |
 | Replication | Biological replicates per stratum; technical replicates identified separately |
 | Repeated measures | Subject/site ID and time/order; plan paired or mixed-effects analysis |
-| Controls | Extraction blanks, no-template controls, mock communities, host/background controls as applicable |
+| Controls | Extraction blanks, no-template controls, mock communities, host/background controls as applicable; route decisions through `contamination-control` |
+| Load calibration | Decide whether relative profiles suffice; otherwise predeclare spike-in, qPCR, flow-cytometry, or mass measurements for `absolute-abundance` |
+| Source tracking | Predeclare candidate sources, sinks, negative controls, and held-out validation; an omitted source becomes “unknown” |
 | Confounders | Extraction kit/batch, run/lane, site, host, storage, depth, and measured covariates |
 | Randomization | Balance groups across extraction and sequencing batches where still possible |
 | Exclusions | Objective QC rules defined before inspecting group outcomes |
@@ -71,6 +74,8 @@ sequencing library while preserving the biological-unit identifier.
 | `control_type` | Biological sample, blank, mock, no-template, or other control |
 | `extraction_batch`, `library_batch`, `run`, `lane` | Detect and model technical structure |
 | `read1`, `read2`, `long_reads` | Absolute/portable input paths and read technology |
+| `rna_read1`, `rna_read2` | RNA libraries kept distinct from DNA; collection, stabilization, extraction and rRNA-depletion batch |
+| `spike_id`, `spike_amount`, `qpcr_load`, `flow_count` | Calibration values, units, dilution and assay provenance; never infer missing values |
 | `host_reference` | Exact host/background reference and release |
 | `assembly`, `assembly_type` | Contig FASTA; `individual`, `pool`, or `subgroup` |
 | `assembly_reads`, `coverage_reads` | Exact many-to-many provenance |
@@ -132,4 +137,6 @@ and unresolved risks. Distinguish decisions from assumptions.
 - `metagenomics-workflow` — QC → assembly → binning → taxonomy → function → mining → research-analysis
 - `basalt` · `metawrap` · `dastool` — binning stage
 - `binchicken` — targeted coassembly planning for low-abundance recovery
-- `lorbin` · `comebin` · `semibin2` · `vamb` — single binners
+- `lorbin` · `comebin` · `semibin2` · `vamb` · `metacoag` — single binners
+- `contamination-control` · `absolute-abundance` · `source-tracking` — controls, calibration, and source/sink design
+- `long-read-qc` · `metatranscriptomics` · `virome-analysis` · `eukaryotic-metagenomics` — assay-specific design

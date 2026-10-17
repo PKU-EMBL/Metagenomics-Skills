@@ -28,7 +28,7 @@ Prefer **fastp** for most shotgun runs (speed + JSON). Use Trimmomatic when a la
 ## How to run
 
 ```bash
-conda install -c bioconda trimmomatic  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda trimmomatic
 
 trimmomatic PE -threads 8 \
   seq/${id}_1.fq.gz seq/${id}_2.fq.gz \

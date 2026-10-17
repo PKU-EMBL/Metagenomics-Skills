@@ -30,7 +30,7 @@ system models — often run both for surveys) and viral MGE mining
 ## How to run
 
 ```bash
-conda install -c bioconda defense-finder  # if packaged; else follow upstream docs
+conda install -c conda-forge -c bioconda defense-finder
 
 defense-finder run genome.faa --out temp/defense/${id}
 ```

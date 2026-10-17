@@ -43,18 +43,28 @@ longer effective context vs DNABERT v1. Trained multi-species; evaluated on
 | `caduceus` | Transformer BPE stack vs Mamba long-range RC models |
 | `evo2` | Representation / classification — not AR generation |
 
-Related: **DNABERT-S** (species-separating embeddings), **GenomeOcean**
-(generative; see upstream pointers) — cite separately if used.
+Related models such as **DNABERT-S** (species-separating embeddings) and **GenomeOcean** (generative) are distinct checkpoints/methods and require their own immutable source, license and citation.
 
 ## How to run
 
-```bash
-# HF masked LM / embeddings pattern — verify transformers API for the tag
-from transformers import AutoTokenizer, AutoModel
-tok = AutoTokenizer.from_pretrained("zhihan1996/DNABERT-2-117M", trust_remote_code=True)
-model = AutoModel.from_pretrained("zhihan1996/DNABERT-2-117M", trust_remote_code=True)
-# fine-tune / GUE: follow upstream README sections Finetune & Quick Start
+```python
+import torch
+from transformers import AutoModel, AutoTokenizer
+
+model_name = "zhihan1996/DNABERT-2-117M"
+revision = "7bce263b15377fc15361f52cfab88f8b586abda0"  # reviewed 2026-10-18
+tok = AutoTokenizer.from_pretrained(
+    model_name, revision=revision, trust_remote_code=True)
+model = AutoModel.from_pretrained(
+    model_name, revision=revision, trust_remote_code=True).eval()
+batch = tok("ACGTACGTACGT", return_tensors="pt")
+with torch.inference_mode():
+    out = model(**batch)[0]
+assert out.shape[:2] == batch["input_ids"].shape
+print(model_name, revision, tuple(out.shape))
 ```
+
+Reconfirm and deliberately update the immutable revision when changing checkpoints. Fine-tuning additionally requires a frozen split, task labels, GUE-compatible preprocessing, leakage checks, seeds and held-out evaluation; loading a checkpoint is not task validation.
 
 ## Decision tree
 

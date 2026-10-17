@@ -8,6 +8,10 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "taxonomy, k-mer, bracken"
   metagenomics.upstream: "https://github.com/DerrickWood/kraken2"
+  metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # Kraken2 (+ Bracken)
@@ -69,6 +73,12 @@ Classification goal?
 ├─ Joint DNA+AA → metabuli
 └─ Genome containment sketches → sylph
 ```
+
+## Validation, recovery, and provenance
+
+Require non-empty classification and report files, then reconcile classified plus unclassified reads to the input count under paired-read semantics. Parse the report hierarchy rather than summing parent and child clades; inspect root/unclassified fractions, rank codes, direct versus clade counts, control samples, and low-count taxa. Confirm mate synchronization and that the database contains intended host, microbial, viral, and eukaryotic scopes.
+
+Database contents dominate results: record Kraken2 version, exact database build date/source/library and hash, k/minimizer parameters, command, read checksums, confidence option, and output checksums. Use a fresh output when changing the database or threshold. A Kraken label is a k-mer/LCA classification, not species presence or abundance validation.
 
 ## Related skills
 

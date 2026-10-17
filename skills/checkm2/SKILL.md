@@ -8,6 +8,10 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "qc, completeness, MAG"
   metagenomics.upstream: "https://github.com/chklovski/CheckM2"
+  metagenomics.stage: "assessment"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # CheckM2
@@ -52,6 +56,12 @@ checkm2 predict --input bins/ --output-directory checkm2_out --threads 16
 | Database | Pin CheckM2 DB release with software version |
 | Input | Directory of bin FASTAs |
 | Downstream | Feed filtered bins to `drep` / `gtdbtk` |
+
+## Validation, recovery, and provenance
+
+Require `quality_report.tsv`, reconcile every input FASTA to exactly one successful or explicitly failed row, and reject duplicate genome IDs. Inspect completeness, contamination, model/translation-table warnings, genome size and coding density; compare discordant or novel genomes with `$gunc`, taxonomy, and marker evidence. Apply a predeclared quality policy and retain unrounded values.
+
+Do not merge partial results from different database/software releases. After failure, use a clean output directory or document supported resume behavior. Record CheckM2 version, database release/path/checksum, command, input/output checksums, threads, failed genomes, and threshold decisions. Scores are predictions, not measured percentages.
 
 ## Related skills
 

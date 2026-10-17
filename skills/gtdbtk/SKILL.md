@@ -8,6 +8,10 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "taxonomy, GTDB, MAG"
   metagenomics.upstream: "https://github.com/Ecogenomics/GTDBTk"
+  metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI and release-coupling contract reviewed; not executed here"
 ---
 
 # GTDB-Tk
@@ -37,7 +41,9 @@ read profilers (MetaPhlAn/Kraken/sylph).
 ## How to run
 
 ```bash
-export GTDBTK_DATA_PATH=/path/to/gtdb
+set -euo pipefail
+: "${GTDBTK_DATA_PATH:?set GTDBTK_DATA_PATH to one pinned GTDB release}"
+[[ -d "$GTDBTK_DATA_PATH" && -d drep95/dereplicated_genomes ]] || exit 2
 gtdbtk classify_wf \
   --genome_dir drep95/dereplicated_genomes \
   --out_dir temp/gtdb_classify \
@@ -45,6 +51,12 @@ gtdbtk classify_wf \
 ```
 
 Optional: `gtdbtk infer` for trees from MSA outputs.
+
+## Validation, recovery, and provenance
+
+Require bacterial and/or archaeal summary tables, warning/failure logs, marker alignments, and expected classified-genome accounting. Reconcile each input as classified, unclassified, failed, or excluded; inspect `classification_method`, ANI/relative evolutionary divergence, closest references, warnings, and multi-hit/translation issues. A name copied from the summary without these columns loses critical evidence.
+
+GTDB-Tk outputs and reference data are release-coupled. Use a fresh output after changing either; never merge taxonomy labels across GTDB releases without an explicit mapping. Record GTDB-Tk/dependency versions, GTDB release and `GTDBTK_DATA_PATH` checksum/manifest, full command, input FASTA checksums, summary/tree checksums, and failed genomes.
 
 ## Related skills
 

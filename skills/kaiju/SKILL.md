@@ -53,7 +53,7 @@ kaiju2table -t nodes.dmp -n names.dmp -r species \
 |------|-------|
 | DB | RefSeq / nr / proGenomes-derived builds — pin release |
 | `-z` | Threads |
-| `-a` / greedy modes | See upstream for sensitivity vs speed |
+| `-a` / greedy modes | Predeclare the mode and record its sensitivity/speed settings |
 | Rank in `kaiju2table` | Species/genus — state in Methods |
 
 ## Decision tree

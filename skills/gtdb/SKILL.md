@@ -12,6 +12,7 @@ metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "database, GTDB, taxonomy, genomes"
   metagenomics.upstream: "https://gtdb.ecogenomic.org/"
+  metagenomics.stage: "taxonomy"
 ---
 
 # GTDB (Genome Taxonomy Database)
@@ -72,8 +73,7 @@ wget -c https://data.gtdb.ecogenomic.org/releases/latest/ar53_taxonomy.tsv.gz
 # Mirror choice: see https://gtdb.ecogenomic.org/downloads for regional mirrors
 ```
 
-For GTDB-Tk classification DB, follow the official GTDB-Tk data install docs
-(not ad-hoc genome tarballs) — see `gtdbtk` skill.
+For GTDB-Tk classification, install its complete release-coupled reference bundle—not an ad-hoc genome tarball—and apply the checks in `$gtdbtk`.
 
 ## Key files (thinking)
 

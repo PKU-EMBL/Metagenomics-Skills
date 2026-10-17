@@ -41,13 +41,24 @@ exact `seqlen` in the model id.
 
 ## How to run
 
-```bash
+```python
+import torch
 from transformers import AutoModelForMaskedLM, AutoTokenizer
+
 model_name = "kuleshov-group/caduceus-ph_seqlen-131k_d_model-256_n_layer-16"
-# or caduceus-ps_… for RC-equivariant
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForMaskedLM.from_pretrained(model_name)
+revision = "b0477522ac5d044ad03578aa724ec8e4bdbd405b"  # reviewed 2026-10-18
+tokenizer = AutoTokenizer.from_pretrained(
+    model_name, revision=revision, trust_remote_code=True)
+model = AutoModelForMaskedLM.from_pretrained(
+    model_name, revision=revision, trust_remote_code=True).eval()
+batch = tokenizer("ACGTACGTACGT", return_tensors="pt")
+with torch.inference_mode():
+    logits = model(**batch).logits
+assert logits.shape[:2] == batch["input_ids"].shape
+print(model_name, revision, tuple(logits.shape))
 ```
+
+Reconfirm and deliberately update the immutable revision when changing checkpoints. Use the `ps` family only when reverse-complement equivariance is required and record strand pooling.
 
 Pin checkpoint (`ph` vs `ps`) and sequence length in Methods.
 

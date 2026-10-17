@@ -1,6 +1,6 @@
 {
   "name": "metagenomics",
-  "version": "1.22.0",
+  "version": "1.23.0",
   "description": "Portable shotgun-metagenomics skills for Codex — planning, tool execution, quality gates, statistics, and reporting",
   "author": {
     "name": "PKU-EMBL",

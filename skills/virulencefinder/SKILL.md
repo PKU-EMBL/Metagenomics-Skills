@@ -10,6 +10,10 @@ metadata:
   metagenomics.tags: "VirulenceFinder, CGE, virulence, pathogen, isolate, typing"
   metagenomics.upstream: "https://bitbucket.org/genomicepidemiology/virulencefinder"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "3.2.1"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream source; not executed here"
 ---
 
 # VirulenceFinder
@@ -40,10 +44,16 @@ AMR remains `resfinder` / `rgi`; plasmids `plasmidfinder` / `genomad`.
 ## How to run
 
 ```bash
-# install per upstream / pip; clone virulencefinder_db
-python -m virulencefinder -ifa assembly.fasta -o vf_out \
-  -db_path /path/to/virulencefinder_db
-# species DB selection follows installed CLI / speciesinfo options
+set -euo pipefail
+DB=${VIRULENCEFINDER_DB:?set VIRULENCEFINDER_DB to a pinned database checkout}
+[[ -s assembly.fasta && -d "$DB" ]] || exit 2
+python -m virulencefinder --help >/dev/null
+mkdir -p vf_out vf_tmp
+python -m virulencefinder --inputfasta assembly.fasta -o vf_out \
+  --tmp_dir vf_tmp --databasePath "$DB" --databases all \
+  --extended_output --out_json vf_out/results.json
+test -s vf_out/results.json
+# Record the selected database subset; `all` above is explicit.
 ```
 
 Pin tool + DB versions; report which species database was used.

@@ -11,6 +11,10 @@ metadata:
   metagenomics.tags: "PhyloPhlAn, phylogeny, MAG, markers, tree"
   metagenomics.upstream: "https://github.com/biobakery/phylophlan"
   metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "3.2.1"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream source; not executed here"
 ---
 
 # PhyloPhlAn
@@ -46,15 +50,20 @@ chosen database/config.
 ## How to run
 
 ```bash
-conda install -c bioconda phylophlan
-# follow upstream tutorials for database setup + config
-# typical: genomes/ → phylophlan → MSA + tree (optionally refine with iqtree)
-phylophlan -i genomes/ -o temp/phylophlan/ -d phylophlan \
-  --diversity medium -f YOUR.cfg --nproc 16
+set -euo pipefail
+CFG=${PHYLOPHLAN_CONFIG:?set a reviewed PhyloPhlAn configuration file}
+DB=${PHYLOPHLAN_DATABASE:?set an installed marker database name or path}
+[[ -d genomes && -s "$CFG" ]] || exit 2
+find genomes -maxdepth 1 -type f -size +0c | grep -q .
+mkdir -p temp/phylophlan
+phylophlan -i genomes -o temp/phylophlan/run -d "$DB" \
+  --diversity medium -f "$CFG" --nproc 16 --verbose 2 \
+  >temp/phylophlan/stdout.log 2>temp/phylophlan/stderr.log
+find temp/phylophlan -type f \( -name '*.tre' -o -name '*.treefile' -o -name '*.nwk' \) \
+  -size +0c | grep -q .
 ```
 
-Exact flags depend on installed PhyloPhlAn configs — pin version and config
-name in Methods.
+This contract targets PhyloPhlAn 3.2.1. Archive the complete configuration and marker-database manifest; executable flags inside the config are part of the method. Require genome/marker accounting, non-empty alignment and tree, and review low-marker genomes before interpretation.
 
 ## Decision tree
 

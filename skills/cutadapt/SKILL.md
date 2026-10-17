@@ -28,7 +28,7 @@ Use when adapters/primers are known exactly (amplicon-like primers on shotgun li
 ## How to run
 
 ```bash
-conda install -c bioconda cutadapt  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda cutadapt
 
 cutadapt -j 8 -a AGATCGGAAGAGC -A AGATCGGAAGAGC \
   -o temp/qc/${id}_1.fq.gz -p temp/qc/${id}_2.fq.gz \

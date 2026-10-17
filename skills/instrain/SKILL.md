@@ -41,8 +41,13 @@ optional compare for shared strains.
 ## How to run
 
 ```bash
-inStrain profile temp/map/${id}.bam genomes.fa -o temp/instrain/${id} -p 16
-# inStrain compare ... for cross-sample strain sharing
+set -euo pipefail
+[[ -s "temp/map/${id}.bam" && -s genomes.fa ]] || exit 2
+inStrain profile "temp/map/${id}.bam" genomes.fa \
+  -o "temp/instrain/${id}" -p 16
+# After profiling at least two samples against the same reference:
+inStrain compare -i temp/instrain/sample1 temp/instrain/sample2 \
+  -o temp/instrain/cohort_compare -p 16
 ```
 
 ## Key parameters
@@ -50,7 +55,7 @@ inStrain profile temp/map/${id}.bam genomes.fa -o temp/instrain/${id} -p 16
 | Input | Notes |
 |-------|-------|
 | BAM | To dereplicated references; consistent mapper |
-| Coverage / breadth filters | Follow upstream defaults or justify changes |
+| Coverage / breadth filters | Record the installed defaults and predeclare every override |
 | `compare` | Shared-strain detection across profiles |
 
 ## Related skills

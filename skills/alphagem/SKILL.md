@@ -12,6 +12,10 @@ metadata:
   metagenomics.tags: "AlphaGEM, GEM, metabolism, structure, deep-learning"
   metagenomics.upstream: "https://github.com/hongzhonglu/AlphaGEM"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "snapshot 956b584"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream source; not executed here"
 ---
 
 # AlphaGEM
@@ -37,11 +41,24 @@ high-quality genomes/MAGs after `mag-qc`; interpret human/gut context with
 Models remain computational — not measured fluxes. Pin AlphaGEM version,
 structure sources (e.g. AFDB), and gap-filling rules.
 
-## How to run
+## Inputs and run
+
+Require one high-quality, uniquely named genome FASTA, an appropriate reference-model choice (`ecoli`, `yeast`, `strco`, `human`, or `synechocystis`), AlphaGEM's Figshare resources, both supplied environments, and a licensed/configured optimizer. Structure mode additionally requires per-gene structures and a mapping table whose IDs exactly match the FASTA.
 
 ```bash
-# follow upstream README for structure DBs and GEM reconstruction steps
+set -euo pipefail
+id=candidate01
+genome=genomes/candidate01.fna
+[[ -s "$genome" ]] || exit 2
+python AlphaGEM.py --help >/dev/null
+# Sequence/PLM route; use structure_alignment only when its structure inputs exist.
+python AlphaGEM.py --name "$id" --mode plmsearch --fasta "$genome" \
+  --refname ecoli --grothmedium min \
+  >"${id}.alphagem.stdout.log" 2>"${id}.alphagem.stderr.log"
+test -d "working/$id"
 ```
+
+For structure evidence, use `--mode structure_alignment --structure DIR --maplist TABLE` and preflight mapping-table coverage. Do not mix reference species, medium, structure thresholds, or resource snapshots across models.
 
 ## Decision tree
 
@@ -52,6 +69,12 @@ Metabolic modelling need?
 ├─ Human/gut knowledge integration → vmh
 └─ Annotation distillate only → dram
 ```
+
+## Validation, recovery, and provenance
+
+Require completed logs and a non-empty model/result set under `working/<name>`; reconcile input genes, annotations, added reactions, gap-filled reactions, medium and objective. Run mass/charge consistency, blocked-reaction, growth/no-growth and biologically justified phenotype checks with the produced model format. Compare new dark-metabolism reactions to gene/structure evidence; do not accept growth alone as validation.
+
+AlphaGEM writes a named working directory: archive it or rerun under a fresh name after changing parameters. Record repository commit, Figshare-resource checksums, AlphaGEM/DeepEC/ESM/Foldseek/optimizer versions, reference model, medium, thresholds, input checksum, full command, logs and model checksum. Predicted reactions and fluxes remain computational hypotheses.
 
 ## Related skills
 

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Absolute abundance"
+  short_description: "Scale profiles to measured microbial load"
+  default_prompt: "Use $absolute-abundance to inspect my counts and quantitative standard, derive the correct units and formula, and validate assumptions and uncertainty."
+policy:
+  allow_implicit_invocation: true

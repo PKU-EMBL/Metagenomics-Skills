@@ -8,6 +8,10 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "assembly, contigs"
   metagenomics.upstream: "https://github.com/voutcn/megahit"
+  metagenomics.stage: "assembly"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # MEGAHIT
@@ -67,6 +71,12 @@ Need contigs quickly with moderate memory?
 ├─ Need max continuity, can pay RAM/time → metaspades
 └─ Long reads dominant → long-read assembler (not megahit alone)
 ```
+
+## Validation, recovery, and provenance
+
+Require non-empty `final.contigs.fa`, a completed `log`, and expected input-library accounting. Check unique contig IDs, total assembled bases, contig count/N50/length distribution with `$quast`, read recruitment with a mapper, and assembly sensitivity to individual versus coassembly design. N50 alone is not a biological quality score.
+
+MEGAHIT refuses an existing output directory; use `--continue` only for an unchanged interrupted run supported by the pinned release, otherwise archive/remove the partial directory and start clean. Preserve `log`, `options.json`/command output where present, MEGAHIT version, read manifests/checksums, resource usage, and final-contig checksum before deleting intermediates.
 
 ## Related skills
 

@@ -11,6 +11,7 @@ metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "database, SRA, ENA, download, reanalysis"
   metagenomics.upstream: "https://github.com/ncbi/sra-tools"
+  metagenomics.stage: "utilities"
 ---
 
 # NCBI SRA / EBI ENA
@@ -51,16 +52,26 @@ fasterq-dump --split-files --threads 8 -O seq/public SRR000001
 gzip seq/public/SRR000001_*.fastq
 ```
 
-## How to run (ENA FTP pattern)
+## How to run (ENA-resolved links)
 
 ```bash
-# Look up download links via ENA browser/API for the ERR/DRR accession, then:
-wget -c -P seq/public \
-  ftp://ftp.sra.ebi.ac.uk/vol1/fastq/.../ERR000001_1.fastq.gz \
-  ftp://ftp.sra.ebi.ac.uk/vol1/fastq/.../ERR000001_2.fastq.gz
+set -euo pipefail
+run=${1:?usage: ena-download.sh ERR_OR_DRR_ACCESSION}
+mkdir -p seq/public metadata
+curl -fsSLG 'https://www.ebi.ac.uk/ena/portal/api/filereport' \
+  --data-urlencode "accession=$run" --data-urlencode 'result=read_run' \
+  --data-urlencode 'fields=run_accession,fastq_ftp,fastq_md5' \
+  --data-urlencode 'format=tsv' --data-urlencode 'download=true' \
+  -o "metadata/${run}.ena.tsv"
+[[ $(wc -l < "metadata/${run}.ena.tsv") -eq 2 ]] || exit 3
+awk -F '\t' 'NR==2 {gsub(/;/,"\n",$2); print $2}' "metadata/${run}.ena.tsv" |
+  while IFS= read -r remote; do
+    [[ -n "$remote" ]] && wget -c -P seq/public "https://${remote}"
+  done
+find seq/public -name "${run}*.fastq.gz" -size +0c | grep -q .
 ```
 
-Use the ENA browser or API to resolve the exact FTP path; do not invent paths.
+Archive the returned MD5 field and verify each file against its position-matched checksum before analysis; an HTTP success alone is not data integrity.
 
 ## Key metadata to archive
 

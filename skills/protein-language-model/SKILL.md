@@ -12,6 +12,7 @@ license: MIT
 metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "protein-language-model, PLM, pLM, ESM, ESMC, SaProt, ProstT5, remote-homology"
+  metagenomics.stage: "mining"
 ---
 
 # Protein language model

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pangenome analysis"
+  short_description: "Plan quality-controlled prokaryotic pangenomes"
+  default_prompt: "Use $pangenome-analysis to audit my genomes and annotations, choose Panaroo or PPanGGOLiN, and define core/accessory, tree, and sensitivity checks."
+policy:
+  allow_implicit_invocation: true

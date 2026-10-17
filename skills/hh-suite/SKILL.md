@@ -42,10 +42,15 @@ careful pinning.
 ## How to run
 
 ```bash
-# single HHblits iteration against a prepared HH-suite DB
+set -euo pipefail
+DB=${HH_DB_PREFIX:?set HH_DB_PREFIX to a pinned HH-suite database prefix}
+[[ -s query.faa && -s "${DB}_a3m.ffdata" && -s "${DB}_a3m.ffindex" ]] || exit 2
+mkdir -p temp/hh
 hhblits -i query.faa -o temp/hh/query.hhr -oa3m temp/hh/query.a3m \
-  -n 1 -d /path/to/hh_database
-# HHsearch: query HMM/a3m against HMM DB — see upstream docs
+  -n 1 -d "$DB"
+test -s temp/hh/query.hhr && test -s temp/hh/query.a3m
+hhsearch -i temp/hh/query.a3m -d "$DB" -o temp/hh/query_hhsearch.hhr
+test -s temp/hh/query_hhsearch.hhr
 ```
 
 ## Decision tree

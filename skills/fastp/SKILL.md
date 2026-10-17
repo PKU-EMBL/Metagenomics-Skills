@@ -8,6 +8,7 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "qc, fastq, trimming"
   metagenomics.upstream: "https://github.com/OpenGene/fastp"
+  metagenomics.stage: "qc"
 ---
 
 # fastp

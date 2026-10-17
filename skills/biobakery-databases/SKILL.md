@@ -11,6 +11,7 @@ metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "database, bioBakery, ChocoPhlAn, UniRef, MetaPhlAn, HUMAnN"
   metagenomics.upstream: "https://github.com/biobakery/biobakery"
+  metagenomics.stage: "utilities"
 ---
 
 # bioBakery databases (MetaPhlAn / HUMAnN)
@@ -57,16 +58,15 @@ humann_config --update database_folders protein db/humann/uniref
 humann_config --update database_folders utility_mapping db/humann/utility_mapping
 ```
 
-Exact subcommand names can vary by HUMAnN version — verify with
-`humann_databases --help` for your install.
+These are HUMAnN 3 helper interfaces; capture `humann_databases --help`, package version, downloaded bundle names and checksums before configuring paths.
 
 ## How to install (MetaPhlAn)
 
 ```bash
+set -euo pipefail
 mkdir -p db/metaphlan
-# Prefer the install/download path documented for your MetaPhlAn major version
-# (metaphlan --install / download utilities). Example pattern:
-metaphlan --install --bowtie2db db/metaphlan
+metaphlan --install --db_dir db/metaphlan
+find db/metaphlan -type f -size +0c | grep -q .
 ```
 
 Confirm the DB build string printed in MetaPhlAn logs and archive it.

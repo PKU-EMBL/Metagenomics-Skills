@@ -8,6 +8,10 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "abundance, MAG, coverage"
   metagenomics.upstream: "https://github.com/wwood/CoverM"
+  metagenomics.stage: "mapping"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # CoverM
@@ -63,6 +67,12 @@ coverm contig -r contigs.fa --coupled ${id}_1.fastq ${id}_2.fastq \
 | method (mean / trimmed_mean / …) | Match what your binner expects |
 | min covered fraction | Default ~10% genome; tighten for strict presence |
 | mapper | `strobealign` often fastest for Illumina→large refs |
+
+## Validation, recovery, and provenance
+
+Require a non-empty table with unique sample/reference labels, finite non-negative values, and all intended samples. For contig binning, verify contig IDs exactly match the assembly and confirm the selected method/column layout is accepted by the binner. For genome abundance, report covered fraction, mapped/unmapped fraction, presence filter, identity/aligned-fraction filters, and multi-mapping policy; inspect unexpected zero/high values.
+
+Rerun into a new output after changing catalogue, mapper, or filters. Capture `coverm --version`, complete command, read and reference checksums, dereplication manifest, mapper/version, table schema, and mapping logs. A non-zero genome abundance is a recruitment estimate, not proof of organism viability or absolute load.
 
 ## Related skills
 

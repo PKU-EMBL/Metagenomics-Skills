@@ -11,6 +11,7 @@ license: MIT
 metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "guidance, pipeline, workflow, QC, assembly, mapping, binning, taxonomy, function, mining, research-analysis"
+  metagenomics.stage: "utilities"
 ---
 
 # Metagenomics Workflow
@@ -38,7 +39,7 @@ running commands.
 study-design + setup (+ public-databases)
         │
         v
-1 QC      fastp → kneaddata
+1 QC      contamination-control → fastp / long-read-qc → kneaddata / hostile
         │
         ├─► 5 taxonomy / 6 function (reads) ─► research-analysis
         │
@@ -52,7 +53,7 @@ study-design + setup (+ public-databases)
         ├─► 6 function (genes)
         │
         v
-4 Binning    single binners → basalt ★ | metawrap | dastool
+4 Binning    single binners (incl. metacoag) → basalt ★ | metawrap | dastool
              → (± anvio refine | deepurify clean)
              → drep → coverm → checkm2 / gunc / mag-qc
         │
@@ -70,8 +71,8 @@ study-design + setup (+ public-databases)
 |-------------------|--------|
 | Illumina/MGI composition or pathways only | short-read QC → read taxonomy/function; no assembly by default |
 | Short-read MAG catalogue | short-read QC → assembly → short-read mapping → ensemble binning |
-| ONT/CLR | long-read QC (outside `fastp`) → `metaflye` → `minimap2` → long-read-aware binning/polish |
-| PacBio HiFi | HiFi QC → `metamdbg`/`metaflye` → `minimap2` → MAG route |
+| ONT/CLR | `long-read-qc` → `metaflye` → `minimap2` → long-read-aware binning/polish |
+| PacBio HiFi | `long-read-qc` with `hifiadapterfilt` → `metamdbg`/`metaflye` → `minimap2` → MAG route |
 | Hybrid reads | keep technologies separate through QC; declare assembler/polishing evidence |
 | Existing contigs/MAGs | audit provenance and QC first; do not silently rerun upstream stages |
 
@@ -83,11 +84,17 @@ study-design + setup (+ public-databases)
 | Genome-resolved catalogue | QC → assembly → mapping → `basalt` ★ → mag-qc → gtdbtk |
 | Interactive MAG polish | After auto-bins → `anvio` → re-QC |
 | Environmental unknowns | QC → `singlem` (± `binchicken` coassembly) |
-| Viral ecology | contigs → `genomad`/`virsorter2` → `checkv` → `vcontact` |
+| Viral ecology | `virome-analysis` → discovery → `checkv` → `votu-workflow` → taxonomy/`iphop` |
+| Strain transmission or microdiversity | `strain-resolved-analysis` → `strainphlan` / `metasnv` / `instrain` |
+| Microbial eukaryotes | `eukaryotic-metagenomics` → `tiara`/`whokaryote` → `metaeuk` → `eukcc` |
+| Pangenome | harmonized genomes → `pangenome-analysis` → `panaroo` / `ppanggolin` |
+| Community RNA | `metatranscriptomics` → host/rRNA depletion → quantification/function |
+| Metabolic simulation | QC genomes/models → `community-metabolic-modeling` → `carveme` / `micom` |
+| Source attribution | controls and candidate sources → `source-tracking` → `feast` |
 
 ## Quality gates
 
-- [ ] Design, statistical unit, controls, exclusions, and DB plan are locked
+- [ ] Design, statistical unit, contamination controls, absolute-load plan (if needed), exclusions, and DB plan are locked
 - [ ] Raw inputs are immutable; checksums and a one-row-per-sample manifest exist
 - [ ] QC preserves PE order and explains read/base loss
 - [ ] Assembly IDs are unique; QUAST-style statistics were inspected
@@ -109,4 +116,7 @@ study-design + setup (+ public-databases)
 
 `tool-selection` · `research-analysis` · `microbial-mining` · `homology-search` ·
 `phylogenomics` · `metagenomics-llm` · `public-databases` · `study-design` ·
-`mag-qc` · stage skills under `skills/`
+`mag-qc` · `contamination-control` · `long-read-qc` · `virome-analysis` ·
+`strain-resolved-analysis` · `eukaryotic-metagenomics` · `pangenome-analysis` ·
+`metatranscriptomics` · `community-metabolic-modeling` · `source-tracking` ·
+stage skills under `skills/`

@@ -51,7 +51,7 @@ Pin which compressed collection you downloaded.
 ## How to run
 
 ```bash
-# install deps (conda: python, snakemake, mamba) — see upstream README
+# Requires a pinned Python/Snakemake/Mamba environment from this checkout.
 git clone https://github.com/karel-brinda/phylign.git
 cd phylign
 make test

@@ -10,6 +10,10 @@ metadata:
   metagenomics.tags: "DisinFinder, CGE, biocide, disinfectant, resistance, ResFinder"
   metagenomics.upstream: "https://bitbucket.org/genomicepidemiology/disinfinder_db"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "ResFinder 4.7.2 interface"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "DisinFinder branch reviewed against ResFinder source; not executed here"
 ---
 
 # DisinFinder
@@ -44,15 +48,16 @@ add DisinFinder via ResFinder when biocide genes are in scope.
 ## How to run
 
 ```bash
-git clone https://bitbucket.org/genomicepidemiology/disinfinder_db.git
-# ResFinder disinfectant search (flag names follow installed --help)
-python -m resfinder -ifa assembly.fasta -o disinf_out \
-  -db_res /path/to/resfinder_db \
-  -db_disinf /path/to/disinfinder_db
-# some builds use an explicit disinfectant / --disinf switch — check --help
+set -euo pipefail
+DISINF_DB=${DISINFINDER_DB:?set DISINFINDER_DB}
+[[ -s assembly.fasta && -d "$DISINF_DB" ]] || exit 2
+python -m resfinder --help >/dev/null
+python -m resfinder --inputfasta assembly.fasta -o disinf_out \
+  --db_path_disinf "$DISINF_DB" --disinfectant
+test -d disinf_out
 ```
 
-Pin ResFinder software + `disinfinder_db` commit/tag.
+This command targets the ResFinder interface exposing `-db_disinf`; do not run it with a release whose help omits that option. Pin ResFinder, `resfinder_db`, and `disinfinder_db` commits.
 
 ## Decision tree
 

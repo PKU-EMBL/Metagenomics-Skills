@@ -1,3 +1,35 @@
+## [1.23.0] - 2026-10-18
+
+### Added
+- 38 Skills for contamination control, long-read QC, viral/vOTU analysis,
+  strain resolution, microbial eukaryotes, pangenomes, absolute abundance,
+  metatranscriptomics, source tracking, compositional statistics, and community
+  metabolic modeling
+- Executable tool guidance for decontam, NanoPlot, Chopper, Filtlong, Hostile,
+  HiFiAdapterFilt, sourmash, iPHoP, VIBRANT, StrainPhlAn, metaSNV, Tiara,
+  EukCC, Whokaryote, Panaroo, PPanGGOLiN, ALDEx2, corncob, NetCoMi,
+  SortMeRNA, CarveMe, MICOM, FEAST, MetaCoAG, and two pinned nf-core workflows
+- Nine task-focused installation profiles: `contamination`, `long-read`,
+  `virome`, `strain-resolved`, `eukaryotic`, `pangenome`,
+  `metatranscriptomics`, `metabolic-modeling`, and `workflows`
+- OpenAI UI manifests for 13 new workflow/orchestration Skills
+
+### Changed
+- Hardened core QC, assembly, mapping, binning, taxonomy, function, viral,
+  statistics, and reporting Skills with input/output gates, recovery,
+  provenance, database coupling, and interpretation limits
+- Added scientific-stage metadata to all 37 previously unclassified Skills and
+  review/command-status metadata to new and priority legacy Skills
+- Replaced the audited guidance-only placeholder blocks with reviewed command
+  contracts or explicit web/research-code boundaries; all Bash/Python examples
+  now pass static syntax checks
+- Extended the validator to enforce workflow stages, coherent review metadata,
+  ISO review dates, non-empty executable fences, and Bash/Python syntax
+- Synchronized the complete catalog, profiles, installer output, and every
+  platform manifest at package version 1.23.0 (201 Skills)
+- Marked new command examples by review status; upstream-reviewed examples are
+  not represented as locally executed validation
+
 ## [1.22.0] - 2026-10-17
 
 ### Added

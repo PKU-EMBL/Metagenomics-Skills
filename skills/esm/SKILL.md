@@ -11,6 +11,10 @@ metadata:
   metagenomics.tags: "ESM, ESM-2, ESMFold, PLM, protein-language-model, embeddings, HuggingFace"
   metagenomics.upstream: "https://github.com/facebookresearch/esm"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "ESM-2 checkpoint revision 08e4846e"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "Transformers API reviewed; not executed here"
 ---
 
 # ESM (ESM-2 / ESMFold)
@@ -47,13 +51,24 @@ ESM3 — cite separately if used.
 
 ## How to run
 
-```bash
-# install per upstream README (fair-esm / torch); or HF ports of ESM-2
-# typical: load esm2_* checkpoint → per-residue / mean embeddings
-# structure: ESMFold API / local — heavy GPU; prefer AFDB/Atlas + foldseek for catalogues
+This sequence-embedding smoke pattern uses a fixed Hugging Face ESM-2 revision; production code should batch by token budget and retain the attention mask and ID order.
+
+```python
+import torch
+from transformers import AutoTokenizer, EsmModel
+
+repo = "facebook/esm2_t33_650M_UR50D"
+revision = "08e4846e537177426273712802403f7ba8261b6c"
+tok = AutoTokenizer.from_pretrained(repo, revision=revision)
+model = EsmModel.from_pretrained(repo, revision=revision).eval()
+batch = tok(["MKTIIALSYIFCLVFADYKDDDDK"], return_tensors="pt", padding=True)
+with torch.inference_mode():
+    out = model(**batch).last_hidden_state
+assert out.shape[:2] == batch["input_ids"].shape and torch.isfinite(out).all()
+print(repo, revision, tuple(out.shape))
 ```
 
-Do not invent CLI flags — follow the installed package docs for the pinned tag.
+For ESMFold, pin its distinct model/dependencies and archive PDB plus per-residue confidence. At catalogue scale, search existing AFDB/ESM Atlas structures with `$foldseek` before deciding to refold every ORF.
 
 ## Decision tree
 
@@ -67,6 +82,12 @@ Protein LM / structure from sequence?
 ├─ Search Atlas / AFDB structures → foldseek
 └─ DNA gLMs → genome-language-model
 ```
+
+## Validation, recovery, and provenance
+
+Validate protein alphabet, unique IDs, truncation/chunking, special-token exclusion, pooling denominator, finite tensors, row order and deterministic controls. Compare embeddings/heads on leakage-resistant held-out proteins; loading the checkpoint is only a software smoke test. Structure predictions require pLDDT/PAE-aware checks and should not be labeled experimental structures.
+
+Record Transformers/PyTorch/CUDA versions, model repository and immutable revision, tokenizer/config hashes, device/dtype, batching/pooling/strand-independent protein policy, code/seeds, input/output checksums and failed sequences. Embeddings and structures are model predictions and do not independently establish homology or function.
 
 ## Related skills
 

@@ -14,6 +14,10 @@ metadata:
   metagenomics.tags: "binning, long-read, LorBin, MAG, DBSCAN"
   metagenomics.upstream: "https://github.com/LorMeBioAI/LorBin"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "snapshot ee10232"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream; not executed here"
 ---
 
 # LorBin
@@ -63,16 +67,19 @@ arbitrary upstream tip.
 
 ## How to run
 
-Verify flags against upstream README/`--help` (CLI evolves):
+Map each long-read sample to the exact concatenated contig FASTA, then provide sorted BAMs. The installed entry point is case-sensitive (`LorBin`).
 
 ```bash
-# illustrative — confirm exact subcommands in LorBin docs
-lorbin \
-  --contigs long_contigs.fa \
-  --bam temp/map/*.bam \
-  --outdir temp/bins/lorbin \
-  --threads 32
+set -euo pipefail
+[[ -s long_contigs.fa && -s sample1.sorted.bam ]] || exit 2
+samtools quickcheck -v sample1.sorted.bam
+LorBin --help >/dev/null
+LorBin bin -o temp/bins/lorbin -fa long_contigs.fa \
+  -b sample1.sorted.bam --num_process 16 \
+  >lorbin.stdout.log 2>lorbin.stderr.log
 ```
+
+For multiple related samples, list all BAMs after `-b` and add `--multi`. Do not use multi-sample mode across unrelated strata.
 
 ## Decision tree
 
@@ -90,6 +97,12 @@ Long-read MAG recovery?
 - Report assembler, read type (ONT/HiFi), LorBin version, and CheckM2 gates.
 - Do not claim “novel phylum” from LorBin alone — require GTDB-Tk + literature
   placement and chimera screens (`gunc`).
+
+## Validation, recovery, and provenance
+
+Require completed logs, non-empty candidate bins/assignments, exact BAM/FASTA header agreement and unique final contig membership. Summarize binned/unbinned bases and evaluate candidates with CheckM2/GUNC; compare marker and no-marker evaluation modes only as a declared sensitivity analysis.
+
+Use a new output after changing assembly, BAMs, `--multi`, evaluation model or reclustering threshold. Record LorBin commit/environment, command, input checksums, sample order, mapping parameters, model/evaluation mode, thresholds, logs and candidate checksums. A learned cluster is not a validated genome.
 
 ## Related skills
 

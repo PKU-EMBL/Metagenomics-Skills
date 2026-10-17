@@ -28,7 +28,7 @@ Useful Swiss-army mapper/utilities; for standard metagenome coverage prefer Bowt
 ## How to run
 
 ```bash
-conda install -c bioconda bbmap  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda bbmap
 
 bbmap.sh ref=contigs.fa in1=clean_1.fq.gz in2=clean_2.fq.gz \
   out=temp/map/${id}.bam threads=16

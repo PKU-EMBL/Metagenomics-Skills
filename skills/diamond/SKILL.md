@@ -38,7 +38,7 @@ protein searches (eggNOG-mapper, DAS Tool protein search, custom NR/UniRef).
 ## How to run
 
 ```bash
-conda install -c bioconda diamond  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda diamond
 
 diamond makedb --in proteins.faa -d ref
 diamond blastp -q query.faa -d ref -o hits.tsv -p 16 -f 6

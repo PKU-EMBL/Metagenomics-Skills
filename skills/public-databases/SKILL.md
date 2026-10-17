@@ -12,6 +12,7 @@ license: MIT
 metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "database, catalogue, UHGG, GTDB, MGnify, CAMI, proGenomes, SRA, ENA, KEGG"
+  metagenomics.stage: "utilities"
 ---
 
 # Public databases

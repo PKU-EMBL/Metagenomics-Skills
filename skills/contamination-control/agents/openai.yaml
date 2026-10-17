@@ -1,0 +1,6 @@
+interface:
+  display_name: "Contamination control"
+  short_description: "Design controls and audit contaminant evidence"
+  default_prompt: "Use $contamination-control to check my controls and feature tables, then design a batch-aware contamination workflow with explicit validation and decision boundaries."
+policy:
+  allow_implicit_invocation: true

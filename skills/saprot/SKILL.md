@@ -13,6 +13,10 @@ metadata:
   metagenomics.tags: "SaProt, Westlake, PLM, protein-language-model, Foldseek, 3Di, ICLR"
   metagenomics.upstream: "https://github.com/westlake-repl/SaProt"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "snapshot e91e485; SaProt_650M_AF2 revision d9b9ad00"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "Hugging Face API reviewed; not executed here"
 ---
 
 # SaProt (Westlake)
@@ -58,13 +62,26 @@ project uses them; keep this skill focused on SaProt.
 
 ## How to run
 
-```bash
-# clone / pip per upstream README; HF checkpoints e.g.
-#   westlake-repl/SaProt_650M_AF2
-#   westlake-repl/SaProt_1.3B_AFDB_OMG_NCBI
-# convert structures → SA tokens with Foldseek (see SaProt README)
-# then HF or ESM-style forward for embeddings / fine-tunes
+SaProt expects two-character structure-aware tokens (amino acid plus Foldseek 3Di state); `#` masks low-confidence structure in the reviewed upstream convention.
+
+```python
+import torch
+from transformers import EsmForMaskedLM, EsmTokenizer
+
+repo = "westlake-repl/SaProt_650M_AF2"
+revision = "d9b9ad00ef61c0990e611b2b43f2231c7de24b38"
+tokenizer = EsmTokenizer.from_pretrained(repo, revision=revision)
+model = EsmForMaskedLM.from_pretrained(repo, revision=revision).eval()
+sa_sequence = "M#EvVpQpL#VyQdYaKv"
+inputs = tokenizer(sa_sequence, return_tensors="pt")
+with torch.inference_mode():
+    output = model(**inputs)
+assert output.logits.shape[:2] == inputs["input_ids"].shape
+assert torch.isfinite(output.logits).all()
+print(repo, revision, tokenizer.tokenize(sa_sequence), tuple(output.logits.shape))
 ```
+
+Generate SA tokens from the exact structure/chain with the pinned Foldseek encoder, preserve residue mapping, and mask low-pLDDT AF2 regions under a declared threshold. Do not feed ordinary amino-acid strings to an SA-token analysis without using a documented sequence-only checkpoint/mode.
 
 ## Decision tree
 
@@ -75,6 +92,12 @@ Structure-aware protein LM?
 ├─ FASTA → Foldseek search → prostt5 + foldseek
 └─ Remote homology ranking → plmsearch / deepblast
 ```
+
+## Validation, recovery, and provenance
+
+Require one-to-one amino-acid/3Di residue mapping, valid even-length SA strings, chain and structure IDs, confidence-mask accounting, finite tensors and stable sequence order. Compare against sequence-only ESM and structure-search baselines on leakage-resistant splits; inspect effects of low-confidence masking. A loaded model and high score do not validate function or mutation effects.
+
+Record SaProt repository/checkpoint immutable revisions and license, Transformers/PyTorch/Foldseek versions, structure source and checksum, chain extraction, pLDDT threshold, token strings/checksums, device/dtype, pooling/head, code/seeds and outputs. Structure-aware predictions remain computational.
 
 ## Related skills
 

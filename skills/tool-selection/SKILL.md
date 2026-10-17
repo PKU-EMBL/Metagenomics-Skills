@@ -10,6 +10,7 @@ license: MIT
 metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "guidance, tool-selection, mapping, binning, mining, research-analysis, workflow"
+  metagenomics.stage: "utilities"
 ---
 
 # Tool Selection
@@ -19,17 +20,21 @@ Start from the **stage**, then the deliverable.
 ## By stage
 
 ```text
-1 QC       fastp · kneaddata · fastqc · cutadapt · trimmomatic
+1 QC       contamination-control · fastp · kneaddata · hostile · fastqc · cutadapt · trimmomatic
+           long-read-qc → nanoplot · chopper · filtlong · hifiadapterfilt
 2 Assembly megahit · metaspades · metaflye · metamdbg  (+ quast)
            polish: racon (long) · pilon (short)
            coassembly planning: binchicken (low-abundance / novelty)
 3 Mapping  strobealign | bowtie2 | bwa-mem2 | bwa | minimap2 · lexicmap · phylign · samtools · diamond
-4 Binning  metabat2 · maxbin2 · concoct · semibin2 · vamb · aamb · taxvamb · comebin · metabinner · lorbin
+4 Binning  metabat2 · maxbin2 · concoct · semibin2 · vamb · aamb · taxvamb · comebin · metabinner · lorbin · metacoag
            → basalt ★ · metawrap · dastool → anvio / deepurify → drep · skani · fastani · coverm · checkm2 · gunc
-5 Taxonomy metaphlan · singlem · kraken2+bracken · motus · sylph · metabuli · kaiju · gtdbtk
+5 Taxonomy metaphlan · singlem · kraken2+bracken · motus · sylph · sourmash · metabuli · kaiju · gtdbtk
+           eukaryotes → eukaryotic-metagenomics · tiara · whokaryote · eukcc
            phylogenomics → phylophlan · iqtree · fasttree · lucaphylo
 6 Function humann · prodigal · bakta · prokka · cd-hit · mmseqs2 · salmon
            · eggnog-mapper · rgi · homology-search
+           RNA → metatranscriptomics · sortmerna; pangenome → pangenome-analysis · panaroo · ppanggolin
+           models → community-metabolic-modeling · carveme · micom
 7 Mining   microbial-mining → antismash · bigscape · genomad · virsorter2 · checkv · vcontact
            · mobileog · isescan · integronfinder · mob-suite · plasmaag · macrel
            · cge-finders · plasmidfinder · resfinder · pointfinder
@@ -39,8 +44,9 @@ Start from the **stage**, then the deliverable.
            · hadeg · biosurfdb · dram · dbcan · gapseq · vmh · deeparg
            · defensefinder · padloc · qsap
 8 Report   research-analysis → multiqc · microeco · phyloseq · visualization
-           · maaslin2 · ancombc · lefse · stamp · sparcc · spieceasi
-           · nextflow · snakemake
+           · maaslin2 · ancombc · aldex2 · corncob · lefse · stamp
+           · permanova · netcomi · sparcc · spieceasi · absolute-abundance
+           · source-tracking · feast · nextflow · snakemake · nf-core-mag · nf-core-taxprofiler
 ```
 
 ## Mapping head-to-head
@@ -80,7 +86,8 @@ Start from the **stage**, then the deliverable.
 |------|--------|
 | BGCs / natural products | `antismash` → `bigscape` |
 | Resistome | `rgi` (± `deeparg`); isolates `resfinder` / `staramr` |
-| Plasmids / viruses / MGEs | `genomad` (± `virsorter2` → `checkv` → `vcontact`) |
+| Viruses / vOTUs / hosts | `virome-analysis` → `genomad`/`virsorter2`/`vibrant` → `checkv` → `votu-workflow` → `vcontact`/`iphop` |
+| Plasmids / MGEs | `genomad` plus context-specific MGE tools |
 | MGE proteins / IS / integrons | `mobileog` / `isescan` / `integronfinder` |
 | CGE Finders (+ pMLST / mlst / ABRicate) | `cge-finders` |
 | Plasmid MOB / replicon typing | `mob-suite` / `plasmidfinder` (± `pmlst`) |
@@ -90,7 +97,7 @@ Start from the **stage**, then the deliverable.
 | DOM / biosurfactant / HC biodegradation | `dom-biosurfactant` |
 | Distilled metabolism | `dram` |
 | CAZymes / glycan DOM substrates | `dbcan` |
-| Metabolic models | `gapseq` |
+| Metabolic models | `community-metabolic-modeling` → `carveme` / `gapseq` / `micom` |
 | Defense systems | `defensefinder` / `padloc` |
 | Quorum sensing | `qsap` |
 
@@ -183,14 +190,18 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | Diversity + composition R workflow | `microeco` |
 | phyloseq data class / classic plots | `phyloseq` |
 | Multivariable differential abundance | `maaslin2` |
-| Compositional bias-corrected DA | `ancombc` |
+| Compositional bias-corrected DA | `ancombc`; Monte Carlo CLR effects → `aldex2` |
+| Count mean and dispersion effects | `corncob` |
+| Community-level distance test | `permanova` (with dispersion and restricted permutations) |
 | Classic LDA biomarkers | `lefse` |
 | GUI exploratory profile stats | `stamp` |
 | SparCC correlations | `sparcc` |
-| SPIEC-EASI networks | `spieceasi` |
+| Network construction/comparison | `netcomi` (or focused `sparcc` / `spieceasi`) |
+| Source contribution estimates | `source-tracking` → `feast` |
+| Load-aware quantities | `absolute-abundance` with measured calibration |
 | Aggregated QC HTML | `multiqc` |
 | Figure checklist by stage | `visualization` |
-| Nextflow / nf-core pipelines | `nextflow` |
+| Nextflow / nf-core pipelines | `nextflow` → `nf-core-mag` / `nf-core-taxprofiler` |
 | Snakemake rule DAGs | `snakemake` |
 
 ## Never

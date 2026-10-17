@@ -12,6 +12,10 @@ metadata:
   metagenomics.tags: "Nucleotide-Transformer, NTv3, gLM, DNA, InstaDeep, HuggingFace"
   metagenomics.upstream: "https://github.com/instadeepai/nucleotide-transformer"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "snapshot 2dc37b8"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "Python API reviewed against upstream; not executed here"
 ---
 
 # Nucleotide Transformer (NT / NTv3)
@@ -51,14 +55,28 @@ variants.
 
 ## How to run
 
+This reviewed smoke pattern uses the classic JAX NT-v2 API; it downloads a named checkpoint and verifies the returned embedding tensor.
+
 ```bash
-# install / notebooks: follow upstream docs/ and HF collections
-# NT classic: https://huggingface.co/collections/InstaDeepAI/nucleotide-transformer-…
-# NTv3: docs/nucleotide_transformer_v3.md · HF Space InstaDeepAI/ntv3
-# typical: load HF checkpoint → tokenize DNA → embeddings or task head
+python - <<'PY'
+import haiku as hk
+import jax
+import jax.numpy as jnp
+from nucleotide_transformer.pretrained import get_pretrained_model
+
+model_name = "250M_multi_species_v2"
+parameters, forward_fn, tokenizer, config = get_pretrained_model(
+    model_name=model_name, embeddings_layers_to_save=(20,), max_positions=32)
+forward_fn = hk.transform(forward_fn)
+seqs = ["ATTCCGATTCCGATTCCG", "ATTTCTCTCTCTCTCTGAGATCGATCGATCGAT"]
+tokens = jnp.asarray([x[1] for x in tokenizer.batch_tokenize(seqs)], dtype=jnp.int32)
+out = forward_fn.apply(parameters, jax.random.PRNGKey(0), tokens)
+assert out["embeddings_20"].shape[0] == len(seqs)
+print(model_name, out["embeddings_20"].shape)
+PY
 ```
 
-Pin exact checkpoint (e.g. NT-v2 vs NTv3 size) and max context in Methods.
+NTv3 uses `nucleotide_transformer_v3.pretrained.get_pretrained_ntv3_model`, single-base tokens, and sequence lengths divisible by `2^num_downsamples`; do not apply NT-v2 code or biological heads to NTv3. Pin repository commit, exact checkpoint revision, layer, chunk/strand pooling and maximum context.
 
 ## Decision tree
 
@@ -71,6 +89,12 @@ DNA foundation model need?
 ├─ Metagenomic mixed-modality gLM2 → omg
 └─ Protein homology → homology-search / plmsearch
 ```
+
+## Validation, recovery, and provenance
+
+Validate alphabet, sequence IDs, length/chunk/padding masks, forward and reverse-complement handling, finite tensor shape/dtype, and deterministic behavior under the documented backend. Include controls/held-out labels for any fine-tuned task and compare to homology/baseline models without leakage. A successful tensor operation is not biological validation.
+
+Cache checksummed model artifacts and write embeddings atomically with ID-to-row metadata. Record package/JAX/CUDA versions, device, checkpoint repository and immutable revision/hash, tokenizer/config, code, seeds, input checksums, pooling and output checksum. Embedding similarity, functional tracks and generated sequence are model predictions; microbial transfer requires domain-specific validation.
 
 ## Related skills
 

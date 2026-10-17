@@ -14,6 +14,10 @@ metadata:
   metagenomics.tags: "coassembly, low-abundance, BinChicken, SingleM, MAG"
   metagenomics.upstream: "https://github.com/AroneyS/binchicken"
   metagenomics.stage: "assembly"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "0.15.0"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream documentation; not executed here"
 ---
 
 # Bin Chicken
@@ -59,18 +63,24 @@ single hypothesis-driven contrast study — see `study-design`.
 
 ## How to run
 
-Confirm subcommands against upstream (workflow is multi-step):
+Create forward and reverse lists with one matching absolute FASTQ path per line, in identical sample order. Bin Chicken currently targets Illumina paired reads.
 
 ```bash
-# high-level pattern — see upstream docs for exact CLI
-binchicken \
-  # 1) singlem / marker search across samples
-  # 2) cluster samples into coassembly targets
-  # 3) emit assembly recipes / sample lists
+set -euo pipefail
+[[ -s samples_forward.txt && -s samples_reverse.txt ]] || exit 2
+[[ $(wc -l < samples_forward.txt) -eq $(wc -l < samples_reverse.txt) ]] || exit 3
+binchicken --version
+binchicken single \
+  --forward-list samples_forward.txt --reverse-list samples_reverse.txt \
+  --run-aviary --cores 64 --output binchicken_single_assembly \
+  >binchicken.single.stdout.log 2>binchicken.single.stderr.log
+binchicken iterate \
+  --coassemble-output binchicken_single_assembly \
+  --run-aviary --cores 64 --output binchicken_2_coassembly \
+  >binchicken.iterate.stdout.log 2>binchicken.iterate.stderr.log
 ```
 
-Then run your assembler (`megahit` / `metaspades`) on each planned group and
-continue with mapping + binning.
+A later iteration can set `--coassembly-samples 3` and use the preceding iteration as `--coassemble-output`. Do not launch the expensive Aviary path before reviewing the dry plan, storage, and scheduler resources.
 
 ## Decision tree
 
@@ -88,6 +98,12 @@ Low-abundance / novelty MAG recovery across many samples?
   GUNC/CheckM2 remain mandatory.
 - Report marker DB, novelty filter, group size, and assembler.
 - Genome counts from large public runs are not transferable to your biome.
+
+## Validation, recovery, and provenance
+
+Require all input libraries to be accounted for, emitted coassembly groups to contain only permitted strata, SingleM evidence for targets, completed Aviary logs, and explicit recovered/failed group status. Compare individual and targeted coassemblies under identical assembly, mapping, CheckM2/GUNC and dereplication gates; report recovery gains, chimerism and compute—not raw MAG count alone.
+
+Resume only through documented Bin Chicken/Aviary checkpoints with unchanged lists, databases and parameters; otherwise use a fresh output. Record Bin Chicken/SingleM/Aviary versions, metapackage/GTDB release, ordered read lists and checksums, commands, group manifests, seeds, resource use and accepted/rejected MAG lineage. Targeted grouping does not prove that coassembled contigs belong to one population.
 
 ## Related skills
 

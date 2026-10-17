@@ -12,6 +12,9 @@ metadata:
   metagenomics.tags: "MaAsLin2, MaAsLin3, differential-abundance, statistics, bioBakery"
   metagenomics.upstream: "https://github.com/biobakery/Maaslin2"
   metagenomics.stage: "report"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "R API reviewed against upstream; not executed here"
 ---
 
 # MaAsLin2 / MaAsLin3
@@ -46,12 +49,22 @@ abundance association framing — cite the version you run.
 ## How to run
 
 ```r
-# Bioconductor / GitHub install per upstream README for Maaslin2 or MaAsLin3
-# library(Maaslin2)  # or Maaslin3
-# Maaslin2(input_data, input_metadata, output, fixed_effects = c("phenotype","age"), ...)
+library(Maaslin2)
+x <- read.delim("features.tsv", row.names = 1, check.names = FALSE)
+m <- read.delim("metadata.tsv", row.names = 1, check.names = FALSE)
+stopifnot(!anyDuplicated(rownames(x)), !anyDuplicated(rownames(m)))
+stopifnot(setequal(rownames(x), rownames(m)), all(c("phenotype", "age") %in% names(m)))
+x <- x[rownames(m), , drop = FALSE]  # samples × features in this example
+fit <- Maaslin2(
+  input_data = x, input_metadata = m, output = "result/maaslin2",
+  fixed_effects = c("phenotype", "age"), reference = "phenotype,Control",
+  normalization = "TSS", transform = "LOG", analysis_method = "LM",
+  min_prevalence = 0.10, max_significance = 0.05, standardize = FALSE,
+  cores = 4, plot_heatmap = TRUE, plot_scatter = TRUE)
+writeLines(capture.output(sessionInfo()), "result/maaslin2/sessionInfo.txt")
 ```
 
-Do not invent formula syntax — follow the installed package vignette.
+For repeated measures, add a justified `random_effects` field whose IDs have replication. MaAsLin 3 has a different interface; use its pinned vignette rather than translating arguments mechanically.
 
 ## Decision tree
 
@@ -62,6 +75,12 @@ Differential / association analysis?
 ├─ Explore diversity first → microeco
 └─ Plot checklist → visualization
 ```
+
+## Validation, recovery, and provenance
+
+Before fitting, require unique sample/feature IDs, exact metadata overlap, non-negative finite input, adequate group sizes, no perfect confounding, and an explicit feature orientation/scale. Inspect `all_results.tsv`, significant results, model/log warnings, coefficients, standard errors, q-values, prevalence and residual diagnostics; verify the reference level and coefficient direction from a known contrast. Do not select a model after viewing significance without disclosure.
+
+Save the unfiltered input, inclusion/exclusion manifest, factor levels, formula/options, package lockfile and `sessionInfo()`. Report effect, uncertainty, adjusted p-value, tested-feature count and sensitivity analyses—not q-values alone. Associations are conditional statistical estimates and do not establish causality or absolute abundance.
 
 ## Related skills
 

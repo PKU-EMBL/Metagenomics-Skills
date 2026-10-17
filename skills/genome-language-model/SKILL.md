@@ -12,6 +12,7 @@ license: MIT
 metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "genome-language-model, gLM, NTv3, DNABERT, Caduceus, Evo2, OMG, gLM2"
+  metagenomics.stage: "mining"
 ---
 
 # Genome language model

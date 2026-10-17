@@ -12,6 +12,10 @@ metadata:
   metagenomics.tags: "binning, MetaBinner, ensemble, SCG"
   metagenomics.upstream: "https://github.com/ziyewang/MetaBinner"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "snapshot 50a1281"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream; not executed here"
 ---
 
 # MetaBinner
@@ -36,12 +40,29 @@ stand-alone alternative to piping MetaBAT/MaxBin into MetaWRAP/DAS Tool.
 Still feed outputs through CheckM2; for related multi-assembly catalogues prefer
 `basalt` ★. Complements `comebin` from the same group.
 
-## How to run
+## Inputs and run
+
+Supply the length-filtered assembly, a tab-delimited coverage profile (contigs × samples), and the matching comma-delimited k-mer profile. All paths passed to the wrapper must be absolute and contig IDs/order must reconcile with the FASTA.
 
 ```bash
-# follow upstream scripts — typically contigs + coverage tables
-MetaBinner ...  # verify flags in README
+set -euo pipefail
+MB=$(dirname "$(command -v run_metabinner.sh)")
+contigs=$(realpath final.contigs_f1k.fa)
+coverage=$(realpath coverage_profile_f1k.tsv)
+kmer=$(realpath kmer_4_f1000.csv)
+out=$(realpath -m result/metabinner)
+[[ -s "$contigs" && -s "$coverage" && -s "$kmer" ]] || exit 2
+bash "$MB/run_metabinner.sh" -a "$contigs" -o "$out" \
+  -d "$coverage" -k "$kmer" -p "$MB" -t 16 -s large \
+  >metabinner.stdout.log 2>metabinner.stderr.log
+test -s "$out/metabinner_res/metabinner_result.tsv"
 ```
+
+## Validation, recovery, and provenance
+
+Validate that every assignment in `metabinner_res/metabinner_result.tsv` names a real contig, no contig is assigned to multiple final bins, and generated bin FASTAs reconstruct those memberships. Tabulate binned/unbinned bases and evaluate candidates with CheckM2 and GUNC before refinement/dereplication; compare against independent binners under the same minimum-contig policy.
+
+Use a new output after changing assembly, profiles, scale or threads; do not combine component/intermediate results across runs. Record MetaBinner commit/environment, command, assembly/profile checksums and schemas, sample order, minimum contig length, output assignments and candidate checksums. An ensemble assignment remains a binning hypothesis.
 
 ## Related skills
 

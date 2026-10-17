@@ -1,7 +1,7 @@
 {
   "name": "Metagenomics Skills",
   "description": "Portable Agent Skills for reproducible shotgun metagenomics: study design, QC, assembly, mapping, binning, taxonomy, function, mining, statistics, and reporting",
-  "version": "1.22.0",
+  "version": "1.23.0",
   "author": "PKU-EMBL",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
@@ -83,11 +83,11 @@
     "Nextflow",
     "Snakemake"
   ],
-  "skills_count": 163,
+  "skills_count": 201,
   "skill_categories": {
-    "analysis-tools": 126,
-    "evaluation": 10,
-    "orchestration": 13,
+    "analysis-tools": 150,
+    "evaluation": 11,
+    "orchestration": 26,
     "utilities": 14
   },
   "featured_skills": [
@@ -112,6 +112,15 @@
     "mining",
     "statistics",
     "ai-search",
+    "contamination",
+    "long-read",
+    "virome",
+    "strain-resolved",
+    "eukaryotic",
+    "pangenome",
+    "metatranscriptomics",
+    "metabolic-modeling",
+    "workflows",
     "full"
   ],
   "platforms": [

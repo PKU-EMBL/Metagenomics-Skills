@@ -1,0 +1,6 @@
+interface:
+  display_name: "Source tracking"
+  short_description: "Design validated source-sink attribution"
+  default_prompt: "Use $source-tracking to audit my source/sink design and counts, define FEAST validation and uncertainty, and prevent unsupported origin or transmission claims."
+policy:
+  allow_implicit_invocation: true

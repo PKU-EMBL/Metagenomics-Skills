@@ -11,6 +11,10 @@ metadata:
   metagenomics.tags: "virus, taxonomy, vConTACT, gene-sharing, ICTV"
   metagenomics.upstream: "https://bitbucket.org/MAVERICLab/vcontact3"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "vConTACT3 3.2.4; database v232"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "vConTACT3 CLI reviewed against upstream; not executed here"
 ---
 
 # vConTACT2 / vConTACT3
@@ -52,12 +56,21 @@ contigs → genomad | virsorter2 → checkv (quality filter)
 Network clusters ≠ wet-lab host range. Report reference DB (Viral RefSeq /
 ICTV snapshot) and software version.
 
-## How to run
+## Inputs and run
+
+Use quality-gated, dereplicated viral nucleotide FASTA with unique IDs. vConTACT3 handles gene calling/input processing itself; old vConTACT2 gene-to-genome files are not its input contract.
 
 ```bash
-# follow Bitbucket/Apptainer docs for your edition — CLI differs by version
-# typical inputs: viral genomes/contigs + predicted proteins + reference set
+set -euo pipefail
+[[ -s virus_genomes.fna ]] || exit 2
+DB=${VCONTACT3_DB:?set VCONTACT3_DB to the directory containing database v232}
+vcontact3 --version
+vcontact3 run --nucleotide virus_genomes.fna --output result/vcontact3 \
+  --db-domain prokaryotes --db-version 232 --db-path "$DB" \
+  >vcontact3.stdout.log 2>vcontact3.stderr.log
 ```
+
+Choose `--db-domain` from the biological host domain (`prokaryotes`, `bacteria`, `archaea`, or `eukaryotes`) before execution. vConTACT2 reproduction needs its own frozen environment/database and must not be combined with v3 outputs.
 
 ## Decision tree
 
@@ -68,6 +81,12 @@ Viral sequences in hand?
 ├─ Need taxonomy / clustering → vcontact (v3 preferred)
 └─ Only presence of viral contigs → stop at genomad/checkv
 ```
+
+## Validation, recovery, and provenance
+
+Require completed logs, genome accounting, hierarchical cluster/taxonomy CSVs and generated network/profile outputs. Inspect unassigned genomes, reference support, rank confidence, domain choice, cluster size and discordance with independent sequence taxonomy; retain the exact vOTU-to-input map. A valid no-assignment is preferable to forcing a rank.
+
+Use a fresh output after changing FASTA, database/domain or version. Record vConTACT3/MMseqs2 versions, database version/DOI/checksum, full command, input checksum, CheckV/vOTU gates and result checksums. Taxonomic placement and gene-sharing clusters do not establish host range, infectivity or ICTV ratification.
 
 ## Related skills
 

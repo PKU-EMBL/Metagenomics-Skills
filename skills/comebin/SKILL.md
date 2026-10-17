@@ -12,6 +12,10 @@ metadata:
   metagenomics.tags: "binning, COMEBin, contrastive-learning, MAG"
   metagenomics.upstream: "https://github.com/ziyewang/COMEBin"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "snapshot 1b476a4"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream; not executed here"
 ---
 
 # COMEBin
@@ -49,13 +53,17 @@ exist (Mattock & Watson 2023 — single-coverage hides contamination).
 ## How to run
 
 ```bash
-# confirm exact CLI in upstream README
-COMEBin.sh \
-  -a contigs.fa \
-  -o temp/bins/comebin \
-  -p temp/map \
-  -t 32
+set -euo pipefail
+[[ -s contigs.fa && -d temp/map ]] || exit 2
+find temp/map -maxdepth 1 -name '*.bam' -size +0c | grep -q .
+command -v run_comebin.sh >/dev/null
+run_comebin.sh -a "$(realpath contigs.fa)" \
+  -o "$(realpath -m temp/bins/comebin)" \
+  -p "$(realpath temp/map)" -d cuda -t 32 \
+  >comebin.stdout.log 2>comebin.stderr.log
 ```
+
+Use `-d cpu` when no compatible CUDA device is available. BAMs must be coordinate-sorted, indexed, and aligned to the exact assembly; inspect `run_comebin.sh -h` in the pinned release before changing modes.
 
 ## Decision tree
 
@@ -73,6 +81,12 @@ Single binner choice?
 - Contrastive gains are benchmark-specific; always QC with CheckM2/GUNC.
 - Report mode (co-assembly / single / multi-sample) and coverage recipe.
 - Combine with ensemble tools rather than publishing one binner’s raw dump.
+
+## Validation, recovery, and provenance
+
+Require completed logs, candidate FASTAs/assignment tables, exact contig membership and no duplicate final assignments. Reconcile all BAM reference headers/lengths to the assembly, summarize binned/unbinned bases, and evaluate bins with CheckM2/GUNC under the same policy used for comparator binners. GPU completion alone is not a quality result.
+
+Use a fresh output after changing assembly, BAM set, device or release. Record COMEBin/PyTorch/CUDA commit and versions, command, assembly/BAM checksums, ordered sample mapping, minimum contig policy, device/seed where exposed, assignments and candidate checksums. Bins remain candidates until independent QC/refinement.
 
 ## Related skills
 

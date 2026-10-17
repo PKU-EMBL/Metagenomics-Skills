@@ -11,6 +11,7 @@ metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "database, MGnify, UHGG, genome-catalogue, EBI"
   metagenomics.upstream: "https://github.com/EBI-Metagenomics"
+  metagenomics.stage: "taxonomy"
 ---
 
 # MGnify (incl. UHGG / biome catalogues)

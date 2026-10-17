@@ -1,0 +1,6 @@
+interface:
+  display_name: "nf-core mag"
+  short_description: "Run a pinned genome-resolved nf-core workflow"
+  default_prompt: "Use $nf-core-mag to validate my samplesheet and compute setup, prepare a pinned containerized run, and verify every scientific stage rather than only exit status."
+policy:
+  allow_implicit_invocation: true

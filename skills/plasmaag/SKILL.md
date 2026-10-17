@@ -13,6 +13,10 @@ metadata:
   metagenomics.tags: "plasmid, MAG, PlasMAAG, MGE, binning"
   metagenomics.upstream: "https://github.com/RasmussenLab/PlasMAAG"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "snapshot a6b39ac"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI and output contract reviewed against upstream; not executed here"
 ---
 
 # PlasMAAG
@@ -44,11 +48,28 @@ multi-sample assemblies / graphs + alignments
 geNomad classifies contigs; PlasMAAG aims to **reconstruct plasmid genomes**.
 Use both when plasmid biology is a primary claim.
 
-## How to run
+## Inputs and run
+
+Use Linux and at least two paired libraries when cross-sample graph/coverage evidence is the objective. The whitespace-delimited manifest header must be exactly `read1 read2`; use absolute, non-empty, synchronized FASTQs.
 
 ```bash
-# follow upstream README — multi-sample inputs required for best performance
+set -euo pipefail
+[[ -s reads.tsv ]] || exit 2
+read -r h1 h2 extra < reads.tsv
+[[ "$h1" == read1 && "$h2" == read2 && -z "${extra:-}" ]] || exit 3
+PlasMAAG --help >/dev/null
+PlasMAAG --reads reads.tsv --output result/plasmaag --threads 32 --dryrun
+PlasMAAG --reads reads.tsv --output result/plasmaag --threads 32 \
+  >plasmaag.stdout.log 2>plasmaag.stderr.log
 ```
+
+For existing metaSPAdes outputs, provide `--reads_and_assembly_dir` with exact headers `read1 read2 assembly_dir` and require `contigs.fasta`, `assembly_graph_after_simplification.gfa`, and `contigs.paths` per row. For MEGAHIT, use `--reads_and_contigs` with `read1 read2 contigs`.
+
+## Validation, recovery, and provenance
+
+Require completed workflow/logs and `results/candidate_plasmids.tsv`, `candidate_genomes.tsv`, `candidate_virus.tsv`, `scores.tsv` (or release-equivalent score tables), with corresponding non-empty FASTA directories when rows exist. Reconcile every contig and sample prefix, inspect cluster scores/conflicts, circularity/coverage/graph support, geNomad/MOB/replicon evidence and host-link uncertainty; run CheckV only on viral candidates.
+
+Use Snakemake's supported resume only with unchanged manifest/config/software; otherwise preserve the run and use a new output. Record PlasMAAG commit/environment, config, geNomad DB, assembler/index versions, ordered manifest and checksums, command, logs, cluster tables and FASTA checksums. A reconstructed candidate is not proof of an autonomous complete plasmid or host association.
 
 ## Related skills
 

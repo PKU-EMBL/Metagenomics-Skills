@@ -5,8 +5,11 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
+import subprocess
 import sys
 from collections import Counter
+from datetime import date
 from pathlib import Path
 from typing import Any
 from urllib.parse import unquote
@@ -22,9 +25,10 @@ SKILLS_DIR = ROOT / "skills"
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 FRONTMATTER_RE = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n(.*)\Z", re.DOTALL)
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
+CODE_FENCE_RE = re.compile(r"^```(bash|python)\r?\n(.*?)^```\s*$", re.MULTILINE | re.DOTALL)
 SPEC_FIELDS = {"name", "description", "license", "compatibility", "metadata", "allowed-tools"}
 MAX_SKILL_LINES = 500
-EXPECTED_VERSION = "1.22.0"
+EXPECTED_VERSION = "1.23.0"
 PACKAGE_NAME = "metagenomics-skills"
 PLUGIN_ID = "metagenomics"
 
@@ -74,6 +78,9 @@ class Validator:
         self.skill_data: dict[str, dict[str, Any]] = {}
         self.description_chars = 0
         self.agent_ui_count = 0
+        self.code_fence_count = 0
+        self.bash_path = shutil.which("bash")
+        self.skipped_bash_fences = 0
 
     def error(self, path: Path | str, message: str) -> None:
         self.errors.append(f"{path}: {message}")
@@ -112,6 +119,43 @@ class Validator:
                 "non-portable top-level fields (move custom data under metadata): " + ", ".join(sorted(unknown)),
             )
 
+        for block_number, code_match in enumerate(CODE_FENCE_RE.finditer(body), start=1):
+            language, code = code_match.groups()
+            self.code_fence_count += 1
+            executable_lines = [
+                line for line in code.splitlines() if line.strip() and not line.lstrip().startswith("#")
+            ]
+            if not executable_lines:
+                self.error(
+                    skill_md.relative_to(ROOT),
+                    f"{language.capitalize()} fence {block_number} is empty or comment-only",
+                )
+                continue
+            if language == "python":
+                try:
+                    compile(code, f"{skill_md}:{block_number}", "exec")
+                except SyntaxError as exc:
+                    self.error(
+                        skill_md.relative_to(ROOT),
+                        f"Python fence {block_number} has invalid syntax: {exc.msg} (line {exc.lineno})",
+                    )
+            elif self.bash_path:
+                result = subprocess.run(
+                    [self.bash_path, "-n"],
+                    input=code,
+                    text=True,
+                    capture_output=True,
+                    check=False,
+                )
+                if result.returncode:
+                    detail = result.stderr.strip().splitlines()[-1] if result.stderr.strip() else "bash -n failed"
+                    self.error(
+                        skill_md.relative_to(ROOT),
+                        f"Bash fence {block_number} has invalid syntax: {detail}",
+                    )
+            else:
+                self.skipped_bash_fences += 1
+
         name = data.get("name")
         description = data.get("description")
         if not isinstance(name, str) or not NAME_RE.fullmatch(name) or not 1 <= len(name) <= 64:
@@ -141,13 +185,40 @@ class Validator:
             unnamespaced = sorted(key for key in metadata if not key.startswith("metagenomics."))
             if unnamespaced:
                 self.error(skill_md.relative_to(ROOT), "metadata keys must use the metagenomics.* namespace")
-            for key in ("metagenomics.category", "metagenomics.tags"):
+            for key in ("metagenomics.category", "metagenomics.tags", "metagenomics.stage"):
                 if not metadata.get(key, "").strip():
                     self.error(skill_md.relative_to(ROOT), f"metadata key '{key}' is required")
             allowed_categories = {"analysis-tools", "evaluation", "orchestration", "utilities"}
             category = metadata.get("metagenomics.category")
             if category not in allowed_categories:
                 self.error(skill_md.relative_to(ROOT), f"unknown metagenomics.category: {category!r}")
+            allowed_stages = {
+                "assessment", "assembly", "binning", "function", "gene", "mapping",
+                "mining", "qc", "report", "strain", "taxonomy", "utilities",
+            }
+            stage = metadata.get("metagenomics.stage")
+            if stage not in allowed_stages:
+                self.error(skill_md.relative_to(ROOT), f"unknown metagenomics.stage: {stage!r}")
+            review_keys = {
+                "metagenomics.maturity",
+                "metagenomics.last-reviewed",
+                "metagenomics.command-status",
+            }
+            present_review_keys = review_keys.intersection(metadata)
+            if present_review_keys and present_review_keys != review_keys:
+                missing = ", ".join(sorted(review_keys - present_review_keys))
+                self.error(skill_md.relative_to(ROOT), f"incomplete review metadata; missing: {missing}")
+            reviewed = metadata.get("metagenomics.last-reviewed")
+            if reviewed:
+                try:
+                    parsed_reviewed = date.fromisoformat(reviewed)
+                except ValueError:
+                    parsed_reviewed = None
+                if parsed_reviewed is None or parsed_reviewed.isoformat() != reviewed:
+                    self.error(
+                        skill_md.relative_to(ROOT),
+                        f"invalid metagenomics.last-reviewed date: {reviewed!r}",
+                    )
         allowed_tools = data.get("allowed-tools")
         if allowed_tools is not None and not isinstance(allowed_tools, str):
             self.error(skill_md.relative_to(ROOT), "allowed-tools must be a space-separated string")
@@ -211,6 +282,8 @@ class Validator:
         markdown_files = sorted(ROOT.glob("*.md")) + sorted((ROOT / "docs").rglob("*.md")) + sorted(SKILLS_DIR.rglob("*.md"))
         for path in markdown_files:
             text = path.read_text(encoding="utf-8")
+            if "http://" in text:
+                self.error(path.relative_to(ROOT), "insecure HTTP URL; use HTTPS")
             for raw_target in LINK_RE.findall(text):
                 target = raw_target.strip()
                 if target.startswith("<") and target.endswith(">"):
@@ -416,6 +489,14 @@ class Validator:
         match = re.search(r"Total: \*\*(\d+)\*\* skills", text)
         if not match or int(match.group(1)) != len(self.skill_data):
             self.error(path.relative_to(ROOT), f"catalog total must be {len(self.skill_data)}")
+        catalog_names = set(re.findall(r"^\|\s*`([^`]+)`\s*\|", text, re.MULTILINE))
+        skill_names = set(self.skill_data)
+        missing = skill_names - catalog_names
+        extra = catalog_names - skill_names
+        if missing:
+            self.error(path.relative_to(ROOT), f"catalog is missing skills: {', '.join(sorted(missing))}")
+        if extra:
+            self.error(path.relative_to(ROOT), f"catalog has unknown skills: {', '.join(sorted(extra))}")
 
     def run(self) -> int:
         self.validate_skills()
@@ -425,6 +506,12 @@ class Validator:
         self.validate_profiles()
         self.validate_docs_count()
 
+        if self.skipped_bash_fences:
+            self.warn(
+                "skills",
+                f"bash is unavailable; skipped syntax checks for {self.skipped_bash_fences} Bash fences",
+            )
+
         for warning in self.warnings:
             print(f"warning: {warning}")
         for error in self.errors:
@@ -432,6 +519,7 @@ class Validator:
         print(
             f"Validated {len(self.skill_data)} skills and {self.agent_ui_count} UI manifests; "
             f"catalog descriptions={self.description_chars} characters; "
+            f"code fences checked={self.code_fence_count - self.skipped_bash_fences}; "
             f"warnings={len(self.warnings)}; errors={len(self.errors)}"
         )
         return 1 if self.errors else 0

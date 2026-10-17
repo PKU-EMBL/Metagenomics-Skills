@@ -11,6 +11,10 @@ metadata:
   metagenomics.tags: "MEBS, sulfur, S, N, CH4, Fe, biogeochemistry, element-cycling"
   metagenomics.upstream: "https://github.com/valdeanda/mebs"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed-legacy"
+  metagenomics.upstream-version: "MEBS 1.2; snapshot c385984"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "Perl and visualization CLIs reviewed against v1.2 manual; not executed here"
 ---
 
 # MEBS
@@ -44,11 +48,24 @@ drawing full METABOLIC-style pathway cartoons.
 Input: directory of `.faa` peptide FASTA; use genomic vs metagenomic mode per
 docs (fragmentary metagenomes need the metagenomic entropy tables).
 
-## How to run
+## Inputs and run
+
+Provide a directory of non-empty `.faa` files. Choose `genomic` for genomes/MAGs and `metagenomic` for fragmentary community protein sets; MEBS must run from its pinned checkout because `mebs.pl` resolves bundled files relative to the working directory.
 
 ```bash
-# clone / install per versioned README (v1.1 / v1.2 manuals differ)
-# typical: mebs.pl -i pep_dir -t genomic|metagenomic …  (verify installed flags)
+set -euo pipefail
+root=${MEBS_ROOT:?set MEBS_ROOT to the pinned MEBS 1.2 checkout}
+proteins=$(realpath proteins)
+out=$(realpath -m result/mebs)
+find "$proteins" -maxdepth 1 -name '*.faa' -size +0c | grep -q .
+mkdir -p "$out"
+(
+  cd "$root"
+  perl mebs.pl -input "$proteins" -type genomic -comp \
+    >"$out/scores.tsv" 2>"$out/mebs.stderr.log"
+  python3 mebs_vis.py "$out/scores.tsv" -o "$out/visual"
+)
+test -s "$out/scores.tsv"
 ```
 
 ## Decision tree
@@ -60,6 +77,12 @@ Cycle scoring need?
 ├─ Fe gene calls → fegenie
 └─ Broad distillate → dram
 ```
+
+## Validation, recovery, and provenance
+
+Require one score/completeness row per input or an explicit failure, finite cycle scores and completed HMMER/visualization logs. Inspect the genomic/metagenomic mode, FDR, completeness markers and score distributions; sulfur has the strongest original benchmark, so do not imply equal validation for every cycle. Keep Pfam hit evidence behind aggregate entropy scores.
+
+Use a fresh output after changing proteins, Pfam/MEBS assets or options. Record MEBS commit/version, bundled model/table hashes, HMMER/Python/R dependencies, command, input/checksum manifest, mode/FDR/completeness options and output checksums. Entropy scores rank encoded machinery; they do not measure pathway completeness, expression or elemental flux.
 
 ## Related skills
 

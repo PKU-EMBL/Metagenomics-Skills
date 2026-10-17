@@ -13,6 +13,10 @@ metadata:
   metagenomics.tags: "ESMC, ESM-C, ESM-Cambrian, PLM, protein-language-model, EvolutionaryScale"
   metagenomics.upstream: "https://github.com/evolutionaryscale/esm"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "esm 3.4.1.post1; ESMC-600M revision fcc9d36f"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "local Hugging Face API reviewed; not executed here"
 ---
 
 # ESM C (ESM Cambrian / ESMC)
@@ -53,13 +57,27 @@ size.
 
 ## How to run
 
-```bash
-# install current EvolutionaryScale / Biohub esm package per upstream README
-# typical: load esmc_300m / esmc_600m (exact IDs change — verify README tag)
-# embed sequences → mean / per-residue vectors for clustering or classifiers
+Use the local Hugging Face path for reproducible weights; platform/API execution has separate credentials, terms and remote-service provenance.
+
+```python
+import torch
+from esm.models.esmc import EsmcForMaskedLM, EsmcTokenizer
+
+repo = "biohub/ESMC-600M"
+revision = "fcc9d36f5fff97d9bb69a36e3252de61cc78c968"
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model = EsmcForMaskedLM.from_pretrained(repo, revision=revision, device=device).eval()
+tokenizer = EsmcTokenizer()
+inputs = tokenizer(["MKTIIALSYIFCLVFADYKDDDDK"], return_tensors="pt", padding=True)
+inputs = {k: v.to(device) for k, v in inputs.items()}
+with torch.inference_mode():
+    output = model(**inputs)
+assert output.last_hidden_state.shape[:2] == inputs["input_ids"].shape
+assert torch.isfinite(output.last_hidden_state).all()
+print(repo, revision, tuple(output.last_hidden_state.shape))
 ```
 
-Do not invent API method names — follow the installed `esm` package docs.
+Pin checkpoint size, dtype, hidden layer, pooling and token budget. Do not silently substitute a 6B/platform result for the open 600M local model.
 
 ## Decision tree
 
@@ -71,6 +89,12 @@ Need modern protein embeddings?
 ├─ Foldseek 3Di from FASTA → prostt5
 └─ Remote homology wrappers → plmsearch / deepblast
 ```
+
+## Validation, recovery, and provenance
+
+Validate input alphabet/IDs, truncation, padding and special-token masks, finite per-residue/pooled tensors, output row order and known controls. Benchmark any downstream head on identity-aware held-out splits and repeat published ESM-2 comparisons if switching models. A forward pass does not validate biological performance.
+
+Record `esm`/PyTorch/CUDA versions, model repository and immutable revision, tokenizer/config hashes, access route/license, device/dtype, pooling/batching, code/seeds and input/output checksums. Embedding proximity remains model-derived evidence, not direct homology, structure or function.
 
 ## Related skills
 

@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "binning, metabat, coverage"
   metagenomics.upstream: "https://bitbucket.org/berkeleylab/metabat"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # MetaBAT 2
@@ -85,6 +88,12 @@ Binning path?
 | Empty bins | Depth contig IDs ≠ FASTA headers |
 | Tiny bins only | Lower community signal / raise depth quality |
 | RAM issues | Increase `-m`; run on high-mem node |
+
+## Validation, recovery, and provenance
+
+Require a non-empty depth table and either candidate FASTAs or an explicit no-bin result. Confirm depth/FASTA contig IDs and lengths agree, every BAM maps against the same assembly, bin contigs are unique across MetaBAT2 outputs, and all binned contigs satisfy `-m`. Tabulate binned/unbinned bases, per-bin size/coverage, and downstream CheckM2/GUNC results; do not select bins by count alone.
+
+Generate depth and bins into fresh paths after changing BAMs, assembly, `-m`, or seed. Record MetaBAT2/samtools/mapper versions, seed and command, assembly/BAM checksums, sample-to-BAM manifest, depth-table checksum, and candidate-bin checksums. A MetaBAT2 bin is a composition/coverage hypothesis, not a validated genome.
 
 ## Related skills
 

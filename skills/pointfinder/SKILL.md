@@ -11,6 +11,10 @@ metadata:
   metagenomics.tags: "PointFinder, CGE, AMR, chromosomal, mutation, SNP, resistome"
   metagenomics.upstream: "https://bitbucket.org/genomicepidemiology/pointfinder_db"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "ResFinder 4.7.2 interface"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "PointFinder branch reviewed against ResFinder source; not executed here"
 ---
 
 # PointFinder
@@ -42,14 +46,16 @@ Do not treat as a substitute for acquired-gene ResFinder/`rgi` hits.
 ## How to run
 
 ```bash
-# recommended: ResFinder with PointFinder DB
-python -m resfinder -ifa assembly.fasta -o point_out \
-  -db_res /path/to/resfinder_db \
-  -db_point /path/to/pointfinder_db -c
-# or staramr with --pointfinder-organism <species>
-staramr search --pointfinder-organism escherichia_coli \
-  -o staramr_out assembly.fasta
+set -euo pipefail
+POINT_DB=${POINTFINDER_DB:?set POINTFINDER_DB}
+SPECIES=${POINTFINDER_SPECIES:?set a species supported by the pinned database}
+[[ -s assembly.fasta && -d "$POINT_DB" ]] || exit 2
+python -m resfinder --inputfasta assembly.fasta -o point_out \
+  --species "$SPECIES" --db_path_point "$POINT_DB" --point
+test -d point_out
 ```
+
+Alternatively, run the explicit scheme through `$staramr` (for example, `--pointfinder-organism escherichia_coli`) rather than silently inferring a species.
 
 ## Decision tree
 

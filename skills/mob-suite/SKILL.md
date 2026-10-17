@@ -11,6 +11,10 @@ metadata:
   metagenomics.tags: "MOB-suite, plasmid, MOB, replicon, incompatibility, MGE, typing"
   metagenomics.upstream: "https://github.com/phac-nml/mob-suite"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "3.1.9"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "MOB-recon/MOB-typer CLIs reviewed; not executed here"
 ---
 
 # MOB-suite
@@ -38,11 +42,21 @@ Typing ≠ phenotypic incompatibility assay. Pin MOB-suite DB release.
 ## How to run
 
 ```bash
-# install mob_suite; download databases per upstream
-mob_recon --infile assembly.fasta --outdir mob_out
-mob_typer --infile plasmid.fasta --out mob_typer.tsv
-# exact subcommands: follow installed version help
+set -euo pipefail
+DB=${MOB_SUITE_DB:?set MOB_SUITE_DB to an initialized pinned database}
+[[ -s assembly.fasta && -d "$DB" ]] || exit 2
+mob_recon --infile assembly.fasta --outdir mob_out \
+  --database_directory "$DB"
+test -s mob_out/contig_report.txt
+test -s mob_out/mobtyper_results.txt
+# For an independently recovered plasmid sequence:
+[[ -s plasmid.fasta ]] || exit 2
+mob_typer --infile plasmid.fasta --out_file mob_typer.tsv \
+  --database_directory "$DB"
+test -s mob_typer.tsv
 ```
+
+Initialize a dedicated database once with `mob_init --database_directory "$MOB_SUITE_DB"`, then freeze its manifest/checksums. Use a new output directory after changing assembly or database.
 
 ## Decision tree
 

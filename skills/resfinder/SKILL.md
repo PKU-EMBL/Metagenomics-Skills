@@ -12,6 +12,10 @@ metadata:
   metagenomics.tags: "ResFinder, CGE, AMR, resistome, PointFinder, DisinFinder"
   metagenomics.upstream: "https://github.com/genomicepidemiology/resfinder"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "4.7.2"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream source; not executed here"
 ---
 
 # ResFinder
@@ -50,14 +54,18 @@ and treat ResFinder as isolate/HQ-MAG screening.
 ## How to run
 
 ```bash
-# install resfinder + clone resfinder_db (± pointfinder_db, disinfinder_db)
-python -m resfinder -ifa assembly.fasta -o resfinder_out \
-  -db_res /path/to/resfinder_db \
-  -l 0.6 -t 0.9
-# chromosomal mutations (species-aware):
-python -m resfinder -ifa assembly.fasta -o resfinder_out \
-  -db_res /path/to/resfinder_db -db_point /path/to/pointfinder_db -c
-# convenience wrapper for Res+Point+Plasmid DBs → staramr
+set -euo pipefail
+RES_DB=${RESFINDER_DB:?set RESFINDER_DB}
+[[ -s assembly.fasta && -d "$RES_DB" ]] || exit 2
+python -m resfinder --inputfasta assembly.fasta -o resfinder_acquired \
+  --db_path_res "$RES_DB" --acquired --min_cov 0.6 --threshold 0.9
+# Chromosomal-mutation branch; declare a database-supported species.
+POINT_DB=${POINTFINDER_DB:?set POINTFINDER_DB}
+SPECIES=${POINTFINDER_SPECIES:?set POINTFINDER_SPECIES}
+[[ -d "$POINT_DB" ]] || exit 2
+python -m resfinder --inputfasta assembly.fasta -o resfinder_point \
+  --species "$SPECIES" --db_path_point "$POINT_DB" --point
+test -d resfinder_acquired && test -d resfinder_point
 ```
 
 Pin ResFinder software and **all** DB versions used.

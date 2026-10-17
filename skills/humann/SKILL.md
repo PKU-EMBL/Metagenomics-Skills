@@ -8,6 +8,10 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "function, pathways, profiling"
   metagenomics.upstream: "https://github.com/biobakery/humann"
+  metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # HUMAnN
@@ -26,8 +30,7 @@ HUMAnN maps reads to a gene catalog (UniRef-based) and aggregates to pathways.
 Treat pathway abundance as **homology-supported functional potential**, not
 measured enzyme activity or flux.
 
-Prefer dehosted reads. HUMAnN commonly expects a single interleaved/merged PE
-stream depending on version—follow the installed version’s input rules.
+Prefer dehosted reads. HUMAnN accepts one sequence input per run; prepare paired data exactly as required by the pinned HUMAnN release and record whether reads were concatenated or interleaved rather than assuming a layout.
 
 ## Prerequisites
 
@@ -58,6 +61,12 @@ Need functional pathways from reads?
 ├─ Only taxonomy → metaphlan or kraken2
 └─ Gene catalogue on assemblies → prodigal + eggnog-mapper (+ salmon)
 ```
+
+## Validation, recovery, and provenance
+
+Require per-sample `*_genefamilies.tsv`, `*_pathabundance.tsv`, and `*_pathcoverage.tsv` plus logs. Verify sample IDs, non-negative finite values, stratified/unstratified semantics, `UNMAPPED`/`UNINTEGRATED` fractions, and database compatibility. Join tables only after every sample is accounted for; renormalize with one documented unit and do not use normalized values where raw counts are required.
+
+Use a clean sample output after database or input changes. Record HUMAnN/MetaPhlAn versions, ChocoPhlAn/UniRef/utility-mapping/MetaCyc releases and checksums, command, input checksum/layout, translated-search settings, and joined-table recipe. Pathway abundance is inferred functional potential, not expression or flux.
 
 ## Related skills
 

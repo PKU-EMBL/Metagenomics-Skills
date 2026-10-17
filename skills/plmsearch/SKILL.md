@@ -11,6 +11,10 @@ metadata:
   metagenomics.tags: "PLM, remote-homology, search, protein"
   metagenomics.upstream: "https://github.com/maovshao/PLMSearch"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed-research-code"
+  metagenomics.upstream-version: "snapshot d6df1dc"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "research scripts reviewed against upstream notebook; not executed here"
 ---
 
 # PLMSearch
@@ -43,12 +47,31 @@ benchmarks.
 
 Hits remain computational — transfer annotation cautiously.
 
-## How to run
+## Inputs and run
+
+The upstream release is research code rather than a stable installed CLI. Pin the repository and released `plmsearch_data` bundle (ESM-1b weights, target embeddings/Pfam data, and `plmsearch.sav`). This explicit form mirrors `pipeline.ipynb` while naming outputs.
 
 ```bash
-# follow upstream README for env + PLM weights (e.g. ESM / ProtT5 family)
-# typical: embed query/target → similarity search → ranked homologs
+set -euo pipefail
+[[ -s query.faa && -s plmsearch_data/model/plmsearch.sav ]] || exit 2
+mkdir -p result/plmsearch
+python plmsearch/embedding_generate.py -f query.faa \
+  -e result/plmsearch/query.embedding.pkl
+python plmsearch/pfam_generate.py -f query.faa \
+  -o result/plmsearch/query.pfam.json
+python plmsearch/main_pfam.py \
+  -qpr result/plmsearch/query.pfam.json \
+  -tpr plmsearch_data/swissprot/pfam_result.json -c \
+  -opr result/plmsearch/pfamclan.prefilter.json
+python plmsearch/main_similarity.py \
+  -iqe result/plmsearch/query.embedding.pkl \
+  -ite plmsearch_data/swissprot/embedding.pkl \
+  -smp plmsearch_data/model/plmsearch.sav \
+  -isr result/plmsearch/pfamclan.prefilter.json \
+  -osr result/plmsearch/hits.json
 ```
+
+Use `--nogpu` for embedding generation on CPU. Verify option names against the pinned commit because these scripts do not promise a stable API.
 
 ## Decision tree
 
@@ -60,6 +83,12 @@ Protein search sensitivity need?
 ├─ Need explicit structural alignment from sequence → deepblast
 └─ Gene neighborhood modules → spacedust
 ```
+
+## Validation, recovery, and provenance
+
+Require one finite embedding per query, parseable Pfam/prefilter/hit objects and complete query-ID accounting. Verify released target IDs and ranked scores, inspect known positive/negative proteins, and confirm priority hits with MMseqs2/DIAMOND, Foldseek/structure or profile HMM evidence. Do not infer function solely from nearest embedding.
+
+Never overwrite released target artifacts; write query outputs atomically and restart failed stages from a clean file. Record repository commit, requirements, ESM/model/data bundle URLs and checksums, device/CUDA, commands, query checksum, output schema/checksum and orthogonal validation. PLM similarity is computational homology evidence, not experimental function.
 
 ## Related skills
 

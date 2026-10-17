@@ -35,10 +35,10 @@ tools. Infrastructure skill — not a homology algorithm itself.
 ## How to run
 
 ```bash
-# binaries: https://mmseqs.com/foldcomp  or pip package — see upstream
+# Install the pinned static binary or Python package, then record `foldcomp --version`.
 foldcomp compress input_structures/ structures.fcz
 foldcomp decompress structures.fcz out_dir/
-# subset decompress / extract AA or pLDDT — see upstream Usage
+# Use the installed `foldcomp --help` contract for subset, AA, or pLDDT extraction.
 ```
 
 ## Decision tree

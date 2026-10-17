@@ -8,6 +8,11 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "taxonomy, marker, profiling"
   metagenomics.upstream: "https://github.com/biobakery/MetaPhlAn"
+  metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "4.2.5 interface"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream source; not executed here"
 ---
 
 # MetaPhlAn
@@ -52,12 +57,17 @@ are primary deliverables.
 ## How to run
 
 ```bash
+set -euo pipefail
+DB=${METAPHLAN_DB:?set METAPHLAN_DB}
+INDEX=${METAPHLAN_INDEX:?set an explicit installed index name}
+mkdir -p temp/metaphlan result/metaphlan
+[[ -s "temp/hr/${id}_1.fastq" && -s "temp/hr/${id}_2.fastq" ]] || exit 2
 metaphlan \
-  temp/hr/${id}_1.fastq,temp/hr/${id}_2.fastq \
-  --input_type fastq \
-  --bowtie2out temp/metaphlan/${id}.bowtie2.bz2 \
-  -o result/metaphlan/${id}_profile.txt \
-  --nproc 8
+  "temp/hr/${id}_1.fastq,temp/hr/${id}_2.fastq" \
+  --input_type fastq --db_dir "$DB" -x "$INDEX" \
+  --mapout "temp/metaphlan/${id}.mapout.bz2" \
+  -o "result/metaphlan/${id}_profile.txt" --nproc 8 \
+  2>"temp/metaphlan/${id}.stderr.log"
 ```
 
 Merge profiles across samples with MetaPhlAn utility scripts / HUMAnN join tools.
@@ -80,6 +90,12 @@ Need marker-based species/SGBs?
 ├─ Custom large DNA DB → kraken2 (+ bracken)
 └─ Sketch containment → sylph
 ```
+
+## Validation, recovery, and provenance
+
+Require a non-empty profile with MetaPhlAn metadata headers and clade rows or an explicitly documented no-detection result. Confirm `#mpa_v...`/database identity, sample ID, estimated reads, relative-abundance sum within format tolerance, rank parsing, and absence of duplicate taxa. Review unknown SGBs, low-marker detections, controls, and unexpectedly high unclassified fractions; merge only profiles from one database release.
+
+Preserve the mapout to rerun profiling without remapping when the installed release supports it. Record MetaPhlAn/Bowtie2 versions, explicit index and database manifest/checksum, command, read checksums, mapout/profile checksums, and stderr. Relative abundance and marker detection do not establish absolute load, viability, or taxon absence below detection.
 
 ## Related skills
 

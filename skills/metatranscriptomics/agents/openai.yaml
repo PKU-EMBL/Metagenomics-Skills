@@ -1,0 +1,6 @@
+interface:
+  display_name: "Metatranscriptomics"
+  short_description: "Plan microbial RNA processing and inference"
+  default_prompt: "Use $metatranscriptomics to inspect my RNA design and reads, plan QC, host and rRNA removal, quantification, statistics, and truthful activity claims."
+policy:
+  allow_implicit_invocation: true

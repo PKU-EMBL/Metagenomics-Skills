@@ -49,7 +49,7 @@ conda install -c bioconda plass
 plass assemble reads_1.fastq.gz reads_2.fastq.gz assembly.fas tmp
 # single-end
 plass assemble reads.fastq.gz assembly.fas tmp
-# PenguiN nucleotide workflows — see upstream (penguin guided_nuclassemble …)
+# PenguiN nucleotide assembly is a separate `penguin guided_nuclassemble` workflow.
 ```
 
 ## Decision tree

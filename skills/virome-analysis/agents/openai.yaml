@@ -1,0 +1,6 @@
+interface:
+  display_name: "Virome analysis"
+  short_description: "Route viral discovery through hosts and vOTUs"
+  default_prompt: "Use $virome-analysis to inspect my virome inputs and plan viral calling, CheckV quality, vOTUs, abundance, taxonomy, and host evidence with stage gates."
+policy:
+  allow_implicit_invocation: true

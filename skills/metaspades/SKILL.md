@@ -8,6 +8,10 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "assembly, spades"
   metagenomics.upstream: "https://github.com/ablab/spades"
+  metagenomics.stage: "assembly"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # metaSPAdes
@@ -54,6 +58,12 @@ Assembly priority?
 ├─ Continuity / hybrid short+long → metaspades
 └─ Already have good contigs → skip; go to prodigal / metawrap / basalt
 ```
+
+## Validation, recovery, and provenance
+
+Require non-empty `contigs.fasta`, completed `spades.log`, and no unresolved fatal/warning condition. Inspect contig/scaffold metrics with `$quast`, read recruitment, total assembled bases, graph/coverage artifacts, and low-coverage or extreme-GC contigs. Compare against MEGAHIT on a pilot when continuity materially affects recovery.
+
+SPAdes supports `--continue`/`--restart-from` only under documented constraints; never alter inputs or incompatible parameters inside a resumed output directory. Preserve input library definitions, SPAdes version, complete command, `params.txt`, `spades.log`, resource use, contig checksum, and the assembly graph/path files needed by graph-aware tools such as `$metacoag`.
 
 ## Related skills
 

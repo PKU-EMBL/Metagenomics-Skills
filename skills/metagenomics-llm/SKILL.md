@@ -12,6 +12,7 @@ license: MIT
 metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "LLM, PLM, gLM, Foldseek, MMseqs2, Folddisco, structure-search, AI"
+  metagenomics.stage: "mining"
 ---
 
 # Metagenomics × LMs & structure search

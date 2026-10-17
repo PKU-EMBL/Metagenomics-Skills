@@ -11,6 +11,7 @@ metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "VMH, GEMs, metabolism, database, gut"
   metagenomics.upstream: "https://www.vmh.life"
+  metagenomics.stage: "function"
 ---
 
 # Virtual Metabolic Human (VMH)

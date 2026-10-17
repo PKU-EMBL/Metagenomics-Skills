@@ -48,9 +48,9 @@ Heavy DB install (KOfam etc.). Pin METABOLIC version, module cutoff, and DB.
 ## How to run
 
 ```bash
-# genomes only (example pattern — verify flags in installed wiki)
+# Genome-only METABOLIC-G interface; preflight the pinned release with `-help`.
 perl METABOLIC-G.pl -t 40 -m-cutoff 0.75 -in-gn Genome_files -kofam-db full -o METABOLIC_out
-# with reads / community: METABOLIC-C.pl — see upstream wiki
+# Community/read evidence uses the distinct METABOLIC-C.pl input contract.
 ```
 
 ## Decision tree

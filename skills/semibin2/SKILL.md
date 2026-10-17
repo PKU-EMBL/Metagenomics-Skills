@@ -39,7 +39,7 @@ Still a **single binner**: for catalogues, feed into `basalt` ★ / `metawrap` /
 ## How to run
 
 ```bash
-conda install -c bioconda semibin2  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda semibin2
 
 # short-read / general easy mode
 SemiBin2 single_easy_bin \
@@ -57,7 +57,7 @@ SemiBin2 single_easy_bin \
 |------|------|
 | `single_easy_bin` | One assembly + BAMs |
 | multi-sample modes | Related samples with shared genomes |
-| long-read / DBSCAN path | Long-read contigs — verify flags in upstream |
+| long-read / DBSCAN path | Long-read contigs; pin and record the installed mode/options |
 
 ## Literature notes
 

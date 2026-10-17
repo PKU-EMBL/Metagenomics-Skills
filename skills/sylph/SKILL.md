@@ -38,7 +38,7 @@ Why it matters:
 ## How to run
 
 ```bash
-conda install -c bioconda sylph  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda sylph
 
 sylph sketch -c 200 reads_1.fq.gz reads_2.fq.gz -o temp/sylph/${id}
 sylph profile temp/sylph/${id}.syldb database.syldb -o temp/sylph/${id}.tsv

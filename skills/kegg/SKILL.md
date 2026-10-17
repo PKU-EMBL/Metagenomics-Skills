@@ -12,6 +12,7 @@ metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "database, KEGG, KO, pathway, annotation"
   metagenomics.upstream: "https://www.kegg.jp/"
+  metagenomics.stage: "function"
 ---
 
 # KEGG (Kyoto Encyclopedia of Genes and Genomes)

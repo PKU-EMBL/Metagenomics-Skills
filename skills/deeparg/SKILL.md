@@ -28,9 +28,9 @@ Complement to **RGI/CARD** for ARG mining from reads or genes. Model-based predi
 ## How to run
 
 ```bash
-conda install -c bioconda deeparg  # if packaged; else follow upstream docs
+conda install -c conda-forge -c bioconda deeparg
 
-# follow upstream install; example gene mode:
+# Protein/gene mode with the database configured for this environment:
 deepARG --align --type prot --genes genes.faa --model LS --out temp/deeparg/${id}
 ```
 

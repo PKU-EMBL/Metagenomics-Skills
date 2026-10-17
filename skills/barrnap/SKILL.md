@@ -28,7 +28,7 @@ Quick rRNA loci on MAGs/isolates for QC (16S presence) and annotation. Pair with
 ## How to run
 
 ```bash
-conda install -c bioconda barrnap  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda barrnap
 
 barrnap bins/bin.fa > temp/barrnap/${id}.gff
 ```

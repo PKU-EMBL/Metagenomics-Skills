@@ -8,6 +8,10 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "AMR, CARD, resistance"
   metagenomics.upstream: "https://github.com/arpcard/rgi"
+  metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI/database contract reviewed; not executed here"
 ---
 
 # RGI (CARD)
@@ -58,6 +62,12 @@ Resistome claim?
 ├─ On plasmids? → intersect genomad / plasmaag / plasmidfinder
 └─ Phenotype → needs experiments / MICs (out of scope)
 ```
+
+## Validation, recovery, and provenance
+
+Require non-empty tabular and JSON/native RGI outputs, reconcile query proteins/contigs with hits and no-hits, and inspect model type, cut-off category (Perfect/Strict/Loose), identity, coverage, mutation requirements, and CARD ontology. Do not silently include Loose hits in primary conclusions; define the policy before analysis. Confirm plasmid/MGE context with sequence coordinates rather than matching names across tables.
+
+Record RGI and aligner versions, CARD data/model release and checksum, `rgi load` provenance, command, input/checksum, and filtering/export code. Use a clean prefix after changing CARD or options. Sequence-model hits support resistance determinants, not expression, phenotype, clinical susceptibility, or host assignment.
 
 ## Related skills
 

@@ -27,7 +27,7 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 |------------|--------|---------|
 | Natural products / BGCs | `antismash` → `bigscape` | Cluster ≠ characterized compound |
 | AMR / resistome | `rgi` (± `deeparg`); isolates also `resfinder` / `staramr` | Hit ≠ expression / phenotype; keep CARD vs ResFinder separate |
-| Plasmids / viruses (contig) | `genomad`, `virsorter2`, `checkv`, `vcontact` | CheckV before viral taxonomy |
+| Viral contigs, vOTUs, taxonomy, hosts | `virome-analysis` → `genomad`/`virsorter2`/`vibrant` → `checkv` → `votu-workflow` → `vcontact`/`iphop` | Quality and host links remain computational evidence |
 | MGE protein machinery | `mobileog` | Category hit ≠ complete element |
 | Insertion sequences | `isescan` | IS ≠ plasmid |
 | Integrons / cassettes | `integronfinder` | Cassette ≠ expressed ARG |
@@ -39,7 +39,7 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 | DOM / glycans / biosurfactants / HC | `dom-biosurfactant` → `dbcan` / `hadeg` / `biosurfdb` | Hit ≠ assay / rate |
 | Distilled metabolism | `dram` | Needs decent completeness |
 | CAZymes (glycan DOM) | `dbcan` | Consensus + substrate rules |
-| Genome-scale models | `gapseq` (± `vmh` / `alphagem`) | HQ MAGs only |
+| Genome/community metabolic models | `community-metabolic-modeling` → `carveme`/`gapseq`/`micom` (± `vmh`/`alphagem`) | Gap filling and flux are assumption-dependent |
 | Anti-phage defense | `defensefinder` · `padloc` | Annotate proteins first; models differ |
 | Quorum sensing / autoinducers | `qsap` | Genes ≠ measured signals |
 | De novo conserved clusters | `spacedust` | Complement known-system tools |
@@ -52,7 +52,8 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 Mining goal?
 ├─ BGCs → antismash → (many genomes) bigscape
 ├─ Resistome → rgi (± deeparg); isolates → resfinder / staramr (± pointfinder)
-├─ Plasmids / viruses → genomad (± virsorter2) → checkv → vcontact
+├─ Viruses → virome-analysis → genomad/virsorter2/vibrant → checkv → votu-workflow → vcontact/iphop
+├─ Plasmids → genomad → mob-suite/plasmidfinder or plasmaag
 ├─ MGE detail
 │   ├─ Protein machinery → mobileog
 │   ├─ IS elements → isescan
@@ -67,7 +68,7 @@ Mining goal?
 ├─ Element cycling (C, N, S, Fe, P, H₂, CH₄, …) → element-cycling
 ├─ DOM / biosurfactant / HC biodegradation → dom-biosurfactant
 ├─ Metabolism distillate → dram (± dbcan)
-├─ GEMs → gapseq
+├─ GEMs/community simulation → community-metabolic-modeling → carveme/gapseq/micom
 ├─ Defense systems → bakta/prokka → defensefinder and/or padloc
 ├─ Quorum sensing → qsap
 ├─ Dark modules / neighborhoods → spacedust
@@ -90,7 +91,7 @@ bins/MAGs (checkm2 / mag-qc / gunc)
    ├─→ defensefinder / padloc
    └─→ qsap
 contigs
-   → genomad | virsorter2 → checkv → vcontact
+   → virome-analysis → genomad | virsorter2 | vibrant → checkv → votu-workflow → vcontact / iphop
    → mobileog / isescan / integronfinder / mob-suite
    → cge-finders (plasmidfinder · resfinder · virulencefinder · …)
    → plasmaag (multi-sample plasmid recovery)
@@ -107,13 +108,15 @@ contigs
 
 ## Related skills
 
-`antismash` · `bigscape` · `genomad` · `virsorter2` · `checkv` · `vcontact` ·
+`antismash` · `bigscape` · `virome-analysis` · `votu-workflow` · `genomad` ·
+`virsorter2` · `vibrant` · `checkv` · `vcontact` · `iphop` ·
 `mobileog` · `isescan` · `integronfinder` · `mob-suite` · `plasmaag` ·
 `cge-finders` · `plasmidfinder` · `resfinder` · `pointfinder` · `disinfinder` ·
 `virulencefinder` · `mobileelementfinder` · `pmlst` · `mlst` · `staramr` ·
 `abricate` · `macrel` ·
 `element-cycling` · `metabolic` · `mebs` · `fegenie` · `dom-biosurfactant` ·
 `hadeg` · `biosurfdb` · `dram` · `dbcan` · `bakta` · `rgi` · `deeparg` ·
-`gapseq` · `vmh` · `defensefinder` · `padloc` · `qsap` · `spacedust` ·
+`community-metabolic-modeling` · `carveme` · `gapseq` · `micom` · `vmh` ·
+`defensefinder` · `padloc` · `qsap` · `spacedust` ·
 `foldseek` · `folddisco` · `homology-search` · `metagenomics-llm` ·
 `tool-selection`

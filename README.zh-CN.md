@@ -6,7 +6,7 @@
 
 **研究设计 → 质控 → 组装 → 比对 → 分箱 → 分类 → 功能注释 → 微生物挖掘 → 统计与科研交付**
 
-仓库目前包含 **163 个** Skills，采用开放的
+仓库目前包含 **201 个** Skills，采用开放的
 [`SKILL.md` 规范](https://agentskills.io)，同一套内容可供 Claude Code、
 Codex、Cursor、Kimi Code、ZCode、Qwen Code 等 coding agent 使用。Skills
 负责给 Agent 提供领域流程、命令模式、质量门控和解释边界；它们不会代替
@@ -40,7 +40,7 @@ cd Metagenomics-Skills
 # ~/.agents/skills 同时供 Codex、Kimi Code、ZCode 使用；Qwen 走原生目录
 ./scripts/install-platforms.sh --user --profile core agents qwen
 
-# 全量 163 个 Skills
+# 全量 201 个 Skills
 ./scripts/install-platforms.sh --user --profile full all
 ```
 
@@ -86,7 +86,16 @@ kimi --skills-dir "$PWD/skills"
 | `mining` | BGC、AMR、病毒、质粒/MGE、代谢和防御系统 |
 | `statistics` | MultiQC、多样性、差异分析、网络和工作流 |
 | `ai-search` | 同源/结构搜索、系统发育、DNA/蛋白语言模型 |
-| `full` | 全部 163 个 Skills |
+| `contamination` | 对照设计、污染识别和宿主 reads 去除 |
+| `long-read` | ONT / PacBio 质控、过滤、比对、组装和 profiling |
+| `virome` | 病毒发现、质量评估、vOTU、宿主和分类 |
+| `strain-resolved` | 菌株系统发育、群体 SNV 和微多样性 |
+| `eukaryotic` | 微生物真核 contig、基因、分箱和质量评估 |
+| `pangenome` | 原核泛基因组、注释、去冗余和系统发育 |
+| `metatranscriptomics` | 微生物 RNA 质控、rRNA 去除、定量和功能分析 |
+| `metabolic-modeling` | 基因组尺度和群落代谢模型 |
+| `workflows` | Nextflow、Snakemake 和固定版本的 nf-core 工作流 |
+| `full` | 全部 201 个 Skills |
 
 多个 profile 可以叠加：
 

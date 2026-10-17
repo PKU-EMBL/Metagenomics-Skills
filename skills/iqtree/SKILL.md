@@ -15,7 +15,7 @@ metadata:
 
 # IQ-TREE 2
 
-Upstream: [iqtree/iqtree2](https://github.com/iqtree/iqtree2) · http://www.iqtree.org
+Upstream: [iqtree/iqtree2](https://github.com/iqtree/iqtree2)
 
 ## Citation
 
@@ -48,7 +48,7 @@ outgroup contamination first.
 ## How to run
 
 ```bash
-# typical: MSA in PHYLIP/FASTA → ML tree + UFBoot
+# Pinned MSA in PHYLIP/FASTA → model selection, ML tree, and UFBoot.
 iqtree2 -s markers.fa -m MFP -B 1000 -T AUTO -prefix temp/iqtree/run
 # outputs: *.treefile, *.iqtree, *.log — pin version in Methods
 ```

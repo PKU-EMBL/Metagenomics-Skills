@@ -11,6 +11,10 @@ metadata:
   metagenomics.tags: "PlasmidFinder, CGE, plasmid, replicon, Inc, typing, MGE"
   metagenomics.upstream: "https://github.com/genomicepidemiology/plasmidfinder"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "3.0.3"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream source; not executed here"
 ---
 
 # PlasmidFinder
@@ -40,13 +44,18 @@ replicon typing on isolates.
 ## How to run
 
 ```bash
-# clone DB: plasmidfinder_db; install per upstream (pip/docker/bioconda when available)
-python plasmidfinder.py -i assembly.fasta -o plasmidfinder_out \
-  -p /path/to/plasmidfinder_db
-# or use staramr for combined Res/Point/Plasmid DB scans
+set -euo pipefail
+DB=${PLASMIDFINDER_DB:?set PLASMIDFINDER_DB to the pinned database checkout}
+[[ -s assembly.fasta && -d "$DB" ]] || exit 2
+python -m plasmidfinder --help >/dev/null
+mkdir -p plasmidfinder_out plasmidfinder_tmp
+python -m plasmidfinder -i assembly.fasta -o plasmidfinder_out \
+  -tmp plasmidfinder_tmp -p "$DB" -x -j plasmidfinder_out/results.json
+test -s plasmidfinder_out/results.json
+# Use staramr instead when one combined Res/Point/Plasmid report is intended.
 ```
 
-Exact flags vary by release — follow installed `--help` and pin DB commit/tag.
+This block targets the reviewed `plasmidfinder.py` interface; pin the script and database commits together and archive the complete output directory.
 
 ## Decision tree
 

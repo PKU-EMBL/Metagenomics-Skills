@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "qc, contamination, chimerism"
   metagenomics.upstream: "https://github.com/grp-bork/gunc"
   metagenomics.stage: "assessment"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # GUNC
@@ -43,9 +46,12 @@ multi-coverage binning + GUNC is a strong pair (Mattock & Watson 2023).
 ## How to run
 
 ```bash
-conda install -c bioconda gunc  # if packaged; else follow upstream
-
-gunc run -i bins/ --db_file $GUNC_DB -r temp/gunc -t 16
+set -euo pipefail
+[[ -d bins && -s "${GUNC_DB:?set GUNC_DB}" ]] || exit 2
+command -v gunc >/dev/null
+gunc --version
+gunc run -i bins/ --db_file "$GUNC_DB" -r temp/gunc -t 16 \
+  >temp/gunc.stdout.log 2>temp/gunc.stderr.log
 ```
 
 ## Key parameters
@@ -55,6 +61,12 @@ gunc run -i bins/ --db_file $GUNC_DB -r temp/gunc -t 16
 | DB | Download/pin GUNC DB |
 | With CheckM2 | Combine filters; discordant calls → manual review |
 | Novel lineages | Higher scrutiny; GUNC DB taxonomy limits apply |
+
+## Validation, recovery, and provenance
+
+Reconcile every input genome with the maxCSS/all-level output or a logged failure. Review pass/fail calls together with clade separation score, contamination portion, reference representation, genome size, CheckM2, coverage, and taxonomy; do not reduce GUNC to one undocumented Boolean. Manually inspect high-risk/discordant genomes and rerun quality assessment after refinement.
+
+Use a clean result directory when changing database or input. Record GUNC/software dependencies, database name/checksum, command, FASTA checksums, output schema, and exact decision threshold. A GUNC pass does not establish a contamination-free MAG, especially outside represented lineages.
 
 ## Related skills
 

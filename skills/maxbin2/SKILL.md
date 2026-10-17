@@ -49,7 +49,7 @@ run_MaxBin.pl -contig contigs.fa -abund depth.txt \
 |------|-------|
 | `-abund` | Coverage table(s); IDs must match contig headers |
 | `-thread` | Threads |
-| min contig length | Follow upstream defaults or justify |
+| min contig length | Record the installed default and justify any override |
 
 ## Decision tree
 

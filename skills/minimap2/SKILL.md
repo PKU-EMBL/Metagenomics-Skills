@@ -28,7 +28,7 @@ Use for ONT/PacBio→assembly (`map-ont`/`map-hifi`) and assembly polishing/scaf
 ## How to run
 
 ```bash
-conda install -c bioconda minimap2  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda minimap2
 
 minimap2 -ax map-ont -t 16 contigs.fa reads.fastq.gz \
   | samtools sort -@ 8 -o temp/map/lr.bam

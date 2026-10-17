@@ -8,6 +8,10 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "annotation, orthology, function"
   metagenomics.upstream: "https://github.com/eggnogdb/eggnog-mapper"
+  metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # eggNOG-mapper
@@ -66,6 +70,12 @@ Functional annotation need?
 
 - Pin emapper + eggNOG DB versions
 - Do not label KEGG-like fields as full KEGG pathway proof without rules
+
+## Validation, recovery, and provenance
+
+Require a non-empty `.emapper.annotations` table and completed seed-ortholog/hit files/logs. Reconcile every query as annotated or unannotated, verify unique protein IDs, inspect annotation coverage and taxonomic scope, and retain evidence columns (`seed_ortholog`, e-value, score, orthology level) alongside functions. Distinguish missing assignment from biological absence.
+
+`--override` can replace prior results; archive or use a new prefix when changing input/database/options. Record eggNOG-mapper, DIAMOND/MMseqs versions, eggNOG database release/checksum, taxonomic scope, command, query checksum, and annotation-table checksum. Any KO/COG/EC label remains an orthology-based prediction.
 
 ## Related skills
 

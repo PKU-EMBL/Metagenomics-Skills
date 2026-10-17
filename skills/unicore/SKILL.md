@@ -37,7 +37,7 @@ to sequence-marker workflows (`phylophlan` + `iqtree`).
 | `gtdbtk` | Custom structural phylogeny, not only GTDB labels |
 | `lucaphylo` | Proteome-scale core-gene trees vs single-protein PLM placement |
 
-GPU: `--gpu` with Foldseek≥10 / ProstT5 on Turing+ NVIDIA (see upstream).
+GPU: `--gpu` requires Foldseek≥10 / ProstT5 and a Turing-or-newer NVIDIA GPU; record model and device.
 
 ## How to run
 

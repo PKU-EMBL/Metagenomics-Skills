@@ -28,7 +28,7 @@ Useful for isolates/eukaryotes; for prokaryotic MAGs prefer **CheckM2** (+ GUNC)
 ## How to run
 
 ```bash
-conda install -c bioconda busco  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda busco
 
 busco -i genome.fa -l bacteria_odb10 -o temp/busco -m genome -c 16
 ```

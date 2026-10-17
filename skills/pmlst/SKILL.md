@@ -11,6 +11,10 @@ metadata:
   metagenomics.tags: "pMLST, plasmid, MLST, CGE, typing, Inc, PubMLST"
   metagenomics.upstream: "https://github.com/ssi-dk/pmlst"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "2.1.1"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream source; not executed here"
 ---
 
 # pMLST
@@ -40,14 +44,18 @@ Typical order: `plasmidfinder` (replicon) → `pmlst` (scheme ST) → optional
 ## How to run
 
 ```bash
-# bioconda preferred
-mamba install -c bioconda -c conda-forge pmlst_ssi
-# select scheme per upstream docs / --help
-pmlst -i assembly.fasta -o pmlst_out -s IncI1
-# exact entrypoint/flags vary by packaging — follow installed help
+set -euo pipefail
+DB=${PMLST_DB:?set PMLST_DB to a pinned pMLST database checkout}
+SCHEME=${PMLST_SCHEME:?set a supported scheme such as incf or inci1}
+[[ -s assembly.fasta && -d "$DB" ]] || exit 2
+mkdir -p pmlst_out pmlst_tmp
+pmlst --version
+pmlst -i assembly.fasta -s "$SCHEME" -p "$DB" \
+  -o pmlst_out -t pmlst_tmp -x
+find pmlst_out -type f -size +0c | grep -q .
 ```
 
-Pin software + scheme/database versions; report the scheme name with every ST.
+This targets pMLST 2.1.1. Validate `PMLST_SCHEME` against `pmlst --help`, pin the database commit/version file, preserve partial/unknown allele profiles, and report scheme with every ST.
 
 ## Decision tree
 

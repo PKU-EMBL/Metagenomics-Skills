@@ -11,6 +11,11 @@ metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "OMG, gLM2, foundation-model, pretraining, HuggingFace"
   metagenomics.upstream: "https://github.com/TattaBio/OMG"
+  metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "OMG revision c648c026; gLM2 revision 08754cba"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "dataset streaming and model APIs reviewed; not executed here"
 ---
 
 # OMG corpus / gLM2
@@ -49,14 +54,23 @@ Always separate **ML corpus access** from **biological sample reanalysis**
 
 ## How to access
 
-```bash
-# Hugging Face datasets / transformers patterns — verify current API
-# huggingface-cli download tattabio/OMG
-# or datasets.load_dataset("tattabio/OMG")
-# gLM2_650M weights: tattabio/gLM2_650M
+Stream and schema-check before any bulk download:
+
+```python
+from datasets import load_dataset
+
+revision = "c648c026ec46ffa2614610a59cb3c8187cdc984f"
+ds = load_dataset("tattabio/OMG", revision=revision,
+                  split="train", streaming=True)
+row = next(iter(ds))
+required = {"CDS_seqs", "IGS_seqs", "CDS_position_ids", "IGS_position_ids"}
+assert required <= row.keys()
+assert len(row["CDS_seqs"]) == len(row["CDS_position_ids"])
+assert len(row["IGS_seqs"]) == len(row["IGS_position_ids"])
+print(revision, sorted(row), len(row["CDS_seqs"]), len(row["IGS_seqs"]))
 ```
 
-Pin dataset revision + model checkpoint in Methods. Expect large disk and GPU.
+For gLM2, use `AutoModel`/`AutoTokenizer` with `trust_remote_code=True` and immutable revision `08754cba59a1f97d517f873fad6c672d2b1abdc7`; uppercase amino acids, lowercase nucleotides, and prepend each genomic element with `<+>` or `<->` as required by the model card. Review remote code before loading. Expect large disk/GPU use.
 
 ## Decision tree
 
@@ -67,6 +81,12 @@ Need metagenome-scale LM resources?
 ├─ Protein remote search only → plmsearch / deepblast
 └─ Public study FASTQ → sra-ena / mgnify (not OMG)
 ```
+
+## Validation, recovery, and provenance
+
+Validate schema, element-position ordering, CDS/IGS counts, strand tokens, character case/alphabet, context truncation and duplicate/leakage policy. For embeddings require finite tensors and ID-to-row maps; for fine-tuning freeze taxonomic/source-aware splits and compare non-LM baselines. Streaming one row validates access/schema only, not corpus completeness.
+
+Record dataset/model immutable revisions, dataset card/license and access date, `datasets`/Transformers/PyTorch/CUDA versions, filters/shards/splits, code/seeds, downloaded artifact hashes and derived-output checksums. OMG records are an ML corpus with source-specific biases; gLM2 outputs are predictions, not cohort observations.
 
 ## Related skills
 

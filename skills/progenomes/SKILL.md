@@ -12,6 +12,7 @@ metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "database, proGenomes, genomes, pan-genome, EMBL"
   metagenomics.upstream: "https://progenomes.embl.de/"
+  metagenomics.stage: "taxonomy"
 ---
 
 # proGenomes

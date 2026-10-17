@@ -1,0 +1,6 @@
+interface:
+  display_name: "Eukaryotic metagenomics"
+  short_description: "Recover and assess microbial eukaryote genomes"
+  default_prompt: "Use $eukaryotic-metagenomics to inspect my contigs and plan eukaryotic classification, gene prediction, binning, EukCC quality checks, and evidence limits."
+policy:
+  allow_implicit_invocation: true

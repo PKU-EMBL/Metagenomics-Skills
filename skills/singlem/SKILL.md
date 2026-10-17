@@ -12,6 +12,10 @@ metadata:
   metagenomics.tags: "SingleM, taxonomy, markers, Sandpiper, low-abundance"
   metagenomics.upstream: "https://github.com/wwood/singlem"
   metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "0.21.4"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against current pipe documentation; not executed here"
 ---
 
 # SingleM (+ Sandpiper)
@@ -46,12 +50,18 @@ not as MAG recovery.
 ## How to run
 
 ```bash
-# verify subcommands for your SingleM version
-singlem pipe -1 clean_1.fq.gz -2 clean_2.fq.gz -o temp/singlem/${id} --threads 16
-# singlem summarise / microbial_fraction etc. per upstream docs
+set -euo pipefail
+command -v singlem >/dev/null
+singlem --version
+mkdir -p temp/singlem
+[[ -s clean_1.fq.gz && -s clean_2.fq.gz ]] || exit 2
+singlem pipe -1 clean_1.fq.gz -2 clean_2.fq.gz \
+  --otu-table "temp/singlem/${id}.otu_table.csv" \
+  --taxonomic-profile "temp/singlem/${id}.profile.tsv" --threads 16 \
+  >"temp/singlem/${id}.stdout.log" 2>"temp/singlem/${id}.stderr.log"
 ```
 
-Pin SingleM metapackage / GTDB-linked DB version in Methods.
+This contract targets SingleM 0.21.4; run `singlem pipe --help` as the installed-version preflight. Pin the SingleM metapackage/GTDB-linked database version in Methods.
 
 ## Decision tree
 
@@ -63,6 +73,12 @@ Taxonomic profiling need?
 ├─ Sketch containment vs genomes → sylph
 └─ MAG taxonomy → gtdbtk
 ```
+
+## Validation, recovery, and provenance
+
+Require a non-empty OTU table or an explicit zero-hit result with completed logs. Validate sample labels, marker-package/window columns, non-negative coverage/read counts, taxonomy fields, and expected paired-input accounting; summarize across samples only after schemas and metapackages match. Inspect microbial fraction and novel/unassigned lineages rather than dropping them as missing data.
+
+Record SingleM/dependency versions, complete command, metapackage and GTDB release/checksum, read checksums, output checksum, and any `summarise`/filter command. Rerun in a clean prefix when changing package or inputs. Marker OTUs support taxonomic profiles, not recovered genomes, viability, or cultured species identity.
 
 ## Related skills
 

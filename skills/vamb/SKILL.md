@@ -42,7 +42,7 @@ when publishing catalogues.
 ## How to run
 
 ```bash
-conda install -c bioconda vamb  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda vamb
 
 vamb --outdir temp/bins/vamb --fasta contigs.fa --bamfiles temp/map/*.bam -p 16
 # GPU optional depending on VAMB version / docs
@@ -53,7 +53,7 @@ vamb --outdir temp/bins/vamb --fasta contigs.fa --bamfiles temp/map/*.bam -p 16
 | Flag | Notes |
 |------|-------|
 | `--bamfiles` | Sorted BAMs; multi-sample improves coabundance signal |
-| multisplit / clustering | Follow upstream defaults unless reproducing a paper |
+| multisplit / clustering | Record installed defaults; override only under a declared benchmark/reproduction |
 | GPU | Optional acceleration |
 
 ## Literature notes

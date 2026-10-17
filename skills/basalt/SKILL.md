@@ -14,6 +14,7 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "BASALT, MAG, ensemble-binning, refinement, multi-assembly, PKU-EMBL"
   metagenomics.upstream: "https://github.com/PKU-EMBL/BASALT"
+  metagenomics.stage: "binning"
 ---
 
 # BASALT / BASALT-Air

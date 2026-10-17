@@ -38,11 +38,22 @@ Pin Bioconductor release. Avoid double rarefaction without stating rationale.
 ## How to run
 
 ```r
-BiocManager::install("phyloseq")
 library(phyloseq)
-# ps <- phyloseq(otu_table(...), sample_data(...), tax_table(...), phy_tree(...))
-# plot_bar / plot_ordination / transform_sample_counts — see vignettes
+counts <- as.matrix(read.delim("counts.tsv", row.names = 1, check.names = FALSE))
+tax <- as.matrix(read.delim("taxonomy.tsv", row.names = 1, check.names = FALSE))
+meta <- read.delim("metadata.tsv", row.names = 1, check.names = FALSE)
+stopifnot(all(is.finite(counts)), all(counts >= 0))
+stopifnot(setequal(colnames(counts), rownames(meta)))
+stopifnot(all(rownames(counts) %in% rownames(tax)))
+meta <- meta[colnames(counts), , drop = FALSE]
+tax <- tax[rownames(counts), , drop = FALSE]
+ps <- phyloseq(otu_table(counts, taxa_are_rows = TRUE),
+               sample_data(meta), tax_table(tax))
+stopifnot(nsamples(ps) == nrow(meta), ntaxa(ps) == nrow(counts))
+saveRDS(ps, "phyloseq.rds")
 ```
+
+Install a pinned Bioconductor/phyloseq release outside the analysis script. Add a phylogenetic tree only after its tip IDs are reconciled to taxa; transformations must create a new named object rather than silently replacing raw counts.
 
 ## Decision tree
 

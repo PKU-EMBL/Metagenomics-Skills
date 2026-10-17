@@ -11,6 +11,7 @@ license: MIT
 metadata:
   metagenomics.category: "evaluation"
   metagenomics.tags: "qc, checkm2, drep, completeness, contamination"
+  metagenomics.stage: "assessment"
 ---
 
 # MAG Quality Control

@@ -81,7 +81,13 @@
         "metabuli",
         "kaiju",
         "humann",
-        "biobakery-databases"
+        "biobakery-databases",
+        "contamination-control",
+        "decontam",
+        "hostile",
+        "sourmash",
+        "nf-core-taxprofiler",
+        "absolute-abundance"
       ]
     },
     "genome-resolved": {
@@ -122,7 +128,9 @@
         "gtdbtk",
         "prodigal",
         "bakta",
-        "eggnog-mapper"
+        "eggnog-mapper",
+        "metacoag",
+        "nf-core-mag"
       ]
     },
     "mining": {
@@ -158,7 +166,11 @@
         "gapseq",
         "defensefinder",
         "padloc",
-        "qsap"
+        "qsap",
+        "virome-analysis",
+        "votu-workflow",
+        "vibrant",
+        "iphop"
       ]
     },
     "statistics": {
@@ -176,6 +188,13 @@
         "stamp",
         "sparcc",
         "spieceasi",
+        "permanova",
+        "aldex2",
+        "corncob",
+        "netcomi",
+        "absolute-abundance",
+        "source-tracking",
+        "feast",
         "nextflow",
         "snakemake"
       ]
@@ -209,6 +228,129 @@
         "prostt5",
         "plmsearch",
         "deepblast"
+      ]
+    },
+    "contamination": {
+      "description": "Control design, statistical contaminant evidence, and host-read depletion",
+      "skills": [
+        "contamination-control",
+        "decontam",
+        "hostile",
+        "kneaddata",
+        "bowtie2",
+        "fastp",
+        "multiqc"
+      ]
+    },
+    "long-read": {
+      "description": "ONT and PacBio read QC, filtering, mapping, assembly, and profiling",
+      "skills": [
+        "long-read-qc",
+        "nanoplot",
+        "chopper",
+        "filtlong",
+        "hifiadapterfilt",
+        "hostile",
+        "minimap2",
+        "metaflye",
+        "metamdbg",
+        "racon",
+        "quast",
+        "sourmash",
+        "motus",
+        "sylph"
+      ]
+    },
+    "virome": {
+      "description": "Viral discovery, quality, vOTUs, abundance, taxonomy, and host prediction",
+      "skills": [
+        "virome-analysis",
+        "votu-workflow",
+        "genomad",
+        "virsorter2",
+        "vibrant",
+        "checkv",
+        "vcontact",
+        "iphop",
+        "coverm",
+        "bowtie2"
+      ]
+    },
+    "strain-resolved": {
+      "description": "Marker phylogenies, cohort SNVs, microdiversity, and shared populations",
+      "skills": [
+        "strain-resolved-analysis",
+        "strainphlan",
+        "metasnv",
+        "instrain",
+        "metaphlan",
+        "bowtie2",
+        "samtools",
+        "coverm"
+      ]
+    },
+    "eukaryotic": {
+      "description": "Microbial-eukaryote contig classification, gene finding, binning, and QC",
+      "skills": [
+        "eukaryotic-metagenomics",
+        "tiara",
+        "whokaryote",
+        "eukcc",
+        "metaeuk",
+        "busco",
+        "minimap2",
+        "coverm"
+      ]
+    },
+    "pangenome": {
+      "description": "Prokaryotic pangenomes, consistent annotation, dereplication, and trees",
+      "skills": [
+        "pangenome-analysis",
+        "panaroo",
+        "ppanggolin",
+        "bakta",
+        "prokka",
+        "drep",
+        "skani",
+        "iqtree",
+        "fasttree"
+      ]
+    },
+    "metatranscriptomics": {
+      "description": "Microbial RNA QC, rRNA removal, quantification, function, and reporting",
+      "skills": [
+        "metatranscriptomics",
+        "sortmerna",
+        "fastp",
+        "fastqc",
+        "hostile",
+        "bowtie2",
+        "salmon",
+        "humann",
+        "eggnog-mapper",
+        "multiqc"
+      ]
+    },
+    "metabolic-modeling": {
+      "description": "Genome-scale reconstruction, media, community simulation, and load context",
+      "skills": [
+        "community-metabolic-modeling",
+        "carveme",
+        "micom",
+        "gapseq",
+        "alphagem",
+        "dram",
+        "absolute-abundance"
+      ]
+    },
+    "workflows": {
+      "description": "Workflow engines and pinned nf-core genome-resolved and profiling pipelines",
+      "skills": [
+        "setup",
+        "nextflow",
+        "snakemake",
+        "nf-core-mag",
+        "nf-core-taxprofiler"
       ]
     }
   }

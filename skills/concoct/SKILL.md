@@ -39,11 +39,25 @@ Operational rules:
 ## How to run
 
 ```bash
-conda install -c bioconda concoct  # if packaged; else follow upstream
-
-cut_up_fasta.py contigs.fa -c 10000 -o 0 -m > contigs_10k.fa
-# then coverage table + concoct + merge_cutup_clustering.py (see upstream)
+set -euo pipefail
+conda install -c conda-forge -c bioconda concoct
+[[ -s contigs.fa && -d temp/map ]] || exit 2
+mapfile -t bams < <(find temp/map -maxdepth 1 -name '*.bam' -size +0c | sort)
+(( ${#bams[@]} > 0 )) || exit 3
+mkdir -p temp/concoct result/concoct/bins
+cut_up_fasta.py contigs.fa -c 10000 -o 0 --merge_last \
+  -b temp/concoct/contigs_10k.bed > temp/concoct/contigs_10k.fa
+concoct_coverage_table.py temp/concoct/contigs_10k.bed "${bams[@]}" \
+  > temp/concoct/coverage.tsv
+concoct --composition_file temp/concoct/contigs_10k.fa \
+  --coverage_file temp/concoct/coverage.tsv -b temp/concoct/run_
+merge_cutup_clustering.py temp/concoct/run_clustering_gt1000.csv \
+  > result/concoct/clustering_merged.csv
+extract_fasta_bins.py contigs.fa result/concoct/clustering_merged.csv \
+  --output_path result/concoct/bins
 ```
+
+Require each BAM to be coordinate-sorted, indexed, and aligned to this exact assembly.
 
 ## Key parameters
 
@@ -55,6 +69,12 @@ cut_up_fasta.py contigs.fa -c 10000 -o 0 -m > contigs_10k.fa
 - Stage: **binning** — strong ensemble member (composition + multi-coverage)
 - Cut contigs (~10 kb) before clustering; prefer multi-coverage inputs
 - Feed into `basalt` ★ / `metawrap` / `dastool` for catalogues
+
+## Validation, recovery, and provenance
+
+Reconcile all FASTA IDs across BED, coverage, chunk clustering and merged assignments; require unique final contig membership and non-empty candidate FASTAs or an explicit no-bin outcome. Summarize binned/unbinned bases and assess candidates with CheckM2/GUNC before ensemble selection. Inspect sample order and coverage variance; a one-sample run loses much of CONCOCT's differential-coverage signal.
+
+Use a fresh prefix/output after changing assembly, BAMs, chunking or release. Record CONCOCT and mapping/samtools versions, full command, assembly/BAM checksums, ordered sample manifest, chunk policy, coverage/assignment checksums and candidate QC. Clusters are candidate bins, not validated genomes.
 
 ## Related skills
 

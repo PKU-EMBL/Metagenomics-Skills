@@ -29,7 +29,7 @@ Downstream of genome annotation for **pathway/model mining**. Needs reasonably c
 ## How to run
 
 ```bash
-conda install -c bioconda gapseq  # if packaged; else follow upstream docs
+conda install -c conda-forge -c bioconda gapseq
 
 gapseq find -p all genome.fa
 gapseq draft -r genome -c genome-draft.RDS -p genome-all-Reactions.tbl -b 136

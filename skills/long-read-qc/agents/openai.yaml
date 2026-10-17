@@ -1,0 +1,6 @@
+interface:
+  display_name: "Long-read QC"
+  short_description: "Plan verified ONT or PacBio read filtering"
+  default_prompt: "Use $long-read-qc to inspect my platform and reads, choose appropriate QC tools and thresholds, and define before-versus-after validation before execution."
+policy:
+  allow_implicit_invocation: true

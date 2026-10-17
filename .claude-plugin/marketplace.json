@@ -1,6 +1,6 @@
 {
   "name": "metagenomics-skills",
-  "version": "1.22.0",
+  "version": "1.23.0",
   "description": "Claude Code skills for reproducible shotgun metagenomics — study design through analysis, quality gates, and reporting",
   "owner": {
     "name": "PKU-EMBL",

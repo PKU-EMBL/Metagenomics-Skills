@@ -12,6 +12,7 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "MAG, ensemble-binning, DAS_Tool, refinement"
   metagenomics.upstream: "https://github.com/cmks/DAS_Tool"
+  metagenomics.stage: "binning"
 ---
 
 # DAS Tool

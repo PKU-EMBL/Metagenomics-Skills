@@ -45,7 +45,7 @@ genome warehouses (`progenomes`, AllTheBacteria, GTDB reps).
 ## How to run
 
 ```bash
-# build index once; query many times — see upstream docs
+# Build one immutable index, record its manifest, then query it repeatedly.
 lexicmap index -d genomes_dir -o db/lexicmap_idx
 lexicmap search -d db/lexicmap_idx -q query.fa -o temp/lexicmap/hits.tsv
 ```

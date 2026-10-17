@@ -29,10 +29,16 @@ networks, and reproducible pipeline wrappers. Does **not** replace `mag-qc`.
 | Classic R data class / ggplot2 | `phyloseq` | Sole DA method |
 | Multivariable associations | `maaslin2` | Unadjusted LEfSe alone |
 | Compositional bias-corrected DA | `ancombc` | Network edges |
+| Monte Carlo CLR effects | `aldex2` | Absolute abundance |
+| Count mean/dispersion models | `corncob` | Valid analysis of relative percentages |
+| Community distance test | `permanova` | A centroid effect without dispersion checks |
 | Classic LDA biomarkers | `lefse` | Modern multivariable default |
 | GUI exploratory profile tests | `stamp` | Covariate-heavy models |
 | Compositional correlations | `sparcc` | Direct interactions |
 | Sparse conditional networks | `spieceasi` | DA between groups |
+| Network construction/comparison | `netcomi` | Direct ecological interaction |
+| Source contributions | `source-tracking` → `feast` | Proof of transmission |
+| Load-aware abundance | `absolute-abundance` | Calibration-free absolute cells |
 | Figure checklist by stage | `visualization` | Table generation |
 | Portable pipeline (containers) | `nextflow` | Statistics Methods |
 | Rule-based DAG (conda-centric) | `snakemake` | Statistics Methods |
@@ -70,11 +76,14 @@ Research downstream need?
 ├─ Differential abundance
 │   ├─ Covariates / longitudinal → maaslin2
 │   ├─ Sampling-fraction bias correction → ancombc
+│   ├─ Monte Carlo CLR effect sizes → aldex2
+│   ├─ Count mean and dispersion effects → corncob
 │   ├─ Classic LDA → lefse
 │   └─ GUI exploratory → stamp
-├─ Association networks
-│   ├─ SparCC correlations → sparcc
-│   └─ SPIEC-EASI graphs → spieceasi
+├─ Whole-community distances → permanova (plus dispersion)
+├─ Association networks → netcomi (or sparcc / spieceasi)
+├─ Source contributions → source-tracking → feast
+├─ Absolute/load-aware abundance → absolute-abundance
 ├─ Reproducible pipelines
 │   ├─ Nextflow / nf-core → nextflow
 │   └─ Snakemake → snakemake
@@ -115,7 +124,9 @@ method that represents within-unit dependence; otherwise qualify inference.
 
 ## Related skills
 
-`visualization` · `microeco` · `phyloseq` · `maaslin2` · `ancombc` · `lefse` ·
-`stamp` · `sparcc` · `spieceasi` · `multiqc` · `nextflow` · `snakemake` ·
+`visualization` · `microeco` · `phyloseq` · `maaslin2` · `ancombc` · `aldex2` ·
+`corncob` · `permanova` · `lefse` · `stamp` · `netcomi` · `sparcc` ·
+`spieceasi` · `absolute-abundance` · `source-tracking` · `feast` · `multiqc` ·
+`nextflow` · `snakemake` · `nf-core-mag` · `nf-core-taxprofiler` ·
 `study-design` · `setup` · `metaphlan` · `kraken2` · `humann` · `anvio` ·
 `metagenomics-workflow` · `tool-selection`

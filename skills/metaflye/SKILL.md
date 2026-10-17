@@ -28,7 +28,7 @@ Primary long-read metagenome assembler for noisy ONT/PacBio CLR. For HiFi prefer
 ## How to run
 
 ```bash
-conda install -c bioconda flye  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda flye
 
 flye --meta --nano-raw reads.fastq.gz --out-dir temp/asm/flye -t 32
 # or --pacbio-raw / --nano-hq per chemistry

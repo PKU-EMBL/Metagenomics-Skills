@@ -28,7 +28,7 @@ Macrel mines **small AMP-like peptides**. High false-discovery risk without expe
 ## How to run
 
 ```bash
-conda install -c bioconda macrel  # if packaged; else follow upstream docs
+conda install -c conda-forge -c bioconda macrel
 
 macrel get-smorfs -f contigs.fa -o temp/macrel/${id} --threads 16
 macrel peptides -f temp/macrel/${id}.smorfs.faa -o temp/macrel/${id}_amp

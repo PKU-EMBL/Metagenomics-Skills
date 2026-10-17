@@ -28,7 +28,7 @@ Classic viral contig mining. Pair with **CheckV** for quality and optionally geN
 ## How to run
 
 ```bash
-conda install -c bioconda virsorter  # if packaged; else follow upstream docs
+conda install -c conda-forge -c bioconda virsorter
 
 virsorter run -w temp/virsorter2 -i contigs.fa --min-length 1500 -j 16 all
 ```

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Strain-resolved analysis"
+  short_description: "Choose and validate strain-level evidence"
+  default_prompt: "Use $strain-resolved-analysis to inspect coverage and study design, choose StrainPhlAn, metaSNV, or inStrain, and define detectability and interpretation gates."
+policy:
+  allow_implicit_invocation: true

@@ -13,6 +13,7 @@ metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "CAMI, CAMI2, benchmark, AMBER, OPAL, CAMISIM, gold-standard"
   metagenomics.upstream: "https://cami-challenge.org/"
+  metagenomics.stage: "assessment"
 ---
 
 # CAMI (Critical Assessment of Metagenome Interpretation)
@@ -104,12 +105,24 @@ CAMI II challenge / exemplary datasets were also deposited with PUBLISSO DOIs
 (marine, strain-madness, plant-associated, mouse gut, human) — resolve from the
 CAMI II paper Data availability / portal, then pin the DOI + download date.
 
+Resolve the immutable archive URL and dataset identifier from the portal/DOI before running:
+
 ```bash
-# Pattern only — resolve exact URLs from the portal for the dataset you need
-mkdir -p db/cami/<dataset_id>
-# download reads, assemblies (if provided), gold standards, taxonomy snapshot
-# archive SHA256 / download date in provenance/
+set -euo pipefail
+dataset_id=${CAMI_DATASET_ID:?set the portal dataset identifier}
+source_url=${CAMI_SOURCE_URL:?set the immutable portal or DOI archive URL}
+mkdir -p "db/cami/$dataset_id" provenance
+curl --fail --location --retry 3 "$source_url" \
+  --output "db/cami/$dataset_id/source.archive"
+test -s "db/cami/$dataset_id/source.archive"
+sha256sum "db/cami/$dataset_id/source.archive" \
+  >"provenance/${dataset_id}.sha256"
+printf 'dataset_id\turl\tretrieved_utc\n%s\t%s\t%s\n' \
+  "$dataset_id" "$source_url" "$(date -u +%FT%TZ)" \
+  >"provenance/${dataset_id}.download.tsv"
 ```
+
+Extract into a new directory and inventory reads, assemblies, gold standards, taxonomy snapshot and expected checksums; never overwrite the source archive.
 
 ## Evaluation tools
 
@@ -121,11 +134,20 @@ mkdir -p db/cami/<dataset_id>
 | Portal | https://cami-challenge.org/ | Online evaluation / ranking |
 
 ```bash
-# Install from upstream docs (versions move) — examples:
-# conda / pip per CAMI-challenge READMEs
-# amber ...   # binning gold vs predictions
-# opal ...    # profiling gold vs predictions
+set -euo pipefail
+mkdir -p result
+[[ -s gold.binning && -s prediction.binning ]] || exit 2
+amber.py -g gold.binning -l "candidate" prediction.binning \
+  -o result/amber --stdout \
+  >result/amber.stdout.log 2>result/amber.stderr.log
+
+[[ -s gold.profile && -s prediction.profile ]] || exit 3
+opal.py -g gold.profile -l "candidate" prediction.profile \
+  -o result/opal \
+  >result/opal.stdout.log 2>result/opal.stderr.log
 ```
+
+Inputs must use the correct CAMI Bioboxes format and SampleID. For taxonomic binning, also pin the NCBI taxonomy dump passed with `--ncbi_dir`; do not use it for genome-binning metrics.
 
 Use CAMI **bioboxes / profiling formats** when possible so AMBER/OPAL/portal
 can ingest outputs without custom parsers.

@@ -10,6 +10,9 @@ metadata:
   metagenomics.tags: "MGE, plasmid, virus, genome-mining"
   metagenomics.upstream: "https://github.com/apcamargo/genomad"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI contract reviewed; not executed here"
 ---
 
 # geNomad
@@ -91,8 +94,14 @@ MGE / virus goal?
 | Memory errors | `--splits` / smaller input chunks |
 | Empty virus table | Low viral signal or too-short contigs — check min length filters |
 
+## Validation, recovery, and provenance
+
+Require completed execution logs and virus/plasmid summary tables plus matching FASTA/gene outputs, even when a class has zero candidates. Reconcile every reported element to an input contig and coordinates, verify unique IDs after any trimming, and inspect score, hallmark genes, taxonomy, length, terminal repeats and provirus status. Pass viral sequences to `$checkv`; inspect conflicting plasmid/virus/chromosome classifications rather than forcing one label.
+
+`--cleanup` removes evidence useful for diagnosis, so retain intermediates until validation. Use a new output after changing input/database/options. Record geNomad/MMseqs2 versions, database release/checksum, full command, input and result checksums, and filter code. Predictions indicate sequence-class evidence, not complete episomes, infective particles, host, or activity.
+
 ## Related skills
 
-`checkv` · `virsorter2` · `vcontact` · `plasmaag` · `mobileog` · `isescan` ·
-`integronfinder` · `mob-suite` · `cge-finders` · `plasmidfinder` · `staramr` ·
-`rgi` · `resfinder` · `antismash` · `microbial-mining` · `megahit`
+`virome-analysis` · `checkv` · `virsorter2` · `vcontact` · `plasmaag` · `mobileog` ·
+`isescan` · `integronfinder` · `mob-suite` · `cge-finders` · `plasmidfinder` ·
+`staramr` · `rgi` · `resfinder` · `antismash` · `microbial-mining` · `megahit`

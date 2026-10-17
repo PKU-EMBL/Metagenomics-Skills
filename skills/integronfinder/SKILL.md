@@ -10,6 +10,10 @@ metadata:
   metagenomics.tags: "IntegronFinder, integron, MGE, AMR, cassette, genome-mining"
   metagenomics.upstream: "https://github.com/gem-pasteur/Integron_Finder"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.upstream-version: "2.0.6"
+  metagenomics.last-reviewed: "2026-10-18"
+  metagenomics.command-status: "CLI reviewed against upstream usage; not executed here"
 ---
 
 # IntegronFinder
@@ -39,10 +43,15 @@ expression.
 ## How to run
 
 ```bash
-# bioconda / pip per upstream; example
-integron_finder genome.fna --outdir integron_out
-# optional functional annotation flags — follow IntegronFinder 2 docs
+set -euo pipefail
+[[ -s genome.fna ]] || exit 2
+mkdir -p integron_out
+integron_finder genome.fna --outdir integron_out --cpu 4 --func-annot
+find integron_out -name '*.summary' -size +0c | grep -q .
+find integron_out -name '*.integrons' -size +0c | grep -q .
 ```
+
+This targets IntegronFinder 2.0.6. Functional annotation requires its compatible NCBIfam-AMRFinder profiles; omit `--func-annot` rather than using mismatched assets. Preserve complete, CALIN and In0 calls separately and validate element coordinates on each contig.
 
 ## Decision tree
 

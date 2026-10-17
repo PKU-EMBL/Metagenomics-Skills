@@ -8,6 +8,7 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "quantification, abundance"
   metagenomics.upstream: "https://github.com/COMBINE-lab/salmon"
+  metagenomics.stage: "function"
 ---
 
 # Salmon

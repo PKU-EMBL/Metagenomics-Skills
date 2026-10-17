@@ -39,9 +39,12 @@ rule; pin Snakemake major version and environment YAML hashes. Prefer dry-run
 ## How to run
 
 ```bash
-# conda install -c bioconda snakemake
-snakemake -j 16 --use-conda
-# or: snakemake -j 100 --cluster 'sbatch ...' --latency-wait 60
+set -euo pipefail
+[[ -s Snakefile ]] || exit 2
+snakemake --dry-run --printshellcmds
+snakemake --jobs 16 --use-conda --rerun-incomplete --printshellcmds
+# With the separately pinned SLURM executor plugin:
+snakemake --executor slurm --jobs 100 --use-conda --latency-wait 60
 ```
 
 ## Decision tree

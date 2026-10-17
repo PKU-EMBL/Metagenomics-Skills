@@ -55,18 +55,19 @@ Do not treat interactive aesthetics as QC — still run `checkm2` / `gunc` /
 | BAM(s) | Sorted/indexed; multi-sample profiles are Anvi'o's strength |
 | RAM / GUI | Large profiles need memory; interactive needs browser access |
 
-## How to run (pattern)
+## How to run
 
-Exact subcommands evolve — verify with `anvi-script-reformat-fasta --help` /
-current docs:
+Preflight the installed release with `anvi-script-reformat-fasta --help` and preserve its version. This minimal sequence initializes a contigs database before profile import/refinement:
 
 ```bash
-# illustrative workflow skeleton
+set -euo pipefail
+[[ -s contigs.fa ]] || exit 2
 anvi-script-reformat-fasta contigs.fa -o contigs_fixed.fa --simplify-names
 anvi-gen-contigs-database -f contigs_fixed.fa -o CONTIGS.db -n PROJECT
 anvi-run-hmms -c CONTIGS.db -T 16
+[[ -s sample.bam ]] || exit 2
 anvi-profile -i sample.bam -c CONTIGS.db -o PROFILE_sample -T 16
-# anvi-merge ... then anvi-interactive -p PROFILE.db -c CONTIGS.db
+# For multiple samples, profile each BAM and pass the resulting PROFILE.db files to anvi-merge.
 ```
 
 ## Decision tree

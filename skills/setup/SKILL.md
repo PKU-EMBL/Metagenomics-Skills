@@ -11,6 +11,7 @@ license: MIT
 metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "setup, onboarding, installation, conda"
+  metagenomics.stage: "utilities"
 ---
 
 # Setup

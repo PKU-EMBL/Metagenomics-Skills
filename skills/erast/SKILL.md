@@ -46,12 +46,13 @@ unless you rebuild locally; embedding hits need careful annotation transfer.
 
 **Web:** https://ai4s.tencent.com/erast
 
-**Local pipeline** (see upstream `pipeline/readme.md`):
+**Local pipeline** reviewed from `pipeline/readme.md`:
 
 ```bash
-# Pfam + ESM2 embeddings + homology predict (protein mode)
-export PFAMDB=/path/to/pfamdb
-export MODEL_PATH=/path/to/esm2_or_erast_weights
+# Pfam + ESM2 embeddings + homology prediction (protein mode).
+PFAMDB=${PFAMDB:?set PFAMDB to the pinned Pfam assets}
+MODEL_PATH=${MODEL_PATH:?set MODEL_PATH to the pinned ESM2/ERAST checkpoint}
+[[ -e "$PFAMDB" && -e "$MODEL_PATH" ]] || exit 2
 cd pipeline
 python pfam_scan.py -out example/pfam_q.json -outfmt json example/q.fa "$PFAMDB"
 python pfam_scan.py -out example/pfam_t.json -outfmt json example/t.fa "$PFAMDB"
@@ -61,7 +62,7 @@ python predict.py --fa_q example/q.fa --fa_t example/t.fa \
   --emb_q example/q_emb.npy --emb_t example/t_emb.npy \
   --pfam_q example/pfam_q.json --pfam_t example/pfam_t.json \
   --out example/out.jsonl --mode p
-# nucleotide: encode/predict with --mode n (see upstream)
+# Nucleotide runs use the separately prepared nucleotide artifacts and --mode n.
 ```
 
 EHSM checkpoint: Zenodo record noted in upstream README.

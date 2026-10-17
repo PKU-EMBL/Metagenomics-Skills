@@ -12,6 +12,7 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "MAG, ensemble-binning, binning, metabat, maxbin"
   metagenomics.upstream: "https://github.com/bxlab/metaWRAP"
+  metagenomics.stage: "binning"
 ---
 
 # MetaWRAP

@@ -8,13 +8,13 @@ license: MIT
 metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "FastTree, phylogeny, approximate-ML, tree"
-  metagenomics.upstream: "http://www.microbesonline.org/fasttree/"
+  metagenomics.upstream: "https://github.com/morgannprice/fasttree"
   metagenomics.stage: "taxonomy"
 ---
 
 # FastTree
 
-Upstream: http://www.microbesonline.org/fasttree/ ·
+Upstream: [morgannprice/fasttree](https://github.com/morgannprice/fasttree) ·
 often packaged as `fasttree` / `FastTreeMP` (bioconda)
 
 ## Citation

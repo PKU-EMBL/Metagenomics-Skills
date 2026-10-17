@@ -8,6 +8,7 @@ metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "clustering, dereplication"
   metagenomics.upstream: "https://github.com/weizhongli/cdhit"
+  metagenomics.stage: "function"
 ---
 
 # CD-HIT

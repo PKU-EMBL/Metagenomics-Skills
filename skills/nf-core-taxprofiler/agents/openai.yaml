@@ -1,0 +1,6 @@
+interface:
+  display_name: "nf-core taxprofiler"
+  short_description: "Run pinned multi-tool taxonomic profiling"
+  default_prompt: "Use $nf-core-taxprofiler to validate my read and database sheets, run selected profilers at a pinned release, and verify native and standardized outputs."
+policy:
+  allow_implicit_invocation: true

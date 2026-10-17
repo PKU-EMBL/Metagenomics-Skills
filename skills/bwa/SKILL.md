@@ -30,7 +30,7 @@ Classic alternative to Bowtie2 for coverage mapping. Prefer **bwa-mem2** on larg
 ## How to run
 
 ```bash
-conda install -c bioconda bwa  # if packaged; else follow upstream
+conda install -c conda-forge -c bioconda bwa
 
 bwa index contigs.fa
 bwa mem -t 16 contigs.fa clean_1.fq.gz clean_2.fq.gz \

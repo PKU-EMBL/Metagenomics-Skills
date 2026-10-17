@@ -60,7 +60,7 @@ The legacy command remains supported:
 
 - A platform key, `all`, or `--target PATH` is required; a bare command never
   modifies every user directory implicitly.
-- `--profile full` is the backward-compatible default and exposes all 163
+- `--profile full` is the backward-compatible default and exposes all 201
   skills. `core` (48 skills) is recommended when the client has a small skill
   metadata budget.
 - Repeat `--profile` to union task-focused sets. With profiles, `--skill NAME`
@@ -100,6 +100,15 @@ unrelated directories are never pruned.
 | `mining` | BGC, AMR, virus, plasmid/MGE, metabolism and defense discovery |
 | `statistics` | QC aggregation, DA, figures, networks and workflow managers |
 | `ai-search` | Homology, structure, phylogenomics, genome/protein language models |
+| `contamination` | Controls, contaminant evidence, and host depletion |
+| `long-read` | ONT/PacBio QC, filtering, mapping, assembly, and profiling |
+| `virome` | Viral discovery, quality, vOTUs, abundance, taxonomy, and hosts |
+| `strain-resolved` | Marker phylogenies, cohort SNVs, and microdiversity |
+| `eukaryotic` | Microbial-eukaryote contigs, genes, bins, and QC |
+| `pangenome` | Prokaryotic pangenomes, annotation, dereplication, and trees |
+| `metatranscriptomics` | Microbial RNA QC, rRNA removal, quantification, and function |
+| `metabolic-modeling` | Genome-scale reconstruction and community simulation |
+| `workflows` | Workflow engines and pinned nf-core pipelines |
 | `full` | Every skill |
 
 Profiles only control discovery/context size; they do not install the underlying

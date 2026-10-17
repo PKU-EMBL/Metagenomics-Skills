@@ -47,7 +47,8 @@ dbCAN-sub is stronger than a single hit.
 ## How to run
 
 ```bash
-# Follow upstream for DB download (dbCAN HMM, CAZy, dbCAN-sub, PUL, …)
+# Preflight a pinned dbCAN bundle containing the enabled HMM/substrate assets.
+[[ -d db/dbcan ]] || exit 2
 run_dbcan proteins.faa protein --out_dir temp/dbcan/${id} --db_dir db/dbcan -t 16
 # CGC + substrate: supply GFF / use substrate_prediction per run_dbcan docs
 ```
