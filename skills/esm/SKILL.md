@@ -1,17 +1,16 @@
 ---
 name: esm
 description: >
-  ESM-2 family protein language models (ESMFold / ESM Atlas). Use when: (1)
-  Amino-acid embeddings or MLM scores pinned to ESM-2, (2) Single-sequence
-  structure context (ESMFold) or ESM Metagenomic Atlas via Foldseek, (3)
-  Backbone embeddings for PLMSearch / LucaPhylo-style workflows. For ESM C /
-  Cambrian prefer esmc. Upstream: https://github.com/facebookresearch/esm.
-  Route via protein-language-model.
+  ESM-2 family protein language models (ESMFold / ESM Atlas). Use when: (1) Amino-acid
+  embeddings or MLM scores pinned to ESM-2, (2) Single-sequence structure context
+  (ESMFold) or ESM Metagenomic Atlas via Foldseek, (3) Backbone embeddings for PLMSearch
+  / LucaPhylo-style workflows. For ESM C / Cambrian prefer esmc.
 license: MIT
-category: analysis-tools
-tags: [ESM, ESM-2, ESMFold, PLM, protein-language-model, embeddings, HuggingFace]
-upstream: https://github.com/facebookresearch/esm
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "ESM, ESM-2, ESMFold, PLM, protein-language-model, embeddings, HuggingFace"
+  metagenomics.upstream: "https://github.com/facebookresearch/esm"
+  metagenomics.stage: "function"
 ---
 
 # ESM (ESM-2 / ESMFold)
@@ -25,7 +24,7 @@ Lin, Z. *et al.* Evolutionary-scale prediction of atomic-level protein structure
 with a language model. *Science* **379**, 1123–1130 (2023).
 https://doi.org/10.1126/science.ade2574
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

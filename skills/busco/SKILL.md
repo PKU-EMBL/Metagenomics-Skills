@@ -1,15 +1,14 @@
 ---
 name: busco
 description: >
-  Benchmarking Universal Single-Copy Orthologs for genome completeness. Use this skill when working with busco: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://gitlab.com/ezlab/busco. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Benchmarking Universal Single-Copy Orthologs for genome completeness. Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['qc', 'completeness', 'busco']
-upstream: https://gitlab.com/ezlab/busco
-stage: assessment
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "qc, completeness, busco"
+  metagenomics.upstream: "https://gitlab.com/ezlab/busco"
+  metagenomics.stage: "assessment"
 ---
 
 # BUSCO
@@ -20,7 +19,7 @@ Upstream: [BUSCO](https://gitlab.com/ezlab/busco)
 
 Manni, M. *et al.* BUSCO update: novel and streamlined workflows along with broader and deeper phylogenetic coverage for scoring of eukaryotic, prokaryotic, and viral genomes. *Mol. Biol. Evol.* **38**, 4647–4654 (2021). https://doi.org/10.1093/molbev/msab199
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

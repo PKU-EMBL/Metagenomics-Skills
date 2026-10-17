@@ -1,15 +1,14 @@
 ---
 name: kaiju
 description: >
-  Fast sensitive taxonomic classification via protein-level matches. Use this skill when working with kaiju: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/bioinformatics-centre/kaiju. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Fast sensitive taxonomic classification via protein-level matches. Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['taxonomy', 'protein', 'classification']
-upstream: https://github.com/bioinformatics-centre/kaiju
-stage: taxonomy
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "taxonomy, protein, classification"
+  metagenomics.upstream: "https://github.com/bioinformatics-centre/kaiju"
+  metagenomics.stage: "taxonomy"
 ---
 
 # Kaiju
@@ -20,7 +19,7 @@ Upstream: [Kaiju](https://github.com/bioinformatics-centre/kaiju)
 
 Menzel, P., Ng, K. L. & Krogh, A. Fast and sensitive taxonomic classification for metagenomics with Kaiju. *Nat. Commun.* **7**, 11257 (2016). https://doi.org/10.1038/ncomms11257
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

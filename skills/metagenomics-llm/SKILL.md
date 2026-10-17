@@ -1,16 +1,17 @@
 ---
 name: metagenomics-llm
 description: >
-  Route genomic/protein language models and Steinegger-lab structure/sequence
-  search for shotgun metagenomics. Use when: (1) Choosing gLMs vs PLMs vs
-  classical homology, (2) MMseqs2 vs Foldseek vs PLM search, (3) Spacedust /
-  AlphaGEM, (4) Distinguishing foundation-model corpora from SRA/MGnify
-  reanalysis. For DNA gLMs use genome-language-model; for protein LMs use
-  protein-language-model (esm, esmc, saprot, prostt5, plmsearch, deepblast).
-  Classical pipelines: metagenomics-workflow / tool-selection.
+  Route genomic/protein language models and Steinegger-lab structure/sequence search for
+  shotgun metagenomics. Use when: (1) Choosing gLMs vs PLMs vs classical homology, (2)
+  MMseqs2 vs Foldseek vs PLM search, (3) Spacedust / AlphaGEM, (4) Distinguishing
+  foundation-model corpora from SRA/MGnify reanalysis. For DNA gLMs use
+  genome-language-model; for protein LMs use protein-language-model (esm, esmc, saprot,
+  prostt5, plmsearch, deepblast). Classical pipelines: metagenomics-workflow /
+  tool-selection.
 license: MIT
-category: orchestration
-tags: [LLM, PLM, gLM, Foldseek, MMseqs2, Folddisco, structure-search, AI]
+metadata:
+  metagenomics.category: "orchestration"
+  metagenomics.tags: "LLM, PLM, gLM, Foldseek, MMseqs2, Folddisco, structure-search, AI"
 ---
 
 # Metagenomics × LMs & structure search

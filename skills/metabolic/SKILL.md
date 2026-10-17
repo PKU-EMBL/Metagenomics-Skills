@@ -1,17 +1,17 @@
 ---
 name: metabolic
 description: >
-  METABOLIC (AnantharamanLab) — high-throughput metabolic and biogeochemical
-  trait profiling of MAGs/SAGs/isolates with C, N, S, and other elemental cycle
-  diagrams (METABOLIC-G genomes-only; METABOLIC-C with reads / community
-  networks). Use for multi-element cycling potential and MW-score networks.
-  Upstream: https://github.com/AnantharamanLab/METABOLIC. Route via
-  element-cycling. Fe-deep dive → fegenie; S entropy scores → mebs.
+  METABOLIC (AnantharamanLab) — high-throughput metabolic and biogeochemical trait
+  profiling of MAGs/SAGs/isolates with C, N, S, and other elemental cycle diagrams
+  (METABOLIC-G genomes-only; METABOLIC-C with reads / community networks). Use for
+  multi-element cycling potential and MW-score networks. Fe-deep dive → fegenie; S
+  entropy scores → mebs.
 license: MIT
-category: analysis-tools
-tags: [METABOLIC, biogeochemistry, C, N, S, P, element-cycling, MAG]
-upstream: https://github.com/AnantharamanLab/METABOLIC
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "METABOLIC, biogeochemistry, C, N, S, P, element-cycling, MAG"
+  metagenomics.upstream: "https://github.com/AnantharamanLab/METABOLIC"
+  metagenomics.stage: "mining"
 ---
 
 # METABOLIC
@@ -25,7 +25,7 @@ functional traits, metabolism, biogeochemistry, and community-scale functional
 networks. *Microbiome* **10**, 33 (2022).
 https://doi.org/10.1186/s40168-021-01213-8
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

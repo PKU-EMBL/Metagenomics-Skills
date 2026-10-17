@@ -1,7 +1,7 @@
 interface:
   display_name: "VirSorter2"
   short_description: "Viral sequence identification from metagenomic assemblies"
-  default_prompt: "Use $virsorter2 for Viral sequence identification from metagenomic assemblies"
+  default_prompt: "Use $virsorter2 for this task: Viral sequence identification from metagenomic assemblies. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

@@ -1,15 +1,14 @@
 ---
 name: prokka
 description: >
-  Rapid prokaryotic genome annotation (CDS/rRNA/tRNA). Use this skill when working with prokka: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/tseemann/prokka. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Rapid prokaryotic genome annotation (CDS/rRNA/tRNA). Use for installation, parameter
+  choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['annotation', 'orf', 'prokaryote']
-upstream: https://github.com/tseemann/prokka
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "annotation, orf, prokaryote"
+  metagenomics.upstream: "https://github.com/tseemann/prokka"
+  metagenomics.stage: "function"
 ---
 
 # Prokka
@@ -20,7 +19,7 @@ Upstream: [Prokka](https://github.com/tseemann/prokka)
 
 Seemann, T. Prokka: rapid prokaryotic genome annotation. *Bioinformatics* **30**, 2068–2069 (2014). https://doi.org/10.1093/bioinformatics/btu153
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

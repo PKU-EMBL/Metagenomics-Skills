@@ -1,15 +1,14 @@
 ---
 name: metamdbg
 description: >
-  High-quality metagenome assembly from long accurate reads. Use this skill when working with metamdbg: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/GaetanBenoitDev/metaMDBG. For stage routing use tool-selection /
-  metagenomics-workflow.
+  High-quality metagenome assembly from long accurate reads. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['assembly', 'hifi', 'long-read']
-upstream: https://github.com/GaetanBenoitDev/metaMDBG
-stage: assembly
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "assembly, hifi, long-read"
+  metagenomics.upstream: "https://github.com/GaetanBenoitDev/metaMDBG"
+  metagenomics.stage: "assembly"
 ---
 
 # metaMDBG
@@ -20,7 +19,7 @@ Upstream: [metaMDBG](https://github.com/GaetanBenoitDev/metaMDBG)
 
 Benoit, G. *et al.* High-quality metagenome assembly from long accurate reads with metaMDBG. *Nat. Biotechnol.* **42**, 1378–1383 (2024). https://doi.org/10.1038/s41587-023-01983-6
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

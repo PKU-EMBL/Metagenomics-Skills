@@ -3,14 +3,14 @@ name: dom-biosurfactant
 description: >
   Route dissolved organic matter (DOM) / glycan substrate capacity, biosurfactant
   production, and hydrocarbon/plastic biodegradation annotation for shotgun
-  metagenomics. Covers “like-dissolves-like” solubility-related microbial
-  functions: CAZyme–glycan (dbCAN), biosurfactants + HC degradation (HADEG,
-  BioSurfDB), and related BGC context (antiSMASH). Child skills: hadeg,
-  biosurfdb; also dbcan, antismash, dram. Route via microbial-mining.
+  metagenomics. Covers “like-dissolves-like” solubility-related microbial functions:
+  CAZyme–glycan (dbCAN), biosurfactants + HC degradation (HADEG, BioSurfDB), and related
+  BGC context (antiSMASH). Child skills: hadeg, biosurfdb; also dbcan, antismash, dram.
 license: MIT
-category: orchestration
-tags: [DOM, biosurfactant, hydrocarbon, biodegradation, CAZyme, solubility, HADEG]
-stage: mining
+metadata:
+  metagenomics.category: "orchestration"
+  metagenomics.tags: "DOM, biosurfactant, hydrocarbon, biodegradation, CAZyme, solubility, HADEG"
+  metagenomics.stage: "mining"
 ---
 
 # DOM / biosurfactant / biodegradation

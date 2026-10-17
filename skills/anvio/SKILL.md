@@ -1,18 +1,18 @@
 ---
 name: anvio
 description: >
-  Anvi'o — interactive multi-omics platform for metagenomic assemblies, MAG
-  refinement, visualization, and SNP/profile exploration. Use when: (1) Manual
-  or human-guided bin refinement, (2) Interactive contig profiles across samples,
-  (3) Linking MAGs with coverage/SNVs/metatranscriptomes, (4) Producing Anvi'o
-  interactive HTML reports. Upstream: https://github.com/merenlab/anvio.
-  Complements automated ensemble binning (basalt/metawrap/dastool); not a
-  replacement for CheckM2/GUNC QC.
+  Anvi'o — interactive multi-omics platform for metagenomic assemblies, MAG refinement,
+  visualization, and SNP/profile exploration. Use when: (1) Manual or human-guided bin
+  refinement, (2) Interactive contig profiles across samples, (3) Linking MAGs with
+  coverage/SNVs/metatranscriptomes, (4) Producing Anvi'o interactive HTML reports.
+  Complements automated ensemble binning (basalt/metawrap/dastool); not a replacement
+  for CheckM2/GUNC QC.
 license: MIT
-category: analysis-tools
-tags: [anvio, visualization, MAG, refinement, interactive]
-upstream: https://github.com/merenlab/anvio
-stage: binning
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "anvio, visualization, MAG, refinement, interactive"
+  metagenomics.upstream: "https://github.com/merenlab/anvio"
+  metagenomics.stage: "binning"
 ---
 
 # Anvi'o
@@ -25,7 +25,7 @@ https://anvio.org/
 Eren, A. M. *et al.* Anvi'o: an advanced analysis and visualization platform for
 'omics data. *PeerJ* **3**, e1319 (2015). https://doi.org/10.7717/peerj.1319
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

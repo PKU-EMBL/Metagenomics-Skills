@@ -1,18 +1,18 @@
 ---
 name: plass
 description: >
-  PLASS — protein-level assembler that recovers many more protein sequences
-  from metagenomic reads than nucleotide assembly alone (Söding / Steinegger).
-  Same package ships PenguiN (protein-guided nucleotide assembly). Use when:
-  (1) Maximizing protein catalogue recovery from reads, (2) Building inputs for
-  MMseqs/HH-suite/BFD-style search, (3) Viral/strain-resolved assemblies via
-  PenguiN. Upstream: https://github.com/soedinglab/plass.
-  Route via homology-search / assembly stages.
+  PLASS — protein-level assembler that recovers many more protein sequences from
+  metagenomic reads than nucleotide assembly alone (Söding / Steinegger). Same package
+  ships PenguiN (protein-guided nucleotide assembly). Use when: (1) Maximizing protein
+  catalogue recovery from reads, (2) Building inputs for MMseqs/HH-suite/BFD-style
+  search, (3) Viral/strain-resolved assemblies via PenguiN. Route via homology-search /
+  assembly stages.
 license: MIT
-category: analysis-tools
-tags: [PLASS, PenguiN, assembly, protein, metagenomics]
-upstream: https://github.com/soedinglab/plass
-stage: assembly
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "PLASS, PenguiN, assembly, protein, metagenomics"
+  metagenomics.upstream: "https://github.com/soedinglab/plass"
+  metagenomics.stage: "assembly"
 ---
 
 # PLASS / PenguiN
@@ -29,7 +29,7 @@ Jochheim, A. *et al.* Strain-resolved de-novo metagenomic assembly of viral
 genomes and microbial 16S rRNAs. *Microbiome* **12**, 187 (2024).
 https://doi.org/10.1186/s40168-024-01904-y
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

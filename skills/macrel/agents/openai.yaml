@@ -1,7 +1,7 @@
 interface:
   display_name: "Macrel"
   short_description: "Screen genomes and metagenomes for antimicrobial peptides (AMPs)"
-  default_prompt: "Use $macrel for Screen genomes and metagenomes for antimicrobial peptides (AMPs)"
+  default_prompt: "Use $macrel for this task: Screen genomes and metagenomes for antimicrobial peptides (AMPs). Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

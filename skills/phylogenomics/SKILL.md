@@ -1,15 +1,16 @@
 ---
 name: phylogenomics
 description: >
-  Route phylogenetic and evolutionary analyses for shotgun metagenomics and
-  MAGs: GTDB-Tk placement, genome/marker trees (PhyloPhlAn, IQ-TREE, FastTree),
-  alignment-free PLM phylogeny (LucaPhylo), and ANI species boundaries
-  (skani/FastANI). Use when building or interpreting trees, placing genomes,
-  or choosing classical vs AI phylogeny — not for read profilers alone.
+  Route phylogenetic and evolutionary analyses for shotgun metagenomics and MAGs:
+  GTDB-Tk placement, genome/marker trees (PhyloPhlAn, IQ-TREE, FastTree), alignment-free
+  PLM phylogeny (LucaPhylo), and ANI species boundaries (skani/FastANI). Use when
+  building or interpreting trees, placing genomes, or choosing classical vs AI phylogeny
+  — not for read profilers alone.
 license: MIT
-category: orchestration
-tags: [phylogeny, tree, IQ-TREE, PhyloPhlAn, evolution, GTDB, routing]
-stage: taxonomy
+metadata:
+  metagenomics.category: "orchestration"
+  metagenomics.tags: "phylogeny, tree, IQ-TREE, PhyloPhlAn, evolution, GTDB, routing"
+  metagenomics.stage: "taxonomy"
 ---
 
 # Phylogenomics / evolutionary routing

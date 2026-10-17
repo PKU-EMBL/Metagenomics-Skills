@@ -1,7 +1,7 @@
 interface:
   display_name: "HUMAnN"
   short_description: "Gene-family and pathway abundance profiling from metagenomes"
-  default_prompt: "Use $humann for Gene-family and pathway abundance profiling from metagenomes."
+  default_prompt: "Use $humann for this task: Gene-family and pathway abundance profiling from metagenomes. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

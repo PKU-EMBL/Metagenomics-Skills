@@ -1,15 +1,15 @@
 ---
 name: diamond
 description: >
-  Ultra-fast protein alignment (BLASTP/X alternative) for functional/taxonomic searches. Use this skill when working with diamond: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/bbuchfink/diamond. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Ultra-fast protein alignment (BLASTP/X alternative) for functional/taxonomic searches.
+  Use for installation, parameter choice, execution, output interpretation, or
+  troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['mapping', 'protein', 'blast']
-upstream: https://github.com/bbuchfink/diamond
-stage: mapping
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "mapping, protein, blast"
+  metagenomics.upstream: "https://github.com/bbuchfink/diamond"
+  metagenomics.stage: "mapping"
 ---
 
 # DIAMOND
@@ -20,7 +20,7 @@ Upstream: [DIAMOND](https://github.com/bbuchfink/diamond)
 
 Buchfink, B., Reuter, K. & Drost, H.-G. Sensitive protein alignments at tree-of-life scale using DIAMOND. *Nat. Methods* **18**, 366–368 (2021). https://doi.org/10.1038/s41592-021-01101-x
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

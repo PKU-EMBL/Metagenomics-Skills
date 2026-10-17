@@ -1,16 +1,17 @@
 ---
 name: mobileelementfinder
 description: >
-  MobileElementFinder — CGE detection of named mobile genetic elements (MITEs,
-  IS, Tn, ComTn, ICE, IME, CIME, …) in assembled bacterial genomes, with
-  optional ARG/virulence context. Use for isolate mobilome screens. Upstream:
-  PyPI MobileElementFinder / CGE web service. Route via cge-finders /
-  microbial-mining; complement isescan, mobileog, integronfinder, genomad.
+  MobileElementFinder — CGE detection of named mobile genetic elements (MITEs, IS, Tn,
+  ComTn, ICE, IME, CIME, …) in assembled bacterial genomes, with optional ARG/virulence
+  context. Use for isolate mobilome screens. Upstream: PyPI MobileElementFinder / CGE
+  web service. Route via cge-finders / microbial-mining; complement isescan, mobileog,
+  integronfinder, genomad.
 license: MIT
-category: analysis-tools
-tags: [MobileElementFinder, CGE, MGE, IS, transposon, ICE, IME, mobilome]
-upstream: https://pypi.org/project/MobileElementFinder/
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "MobileElementFinder, CGE, MGE, IS, transposon, ICE, IME, mobilome"
+  metagenomics.upstream: "https://pypi.org/project/MobileElementFinder/"
+  metagenomics.stage: "mining"
 ---
 
 # MobileElementFinder
@@ -25,7 +26,7 @@ with antibiotic resistance in *Salmonella enterica* using a newly developed web
 tool: MobileElementFinder. *J. Antimicrob. Chemother.* **76**, 101–109 (2021).
 https://doi.org/10.1093/jac/dkaa390
 
-See also [docs/references.md](../../docs/references.md) and `cge-finders`.
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md) and `cge-finders`.
 
 ## Analytical thinking
 

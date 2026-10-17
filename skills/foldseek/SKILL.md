@@ -1,20 +1,18 @@
 ---
 name: foldseek
 description: >
-  Foldseek — ultrafast protein structure search and clustering via the 3Di
-  structural alphabet (Steinegger / Söding labs). Use when: (1) Searching MAG
-  or predicted structures against AFDB/PDB/ESM Atlas, (2) Foldseek-Multimer
-  complex search for distant systems (e.g. CRISPR–Cas), (3) Structure
-  clustering at AFDB scale, (4) Sequence→structure search with ProstT5.
-  Upstream: https://github.com/steineggerlab/foldseek.
-  Web: https://search.foldseek.com. Route via homology-search /
-  metagenomics-llm; pairs with
-  mmseqs2 (sequence) and folddisco (motifs).
+  Foldseek — ultrafast protein structure search and clustering via the 3Di structural
+  alphabet (Steinegger / Söding labs). Use when: (1) Searching MAG or predicted
+  structures against AFDB/PDB/ESM Atlas, (2) Foldseek-Multimer complex search for
+  distant systems (e.g. CRISPR–Cas), (3) Structure clustering at AFDB scale, (4)
+  Sequence→structure search with ProstT5. Route via homology-search / metagenomics-llm;
+  pairs with mmseqs2 (sequence) and folddisco (motifs).
 license: MIT
-category: analysis-tools
-tags: [Foldseek, 3Di, structure-search, AFDB, multimer, ProstT5, homology]
-upstream: https://github.com/steineggerlab/foldseek
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "Foldseek, 3Di, structure-search, AFDB, multimer, ProstT5, homology"
+  metagenomics.upstream: "https://github.com/steineggerlab/foldseek"
+  metagenomics.stage: "function"
 ---
 
 # Foldseek
@@ -35,7 +33,7 @@ Barrio-Hernandez, I. *et al.* Clustering predicted structures at the scale of
 the known protein universe. *Nature* **622**, 637–645 (2023).
 https://doi.org/10.1038/s41586-023-06510-w
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

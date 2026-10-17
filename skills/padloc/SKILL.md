@@ -1,17 +1,16 @@
 ---
 name: padloc
 description: >
-  PADLOC (Prokaryotic Antiviral Defence LOCator) — HMM + synteny detection of
-  antiviral defence systems (CRISPR-Cas and many other systems) in prokaryotic
-  genomes. Use as a complement or alternative to DefenseFinder for defenseome
-  surveys. Upstream: https://github.com/padlocbio/padloc. DB:
-  https://github.com/padlocbio/padloc-db. Web: https://padloc.otago.ac.nz.
-  Route via microbial-mining; pair with genomad/virsorter2 for MGE context.
+  PADLOC (Prokaryotic Antiviral Defence LOCator) — HMM + synteny detection of antiviral
+  defence systems (CRISPR-Cas and many other systems) in prokaryotic genomes. Use as a
+  complement or alternative to DefenseFinder for defenseome surveys. Route via
+  microbial-mining; pair with genomad/virsorter2 for MGE context.
 license: MIT
-category: analysis-tools
-tags: [PADLOC, defense, defenseome, CRISPR, antiviral, genome-mining]
-upstream: https://github.com/padlocbio/padloc
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "PADLOC, defense, defenseome, CRISPR, antiviral, genome-mining"
+  metagenomics.upstream: "https://github.com/padlocbio/padloc"
+  metagenomics.stage: "mining"
 ---
 
 # PADLOC
@@ -31,7 +30,7 @@ Web server: Payne, L. J. *et al.* PADLOC: a web server for the identification
 of antiviral defence systems in microbial genomes. *Nucleic Acids Res.* **50**,
 W541–W550 (2022). https://doi.org/10.1093/nar/gkac400
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

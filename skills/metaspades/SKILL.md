@@ -1,11 +1,13 @@
 ---
 name: metaspades
 description: >
-  More sensitive metagenomic assembly via SPAdes meta mode. Use this skill when working with metaspades: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/ablab/spades. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  More sensitive metagenomic assembly via SPAdes meta mode. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['assembly', 'spades']
-upstream: https://github.com/ablab/spades
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "assembly, spades"
+  metagenomics.upstream: "https://github.com/ablab/spades"
 ---
 
 # metaSPAdes
@@ -16,7 +18,7 @@ Upstream: [ablab/spades](https://github.com/ablab/spades) (`metaspades.py`)
 
 Nurk, S., Meleshko, D., Korobeynikov, A. & Pevzner, P. A. metaSPAdes: a new versatile metagenomic assembler. *Genome Res.* **27**, 824–834 (2017). https://doi.org/10.1101/gr.213959.116
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

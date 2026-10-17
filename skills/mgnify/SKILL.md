@@ -1,17 +1,16 @@
 ---
 name: mgnify
 description: >
-  Use EMBL-EBI MGnify for analysed microbiome studies and biome genome
-  catalogues (including UHGG / human-gut and other biomes). Use this skill when:
-  (1) Browsing or citing MGnify analyses, (2) Downloading UHGG or other MGnify
-  Genomes catalogues, (3) Searching genes/MAGs against catalogues, (4) Building
-  comparison sets for MAG novelty. Upstream: https://www.ebi.ac.uk/metagenomics/
-  and https://github.com/EBI-Metagenomics. For raw reads use sra-ena.
-  For taxonomy releases use gtdb. For routing use public-databases.
+  Use EMBL-EBI MGnify for analysed microbiome studies and biome genome catalogues
+  (including UHGG / human-gut and other biomes). Use this skill when: (1) Browsing or
+  citing MGnify analyses, (2) Downloading UHGG or other MGnify Genomes catalogues, (3)
+  Searching genes/MAGs against catalogues, (4) Building comparison sets for MAG novelty.
+  For raw reads use sra-ena. For taxonomy releases use gtdb.
 license: MIT
-category: utilities
-tags: [database, MGnify, UHGG, genome-catalogue, EBI]
-upstream: https://github.com/EBI-Metagenomics
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "database, MGnify, UHGG, genome-catalogue, EBI"
+  metagenomics.upstream: "https://github.com/EBI-Metagenomics"
 ---
 
 # MGnify (incl. UHGG / biome catalogues)
@@ -28,7 +27,7 @@ Richardson, L. *et al.* MGnify: the microbiome sequence data analysis resource i
 
 Almeida, A. *et al.* A unified catalog of 204,938 reference genomes from the human gut microbiome. *Nat. Biotechnol.* **39**, 105–114 (2021). https://doi.org/10.1038/s41587-020-0603-3
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

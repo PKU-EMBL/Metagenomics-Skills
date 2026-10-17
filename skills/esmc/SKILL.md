@@ -1,19 +1,18 @@
 ---
 name: esmc
 description: >
-  ESM C / ESM Cambrian (ESMC) — next-generation protein representation language
-  models scaling beyond ESM-2 (300M / 600M open weights; larger tiers may need
-  Forge/API). Use when: (1) Stronger AA embeddings than ESM-2 for metagenomic
-  proteins, (2) Representation learning (not ESM3-style controllable generation),
-  (3) Downstream heads that benefit from Cambrian checkpoints. Upstream:
-  https://github.com/evolutionaryscale/esm (Biohub/esm). Route via
-  protein-language-model. Keep ESM-2 workflows on esm when pinned for
+  ESM C / ESM Cambrian (ESMC) — next-generation protein representation language models
+  scaling beyond ESM-2 (300M / 600M open weights; larger tiers may need Forge/API). Use
+  when: (1) Stronger AA embeddings than ESM-2 for metagenomic proteins, (2)
+  Representation learning (not ESM3-style controllable generation), (3) Downstream heads
+  that benefit from Cambrian checkpoints. Keep ESM-2 workflows on esm when pinned for
   reproducibility.
 license: MIT
-category: analysis-tools
-tags: [ESMC, ESM-C, ESM-Cambrian, PLM, protein-language-model, EvolutionaryScale]
-upstream: https://github.com/evolutionaryscale/esm
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "ESMC, ESM-C, ESM-Cambrian, PLM, protein-language-model, EvolutionaryScale"
+  metagenomics.upstream: "https://github.com/evolutionaryscale/esm"
+  metagenomics.stage: "function"
 ---
 
 # ESM C (ESM Cambrian / ESMC)
@@ -31,7 +30,7 @@ Interim blog (if preprint not yet cited in Methods): ESM Team. ESM Cambrian:
 Revealing the mysteries of proteins with unsupervised learning (2024).
 https://www.evolutionaryscale.ai/blog/esm-cambrian
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

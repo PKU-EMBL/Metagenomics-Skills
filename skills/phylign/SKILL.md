@@ -2,17 +2,16 @@
 name: phylign
 description: >
   Phylign — BLAST-like alignment of genes, plasmids, or reads against
-  phylogeny-compressed microbial genome collections (e.g. pre-2019 661k
-  bacteria) on ordinary desktops. Uses phylogenetic compression (MiniPhy for
-  building compressed assemblies/COBS indexes; Phylign for search via COBS +
-  Minimap2). Use when searching huge genome warehouses without a cluster.
-  Upstream: https://github.com/karel-brinda/phylign. Project:
-  https://brinda.eu/mof. Route via homology-search; compare lexicmap.
+  phylogeny-compressed microbial genome collections (e.g. pre-2019 661k bacteria) on
+  ordinary desktops. Uses phylogenetic compression (MiniPhy for building compressed
+  assemblies/COBS indexes; Phylign for search via COBS + Minimap2). Use when searching
+  huge genome warehouses without a cluster. Route via homology-search; compare lexicmap.
 license: MIT
-category: analysis-tools
-tags: [Phylign, MiniPhy, phylogenetic-compression, search, COBS, genomes]
-upstream: https://github.com/karel-brinda/phylign
-stage: mapping
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "Phylign, MiniPhy, phylogenetic-compression, search, COBS, genomes"
+  metagenomics.upstream: "https://github.com/karel-brinda/phylign"
+  metagenomics.stage: "mapping"
 ---
 
 # Phylign (phylogenetic compression search)
@@ -27,7 +26,7 @@ Břinda, K. *et al.* Efficient and robust search of microbial genomes via
 phylogenetic compression. *Nat. Methods* **22**, 692–697 (2025).
 https://doi.org/10.1038/s41592-025-02625-2
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,17 +1,16 @@
 ---
 name: lefse
 description: >
-  LEfSe — Linear discriminant analysis Effect Size for metagenomic biomarker
-  discovery between classes (taxa, genes, pathways). Use for classic
-  LDA-style biomarkers and cladograms; prefer MaAsLin2/3 when many covariates
-  or longitudinal designs are required. Upstream:
-  https://github.com/SegataLab/lefse · bioBakery docs. Route via
-  research-analysis.
+  LEfSe — Linear discriminant analysis Effect Size for metagenomic biomarker discovery
+  between classes (taxa, genes, pathways). Use for classic LDA-style biomarkers and
+  cladograms; prefer MaAsLin2/3 when many covariates or longitudinal designs are
+  required.
 license: MIT
-category: evaluation
-tags: [LEfSe, biomarker, LDA, differential-abundance, bioBakery]
-upstream: https://github.com/SegataLab/lefse
-stage: report
+metadata:
+  metagenomics.category: "evaluation"
+  metagenomics.tags: "LEfSe, biomarker, LDA, differential-abundance, bioBakery"
+  metagenomics.upstream: "https://github.com/SegataLab/lefse"
+  metagenomics.stage: "report"
 ---
 
 # LEfSe
@@ -25,7 +24,7 @@ Segata, N. *et al.* Metagenomic biomarker discovery and explanation.
 *Genome Biol.* **12**, R60 (2011).
 https://doi.org/10.1186/gb-2011-12-6-r60
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

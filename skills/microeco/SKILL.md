@@ -1,17 +1,16 @@
 ---
 name: microeco
 description: >
-  microeco — R package for modular microbiome downstream analysis and
-  publication figures (diversity, composition, differential tests, networks,
-  machine learning helpers). Use for end-to-end stats/plotting after MetaPhlAn/
-  Kraken/HUMAnN-style tables. Upstream: https://github.com/ChiLiubio/microeco.
-  Protocol: Nature Protocols 2026. Route via research-analysis. Multivariable
-  DA with covariates → maaslin2.
+  microeco — R package for modular microbiome downstream analysis and publication
+  figures (diversity, composition, differential tests, networks, machine learning
+  helpers). Use for end-to-end stats/plotting after MetaPhlAn/ Kraken/HUMAnN-style
+  tables. Protocol: Nature Protocols 2026. Multivariable DA with covariates → maaslin2.
 license: MIT
-category: evaluation
-tags: [microeco, R, diversity, visualization, phyloseq-alternative, research-analysis]
-upstream: https://github.com/ChiLiubio/microeco
-stage: report
+metadata:
+  metagenomics.category: "evaluation"
+  metagenomics.tags: "microeco, R, diversity, visualization, phyloseq-alternative, research-analysis"
+  metagenomics.upstream: "https://github.com/ChiLiubio/microeco"
+  metagenomics.stage: "report"
 ---
 
 # microeco
@@ -33,7 +32,7 @@ https://doi.org/10.1093/femsec/fiaa255
 microeco 2: Liu, C. *et al.* *iMeta* **5**, e70132 (2026).
 https://doi.org/10.1002/imt2.70132
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

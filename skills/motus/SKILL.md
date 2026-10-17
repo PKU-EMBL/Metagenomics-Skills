@@ -1,15 +1,14 @@
 ---
 name: motus
 description: >
-  Marker-gene taxonomic profiling across environments (mOTUs3). Use this skill when working with motus: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/motu-tool/mOTUs. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Marker-gene taxonomic profiling across environments (mOTUs3). Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['taxonomy', 'marker', 'profile']
-upstream: https://github.com/motu-tool/mOTUs
-stage: taxonomy
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "taxonomy, marker, profile"
+  metagenomics.upstream: "https://github.com/motu-tool/mOTUs"
+  metagenomics.stage: "taxonomy"
 ---
 
 # mOTUs
@@ -20,7 +19,7 @@ Upstream: [mOTUs](https://github.com/motu-tool/mOTUs)
 
 Ruscheweyh, H.-J. *et al.* Cultivation-independent genomes greatly expand taxonomic-profiling capabilities of mOTUs across various environments. *Microbiome* **10**, 212 (2022). https://doi.org/10.1186/s40168-022-01410-z
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

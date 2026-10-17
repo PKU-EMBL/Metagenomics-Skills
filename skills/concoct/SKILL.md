@@ -1,15 +1,14 @@
 ---
 name: concoct
 description: >
-  Composition and coverage binning of metagenomic contigs. Use this skill when working with concoct: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/BinPro/CONCOCT. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Composition and coverage binning of metagenomic contigs. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['binning', 'concoct']
-upstream: https://github.com/BinPro/CONCOCT
-stage: binning
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "binning, concoct"
+  metagenomics.upstream: "https://github.com/BinPro/CONCOCT"
+  metagenomics.stage: "binning"
 ---
 
 # CONCOCT
@@ -20,7 +19,7 @@ Upstream: [CONCOCT](https://github.com/BinPro/CONCOCT)
 
 Alneberg, J. *et al.* Binning metagenomic contigs by coverage and composition. *Nat. Methods* **11**, 1144–1146 (2014). https://doi.org/10.1038/nmeth.3103
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,15 +1,16 @@
 ---
 name: mlst
 description: >
-  mlst — chromosomal multilocus sequence typing of assemblies against PubMLST
-  schemes (Torsten Seemann wrapper). Use for isolate / HQ-MAG species ST
-  calling. Upstream: https://github.com/tseemann/mlst. Route via cge-finders /
-  microbial-mining for isolate packages; plasmid ST → pmlst (different schemes).
+  mlst — chromosomal multilocus sequence typing of assemblies against PubMLST schemes
+  (Torsten Seemann wrapper). Use for isolate / HQ-MAG species ST calling. Route via
+  cge-finders / microbial-mining for isolate packages; plasmid ST → pmlst (different
+  schemes).
 license: MIT
-category: analysis-tools
-tags: [MLST, PubMLST, typing, isolate, ST, epidemiology]
-upstream: https://github.com/tseemann/mlst
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "MLST, PubMLST, typing, isolate, ST, epidemiology"
+  metagenomics.upstream: "https://github.com/tseemann/mlst"
+  metagenomics.stage: "mining"
 ---
 
 # mlst
@@ -27,7 +28,7 @@ genomics: BIGSdb software, the PubMLST.org website and their applications.
 *Wellcome Open Res.* **3**, 124 (2018).
 https://doi.org/10.12688/wellcomeopenres.14826.1
 
-See also [docs/references.md](../../docs/references.md) and `pmlst`.
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md) and `pmlst`.
 
 ## Analytical thinking
 

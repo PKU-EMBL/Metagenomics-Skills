@@ -1,17 +1,16 @@
 ---
 name: vcontact
 description: >
-  vConTACT2 / vConTACT3 — gene-sharing network and ML-based hierarchical virus
-  taxonomy for prokaryotic (and in v3, broader realm) viral genomes/contigs.
-  Use after viral discovery (geNomad / VirSorter2) and quality (CheckV):
-  (1) Genus-to-order style clustering, (2) Placing vMAGs vs RefSeq/ICTV,
-  (3) Choosing v2 vs v3. Upstream: https://bitbucket.org/MAVERICLab/vcontact2
-  and https://bitbucket.org/MAVERICLab/vcontact3.
+  vConTACT2 / vConTACT3 — gene-sharing network and ML-based hierarchical virus taxonomy
+  for prokaryotic (and in v3, broader realm) viral genomes/contigs. Use after viral
+  discovery (geNomad / VirSorter2) and quality (CheckV): (1) Genus-to-order style
+  clustering, (2) Placing vMAGs vs RefSeq/ICTV, (3) Choosing v2 vs v3.
 license: MIT
-category: analysis-tools
-tags: [virus, taxonomy, vConTACT, gene-sharing, ICTV]
-upstream: https://bitbucket.org/MAVERICLab/vcontact3
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "virus, taxonomy, vConTACT, gene-sharing, ICTV"
+  metagenomics.upstream: "https://bitbucket.org/MAVERICLab/vcontact3"
+  metagenomics.stage: "mining"
 ---
 
 # vConTACT2 / vConTACT3
@@ -29,7 +28,7 @@ Bolduc, B. *et al.* Machine learning enables scalable and systematic hierarchica
 virus taxonomy. *Nat. Biotechnol.* (2025).
 https://doi.org/10.1038/s41587-025-02946-9
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

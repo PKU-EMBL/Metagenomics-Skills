@@ -1,15 +1,14 @@
 ---
 name: bwa
 description: >
-  Burrows–Wheeler short-read alignment (BWA-MEM) to contigs/genomes. Use this skill when working with bwa: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/lh3/bwa. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Burrows–Wheeler short-read alignment (BWA-MEM) to contigs/genomes. Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['mapping', 'alignment', 'short-read']
-upstream: https://github.com/lh3/bwa
-stage: mapping
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "mapping, alignment, short-read"
+  metagenomics.upstream: "https://github.com/lh3/bwa"
+  metagenomics.stage: "mapping"
 ---
 
 # BWA / BWA-MEM
@@ -22,7 +21,7 @@ Li, H. & Durbin, R. Fast and accurate short read alignment with Burrows–Wheele
 
 Li, H. Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM. *arXiv* (2013). https://doi.org/10.48550/arXiv.1303.3997
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

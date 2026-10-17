@@ -1,17 +1,16 @@
 ---
 name: mobileog
 description: >
-  mobileOG-db — manually curated protein families for bacterial MGE life-cycle
-  functions (integration/excision, replication/recombination/repair,
-  stability/defense, transfer, phage-related) with diamond + mobileOG-pl
-  parsing. Use to annotate MGE machinery on MAG/contig proteins beyond
-  geNomad contig scores. Upstream: https://github.com/clb21565/mobileOG-db.
-  Portal: https://mobileogdb.flsi.cloud.vt.edu/. Route via microbial-mining.
+  mobileOG-db — manually curated protein families for bacterial MGE life-cycle functions
+  (integration/excision, replication/recombination/repair, stability/defense, transfer,
+  phage-related) with diamond + mobileOG-pl parsing. Use to annotate MGE machinery on
+  MAG/contig proteins beyond geNomad contig scores.
 license: MIT
-category: analysis-tools
-tags: [mobileOG, MGE, plasmid, phage, ICE, genome-mining]
-upstream: https://github.com/clb21565/mobileOG-db
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "mobileOG, MGE, plasmid, phage, ICE, genome-mining"
+  metagenomics.upstream: "https://github.com/clb21565/mobileOG-db"
+  metagenomics.stage: "mining"
 ---
 
 # mobileOG-db
@@ -26,7 +25,7 @@ Families Mediating the Life Cycle of Bacterial Mobile Genetic Elements.
 *Appl. Environ. Microbiol.* **88**, e00991-22 (2022).
 https://doi.org/10.1128/aem.00991-22
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

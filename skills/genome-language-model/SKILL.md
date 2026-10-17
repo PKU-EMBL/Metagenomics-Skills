@@ -2,15 +2,16 @@
 name: genome-language-model
 description: >
   Route genome language models (gLMs) for metagenomics and microbial genomics:
-  representation models (Nucleotide Transformer / NTv3, DNABERT-2, Caduceus),
-  generative models (Evo / Evo 2), and mixed-modality metagenomic LMs (OMG +
-  gLM2). Use when choosing DNA embeddings, generation, or functional-track
-  prediction — not for classical profilers or Foldseek. Child skills: omg,
-  nucleotide-transformer, dnabert2, caduceus, evo2. Protein LMs via
-  protein-language-model. Trees via phylogenomics / lucaphylo.
+  representation models (Nucleotide Transformer / NTv3, DNABERT-2, Caduceus), generative
+  models (Evo / Evo 2), and mixed-modality metagenomic LMs (OMG + gLM2). Use when
+  choosing DNA embeddings, generation, or functional-track prediction — not for
+  classical profilers or Foldseek. Child skills: omg, nucleotide-transformer, dnabert2,
+  caduceus, evo2. Protein LMs via protein-language-model. Trees via phylogenomics /
+  lucaphylo.
 license: MIT
-category: orchestration
-tags: [genome-language-model, gLM, NTv3, DNABERT, Caduceus, Evo2, OMG, gLM2]
+metadata:
+  metagenomics.category: "orchestration"
+  metagenomics.tags: "genome-language-model, gLM, NTv3, DNABERT, Caduceus, Evo2, OMG, gLM2"
 ---
 
 # Genome language model

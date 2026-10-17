@@ -1,7 +1,7 @@
 interface:
   display_name: "KneadData"
-  short_description: "QC wrapper focused on host (and contaminant) read removal via Bowtie2"
-  default_prompt: "Use $kneaddata for QC wrapper focused on host (and contaminant) read removal vi."
+  short_description: "Host and contaminant read removal with KneadData"
+  default_prompt: "Use $kneaddata for this task: Host and contaminant read removal with KneadData. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

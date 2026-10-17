@@ -1,7 +1,7 @@
 interface:
   display_name: "BWA / BWA-MEM"
-  short_description: "Burrows–Wheeler short-read alignment (BWA-MEM) to contigs/genomes"
-  default_prompt: "Use $bwa for Burrows–Wheeler short-read alignment (BWA-MEM) to contigs/genomes"
+  short_description: "BWA-MEM short-read alignment to contigs and genomes"
+  default_prompt: "Use $bwa for this task: BWA-MEM short-read alignment to contigs and genomes. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

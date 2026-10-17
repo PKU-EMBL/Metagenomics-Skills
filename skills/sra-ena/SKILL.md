@@ -1,17 +1,16 @@
 ---
 name: sra-ena
 description: >
-  Fetch and cite public shotgun metagenomic reads from NCBI SRA and EBI ENA.
-  Use this skill when: (1) Downloading public metagenomes by SRR/ERR/DRR,
-  (2) Resolving BioProject/Study accessions, (3) Choosing fasterq-dump vs
-  ena-ftp / Aspera, (4) Building manifests for reanalysis. Upstream:
-  https://github.com/ncbi/sra-tools and https://www.ebi.ac.uk/ena.
-  For analysed microbiome studies and MAG catalogues, use mgnify.
-  For database routing, use public-databases.
+  Fetch and cite public shotgun metagenomic reads from NCBI SRA and EBI ENA. Use this
+  skill when: (1) Downloading public metagenomes by SRR/ERR/DRR, (2) Resolving
+  BioProject/Study accessions, (3) Choosing fasterq-dump vs ena-ftp / Aspera, (4)
+  Building manifests for reanalysis. For analysed microbiome studies and MAG catalogues,
+  use mgnify. For database routing, use public-databases.
 license: MIT
-category: utilities
-tags: [database, SRA, ENA, download, reanalysis]
-upstream: https://github.com/ncbi/sra-tools
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "database, SRA, ENA, download, reanalysis"
+  metagenomics.upstream: "https://github.com/ncbi/sra-tools"
 ---
 
 # NCBI SRA / EBI ENA

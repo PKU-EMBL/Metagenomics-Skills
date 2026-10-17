@@ -1,16 +1,16 @@
 ---
 name: bowtie2
 description: >
-  Gapped short-read alignment to contigs/genomes for coverage used in binning
-  and abundance. Use when indexing assemblies, mapping cleaned PE reads,
-  choosing sensitivity presets, QC of BAM rates, or preparing depths for
-  MetaBAT2/CoverM/BASALT. Upstream: https://github.com/BenLangmead/bowtie2.
+  Gapped short-read alignment to contigs/genomes for coverage used in binning and
+  abundance. Use when indexing assemblies, mapping cleaned PE reads, choosing
+  sensitivity presets, QC of BAM rates, or preparing depths for MetaBAT2/CoverM/BASALT.
   Alternatives: strobealign, bwa-mem2. Always pair with samtools.
 license: MIT
-category: analysis-tools
-tags: [mapping, alignment, short-read, coverage]
-upstream: https://github.com/BenLangmead/bowtie2
-stage: mapping
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "mapping, alignment, short-read, coverage"
+  metagenomics.upstream: "https://github.com/BenLangmead/bowtie2"
+  metagenomics.stage: "mapping"
 ---
 
 # Bowtie 2

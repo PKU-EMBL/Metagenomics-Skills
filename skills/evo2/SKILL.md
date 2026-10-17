@@ -1,17 +1,17 @@
 ---
 name: evo2
 description: >
-  Evo 2 — long-context DNA language model for genome modeling and design across
-  all domains of life (Arc Institute; StripedHyena 2 / OpenGenome2). Use when:
-  (1) Autoregressive DNA likelihoods or embeddings at up to ~1 Mb context,
-  (2) Sequence generation / design, (3) Contrasting generative gLMs with
-  Nucleotide Transformer or gLM2. Upstream: https://github.com/ArcInstitute/evo2.
-  Predecessor: Evo (Science 2024). Route via genome-language-model. Heavy GPU requirements.
+  Evo 2 — long-context DNA language model for genome modeling and design across all
+  domains of life (Arc Institute; StripedHyena 2 / OpenGenome2). Use when: (1)
+  Autoregressive DNA likelihoods or embeddings at up to ~1 Mb context, (2) Sequence
+  generation / design, (3) Contrasting generative gLMs with Nucleotide Transformer or
+  gLM2. Predecessor: Evo (Science 2024). Heavy GPU requirements.
 license: MIT
-category: analysis-tools
-tags: [Evo2, Evo, gLM, DNA, generative, OpenGenome2, Arc-Institute]
-upstream: https://github.com/ArcInstitute/evo2
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "Evo2, Evo, gLM, DNA, generative, OpenGenome2, Arc-Institute"
+  metagenomics.upstream: "https://github.com/ArcInstitute/evo2"
+  metagenomics.stage: "function"
 ---
 
 # Evo 2
@@ -28,7 +28,7 @@ Nguyen, E. *et al.* Sequence modeling and design from molecular to genome scale
 with Evo. *Science* **386**, eado9336 (2024).
 https://doi.org/10.1126/science.ado9336
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

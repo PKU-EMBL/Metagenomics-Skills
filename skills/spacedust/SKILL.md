@@ -1,19 +1,18 @@
 ---
 name: spacedust
 description: >
-  Spacedust — de novo discovery of conserved gene clusters in microbial genomes
-  using Foldseek structure comparison plus clustering/order-conservation
-  statistics. Use when: (1) Finding conserved neighborhoods / modules in MAG
-  collections, (2) Annotating dark genes via genomic context, (3) Recovering
-  defense or other systems as clusters. Upstream:
-  https://github.com/soedinglab/Spacedust. Route via microbial-mining /
-  metagenomics-llm;
-  complement defensefinder / antismash for known systems.
+  Spacedust — de novo discovery of conserved gene clusters in microbial genomes using
+  Foldseek structure comparison plus clustering/order-conservation statistics. Use when:
+  (1) Finding conserved neighborhoods / modules in MAG collections, (2) Annotating dark
+  genes via genomic context, (3) Recovering defense or other systems as clusters. Route
+  via microbial-mining / metagenomics-llm; complement defensefinder / antismash for
+  known systems.
 license: MIT
-category: analysis-tools
-tags: [Spacedust, gene-cluster, Foldseek, annotation, structure]
-upstream: https://github.com/soedinglab/Spacedust
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "Spacedust, gene-cluster, Foldseek, annotation, structure"
+  metagenomics.upstream: "https://github.com/soedinglab/Spacedust"
+  metagenomics.stage: "mining"
 ---
 
 # Spacedust
@@ -26,7 +25,7 @@ Zhang, R., Mirdita, M. & Söding, J. De novo discovery of conserved gene cluster
 in microbial genomes with Spacedust. *Nat. Methods* (2025).
 https://doi.org/10.1038/s41592-025-02816-x
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,18 +1,17 @@
 ---
 name: singlem
 description: >
-  SingleM — species-level metagenome profiling from conserved windows in
-  universal marker genes, including lineages without genomic representation;
-  Sandpiper aggregates public SingleM profiles. Use when: (1) Profiling
-  environmental communities rich in unknowns, (2) Feeding Bin Chicken
-  coassembly targeting, (3) GTDB-linked marker OTUs from short reads,
-  (4) Comparing to MetaPhlAn/mOTUs/sylph. Upstream:
-  https://github.com/wwood/singlem. Sandpiper: https://sandpiper.qut.edu.au.
+  SingleM — species-level metagenome profiling from conserved windows in universal
+  marker genes, including lineages without genomic representation; Sandpiper aggregates
+  public SingleM profiles. Use when: (1) Profiling environmental communities rich in
+  unknowns, (2) Feeding Bin Chicken coassembly targeting, (3) GTDB-linked marker OTUs
+  from short reads, (4) Comparing to MetaPhlAn/mOTUs/sylph.
 license: MIT
-category: analysis-tools
-tags: [SingleM, taxonomy, markers, Sandpiper, low-abundance]
-upstream: https://github.com/wwood/singlem
-stage: taxonomy
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "SingleM, taxonomy, markers, Sandpiper, low-abundance"
+  metagenomics.upstream: "https://github.com/wwood/singlem"
+  metagenomics.stage: "taxonomy"
 ---
 
 # SingleM (+ Sandpiper)
@@ -26,7 +25,7 @@ Woodcroft, B. J. *et al.* Comprehensive taxonomic identification of microbial
 species in metagenomic data using SingleM and Sandpiper. *Nat. Biotechnol.*
 (2025). https://doi.org/10.1038/s41587-025-02738-1
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

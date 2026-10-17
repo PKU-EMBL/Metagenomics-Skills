@@ -1,7 +1,7 @@
 interface:
   display_name: "MetaPhlAn"
   short_description: "Marker-gene taxonomic profiling of metagenomes"
-  default_prompt: "Use $metaphlan for Marker-gene taxonomic profiling of metagenomes."
+  default_prompt: "Use $metaphlan for this task: Marker-gene taxonomic profiling of metagenomes. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

@@ -1,15 +1,15 @@
 ---
 name: quast
 description: >
-  Assembly quality assessment (contiguity, misassemblies; metaQUAST for metagenomes). Use this skill when working with quast: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/ablab/quast. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Assembly quality assessment (contiguity, misassemblies; metaQUAST for metagenomes).
+  Use for installation, parameter choice, execution, output interpretation, or
+  troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['assembly', 'qc', 'quast']
-upstream: https://github.com/ablab/quast
-stage: assessment
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "assembly, qc, quast"
+  metagenomics.upstream: "https://github.com/ablab/quast"
+  metagenomics.stage: "assessment"
 ---
 
 # QUAST / metaQUAST
@@ -20,7 +20,7 @@ Upstream: [QUAST / metaQUAST](https://github.com/ablab/quast)
 
 Mikheenko, A., Saveliev, V. & Gurevich, A. MetaQUAST: evaluation of metagenome assemblies. *Bioinformatics* **32**, 1088–1090 (2016). https://doi.org/10.1093/bioinformatics/btv697
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

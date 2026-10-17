@@ -2,13 +2,14 @@
 name: bigscape
 description: >
   Cluster and compare biosynthetic gene clusters across genomes with BiG-SCAPE
-  (similarity networks of antiSMASH regions). Use after batch antiSMASH for
-  BGC family discovery. Upstream: https://github.com/medema-group/BiG-SCAPE.
+  (similarity networks of antiSMASH regions). Use after batch antiSMASH for BGC family
+  discovery.
 license: MIT
-category: analysis-tools
-tags: [BGC, network, genome-mining, antiSMASH]
-upstream: https://github.com/medema-group/BiG-SCAPE
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "BGC, network, genome-mining, antiSMASH"
+  metagenomics.upstream: "https://github.com/medema-group/BiG-SCAPE"
+  metagenomics.stage: "mining"
 ---
 
 # BiG-SCAPE

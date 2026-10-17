@@ -1,17 +1,16 @@
 ---
 name: hadeg
 description: >
-  HADEG — curated Hydrocarbon Aerobic Degradation Enzymes and Genes database
-  (alkanes, alkenes, aromatics, plastics) plus biosurfactant production genes
-  with experimental evidence. Use to annotate MAG/contig proteins for HC
-  biodegradation and biosurfactant potential. Upstream:
-  https://github.com/jarojasva/HADEG. Route via dom-biosurfactant /
-  microbial-mining. Portal-style BioSurfDB → biosurfdb; glycan DOM → dbcan.
+  HADEG — curated Hydrocarbon Aerobic Degradation Enzymes and Genes database (alkanes,
+  alkenes, aromatics, plastics) plus biosurfactant production genes with experimental
+  evidence. Use to annotate MAG/contig proteins for HC biodegradation and biosurfactant
+  potential. Portal-style BioSurfDB → biosurfdb; glycan DOM → dbcan.
 license: MIT
-category: analysis-tools
-tags: [HADEG, hydrocarbon, biosurfactant, plastic, biodegradation, DOM]
-upstream: https://github.com/jarojasva/HADEG
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "HADEG, hydrocarbon, biosurfactant, plastic, biodegradation, DOM"
+  metagenomics.upstream: "https://github.com/jarojasva/HADEG"
+  metagenomics.stage: "mining"
 ---
 
 # HADEG
@@ -24,7 +23,7 @@ Rojas-Vargas, J., Castelán-Sánchez, H. G. & Pardo-López, L. HADEG: A curated
 hydrocarbon aerobic degradation enzymes and genes database. *Comput. Biol. Chem.*
 **107**, 107966 (2023). https://doi.org/10.1016/j.compbiolchem.2023.107966
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

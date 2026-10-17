@@ -1,7 +1,7 @@
 interface:
   display_name: "BWA-MEM2"
   short_description: "Faster BWA-MEM short-read mapping"
-  default_prompt: "Use $bwa-mem2 for Faster BWA-MEM short-read mapping."
+  default_prompt: "Use $bwa-mem2 for this task: Faster BWA-MEM short-read mapping. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

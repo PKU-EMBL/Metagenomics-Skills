@@ -1,0 +1,13 @@
+{
+  "name": "metagenomics",
+  "version": "1.22.0",
+  "displayName": {
+    "en": "Metagenomics Skills",
+    "zh": "宏基因组学 Skills"
+  },
+  "description": {
+    "en": "Portable shotgun-metagenomics workflows, tool guidance, quality gates, and reporting skills.",
+    "zh": "可移植的宏基因组流程、工具选择、质量门控与科研交付 Skills。"
+  },
+  "skills": "skills"
+}

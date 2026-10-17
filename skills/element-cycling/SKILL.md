@@ -1,17 +1,17 @@
 ---
 name: element-cycling
 description: >
-  Route biogeochemical / elemental cycling annotation for shotgun metagenomics
-  and MAGs: carbon (C), nitrogen (N), sulfur (S), iron (Fe), phosphorus (P),
-  hydrogen (H2/H), oxygen (O), methane (CH4), and other metals/metalloids
-  (Mn, As, Se, …) via METABOLIC, MEBS, FeGenie, plus DRAM/KEGG/eggNOG backups.
-  Use when asking which elemental transformations a community or MAG can
-  perform — not for taxonomy tables. Child skills: metabolic, mebs, fegenie.
-  Related: dram, kegg, eggnog-mapper, gapseq. Route via microbial-mining.
+  Route biogeochemical / elemental cycling annotation for shotgun metagenomics and MAGs:
+  carbon (C), nitrogen (N), sulfur (S), iron (Fe), phosphorus (P), hydrogen (H2/H),
+  oxygen (O), methane (CH4), and other metals/metalloids (Mn, As, Se, …) via METABOLIC,
+  MEBS, FeGenie, plus DRAM/KEGG/eggNOG backups. Use when asking which elemental
+  transformations a community or MAG can perform — not for taxonomy tables. Child
+  skills: metabolic, mebs, fegenie. Related: dram, kegg, eggnog-mapper, gapseq.
 license: MIT
-category: orchestration
-tags: [element-cycling, biogeochemistry, C, N, S, Fe, P, CH4, METABOLIC, MEBS, FeGenie]
-stage: mining
+metadata:
+  metagenomics.category: "orchestration"
+  metagenomics.tags: "element-cycling, biogeochemistry, C, N, S, Fe, P, CH4, METABOLIC, MEBS, FeGenie"
+  metagenomics.stage: "mining"
 ---
 
 # Element cycling (biogeochemistry)

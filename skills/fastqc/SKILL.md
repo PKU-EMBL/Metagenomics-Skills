@@ -1,15 +1,14 @@
 ---
 name: fastqc
 description: >
-  QC reports for Illumina FASTQ before/after trimming. Use this skill when working with fastqc: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/s-andrews/FastQC. For stage routing use tool-selection /
-  metagenomics-workflow.
+  QC reports for Illumina FASTQ before/after trimming. Use for installation, parameter
+  choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['qc', 'fastq']
-upstream: https://github.com/s-andrews/FastQC
-stage: qc
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "qc, fastq"
+  metagenomics.upstream: "https://github.com/s-andrews/FastQC"
+  metagenomics.stage: "qc"
 ---
 
 # FastQC
@@ -20,7 +19,7 @@ Upstream: [FastQC](https://github.com/s-andrews/FastQC)
 
 Andrews, S. FastQC: a quality control tool for high throughput sequence data (2010). https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

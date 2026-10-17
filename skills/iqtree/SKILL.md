@@ -1,17 +1,16 @@
 ---
 name: iqtree
 description: >
-  IQ-TREE 2 — fast maximum-likelihood phylogenetic inference with model
-  selection and ultrafast bootstrap. Use when: (1) Building publication-grade
-  trees from marker or concatenated MSAs, (2) Following PhyloPhlAn / custom
-  alignments for MAG phylogenomics, (3) Replacing draft FastTree topologies for
-  final figures. Upstream: https://github.com/iqtree/iqtree2.
-  Route via phylogenomics.
+  IQ-TREE 2 — fast maximum-likelihood phylogenetic inference with model selection and
+  ultrafast bootstrap. Use when: (1) Building publication-grade trees from marker or
+  concatenated MSAs, (2) Following PhyloPhlAn / custom alignments for MAG phylogenomics,
+  (3) Replacing draft FastTree topologies for final figures.
 license: MIT
-category: analysis-tools
-tags: [IQ-TREE, phylogeny, maximum-likelihood, tree, bootstrap]
-upstream: https://github.com/iqtree/iqtree2
-stage: taxonomy
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "IQ-TREE, phylogeny, maximum-likelihood, tree, bootstrap"
+  metagenomics.upstream: "https://github.com/iqtree/iqtree2"
+  metagenomics.stage: "taxonomy"
 ---
 
 # IQ-TREE 2
@@ -28,7 +27,7 @@ Nguyen, L.-T., Schmidt, H. A., von Haeseler, A. & Minh, B. Q. IQ-TREE: a fast
 and effective stochastic algorithm for estimating maximum-likelihood phylogenies.
 *Mol. Biol. Evol.* **32**, 268–274 (2015). https://doi.org/10.1093/molbev/msu300
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

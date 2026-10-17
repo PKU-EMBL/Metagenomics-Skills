@@ -1,17 +1,17 @@
 ---
 name: lucaphylo
 description: >
-  LucaPhylo — alignment-free phylogenetic inference / placement via hyperbolic
-  protein language models (ESM2 + hyperbolic geometry). Use when: (1) MSA-based
-  trees fail on highly divergent proteins, (2) Exploring PLM phylogeny as a
-  complement to IQ-TREE/PhyloPhlAn, (3) Following the LucaPhylo training or
-  placement checkpoints. Upstream: https://github.com/NickShannn/LucaPhylo.
+  LucaPhylo — alignment-free phylogenetic inference / placement via hyperbolic protein
+  language models (ESM2 + hyperbolic geometry). Use when: (1) MSA-based trees fail on
+  highly divergent proteins, (2) Exploring PLM phylogeny as a complement to
+  IQ-TREE/PhyloPhlAn, (3) Following the LucaPhylo training or placement checkpoints.
   Route via phylogenomics; do not replace GTDB-Tk for MAG taxonomy by default.
 license: MIT
-category: analysis-tools
-tags: [LucaPhylo, PLM, phylogeny, hyperbolic, alignment-free, ESM2]
-upstream: https://github.com/NickShannn/LucaPhylo
-stage: taxonomy
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "LucaPhylo, PLM, phylogeny, hyperbolic, alignment-free, ESM2"
+  metagenomics.upstream: "https://github.com/NickShannn/LucaPhylo"
+  metagenomics.stage: "taxonomy"
 ---
 
 # LucaPhylo
@@ -24,7 +24,7 @@ Checkpoints: https://huggingface.co/NickShan/LucaPhylo
 Shan, Y. *et al.* Alignment-free phylogenetic inference via hyperbolic protein
 language models. *bioRxiv* https://doi.org/10.64898/2026.05.26.723419 (2026).
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,17 +1,17 @@
 ---
 name: petasearch
 description: >
-  Petasearch — efficient parallelized peta-scale protein database search
-  (Steinegger lab). Use when: (1) Searching enormous protein collections beyond
-  routine MMseqs2 setups, (2) Preindexing large target lists for repeated
-  queries, (3) Selective Smith–Waterman after coarse filters. Upstream:
-  https://github.com/steineggerlab/petasearch. Route via homology-search;
-  compare mmseqs2 / erast.
+  Petasearch — efficient parallelized peta-scale protein database search (Steinegger
+  lab). Use when: (1) Searching enormous protein collections beyond routine MMseqs2
+  setups, (2) Preindexing large target lists for repeated queries, (3) Selective
+  Smith–Waterman after coarse filters. Route via homology-search; compare mmseqs2 /
+  erast.
 license: MIT
-category: analysis-tools
-tags: [Petasearch, protein-search, peta-scale, homology]
-upstream: https://github.com/steineggerlab/petasearch
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "Petasearch, protein-search, peta-scale, homology"
+  metagenomics.upstream: "https://github.com/steineggerlab/petasearch"
+  metagenomics.stage: "function"
 ---
 
 # Petasearch
@@ -22,7 +22,7 @@ Upstream: [steineggerlab/petasearch](https://github.com/steineggerlab/petasearch
 
 See upstream README / releases for the current preferred citation; software at
 https://github.com/steineggerlab/petasearch. Cross-link Steinegger-lab search
-stack in [docs/references.md](../../docs/references.md).
+stack in [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,14 +1,14 @@
 ---
 name: metabat2
 description: >
-  Adaptive contig binning from tetranucleotide composition and multi-sample
-  coverage. Use for primary single-binner runs feeding DAS Tool, MetaWRAP, or
-  BASALT ensembles. Upstream: https://bitbucket.org/berkeleylab/metabat.
+  Adaptive contig binning from tetranucleotide composition and multi-sample coverage.
+  Use for primary single-binner runs feeding DAS Tool, MetaWRAP, or BASALT ensembles.
 license: MIT
-category: analysis-tools
-tags: [binning, metabat, coverage]
-upstream: https://bitbucket.org/berkeleylab/metabat
-stage: binning
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "binning, metabat, coverage"
+  metagenomics.upstream: "https://bitbucket.org/berkeleylab/metabat"
+  metagenomics.stage: "binning"
 ---
 
 # MetaBAT 2

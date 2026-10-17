@@ -1,16 +1,15 @@
 ---
 name: virulencefinder
 description: >
-  VirulenceFinder — CGE virulence gene detection in bacterial assemblies/reads
-  for supported species (historically E. coli, Enterococcus, S. aureus,
-  Listeria, …). Upstream: https://bitbucket.org/genomicepidemiology/virulencefinder
-  / PyPI Virulencefinder. Route via cge-finders / microbial-mining; not a
-  general metagenome pathogenicity score.
+  VirulenceFinder — CGE virulence gene detection in bacterial assemblies/reads for
+  supported species (historically E. coli, Enterococcus, S. aureus, Listeria, …). Route
+  via cge-finders / microbial-mining; not a general metagenome pathogenicity score.
 license: MIT
-category: analysis-tools
-tags: [VirulenceFinder, CGE, virulence, pathogen, isolate, typing]
-upstream: https://bitbucket.org/genomicepidemiology/virulencefinder
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "VirulenceFinder, CGE, virulence, pathogen, isolate, typing"
+  metagenomics.upstream: "https://bitbucket.org/genomicepidemiology/virulencefinder"
+  metagenomics.stage: "mining"
 ---
 
 # VirulenceFinder
@@ -26,7 +25,7 @@ surveillance, and outbreak detection of verotoxigenic *Escherichia coli*.
 *J. Clin. Microbiol.* **52**, 4214–4220 (2014).
 https://doi.org/10.1128/JCM.02452-14
 
-See also [docs/references.md](../../docs/references.md) and `cge-finders`.
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md) and `cge-finders`.
 
 ## Analytical thinking
 

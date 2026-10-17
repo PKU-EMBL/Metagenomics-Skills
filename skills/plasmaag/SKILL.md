@@ -2,17 +2,17 @@
 name: plasmaag
 description: >
   PlasMAAG — recover plasmids and cellular genomes from metagenomes using
-  assembly–alignment graphs and contrastive learning across samples. Use when:
-  (1) Plasmid MAG reconstruction beyond circular-path assemblers, (2) Improving
-  plasmid contig classification vs geNomad alone, (3) Host–plasmid association
-  across multi-sample datasets. Upstream:
-  https://github.com/RasmussenLab/PlasMAAG. Pair with genomad for MGE screening
-  and checkv for viral (not plasmid) QC.
+  assembly–alignment graphs and contrastive learning across samples. Use when: (1)
+  Plasmid MAG reconstruction beyond circular-path assemblers, (2) Improving plasmid
+  contig classification vs geNomad alone, (3) Host–plasmid association across
+  multi-sample datasets. Pair with genomad for MGE screening and checkv for viral (not
+  plasmid) QC.
 license: MIT
-category: analysis-tools
-tags: [plasmid, MAG, PlasMAAG, MGE, binning]
-upstream: https://github.com/RasmussenLab/PlasMAAG
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "plasmid, MAG, PlasMAAG, MGE, binning"
+  metagenomics.upstream: "https://github.com/RasmussenLab/PlasMAAG"
+  metagenomics.stage: "mining"
 ---
 
 # PlasMAAG
@@ -25,7 +25,7 @@ Piera Líndez, P. *et al.* Accurate plasmid reconstruction from metagenomics dat
 using assembly–alignment graphs and contrastive learning. *Nat. Biotechnol.*
 (2026). https://doi.org/10.1038/s41587-026-03005-7
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

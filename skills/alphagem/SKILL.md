@@ -1,17 +1,17 @@
 ---
 name: alphagem
 description: >
-  AlphaGEM — genome-scale metabolic modelling aided by protein structure
-  alignment and deep-learning dark-metabolism mining. Use when: (1) Building
-  or refining GEMs beyond sequence-only gap filling, (2) Integrating structure
-  signals into metabolic networks, (3) Comparing to gapseq / VMH workflows.
-  Upstream: https://github.com/hongzhonglu/AlphaGEM. Route via
-  metagenomics-llm; pair with gapseq / vmh for classical GEM context.
+  AlphaGEM — genome-scale metabolic modelling aided by protein structure alignment and
+  deep-learning dark-metabolism mining. Use when: (1) Building or refining GEMs beyond
+  sequence-only gap filling, (2) Integrating structure signals into metabolic networks,
+  (3) Comparing to gapseq / VMH workflows. Route via metagenomics-llm; pair with gapseq
+  / vmh for classical GEM context.
 license: MIT
-category: analysis-tools
-tags: [AlphaGEM, GEM, metabolism, structure, deep-learning]
-upstream: https://github.com/hongzhonglu/AlphaGEM
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "AlphaGEM, GEM, metabolism, structure, deep-learning"
+  metagenomics.upstream: "https://github.com/hongzhonglu/AlphaGEM"
+  metagenomics.stage: "mining"
 ---
 
 # AlphaGEM
@@ -25,7 +25,7 @@ integrating protein structure alignment with deep-learning-based dark
 metabolism mining. *Nat. Commun.* (2026).
 https://doi.org/10.1038/s41467-026-75549-w
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

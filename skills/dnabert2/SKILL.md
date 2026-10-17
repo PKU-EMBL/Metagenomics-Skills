@@ -1,17 +1,17 @@
 ---
 name: dnabert2
 description: >
-  DNABERT-2 — efficient multi-species genome language model (BPE + ALiBi) with
-  the Genome Understanding Evaluation (GUE) benchmark. Use when: (1) DNA
-  embeddings or fine-tunes on multi-species tasks, (2) Comparing representation
-  gLMs without NT/Evo-scale hardware, (3) GUE-style evaluation. Upstream:
-  https://github.com/MAGICS-LAB/DNABERT_2. HF: zhihan1996/DNABERT-2-117M.
-  Related: DNABERT (v1), DNABERT-S. Route via genome-language-model.
+  DNABERT-2 — efficient multi-species genome language model (BPE + ALiBi) with the
+  Genome Understanding Evaluation (GUE) benchmark. Use when: (1) DNA embeddings or
+  fine-tunes on multi-species tasks, (2) Comparing representation gLMs without
+  NT/Evo-scale hardware, (3) GUE-style evaluation. HF: zhihan1996/DNABERT-2-117M.
+  Related: DNABERT (v1), DNABERT-S.
 license: MIT
-category: analysis-tools
-tags: [DNABERT-2, DNABERT, gLM, genome-language-model, GUE, HuggingFace]
-upstream: https://github.com/MAGICS-LAB/DNABERT_2
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "DNABERT-2, DNABERT, gLM, genome-language-model, GUE, HuggingFace"
+  metagenomics.upstream: "https://github.com/MAGICS-LAB/DNABERT_2"
+  metagenomics.stage: "function"
 ---
 
 # DNABERT-2
@@ -29,7 +29,7 @@ Original DNABERT: Ji, Y. *et al.* DNABERT: pre-trained Bidirectional Encoder
 Representations from Transformers model for DNA-language in genome.
 *bioRxiv* https://doi.org/10.1101/2020.09.17.301879 (2020).
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

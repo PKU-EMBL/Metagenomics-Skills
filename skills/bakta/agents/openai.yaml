@@ -1,7 +1,7 @@
 interface:
   display_name: "Bakta"
-  short_description: "Rapid standardized annotation of bacterial genomes (alignment-free ID)"
-  default_prompt: "Use $bakta for Rapid standardized annotation of bacterial genomes (alignment-free ID)"
+  short_description: "Standardized alignment-free bacterial genome annotation"
+  default_prompt: "Use $bakta for this task: Standardized alignment-free bacterial genome annotation. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

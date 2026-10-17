@@ -1,16 +1,15 @@
 ---
 name: study-design
 description: >
-  Study design for shotgun metagenomics across QC, assembly, binning, and
-  annotation. Use this skill when: (1) Deciding co-assembly vs sample-specific
-  assembly, (2) Defining biological strata (time, treatment, habitat, host),
-  (3) Building a sample/assembly/coverage manifest, (4) Planning multi-assembly
-  binning (e.g. BASALT), (5) Avoiding invalid pooling of unrelated samples.
-  For tool routing, use tool-selection.
-  For stage order, use metagenomics-workflow.
+  Design shotgun-metagenomics studies and manifests: biological replication, statistical
+  units, controls, batches/confounders, longitudinal structure, co-assembly versus
+  sample-specific assembly, and multi-sample coverage. Use before generating a pipeline,
+  pooling reads, binning related samples, or defining downstream contrasts. For tool
+  routing use tool-selection; for stage order use metagenomics-workflow.
 license: MIT
-category: orchestration
-tags: [study-design, co-assembly, pooling, provenance]
+metadata:
+  metagenomics.category: "orchestration"
+  metagenomics.tags: "study-design, co-assembly, pooling, provenance"
 ---
 
 # Study Design
@@ -23,6 +22,26 @@ Unrelated samples create ambiguous mappings and invalid selection.
 Informative multi-sample designs need:
 - enough shared genomes for complementary observation
 - enough abundance contrast to discriminate contig profiles
+
+## Lock the inferential design first
+
+Record these before tool selection:
+
+| Item | Required decision |
+|------|-------------------|
+| Scientific unit | Independent subject/site/reactor, not reads, genes, contigs, or MAGs |
+| Primary contrast | One predeclared comparison and direction; secondary contrasts labeled |
+| Replication | Biological replicates per stratum; technical replicates identified separately |
+| Repeated measures | Subject/site ID and time/order; plan paired or mixed-effects analysis |
+| Controls | Extraction blanks, no-template controls, mock communities, host/background controls as applicable |
+| Confounders | Extraction kit/batch, run/lane, site, host, storage, depth, and measured covariates |
+| Randomization | Balance groups across extraction and sequencing batches where still possible |
+| Exclusions | Objective QC rules defined before inspecting group outcomes |
+
+Do not inflate sample size by treating multiple MAGs/features from one sample as
+independent biological replicates. If group is perfectly confounded with batch,
+state that the biological effect is not separately identifiable; software cannot
+repair the design.
 
 ## Decision table
 
@@ -38,17 +57,24 @@ Informative multi-sample designs need:
 Reactor replicates, longitudinal hosts, nearby sites, matched extraction methods,
 before/after intervention, related growth stages, continuous environmental gradients.
 
-## Manifest (required fields)
+## Manifest
+
+Start from the bundled
+[manifest template](references/manifest-template.md) and keep one row per
+sequencing library while preserving the biological-unit identifier.
 
 | Field | Purpose |
 |-------|---------|
-| `sample_id` | Stable ID matching filenames |
-| `stratum` / `Group` | Biological partition |
-| `host_reference` | Host genome for depletion |
-| `assembly` | Contig FASTA |
-| `assembly_type` | `individual` / `pool` / `subgroup` |
-| `assembly_reads` / `coverage_reads` | Exact provenance |
-| `run_directory` | Dedicated working directory |
+| `sample_id` / `library_id` | Stable biological and library IDs; never derive groups from filenames |
+| `subject_id` / `site_id` | Independent unit and repeated-measure linkage |
+| `group`, `timepoint`, covariates | Predeclared contrast and model variables |
+| `control_type` | Biological sample, blank, mock, no-template, or other control |
+| `extraction_batch`, `library_batch`, `run`, `lane` | Detect and model technical structure |
+| `read1`, `read2`, `long_reads` | Absolute/portable input paths and read technology |
+| `host_reference` | Exact host/background reference and release |
+| `assembly`, `assembly_type` | Contig FASTA; `individual`, `pool`, or `subgroup` |
+| `assembly_reads`, `coverage_reads` | Exact many-to-many provenance |
+| `run_directory` | Dedicated working directory; no cross-run reuse |
 
 ## Patterns
 
@@ -63,7 +89,9 @@ stage2 → run2
 then compare bins/genomes with declared ANI threshold
 ```
 
-Subgroup when samples > ~30 or data > ~300 Gb.
+Treat roughly 30 samples or 300 Gb as prompts to evaluate subgrouping, not as
+universal cutoffs: pilot assembly complexity, shared-community signal, memory,
+and the scientific contrast determine the actual partition.
 
 ## Multi-coverage vs single-coverage binning
 
@@ -88,6 +116,15 @@ above — targeting is not a license to mix unrelated biology into one contrast.
 
 Compare designs on retained bins under fixed completeness/contamination,
 redundancy (ANI), taxonomy, contiguity, and compute cost — not raw bin count.
+Use the same QC gates for every candidate design and keep rejected outputs in the
+audit table.
+
+## Required design deliverable
+
+Return a locked manifest plus a short design note containing: statistical unit,
+primary/secondary contrasts, controls, batches, exclusion criteria, assembly
+partition, coverage mapping matrix, anticipated model, power/precision limits,
+and unresolved risks. Distinguish decisions from assumptions.
 
 ## Related skills
 

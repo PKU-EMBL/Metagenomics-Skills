@@ -1,15 +1,15 @@
 ---
 name: dram
 description: >
-  Distill microbial metabolism annotations for MAGs/genomes into curated
-  product tables (DRAM annotate + distill). Use for ecological functional
-  potential, pathway summaries, and MAG metabolism figures. Upstream:
-  https://github.com/WrightonLabCSU/DRAM.
+  Distill microbial metabolism annotations for MAGs/genomes into curated product tables
+  (DRAM annotate + distill). Use for ecological functional potential, pathway summaries,
+  and MAG metabolism figures.
 license: MIT
-category: analysis-tools
-tags: [metabolism, annotation, genome-mining, DRAM]
-upstream: https://github.com/WrightonLabCSU/DRAM
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "metabolism, annotation, genome-mining, DRAM"
+  metagenomics.upstream: "https://github.com/WrightonLabCSU/DRAM"
+  metagenomics.stage: "mining"
 ---
 
 # DRAM

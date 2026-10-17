@@ -1,16 +1,16 @@
 ---
 name: staramr
 description: >
-  staramr — scan assemblies against ResFinder, PointFinder, and PlasmidFinder
-  databases in one report (PHAC-NML). Use for isolate AMR + plasmid replicon
-  summaries when you want CGE DBs without running each Finder separately.
-  Upstream: https://github.com/phac-nml/staramr. Route via cge-finders /
+  staramr — scan assemblies against ResFinder, PointFinder, and PlasmidFinder databases
+  in one report (PHAC-NML). Use for isolate AMR + plasmid replicon summaries when you
+  want CGE DBs without running each Finder separately. Route via cge-finders /
   microbial-mining; CARD catalogues still via rgi.
 license: MIT
-category: analysis-tools
-tags: [staramr, CGE, ResFinder, PointFinder, PlasmidFinder, AMR, plasmid]
-upstream: https://github.com/phac-nml/staramr
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "staramr, CGE, ResFinder, PointFinder, PlasmidFinder, AMR, plasmid"
+  metagenomics.upstream: "https://github.com/phac-nml/staramr"
+  metagenomics.stage: "mining"
 ---
 
 # staramr
@@ -27,7 +27,7 @@ https://doi.org/10.3390/microorganisms10020292
 Uses CGE databases — also cite ResFinder / PointFinder / PlasmidFinder papers
 (see `resfinder`, `pointfinder`, `plasmidfinder`).
 
-See also [docs/references.md](../../docs/references.md) and `cge-finders`.
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md) and `cge-finders`.
 
 ## Analytical thinking
 

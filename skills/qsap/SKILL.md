@@ -1,17 +1,16 @@
 ---
 name: qsap
 description: >
-  QSAP — quorum-sensing (QS) related gene annotation pipeline against the QSP
-  database (DIAMOND and/or HMMER). Use when mining autoinducer / QS circuitry
-  (AHL, AIP, AI-2-related families as covered by QSP) from proteins or
-  assemblies. Upstream: https://github.com/chunxiao-dcx/QSAP (QSP DB:
-  https://github.com/chunxiao-dcx/QSP). Route via microbial-mining. Related
+  QSAP — quorum-sensing (QS) related gene annotation pipeline against the QSP database
+  (DIAMOND and/or HMMER). Use when mining autoinducer / QS circuitry (AHL, AIP,
+  AI-2-related families as covered by QSP) from proteins or assemblies. Related
   secondary metabolites → antismash; Fe siderophores → fegenie.
 license: MIT
-category: analysis-tools
-tags: [QSAP, quorum-sensing, QS, autoinducer, signaling, genome-mining]
-upstream: https://github.com/chunxiao-dcx/QSAP
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "QSAP, quorum-sensing, QS, autoinducer, signaling, genome-mining"
+  metagenomics.upstream: "https://github.com/chunxiao-dcx/QSAP"
+  metagenomics.stage: "mining"
 ---
 
 # QSAP (quorum sensing)
@@ -25,7 +24,7 @@ Pipeline/DB: Dai, C. QSAP / QSP — quorum-sensing protein resources
 (https://github.com/chunxiao-dcx/QSAP). Cite the upstream repository and QSP
 release used; add peer-reviewed QSP/QSAP citation when available in Methods.
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

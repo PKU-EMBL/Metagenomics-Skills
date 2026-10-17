@@ -4,9 +4,10 @@ Step-by-step setup for Metagenomics Skills across agent platforms.
 
 ## Prerequisites
 
-- An Agent Skills–compatible client (Claude Code, Codex, Cursor, Kimi Code, Grok Build, …)
+- An Agent Skills–compatible client (Claude Code, Codex, Cursor, Kimi Code,
+  ZCode, Qwen Code, Grok Build, …)
 - Linux recommended for running the bioinformatics tools themselves
-- Python 3.10+ only if you use helper scripts locally
+- Python 3.10+ for the portable installer and validation helpers
 
 ## Step 1: Install skills
 
@@ -17,15 +18,45 @@ Step-by-step setup for Metagenomics Skills across agent platforms.
 /plugin install metagenomics@metagenomics-skills
 ```
 
-### Symlink installer (Cursor / Kimi / Grok / shared Agents)
+### Codex plugin
+
+```bash
+codex plugin marketplace add PKU-EMBL/Metagenomics-Skills
+codex plugin add metagenomics@metagenomics-skills
+```
+
+### Portable installer (Codex / Cursor / Kimi / ZCode / Qwen / others)
 
 ```bash
 git clone https://github.com/PKU-EMBL/Metagenomics-Skills.git
 cd Metagenomics-Skills
-./scripts/install-platforms.sh --user all
+
+# Recommended for most sessions: 48 high-use skills with routing hubs
+./scripts/install-platforms.sh --user --profile core kimi zcode qwen
+
+# Shared location read by Codex, Kimi Code, and ZCode; plus Qwen's native path
+./scripts/install-platforms.sh --user --profile core agents qwen
+
+# Every platform and all 163 skills (largest startup catalog)
+./scripts/install-platforms.sh --user --profile full all
 ```
 
-See [multi-platform.md](multi-platform.md) for per-platform paths.
+Profiles can be combined (`--profile genome-resolved --profile mining`). Use
+`--mode copy` where symlinks are unavailable, `--target PATH` for any other
+client, and `--dry-run` before a shared installation. When replacing an existing
+large profile with a smaller one, preview and then add `--prune`; only paths
+tracked by this installer are eligible for removal. Run
+`./scripts/install-platforms.sh --list-platforms` and `--list-profiles` for the
+current matrix.
+
+Kimi Code can also use the repository without installation:
+
+```bash
+kimi --skills-dir "$PWD/skills"
+```
+
+See [multi-platform.md](multi-platform.md) for native paths, plugin/extension
+manifests, project scope, Windows copy mode, and ZCode/Qwen options.
 
 ## Step 2: Prepare analysis environments
 
@@ -50,9 +81,14 @@ meta/
 
 ## Step 4: Ask for a stage-routed plan
 
+Start by naming the operating mode: **advise**, **plan**, **prepare**,
+**execute**, or **review**. See the [coding-agent playbook](agent-playbook.md)
+for the inspection, preflight, validation, and provenance contract.
+
 Example prompts:
 
-- "Plan QC → assembly → binning → taxonomy → function for these samples"
+- "Plan QC → assembly → binning → taxonomy → function for these samples; do not execute yet"
+- "Review this existing run, inspect its logs and quality gates, and do not rerun it"
 - "Read-based taxonomic annotation only — which tools after KneadData?"
 - "Recommended ensemble binning after MEGAHIT for related bioreactors"
 - "Functional annotation via gene catalogue vs HUMAnN"
@@ -77,10 +113,13 @@ Example prompts:
 | DNA / protein LMs | `genome-language-model` / `protein-language-model` |
 
 Expected routing: `tool-selection` / `metagenomics-workflow` / `study-design`
-→ stage skills → `research-analysis` for delivery figures.
+→ only the required stage skills → `research-analysis` for statistical delivery.
+The agent should distinguish observed inputs, assumptions, prepared commands,
+executed commands, validation evidence, and remaining blockers.
 
 ## Next
 
+- [Coding-agent playbook](agent-playbook.md)
 - [Standard pipeline](standard-pipeline.md)
 - [Skills catalog](skills.md)
 - [Public databases](public-databases.md)

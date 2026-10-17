@@ -1,17 +1,16 @@
 ---
 name: stamp
 description: >
-  STAMP — Statistical Analysis of Metagenomic Profiles; GUI for taxonomic /
-  functional profile tests with effect sizes, CIs, and publication plots
-  (extended error bars, PCA, heatmaps). Use for interactive exploratory DA and
-  classic two-group/multi-group tests. Upstream:
-  https://github.com/dparks1134/STAMP. Prefer MaAsLin2/ANCOM-BC for
-  covariate-heavy designs. Route via research-analysis.
+  STAMP — Statistical Analysis of Metagenomic Profiles; GUI for taxonomic / functional
+  profile tests with effect sizes, CIs, and publication plots (extended error bars, PCA,
+  heatmaps). Use for interactive exploratory DA and classic two-group/multi-group tests.
+  Prefer MaAsLin2/ANCOM-BC for covariate-heavy designs.
 license: MIT
-category: evaluation
-tags: [STAMP, GUI, differential-abundance, effect-size, metagenomics]
-upstream: https://github.com/dparks1134/STAMP
-stage: report
+metadata:
+  metagenomics.category: "evaluation"
+  metagenomics.tags: "STAMP, GUI, differential-abundance, effect-size, metagenomics"
+  metagenomics.upstream: "https://github.com/dparks1134/STAMP"
+  metagenomics.stage: "report"
 ---
 
 # STAMP
@@ -25,7 +24,7 @@ Parks, D. H., Tyson, G. W., Hugenholtz, P. & Beiko, R. G. STAMP: statistical
 analysis of taxonomic and functional profiles. *Bioinformatics* **30**,
 3123–3124 (2014). https://doi.org/10.1093/bioinformatics/btu494
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

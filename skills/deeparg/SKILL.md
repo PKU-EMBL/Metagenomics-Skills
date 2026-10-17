@@ -1,15 +1,14 @@
 ---
 name: deeparg
 description: >
-  Deep-learning prediction of antibiotic resistance genes from metagenomic data. Use this skill when working with deeparg: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/gaarangoa/DeepARG. For routing across mining tasks use microbial-mining.
-  For stage order use metagenomics-workflow.
+  Deep-learning prediction of antibiotic resistance genes from metagenomic data. Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['AMR', 'ARG', 'genome-mining']
-upstream: https://github.com/gaarangoa/DeepARG
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "AMR, ARG, genome-mining"
+  metagenomics.upstream: "https://github.com/gaarangoa/DeepARG"
+  metagenomics.stage: "mining"
 ---
 
 # DeepARG
@@ -20,7 +19,7 @@ Upstream: [DeepARG](https://github.com/gaarangoa/DeepARG)
 
 Arango-Argoty, G. *et al.* DeepARG: a deep learning approach for predicting antibiotic resistance genes from metagenomic data. *Microbiome* **6**, 23 (2018). https://doi.org/10.1186/s40168-018-0401-z
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

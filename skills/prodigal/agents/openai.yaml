@@ -1,7 +1,7 @@
 interface:
   display_name: "Prodigal"
   short_description: "Protein-coding gene prediction; use -p meta for metagenomes"
-  default_prompt: "Use $prodigal for Protein-coding gene prediction; use -p meta for metagenomes."
+  default_prompt: "Use $prodigal for this task: Protein-coding gene prediction; use -p meta for metagenomes. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

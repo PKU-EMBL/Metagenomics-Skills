@@ -1,18 +1,17 @@
 ---
 name: nucleotide-transformer
 description: >
-  InstaDeep Nucleotide Transformer family — DNA foundation models from NT/NT-v2
-  through NTv3 (multi-species, long-context seq–function and generation). Use
-  when: (1) DNA embeddings or MLM scores on contigs/MAGs, (2) Functional-track
-  / genome-annotation style prediction with NTv3, (3) Contrasting representation
-  gLMs vs generative Evo 2 or metagenomic gLM2. Upstream:
-  https://github.com/instadeepai/nucleotide-transformer. HF: InstaDeepAI.
-  Route via genome-language-model. Check CC BY-NC-SA license for your use case.
+  InstaDeep Nucleotide Transformer family — DNA foundation models from NT/NT-v2 through
+  NTv3 (multi-species, long-context seq–function and generation). Use when: (1) DNA
+  embeddings or MLM scores on contigs/MAGs, (2) Functional-track / genome-annotation
+  style prediction with NTv3, (3) Contrasting representation gLMs vs generative Evo 2 or
+  metagenomic gLM2. HF: InstaDeepAI. Check CC BY-NC-SA license for your use case.
 license: MIT
-category: analysis-tools
-tags: [Nucleotide-Transformer, NTv3, gLM, DNA, InstaDeep, HuggingFace]
-upstream: https://github.com/instadeepai/nucleotide-transformer
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "Nucleotide-Transformer, NTv3, gLM, DNA, InstaDeep, HuggingFace"
+  metagenomics.upstream: "https://github.com/instadeepai/nucleotide-transformer"
+  metagenomics.stage: "function"
 ---
 
 # Nucleotide Transformer (NT / NTv3)
@@ -30,7 +29,7 @@ NTv3: A foundational model for joint sequence-function multi-species modeling at
 scale for long-range genomic prediction. *bioRxiv*
 https://doi.org/10.64898/2025.12.22.695963 (2025).
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

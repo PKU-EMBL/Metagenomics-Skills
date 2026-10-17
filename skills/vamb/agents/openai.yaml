@@ -1,7 +1,7 @@
 interface:
   display_name: "VAMB"
   short_description: "Deep variational autoencoder binning of metagenome contigs"
-  default_prompt: "Use $vamb for Deep variational autoencoder binning of metagenome contigs"
+  default_prompt: "Use $vamb for this task: Deep variational autoencoder binning of metagenome contigs. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

@@ -1,15 +1,14 @@
 ---
 name: defensefinder
 description: >
-  Detect anti-phage defense systems in prokaryotic genomes. Use this skill when working with defensefinder: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/mdmparis/defense-finder. For routing across mining tasks use microbial-mining.
-  For stage order use metagenomics-workflow.
+  Detect anti-phage defense systems in prokaryotic genomes. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['defense', 'CRISPR', 'genome-mining']
-upstream: https://github.com/mdmparis/defense-finder
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "defense, CRISPR, genome-mining"
+  metagenomics.upstream: "https://github.com/mdmparis/defense-finder"
+  metagenomics.stage: "mining"
 ---
 
 # DefenseFinder
@@ -20,7 +19,7 @@ Upstream: [DefenseFinder](https://github.com/mdmparis/defense-finder)
 
 Tesson, F. *et al.* Systematic and quantitative view of the antiviral arsenal of prokaryotes. *Nat. Commun.* **13**, 2561 (2022). https://doi.org/10.1038/s41467-022-30269-9
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

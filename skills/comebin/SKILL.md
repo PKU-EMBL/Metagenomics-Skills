@@ -1,17 +1,17 @@
 ---
 name: comebin
 description: >
-  COMEBin — contrastive multi-view representation learning for metagenomic
-  contig binning (composition + coverage). Use when: (1) Running COMEBin as a
-  modern single binner, (2) Comparing to SemiBin2/VAMB/MetaBAT2, (3) Co-
-  assembly, single-sample, or multi-sample binning modes, (4) Feeding bins into
-  ensemble refinement. Upstream: https://github.com/ziyewang/COMEBin.
-  Prefer ensemble (basalt ★ / metawrap / dastool) for catalogues.
+  COMEBin — contrastive multi-view representation learning for metagenomic contig
+  binning (composition + coverage). Use when: (1) Running COMEBin as a modern single
+  binner, (2) Comparing to SemiBin2/VAMB/MetaBAT2, (3) Co- assembly, single-sample, or
+  multi-sample binning modes, (4) Feeding bins into ensemble refinement. Prefer ensemble
+  (basalt ★ / metawrap / dastool) for catalogues.
 license: MIT
-category: analysis-tools
-tags: [binning, COMEBin, contrastive-learning, MAG]
-upstream: https://github.com/ziyewang/COMEBin
-stage: binning
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "binning, COMEBin, contrastive-learning, MAG"
+  metagenomics.upstream: "https://github.com/ziyewang/COMEBin"
+  metagenomics.stage: "binning"
 ---
 
 # COMEBin
@@ -24,7 +24,7 @@ Wang, Z. *et al.* Effective binning of metagenomic contigs using contrastive
 multi-view representation learning. *Nat. Commun.* **15**, 585 (2024).
 https://doi.org/10.1038/s41467-023-44290-z
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

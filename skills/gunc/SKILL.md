@@ -1,15 +1,14 @@
 ---
 name: gunc
 description: >
-  Detect chimerism/contamination in prokaryotic genomes/MAGs. Use this skill when working with gunc: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/grp-bork/gunc. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Detect chimerism/contamination in prokaryotic genomes/MAGs. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['qc', 'contamination', 'chimerism']
-upstream: https://github.com/grp-bork/gunc
-stage: assessment
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "qc, contamination, chimerism"
+  metagenomics.upstream: "https://github.com/grp-bork/gunc"
+  metagenomics.stage: "assessment"
 ---
 
 # GUNC
@@ -20,7 +19,7 @@ Upstream: [GUNC](https://github.com/grp-bork/gunc)
 
 Orakov, A. *et al.* GUNC: detection of chimerism and contamination in prokaryotic genomes. *Genome Biol.* **22**, 178 (2021). https://doi.org/10.1186/s13059-021-02393-0
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

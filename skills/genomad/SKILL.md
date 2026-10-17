@@ -1,14 +1,15 @@
 ---
 name: genomad
 description: >
-  Identify plasmids, viruses, and other mobile genetic elements in assemblies
-  or genomes. Use for plasmidome/virome mining, MGE-aware AMR context, and
-  pre-CheckV viral candidate lists. Upstream: https://github.com/apcamargo/genomad.
+  Identify plasmids, viruses, and other mobile genetic elements in assemblies or
+  genomes. Use for plasmidome/virome mining, MGE-aware AMR context, and pre-CheckV viral
+  candidate lists.
 license: MIT
-category: analysis-tools
-tags: [MGE, plasmid, virus, genome-mining]
-upstream: https://github.com/apcamargo/genomad
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "MGE, plasmid, virus, genome-mining"
+  metagenomics.upstream: "https://github.com/apcamargo/genomad"
+  metagenomics.stage: "mining"
 ---
 
 # geNomad

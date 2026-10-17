@@ -1,7 +1,7 @@
 interface:
   display_name: "MaxBin 2"
   short_description: "Automated multi-metagenome contig binning"
-  default_prompt: "Use $maxbin2 for Automated multi-metagenome contig binning"
+  default_prompt: "Use $maxbin2 for this task: Automated multi-metagenome contig binning. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

@@ -1,16 +1,17 @@
 ---
 name: public-databases
 description: >
-  Route shotgun metagenomics work to the right public databases, catalogues,
-  and benchmark datasets. Use when: (1) Choosing SRA/ENA vs MGnify vs GTDB vs
-  proGenomes vs CAMI, (2) Distinguishing raw archives, genome warehouses, biome
-  catalogues, tool indexes, and gold-standard benchmarks, (3) Pinning data
-  releases for Methods, (4) Planning downloads for UHGG, GTDB R10+, KEGG, CARD,
-  bioBakery, Kraken, CheckM2. Child skills: sra-ena, mgnify, gtdb, progenomes,
-  cami, kegg, biobakery-databases. For software install use setup.
+  Route shotgun metagenomics work to the right public databases, catalogues, and
+  benchmark datasets. Use when: (1) Choosing SRA/ENA vs MGnify vs GTDB vs proGenomes vs
+  CAMI, (2) Distinguishing raw archives, genome warehouses, biome catalogues, tool
+  indexes, and gold-standard benchmarks, (3) Pinning data releases for Methods, (4)
+  Planning downloads for UHGG, GTDB R10+, KEGG, CARD, bioBakery, Kraken, CheckM2. Child
+  skills: sra-ena, mgnify, gtdb, progenomes, cami, kegg, biobakery-databases. For
+  software install use setup.
 license: MIT
-category: utilities
-tags: [database, catalogue, UHGG, GTDB, MGnify, CAMI, proGenomes, SRA, ENA, KEGG]
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "database, catalogue, UHGG, GTDB, MGnify, CAMI, proGenomes, SRA, ENA, KEGG"
 ---
 
 # Public databases

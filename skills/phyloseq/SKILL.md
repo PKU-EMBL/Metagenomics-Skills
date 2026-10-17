@@ -1,16 +1,16 @@
 ---
 name: phyloseq
 description: >
-  phyloseq — Bioconductor R package for storing and analyzing microbiome census
-  data (OTU/ASV tables, taxonomy, phylogeny, sample data) with ggplot2 graphics.
-  Use as a data container and classic analysis API; many DA/network tools accept
-  phyloseq objects. Upstream: https://github.com/joey711/phyloseq. Route via
-  research-analysis; modular paper workflows also via microeco.
+  phyloseq — Bioconductor R package for storing and analyzing microbiome census data
+  (OTU/ASV tables, taxonomy, phylogeny, sample data) with ggplot2 graphics. Use as a
+  data container and classic analysis API; many DA/network tools accept phyloseq
+  objects. Route via research-analysis; modular paper workflows also via microeco.
 license: MIT
-category: evaluation
-tags: [phyloseq, Bioconductor, R, microbiome, diversity, visualization]
-upstream: https://github.com/joey711/phyloseq
-stage: report
+metadata:
+  metagenomics.category: "evaluation"
+  metagenomics.tags: "phyloseq, Bioconductor, R, microbiome, diversity, visualization"
+  metagenomics.upstream: "https://github.com/joey711/phyloseq"
+  metagenomics.stage: "report"
 ---
 
 # phyloseq
@@ -24,7 +24,7 @@ McMurdie, P. J. & Holmes, S. phyloseq: An R Package for Reproducible Interactive
 Analysis and Graphics of Microbiome Census Data. *PLoS ONE* **8**, e61217
 (2013). https://doi.org/10.1371/journal.pone.0061217
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

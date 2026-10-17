@@ -1,11 +1,13 @@
 ---
 name: salmon
 description: >
-  Fast quantification of gene/transcript abundance; use --meta for metagenomes. Use this skill when working with salmon: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/COMBINE-lab/salmon. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  Fast quantification of gene/transcript abundance; use --meta for metagenomes. Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['quantification', 'abundance']
-upstream: https://github.com/COMBINE-lab/salmon
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "quantification, abundance"
+  metagenomics.upstream: "https://github.com/COMBINE-lab/salmon"
 ---
 
 # Salmon
@@ -16,7 +18,7 @@ Upstream: [COMBINE-lab/salmon](https://github.com/COMBINE-lab/salmon)
 
 Patro, R., Duggal, G., Love, M. I., Irizarry, R. A. & Kingsford, C. Salmon provides fast and bias-aware quantification of transcript expression. *Nat. Methods* **14**, 417–419 (2017). https://doi.org/10.1038/nmeth.4197
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

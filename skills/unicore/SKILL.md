@@ -1,16 +1,16 @@
 ---
 name: unicore
 description: >
-  Unicore — universal structure-based core-gene phylogeny using Foldseek and
-  ProstT5 (Steinegger lab). Use when: (1) Building phylogenies from proteomes
-  via structural core genes, (2) 3Di MSAs for tree inference, (3) Scaling beyond
-  sequence-only marker sets. Upstream: https://github.com/steineggerlab/unicore.
-  Route via phylogenomics; depends on foldseek (± GPU ProstT5).
+  Unicore — universal structure-based core-gene phylogeny using Foldseek and ProstT5
+  (Steinegger lab). Use when: (1) Building phylogenies from proteomes via structural
+  core genes, (2) 3Di MSAs for tree inference, (3) Scaling beyond sequence-only marker
+  sets. Route via phylogenomics; depends on foldseek (± GPU ProstT5).
 license: MIT
-category: analysis-tools
-tags: [Unicore, Foldseek, ProstT5, phylogeny, core-genes, 3Di]
-upstream: https://github.com/steineggerlab/unicore
-stage: taxonomy
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "Unicore, Foldseek, ProstT5, phylogeny, core-genes, 3Di"
+  metagenomics.upstream: "https://github.com/steineggerlab/unicore"
+  metagenomics.stage: "taxonomy"
 ---
 
 # Unicore
@@ -23,7 +23,7 @@ Kim, D., Park, S. & Steinegger, M. Unicore enables scalable and accurate
 phylogenetic reconstruction with structural core genes. *Genome Biol. Evol.*
 **17**, evaf109 (2025). https://doi.org/10.1093/gbe/evaf109
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

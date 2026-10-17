@@ -1,11 +1,13 @@
 ---
 name: metaphlan
 description: >
-  Marker-gene taxonomic profiling of metagenomes. Use this skill when working with metaphlan: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/biobakery/MetaPhlAn. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  Marker-gene taxonomic profiling of metagenomes. Use for installation, parameter
+  choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['taxonomy', 'marker', 'profiling']
-upstream: https://github.com/biobakery/MetaPhlAn
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "taxonomy, marker, profiling"
+  metagenomics.upstream: "https://github.com/biobakery/MetaPhlAn"
 ---
 
 # MetaPhlAn
@@ -16,7 +18,7 @@ Upstream: [biobakery/MetaPhlAn](https://github.com/biobakery/MetaPhlAn)
 
 Blanco-Míguez, A. *et al.* Extending and improving metagenomic taxonomic profiling with uncharacterized species using MetaPhlAn 4. *Nat. Biotechnol.* **41**, 1633–1644 (2023). https://doi.org/10.1038/s41587-023-01688-w
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

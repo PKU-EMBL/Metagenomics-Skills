@@ -1,3 +1,35 @@
+## [1.22.0] - 2026-10-17
+
+### Added
+- Native packaging for ZCode (`.zcode-plugin/plugin.json` + marketplace), Qwen
+  Code (`qwen-extension.json`), Claude plugin metadata, and portable Agent
+  Plugins v1 (`plugin.json`)
+- Cross-platform Python installer with safe link/copy modes, custom targets,
+  project roots, dry runs, conflict backups, managed pruning, and seven
+  context-aware profiles
+- Simplified Chinese quick start (`README.zh-CN.md`)
+- Platform-neutral coding-agent execution playbook and bundled multi-stage
+  preflight/quality-gate reference
+- Agent Skills/frontmatter, manifest, profile, resource-link, and Markdown-link
+  validator with CI smoke tests
+
+### Changed
+- Normalized all 163 skills to the Agent Skills frontmatter specification;
+  package fields now use string-valued `metadata` keys
+- Reduced catalog metadata by removing duplicated upstream/routing boilerplate
+  from descriptions while retaining task-specific trigger guidance
+- Normalized 75 Codex/OpenAI UI entries with complete short descriptions,
+  explicit skill invocation, input checks, and verified-output language
+- Made repository-wide documentation links portable for copied skill bundles
+- Expanded study design, setup, workflow execution, fastp verification, and
+  statistical-analysis guidance with controls, confounding, provenance, pilots,
+  output gates, and truthful execution status
+- Synchronized the `metagenomics` plugin ID across Claude, Codex, Cursor,
+  ZCode, Qwen, and Agent Plugins v1 manifests for marketplace validation
+- Updated platform docs for Kimi Code, ZCode, Qwen Code, shared `.agents`,
+  Windows copy mode, and metadata-budget-aware profiles
+- Package version 1.22.0 (163 skills)
+
 ## [1.21.0] - 2026-08-03
 
 ### Added

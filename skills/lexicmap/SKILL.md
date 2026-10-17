@@ -1,18 +1,18 @@
 ---
 name: lexicmap
 description: >
-  LexicMap — efficient nucleotide alignment of moderate-length queries (genes,
-  plasmids, long reads; typically >250 bp) against up to millions of prokaryotic
-  genomes. Use when: (1) Searching genes/plasmids vs huge genome databases,
-  (2) Scaling beyond BLAST/minimap2 for AllTheBacteria / GTDB-scale refs,
-  (3) Epidemiology/ecology queries needing fast genome hits. Upstream:
-  https://github.com/shenwei356/LexicMap. Not a substitute for short-read→contig
-  coverage mappers (strobealign/bowtie2) used in binning.
+  LexicMap — efficient nucleotide alignment of moderate-length queries (genes, plasmids,
+  long reads; typically >250 bp) against up to millions of prokaryotic genomes. Use
+  when: (1) Searching genes/plasmids vs huge genome databases, (2) Scaling beyond
+  BLAST/minimap2 for AllTheBacteria / GTDB-scale refs, (3) Epidemiology/ecology queries
+  needing fast genome hits. Not a substitute for short-read→contig coverage mappers
+  (strobealign/bowtie2) used in binning.
 license: MIT
-category: analysis-tools
-tags: [alignment, search, LexicMap, genomes, BLAST]
-upstream: https://github.com/shenwei356/LexicMap
-stage: mapping
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "alignment, search, LexicMap, genomes, BLAST"
+  metagenomics.upstream: "https://github.com/shenwei356/LexicMap"
+  metagenomics.stage: "mapping"
 ---
 
 # LexicMap
@@ -25,7 +25,7 @@ Shen, W., Lees, J. A. & Iqbal, Z. Efficient sequence alignment against millions
 of prokaryotic genomes with LexicMap. *Nat. Biotechnol.* (2025).
 https://doi.org/10.1038/s41587-025-02812-8
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

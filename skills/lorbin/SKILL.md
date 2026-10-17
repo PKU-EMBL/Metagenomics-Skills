@@ -1,19 +1,19 @@
 ---
 name: lorbin
 description: >
-  LorBin — unsupervised long-read metagenome binning with multiscale adaptive
-  clustering (DBSCAN + BIRCH) and single-copy-gene evaluation. Use when:
-  (1) Binning long-read / HiFi metagenome assemblies, (2) Recovering MAGs from
-  species-rich or abundance-imbalanced communities, (3) Comparing LorBin to
-  SemiBin2/VAMB long-read modes, (4) Feeding LorBin bins into ensemble
-  refinement (BASALT `-e l` needs the PKU-EMBL LorBin fork). Upstream:
-  https://github.com/LorMeBioAI/LorBin. For ensemble recovery use basalt.
-  For short-read defaults use metabat2 / semibin2 / vamb.
+  LorBin — unsupervised long-read metagenome binning with multiscale adaptive clustering
+  (DBSCAN + BIRCH) and single-copy-gene evaluation. Use when: (1) Binning long-read /
+  HiFi metagenome assemblies, (2) Recovering MAGs from species-rich or
+  abundance-imbalanced communities, (3) Comparing LorBin to SemiBin2/VAMB long-read
+  modes, (4) Feeding LorBin bins into ensemble refinement (BASALT `-e l` needs the
+  PKU-EMBL LorBin fork). For ensemble recovery use basalt. For short-read defaults use
+  metabat2 / semibin2 / vamb.
 license: MIT
-category: analysis-tools
-tags: [binning, long-read, LorBin, MAG, DBSCAN]
-upstream: https://github.com/LorMeBioAI/LorBin
-stage: binning
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "binning, long-read, LorBin, MAG, DBSCAN"
+  metagenomics.upstream: "https://github.com/LorMeBioAI/LorBin"
+  metagenomics.stage: "binning"
 ---
 
 # LorBin
@@ -26,7 +26,7 @@ Xue, W. *et al.* LorBin: efficient binning of long-read metagenomes by
 multiscale adaptive clustering and evaluation. *Nat. Commun.* **16**, 9353
 (2025). https://doi.org/10.1038/s41467-025-64916-8
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

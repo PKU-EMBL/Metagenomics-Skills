@@ -1,16 +1,16 @@
 ---
 name: biosurfdb
 description: >
-  BioSurfDB — curated portal for biosurfactant production and hydrocarbon
-  biodegradation genes/pathways with BLAST and related metagenome analysis
-  helpers. Use for surfactant/biodegradation-focused searches and pathway
-  browsing. Portal: https://www.biosurfdb.org/. Route via dom-biosurfactant.
-  Offline experimental gene sets → hadeg; glycan DOM → dbcan.
+  BioSurfDB — curated portal for biosurfactant production and hydrocarbon biodegradation
+  genes/pathways with BLAST and related metagenome analysis helpers. Use for
+  surfactant/biodegradation-focused searches and pathway browsing. Offline experimental
+  gene sets → hadeg; glycan DOM → dbcan.
 license: MIT
-category: analysis-tools
-tags: [BioSurfDB, biosurfactant, biodegradation, hydrocarbon, DOM, portal]
-upstream: https://www.biosurfdb.org/
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "BioSurfDB, biosurfactant, biodegradation, hydrocarbon, DOM, portal"
+  metagenomics.upstream: "https://www.biosurfdb.org/"
+  metagenomics.stage: "mining"
 ---
 
 # BioSurfDB
@@ -24,7 +24,7 @@ Oliveira, J. S. *et al.* BioSurfDB: knowledge and algorithms to support
 biosurfactants and biodegradation studies. *Database* **2015**, bav033 (2015).
 https://doi.org/10.1093/database/bav033
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

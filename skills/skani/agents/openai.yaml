@@ -1,7 +1,7 @@
 interface:
   display_name: "skani"
-  short_description: "Fast MAG ANI comparison"
-  default_prompt: "Use $skani for Fast MAG ANI comparison."
+  short_description: "Fast ANI comparison for MAGs and genomes"
+  default_prompt: "Use $skani for this task: Fast ANI comparison for MAGs and genomes. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

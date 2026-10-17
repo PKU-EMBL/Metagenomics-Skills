@@ -1,15 +1,15 @@
 ---
 name: multiqc
 description: >
-  MultiQC — aggregate bioinformatics QC logs into a single interactive HTML
-  report (FastQC, fastp, Bowtie2/BWA, Samtools, QUAST, …). Use after QC/mapping
-  steps to audit libraries before biological statistics. Upstream:
-  https://github.com/MultiQC/MultiQC. Route via research-analysis / setup.
+  MultiQC — aggregate bioinformatics QC logs into a single interactive HTML report
+  (FastQC, fastp, Bowtie2/BWA, Samtools, QUAST, …). Use after QC/mapping steps to audit
+  libraries before biological statistics.
 license: MIT
-category: utilities
-tags: [MultiQC, QC, report, FastQC, research-analysis]
-upstream: https://github.com/MultiQC/MultiQC
-stage: qc
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "MultiQC, QC, report, FastQC, research-analysis"
+  metagenomics.upstream: "https://github.com/MultiQC/MultiQC"
+  metagenomics.stage: "qc"
 ---
 
 # MultiQC
@@ -23,7 +23,7 @@ Ewels, P., Magnusson, M., Lundin, S. & Käller, M. MultiQC: summarize analysis
 results for multiple tools and samples in a single report. *Bioinformatics*
 **32**, 3047–3048 (2016). https://doi.org/10.1093/bioinformatics/btw354
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,7 +1,7 @@
 interface:
   display_name: "Tool selection"
-  short_description: "Choose tools by QC, assembly, mapping, binning, taxonomy, function, mining"
-  default_prompt: "Use $tool-selection to pick skills by scientific stage including mapping and microbial mining."
+  short_description: "Choose metagenomics tools by scientific stage"
+  default_prompt: "Use $tool-selection for this task: Choose metagenomics tools by scientific stage. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

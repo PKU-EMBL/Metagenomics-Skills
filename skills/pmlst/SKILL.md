@@ -1,16 +1,16 @@
 ---
 name: pmlst
 description: >
-  pMLST — plasmid multilocus sequence typing from assemblies or reads using
-  CGE / PubMLST plasmid schemes (IncI1, IncF, IncHI2, …). Use after
-  PlasmidFinder replicon hits when a scheme ST is needed. Upstream:
-  https://github.com/ssi-dk/pmlst (pmlst_ssi). Route via cge-finders /
-  plasmidfinder / microbial-mining; chromosomal ST → mlst.
+  pMLST — plasmid multilocus sequence typing from assemblies or reads using CGE /
+  PubMLST plasmid schemes (IncI1, IncF, IncHI2, …). Use after PlasmidFinder replicon
+  hits when a scheme ST is needed. Route via cge-finders / plasmidfinder /
+  microbial-mining; chromosomal ST → mlst.
 license: MIT
-category: analysis-tools
-tags: [pMLST, plasmid, MLST, CGE, typing, Inc, PubMLST]
-upstream: https://github.com/ssi-dk/pmlst
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "pMLST, plasmid, MLST, CGE, typing, Inc, PubMLST"
+  metagenomics.upstream: "https://github.com/ssi-dk/pmlst"
+  metagenomics.stage: "mining"
 ---
 
 # pMLST
@@ -24,7 +24,7 @@ Carattoli, A. *et al.* In Silico Detection and Typing of Plasmids using
 PlasmidFinder and Plasmid Multilocus Sequence Typing. *Antimicrob. Agents
 Chemother.* **58**, 3895–3903 (2014). https://doi.org/10.1128/AAC.02412-14
 
-See also [docs/references.md](../../docs/references.md), `plasmidfinder`, and
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md), `plasmidfinder`, and
 `cge-finders`.
 
 ## Analytical thinking

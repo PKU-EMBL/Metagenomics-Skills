@@ -1,11 +1,13 @@
 ---
 name: coverm
 description: >
-  Calculate coverage/relative abundance of genomes or contigs. Use this skill when working with coverm: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/wwood/CoverM. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  Calculate coverage/relative abundance of genomes or contigs. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['abundance', 'MAG', 'coverage']
-upstream: https://github.com/wwood/CoverM
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "abundance, MAG, coverage"
+  metagenomics.upstream: "https://github.com/wwood/CoverM"
 ---
 
 # CoverM
@@ -16,7 +18,7 @@ Upstream: [wwood/CoverM](https://github.com/wwood/CoverM)
 
 Aroney, S. T. N. *et al.* CoverM: read alignment statistics for metagenomics. *Bioinformatics* **41**, btaf147 (2025). https://doi.org/10.1093/bioinformatics/btaf147
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

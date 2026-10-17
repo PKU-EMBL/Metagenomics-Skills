@@ -1,18 +1,17 @@
 ---
 name: abricate
 description: >
-  ABRicate — mass screening of contigs for AMR/virulence/plasmid markers
-  against bundled databases (ResFinder, CARD, NCBI, VFDB, PlasmidFinder,
-  EcoLI_VF, ARG-ANNOT, MEGARES, …). Use for fast multi-DB isolate or MAG
-  screens and database concordance checks. Upstream:
-  https://github.com/tseemann/abricate. Route via cge-finders /
-  microbial-mining; official CGE CLI still via resfinder/plasmidfinder when
-  phenotype mapping or PointFinder is required.
+  ABRicate — mass screening of contigs for AMR/virulence/plasmid markers against bundled
+  databases (ResFinder, CARD, NCBI, VFDB, PlasmidFinder, EcoLI_VF, ARG-ANNOT, MEGARES,
+  …). Use for fast multi-DB isolate or MAG screens and database concordance checks.
+  Route via cge-finders / microbial-mining; official CGE CLI still via
+  resfinder/plasmidfinder when phenotype mapping or PointFinder is required.
 license: MIT
-category: analysis-tools
-tags: [ABRicate, AMR, virulence, PlasmidFinder, ResFinder, CARD, VFDB, screening]
-upstream: https://github.com/tseemann/abricate
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "ABRicate, AMR, virulence, PlasmidFinder, ResFinder, CARD, VFDB, screening"
+  metagenomics.upstream: "https://github.com/tseemann/abricate"
+  metagenomics.stage: "mining"
 ---
 
 # ABRicate
@@ -28,7 +27,7 @@ Also cite the **database** papers for each `--db` used (ResFinder, CARD,
 PlasmidFinder, VFDB, … — see `resfinder`, `rgi`, `plasmidfinder`,
 `virulencefinder`).
 
-See also [docs/references.md](../../docs/references.md) and `cge-finders`.
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md) and `cge-finders`.
 
 ## Analytical thinking
 

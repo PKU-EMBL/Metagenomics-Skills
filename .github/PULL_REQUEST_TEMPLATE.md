@@ -10,13 +10,15 @@
 - [ ] Other (please describe)
 
 ## Skill Checklist (if adding new skill)
-- [ ] YAML frontmatter complete (name, description, license, category, tags)
+- [ ] Portable YAML frontmatter complete (`name`, `description`, `license`, namespaced `metadata`)
+- [ ] Description states what the skill does and when it should trigger
+- [ ] Commands include input checks, logs, and output verification
 - [ ] Related skills cross-referenced
-- [ ] `agents/openai.yaml` included
-- [ ] Progressive detail in `references/` if needed
-- [ ] Under 500 lines
-- [ ] Added to `docs/skills.md` and `plugin-manifest.json`
-- [ ] Installer still links the new skill directory
+- [ ] Every bundled reference/script is disclosed from `SKILL.md`
+- [ ] `SKILL.md` is under 500 lines and no local link escapes the bundle
+- [ ] Added to `docs/skills.md`, `plugin-manifest.json`, and relevant profile(s)
+- [ ] `python3 scripts/validate-skills.py` passes
+- [ ] Copy-mode installer smoke test passes
 
 ## Testing
 <!-- How did you test your changes? -->

@@ -1,7 +1,7 @@
 interface:
   display_name: "BBMap"
-  short_description: "Fast splice-aware aligner and BBTools suite utilities (BBMerge, etc"
-  default_prompt: "Use $bbmap for Fast splice-aware aligner and BBTools suite utilities (BBMerge, etc"
+  short_description: "Read alignment and BBTools utilities such as BBMerge"
+  default_prompt: "Use $bbmap for this task: Read alignment and BBTools utilities such as BBMerge. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

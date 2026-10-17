@@ -2,16 +2,16 @@
 name: dastool
 description: >
   DAS Tool (Dereplication, Aggregation and Scoring) integrates multiple binning
-  predictions into one non-redundant MAG set for a single assembly. Use this
-  skill when working with DAS_Tool: preparing contig2bin tables, choosing score
-  thresholds, comparing ensemble binning options, or writing Methods. Upstream:
-  https://github.com/cmks/DAS_Tool. For suite-style MetaBAT/MaxBin refinement use
-  metawrap. For recommended multi-assembly refined recovery use basalt.
+  predictions into one non-redundant MAG set for a single assembly. Use this skill when
+  working with DAS_Tool: preparing contig2bin tables, choosing score thresholds,
+  comparing ensemble binning options, or writing Methods. For suite-style MetaBAT/MaxBin
+  refinement use metawrap. For recommended multi-assembly refined recovery use basalt.
   For routing, use tool-selection.
 license: MIT
-category: analysis-tools
-tags: ['MAG', 'ensemble-binning', 'DAS_Tool', 'refinement']
-upstream: https://github.com/cmks/DAS_Tool
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "MAG, ensemble-binning, DAS_Tool, refinement"
+  metagenomics.upstream: "https://github.com/cmks/DAS_Tool"
 ---
 
 # DAS Tool
@@ -24,7 +24,7 @@ Sieber, C. M. K. *et al.* Recovery of genomes from metagenomes via a
 dereplication, aggregation and scoring strategy. *Nat. Microbiol.* **3**,
 836–843 (2018). https://doi.org/10.1038/s41564-018-0171-1
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

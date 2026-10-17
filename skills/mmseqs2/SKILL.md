@@ -1,18 +1,17 @@
 ---
 name: mmseqs2
 description: >
-  MMseqs2 — ultra-fast protein sequence search, clustering (Linclust), and
-  contig taxonomy (Steinegger / Söding labs). Use when: (1) Building NR gene
-  catalogues, (2) Sensitive BLASTP-scale search at metagenome size,
-  (3) Contig taxonomy via easy-taxonomy / taxDB, (4) Contrasting with Foldseek
-  structure search. Upstream: https://github.com/soedinglab/MMseqs2.
-  For structure/motif search use foldseek / folddisco; route AI stack via
-  metagenomics-llm.
+  MMseqs2 — ultra-fast protein sequence search, clustering (Linclust), and contig
+  taxonomy (Steinegger / Söding labs). Use when: (1) Building NR gene catalogues, (2)
+  Sensitive BLASTP-scale search at metagenome size, (3) Contig taxonomy via
+  easy-taxonomy / taxDB, (4) Contrasting with Foldseek structure search. For
+  structure/motif search use foldseek / folddisco; route AI stack via metagenomics-llm.
 license: MIT
-category: analysis-tools
-tags: [MMseqs2, cluster, search, taxonomy, Linclust]
-upstream: https://github.com/soedinglab/MMseqs2
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "MMseqs2, cluster, search, taxonomy, Linclust"
+  metagenomics.upstream: "https://github.com/soedinglab/MMseqs2"
+  metagenomics.stage: "function"
 ---
 
 # MMseqs2
@@ -29,7 +28,7 @@ Mirdita, M. *et al.* Fast and sensitive taxonomic assignment to metagenomic
 contigs. *Bioinformatics* **37**, 3029–3031 (2021).
 https://doi.org/10.1093/bioinformatics/btab184
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

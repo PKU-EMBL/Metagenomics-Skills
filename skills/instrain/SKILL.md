@@ -1,15 +1,14 @@
 ---
 name: instrain
 description: >
-  Strain-level microdiversity and shared-strain detection from metagenomes. Use this skill when working with instrain: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/MrOlm/inStrain. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Strain-level microdiversity and shared-strain detection from metagenomes. Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['strain', 'microdiversity', 'snp']
-upstream: https://github.com/MrOlm/inStrain
-stage: strain
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "strain, microdiversity, snp"
+  metagenomics.upstream: "https://github.com/MrOlm/inStrain"
+  metagenomics.stage: "strain"
 ---
 
 # inStrain
@@ -20,7 +19,7 @@ Upstream: [inStrain](https://github.com/MrOlm/inStrain)
 
 Olm, M. R. *et al.* inStrain profiles population microdiversity from metagenomic data and sensitively detects shared microbial strains. *Nat. Biotechnol.* **39**, 727–736 (2021). https://doi.org/10.1038/s41587-020-00797-0
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

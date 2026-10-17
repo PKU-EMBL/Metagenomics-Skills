@@ -1,11 +1,13 @@
 ---
 name: humann
 description: >
-  Gene-family and pathway abundance profiling from metagenomes. Use this skill when working with humann: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/biobakery/humann. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  Gene-family and pathway abundance profiling from metagenomes. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['function', 'pathways', 'profiling']
-upstream: https://github.com/biobakery/humann
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "function, pathways, profiling"
+  metagenomics.upstream: "https://github.com/biobakery/humann"
 ---
 
 # HUMAnN
@@ -16,7 +18,7 @@ Upstream: [biobakery/humann](https://github.com/biobakery/humann)
 
 Beghini, F. *et al.* Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3. *eLife* **10**, e65088 (2021). https://doi.org/10.7554/eLife.65088
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

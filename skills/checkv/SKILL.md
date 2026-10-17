@@ -1,15 +1,14 @@
 ---
 name: checkv
 description: >
-  Quality assessment of metagenome-assembled viral genomes. Use this skill when working with checkv: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://bitbucket.org/berkeleylab/checkv. For routing across mining tasks use microbial-mining.
-  For stage order use metagenomics-workflow.
+  Quality assessment of metagenome-assembled viral genomes. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['virus', 'qc', 'genome-mining']
-upstream: https://bitbucket.org/berkeleylab/checkv
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "virus, qc, genome-mining"
+  metagenomics.upstream: "https://bitbucket.org/berkeleylab/checkv"
+  metagenomics.stage: "mining"
 ---
 
 # CheckV
@@ -20,7 +19,7 @@ Upstream: [CheckV](https://bitbucket.org/berkeleylab/checkv)
 
 Nayfach, S. *et al.* CheckV assesses the quality and completeness of metagenome-assembled viral genomes. *Nat. Biotechnol.* **39**, 578–585 (2021). https://doi.org/10.1038/s41587-020-00774-7
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

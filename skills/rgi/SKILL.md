@@ -1,11 +1,13 @@
 ---
 name: rgi
 description: >
-  Antibiotic resistance gene annotation against CARD. Use this skill when working with rgi: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/arpcard/rgi. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  Antibiotic resistance gene annotation against CARD. Use for installation, parameter
+  choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['AMR', 'CARD', 'resistance']
-upstream: https://github.com/arpcard/rgi
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "AMR, CARD, resistance"
+  metagenomics.upstream: "https://github.com/arpcard/rgi"
 ---
 
 # RGI (CARD)
@@ -16,7 +18,7 @@ Upstream: [arpcard/rgi](https://github.com/arpcard/rgi) · CARD database
 
 Alcock, B. P. *et al.* CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. *Nucleic Acids Res.* **51**, D690–D699 (2023). https://doi.org/10.1093/nar/gkac920
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

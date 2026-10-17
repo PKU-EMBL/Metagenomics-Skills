@@ -1,17 +1,17 @@
 ---
 name: hh-suite
 description: >
-  HH-suite3 (HHblits / HHsearch) — remote protein homology via HMM–HMM
-  alignment (Söding lab). Use when: (1) Sequence identity is too low for
-  BLAST/MMseqs easy hits, (2) Building/searching profile HMMs (BFD, UniClust,
-  Pfam-style DBs), (3) Feeding sensitive MSAs into structure prediction
-  Upstream: https://github.com/soedinglab/hh-suite.
-  Route via homology-search; complements mmseqs2 and foldseek.
+  HH-suite3 (HHblits / HHsearch) — remote protein homology via HMM–HMM alignment (Söding
+  lab). Use when: (1) Sequence identity is too low for BLAST/MMseqs easy hits, (2)
+  Building/searching profile HMMs (BFD, UniClust, Pfam-style DBs), (3) Feeding sensitive
+  MSAs into structure prediction Route via homology-search; complements mmseqs2 and
+  foldseek.
 license: MIT
-category: analysis-tools
-tags: [HHblits, HHsearch, HH-suite, HMM, remote-homology, search]
-upstream: https://github.com/soedinglab/hh-suite
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "HHblits, HHsearch, HH-suite, HMM, remote-homology, search"
+  metagenomics.upstream: "https://github.com/soedinglab/hh-suite"
+  metagenomics.stage: "function"
 ---
 
 # HH-suite3
@@ -24,7 +24,7 @@ Remmert, M., Biegert, A., Hauser, A. & Söding, J. HHblits: lightning-fast
 iterative protein sequence searching by HMM-HMM alignment. *Nat. Methods*
 **9**, 173–175 (2012). https://doi.org/10.1038/nmeth.1818
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

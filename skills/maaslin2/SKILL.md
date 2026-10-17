@@ -3,15 +3,15 @@ name: maaslin2
 description: >
   MaAsLin2 / MaAsLin3 — multivariable association discovery between metadata and
   meta-omic features (taxonomy, pathways, genes) with filtering, normalization,
-  transforms, and FDR control. Use for differential abundance with covariates
-  or longitudinal designs. Upstream: https://github.com/biobakery/Maaslin2 and
-  https://github.com/biobakery/MaAsLin3. Route via research-analysis. Classic
-  LDA biomarkers → lefse; figure workflows → microeco / visualization.
+  transforms, and FDR control. Use for differential abundance with covariates or
+  longitudinal designs. Classic LDA biomarkers → lefse; figure workflows → microeco /
+  visualization.
 license: MIT
-category: evaluation
-tags: [MaAsLin2, MaAsLin3, differential-abundance, statistics, bioBakery]
-upstream: https://github.com/biobakery/Maaslin2
-stage: report
+metadata:
+  metagenomics.category: "evaluation"
+  metagenomics.tags: "MaAsLin2, MaAsLin3, differential-abundance, statistics, bioBakery"
+  metagenomics.upstream: "https://github.com/biobakery/Maaslin2"
+  metagenomics.stage: "report"
 ---
 
 # MaAsLin2 / MaAsLin3
@@ -29,7 +29,7 @@ MaAsLin 3: Nickols, W. A. *et al.* MaAsLin 3: refining and extending generalized
 multivariable linear models for meta-omic association discovery. *Nat. Methods*
 (2025). https://doi.org/10.1038/s41592-025-02923-9
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

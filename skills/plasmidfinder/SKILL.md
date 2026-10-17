@@ -1,16 +1,16 @@
 ---
 name: plasmidfinder
 description: >
-  PlasmidFinder — CGE in silico replicon / plasmid typing from assemblies or
-  reads (BLAST/KMA vs PlasmidFinder DB). Use for Inc/replicon markers on
-  isolates and HQ genomes. Upstream:
-  https://github.com/genomicepidemiology/plasmidfinder. Route via cge-finders /
-  microbial-mining; plasmid ST → pmlst; complement genomad, plasmaag, mob-suite.
+  PlasmidFinder — CGE in silico replicon / plasmid typing from assemblies or reads
+  (BLAST/KMA vs PlasmidFinder DB). Use for Inc/replicon markers on isolates and HQ
+  genomes. Route via cge-finders / microbial-mining; plasmid ST → pmlst; complement
+  genomad, plasmaag, mob-suite.
 license: MIT
-category: analysis-tools
-tags: [PlasmidFinder, CGE, plasmid, replicon, Inc, typing, MGE]
-upstream: https://github.com/genomicepidemiology/plasmidfinder
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "PlasmidFinder, CGE, plasmid, replicon, Inc, typing, MGE"
+  metagenomics.upstream: "https://github.com/genomicepidemiology/plasmidfinder"
+  metagenomics.stage: "mining"
 ---
 
 # PlasmidFinder
@@ -24,7 +24,7 @@ Carattoli, A. *et al.* In Silico Detection and Typing of Plasmids using
 PlasmidFinder and Plasmid Multilocus Sequence Typing. *Antimicrob. Agents
 Chemother.* **58**, 3895–3903 (2014). https://doi.org/10.1128/AAC.02412-14
 
-See also [docs/references.md](../../docs/references.md) and `cge-finders`.
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md) and `cge-finders`.
 
 ## Analytical thinking
 

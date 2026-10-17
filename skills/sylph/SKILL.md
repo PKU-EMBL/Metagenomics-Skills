@@ -1,15 +1,14 @@
 ---
 name: sylph
 description: >
-  Rapid species-level metagenome profiling and containment estimation. Use this skill when working with sylph: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/bluenote-1577/sylph. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Rapid species-level metagenome profiling and containment estimation. Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['taxonomy', 'sketch', 'profile']
-upstream: https://github.com/bluenote-1577/sylph
-stage: taxonomy
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "taxonomy, sketch, profile"
+  metagenomics.upstream: "https://github.com/bluenote-1577/sylph"
+  metagenomics.stage: "taxonomy"
 ---
 
 # sylph
@@ -20,7 +19,7 @@ Upstream: [sylph](https://github.com/bluenote-1577/sylph)
 
 Shaw, J. & Yu, Y. W. Rapid species-level metagenome profiling and containment estimation with sylph. *Nat. Biotechnol.* **43**, 1348–1359 (2025). https://doi.org/10.1038/s41587-024-02412-y
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

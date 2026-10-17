@@ -1,7 +1,7 @@
 interface:
   display_name: "mOTUs"
   short_description: "Marker-gene taxonomic profiling across environments (mOTUs3)"
-  default_prompt: "Use $motus for Marker-gene taxonomic profiling across environments (mOTUs3)"
+  default_prompt: "Use $motus for this task: Marker-gene taxonomic profiling across environments (mOTUs3). Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

@@ -2,14 +2,14 @@
 name: integronfinder
 description: >
   IntegronFinder — detect integrons (intI, attC, cassettes) in bacterial
-  genomes/assemblies, including AMR cassette context. Use for integron-focused
-  MGE mining. Upstream: https://github.com/gem-pasteur/Integron_Finder.
-  Route via microbial-mining; pair with rgi / mobileog / genomad.
+  genomes/assemblies, including AMR cassette context. Use for integron-focused MGE
+  mining. Route via microbial-mining; pair with rgi / mobileog / genomad.
 license: MIT
-category: analysis-tools
-tags: [IntegronFinder, integron, MGE, AMR, cassette, genome-mining]
-upstream: https://github.com/gem-pasteur/Integron_Finder
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "IntegronFinder, integron, MGE, AMR, cassette, genome-mining"
+  metagenomics.upstream: "https://github.com/gem-pasteur/Integron_Finder"
+  metagenomics.stage: "mining"
 ---
 
 # IntegronFinder
@@ -27,7 +27,7 @@ Original: Cury, J. *et al.* Identification and analysis of integrons and cassett
 arrays in bacterial genomes. *Nucleic Acids Res.* **44**, 4539–4550 (2016).
 https://doi.org/10.1093/nar/gkw319
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

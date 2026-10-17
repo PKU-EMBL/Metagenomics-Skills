@@ -1,6 +1,10 @@
 # Metagenomics Skills
 
-Agent Skills for shotgun metagenomics, organized by scientific stage:
+[简体中文](README.zh-CN.md)
+
+Portable Agent Skills for reproducible shotgun metagenomics, organized by
+scientific stage and usable from Claude Code, Codex, Cursor, Kimi Code, ZCode,
+Qwen Code, and other compatible coding agents:
 
 **QC → assembly → mapping → binning → taxonomy → function → microbial mining → research analysis**
 
@@ -12,6 +16,7 @@ phylogenomics routing, and paper-facing stats/figures (`research-analysis`).
 [Skills](docs/skills.md) ·
 [Pipeline](docs/standard-pipeline.md) ·
 [Public databases](docs/public-databases.md) ·
+[Agent playbook](docs/agent-playbook.md) ·
 [References](docs/references.md) ·
 [Platforms](docs/multi-platform.md)
 
@@ -26,31 +31,58 @@ phylogenomics routing, and paper-facing stats/figures (`research-analysis`).
 /plugin install metagenomics@metagenomics-skills
 ```
 
-### Codex / Cursor / Kimi / Grok
+### Codex plugin
+
+```bash
+codex plugin marketplace add PKU-EMBL/Metagenomics-Skills
+codex plugin add metagenomics@metagenomics-skills
+```
+
+### Directory install: Codex / Cursor / Kimi / ZCode / Qwen / Grok / custom agents
 
 ```bash
 git clone https://github.com/PKU-EMBL/Metagenomics-Skills.git
 cd Metagenomics-Skills
-./scripts/install-platforms.sh --user all
+
+# Recommended: compact high-use catalog for Kimi Code, ZCode, and Qwen Code
+./scripts/install-platforms.sh --user --profile core kimi zcode qwen
+
+# Shared path for Codex + Kimi + ZCode, plus Qwen native path
+./scripts/install-platforms.sh --user --profile core agents qwen
+
+# Or install every skill for every known platform
+./scripts/install-platforms.sh --user --profile full all
 ```
 
-→ [docs/multi-platform.md](docs/multi-platform.md)
+Use `--target PATH` for a new client, `--mode copy` when symlinks are not
+supported, `--dry-run` to preview, and `--prune` when switching an existing
+destination to a smaller profile. See
+[the complete platform matrix](docs/multi-platform.md).
 
 ---
 
 ## Layout
 
 ```text
-skills/<tool>/SKILL.md     # per-software / per-database + analytical thinking
-skills/<tool>/references/  # optional deep detail inside that skill only
-docs/                      # stage catalogs and pipelines
-.claude-plugin/ .codex-plugin/ .cursor-plugin/
-scripts/install-platforms.sh
+skills/<tool>/SKILL.md       # canonical portable skill
+skills/<tool>/references/    # optional progressive detail, kept in-bundle
+config/skill-profiles.json   # low-context and task-focused install sets
+docs/                        # catalogs, pipeline, agent execution contract
+plugin.json                  # portable Agent Plugins v1 package
+qwen-extension.json          # Qwen Code extension
+.claude-plugin/ .codex-plugin/ .cursor-plugin/ .zcode-plugin/
+scripts/install-skills.py    # safe link/copy/custom-target installer
+scripts/validate-skills.py   # spec/manifests/profiles/links validator
 ```
 
 ---
 
 ## Quick start
+
+Tell the agent whether to **advise**, **plan**, **prepare**, **execute**, or
+**review**. It should inspect inputs, preflight tools/databases/resources, pilot,
+validate every stage boundary, and report what was actually run. See the
+[coding-agent playbook](docs/agent-playbook.md).
 
 > Full genome-resolved path
 
@@ -118,7 +150,8 @@ After MAGs: `microbial-mining` → `antismash` / `rgi` / `cge-finders` /
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). New skills go under `skills/<name>/`
-with upstream links and an “Analytical thinking” section.
+with upstream links and an “Analytical thinking” section. Validate changes with
+`python3 scripts/validate-skills.py`.
 
 ## License
 

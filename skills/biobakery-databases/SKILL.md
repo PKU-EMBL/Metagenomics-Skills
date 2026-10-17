@@ -1,18 +1,16 @@
 ---
 name: biobakery-databases
 description: >
-  Install and pin bioBakery reference databases for MetaPhlAn and HUMAnN
-  (ChocoPhlAn markers, UniRef gene families, MetaCyc pathways, utility mapping).
-  Use this skill when: (1) Downloading MetaPhlAn/HUMAnN databases,
-  (2) Choosing UniRef90 vs UniRef50, (3) Aligning MetaPhlAn and HUMAnN DB
-  versions, (4) Troubleshooting missing index paths. Upstream:
-  https://github.com/biobakery/MetaPhlAn and https://github.com/biobakery/humann.
-  For Kraken indexes use kraken2. For eggNOG/CARD/GTDB use those skills.
-  For routing use public-databases.
+  Install and pin bioBakery reference databases for MetaPhlAn and HUMAnN (ChocoPhlAn
+  markers, UniRef gene families, MetaCyc pathways, utility mapping). Use this skill
+  when: (1) Downloading MetaPhlAn/HUMAnN databases, (2) Choosing UniRef90 vs UniRef50,
+  (3) Aligning MetaPhlAn and HUMAnN DB versions, (4) Troubleshooting missing index
+  paths. For Kraken indexes use kraken2. For eggNOG/CARD/GTDB use those skills.
 license: MIT
-category: utilities
-tags: [database, bioBakery, ChocoPhlAn, UniRef, MetaPhlAn, HUMAnN]
-upstream: https://github.com/biobakery/biobakery
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "database, bioBakery, ChocoPhlAn, UniRef, MetaPhlAn, HUMAnN"
+  metagenomics.upstream: "https://github.com/biobakery/biobakery"
 ---
 
 # bioBakery databases (MetaPhlAn / HUMAnN)

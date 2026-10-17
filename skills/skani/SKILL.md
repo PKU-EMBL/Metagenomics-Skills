@@ -1,14 +1,15 @@
 ---
 name: skani
 description: >
-  Fast robust average nucleotide identity (ANI) for metagenomic genomes and
-  MAG comparisons. Use for species-level clustering, novelty vs GTDB/UHGG, and
-  scalable ANI matrices. Upstream: https://github.com/bluenote-1577/skani.
+  Fast robust average nucleotide identity (ANI) for metagenomic genomes and MAG
+  comparisons. Use for species-level clustering, novelty vs GTDB/UHGG, and scalable ANI
+  matrices.
 license: MIT
-category: analysis-tools
-tags: [ANI, comparative-genomics, MAG]
-upstream: https://github.com/bluenote-1577/skani
-stage: binning
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "ANI, comparative-genomics, MAG"
+  metagenomics.upstream: "https://github.com/bluenote-1577/skani"
+  metagenomics.stage: "binning"
 ---
 
 # skani

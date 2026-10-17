@@ -1,11 +1,13 @@
 ---
 name: kneaddata
 description: >
-  QC wrapper focused on host (and contaminant) read removal via Bowtie2. Use this skill when working with kneaddata: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/biobakery/kneaddata. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  QC wrapper focused on host (and contaminant) read removal via Bowtie2. Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['host-depletion', 'bowtie2', 'qc']
-upstream: https://github.com/biobakery/kneaddata
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "host-depletion, bowtie2, qc"
+  metagenomics.upstream: "https://github.com/biobakery/kneaddata"
 ---
 
 # KneadData
@@ -16,7 +18,7 @@ Upstream: [biobakery/kneaddata](https://github.com/biobakery/kneaddata)
 
 Beghini, F. *et al.* Integrating taxonomic, functional, and strain-level profiling of diverse microbial communities with bioBakery 3. *eLife* **10**, e65088 (2021). https://doi.org/10.7554/eLife.65088
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,7 +1,7 @@
 interface:
   display_name: "Metagenomics Setup"
   short_description: "Install environments and databases for shotgun metagenomics"
-  default_prompt: "Use $setup to prepare Conda environments, host databases, CheckM2, and optional BASALT weights."
+  default_prompt: "Use $setup for this task: Install environments and databases for shotgun metagenomics. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

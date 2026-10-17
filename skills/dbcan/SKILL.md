@@ -1,16 +1,16 @@
 ---
 name: dbcan
 description: >
-  Annotate carbohydrate-active enzymes (CAZymes) with dbCAN3 / run_dbcan on
-  genomes or protein sets, including CGC finding and glycan substrate prediction
-  (dbCAN-sub / dbCAN-PUL) relevant to dissolved organic matter (DOM) polymer
-  processing. Use for CAZyme mining complementary to DRAM/eggNOG and to
-  dom-biosurfactant routing. Upstream: https://github.com/linnabrown/run_dbcan.
+  Annotate carbohydrate-active enzymes (CAZymes) with dbCAN3 / run_dbcan on genomes or
+  protein sets, including CGC finding and glycan substrate prediction (dbCAN-sub /
+  dbCAN-PUL) relevant to dissolved organic matter (DOM) polymer processing. Use for
+  CAZyme mining complementary to DRAM/eggNOG and to dom-biosurfactant routing.
 license: MIT
-category: analysis-tools
-tags: [CAZy, CAZyme, DOM, glycan, substrate, genome-mining, dbCAN3]
-upstream: https://github.com/linnabrown/run_dbcan
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "CAZy, CAZyme, DOM, glycan, substrate, genome-mining, dbCAN3"
+  metagenomics.upstream: "https://github.com/linnabrown/run_dbcan"
+  metagenomics.stage: "mining"
 ---
 
 # dbCAN (run_dbcan / dbCAN3)
@@ -28,7 +28,7 @@ Earlier: Zhang, H. *et al.* dbCAN2: a meta server for automated carbohydrate-act
 enzyme annotation. *Nucleic Acids Res.* **46**, W95–W101 (2018).
 https://doi.org/10.1093/nar/gky418
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,18 +1,18 @@
 ---
 name: cami
 description: >
-  CAMI / CAMI II metagenome benchmarking datasets and evaluation stack
-  (CAMISIM, AMBER, OPAL, CAMI Benchmarking Portal). Use when: (1) Downloading
-  CAMI challenge data / gold standards, (2) Choosing marine, plant-associated,
-  strain-madness, mouse-gut, or human toy sets, (3) Evaluating binners with
-  AMBER or profilers with OPAL, (4) Simulating communities with CAMISIM,
-  (5) Citing CAMI results in Methods without over-generalizing to new biomes.
-  Portal: https://cami-challenge.org/ and https://data.cami-challenge.org/.
-  For real-world public reads use sra-ena; for biome MAG catalogues use mgnify.
+  CAMI / CAMI II metagenome benchmarking datasets and evaluation stack (CAMISIM, AMBER,
+  OPAL, CAMI Benchmarking Portal). Use when: (1) Downloading CAMI challenge data / gold
+  standards, (2) Choosing marine, plant-associated, strain-madness, mouse-gut, or human
+  toy sets, (3) Evaluating binners with AMBER or profilers with OPAL, (4) Simulating
+  communities with CAMISIM, (5) Citing CAMI results in Methods without over-generalizing
+  to new biomes. For real-world public reads use sra-ena; for biome MAG catalogues use
+  mgnify.
 license: MIT
-category: utilities
-tags: [CAMI, CAMI2, benchmark, AMBER, OPAL, CAMISIM, gold-standard]
-upstream: https://cami-challenge.org/
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "CAMI, CAMI2, benchmark, AMBER, OPAL, CAMISIM, gold-standard"
+  metagenomics.upstream: "https://cami-challenge.org/"
 ---
 
 # CAMI (Critical Assessment of Metagenome Interpretation)
@@ -45,8 +45,8 @@ Meyer, F. *et al.* CAMI Benchmarking Portal: online evaluation and ranking of
 metagenomic software. *Nucleic Acids Res.* **53**, W102–W109 (2025).
 https://doi.org/10.1093/nar/gkaf369
 
-See also [docs/references.md](../../docs/references.md) and
-[docs/public-databases.md](../../docs/public-databases.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md) and
+[docs/public-databases.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/public-databases.md).
 
 ## Analytical thinking
 

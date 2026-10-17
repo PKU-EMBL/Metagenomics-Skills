@@ -1,15 +1,14 @@
 ---
 name: cutadapt
 description: >
-  Adapter/primer trimming for short and long reads. Use this skill when working with cutadapt: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/marcelm/cutadapt. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Adapter/primer trimming for short and long reads. Use for installation, parameter
+  choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['qc', 'adapters']
-upstream: https://github.com/marcelm/cutadapt
-stage: qc
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "qc, adapters"
+  metagenomics.upstream: "https://github.com/marcelm/cutadapt"
+  metagenomics.stage: "qc"
 ---
 
 # Cutadapt
@@ -20,7 +19,7 @@ Upstream: [Cutadapt](https://github.com/marcelm/cutadapt)
 
 Martin, M. Cutadapt removes adapter sequences from high-throughput sequencing reads. *EMBnet J.* **17**, 10–12 (2011). https://doi.org/10.14806/ej.17.1.200
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

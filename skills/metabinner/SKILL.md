@@ -2,16 +2,16 @@
 name: metabinner
 description: >
   MetaBinner — stand-alone ensemble contig binning using multi-feature k-means
-  components and two-stage single-copy-gene ensemble integration. Use when:
-  (1) Running MetaBinner as an ensemble-style single tool, (2) Comparing to
-  MetaWRAP/DAS Tool/COMEBin, (3) Diversifying bin sets before further
-  refinement. Upstream: https://github.com/ziyewang/MetaBinner. For recommended
+  components and two-stage single-copy-gene ensemble integration. Use when: (1) Running
+  MetaBinner as an ensemble-style single tool, (2) Comparing to MetaWRAP/DAS
+  Tool/COMEBin, (3) Diversifying bin sets before further refinement. For recommended
   multi-assembly refinement still prefer basalt ★.
 license: MIT
-category: analysis-tools
-tags: [binning, MetaBinner, ensemble, SCG]
-upstream: https://github.com/ziyewang/MetaBinner
-stage: binning
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "binning, MetaBinner, ensemble, SCG"
+  metagenomics.upstream: "https://github.com/ziyewang/MetaBinner"
+  metagenomics.stage: "binning"
 ---
 
 # MetaBinner
@@ -25,7 +25,7 @@ binning method to recover individual genomes from complex microbial
 communities. *Genome Biol.* **24**, 1 (2023).
 https://doi.org/10.1186/s13059-022-02832-6
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

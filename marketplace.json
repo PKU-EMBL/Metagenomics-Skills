@@ -1,0 +1,19 @@
+{
+  "name": "metagenomics-skills",
+  "plugins": [
+    {
+      "name": "metagenomics",
+      "source": "./",
+      "version": "1.22.0",
+      "description": "Portable shotgun-metagenomics workflows, tool guidance, quality gates, and reporting skills.",
+      "displayName": "Metagenomics Skills",
+      "displayName_i18n": {
+        "zh-CN": "宏基因组学 Skills"
+      },
+      "description_i18n": {
+        "zh-CN": "可移植的宏基因组流程、工具选择、质量门控与科研交付 Skills。"
+      },
+      "category": "developer-tools"
+    }
+  ]
+}

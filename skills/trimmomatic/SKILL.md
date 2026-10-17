@@ -1,15 +1,14 @@
 ---
 name: trimmomatic
 description: >
-  Flexible Illumina adapter/quality trimmer. Use this skill when working with trimmomatic: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/usadellab/Trimmomatic. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Flexible Illumina adapter/quality trimmer. Use for installation, parameter choice,
+  execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['qc', 'trimming']
-upstream: https://github.com/usadellab/Trimmomatic
-stage: qc
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "qc, trimming"
+  metagenomics.upstream: "https://github.com/usadellab/Trimmomatic"
+  metagenomics.stage: "qc"
 ---
 
 # Trimmomatic
@@ -20,7 +19,7 @@ Upstream: [Trimmomatic](https://github.com/usadellab/Trimmomatic)
 
 Bolger, A. M., Lohse, M. & Usadel, B. Trimmomatic: a flexible trimmer for Illumina sequence data. *Bioinformatics* **30**, 2114–2120 (2014). https://doi.org/10.1093/bioinformatics/btu170
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

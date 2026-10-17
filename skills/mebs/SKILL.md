@@ -1,18 +1,16 @@
 ---
 name: mebs
 description: >
-  MEBS (Multigenomic Entropy-Based Score) — score genomes/metagenomes for
-  biogeochemical cycle machinery via informative Pfam domains; strongest for
-  sulfur (S), also supports N, O, CH4, and Fe cycle scores. Use for comparative
-  cycle enrichment across large (meta)genome collections. Upstream:
-  https://github.com/valdeanda/mebs (also eead-csic-compbio/metagenome_Pfam_score).
-  Route via element-cycling. Gene-level Fe → fegenie; multi-element diagrams →
-  metabolic.
+  MEBS (Multigenomic Entropy-Based Score) — score genomes/metagenomes for biogeochemical
+  cycle machinery via informative Pfam domains; strongest for sulfur (S), also supports
+  N, O, CH4, and Fe cycle scores. Use for comparative cycle enrichment across large
+  (meta)genome collections. Gene-level Fe → fegenie; multi-element diagrams → metabolic.
 license: MIT
-category: analysis-tools
-tags: [MEBS, sulfur, S, N, CH4, Fe, biogeochemistry, element-cycling]
-upstream: https://github.com/valdeanda/mebs
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "MEBS, sulfur, S, N, CH4, Fe, biogeochemistry, element-cycling"
+  metagenomics.upstream: "https://github.com/valdeanda/mebs"
+  metagenomics.stage: "mining"
 ---
 
 # MEBS
@@ -27,7 +25,7 @@ collections according to their metabolic machinery: unraveling the sulfur cycle.
 *Gigascience* **6**, 1–17 (2017).
 https://doi.org/10.1093/gigascience/gix096
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

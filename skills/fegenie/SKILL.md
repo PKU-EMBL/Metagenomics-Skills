@@ -1,16 +1,16 @@
 ---
 name: fegenie
 description: >
-  FeGenie — HMM-based identification of iron-related genes and neighborhoods
-  in genomes/metagenome assemblies (acquisition, siderophores, Fe redox,
-  storage, magnetosome). Use for Fe cycling potential on contigs or MAGs.
-  Upstream: https://github.com/Arkadiy-Garber/FeGenie. Route via
-  element-cycling / microbial-mining. Broader C/N/S → metabolic; S scores → mebs.
+  FeGenie — HMM-based identification of iron-related genes and neighborhoods in
+  genomes/metagenome assemblies (acquisition, siderophores, Fe redox, storage,
+  magnetosome). Use for Fe cycling potential on contigs or MAGs. Broader C/N/S →
+  metabolic; S scores → mebs.
 license: MIT
-category: analysis-tools
-tags: [FeGenie, iron, Fe, siderophore, biogeochemistry, element-cycling]
-upstream: https://github.com/Arkadiy-Garber/FeGenie
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "FeGenie, iron, Fe, siderophore, biogeochemistry, element-cycling"
+  metagenomics.upstream: "https://github.com/Arkadiy-Garber/FeGenie"
+  metagenomics.stage: "mining"
 ---
 
 # FeGenie
@@ -24,7 +24,7 @@ Iron Genes and Iron Gene Neighborhoods in Genome and Metagenome Assemblies.
 *Front. Microbiol.* **11**, 37 (2020).
 https://doi.org/10.3389/fmicb.2020.00037
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

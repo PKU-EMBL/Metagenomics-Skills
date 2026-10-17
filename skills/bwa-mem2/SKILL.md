@@ -1,15 +1,15 @@
 ---
 name: bwa-mem2
 description: >
-  Architecture-aware faster BWA-MEM for Illumina reads to contigs/genomes.
-  Use when a BWA-MEM workflow is required but throughput must improve, or when
-  migrating from classic bwa mem. Upstream: https://github.com/bwa-mem2/bwa-mem2.
-  Index format is NOT compatible with classic bwa index.
+  Architecture-aware faster BWA-MEM for Illumina reads to contigs/genomes. Use when a
+  BWA-MEM workflow is required but throughput must improve, or when migrating from
+  classic bwa mem. Index format is NOT compatible with classic bwa index.
 license: MIT
-category: analysis-tools
-tags: [mapping, alignment, short-read, bwa]
-upstream: https://github.com/bwa-mem2/bwa-mem2
-stage: mapping
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "mapping, alignment, short-read, bwa"
+  metagenomics.upstream: "https://github.com/bwa-mem2/bwa-mem2"
+  metagenomics.stage: "mapping"
 ---
 
 # BWA-MEM2

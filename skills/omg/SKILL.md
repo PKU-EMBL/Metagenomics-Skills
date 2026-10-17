@@ -1,16 +1,16 @@
 ---
 name: omg
 description: >
-  Open MetaGenomic (OMG) corpus and gLM2 mixed-modality genomic language model
-  — large pretraining data from IMG + MGnify (Tbp-scale DNA + billions of CDS).
-  Use when: (1) Pretraining or evaluating genomic LMs, (2) Using gLM2 embeddings
-  for function / coevolution / regulatory syntax, (3) Distinguishing ML corpora
-  from study reanalysis. Hugging Face: tattabio/OMG, tattabio/gLM2_650M.
-  Upstream: https://github.com/TattaBio/OMG. Route via genome-language-model.
+  Open MetaGenomic (OMG) corpus and gLM2 mixed-modality genomic language model — large
+  pretraining data from IMG + MGnify (Tbp-scale DNA + billions of CDS). Use when: (1)
+  Pretraining or evaluating genomic LMs, (2) Using gLM2 embeddings for function /
+  coevolution / regulatory syntax, (3) Distinguishing ML corpora from study reanalysis.
+  Hugging Face: tattabio/OMG, tattabio/gLM2_650M.
 license: MIT
-category: utilities
-tags: [OMG, gLM2, foundation-model, pretraining, HuggingFace]
-upstream: https://github.com/TattaBio/OMG
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "OMG, gLM2, foundation-model, pretraining, HuggingFace"
+  metagenomics.upstream: "https://github.com/TattaBio/OMG"
 ---
 
 # OMG corpus / gLM2
@@ -25,7 +25,7 @@ Cornman, A. *et al.* The OMG dataset: An Open MetaGenomic corpus for
 mixed-modality genomic language modeling. *bioRxiv*
 https://doi.org/10.1101/2024.08.14.607850 (2024).
 
-See also [docs/references.md](../../docs/references.md) and `metagenomics-llm`.
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md) and `metagenomics-llm`.
 
 ## Analytical thinking
 

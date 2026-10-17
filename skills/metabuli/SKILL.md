@@ -1,19 +1,19 @@
 ---
 name: metabuli
 description: >
-  Metabuli — metagenomic taxonomic classification via joint DNA + amino-acid
-  (metamer) analysis for sensitive homology and specific close-taxon resolution.
-  Use when: (1) Choosing a classifier beyond DNA-only (Kraken2) or AA-only
-  (Kaiju), (2) Profiling understudied clades where DNA k-mers fail, (3) CAMI-
-  style or plant/environment datasets needing both sensitivity and specificity,
-  (4) Writing Methods for joint DNA/AA classification. Upstream:
-  https://github.com/steineggerlab/Metabuli. Complementary to metaphlan /
-  kraken2 / kaiju — do not merge tables unlabeled.
+  Metabuli — metagenomic taxonomic classification via joint DNA + amino-acid (metamer)
+  analysis for sensitive homology and specific close-taxon resolution. Use when: (1)
+  Choosing a classifier beyond DNA-only (Kraken2) or AA-only (Kaiju), (2) Profiling
+  understudied clades where DNA k-mers fail, (3) CAMI- style or plant/environment
+  datasets needing both sensitivity and specificity, (4) Writing Methods for joint
+  DNA/AA classification. Complementary to metaphlan / kraken2 / kaiju — do not merge
+  tables unlabeled.
 license: MIT
-category: analysis-tools
-tags: [taxonomy, Metabuli, DNA, amino-acid, classification]
-upstream: https://github.com/steineggerlab/Metabuli
-stage: taxonomy
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "taxonomy, Metabuli, DNA, amino-acid, classification"
+  metagenomics.upstream: "https://github.com/steineggerlab/Metabuli"
+  metagenomics.stage: "taxonomy"
 ---
 
 # Metabuli
@@ -27,7 +27,7 @@ Kim, J. & Steinegger, M. Metabuli: sensitive and specific metagenomic
 classification via joint analysis of amino acid and DNA. *Nat. Methods* **21**,
 971–973 (2024). https://doi.org/10.1038/s41592-024-02273-y
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

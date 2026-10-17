@@ -1,17 +1,17 @@
 ---
 name: resfinder
 description: >
-  ResFinder — CGE identification of acquired antimicrobial resistance genes
-  (and optional PointFinder chromosomal mutations / DisinFinder biocide genes)
-  from assemblies or reads. Use for isolate resistome typing with ResFinder DB
-  phenotype mapping. Upstream: https://github.com/genomicepidemiology/resfinder.
-  Route via cge-finders / microbial-mining; biocide-only → disinfinder;
+  ResFinder — CGE identification of acquired antimicrobial resistance genes (and
+  optional PointFinder chromosomal mutations / DisinFinder biocide genes) from
+  assemblies or reads. Use for isolate resistome typing with ResFinder DB phenotype
+  mapping. Route via cge-finders / microbial-mining; biocide-only → disinfinder;
   complement with rgi (CARD) and deeparg — keep tables separate.
 license: MIT
-category: analysis-tools
-tags: [ResFinder, CGE, AMR, resistome, PointFinder, DisinFinder]
-upstream: https://github.com/genomicepidemiology/resfinder
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "ResFinder, CGE, AMR, resistome, PointFinder, DisinFinder"
+  metagenomics.upstream: "https://github.com/genomicepidemiology/resfinder"
+  metagenomics.stage: "mining"
 ---
 
 # ResFinder
@@ -34,7 +34,7 @@ antimicrobial resistance genes in next-generation sequencing data and prediction
 of phenotypes from genotypes. *J. Antimicrob. Chemother.* **77**, e1–e10 (2022).
 https://doi.org/10.1093/jac/dkac018
 
-See also [docs/references.md](../../docs/references.md) and `cge-finders`.
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md) and `cge-finders`.
 
 ## Analytical thinking
 

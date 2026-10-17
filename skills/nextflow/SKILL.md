@@ -1,17 +1,15 @@
 ---
 name: nextflow
 description: >
-  Nextflow — workflow manager for scalable, reproducible bioinformatics
-  pipelines (DSL2, containers, cloud/HPC executors). Use when packaging shotgun
-  metagenomics stages into portable runs or adopting nf-core modules/pipelines.
-  Upstream: https://github.com/nextflow-io/nextflow · https://nf-co.re.
-  Route via research-analysis / metagenomics-workflow / setup. Alternative:
-  snakemake.
+  Nextflow — workflow manager for scalable, reproducible bioinformatics pipelines (DSL2,
+  containers, cloud/HPC executors). Use when packaging shotgun metagenomics stages into
+  portable runs or adopting nf-core modules/pipelines. Alternative: snakemake.
 license: MIT
-category: utilities
-tags: [Nextflow, nf-core, workflow, reproducibility, pipeline, HPC]
-upstream: https://github.com/nextflow-io/nextflow
-stage: utilities
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "Nextflow, nf-core, workflow, reproducibility, pipeline, HPC"
+  metagenomics.upstream: "https://github.com/nextflow-io/nextflow"
+  metagenomics.stage: "utilities"
 ---
 
 # Nextflow
@@ -29,7 +27,7 @@ nf-core: Ewels, P. A. *et al.* The nf-core framework for community-curated
 bioinformatics pipelines. *Nat. Biotechnol.* **38**, 276–278 (2020).
 https://doi.org/10.1038/s41587-020-0439-x
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

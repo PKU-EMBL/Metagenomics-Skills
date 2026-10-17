@@ -1,16 +1,16 @@
 ---
 name: pointfinder
 description: >
-  PointFinder — CGE detection of antimicrobial resistance associated with
-  chromosomal point mutations in selected bacterial pathogens. Use when
-  acquired-gene screens miss mutation-driven resistance (e.g. gyrA, rpoB).
-  DB: pointfinder_db; often run via ResFinder (-c) or staramr. Route via
-  cge-finders / microbial-mining.
+  PointFinder — CGE detection of antimicrobial resistance associated with chromosomal
+  point mutations in selected bacterial pathogens. Use when acquired-gene screens miss
+  mutation-driven resistance (e.g. gyrA, rpoB). DB: pointfinder_db; often run via
+  ResFinder (-c) or staramr.
 license: MIT
-category: analysis-tools
-tags: [PointFinder, CGE, AMR, chromosomal, mutation, SNP, resistome]
-upstream: https://bitbucket.org/genomicepidemiology/pointfinder_db
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "PointFinder, CGE, AMR, chromosomal, mutation, SNP, resistome"
+  metagenomics.upstream: "https://bitbucket.org/genomicepidemiology/pointfinder_db"
+  metagenomics.stage: "mining"
 ---
 
 # PointFinder
@@ -26,7 +26,7 @@ antimicrobial resistance associated with chromosomal point mutations in bacteria
 pathogens. *J. Antimicrob. Chemother.* **72**, 2764–2768 (2017).
 https://doi.org/10.1093/jac/dkx217
 
-See also [docs/references.md](../../docs/references.md), `resfinder`, and
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md), `resfinder`, and
 `cge-finders`.
 
 ## Analytical thinking

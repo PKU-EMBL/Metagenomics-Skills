@@ -1,7 +1,7 @@
 interface:
   display_name: "RGI / CARD"
   short_description: "Antibiotic resistance gene annotation against CARD"
-  default_prompt: "Use $rgi for Antibiotic resistance gene annotation against CARD."
+  default_prompt: "Use $rgi for this task: Antibiotic resistance gene annotation against CARD. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

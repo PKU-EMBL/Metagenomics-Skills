@@ -3,16 +3,15 @@ name: erast
 description: >
   ERAST — efficient retrieval-augmented homology search combining sequence
   language-model embeddings with a billion-scale vector database (protein and
-  nucleotide). Use when: (1) Classical BLAST/MMseqs/Foldseek scale poorly,
-  (2) You need vector-DB nearest-neighbor search plus reranking, (3) Accessing
-  the public ERAST web DB or running the local encode→predict pipeline.
-  Upstream: https://github.com/TencentAILabHealthcare/ERAST.
-  Web DB: https://ai4s.tencent.com/erast. Route via homology-search.
+  nucleotide). Use when: (1) Classical BLAST/MMseqs/Foldseek scale poorly, (2) You need
+  vector-DB nearest-neighbor search plus reranking, (3) Accessing the public ERAST web
+  DB or running the local encode→predict pipeline.
 license: MIT
-category: analysis-tools
-tags: [ERAST, vector-DB, embedding, homology, PLM, search]
-upstream: https://github.com/TencentAILabHealthcare/ERAST
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "ERAST, vector-DB, embedding, homology, PLM, search"
+  metagenomics.upstream: "https://github.com/TencentAILabHealthcare/ERAST"
+  metagenomics.stage: "function"
 ---
 
 # ERAST
@@ -25,7 +24,7 @@ Web vector DB: https://ai4s.tencent.com/erast
 Jiang, Y. *et al.* Scalable homology detection with ERAST. *Nat. Biotechnol.*
 (2026). https://doi.org/10.1038/s41587-026-03051-1
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

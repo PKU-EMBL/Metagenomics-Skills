@@ -1,7 +1,7 @@
 interface:
   display_name: "BiG-SCAPE"
   short_description: "BGC similarity networks from antiSMASH"
-  default_prompt: "Use $bigscape for BGC similarity networks from antiSMASH."
+  default_prompt: "Use $bigscape for this task: BGC similarity networks from antiSMASH. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

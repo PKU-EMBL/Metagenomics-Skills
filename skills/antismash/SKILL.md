@@ -1,15 +1,15 @@
 ---
 name: antismash
 description: >
-  Detect and annotate biosynthetic gene clusters (BGCs) on genomes and MAGs.
-  Use for natural-product genome mining, choosing genefinding, interpreting
-  region HTML/JSON, and stating validation limits. Upstream:
-  https://github.com/antismash/antismash. Route via microbial-mining.
+  Detect and annotate biosynthetic gene clusters (BGCs) on genomes and MAGs. Use for
+  natural-product genome mining, choosing genefinding, interpreting region HTML/JSON,
+  and stating validation limits.
 license: MIT
-category: analysis-tools
-tags: [BGC, secondary-metabolite, genome-mining]
-upstream: https://github.com/antismash/antismash
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "BGC, secondary-metabolite, genome-mining"
+  metagenomics.upstream: "https://github.com/antismash/antismash"
+  metagenomics.stage: "mining"
 ---
 
 # antiSMASH

@@ -1,7 +1,7 @@
 interface:
   display_name: "CD-HIT"
   short_description: "Cluster genes/proteins to build non-redundant catalogues"
-  default_prompt: "Use $cd-hit for Cluster genes/proteins to build non-redundant catalogues."
+  default_prompt: "Use $cd-hit for this task: Cluster genes/proteins to build non-redundant catalogues. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

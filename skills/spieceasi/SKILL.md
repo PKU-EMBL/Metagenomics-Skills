@@ -2,15 +2,15 @@
 name: spieceasi
 description: >
   SPIEC-EASI — Sparse Inverse Covariance Estimation for Ecological Association
-  Inference; compositionally robust microbial network inference (MB / glasso)
-  with optional SparCC. Use for conditional association networks from count /
-  relative abundance tables. Upstream: https://github.com/zdk123/SpiecEasi.
-  Route via research-analysis; pure SparCC correlations → sparcc.
+  Inference; compositionally robust microbial network inference (MB / glasso) with
+  optional SparCC. Use for conditional association networks from count / relative
+  abundance tables. Route via research-analysis; pure SparCC correlations → sparcc.
 license: MIT
-category: evaluation
-tags: [SPIEC-EASI, SpiecEasi, network, glasso, microbiome, compositionality]
-upstream: https://github.com/zdk123/SpiecEasi
-stage: report
+metadata:
+  metagenomics.category: "evaluation"
+  metagenomics.tags: "SPIEC-EASI, SpiecEasi, network, glasso, microbiome, compositionality"
+  metagenomics.upstream: "https://github.com/zdk123/SpiecEasi"
+  metagenomics.stage: "report"
 ---
 
 # SPIEC-EASI (SpiecEasi)
@@ -23,7 +23,7 @@ Kurtz, Z. D. *et al.* Sparse and compositionally robust inference of microbial
 ecological networks. *PLoS Comput. Biol.* **11**, e1004226 (2015).
 https://doi.org/10.1371/journal.pcbi.1004226
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

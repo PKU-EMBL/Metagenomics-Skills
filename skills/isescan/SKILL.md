@@ -1,16 +1,16 @@
 ---
 name: isescan
 description: >
-  ISEScan — automated annotation of insertion sequence (IS) elements in
-  prokaryotic genomes via profile HMMs. Use for IS family catalogues on MAGs
-  or contigs as part of MGE refinement beyond geNomad. Upstream:
-  https://github.com/xiezhq/ISEScan. Route via microbial-mining; pair with
-  mobileog / integronfinder.
+  ISEScan — automated annotation of insertion sequence (IS) elements in prokaryotic
+  genomes via profile HMMs. Use for IS family catalogues on MAGs or contigs as part of
+  MGE refinement beyond geNomad. Route via microbial-mining; pair with mobileog /
+  integronfinder.
 license: MIT
-category: analysis-tools
-tags: [ISEScan, IS, insertion-sequence, MGE, genome-mining]
-upstream: https://github.com/xiezhq/ISEScan
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "ISEScan, IS, insertion-sequence, MGE, genome-mining"
+  metagenomics.upstream: "https://github.com/xiezhq/ISEScan"
+  metagenomics.stage: "mining"
 ---
 
 # ISEScan
@@ -23,7 +23,7 @@ Xie, Z. & Tang, H. ISEScan: automated identification of insertion sequence
 elements in prokaryotic genomes. *Bioinformatics* **33**, 3340–3347 (2017).
 https://doi.org/10.1093/bioinformatics/btx433
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

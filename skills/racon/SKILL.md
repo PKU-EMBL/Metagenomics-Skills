@@ -1,14 +1,14 @@
 ---
 name: racon
 description: >
-  Ultrafast consensus polishing of assemblies using mapped long (or short)
-  reads. Use after long-read or hybrid assembly before binning/annotation.
-  Upstream: https://github.com/lbcb-sci/racon.
+  Ultrafast consensus polishing of assemblies using mapped long (or short) reads. Use
+  after long-read or hybrid assembly before binning/annotation.
 license: MIT
-category: analysis-tools
-tags: [polish, assembly, long-read]
-upstream: https://github.com/lbcb-sci/racon
-stage: assembly
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "polish, assembly, long-read"
+  metagenomics.upstream: "https://github.com/lbcb-sci/racon"
+  metagenomics.stage: "assembly"
 ---
 
 # Racon

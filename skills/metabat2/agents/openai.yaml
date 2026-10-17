@@ -1,7 +1,7 @@
 interface:
   display_name: "MetaBAT 2"
   short_description: "Coverage-composition contig binning"
-  default_prompt: "Use $metabat2 for Coverage-composition contig binning."
+  default_prompt: "Use $metabat2 for this task: Coverage-composition contig binning. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

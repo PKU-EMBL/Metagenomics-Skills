@@ -1,17 +1,17 @@
 ---
 name: fastani
 description: >
-  FastANI — alignment-free approximate mapping for high-throughput average
-  nucleotide identity (ANI) among prokaryotic genomes/MAGs. Use when:
-  (1) Reproducing literature that reports FastANI, (2) Pairwise/species-boundary
-  ANI at moderate catalogue scales, (3) Comparing to skani for Methods. Upstream:
-  https://github.com/ParBLiSS/FastANI. Prefer skani for very large MAG sets /
-  incomplete genomes unless FastANI is required for compatibility.
+  FastANI — alignment-free approximate mapping for high-throughput average nucleotide
+  identity (ANI) among prokaryotic genomes/MAGs. Use when: (1) Reproducing literature
+  that reports FastANI, (2) Pairwise/species-boundary ANI at moderate catalogue scales,
+  (3) Comparing to skani for Methods. Prefer skani for very large MAG sets / incomplete
+  genomes unless FastANI is required for compatibility.
 license: MIT
-category: analysis-tools
-tags: [ANI, FastANI, comparative-genomics]
-upstream: https://github.com/ParBLiSS/FastANI
-stage: binning
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "ANI, FastANI, comparative-genomics"
+  metagenomics.upstream: "https://github.com/ParBLiSS/FastANI"
+  metagenomics.stage: "binning"
 ---
 
 # FastANI
@@ -25,7 +25,7 @@ High throughput ANI analysis of 90K prokaryotic genomes reveals clear species
 boundaries. *Nat. Commun.* **9**, 5114 (2018).
 https://doi.org/10.1038/s41467-018-07641-9
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,17 +1,17 @@
 ---
 name: metawrap
 description: >
-  MetaWRAP suite for multi-binner MAG recovery and CheckM-style bin refinement —
-  one option in the ensemble binning family (with DAS Tool and BASALT). Use this
-  skill when working with metawrap: installing, choosing parameters, running
-  binning/bin_refinement/reassemble_bins, or troubleshooting. Upstream:
-  https://github.com/bxlab/metaWRAP. Prefer basalt as the recommended ensemble
-  default for related multi-assembly work; use dastool for classical contig2bin
-  aggregation. For routing, use tool-selection.
+  MetaWRAP suite for multi-binner MAG recovery and CheckM-style bin refinement — one
+  option in the ensemble binning family (with DAS Tool and BASALT). Use this skill when
+  working with metawrap: installing, choosing parameters, running
+  binning/bin_refinement/reassemble_bins, or troubleshooting. Prefer basalt as the
+  recommended ensemble default for related multi-assembly work; use dastool for
+  classical contig2bin aggregation. For routing, use tool-selection.
 license: MIT
-category: analysis-tools
-tags: ['MAG', 'ensemble-binning', 'binning', 'metabat', 'maxbin']
-upstream: https://github.com/bxlab/metaWRAP
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "MAG, ensemble-binning, binning, metabat, maxbin"
+  metagenomics.upstream: "https://github.com/bxlab/metaWRAP"
 ---
 
 # MetaWRAP
@@ -24,7 +24,7 @@ Uritskiy, G. V., DiRuggiero, J. & Taylor, J. MetaWRAP—a flexible pipeline for
 genome-resolved metagenomic data analysis. *Microbiome* **6**, 158 (2018).
 https://doi.org/10.1186/s40168-018-0541-1
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

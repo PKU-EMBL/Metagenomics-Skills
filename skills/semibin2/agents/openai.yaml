@@ -1,7 +1,7 @@
 interface:
   display_name: "SemiBin2"
-  short_description: "Self-supervised contrastive learning binning for short- and long-read assemblies"
-  default_prompt: "Use $semibin2 for Self-supervised contrastive learning binning for short- and long-read assemblies"
+  short_description: "SemiBin2 short- and long-read metagenome binning"
+  default_prompt: "Use $semibin2 for this task: SemiBin2 short- and long-read metagenome binning. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

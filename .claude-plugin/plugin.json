@@ -1,0 +1,17 @@
+{
+  "name": "metagenomics",
+  "version": "1.22.0",
+  "description": "Portable Agent Skills for reproducible shotgun metagenomics, from study design and QC through analysis and reporting.",
+  "author": {
+    "name": "PKU-EMBL",
+    "url": "https://github.com/PKU-EMBL"
+  },
+  "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
+  "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
+  "license": "MIT",
+  "keywords": [
+    "metagenomics",
+    "bioinformatics",
+    "agent-skills"
+  ]
+}

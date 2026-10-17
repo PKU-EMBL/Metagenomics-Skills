@@ -1,7 +1,7 @@
 interface:
   display_name: "Cutadapt"
   short_description: "Adapter/primer trimming for short and long reads"
-  default_prompt: "Use $cutadapt for Adapter/primer trimming for short and long reads"
+  default_prompt: "Use $cutadapt for this task: Adapter/primer trimming for short and long reads. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

@@ -1,18 +1,18 @@
 ---
 name: prostt5
 description: >
-  ProstT5 — bilingual protein language model translating amino-acid sequences
-  and Foldseek 3Di structure tokens (fine-tuned from ProtT5). Use when: (1)
-  Building Foldseek DBs from FASTA via --prostt5-model, (2) Sequence-only
-  structure-aware search without AlphaFold, (3) AA↔3Di representation tasks.
-  Upstream: https://github.com/mheinzinger/ProstT5. HF: Rostlab/ProstT5.
-  Parent ProtT5: Rostlab/prot_t5_xl_uniref50. Route via protein-language-model;
-  production search usually via foldseek.
+  ProstT5 — bilingual protein language model translating amino-acid sequences and
+  Foldseek 3Di structure tokens (fine-tuned from ProtT5). Use when: (1) Building
+  Foldseek DBs from FASTA via --prostt5-model, (2) Sequence-only structure-aware search
+  without AlphaFold, (3) AA↔3Di representation tasks. HF: Rostlab/ProstT5. Parent
+  ProtT5: Rostlab/prot_t5_xl_uniref50. Route via protein-language-model; production
+  search usually via foldseek.
 license: MIT
-category: analysis-tools
-tags: [ProstT5, ProtT5, PLM, protein-language-model, 3Di, Foldseek, Rostlab]
-upstream: https://github.com/mheinzinger/ProstT5
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "ProstT5, ProtT5, PLM, protein-language-model, 3Di, Foldseek, Rostlab"
+  metagenomics.upstream: "https://github.com/mheinzinger/ProstT5"
+  metagenomics.stage: "function"
 ---
 
 # ProstT5 (ProtT5 → AA ↔ 3Di)
@@ -32,7 +32,7 @@ Language of Life Through Self-Supervised Learning. *IEEE Trans. Pattern Anal.
 Mach. Intell.* **44**, 7112–7127 (2022).
 https://doi.org/10.1109/TPAMI.2021.3095381
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,18 +1,18 @@
 ---
 name: cge-finders
 description: >
-  Route Center for Genomic Epidemiology (CGE) Finder-style screens and related
-  isolate typing: PlasmidFinder, ResFinder, PointFinder, DisinFinder,
-  VirulenceFinder, MobileElementFinder, pMLST, plus staramr / ABRicate wrappers
-  and chromosomal mlst. Use for clinical/One-Health isolate typing and
-  plasmid-borne AMR context — not community-wide dark-matter discovery. Child
-  skills: plasmidfinder, resfinder, pointfinder, disinfinder, virulencefinder,
-  mobileelementfinder, pmlst, staramr, abricate, mlst. Complements genomad,
-  mob-suite, rgi, mobileog. Route via microbial-mining.
+  Route Center for Genomic Epidemiology (CGE) Finder-style screens and related isolate
+  typing: PlasmidFinder, ResFinder, PointFinder, DisinFinder, VirulenceFinder,
+  MobileElementFinder, pMLST, plus staramr / ABRicate wrappers and chromosomal mlst. Use
+  for clinical/One-Health isolate typing and plasmid-borne AMR context — not
+  community-wide dark-matter discovery. Child skills: plasmidfinder, resfinder,
+  pointfinder, disinfinder, virulencefinder, mobileelementfinder, pmlst, staramr,
+  abricate, mlst. Complements genomad, mob-suite, rgi, mobileog.
 license: MIT
-category: orchestration
-tags: [CGE, Finder, PlasmidFinder, ResFinder, PointFinder, DisinFinder, VirulenceFinder, MobileElementFinder, pMLST, staramr, ABRicate, MLST, AMR, plasmid, MGE]
-stage: mining
+metadata:
+  metagenomics.category: "orchestration"
+  metagenomics.tags: "CGE, Finder, PlasmidFinder, ResFinder, PointFinder, DisinFinder, VirulenceFinder, MobileElementFinder, pMLST, staramr, ABRicate, MLST, AMR, plasmid, MGE"
+  metagenomics.stage: "mining"
 ---
 
 # CGE Finders

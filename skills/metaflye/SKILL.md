@@ -1,15 +1,14 @@
 ---
 name: metaflye
 description: >
-  Long-read metagenome assembly with Flye/metaFlye. Use this skill when working with metaflye: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/fenderglass/Flye. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Long-read metagenome assembly with Flye/metaFlye. Use for installation, parameter
+  choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['assembly', 'long-read']
-upstream: https://github.com/fenderglass/Flye
-stage: assembly
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "assembly, long-read"
+  metagenomics.upstream: "https://github.com/fenderglass/Flye"
+  metagenomics.stage: "assembly"
 ---
 
 # metaFlye
@@ -20,7 +19,7 @@ Upstream: [metaFlye](https://github.com/fenderglass/Flye)
 
 Kolmogorov, M. *et al.* metaFlye: scalable long-read metagenome assembly using repeat graphs. *Nat. Methods* **17**, 1103–1110 (2020). https://doi.org/10.1038/s41592-020-00971-x
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

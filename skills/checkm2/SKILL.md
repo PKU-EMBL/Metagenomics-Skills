@@ -1,11 +1,13 @@
 ---
 name: checkm2
 description: >
-  ML-based MAG completeness and contamination estimation. Use this skill when working with checkm2: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/chklovski/CheckM2. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  ML-based MAG completeness and contamination estimation. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['qc', 'completeness', 'MAG']
-upstream: https://github.com/chklovski/CheckM2
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "qc, completeness, MAG"
+  metagenomics.upstream: "https://github.com/chklovski/CheckM2"
 ---
 
 # CheckM2
@@ -16,7 +18,7 @@ Upstream: [chklovski/CheckM2](https://github.com/chklovski/CheckM2)
 
 Chklovski, A., Parks, D. H., Woodcroft, B. J. & Tyson, G. W. CheckM2: a rapid, scalable and accurate tool for assessing microbial genome quality using machine learning. *Nat. Methods* **20**, 1203–1212 (2023). https://doi.org/10.1038/s41592-023-01940-w
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

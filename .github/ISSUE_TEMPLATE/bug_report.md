@@ -7,10 +7,12 @@ assignees: ''
 ---
 
 **Skill / platform**
-<!-- e.g. basalt / Claude Code -->
+<!-- e.g. basalt / Kimi Code 2.x; include install profile and link/copy mode -->
 
 **Describe the bug**
 
 **Expected behavior**
+
+**Install command / profile / client version**
 
 **Logs / screenshots**

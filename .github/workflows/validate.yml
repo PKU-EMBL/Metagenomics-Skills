@@ -1,0 +1,47 @@
+name: Validate skills
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install validation dependency
+        run: python -m pip install -r requirements-dev.txt
+      - name: Validate Agent Skills and manifests
+        run: python scripts/validate-skills.py
+      - name: Check installer syntax and profiles
+        run: |
+          bash -n scripts/install-platforms.sh
+          python -m py_compile scripts/install-skills.py scripts/validate-skills.py
+          python scripts/install-skills.py --list-platforms
+          python scripts/install-skills.py --list-profiles
+      - name: Smoke-test copy installation and managed pruning
+        run: |
+          target="$(mktemp -d)/skills"
+          python scripts/install-skills.py --target "$target" --profile core --mode copy
+          test "$(find "$target" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l)" -eq 48
+          python scripts/install-skills.py --target "$target" --profile core --mode copy \
+            | tee /tmp/install-rerun.log
+          grep -q 'unchanged=48' /tmp/install-rerun.log
+          python scripts/install-skills.py --target "$target" --profile routing \
+            --mode copy --prune
+          test "$(find "$target" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l)" -eq 16
+          individual="$(mktemp -d)/skills"
+          python scripts/install-skills.py --target "$individual" \
+            --skill fastp --skill multiqc --mode copy
+          test "$(find "$individual" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l)" -eq 2
+          if python scripts/install-skills.py; then
+            echo "bare installer unexpectedly succeeded" >&2
+            exit 1
+          fi

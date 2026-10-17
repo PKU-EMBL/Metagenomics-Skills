@@ -1,22 +1,19 @@
 ---
 name: basalt
 description: >
-  PKU-EMBL BASALT and BASALT-Air — recommended ensemble MAG recovery across one
-  or more assemblies (multi-binner + refinement). Use this skill when:
-  (1) Running BASALT multi-binner recovery, (2) Choosing Conda BASALT vs
-  BASALT-Air, (3) Multi-assembly refinement, (4) Resuming checkpoints,
-  (5) Writing reproducible BASALT Methods.
-  Upstream: https://github.com/PKU-EMBL/BASALT and
-  https://github.com/PKU-EMBL/BASALT-Air.
-  Ensemble peers: dastool (SCG aggregation), metawrap (binning+refinement suite).
-  Prefer basalt as the default ensemble route; use metawrap/dastool when a
-  classical suite or contig2bin consensus is enough.
-  For study design of assemblies, use study-design.
-  For QC thresholds, use checkm2 and mag-qc.
+  PKU-EMBL BASALT and BASALT-Air — recommended ensemble MAG recovery across one or more
+  assemblies (multi-binner + refinement). Use this skill when: (1) Running BASALT
+  multi-binner recovery, (2) Choosing Conda BASALT vs BASALT-Air, (3) Multi-assembly
+  refinement, (4) Resuming checkpoints, (5) Writing reproducible BASALT Methods.
+  Ensemble peers: dastool (SCG aggregation), metawrap (binning+refinement suite). Prefer
+  basalt as the default ensemble route; use metawrap/dastool when a classical suite or
+  contig2bin consensus is enough. For study design of assemblies, use study-design. For
+  QC thresholds, use checkm2 and mag-qc.
 license: MIT
-category: analysis-tools
-tags: [BASALT, MAG, ensemble-binning, refinement, multi-assembly, PKU-EMBL]
-upstream: https://github.com/PKU-EMBL/BASALT
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "BASALT, MAG, ensemble-binning, refinement, multi-assembly, PKU-EMBL"
+  metagenomics.upstream: "https://github.com/PKU-EMBL/BASALT"
 ---
 
 # BASALT / BASALT-Air
@@ -31,7 +28,7 @@ Qiu, Z. *et al.* BASALT refines binning from metagenomic data and increases
 resolution of genome-resolved metagenomic analysis. *Nat. Commun.* **15**, 2179
 (2024). https://doi.org/10.1038/s41467-024-46539-7
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 ## Analytical thinking
 
 BASALT is one member of the **ensemble binning** family, alongside DAS Tool and
@@ -118,6 +115,10 @@ assemblies + reads → coverage/connectivity → multi-binner candidates
   → within-/cross-assembly selection → contig screening/retrieval
   → reassembly → final MAG dir + QC
 ```
+
+For short-read, hybrid, HiFi, pilot, and resume command shapes, read the
+[bundled CLI cheatsheet](references/cli-cheatsheet.md) after confirming flags
+against the installed BASALT version.
 
 ## Hard rules
 

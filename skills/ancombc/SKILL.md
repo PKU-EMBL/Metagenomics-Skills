@@ -2,15 +2,14 @@
 name: ancombc
 description: >
   ANCOM-BC / ANCOM-BC2 — compositionally aware differential abundance with
-  sampling-fraction bias correction (Bioconductor ANCOMBC). Use when DA must
-  account for compositionality and unequal sampling fractions; complements
-  MaAsLin2/LEfSe. Upstream: https://github.com/FrederickHuangLin/ANCOMBC
-  (Bioconductor ANCOMBC). Route via research-analysis.
+  sampling-fraction bias correction (Bioconductor ANCOMBC). Use when DA must account for
+  compositionality and unequal sampling fractions; complements MaAsLin2/LEfSe.
 license: MIT
-category: evaluation
-tags: [ANCOM-BC, ANCOM-BC2, differential-abundance, compositionality, Bioconductor]
-upstream: https://github.com/FrederickHuangLin/ANCOMBC
-stage: report
+metadata:
+  metagenomics.category: "evaluation"
+  metagenomics.tags: "ANCOM-BC, ANCOM-BC2, differential-abundance, compositionality, Bioconductor"
+  metagenomics.upstream: "https://github.com/FrederickHuangLin/ANCOMBC"
+  metagenomics.stage: "report"
 ---
 
 # ANCOM-BC / ANCOM-BC2
@@ -28,7 +27,7 @@ ANCOM-BC2: Lin, H. & Peddada, S. D. Multigroup analysis of compositions of
 microbiomes with covariate adjustments and repeated measures. *Nat. Methods*
 **21**, 83–89 (2024). https://doi.org/10.1038/s41592-023-02092-7
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

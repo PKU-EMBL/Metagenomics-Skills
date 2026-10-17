@@ -1,17 +1,17 @@
 ---
 name: protein-language-model
 description: >
-  Route protein language models (PLMs / pLMs) for metagenomics: representation
-  models (ESM-2, ESM C / ESMC), structure-aware SaProt (Westlake), bilingual
-  AA↔3Di (ProstT5 / ProtT5), remote-homology search (PLMSearch, TM-Vec/DeepBLAST),
-  and PLM phylogeny (LucaPhylo). Use when choosing AA embeddings, sequence→3Di
-  for Foldseek, or PLM search — not for classical eggNOG/KEGG tables or DNA
-  gLMs. Child skills: esm, esmc, saprot, prostt5, plmsearch, deepblast. DNA
-  gLMs via genome-language-model. Structure search via foldseek /
-  homology-search.
+  Route protein language models (PLMs / pLMs) for metagenomics: representation models
+  (ESM-2, ESM C / ESMC), structure-aware SaProt (Westlake), bilingual AA↔3Di (ProstT5 /
+  ProtT5), remote-homology search (PLMSearch, TM-Vec/DeepBLAST), and PLM phylogeny
+  (LucaPhylo). Use when choosing AA embeddings, sequence→3Di for Foldseek, or PLM search
+  — not for classical eggNOG/KEGG tables or DNA gLMs. Child skills: esm, esmc, saprot,
+  prostt5, plmsearch, deepblast. DNA gLMs via genome-language-model. Structure search
+  via foldseek / homology-search.
 license: MIT
-category: orchestration
-tags: [protein-language-model, PLM, pLM, ESM, ESMC, SaProt, ProstT5, remote-homology]
+metadata:
+  metagenomics.category: "orchestration"
+  metagenomics.tags: "protein-language-model, PLM, pLM, ESM, ESMC, SaProt, ProstT5, remote-homology"
 ---
 
 # Protein language model

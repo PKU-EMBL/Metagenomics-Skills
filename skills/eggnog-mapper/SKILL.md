@@ -1,11 +1,13 @@
 ---
 name: eggnog-mapper
 description: >
-  Orthology-based functional annotation (COG/KEGG/CAZy via eggNOG). Use this skill when working with eggnog-mapper: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/eggnogdb/eggnog-mapper. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  Orthology-based functional annotation (COG/KEGG/CAZy via eggNOG). Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['annotation', 'orthology', 'function']
-upstream: https://github.com/eggnogdb/eggnog-mapper
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "annotation, orthology, function"
+  metagenomics.upstream: "https://github.com/eggnogdb/eggnog-mapper"
 ---
 
 # eggNOG-mapper
@@ -16,7 +18,7 @@ Upstream: [eggnogdb/eggnog-mapper](https://github.com/eggnogdb/eggnog-mapper)
 
 Cantalapiedra, C. P., Hernández-Plaza, A., Letunic, I., Bork, P. & Huerta-Cepas, J. eggNOG-mapper v2: functional annotation, orthology assignments, and domain prediction at the metagenomic scale. *Mol. Biol. Evol.* **38**, 5825–5829 (2021). https://doi.org/10.1093/molbev/msab293
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

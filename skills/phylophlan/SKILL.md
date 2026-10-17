@@ -2,16 +2,15 @@
 name: phylophlan
 description: >
   PhyloPhlAn 3 — precise phylogenetic analysis of microbial isolates and
-  metagenome-assembled genomes via marker sets, alignment, and tree building.
-  Use when: (1) Reconstructing phylogenies across many MAGs/genomes,
-  (2) Contextualizing novel lineages beyond a single GTDB-Tk row,
-  (3) Generating inputs for IQ-TREE/FastTree. Upstream:
-  https://github.com/biobakery/phylophlan. Route via phylogenomics.
+  metagenome-assembled genomes via marker sets, alignment, and tree building. Use when:
+  (1) Reconstructing phylogenies across many MAGs/genomes, (2) Contextualizing novel
+  lineages beyond a single GTDB-Tk row, (3) Generating inputs for IQ-TREE/FastTree.
 license: MIT
-category: analysis-tools
-tags: [PhyloPhlAn, phylogeny, MAG, markers, tree]
-upstream: https://github.com/biobakery/phylophlan
-stage: taxonomy
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "PhyloPhlAn, phylogeny, MAG, markers, tree"
+  metagenomics.upstream: "https://github.com/biobakery/phylophlan"
+  metagenomics.stage: "taxonomy"
 ---
 
 # PhyloPhlAn
@@ -29,7 +28,7 @@ Segata, N. *et al.* PhyloPhlAn is a new method for improved phylogenetic and
 taxonomic placement of microbes. *Nat. Commun.* **4**, 2304 (2013).
 https://doi.org/10.1038/ncomms3304
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,17 +1,16 @@
 ---
 name: snakemake
 description: >
-  Snakemake — Python-based workflow management for reproducible bioinformatics
-  (rules, conda/container integration, cluster execution). Use when encoding
-  shotgun metagenomics DAGs as Snakefiles or adopting community metagenomics
-  snakemake pipelines. Upstream: https://github.com/snakemake/snakemake.
-  Route via research-analysis / metagenomics-workflow / setup. Alternative:
-  nextflow.
+  Snakemake — Python-based workflow management for reproducible bioinformatics (rules,
+  conda/container integration, cluster execution). Use when encoding shotgun
+  metagenomics DAGs as Snakefiles or adopting community metagenomics snakemake
+  pipelines. Alternative: nextflow.
 license: MIT
-category: utilities
-tags: [Snakemake, workflow, reproducibility, pipeline, conda, HPC]
-upstream: https://github.com/snakemake/snakemake
-stage: utilities
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "Snakemake, workflow, reproducibility, pipeline, conda, HPC"
+  metagenomics.upstream: "https://github.com/snakemake/snakemake"
+  metagenomics.stage: "utilities"
 ---
 
 # Snakemake
@@ -28,7 +27,7 @@ Original: Köster, J. & Rahmann, S. Snakemake—a scalable bioinformatics workfl
 engine. *Bioinformatics* **28**, 2520–2522 (2012).
 https://doi.org/10.1093/bioinformatics/bts480
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

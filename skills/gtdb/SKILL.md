@@ -1,18 +1,17 @@
 ---
 name: gtdb
 description: >
-  Use the Genome Taxonomy Database (GTDB) public releases — taxonomy tables,
-  trees, metadata, and representative genomes. Use this skill when: (1) Choosing
-  or citing a GTDB release, (2) Downloading bac120/ar53 taxonomy or reps,
-  (3) Distinguishing GTDB data files from the GTDB-Tk runtime package,
-  (4) Preparing reference sets for MAG comparison. Upstream:
-  https://gtdb.ecogenomic.org/ and https://github.com/Ecogenomics/GTDBTk.
-  For classifying your MAGs, use gtdbtk. For biome catalogues, use mgnify.
+  Use the Genome Taxonomy Database (GTDB) public releases — taxonomy tables, trees,
+  metadata, and representative genomes. Use this skill when: (1) Choosing or citing a
+  GTDB release, (2) Downloading bac120/ar53 taxonomy or reps, (3) Distinguishing GTDB
+  data files from the GTDB-Tk runtime package, (4) Preparing reference sets for MAG
+  comparison. For classifying your MAGs, use gtdbtk. For biome catalogues, use mgnify.
   For routing, use public-databases.
 license: MIT
-category: utilities
-tags: [database, GTDB, taxonomy, genomes]
-upstream: https://gtdb.ecogenomic.org/
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "database, GTDB, taxonomy, genomes"
+  metagenomics.upstream: "https://gtdb.ecogenomic.org/"
 ---
 
 # GTDB (Genome Taxonomy Database)
@@ -28,7 +27,7 @@ Parks, D. H. *et al.* A complete domain-to-species taxonomy for Bacteria and Arc
 
 Parks, D. H. *et al.* GTDB release 10: a complete and systematic taxonomy for 715 230 bacterial and 17 245 archaeal genomes. *Nucleic Acids Res.* **54**, D743–D754 (2026). https://doi.org/10.1093/nar/gkaf1040
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

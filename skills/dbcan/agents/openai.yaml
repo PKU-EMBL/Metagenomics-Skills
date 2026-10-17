@@ -1,7 +1,7 @@
 interface:
   display_name: "dbCAN"
   short_description: "CAZyme carbohydrate-active enzyme annotation"
-  default_prompt: "Use $dbcan for CAZyme carbohydrate-active enzyme annotation."
+  default_prompt: "Use $dbcan for this task: CAZyme carbohydrate-active enzyme annotation. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

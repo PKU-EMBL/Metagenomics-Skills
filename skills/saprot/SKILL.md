@@ -1,19 +1,18 @@
 ---
 name: saprot
 description: >
-  SaProt — Westlake University structure-aware protein language model using an
-  AA+3Di (Foldseek) structure-aware vocabulary (ICLR 2024). Use when: (1)
-  Structure-informed PLM embeddings for function / fitness / variant tasks,
-  (2) Comparing against ESM-2 with Foldseek SA tokens available, (3) SaProt
-  1.3B AA-only or SA-token workflows (incl. AFDB/OMG/NCBI-trained checkpoints).
-  Upstream: https://github.com/westlake-repl/SaProt. HF: westlake-repl/SaProt_*.
-  Route via protein-language-model. Related Westlake tools (ProTrek, etc.) —
-  cite separately if used.
+  SaProt — Westlake University structure-aware protein language model using an AA+3Di
+  (Foldseek) structure-aware vocabulary (ICLR 2024). Use when: (1) Structure-informed
+  PLM embeddings for function / fitness / variant tasks, (2) Comparing against ESM-2
+  with Foldseek SA tokens available, (3) SaProt 1.3B AA-only or SA-token workflows
+  (incl. AFDB/OMG/NCBI-trained checkpoints). HF: westlake-repl/SaProt_*. Related
+  Westlake tools (ProTrek, etc.) — cite separately if used.
 license: MIT
-category: analysis-tools
-tags: [SaProt, Westlake, PLM, protein-language-model, Foldseek, 3Di, ICLR]
-upstream: https://github.com/westlake-repl/SaProt
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "SaProt, Westlake, PLM, protein-language-model, Foldseek, 3Di, ICLR"
+  metagenomics.upstream: "https://github.com/westlake-repl/SaProt"
+  metagenomics.stage: "function"
 ---
 
 # SaProt (Westlake)
@@ -30,7 +29,7 @@ Vocabulary. *International Conference on Learning Representations* (ICLR)
 
 Preprint: https://doi.org/10.1101/2023.10.01.560349
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

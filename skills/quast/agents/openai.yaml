@@ -1,7 +1,7 @@
 interface:
   display_name: "QUAST / metaQUAST"
-  short_description: "Assembly quality assessment (contiguity, misassemblies; metaQUAST for metagenomes)"
-  default_prompt: "Use $quast for Assembly quality assessment (contiguity, misassemblies; metaQUAST for metagenomes)"
+  short_description: "Assembly quality assessment with QUAST/metaQUAST"
+  default_prompt: "Use $quast for this task: Assembly quality assessment with QUAST/metaQUAST. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

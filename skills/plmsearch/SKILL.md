@@ -1,17 +1,16 @@
 ---
 name: plmsearch
 description: >
-  PLMSearch — protein language model embeddings for fast, sensitive remote
-  homology search from sequences alone. Use when: (1) Homology is too remote
-  for BLAST/MMseqs, (2) Structure search is unavailable but structural
-  similarity is expected, (3) Screening large query–target protein pairs.
-  Upstream: https://github.com/maovshao/PLMSearch.
-  Web: https://dmiip.sjtu.edu.cn/PLMSearch. Route via protein-language-model.
+  PLMSearch — protein language model embeddings for fast, sensitive remote homology
+  search from sequences alone. Use when: (1) Homology is too remote for BLAST/MMseqs,
+  (2) Structure search is unavailable but structural similarity is expected, (3)
+  Screening large query–target protein pairs.
 license: MIT
-category: analysis-tools
-tags: [PLM, remote-homology, search, protein]
-upstream: https://github.com/maovshao/PLMSearch
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "PLM, remote-homology, search, protein"
+  metagenomics.upstream: "https://github.com/maovshao/PLMSearch"
+  metagenomics.stage: "function"
 ---
 
 # PLMSearch
@@ -25,7 +24,7 @@ Liu, W. *et al.* PLMSearch: Protein language model powers accurate and fast
 sequence search for remote homology. *Nat. Commun.* **15**, 2775 (2024).
 https://doi.org/10.1038/s41467-024-46808-5
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

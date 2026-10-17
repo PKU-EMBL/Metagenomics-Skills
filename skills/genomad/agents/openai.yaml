@@ -1,7 +1,7 @@
 interface:
   display_name: "geNomad"
   short_description: "Plasmid and virus MGE identification"
-  default_prompt: "Use $genomad for Plasmid and virus MGE identification."
+  default_prompt: "Use $genomad for this task: Plasmid and virus MGE identification. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

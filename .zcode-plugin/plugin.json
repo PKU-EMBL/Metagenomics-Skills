@@ -1,0 +1,16 @@
+{
+  "name": "metagenomics",
+  "version": "1.22.0",
+  "description": "Portable shotgun-metagenomics workflows, tool guidance, quality gates, and reporting skills.",
+  "description_i18n": {
+    "en": "Portable shotgun-metagenomics workflows, tool guidance, quality gates, and reporting skills.",
+    "zh-CN": "可移植的宏基因组流程、工具选择、质量门控与科研交付 Skills。"
+  },
+  "author": {
+    "name": "PKU-EMBL"
+  },
+  "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
+  "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
+  "license": "MIT",
+  "skills": "skills"
+}

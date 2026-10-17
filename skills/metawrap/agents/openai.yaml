@@ -1,7 +1,7 @@
 interface:
   display_name: "MetaWRAP"
-  short_description: "Metagenomic wrapper for binning, refinement, reassembly, and related modules"
-  default_prompt: "Use $metawrap for Metagenomic wrapper for binning, refinement, reassembly, and."
+  short_description: "MetaWRAP binning, refinement, reassembly, and utilities"
+  default_prompt: "Use $metawrap for this task: MetaWRAP binning, refinement, reassembly, and utilities. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

@@ -1,15 +1,15 @@
 ---
 name: gapseq
 description: >
-  Predict bacterial metabolic pathways and reconstruct genome-scale metabolic models. Use this skill when working with gapseq: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/jotech/gapseq. For routing across mining tasks use microbial-mining.
-  For stage order use metagenomics-workflow.
+  Predict bacterial metabolic pathways and reconstruct genome-scale metabolic models.
+  Use for installation, parameter choice, execution, output interpretation, or
+  troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['metabolism', 'GEMs', 'genome-mining']
-upstream: https://github.com/jotech/gapseq
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "metabolism, GEMs, genome-mining"
+  metagenomics.upstream: "https://github.com/jotech/gapseq"
+  metagenomics.stage: "mining"
 ---
 
 # gapseq
@@ -20,7 +20,7 @@ Upstream: [gapseq](https://github.com/jotech/gapseq)
 
 Zimmermann, J., Kaleta, C. & Waschina, S. gapseq: informed prediction of bacterial metabolic pathways and reconstruction of accurate metabolic models. *Genome Biol.* **22**, 81 (2021). https://doi.org/10.1186/s13059-021-02295-1
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

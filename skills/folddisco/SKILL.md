@@ -1,19 +1,17 @@
 ---
 name: folddisco
 description: >
-  Folddisco — fast discontinuous structural motif search across the protein
-  universe (Steinegger lab). Use when: (1) Searching catalytic triads / zinc
-  fingers / other short motifs in AFDB/PDB/ESM30, (2) Motif-level annotation
-  after Foldseek fold hits, (3) Mining conserved geometry in MAG protein
-  structures. Upstream: https://github.com/steineggerlab/folddisco.
-  Web: https://search.foldseek.com/folddisco. Route via homology-search /
-  metagenomics-llm;
-  complement foldseek (full-chain) and mmseqs2 (sequence).
+  Folddisco — fast discontinuous structural motif search across the protein universe
+  (Steinegger lab). Use when: (1) Searching catalytic triads / zinc fingers / other
+  short motifs in AFDB/PDB/ESM30, (2) Motif-level annotation after Foldseek fold hits,
+  (3) Mining conserved geometry in MAG protein structures. Route via homology-search /
+  metagenomics-llm; complement foldseek (full-chain) and mmseqs2 (sequence).
 license: MIT
-category: analysis-tools
-tags: [Folddisco, motif, structure-search, AFDB, Foldseek]
-upstream: https://github.com/steineggerlab/folddisco
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "Folddisco, motif, structure-search, AFDB, Foldseek"
+  metagenomics.upstream: "https://github.com/steineggerlab/folddisco"
+  metagenomics.stage: "mining"
 ---
 
 # Folddisco
@@ -27,7 +25,7 @@ Kim, H., Kim, R. S., Mirdita, M., Yoon, J. & Steinegger, M. Structural motif
 search across the protein universe with Folddisco. *Nat. Biotechnol.* (2026).
 https://doi.org/10.1038/s41587-026-03162-9
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

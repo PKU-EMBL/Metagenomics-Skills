@@ -2,17 +2,18 @@
 name: microbial-mining
 description: >
   Route microbial / genome mining after assembly or binning: BGCs (antiSMASH,
-  BiG-SCAPE), AMR (RGI, DeepARG, ResFinder), mobile elements (geNomad,
-  VirSorter2, CheckV, mobileOG-db, ISEScan, IntegronFinder, MOB-suite, CGE
-  Finders), antimicrobial peptides (Macrel), element cycling (METABOLIC, MEBS,
-  FeGenie), DOM/biosurfactant/HC biodegradation (dbCAN, HADEG, BioSurfDB),
-  metabolism (DRAM, gapseq), defense (DefenseFinder, PADLOC), quorum sensing
-  (QSAP), and annotation substrates (Bakta/Prokka). Use when the question is
-  discovery of functional elements, not community tables alone.
+  BiG-SCAPE), AMR (RGI, DeepARG, ResFinder), mobile elements (geNomad, VirSorter2,
+  CheckV, mobileOG-db, ISEScan, IntegronFinder, MOB-suite, CGE Finders), antimicrobial
+  peptides (Macrel), element cycling (METABOLIC, MEBS, FeGenie), DOM/biosurfactant/HC
+  biodegradation (dbCAN, HADEG, BioSurfDB), metabolism (DRAM, gapseq), defense
+  (DefenseFinder, PADLOC), quorum sensing (QSAP), and annotation substrates
+  (Bakta/Prokka). Use when the question is discovery of functional elements, not
+  community tables alone.
 license: MIT
-category: orchestration
-tags: [genome-mining, BGC, AMR, MGE, virus, metabolism, element-cycling, DOM, biosurfactant, defense, QS, routing]
-stage: mining
+metadata:
+  metagenomics.category: "orchestration"
+  metagenomics.tags: "genome-mining, BGC, AMR, MGE, virus, metabolism, element-cycling, DOM, biosurfactant, defense, QS, routing"
+  metagenomics.stage: "mining"
 ---
 
 # Microbial mining

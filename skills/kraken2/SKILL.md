@@ -1,11 +1,13 @@
 ---
 name: kraken2
 description: >
-  k-mer taxonomic classification; pair with Bracken for abundance. Use this skill when working with kraken2: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/DerrickWood/kraken2. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  k-mer taxonomic classification; pair with Bracken for abundance. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['taxonomy', 'k-mer', 'bracken']
-upstream: https://github.com/DerrickWood/kraken2
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "taxonomy, k-mer, bracken"
+  metagenomics.upstream: "https://github.com/DerrickWood/kraken2"
 ---
 
 # Kraken2 (+ Bracken)
@@ -19,7 +21,7 @@ Wood, D. E., Lu, J. & Langmead, B. Improved metagenomic analysis with Kraken 2. 
 
 Lu, J., Breitwieser, F. P., Thielen, P. & Salzberg, S. L. Bracken: estimating species abundance in metagenomics data. *PeerJ Comput. Sci.* **3**, e104 (2017). https://doi.org/10.7717/peerj-cs.104
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

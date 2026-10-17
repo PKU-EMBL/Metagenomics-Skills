@@ -1,16 +1,16 @@
 ---
 name: mob-suite
 description: >
-  MOB-suite — plasmid reconstruction and typing from draft assemblies
-  (replicon, relaxase/MOB type, mate-pair, transferability, mash clusters).
-  Use for plasmid compatibility / MOB typing and plasmid contig binning beyond
-  geNomad scores. Upstream: https://github.com/phac-nml/mob-suite. Route via
+  MOB-suite — plasmid reconstruction and typing from draft assemblies (replicon,
+  relaxase/MOB type, mate-pair, transferability, mash clusters). Use for plasmid
+  compatibility / MOB typing and plasmid contig binning beyond geNomad scores. Route via
   microbial-mining; pair with genomad, plasmaag, mobileog, rgi.
 license: MIT
-category: analysis-tools
-tags: [MOB-suite, plasmid, MOB, replicon, incompatibility, MGE, typing]
-upstream: https://github.com/phac-nml/mob-suite
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "MOB-suite, plasmid, MOB, replicon, incompatibility, MGE, typing"
+  metagenomics.upstream: "https://github.com/phac-nml/mob-suite"
+  metagenomics.stage: "mining"
 ---
 
 # MOB-suite
@@ -23,7 +23,7 @@ Robertson, J. & Nash, J. H. E. MOB-suite: software tools for clustering,
 reconstruction and typing of plasmids from draft assemblies. *Microb. Genom.*
 **4**, e000206 (2018). https://doi.org/10.1099/mgen.0.000206
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,7 +1,7 @@
 interface:
   display_name: "Bowtie 2"
   short_description: "Short-read mapping for metagenome coverage"
-  default_prompt: "Use $bowtie2 for Short-read mapping for metagenome coverage."
+  default_prompt: "Use $bowtie2 for this task: Short-read mapping for metagenome coverage. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

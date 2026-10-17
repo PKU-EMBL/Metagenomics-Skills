@@ -1,7 +1,7 @@
 interface:
   display_name: "DAS Tool"
   short_description: "Ensemble aggregation of multi-binner contig2bin predictions"
-  default_prompt: "Use $dastool to integrate multi-binner predictions; prefer $basalt as the recommended ensemble route when suitable."
+  default_prompt: "Use $dastool for this task: Ensemble aggregation of multi-binner contig2bin predictions. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

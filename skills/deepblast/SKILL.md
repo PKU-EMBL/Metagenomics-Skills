@@ -1,18 +1,17 @@
 ---
 name: deepblast
 description: >
-  TM-Vec and DeepBLAST — deep learning for protein remote homology and
-  structural alignment from sequences (predict TM-scores; align homologous
-  regions without solved structures). Use when: (1) Searching structure-like
-  similarity in large sequence DBs, (2) Aligning remote homologs for annotation,
-  (3) Complementing PLMSearch / Foldseek workflows. Upstream:
-  https://github.com/tymor22/tm-vec and
-  https://github.com/flatironinstitute/deepblast. Route via protein-language-model.
+  TM-Vec and DeepBLAST — deep learning for protein remote homology and structural
+  alignment from sequences (predict TM-scores; align homologous regions without solved
+  structures). Use when: (1) Searching structure-like similarity in large sequence DBs,
+  (2) Aligning remote homologs for annotation, (3) Complementing PLMSearch / Foldseek
+  workflows.
 license: MIT
-category: analysis-tools
-tags: [DeepBLAST, TM-Vec, remote-homology, structure, PLM]
-upstream: https://github.com/flatironinstitute/deepblast
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "DeepBLAST, TM-Vec, remote-homology, structure, PLM"
+  metagenomics.upstream: "https://github.com/flatironinstitute/deepblast"
+  metagenomics.stage: "function"
 ---
 
 # TM-Vec / DeepBLAST
@@ -26,7 +25,7 @@ Hamamsy, T. *et al.* Protein remote homology detection and structural alignment
 using deep learning. *Nat. Biotechnol.* **42**, 975–985 (2024).
 https://doi.org/10.1038/s41587-023-01917-2
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

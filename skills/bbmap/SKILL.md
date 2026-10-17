@@ -1,15 +1,14 @@
 ---
 name: bbmap
 description: >
-  Fast splice-aware aligner and BBTools suite utilities (BBMerge, etc.). Use this skill when working with bbmap: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://sourceforge.net/projects/bbmap/. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Fast splice-aware aligner and BBTools suite utilities (BBMerge, etc.). Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['mapping', 'alignment', 'bbtools']
-upstream: https://sourceforge.net/projects/bbmap/
-stage: mapping
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "mapping, alignment, bbtools"
+  metagenomics.upstream: "https://sourceforge.net/projects/bbmap/"
+  metagenomics.stage: "mapping"
 ---
 
 # BBMap
@@ -20,7 +19,7 @@ Upstream: [BBMap](https://sourceforge.net/projects/bbmap/)
 
 Bushnell, B. BBMap: a fast, accurate, splice-aware aligner. *LBNL Report* (2014). https://escholarship.org/uc/item/1h3515gn
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

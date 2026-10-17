@@ -1,17 +1,17 @@
 ---
 name: deepurify
 description: >
-  Deepurify — multi-modal deep language model for MAG decontamination by
-  matching contigs to taxonomic lineages and splitting chimeric bins into
-  higher-quality sub-MAGs. Use when: (1) Cleaning contaminated MAGs after
-  binning, (2) Rescuing near-threshold contaminated bins, (3) Complementing
-  CheckM2/GUNC (detection vs contig removal). Upstream:
-  https://github.com/ericcombiolab/Deepurify.
+  Deepurify — multi-modal deep language model for MAG decontamination by matching
+  contigs to taxonomic lineages and splitting chimeric bins into higher-quality
+  sub-MAGs. Use when: (1) Cleaning contaminated MAGs after binning, (2) Rescuing
+  near-threshold contaminated bins, (3) Complementing CheckM2/GUNC (detection vs contig
+  removal).
 license: MIT
-category: analysis-tools
-tags: [decontamination, MAG, Deepurify, QC]
-upstream: https://github.com/ericcombiolab/Deepurify
-stage: assessment
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "decontamination, MAG, Deepurify, QC"
+  metagenomics.upstream: "https://github.com/ericcombiolab/Deepurify"
+  metagenomics.stage: "assessment"
 ---
 
 # Deepurify
@@ -24,7 +24,7 @@ Zou, B. *et al.* A multi-modal deep language model for contaminant removal from
 metagenome-assembled genomes. *Nat. Mach. Intell.* **6**, 1245–1255 (2024).
 https://doi.org/10.1038/s42256-024-00908-5
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

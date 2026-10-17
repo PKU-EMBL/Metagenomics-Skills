@@ -1,15 +1,15 @@
 ---
 name: homology-search
 description: >
-  Route all homology / similarity search paradigms for shotgun metagenomics,
-  including the Steinegger/Söding stack (MMseqs2, HH-suite, Foldseek family,
-  PLASS, MetaEuk, Petasearch), vector DB (ERAST), and genome warehouse search
-  (Phylign, LexicMap). Use when choosing how to search proteins, genes, or
-  genomes.
+  Route all homology / similarity search paradigms for shotgun metagenomics, including
+  the Steinegger/Söding stack (MMseqs2, HH-suite, Foldseek family, PLASS, MetaEuk,
+  Petasearch), vector DB (ERAST), and genome warehouse search (Phylign, LexicMap). Use
+  when choosing how to search proteins, genes, or genomes.
 license: MIT
-category: orchestration
-tags: [homology, search, Steinegger, Foldseek, MMseqs2, vector-DB, routing]
-stage: function
+metadata:
+  metagenomics.category: "orchestration"
+  metagenomics.tags: "homology, search, Steinegger, Foldseek, MMseqs2, vector-DB, routing"
+  metagenomics.stage: "function"
 ---
 
 # Homology search routing

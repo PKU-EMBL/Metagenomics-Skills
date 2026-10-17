@@ -1,7 +1,7 @@
 interface:
   display_name: "GTDB"
-  short_description: "Genome Taxonomy Database releases, taxonomy tables, and genome reps"
-  default_prompt: "Use $gtdb to fetch or cite GTDB releases; classify MAGs with $gtdbtk."
+  short_description: "GTDB taxonomy, trees, metadata, and representative genomes"
+  default_prompt: "Use $gtdb for this task: GTDB taxonomy, trees, metadata, and representative genomes. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

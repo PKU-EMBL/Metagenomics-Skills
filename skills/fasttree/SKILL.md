@@ -1,16 +1,15 @@
 ---
 name: fasttree
 description: >
-  FastTree — approximately-maximum-likelihood trees for large alignments.
-  Use when: (1) Draft phylogenies from big MSAs, (2) Quick topology screens
-  before IQ-TREE, (3) Resource-limited exploratory MAG trees. Upstream:
-  http://www.microbesonline.org/fasttree/. For final ML trees prefer iqtree.
-  Route via phylogenomics.
+  FastTree — approximately-maximum-likelihood trees for large alignments. Use when: (1)
+  Draft phylogenies from big MSAs, (2) Quick topology screens before IQ-TREE, (3)
+  Resource-limited exploratory MAG trees. For final ML trees prefer iqtree.
 license: MIT
-category: analysis-tools
-tags: [FastTree, phylogeny, approximate-ML, tree]
-upstream: http://www.microbesonline.org/fasttree/
-stage: taxonomy
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "FastTree, phylogeny, approximate-ML, tree"
+  metagenomics.upstream: "http://www.microbesonline.org/fasttree/"
+  metagenomics.stage: "taxonomy"
 ---
 
 # FastTree
@@ -28,7 +27,7 @@ Price, M. N., Dehal, P. S. & Arkin, A. P. FastTree 2 — approximately
 maximum-likelihood trees for large alignments. *PLoS ONE* **5**, e9490 (2010).
 https://doi.org/10.1371/journal.pone.0009490
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

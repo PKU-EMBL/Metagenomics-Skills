@@ -1,17 +1,16 @@
 ---
 name: insilicoseq
 description: >
-  InSilicoSeq — simulate realistic Illumina (meta)genomic reads for benchmarking
-  and experimental design. Use when: (1) Generating Illumina-like test sets from
-  genomes, (2) Simple abundance-controlled mock communities, (3) Complementing
-  CAMISIM for CAMI-style community simulation. Upstream:
-  https://github.com/HadrienG/InSilicoSeq. For full CAMI gold standards prefer
-  cami / CAMISIM.
+  InSilicoSeq — simulate realistic Illumina (meta)genomic reads for benchmarking and
+  experimental design. Use when: (1) Generating Illumina-like test sets from genomes,
+  (2) Simple abundance-controlled mock communities, (3) Complementing CAMISIM for
+  CAMI-style community simulation. For full CAMI gold standards prefer cami / CAMISIM.
 license: MIT
-category: analysis-tools
-tags: [simulation, Illumina, benchmark, InSilicoSeq]
-upstream: https://github.com/HadrienG/InSilicoSeq
-stage: assessment
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "simulation, Illumina, benchmark, InSilicoSeq"
+  metagenomics.upstream: "https://github.com/HadrienG/InSilicoSeq"
+  metagenomics.stage: "assessment"
 ---
 
 # InSilicoSeq
@@ -25,7 +24,7 @@ Gourlé, H., Karlsson-Lindsjö, O., Hayer, J. & Bongcam-Rudloff, E. Simulating
 Illumina metagenomic data with InSilicoSeq. *Bioinformatics* **35**, 521–522
 (2019). https://doi.org/10.1093/bioinformatics/bty630
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

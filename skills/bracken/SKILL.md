@@ -1,15 +1,14 @@
 ---
 name: bracken
 description: >
-  Bayesian re-estimation of abundance from Kraken2 reports. Use this skill when working with bracken: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/jenniferlu717/Bracken. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Bayesian re-estimation of abundance from Kraken2 reports. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['taxonomy', 'kraken', 'abundance']
-upstream: https://github.com/jenniferlu717/Bracken
-stage: taxonomy
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "taxonomy, kraken, abundance"
+  metagenomics.upstream: "https://github.com/jenniferlu717/Bracken"
+  metagenomics.stage: "taxonomy"
 ---
 
 # Bracken
@@ -20,7 +19,7 @@ Upstream: [Bracken](https://github.com/jenniferlu717/Bracken)
 
 Lu, J., Breitwieser, F. P., Thielen, P. & Salzberg, S. L. Bracken: estimating species abundance in metagenomics data. *PeerJ Comput. Sci.* **3**, e104 (2017). https://doi.org/10.7717/peerj-cs.104
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,17 +1,16 @@
 ---
 name: foldmason
 description: >
-  FoldMason — multiple protein structure alignment at scale (Steinegger lab).
-  Use when: (1) Building structural MSAs from AFDB / predicted models,
-  (2) Comparing folds across MAG protein families after Foldseek clustering,
-  (3) Preparing structure-aware alignments for phylogeny or motif work.
-  Upstream: https://github.com/steineggerlab/foldmason.
-  Web: https://search.foldseek.com/foldmason. Route via homology-search.
+  FoldMason — multiple protein structure alignment at scale (Steinegger lab). Use when:
+  (1) Building structural MSAs from AFDB / predicted models, (2) Comparing folds across
+  MAG protein families after Foldseek clustering, (3) Preparing structure-aware
+  alignments for phylogeny or motif work.
 license: MIT
-category: analysis-tools
-tags: [FoldMason, structure-MSA, Foldseek, alignment]
-upstream: https://github.com/steineggerlab/foldmason
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "FoldMason, structure-MSA, Foldseek, alignment"
+  metagenomics.upstream: "https://github.com/steineggerlab/foldmason"
+  metagenomics.stage: "function"
 ---
 
 # FoldMason
@@ -25,7 +24,7 @@ Gilchrist, C. L. M., Mirdita, M. & Steinegger, M. Multiple protein structure
 alignment at scale with FoldMason. *Science* **391**, 485–488 (2026).
 https://doi.org/10.1126/science.ads6733
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

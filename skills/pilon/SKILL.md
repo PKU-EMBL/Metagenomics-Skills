@@ -1,14 +1,14 @@
 ---
 name: pilon
 description: >
-  Polish genome assemblies and fix small errors using short-read BAM evidence.
-  Use after mapping Illumina reads to a draft assembly (including long-read
-  drafts). Upstream: https://github.com/broadinstitute/pilon.
+  Polish genome assemblies and fix small errors using short-read BAM evidence. Use after
+  mapping Illumina reads to a draft assembly (including long-read drafts).
 license: MIT
-category: analysis-tools
-tags: [polish, assembly, short-read]
-upstream: https://github.com/broadinstitute/pilon
-stage: assembly
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "polish, assembly, short-read"
+  metagenomics.upstream: "https://github.com/broadinstitute/pilon"
+  metagenomics.stage: "assembly"
 ---
 
 # Pilon

@@ -1,11 +1,13 @@
 ---
 name: gtdbtk
 description: >
-  Assign bacterial/archaeal taxonomy to MAGs with GTDB. Use this skill when working with gtdbtk: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/Ecogenomics/GTDBTk. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  Assign bacterial/archaeal taxonomy to MAGs with GTDB. Use for installation, parameter
+  choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['taxonomy', 'GTDB', 'MAG']
-upstream: https://github.com/Ecogenomics/GTDBTk
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "taxonomy, GTDB, MAG"
+  metagenomics.upstream: "https://github.com/Ecogenomics/GTDBTk"
 ---
 
 # GTDB-Tk
@@ -16,7 +18,7 @@ Upstream: [Ecogenomics/GTDBTk](https://github.com/Ecogenomics/GTDBTk)
 
 Chaumeil, P.-A., Mussig, A. J., Hugenholtz, P. & Parks, D. H. GTDB-Tk v2: memory friendly classification with the Genome Taxonomy Database. *Bioinformatics* **38**, 5315–5316 (2022). https://doi.org/10.1093/bioinformatics/btac672
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

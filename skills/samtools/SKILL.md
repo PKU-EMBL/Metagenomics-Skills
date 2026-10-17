@@ -1,15 +1,15 @@
 ---
 name: samtools
 description: >
-  SAM/BAM/CRAM processing for metagenomic mapping outputs — sort, index,
-  flagstat, coverage, and filtering. Use whenever an aligner writes SAM/BAM
-  before CoverM, MetaBAT2, inStrain, or BASALT. Upstream:
-  https://github.com/samtools/samtools.
+  SAM/BAM/CRAM processing for metagenomic mapping outputs — sort, index, flagstat,
+  coverage, and filtering. Use whenever an aligner writes SAM/BAM before CoverM,
+  MetaBAT2, inStrain, or BASALT.
 license: MIT
-category: analysis-tools
-tags: [mapping, bam, sam, qc]
-upstream: https://github.com/samtools/samtools
-stage: mapping
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "mapping, bam, sam, qc"
+  metagenomics.upstream: "https://github.com/samtools/samtools"
+  metagenomics.stage: "mapping"
 ---
 
 # Samtools

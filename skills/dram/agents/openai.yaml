@@ -1,7 +1,7 @@
 interface:
   display_name: "DRAM"
   short_description: "Distill MAG metabolic potential"
-  default_prompt: "Use $dram for Distill MAG metabolic potential."
+  default_prompt: "Use $dram for this task: Distill MAG metabolic potential. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

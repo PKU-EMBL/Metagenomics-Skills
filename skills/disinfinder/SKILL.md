@@ -1,16 +1,15 @@
 ---
 name: disinfinder
 description: >
-  DisinFinder — CGE disinfectant / biocide resistance gene screen via the
-  DisinFinder database, typically run through ResFinder. Use for isolate
-  biocide-resistance markers alongside acquired AMR. DB:
-  https://bitbucket.org/genomicepidemiology/disinfinder_db. Route via
-  cge-finders / resfinder / microbial-mining.
+  DisinFinder — CGE disinfectant / biocide resistance gene screen via the DisinFinder
+  database, typically run through ResFinder. Use for isolate biocide-resistance markers
+  alongside acquired AMR.
 license: MIT
-category: analysis-tools
-tags: [DisinFinder, CGE, biocide, disinfectant, resistance, ResFinder]
-upstream: https://bitbucket.org/genomicepidemiology/disinfinder_db
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "DisinFinder, CGE, biocide, disinfectant, resistance, ResFinder"
+  metagenomics.upstream: "https://bitbucket.org/genomicepidemiology/disinfinder_db"
+  metagenomics.stage: "mining"
 ---
 
 # DisinFinder
@@ -28,7 +27,7 @@ Bortolaia, V. *et al.* ResFinder 4.0 for predictions of phenotypes from
 genotypes. *J. Antimicrob. Chemother.* **75**, 3491–3500 (2020).
 https://doi.org/10.1093/jac/dkaa345
 
-See also [docs/references.md](../../docs/references.md), `resfinder`, and
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md), `resfinder`, and
 `cge-finders`.
 
 ## Analytical thinking

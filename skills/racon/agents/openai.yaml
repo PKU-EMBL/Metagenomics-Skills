@@ -1,7 +1,7 @@
 interface:
   display_name: "Racon"
   short_description: "Read-based assembly consensus polishing"
-  default_prompt: "Use $racon for Read-based assembly consensus polishing."
+  default_prompt: "Use $racon for this task: Read-based assembly consensus polishing. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

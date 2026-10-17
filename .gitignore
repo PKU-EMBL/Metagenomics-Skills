@@ -22,8 +22,14 @@ venv/
 .cursor/
 .agents/
 .kimi-code/
+.zcode/
+.qwen/
 .grok/
 .codex/
+
+# Installer state/backups
+.metagenomics-skills-install.json
+.metagenomics-skills-backups/
 
 # Logs and temp
 *.log

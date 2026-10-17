@@ -1,17 +1,16 @@
 ---
 name: sparcc
 description: >
-  SparCC — Sparse Correlations for Compositional data; infer taxon–taxon
-  correlations from relative abundances without naive Pearson on compositions.
-  Use for correlation networks on microbiome tables. Original:
-  https://bitbucket.org/yonatanf/sparcc; convenient R implementation inside
-  SpiecEasi (sparcc()). Route via research-analysis; conditional networks →
-  spieceasi.
+  SparCC — Sparse Correlations for Compositional data; infer taxon–taxon correlations
+  from relative abundances without naive Pearson on compositions. Use for correlation
+  networks on microbiome tables. convenient R implementation inside SpiecEasi
+  (sparcc()). Route via research-analysis; conditional networks → spieceasi.
 license: MIT
-category: evaluation
-tags: [SparCC, network, correlation, compositionality, microbiome]
-upstream: https://bitbucket.org/yonatanf/sparcc
-stage: report
+metadata:
+  metagenomics.category: "evaluation"
+  metagenomics.tags: "SparCC, network, correlation, compositionality, microbiome"
+  metagenomics.upstream: "https://bitbucket.org/yonatanf/sparcc"
+  metagenomics.stage: "report"
 ---
 
 # SparCC
@@ -25,7 +24,7 @@ Friedman, J. & Alm, E. J. Inferring correlation networks from genomic survey
 data. *PLoS Comput. Biol.* **8**, e1002687 (2012).
 https://doi.org/10.1371/journal.pcbi.1002687
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

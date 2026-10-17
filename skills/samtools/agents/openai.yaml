@@ -1,7 +1,7 @@
 interface:
   display_name: "Samtools"
   short_description: "BAM sort index and mapping QC"
-  default_prompt: "Use $samtools for BAM sort index and mapping QC."
+  default_prompt: "Use $samtools for this task: BAM sort index and mapping QC. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

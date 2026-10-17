@@ -1,7 +1,7 @@
 interface:
   display_name: "Bracken"
   short_description: "Bayesian re-estimation of abundance from Kraken2 reports"
-  default_prompt: "Use $bracken for Bayesian re-estimation of abundance from Kraken2 reports"
+  default_prompt: "Use $bracken for this task: Bayesian re-estimation of abundance from Kraken2 reports. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

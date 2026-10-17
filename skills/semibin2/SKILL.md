@@ -1,15 +1,15 @@
 ---
 name: semibin2
 description: >
-  Self-supervised contrastive learning binning for short- and long-read assemblies. Use this skill when working with semibin2: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/BigDataBiology/SemiBin. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Self-supervised contrastive learning binning for short- and long-read assemblies. Use
+  for installation, parameter choice, execution, output interpretation, or
+  troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['binning', 'semibin', 'self-supervised']
-upstream: https://github.com/BigDataBiology/SemiBin
-stage: binning
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "binning, semibin, self-supervised"
+  metagenomics.upstream: "https://github.com/BigDataBiology/SemiBin"
+  metagenomics.stage: "binning"
 ---
 
 # SemiBin2
@@ -20,7 +20,7 @@ Upstream: [SemiBin2](https://github.com/BigDataBiology/SemiBin)
 
 Pan, S., Zhao, X.-M. & Coelho, L. P. SemiBin2: self-supervised contrastive learning leads to better MAGs for short- and long-read sequencing. *Bioinformatics* **39**, i21–i29 (2023). https://doi.org/10.1093/bioinformatics/btad209
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

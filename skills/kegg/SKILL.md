@@ -1,17 +1,17 @@
 ---
 name: kegg
 description: >
-  KEGG as a reference for gene/protein annotation — KO orthologs, pathways,
-  modules, BRITE (BlastKOALA / GhostKOALA and related assignment). Use when:
-  (1) Mapping genes/MAGs to KEGG Orthology, (2) Reconstructing pathways/modules,
-  (3) Choosing KEGG vs eggNOG / MetaCyc / DRAM distillation, (4) Citing KEGG
-  releases in Methods. Portal: https://www.kegg.jp/. Licensing/access constraints
-  apply for bulk use — verify institutional rights. For eggNOG use eggnog-mapper.
-  For pathway abundance from reads use humann. For routing use public-databases.
+  KEGG as a reference for gene/protein annotation — KO orthologs, pathways, modules,
+  BRITE (BlastKOALA / GhostKOALA and related assignment). Use when: (1) Mapping
+  genes/MAGs to KEGG Orthology, (2) Reconstructing pathways/modules, (3) Choosing KEGG
+  vs eggNOG / MetaCyc / DRAM distillation, (4) Citing KEGG releases in Methods.
+  Licensing/access constraints apply for bulk use — verify institutional rights. For
+  eggNOG use eggnog-mapper. For pathway abundance from reads use humann.
 license: MIT
-category: utilities
-tags: [database, KEGG, KO, pathway, annotation]
-upstream: https://www.kegg.jp/
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "database, KEGG, KO, pathway, annotation"
+  metagenomics.upstream: "https://www.kegg.jp/"
 ---
 
 # KEGG (Kyoto Encyclopedia of Genes and Genomes)
@@ -24,7 +24,7 @@ Kanehisa, M., Sato, Y., Kawashima, M., Furumichi, M. & Tanabe, M. KEGG as a
 reference resource for gene and protein annotation. *Nucleic Acids Res.* **44**,
 D457–D462 (2016). https://doi.org/10.1093/nar/gkv1070
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

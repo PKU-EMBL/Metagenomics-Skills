@@ -1,7 +1,7 @@
 interface:
   display_name: "CONCOCT"
   short_description: "Composition and coverage binning of metagenomic contigs"
-  default_prompt: "Use $concoct for Composition and coverage binning of metagenomic contigs"
+  default_prompt: "Use $concoct for this task: Composition and coverage binning of metagenomic contigs. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

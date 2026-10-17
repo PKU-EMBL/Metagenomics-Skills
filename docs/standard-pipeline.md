@@ -1,9 +1,14 @@
 # Standard pipeline
 
-Shotgun metagenomics stages — not a MAG-first workflow.
+Shotgun metagenomics stages — not a MAG-first workflow. Coding agents should
+follow the [inspect → plan → preflight → pilot → validate contract](agent-playbook.md)
+and stop before expensive execution when required inputs are unresolved.
 
 ```text
-1. QC                 fastp → kneaddata  (± fastqc / cutadapt / trimmomatic)
+0. Design/preflight   study-design → setup → public-databases
+                      lock statistical unit, controls, batches, manifests, compute
+1. QC                 short reads: fastp → kneaddata  (± fastqc / cutadapt / trimmomatic)
+                      long reads: technology-appropriate QC (do not use fastp blindly)
 2. Assembly           megahit | metaspades | metaflye | metamdbg  (± racon | pilon)
                       coassembly planning: binchicken (± singlem markers)
 3. Mapping            strobealign | bowtie2 | bwa-mem2 | bwa | minimap2
@@ -27,8 +32,11 @@ Shotgun metagenomics stages — not a MAG-first workflow.
                       CGE Finders: cge-finders (VF / DisinFinder / MEF / mlst / …)
                       AMP: macrel
                       metabolism: dram / dbcan / gapseq (± vmh)
-                      defense: defensefinder
+                      defense: defensefinder / padloc
                       (route via microbial-mining)
+8. Research delivery  multiqc → research-analysis
+                      ID/abundance validation → diversity/DA/networks → Methods/provenance
+                      workflow: nextflow | snakemake
 ```
 
 Public data layers (`public-databases`): raw archives (`sra-ena`), catalogues
@@ -36,6 +44,12 @@ Public data layers (`public-databases`): raw archives (`sra-ena`), catalogues
 benchmarks (`cami`, `insilicoseq`), knowledge bases (`kegg`, `vmh`).
 
 ## Stage thinking
+
+### 0. Design and preflight
+
+Declare the independent biological unit, primary contrast, controls, batches,
+exclusions, read technology, assembly partition, coverage matrix, compute, and
+DB releases. Keep raw data immutable and capture checksums. Pilot before scaling.
 
 ### 1–4
 QC → assembly → mapping (coverage) → binning. Prefer **multi-coverage** when
@@ -53,11 +67,16 @@ Discovery of **elements** in contigs/genomes. Computational hits are hypotheses 
 not validated compounds, phenotypes, or complete phages unless QC says so
 (`checkv`, then `vcontact` for taxonomy).
 
+### 8. Research delivery
+Join sample metadata explicitly, preserve abundance semantics, diagnose
+batch/confounding, report effect sizes and uncertainty with multiplicity control,
+and archive commands, versions, database releases, logs, and validation evidence.
+
 ## Skill map by stage
 
 | Stage | Skills (examples) |
 |-------|-------------------|
-| Design/setup | `study-design`, `setup`, `public-databases` |
+| 0 Design/setup | `study-design`, `setup`, `public-databases` |
 | 1 QC | `fastp`, `kneaddata`, `fastqc`, `cutadapt`, `trimmomatic` |
 | 2 Assembly | `megahit`, `metaspades`, `metaflye`, `metamdbg`, `racon`, `pilon`, `quast`, `binchicken`, `plass` |
 | 3 Mapping | `strobealign`, `bowtie2`, `bwa`, `bwa-mem2`, `minimap2`, `samtools`, `bbmap`, `diamond`, `lexicmap`, `phylign` |

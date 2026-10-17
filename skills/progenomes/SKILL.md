@@ -2,16 +2,16 @@
 name: progenomes
 description: >
   proGenomes4 — nearly 2 million consistently QC'd and annotated high-quality
-  prokaryotic genomes with habitat metadata, pan-genomes, MGE/BGC annotations.
-  Use when: (1) Building large microbial genome reference sets, (2) Comparative
-  genomics / pan-genome analyses, (3) Selecting habitat-filtered genome cohorts,
-  (4) Distinguishing proGenomes from GTDB reps or MGnify biome catalogues.
-  Portal: https://progenomes.embl.de/. For taxonomy releases use gtdb.
-  For biome MAG catalogues use mgnify. For routing use public-databases.
+  prokaryotic genomes with habitat metadata, pan-genomes, MGE/BGC annotations. Use when:
+  (1) Building large microbial genome reference sets, (2) Comparative genomics /
+  pan-genome analyses, (3) Selecting habitat-filtered genome cohorts, (4) Distinguishing
+  proGenomes from GTDB reps or MGnify biome catalogues. For taxonomy releases use gtdb.
+  For biome MAG catalogues use mgnify.
 license: MIT
-category: utilities
-tags: [database, proGenomes, genomes, pan-genome, EMBL]
-upstream: https://progenomes.embl.de/
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "database, proGenomes, genomes, pan-genome, EMBL"
+  metagenomics.upstream: "https://progenomes.embl.de/"
 ---
 
 # proGenomes
@@ -24,7 +24,7 @@ Fullam, A. *et al.* proGenomes4: providing 2 million accurately and consistently
 annotated high-quality prokaryotic genomes. *Nucleic Acids Res.* (2025).
 https://doi.org/10.1093/nar/gkaf1208
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

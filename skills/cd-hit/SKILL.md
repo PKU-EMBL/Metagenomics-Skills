@@ -1,11 +1,13 @@
 ---
 name: cd-hit
 description: >
-  Cluster genes/proteins to build non-redundant catalogues. Use this skill when working with cd-hit: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/weizhongli/cdhit. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  Cluster genes/proteins to build non-redundant catalogues. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['clustering', 'dereplication']
-upstream: https://github.com/weizhongli/cdhit
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "clustering, dereplication"
+  metagenomics.upstream: "https://github.com/weizhongli/cdhit"
 ---
 
 # CD-HIT
@@ -16,7 +18,7 @@ Upstream: [weizhongli/cdhit](https://github.com/weizhongli/cdhit)
 
 Fu, L., Niu, B., Zhu, Z., Wu, S. & Li, W. CD-HIT: accelerated for clustering the next-generation sequencing data. *Bioinformatics* **28**, 3150–3152 (2012). https://doi.org/10.1093/bioinformatics/bts565
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

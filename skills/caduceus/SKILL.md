@@ -1,17 +1,17 @@
 ---
 name: caduceus
 description: >
-  Caduceus — bi-directional equivariant long-range DNA language model (Mamba /
-  RC-aware) for long genomic contexts. Use when: (1) Long DNA sequences where
-  transformer gLMs are costly, (2) Reverse-complement equivariant embeddings
-  (Caduceus-PS) or RC-augmented Ph models, (3) Comparing long-range DNA LMs to
-  DNABERT-2 / NT. Upstream: https://github.com/kuleshov-group/caduceus.
-  HF: kuleshov-group/caduceus-*. Route via genome-language-model.
+  Caduceus — bi-directional equivariant long-range DNA language model (Mamba / RC-aware)
+  for long genomic contexts. Use when: (1) Long DNA sequences where transformer gLMs are
+  costly, (2) Reverse-complement equivariant embeddings (Caduceus-PS) or RC-augmented Ph
+  models, (3) Comparing long-range DNA LMs to DNABERT-2 / NT. HF:
+  kuleshov-group/caduceus-*.
 license: MIT
-category: analysis-tools
-tags: [Caduceus, gLM, genome-language-model, Mamba, DNA, long-range]
-upstream: https://github.com/kuleshov-group/caduceus
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "Caduceus, gLM, genome-language-model, Mamba, DNA, long-range"
+  metagenomics.upstream: "https://github.com/kuleshov-group/caduceus"
+  metagenomics.stage: "function"
 ---
 
 # Caduceus
@@ -24,7 +24,7 @@ HF collection: https://huggingface.co/collections/kuleshov-group/caducues-65dcb8
 Schiff, Y. *et al.* Caduceus: Bi-Directional Equivariant Long-Range DNA Sequence
 Modeling. *arXiv* https://doi.org/10.48550/arXiv.2403.03234 (2024).
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,15 +1,14 @@
 ---
 name: barrnap
 description: >
-  Basic rapid ribosomal RNA predictor for genomes. Use this skill when working with barrnap: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/tseemann/barrnap. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Basic rapid ribosomal RNA predictor for genomes. Use for installation, parameter
+  choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['rrna', 'annotation']
-upstream: https://github.com/tseemann/barrnap
-stage: gene
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "rrna, annotation"
+  metagenomics.upstream: "https://github.com/tseemann/barrnap"
+  metagenomics.stage: "gene"
 ---
 
 # Barrnap
@@ -20,7 +19,7 @@ Upstream: [Barrnap](https://github.com/tseemann/barrnap)
 
 Seemann, T. Barrnap: BAsic Rapid Ribosomal RNA Predictor. https://github.com/tseemann/barrnap
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

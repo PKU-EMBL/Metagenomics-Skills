@@ -1,15 +1,15 @@
 ---
 name: visualization
 description: >
-  Statistical visualization checklist for shotgun metagenomics across QC,
-  taxonomy, function, and binning outputs. Use when: (1) Choosing alpha/beta
-  and composition figure types, (2) Labeling figures by stage and method,
-  (3) Pairing plots with MaAsLin2/LEfSe/microeco. For end-to-end R workflows
-  prefer microeco. Route via research-analysis.
+  Statistical visualization checklist for shotgun metagenomics across QC, taxonomy,
+  function, and binning outputs. Use when: (1) Choosing alpha/beta and composition
+  figure types, (2) Labeling figures by stage and method, (3) Pairing plots with
+  MaAsLin2/LEfSe/microeco. For end-to-end R workflows prefer microeco.
 license: MIT
-category: evaluation
-tags: [visualization, diversity, statistics, figures, research-analysis]
-stage: report
+metadata:
+  metagenomics.category: "evaluation"
+  metagenomics.tags: "visualization, diversity, statistics, figures, research-analysis"
+  metagenomics.stage: "report"
 ---
 
 # Visualization and statistics (checklist)

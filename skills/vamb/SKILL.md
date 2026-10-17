@@ -1,15 +1,14 @@
 ---
 name: vamb
 description: >
-  Deep variational autoencoder binning of metagenome contigs. Use this skill when working with vamb: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/RasmussenLab/vamb. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Deep variational autoencoder binning of metagenome contigs. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['binning', 'vae', 'deep-learning']
-upstream: https://github.com/RasmussenLab/vamb
-stage: binning
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "binning, vae, deep-learning"
+  metagenomics.upstream: "https://github.com/RasmussenLab/vamb"
+  metagenomics.stage: "binning"
 ---
 
 # VAMB
@@ -20,7 +19,7 @@ Upstream: [VAMB](https://github.com/RasmussenLab/vamb)
 
 Nissen, J. N. *et al.* Improved metagenome binning and assembly using deep variational autoencoders. *Nat. Biotechnol.* **39**, 555–560 (2021). https://doi.org/10.1038/s41587-020-00777-4
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

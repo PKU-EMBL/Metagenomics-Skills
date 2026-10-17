@@ -1,11 +1,13 @@
 ---
 name: megahit
 description: >
-  Ultra-fast memory-efficient metagenome assembler. Use this skill when working with megahit: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/voutcn/megahit. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  Ultra-fast memory-efficient metagenome assembler. Use for installation, parameter
+  choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['assembly', 'contigs']
-upstream: https://github.com/voutcn/megahit
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "assembly, contigs"
+  metagenomics.upstream: "https://github.com/voutcn/megahit"
 ---
 
 # MEGAHIT
@@ -16,7 +18,7 @@ Upstream: [voutcn/megahit](https://github.com/voutcn/megahit) (v1.2.9 widely use
 
 Li, D., Liu, C.-M., Luo, R., Sadakane, K. & Lam, T.-W. MEGAHIT: an ultra-fast single-node solution for large and complex metagenomics assembly via succinct de Bruijn graph. *Bioinformatics* **31**, 1674–1676 (2015). https://doi.org/10.1093/bioinformatics/btv033
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

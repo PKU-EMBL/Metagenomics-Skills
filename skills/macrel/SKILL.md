@@ -1,15 +1,14 @@
 ---
 name: macrel
 description: >
-  Screen genomes and metagenomes for antimicrobial peptides (AMPs). Use this skill when working with macrel: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/BigDataBiology/macrel. For routing across mining tasks use microbial-mining.
-  For stage order use metagenomics-workflow.
+  Screen genomes and metagenomes for antimicrobial peptides (AMPs). Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['AMP', 'antimicrobial-peptide', 'genome-mining']
-upstream: https://github.com/BigDataBiology/macrel
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "AMP, antimicrobial-peptide, genome-mining"
+  metagenomics.upstream: "https://github.com/BigDataBiology/macrel"
+  metagenomics.stage: "mining"
 ---
 
 # Macrel
@@ -20,7 +19,7 @@ Upstream: [Macrel](https://github.com/BigDataBiology/macrel)
 
 Santos-Júnior, C. D., Pan, S., Zhao, X. & Coelho, L. P. Macrel: antimicrobial peptide screening in genomes and metagenomes. *PeerJ* **8**, e10555 (2020). https://doi.org/10.7717/peerj.10555
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

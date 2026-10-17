@@ -1,7 +1,7 @@
 interface:
   display_name: "DeepARG"
-  short_description: "Deep-learning prediction of antibiotic resistance genes from metagenomic data"
-  default_prompt: "Use $deeparg for Deep-learning prediction of antibiotic resistance genes from metagenomic data"
+  short_description: "Deep-learning prediction of antibiotic resistance genes"
+  default_prompt: "Use $deeparg for this task: Deep-learning prediction of antibiotic resistance genes. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

@@ -1,19 +1,19 @@
 ---
 name: binchicken
 description: >
-  Bin Chicken — targeted coassembly planning for recovering low-abundance /
-  novel MAGs by grouping metagenomes that share marker-gene signal (SingleM).
-  Use when: (1) Public or large cohorts where all-vs-all coassembly is impossible,
-  (2) Prioritizing sample subsets for coassembly to recover rare lineages,
-  (3) Novelty-focused recovery against reference genomes, (4) Study-design of
-  coassembly strata. Upstream: https://github.com/AroneyS/binchicken.
-  For general coassembly vs individual design use study-design.
-  For binning after coassembly use basalt / metabat2 / etc.
+  Bin Chicken — targeted coassembly planning for recovering low-abundance / novel MAGs
+  by grouping metagenomes that share marker-gene signal (SingleM). Use when: (1) Public
+  or large cohorts where all-vs-all coassembly is impossible, (2) Prioritizing sample
+  subsets for coassembly to recover rare lineages, (3) Novelty-focused recovery against
+  reference genomes, (4) Study-design of coassembly strata. For general coassembly vs
+  individual design use study-design. For binning after coassembly use basalt / metabat2
+  / etc.
 license: MIT
-category: analysis-tools
-tags: [coassembly, low-abundance, BinChicken, SingleM, MAG]
-upstream: https://github.com/AroneyS/binchicken
-stage: assembly
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "coassembly, low-abundance, BinChicken, SingleM, MAG"
+  metagenomics.upstream: "https://github.com/AroneyS/binchicken"
+  metagenomics.stage: "assembly"
 ---
 
 # Bin Chicken
@@ -26,7 +26,7 @@ Aroney, S. T. N., Newell, R. J. P., Tyson, G. W. & Woodcroft, B. J. Bin Chicken:
 targeted metagenomic coassembly for the efficient recovery of novel genomes.
 *Nat. Methods* (2025). https://doi.org/10.1038/s41592-025-02901-1
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

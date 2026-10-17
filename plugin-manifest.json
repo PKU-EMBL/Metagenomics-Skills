@@ -1,7 +1,7 @@
 {
   "name": "Metagenomics Skills",
-  "description": "Shotgun metagenomics Agent Skills \u2014 QC, assembly, mapping, binning, taxonomy, function, microbial mining, CGE Finders, language models, and research analysis",
-  "version": "1.21.0",
+  "description": "Portable Agent Skills for reproducible shotgun metagenomics: study design, QC, assembly, mapping, binning, taxonomy, function, mining, statistics, and reporting",
+  "version": "1.22.0",
   "author": "PKU-EMBL",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",
@@ -104,12 +104,25 @@
     "phylogenomics",
     "basalt"
   ],
+  "skill_profiles": [
+    "routing",
+    "core",
+    "read-profiling",
+    "genome-resolved",
+    "mining",
+    "statistics",
+    "ai-search",
+    "full"
+  ],
   "platforms": [
     "claude-code",
     "codex",
     "cursor",
     "kimi-code",
+    "zcode",
+    "qwen-code",
     "grok-build",
+    "agent-plugins-v1",
     "agentskills"
   ]
 }

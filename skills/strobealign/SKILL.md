@@ -1,15 +1,15 @@
 ---
 name: strobealign
 description: >
-  Ultra-fast short-read alignment with flexible seed size for metagenome
-  coverage mapping. Use when mapping many Illumina samples to large contig
-  sets before binning, or when Bowtie2/BWA is the throughput bottleneck.
-  Upstream: https://github.com/ksahlin/strobealign. Pair with samtools.
+  Ultra-fast short-read alignment with flexible seed size for metagenome coverage
+  mapping. Use when mapping many Illumina samples to large contig sets before binning,
+  or when Bowtie2/BWA is the throughput bottleneck. Pair with samtools.
 license: MIT
-category: analysis-tools
-tags: [mapping, alignment, short-read, coverage]
-upstream: https://github.com/ksahlin/strobealign
-stage: mapping
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "mapping, alignment, short-read, coverage"
+  metagenomics.upstream: "https://github.com/ksahlin/strobealign"
+  metagenomics.stage: "mapping"
 ---
 
 # strobealign

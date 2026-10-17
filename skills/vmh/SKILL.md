@@ -2,15 +2,15 @@
 name: vmh
 description: >
   Virtual Metabolic Human (VMH) database — human and gut microbiome metabolism
-  integrated with nutrition and disease knowledge for GEM interpretation.
-  Use when: (1) Contextualizing gapseq / AGORA-style models, (2) Linking
-  metabolites, microbes, and nutrition, (3) Browsing human–microbiome metabolic
-  resources. Portal: https://www.vmh.life. Pair with gapseq for reconstruction;
-  do not treat VMH entries as measured fluxes in your sample.
+  integrated with nutrition and disease knowledge for GEM interpretation. Use when: (1)
+  Contextualizing gapseq / AGORA-style models, (2) Linking metabolites, microbes, and
+  nutrition, (3) Browsing human–microbiome metabolic resources. Pair with gapseq for
+  reconstruction; do not treat VMH entries as measured fluxes in your sample.
 license: MIT
-category: utilities
-tags: [VMH, GEMs, metabolism, database, gut]
-upstream: https://www.vmh.life
+metadata:
+  metagenomics.category: "utilities"
+  metagenomics.tags: "VMH, GEMs, metabolism, database, gut"
+  metagenomics.upstream: "https://www.vmh.life"
 ---
 
 # Virtual Metabolic Human (VMH)
@@ -23,7 +23,7 @@ Noronha, A. *et al.* The Virtual Metabolic Human database: integrating human and
 gut microbiome metabolism with nutrition and disease. *Nucleic Acids Res.*
 **47**, D614–D624 (2019). https://doi.org/10.1093/nar/gky992
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

@@ -1,11 +1,13 @@
 ---
 name: prodigal
 description: >
-  Protein-coding gene prediction; use -p meta for metagenomes. Use this skill when working with prodigal: installing, choosing parameters, running commands, interpreting outputs, or troubleshooting. Upstream: https://github.com/hyattpd/Prodigal. For routing across tools, use tool-selection. For end-to-end pipelines, use metagenomics-workflow.
+  Protein-coding gene prediction; use -p meta for metagenomes. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['genes', 'orf']
-upstream: https://github.com/hyattpd/Prodigal
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "genes, orf"
+  metagenomics.upstream: "https://github.com/hyattpd/Prodigal"
 ---
 
 # Prodigal
@@ -16,7 +18,7 @@ Upstream: [hyattpd/Prodigal](https://github.com/hyattpd/Prodigal)
 
 Hyatt, D. *et al.* Prodigal: prokaryotic gene recognition and translation initiation site identification. *BMC Bioinformatics* **11**, 119 (2010). https://doi.org/10.1186/1471-2105-11-119
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

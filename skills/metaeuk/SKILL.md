@@ -1,17 +1,17 @@
 ---
 name: metaeuk
 description: >
-  MetaEuk — sensitive gene discovery and annotation on eukaryotic metagenomic
-  contigs using MMseqs2 homology + exon dynamic programming (Söding lab). Use
-  when: (1) Calling genes on eukaryotic contigs/MAGs, (2) Annotating via protein
-  or profile targets, (3) Contig taxonomy via MetaEuk predictions. Upstream:
-  https://github.com/soedinglab/metaeuk. Not a prokaryotic default (prefer
-  prodigal/bakta). Route via homology-search / function.
+  MetaEuk — sensitive gene discovery and annotation on eukaryotic metagenomic contigs
+  using MMseqs2 homology + exon dynamic programming (Söding lab). Use when: (1) Calling
+  genes on eukaryotic contigs/MAGs, (2) Annotating via protein or profile targets, (3)
+  Contig taxonomy via MetaEuk predictions. Not a prokaryotic default (prefer
+  prodigal/bakta).
 license: MIT
-category: analysis-tools
-tags: [MetaEuk, eukaryotic, gene-prediction, MMseqs2, metagenomics]
-upstream: https://github.com/soedinglab/metaeuk
-stage: function
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "MetaEuk, eukaryotic, gene-prediction, MMseqs2, metagenomics"
+  metagenomics.upstream: "https://github.com/soedinglab/metaeuk"
+  metagenomics.stage: "function"
 ---
 
 # MetaEuk
@@ -24,7 +24,7 @@ Levy Karin, E., Mirdita, M. & Söding, J. MetaEuk—sensitive, high-throughput
 gene discovery and annotation for large-scale eukaryotic metagenomics.
 *Microbiome* **8**, 48 (2020). https://doi.org/10.1186/s40168-020-00808-x
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

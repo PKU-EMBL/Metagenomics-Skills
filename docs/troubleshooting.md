@@ -2,10 +2,29 @@
 
 ## Skills not loading
 
-1. Confirm `skills/<name>/SKILL.md` exists
-2. Re-run `./scripts/install-platforms.sh` for your platform
-3. Restart the agent session
-4. For Claude, reinstall the marketplace plugin
+1. Confirm `<skills-root>/<name>/SKILL.md` exists and is readable.
+2. Print the authoritative targets:
+   `python3 scripts/install-skills.py --list-platforms`.
+3. Preview the exact install:
+   `python3 scripts/install-skills.py --dry-run --user --profile routing <platform>`.
+4. If links are present but ignored, retry into a temporary target with
+   `--mode copy`; some sandboxes do not follow external symlinks.
+5. Start a new agent session or refresh its Skills cache/panel.
+6. Check for a same-name project skill shadowing the user skill.
+7. Run `python3 scripts/validate-skills.py` in the source checkout.
+
+Platform checks:
+
+| Client | Check |
+|--------|-------|
+| Kimi Code | `kimi --skills-dir /absolute/path/to/skills` isolates discovery problems |
+| ZCode | Inspect `~/.zcode/skills` and `.agents/skills`; plugin users must install/enable the marketplace entry |
+| Qwen Code | Inspect `~/.qwen/skills` or `.qwen/skills`, restart, then open `/skills` |
+| Codex | Run `codex plugin list`; for direct installs inspect `~/.agents/skills` / `.agents/skills` |
+| Claude Code | Reinstall/update the marketplace plugin or inspect `.claude/skills` |
+
+A smaller profile can also prevent metadata-budget truncation: install
+`routing` or `core` into a clean target instead of all 163 skills.
 
 ## Missing bioinformatics binaries
 

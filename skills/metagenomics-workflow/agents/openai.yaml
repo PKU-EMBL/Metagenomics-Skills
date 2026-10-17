@@ -1,7 +1,7 @@
 interface:
   display_name: "Metagenomics workflow"
-  short_description: "Stage order: QC, assembly, mapping, binning, taxonomy, function, mining"
-  default_prompt: "Use $metagenomics-workflow to order the full shotgun path including mapping and microbial mining."
+  short_description: "Order and gate an end-to-end shotgun metagenomics workflow"
+  default_prompt: "Use $metagenomics-workflow for this task: Order and gate an end-to-end shotgun metagenomics workflow. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

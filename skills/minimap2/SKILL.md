@@ -1,15 +1,14 @@
 ---
 name: minimap2
 description: >
-  Fast pairwise alignment for long reads and genome-to-genome maps. Use this skill when working with minimap2: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/lh3/minimap2. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Fast pairwise alignment for long reads and genome-to-genome maps. Use for
+  installation, parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['mapping', 'alignment', 'long-read']
-upstream: https://github.com/lh3/minimap2
-stage: mapping
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "mapping, alignment, long-read"
+  metagenomics.upstream: "https://github.com/lh3/minimap2"
+  metagenomics.stage: "mapping"
 ---
 
 # Minimap2
@@ -20,7 +19,7 @@ Upstream: [Minimap2](https://github.com/lh3/minimap2)
 
 Li, H. Minimap2: pairwise alignment for nucleotide sequences. *Bioinformatics* **34**, 3094–3100 (2018). https://doi.org/10.1093/bioinformatics/bty191
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

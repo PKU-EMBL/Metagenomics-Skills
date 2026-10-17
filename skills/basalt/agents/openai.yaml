@@ -1,7 +1,7 @@
 interface:
   display_name: "BASALT"
   short_description: "PKU-EMBL BASALT and BASALT-Air MAG recovery"
-  default_prompt: "Use $basalt to run or design a BASALT/BASALT-Air refined MAG recovery workflow."
+  default_prompt: "Use $basalt for this task: PKU-EMBL BASALT and BASALT-Air MAG recovery. Inspect inputs, ask for missing requirements, and verify outputs before reporting success."
 
 policy:
   allow_implicit_invocation: true

@@ -22,17 +22,32 @@ detail belongs inside each skill's own `references/` folder.
 
 ## Required frontmatter
 
+Use only fields allowed by the portable Agent Skills specification. Package
+annotations belong under string-to-string `metadata` keys:
+
 ```yaml
 ---
 name: skill-name
 description: >
-  What it does. Use this skill when: (1) ..., (2) ..., (3) ...
-  For related work, use other-skill.
+  What it does and when the agent should use it. Mention adjacent skills when
+  that prevents false triggering.
 license: MIT
-category: analysis-tools | evaluation | utilities | orchestration
-tags: [relevant, tags]
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "relevant, comma-separated, tags"
+  metagenomics.upstream: "https://example.org/upstream"
+  metagenomics.stage: "assembly"
 ---
 ```
+
+Do not add vendor-only top-level keys. If a client-specific field is essential,
+document the compatibility trade-off and keep the canonical skill usable by
+clients that ignore it.
+
+Optional Codex UI metadata lives in `agents/openai.yaml`. Keep `display_name`
+at 3–30 characters, `short_description` at 25–64, and `default_prompt` at no
+more than 200 characters. The prompt must invoke `$<skill-name>` and require
+input inspection and output verification.
 
 ## Categories
 
@@ -45,20 +60,36 @@ tags: [relevant, tags]
 
 ## Checklist for new skills
 
-- [ ] `SKILL.md` under 500 lines
-- [ ] Frontmatter complete
-- [ ] Cross-links to related skills
-- [ ] `agents/openai.yaml` present
-- [ ] Listed in `docs/skills.md` and `plugin-manifest.json`
-- [ ] No vendor-specific Cursor trailers in commits
-- [ ] Works via `scripts/install-platforms.sh`
+- [ ] `SKILL.md` under 500 lines with a precise what+when description
+- [ ] Portable frontmatter complete; directory and `name` match
+- [ ] Commands validate inputs, quote paths, capture logs, and verify outputs
+- [ ] Cross-links to related skills; every bundled resource disclosed from `SKILL.md`
+- [ ] No relative link escapes the skill bundle
+- [ ] Optional `agents/openai.yaml` included only when useful for Codex UI metadata
+- [ ] Listed in `docs/skills.md` and counted in `plugin-manifest.json`
+- [ ] Added to a task profile when appropriate
+- [ ] `python3 scripts/validate-skills.py` passes
+- [ ] Installer copy-mode smoke test passes
 
 ## Multi-platform
 
-Update manifests if packaging changes:
+Update all applicable package surfaces when packaging or versions change:
 
-- `.claude-plugin/marketplace.json`
+- portable `plugin.json` (Agent Plugins v1)
+- `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json`
 - `.codex-plugin/plugin.json`
 - `.cursor-plugin/plugin.json`
+- `.zcode-plugin/plugin.json` and root `marketplace.json`
+- `qwen-extension.json`
 - `plugin-manifest.json`
-- `docs/multi-platform.md`
+- `config/skill-profiles.json` and `docs/multi-platform.md`
+
+Run locally:
+
+```bash
+python3 -m pip install -r requirements-dev.txt
+python3 scripts/validate-skills.py
+python3 scripts/install-skills.py --list-profiles
+python3 scripts/install-skills.py --target "$(mktemp -d)/skills" \
+  --profile routing --mode copy
+```

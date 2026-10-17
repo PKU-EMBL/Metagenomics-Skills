@@ -1,15 +1,14 @@
 ---
 name: maxbin2
 description: >
-  Automated multi-metagenome contig binning. Use this skill when working with maxbin2: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://sourceforge.net/projects/maxbin2/. For stage routing use tool-selection /
-  metagenomics-workflow.
+  Automated multi-metagenome contig binning. Use for installation, parameter choice,
+  execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['binning', 'maxbin']
-upstream: https://sourceforge.net/projects/maxbin2/
-stage: binning
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "binning, maxbin"
+  metagenomics.upstream: "https://sourceforge.net/projects/maxbin2/"
+  metagenomics.stage: "binning"
 ---
 
 # MaxBin 2
@@ -20,7 +19,7 @@ Upstream: [MaxBin 2](https://sourceforge.net/projects/maxbin2/)
 
 Wu, Y.-W., Simmons, B. A. & Singer, S. W. MaxBin 2.0: an automated binning algorithm to recover genomes from multiple metagenomic datasets. *Bioinformatics* **32**, 605–607 (2016). https://doi.org/10.1093/bioinformatics/btv638
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 

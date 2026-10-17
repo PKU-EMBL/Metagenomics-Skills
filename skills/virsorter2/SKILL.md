@@ -1,15 +1,14 @@
 ---
 name: virsorter2
 description: >
-  Viral sequence identification from metagenomic assemblies. Use this skill when working with virsorter2: installing, choosing
-  parameters, running commands, interpreting outputs, or troubleshooting.
-  Upstream: https://github.com/jiarong/VirSorter2. For routing across mining tasks use microbial-mining.
-  For stage order use metagenomics-workflow.
+  Viral sequence identification from metagenomic assemblies. Use for installation,
+  parameter choice, execution, output interpretation, or troubleshooting.
 license: MIT
-category: analysis-tools
-tags: ['virus', 'phage', 'genome-mining']
-upstream: https://github.com/jiarong/VirSorter2
-stage: mining
+metadata:
+  metagenomics.category: "analysis-tools"
+  metagenomics.tags: "virus, phage, genome-mining"
+  metagenomics.upstream: "https://github.com/jiarong/VirSorter2"
+  metagenomics.stage: "mining"
 ---
 
 # VirSorter2
@@ -20,7 +19,7 @@ Upstream: [VirSorter2](https://github.com/jiarong/VirSorter2)
 
 Guo, J. *et al.* VirSorter2: a multi-classifier, expert-guided approach to detect diverse DNA and RNA viruses. *Microbiome* **9**, 37 (2021). https://doi.org/10.1186/s40168-020-00990-y
 
-See also [docs/references.md](../../docs/references.md).
+See also [docs/references.md](https://github.com/PKU-EMBL/Metagenomics-Skills/blob/main/docs/references.md).
 
 ## Analytical thinking
 
