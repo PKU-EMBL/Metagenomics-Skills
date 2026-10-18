@@ -2,7 +2,10 @@
 
 Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining → research analysis), plus homology, phylogenomics, and language-model hubs.
 
-Total: **201** skills.
+Total: **226** skills.
+
+For ARG, mobile-element, host, HGT, source, strain-sharing, and transmission evidence,
+see the [typed evidence guide](arg-mge-host-strain.md).
 
 ---
 
@@ -80,6 +83,8 @@ Total: **201** skills.
 | `gunc` | [gunc](https://github.com/grp-bork/gunc) | Detect chimerism/contamination in prokaryotic genomes/MAGs. |
 | `mag-qc` | — | Quality thresholds after binning (completeness/contamination, dRep ANI, publication vs refinement gates). |
 | `metacoag` | [MetaCoAG](https://github.com/metagentools/MetaCoAG) | Assembly-graph, coverage, composition, and marker-aware contig binning. |
+| `metator` | [MetaTOR](https://github.com/koszullab/metaTOR) | Build normalized meta-Hi-C contact networks and proximity-derived MAGs. |
+| `hicbin` | [HiCBin](https://github.com/dyxstat/HiCBin) | Normalize/filter Hi-C contacts and recover MAGs with Leiden clustering. |
 
 ## 5. Taxonomic annotation
 
@@ -116,6 +121,9 @@ Total: **201** skills.
 | `salmon` | [salmon](https://github.com/COMBINE-lab/salmon) | Fast quantification of gene/transcript abundance; use --meta for metagenomes. |
 | `eggnog-mapper` | [eggnog-mapper](https://github.com/eggnogdb/eggnog-mapper) | Orthology-based functional annotation (COG/KEGG/CAZy via eggNOG). |
 | `rgi` | [rgi](https://github.com/arpcard/rgi) | Antibiotic resistance gene annotation against CARD. |
+| `amrfinderplus` | [AMRFinderPlus](https://github.com/ncbi/amr) | Curated acquired ARG, mutation, stress, and selected virulence calls with NCBI databases. |
+| `args-oap` | [ARGs-OAP](https://github.com/xinehc/args_oap) | Environmental read-based SARG profiling and normalized ARG quantification. |
+| `pathofact` | [PathoFact 2.0](https://gitlab.com/uniluxembourg/lcsb/systems-ecology/pathofact2) | Integrated ARG, virulence, toxin, BGC, and geNomad context workflow. |
 | `barrnap` | [barrnap](https://github.com/tseemann/barrnap) | Basic rapid ribosomal RNA predictor for genomes. |
 | `biobakery-databases` | [biobakery-databases](https://github.com/biobakery/biobakery) | Install and pin bioBakery reference databases for MetaPhlAn and HUMAnN (ChocoPhlAn markers, UniRef gene families, MetaCyc pathways, utility mapping). |
 | `metatranscriptomics` | — | Route microbial RNA QC, rRNA/host depletion, quantification, function, and DNA-aware interpretation. |
@@ -131,6 +139,10 @@ Total: **201** skills.
 | Skill | Upstream | Purpose |
 |-------|----------|---------|
 | `microbial-mining` | — | Route mining: BGCs, AMR, MGEs, element cycling, defense, QS, metabolism. |
+| `resistome-analysis` | — | Separate ARG detection, quantification, physical context, host, and phenotype evidence. |
+| `mobilome-analysis` | — | Route plasmid/virus/ICE/integron discovery, boundaries, typing, cargo, and hosts. |
+| `arg-mge-host-linkage` | — | Grade ARG–MGE–host evidence from co-occurrence through molecule/experimental support. |
+| `horizontal-gene-transfer` | — | Choose HGT methods by evolutionary scale and audit donor/direction uncertainty. |
 | `antismash` | [antismash](https://github.com/antismash/antismash) | Detect and annotate biosynthetic gene clusters (BGCs) on genomes and MAGs. |
 | `bigscape` | [bigscape](https://github.com/medema-group/BiG-SCAPE) | Cluster and compare biosynthetic gene clusters across genomes with BiG-SCAPE. |
 | `genomad` | [genomad](https://github.com/apcamargo/genomad) | Identify plasmids, viruses, and other mobile genetic elements. |
@@ -142,6 +154,8 @@ Total: **201** skills.
 | `integronfinder` | [Integron_Finder](https://github.com/gem-pasteur/Integron_Finder) | Detect integrons and gene cassettes. |
 | `mob-suite` | [mob-suite](https://github.com/phac-nml/mob-suite) | Plasmid reconstruction and MOB/replicon typing. |
 | `plasmaag` | [plasmaag](https://github.com/RasmussenLab/PlasMAAG) | Plasmid and organism reconstruction via assembly–alignment graphs. |
+| `plasx` | [PlasX](https://github.com/michaelkyu/PlasX) | Classify plasmid-like contigs from compatible gene-family architecture. |
+| `mobmess` | [MobMess](https://github.com/michaelkyu/MobMess) | Cluster plasmids and infer sequence containment/backbone/compound systems. |
 | `cge-finders` | — | Route CGE Finder screens (plasmid / AMR / virulence / MGE). |
 | `plasmidfinder` | [PlasmidFinder](https://github.com/genomicepidemiology/plasmidfinder) | CGE replicon / plasmid typing. |
 | `pmlst` | [pmlst](https://github.com/ssi-dk/pmlst) | Plasmid multilocus sequence typing (pMLST schemes). |
@@ -172,6 +186,11 @@ Total: **201** skills.
 | `votu-workflow` | [CheckV utilities](https://bitbucket.org/berkeleylab/checkv/) | Build quality-gated viral operational taxonomic units using 95% ANI and 85% aligned fraction. |
 | `vibrant` | [VIBRANT](https://github.com/AnantharamanLab/VIBRANT) | Legacy viral recovery, quality/category summaries, and auxiliary-metabolic-gene candidates. |
 | `iphop` | [iPHoP](https://github.com/simroux/iphop) | Integrate multiple signals to predict prokaryotic hosts of phages. |
+| `viralcc` | [ViralCC](https://github.com/dyxstat/ViralCC) | Bin viral contigs and inspect exploratory virus–host meta-Hi-C links. |
+| `spacepharer` | [SpacePHARER](https://github.com/soedinglab/spacepharer) | Predict phage hosts from aggregated CRISPR spacer evidence with FDR controls. |
+| `metachip` | [MetaCHIP2](https://github.com/songweizhi/MetaCHIP2) | Detect candidate HGTs with best-match and phylogenetic reconciliation. |
+| `waafle` | [WAAFLE](https://github.com/biobakery/waafle) | Detect taxonomic LGT mosaics on metagenomic contigs with junction QC. |
+| `hgtector` | [HGTector2](https://github.com/qiyunlab/HGTector) | Find taxonomically partitioned homology outliers as putative acquired genes. |
 
 ## Strain / microdiversity
 
@@ -181,6 +200,13 @@ Total: **201** skills.
 | `strain-resolved-analysis` | — | Route marker phylogenies, cohort SNVs, within-population diversity, and strain sharing. |
 | `strainphlan` | [StrainPhlAn](https://github.com/biobakery/MetaPhlAn) | Reconstruct marker-based within-species strain phylogenies. |
 | `metasnv` | [metaSNV](https://github.com/metasnv-tool/metaSNV) | Call and summarize population SNVs across metagenomic cohorts. |
+| `midas2` | [MIDAS2](https://github.com/pollardlab/MIDAS) | Database-conditioned species, SNV, and pangenome gene-content profiling. |
+| `strainge` | [StrainGE](https://github.com/broadinstitute/StrainGE) | Low-abundance strain reference search and StrainGR variant/gap comparison. |
+| `strainfacts` | [StrainFacts](https://github.com/bsmith89/StrainFacts) | Jointly deconvolve latent strain genotypes and abundances from metagenotypes. |
+| `strain-transmission` | — | Grade strain sharing and transmission with callability, mixture, background, and epidemiology. |
+| `poppunk` | [PopPUNK](https://github.com/bacpop/PopPUNK) | Core/accessory k-mer population structure and validated query assignment. |
+| `gubbins` | [Gubbins](https://github.com/nickjcroucher/gubbins) | Recombination-aware bacterial phylogeny from whole-genome alignments. |
+| `transphylo` | [TransPhylo](https://github.com/xavierdidelot/TransPhylo) | Infer posterior transmission trees and unsampled intermediates from dated phylogenies. |
 
 ## Public data
 
@@ -218,6 +244,8 @@ Total: **201** skills.
 | `netcomi` | [NetCoMi](https://github.com/stefpeschel/NetCoMi) | Construct, compare, and assess microbiome association networks. |
 | `source-tracking` | — | Design source–sink analyses with FEAST and contamination-aware controls. |
 | `feast` | [FEAST](https://github.com/cozygene/FEAST) | Estimate microbial source contributions to sink communities. |
+| `sourcetracker2` | [SourceTracker2](https://github.com/biota/sourcetracker2) | Bayesian source–sink mixture estimation with an unknown-source component. |
+| `transfer-network-analysis` | — | Validate and analyze evidence-typed ARG/MGE/host/HGT/source/strain/transmission graphs. |
 | `multiqc` | [MultiQC](https://github.com/MultiQC/MultiQC) | Aggregate FastQC/mapping/QUAST logs into one HTML report. |
 | `nextflow` | [Nextflow](https://github.com/nextflow-io/nextflow) | Portable containerized workflows (± nf-core). |
 | `snakemake` | [Snakemake](https://github.com/snakemake/snakemake) | Rule-based reproducible workflow DAGs. |

@@ -60,8 +60,8 @@ The legacy command remains supported:
 
 - A platform key, `all`, or `--target PATH` is required; a bare command never
   modifies every user directory implicitly.
-- `--profile full` is the backward-compatible default and exposes all 201
-  skills. `core` (48 skills) is recommended when the client has a small skill
+- `--profile full` is the backward-compatible default and exposes all 226
+  skills. `core` (54 skills) is recommended when the client has a small skill
   metadata budget.
 - Repeat `--profile` to union task-focused sets. With profiles, `--skill NAME`
   adds individual skills; without a profile, one or more `--skill` options form
@@ -103,7 +103,9 @@ unrelated directories are never pruned.
 | `contamination` | Controls, contaminant evidence, and host depletion |
 | `long-read` | ONT/PacBio QC, filtering, mapping, assembly, and profiling |
 | `virome` | Viral discovery, quality, vOTUs, abundance, taxonomy, and hosts |
-| `strain-resolved` | Marker phylogenies, cohort SNVs, and microdiversity |
+| `strain-resolved` | Marker phylogenies, cohort SNVs, microdiversity, and transmission evidence |
+| `resistome-mobilome` | ARG, MGE, host-linkage, and HGT evidence layers |
+| `transmission` | Strain sharing, source mixtures, recombination, and transmission hypotheses |
 | `eukaryotic` | Microbial-eukaryote contigs, genes, bins, and QC |
 | `pangenome` | Prokaryotic pangenomes, annotation, dereplication, and trees |
 | `metatranscriptomics` | Microbial RNA QC, rRNA removal, quantification, and function |

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Resistome analysis"
+  short_description: "Design evidence-aware ARG analyses"
+  default_prompt: "Use $resistome-analysis to choose ARG detection and quantification methods, preserve database semantics, and define mobility, host, phenotype, and provenance boundaries."
+policy:
+  allow_implicit_invocation: true

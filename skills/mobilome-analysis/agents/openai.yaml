@@ -1,0 +1,6 @@
+interface:
+  display_name: "Mobilome analysis"
+  short_description: "Resolve plasmids, phages, and MGEs"
+  default_prompt: "Use $mobilome-analysis to route element discovery, boundary validation, typing, cargo, host linkage, and mobilome network analysis with explicit evidence limits."
+policy:
+  allow_implicit_invocation: true

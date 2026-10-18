@@ -6,7 +6,7 @@
 
 **研究设计 → 质控 → 组装 → 比对 → 分箱 → 分类 → 功能注释 → 微生物挖掘 → 统计与科研交付**
 
-仓库目前包含 **201 个** Skills，采用开放的
+仓库目前包含 **226 个** Skills，采用开放的
 [`SKILL.md` 规范](https://agentskills.io)，同一套内容可供 Claude Code、
 Codex、Cursor、Kimi Code、ZCode、Qwen Code 等 coding agent 使用。Skills
 负责给 Agent 提供领域流程、命令模式、质量门控和解释边界；它们不会代替
@@ -34,13 +34,13 @@ codex plugin add metagenomics@metagenomics-skills
 git clone https://github.com/PKU-EMBL/Metagenomics-Skills.git
 cd Metagenomics-Skills
 
-# 推荐：48 个高频 Skills，启动上下文更小
+# 推荐：54 个高频 Skills，启动上下文更小
 ./scripts/install-platforms.sh --user --profile core kimi zcode qwen
 
 # ~/.agents/skills 同时供 Codex、Kimi Code、ZCode 使用；Qwen 走原生目录
 ./scripts/install-platforms.sh --user --profile core agents qwen
 
-# 全量 201 个 Skills
+# 全量 226 个 Skills
 ./scripts/install-platforms.sh --user --profile full all
 ```
 
@@ -89,13 +89,15 @@ kimi --skills-dir "$PWD/skills"
 | `contamination` | 对照设计、污染识别和宿主 reads 去除 |
 | `long-read` | ONT / PacBio 质控、过滤、比对、组装和 profiling |
 | `virome` | 病毒发现、质量评估、vOTU、宿主和分类 |
-| `strain-resolved` | 菌株系统发育、群体 SNV 和微多样性 |
+| `strain-resolved` | 菌株系统发育、群体 SNV、微多样性和传播证据 |
+| `resistome-mobilome` | ARG、MGE、宿主关联和 HGT 分层证据 |
+| `transmission` | 菌株共享、来源混合、重组和传播模型 |
 | `eukaryotic` | 微生物真核 contig、基因、分箱和质量评估 |
 | `pangenome` | 原核泛基因组、注释、去冗余和系统发育 |
 | `metatranscriptomics` | 微生物 RNA 质控、rRNA 去除、定量和功能分析 |
 | `metabolic-modeling` | 基因组尺度和群落代谢模型 |
 | `workflows` | Nextflow、Snakemake 和固定版本的 nf-core 工作流 |
-| `full` | 全部 201 个 Skills |
+| `full` | 全部 226 个 Skills |
 
 多个 profile 可以叠加：
 
@@ -130,6 +132,7 @@ Agent 必须区分“已观察”“假设”“已生成但未执行”“已�
 详见：[coding-agent playbook](docs/agent-playbook.md) ·
 [getting started](docs/getting-started.md) ·
 [standard pipeline](docs/standard-pipeline.md) ·
+[ARG–MGE–宿主–菌株证据指南](docs/arg-mge-host-strain.md) ·
 [skills catalog](docs/skills.md)。
 
 ## 典型路线
@@ -138,8 +141,10 @@ Agent 必须区分“已观察”“假设”“已生成但未执行”“已�
   `kraken2`+`bracken` → `research-analysis`
 - Genome-resolved：QC → `megahit` / long-read assembler → mapping →
   `basalt` / ensemble binning → `checkm2` + `gunc` → `gtdbtk`
-- 病毒/MGE：`genomad` / `virsorter2` → `checkv` → `vcontact`
-- BGC/AMR/元素循环：`microbial-mining` → 对应专用 Skill
+- 病毒/MGE：`virome-analysis` → `genomad` / `virsorter2` → `checkv` → `vcontact` / `spacepharer`
+- ARG/MGE/宿主/HGT：`resistome-analysis` → `mobilome-analysis` → `arg-mge-host-linkage` / `horizontal-gene-transfer`
+- 菌株共享/传播：`strain-resolved-analysis` → `strain-transmission`；分层网络用 `transfer-network-analysis`
+- BGC/元素循环：`microbial-mining` → 对应专用 Skill
 - 统计与作图：`research-analysis` → `microeco` / `maaslin2` /
   `ancombc` / network skills
 

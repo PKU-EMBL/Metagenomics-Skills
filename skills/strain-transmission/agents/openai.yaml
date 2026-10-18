@@ -1,0 +1,6 @@
+interface:
+  display_name: "Strain transmission"
+  short_description: "Test strain sharing and transmission"
+  default_prompt: "Use $strain-transmission to define callability and background gates, choose strain tools, integrate epidemiology, and distinguish relatedness from direct transmission."
+policy:
+  allow_implicit_invocation: true

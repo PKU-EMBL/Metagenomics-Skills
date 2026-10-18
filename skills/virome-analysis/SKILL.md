@@ -1,12 +1,12 @@
 ---
 name: virome-analysis
 description: >-
-  Design and execute metagenomic virome analysis from viral-particle-enriched or bulk metagenomes through viral sequence calling, CheckV quality assessment, vOTU dereplication, annotation, abundance, taxonomy, and host prediction. Use when integrating geNomad, VirSorter2, VIBRANT, CheckV, vConTACT, and iPHoP with defensible viral quality gates.
+  Design and execute metagenomic virome analysis from viral-particle-enriched or bulk metagenomes through viral sequence calling, CheckV quality assessment, vOTU dereplication, annotation, abundance, taxonomy, and host prediction. Use when integrating geNomad, VirSorter2, VIBRANT, CheckV, vConTACT, iPHoP, SpacePHARER, or ViralCC with defensible viral quality and host-evidence gates.
 license: MIT
 compatibility: Requires assembled contigs and container/Conda-capable compute for selected viral tools.
 metadata:
   metagenomics.category: "orchestration"
-  metagenomics.tags: "virome,viruses,phages,votu,checkv,genomad,iphop"
+  metagenomics.tags: "virome,viruses,phages,votu,checkv,genomad,iphop,spacepharer,viralcc"
   metagenomics.stage: "mining"
   metagenomics.maturity: "reviewed"
   metagenomics.upstream-version: "not-applicable"
@@ -39,7 +39,7 @@ Require:
 5. **Species-level catalogue** — run `$votu-workflow` with an explicit MIUViG-compatible ANI/coverage rule.
 6. **Abundance** — map each sample to the non-redundant catalogue; specify identity, aligned fraction, and multi-mapping policy.
 7. **Taxonomy/network** — use reference similarity or `$vcontact`; preserve unclassified vOTUs.
-8. **Host evidence** — use `$iphop` plus CRISPR/provirus/co-abundance evidence where available.
+8. **Host evidence** — use `$iphop`, `$spacepharer`, provirus boundaries, or calibrated Hi-C (`$viralcc`/`$metator`) and grade each method with `$arg-mge-host-linkage`.
 9. **Function/AMGs** — require viral context and manual neighborhood review; metabolic-gene hits alone do not establish AMGs.
 
 ## Candidate reconciliation
@@ -73,7 +73,12 @@ A useful acceptance hierarchy is study-specific, but should distinguish:
 
 ## Analytical thinking
 
-A viral caller predicts sequence identity; CheckV estimates genome quality; ANI clustering defines operational populations; iPHoP predicts hosts. None experimentally validates infection, activity, or metabolic function. Viral enrichment and amplification can strongly distort relative abundance. Phrase findings as sequence-, catalogue-, or prediction-level evidence.
+A viral caller predicts sequence identity; CheckV estimates genome quality; ANI clustering defines operational populations; host tools infer method-specific links. CRISPR can reflect historical exposure and Hi-C can reflect nonspecific proximity. None experimentally validates infection, activity, or metabolic function. Viral enrichment and amplification can strongly distort relative abundance. Phrase findings as sequence-, catalogue-, or prediction-level evidence.
+
+## Related skills
+
+`genomad` · `virsorter2` · `vibrant` · `checkv` · `votu-workflow` · `vcontact` ·
+`iphop` · `spacepharer` · `viralcc` · `metator` · `arg-mge-host-linkage`
 
 ## References
 

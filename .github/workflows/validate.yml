@@ -24,20 +24,72 @@ jobs:
       - name: Check installer syntax and profiles
         run: |
           bash -n scripts/install-platforms.sh
-          python -m py_compile scripts/install-skills.py scripts/validate-skills.py
+          PYTHONPYCACHEPREFIX="$(mktemp -d)" python -m py_compile \
+            scripts/install-skills.py scripts/validate-skills.py \
+            skills/transfer-network-analysis/scripts/validate_edges.py
           python scripts/install-skills.py --list-platforms
           python scripts/install-skills.py --list-profiles
+      - name: Smoke-test typed edge validator
+        run: |
+          tmp="$(mktemp -d)"
+          python - "$tmp/edges.tsv" "$tmp/bad.tsv" <<'PY'
+          import csv
+          import sys
+          header = [
+              "edge_id", "source_id", "target_id", "source_type", "target_type",
+              "edge_type", "direction_status", "weight", "weight_scale",
+              "evidence_method", "evidence_unit", "sample_id", "direction_basis",
+              "uncertainty", "thresholds", "provenance_id",
+          ]
+          rows = [
+              ["e1", "plasmid1", "arg1", "plasmid", "arg", "contains", "directed",
+               "1", "binary", "coordinates", "interval", "s1", "contained coordinates",
+               "NA", "full interval", "p1"],
+              ["e2", "strainB", "strainA", "strain", "strain", "strain_sharing",
+               "undirected", "0.999", "ANI fraction", "callable SNVs", "pair", "s1",
+               "NA", "bootstrap CI", ">=90% callable", "p2"],
+          ]
+          for path, data in ((sys.argv[1], rows), (sys.argv[2], [rows[1][:]])):
+              with open(path, "w", newline="", encoding="utf-8") as handle:
+                  writer = csv.writer(handle, delimiter="\t", lineterminator="\n")
+                  writer.writerow(header)
+                  writer.writerows(data)
+          with open(sys.argv[2], encoding="utf-8") as handle:
+              lines = handle.readlines()
+          lines[1] = lines[1].replace("\t0.999\t", "\t1.5\t")
+          with open(sys.argv[2], "w", encoding="utf-8") as handle:
+              handle.writelines(lines)
+          PY
+          python skills/transfer-network-analysis/scripts/validate_edges.py \
+            "$tmp/edges.tsv" "$tmp/validated.tsv" "$tmp/summary.json"
+          python - "$tmp/validated.tsv" "$tmp/summary.json" <<'PY'
+          import csv
+          import json
+          import sys
+          with open(sys.argv[1], newline="", encoding="utf-8") as handle:
+              rows = list(csv.DictReader(handle, delimiter="\t"))
+          assert rows[1]["source_id"] == "strainA"
+          assert rows[1]["weight_scale"] == "ani_fraction"
+          with open(sys.argv[2], encoding="utf-8") as handle:
+              summary = json.load(handle)
+          assert summary["rows"] == 2 and summary["schema_version"] == "1.0"
+          PY
+          if python skills/transfer-network-analysis/scripts/validate_edges.py \
+            "$tmp/bad.tsv" "$tmp/bad-out.tsv" "$tmp/bad-summary.json"; then
+            echo "invalid edge fixture unexpectedly passed" >&2
+            exit 1
+          fi
       - name: Smoke-test copy installation and managed pruning
         run: |
           target="$(mktemp -d)/skills"
           python scripts/install-skills.py --target "$target" --profile core --mode copy
-          test "$(find "$target" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l)" -eq 48
+          test "$(find "$target" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l)" -eq 54
           python scripts/install-skills.py --target "$target" --profile core --mode copy \
             | tee /tmp/install-rerun.log
-          grep -q 'unchanged=48' /tmp/install-rerun.log
+          grep -q 'unchanged=54' /tmp/install-rerun.log
           python scripts/install-skills.py --target "$target" --profile routing \
             --mode copy --prune
-          test "$(find "$target" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l)" -eq 16
+          test "$(find "$target" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l)" -eq 22
           individual="$(mktemp -d)/skills"
           python scripts/install-skills.py --target "$individual" \
             --skill fastp --skill multiqc --mode copy

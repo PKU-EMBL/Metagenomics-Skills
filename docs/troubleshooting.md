@@ -24,7 +24,7 @@ Platform checks:
 | Claude Code | Reinstall/update the marketplace plugin or inspect `.claude/skills` |
 
 A smaller profile can also prevent metadata-budget truncation: install
-`routing` or `core` into a clean target instead of all 201 skills.
+`routing` or `core` into a clean target instead of all 226 skills.
 
 ## Missing bioinformatics binaries
 

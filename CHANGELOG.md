@@ -1,3 +1,29 @@
+## [1.24.0] - 2026-10-18
+
+### Added
+- Six evidence-aware workflow Skills for resistome analysis, mobilome analysis,
+  ARG–MGE–host linkage, horizontal gene transfer, strain transmission, and typed
+  transfer-network analysis
+- Nineteen reviewed tool Skills: AMRFinderPlus, ARGs-OAP, PathoFact 2.0, PlasX,
+  MobMess, MetaCHIP2, WAAFLE, HGTector2, MetaTOR, HiCBin, ViralCC,
+  SpacePHARER, MIDAS2, StrainGE, StrainFacts, PopPUNK, Gubbins,
+  SourceTracker2, and TransPhylo
+- A bundled edge-schema validator and the ARG–MGE–host–strain evidence guide,
+  including resistome R0–R5, linkage L0–L5, and transmission T0–T4 ladders
+- `resistome-mobilome` and `transmission` installation profiles plus six OpenAI
+  UI manifests for the new workflow Skills
+
+### Changed
+- Updated DeepARG to the 2.0.0 `deeparg predict` contract and pinned the reviewed
+  Hugging Face model/database bundle revision
+- Expanded mining, strain, source-tracking, statistics, and end-to-end routers so
+  ARG detection, abundance, physical co-location, host linkage, HGT, source
+  contribution, strain sharing, and direct transmission remain separate claims
+- Added evidence-typed network semantics for containment, host, Hi-C, sequence,
+  gene-sharing, co-occurrence, source, HGT, strain-sharing, and transmission edges
+- Synchronized the catalog, profiles, documentation, installer metadata, and all
+  platform manifests at package version 1.24.0 (226 Skills)
+
 ## [1.23.0] - 2026-10-18
 
 ### Added

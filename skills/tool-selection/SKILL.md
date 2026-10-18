@@ -35,18 +35,24 @@ Start from the **stage**, then the deliverable.
            · eggnog-mapper · rgi · homology-search
            RNA → metatranscriptomics · sortmerna; pangenome → pangenome-analysis · panaroo · ppanggolin
            models → community-metabolic-modeling · carveme · micom
-7 Mining   microbial-mining → antismash · bigscape · genomad · virsorter2 · checkv · vcontact
-           · mobileog · isescan · integronfinder · mob-suite · plasmaag · macrel
+7 Mining   microbial-mining → resistome-analysis · mobilome-analysis · arg-mge-host-linkage
+           · horizontal-gene-transfer · antismash · bigscape · genomad · virsorter2 · checkv · vcontact
+           · mobileog · isescan · integronfinder · mob-suite · plasx · mobmess · plasmaag · macrel
            · cge-finders · plasmidfinder · resfinder · pointfinder
            · disinfinder · virulencefinder · mobileelementfinder
            · pmlst · mlst · staramr · abricate
+           · amrfinderplus · args-oap · pathofact · deeparg
+           · metachip · waafle · hgtector · metator · hicbin · viralcc · spacepharer
            · element-cycling · metabolic · mebs · fegenie · dom-biosurfactant
-           · hadeg · biosurfdb · dram · dbcan · gapseq · vmh · deeparg
+           · hadeg · biosurfdb · dram · dbcan · gapseq · vmh
            · defensefinder · padloc · qsap
-8 Report   research-analysis → multiqc · microeco · phyloseq · visualization
+8 Strain   strain-resolved-analysis → midas2 · strainge · strainfacts · instrain · strainphlan · metasnv
+           → strain-transmission → poppunk · gubbins · transphylo
+9 Report   research-analysis → multiqc · microeco · phyloseq · visualization
            · maaslin2 · ancombc · aldex2 · corncob · lefse · stamp
            · permanova · netcomi · sparcc · spieceasi · absolute-abundance
-           · source-tracking · feast · nextflow · snakemake · nf-core-mag · nf-core-taxprofiler
+           · source-tracking · feast · sourcetracker2 · transfer-network-analysis
+           · nextflow · snakemake · nf-core-mag · nf-core-taxprofiler
 ```
 
 ## Mapping head-to-head
@@ -85,9 +91,11 @@ Start from the **stage**, then the deliverable.
 | Goal | Prefer |
 |------|--------|
 | BGCs / natural products | `antismash` → `bigscape` |
-| Resistome | `rgi` (± `deeparg`); isolates `resfinder` / `staramr` |
-| Viruses / vOTUs / hosts | `virome-analysis` → `genomad`/`virsorter2`/`vibrant` → `checkv` → `votu-workflow` → `vcontact`/`iphop` |
-| Plasmids / MGEs | `genomad` plus context-specific MGE tools |
+| Resistome | `resistome-analysis` → `rgi` / `amrfinderplus` / `args-oap` / `deeparg` / `pathofact` |
+| ARG–MGE–host physical/host evidence | `arg-mge-host-linkage` |
+| HGT candidates by evolutionary scale | `horizontal-gene-transfer` → `metachip` / `waafle` / `hgtector` / `gubbins` |
+| Viruses / vOTUs / hosts | `virome-analysis` → `genomad`/`virsorter2`/`vibrant` → `checkv` → `votu-workflow` → `vcontact`/`iphop`/`spacepharer` |
+| Plasmids / MGEs | `mobilome-analysis` → `genomad` / `plasx` / `mobmess` plus context-specific MGE tools |
 | MGE proteins / IS / integrons | `mobileog` / `isescan` / `integronfinder` |
 | CGE Finders (+ pMLST / mlst / ABRicate) | `cge-finders` |
 | Plasmid MOB / replicon typing | `mob-suite` / `plasmidfinder` (± `pmlst`) |
@@ -197,7 +205,9 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 | GUI exploratory profile stats | `stamp` |
 | SparCC correlations | `sparcc` |
 | Network construction/comparison | `netcomi` (or focused `sparcc` / `spieceasi`) |
-| Source contribution estimates | `source-tracking` → `feast` |
+| Source contribution estimates | `source-tracking` → `feast` / `sourcetracker2` |
+| Evidence-typed ARG/MGE/host/strain graphs | `transfer-network-analysis` |
+| Shared strains versus transmission | `strain-transmission` after `strain-resolved-analysis` |
 | Load-aware quantities | `absolute-abundance` with measured calibration |
 | Aggregated QC HTML | `multiqc` |
 | Figure checklist by stage | `visualization` |
@@ -228,7 +238,10 @@ Post-bin polish: `anvio` (interactive) · `deepurify` (decontaminate) → re-QC.
 
 ## Related skills
 
-`metagenomics-workflow` · `microbial-mining` · `homology-search` · `phylogenomics` ·
+`metagenomics-workflow` · `microbial-mining` · `resistome-analysis` ·
+`mobilome-analysis` · `arg-mge-host-linkage` · `horizontal-gene-transfer` ·
+`strain-resolved-analysis` · `strain-transmission` · `transfer-network-analysis` ·
+`homology-search` · `phylogenomics` ·
 `genome-language-model` · `protein-language-model` · `metagenomics-llm` ·
 `element-cycling` · `dom-biosurfactant` · `cge-finders` · `research-analysis` ·
 `study-design` ·

@@ -296,6 +296,66 @@ the canonical papers to reference.
 
 138. Jolley, K. A., Bray, J. E. & Maiden, M. C. J. Open-access bacterial population genomics: BIGSdb software, the PubMLST.org website and their applications. *Wellcome Open Res.* **3**, 124 (2018). https://doi.org/10.12688/wellcomeopenres.14826.1
 
+## ARG–MGE–host linkage, HGT & transmission
+
+139. Martínez, J. L., Coque, T. M. & Baquero, F. What is a resistance gene? Ranking risk in resistomes. *Nat. Rev. Microbiol.* **13**, 116–123 (2015). https://doi.org/10.1038/nrmicro3399
+
+140. Feldgarden, M. *et al.* AMRFinderPlus and the Reference Gene Catalog facilitate examination of the genomic links among antimicrobial resistance, stress response, and virulence. *Sci. Rep.* **11**, 12728 (2021). https://doi.org/10.1038/s41598-021-91456-0
+
+141. Yin, X. *et al.* ARGs-OAP v2.0 with an expanded SARG database and Hidden Markov Models for enhancement characterization and quantification of antibiotic resistance genes in environmental metagenomes. *Bioinformatics* **34**, 2263–2270 (2018). https://doi.org/10.1093/bioinformatics/bty053
+
+142. de Nies, L. *et al.* PathoFact: a pipeline for the prediction of virulence factors and antimicrobial resistance genes in metagenomic data. *Microbiome* **9**, 49 (2021). https://doi.org/10.1186/s40168-020-00993-9
+
+143. Delgado, L. F. *et al.* PathoFact 2.0: an integrative pipeline for the prediction of antimicrobial resistance genes, virulence factors, toxins and toxin-associated proteins, and biosynthetic gene clusters in metagenomes. *GigaScience* **15**, giag062 (2026). https://doi.org/10.1093/gigascience/giag062
+
+144. Partridge, S. R., Kwong, S. M., Firth, N. & Jensen, S. O. Mobile genetic elements associated with antimicrobial resistance. *Clin. Microbiol. Rev.* **31**, e00088-17 (2018). https://doi.org/10.1128/CMR.00088-17
+
+145. Yu, M. K., Fogarty, E. C. & Eren, A. M. Diverse plasmid systems and their ecology across human gut metagenomes revealed by PlasX and MobMess. *Nat. Microbiol.* **9**, 830–847 (2024). https://doi.org/10.1038/s41564-024-01610-3
+
+146. Song, W., Wemheuer, B., Zhang, S., Steensen, K. & Thomas, T. MetaCHIP: community-level horizontal gene transfer identification through the combination of best-match and phylogenetic approaches. *Microbiome* **7**, 36 (2019). https://doi.org/10.1186/s40168-019-0649-y
+
+147. Hsu, T. Y. *et al.* Profiling lateral gene transfer events in the human microbiome using WAAFLE. *Nat. Microbiol.* **10**, 94–111 (2025). https://doi.org/10.1038/s41564-024-01881-w
+
+148. Zhu, Q., Kosoy, M. & Dittmar, K. HGTector: an automated method facilitating genome-wide discovery of putative horizontal gene transfers. *BMC Genomics* **15**, 717 (2014). https://doi.org/10.1186/1471-2164-15-717
+
+149. Baudry, L., Foutel-Rodier, T., Thierry, A., Koszul, R. & Marbouty, M. MetaTOR: a computational pipeline to recover high-quality metagenomic bins from mammalian gut proximity-ligation (meta3C) libraries. *Front. Genet.* **10**, 753 (2019). https://doi.org/10.3389/fgene.2019.00753
+
+150. Du, Y. & Sun, F. HiCBin: binning metagenomic contigs and recovering metagenome-assembled genomes using Hi-C contact maps. *Genome Biol.* **23**, 63 (2022). https://doi.org/10.1186/s13059-022-02626-w
+
+151. Du, Y., Fuhrman, J. A. & Sun, F. ViralCC retrieves complete viral genomes and virus-host pairs from metagenomic Hi-C data. *Nat. Commun.* **14**, 502 (2023). https://doi.org/10.1038/s41467-023-35945-y
+
+152. Zhang, R. *et al.* SpacePHARER: sensitive identification of phages from CRISPR spacers in prokaryotic hosts. *Bioinformatics* **37**, 3364–3366 (2021). https://doi.org/10.1093/bioinformatics/btab222
+
+153. Zhao, C., Dimitrov, B., Goldman, M., Nayfach, S. & Pollard, K. S. MIDAS2: Metagenomic Intra-species Diversity Analysis System. *Bioinformatics* **39**, btac713 (2023). https://doi.org/10.1093/bioinformatics/btac713
+
+154. van Dijk, L. R. *et al.* StrainGE: a toolkit to track and characterize low-abundance strains in complex microbial communities. *Genome Biol.* **23**, 74 (2022). https://doi.org/10.1186/s13059-022-02630-0
+
+155. Smith, B. J., Li, X., Shi, Z. J., Abate, A. & Pollard, K. S. Scalable microbial strain inference in metagenomic data using StrainFacts. *Front. Bioinform.* **2**, 867386 (2022). https://doi.org/10.3389/fbinf.2022.867386
+
+156. Truong, D. T., Tett, A., Pasolli, E., Huttenhower, C. & Segata, N. Microbial strain-level population structure and genetic diversity from metagenomes. *Genome Res.* **27**, 626–638 (2017). https://doi.org/10.1101/gr.216242.116
+
+157. Lees, J. A. *et al.* Fast and flexible bacterial genomic epidemiology with PopPUNK. *Genome Res.* **29**, 304–316 (2019). https://doi.org/10.1101/gr.241455.118
+
+158. Croucher, N. J. *et al.* Rapid phylogenetic analysis of large samples of recombinant bacterial whole genome sequences using Gubbins. *Nucleic Acids Res.* **43**, e15 (2015). https://doi.org/10.1093/nar/gku1196
+
+159. Knights, D. *et al.* Bayesian community-wide culture-independent microbial source tracking. *Nat. Methods* **8**, 761–763 (2011). https://doi.org/10.1038/nmeth.1650
+
+160. Shenhav, L. *et al.* FEAST: fast expectation-maximization for microbial source tracking. *Nat. Methods* **16**, 627–632 (2019). https://doi.org/10.1038/s41592-019-0431-x
+
+161. Didelot, X., Fraser, C., Gardy, J. & Colijn, C. Genomic infectious disease epidemiology in partially sampled and ongoing outbreaks. *Mol. Biol. Evol.* **34**, 997–1007 (2017). https://doi.org/10.1093/molbev/msw275
+
+162. Smillie, C. S. *et al.* Ecology drives a global network of gene exchange connecting the human microbiome. *Nature* **480**, 241–244 (2011). https://doi.org/10.1038/nature10571
+
+163. Brito, I. L. *et al.* Mobile genes in the human microbiome are structured from global to individual scales. *Nature* **535**, 435–439 (2016). https://doi.org/10.1038/nature18927
+
+164. Burton, J. N., Liachko, I., Dunham, M. J. & Shendure, J. Species-level deconvolution of metagenome assemblies with Hi-C–based contact probability maps. *G3* **4**, 1339–1346 (2014). https://doi.org/10.1534/g3.114.011825
+
+165. Stalder, T., Press, M. O., Sullivan, S., Liachko, I. & Top, E. M. Linking the resistome and plasmidome to the microbiome. *ISME J.* **13**, 2437–2446 (2019). https://doi.org/10.1038/s41396-019-0446-4
+
+166. Valles-Colomer, M. *et al.* The person-to-person transmission landscape of the gut and oral microbiomes. *Nature* **614**, 125–135 (2023). https://doi.org/10.1038/s41586-022-05620-1
+
+167. Worby, C. J., Lipsitch, M. & Hanage, W. P. Within-host bacterial diversity hinders accurate reconstruction of transmission networks from genomic distance data. *PLoS Comput. Biol.* **10**, e1003549 (2014). https://doi.org/10.1371/journal.pcbi.1003549
+
 ## DOM, biosurfactants & biodegradation
 
 115. Rojas-Vargas, J., Castelán-Sánchez, H. G. & Pardo-López, L. HADEG: A curated hydrocarbon aerobic degradation enzymes and genes database. *Comput. Biol. Chem.* **107**, 107966 (2023). https://doi.org/10.1016/j.compbiolchem.2023.107966
@@ -343,5 +403,6 @@ Always add **software version** and **database release** next to the citation.
 ## See also
 
 - [Standard pipeline](standard-pipeline.md)
+- [ARG–MGE–host–strain evidence](arg-mge-host-strain.md)
 - [Skills catalog](skills.md)
 - [Public databases](public-databases.md)

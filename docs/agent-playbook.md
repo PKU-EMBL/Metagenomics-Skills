@@ -70,6 +70,7 @@ external service without explicit authorization.
 | MAGs → taxonomy/function | stable genome IDs; exact GTDB/annotation DB releases; failed genomes retained in audit table |
 | Profiles → statistics | sample IDs join one-to-one; abundance semantics and normalization declared; batch/confounding assessed |
 | Mining → claims | hit thresholds and genomic context retained; predictions labeled as hypotheses, not validated phenotypes/products |
+| ARG/MGE/host/strain → network | edge type, direction basis, weight scale, uncertainty, method, thresholds, and provenance retained; co-occurrence not relabeled as linkage/transmission |
 
 ## Reproducibility bundle
 

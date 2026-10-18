@@ -2,7 +2,7 @@
 
 [简体中文](README.zh-CN.md)
 
-A comprehensive collection of **201 portable Agent Skills** for reproducible
+A comprehensive collection of **226 portable Agent Skills** for reproducible
 shotgun metagenomics, organized by scientific stage and usable from Claude Code,
 Codex, Cursor, Kimi Code, ZCode, Qwen Code, and other compatible coding agents:
 
@@ -17,6 +17,7 @@ phylogenomics routing, and paper-facing stats/figures (`research-analysis`).
 [Pipeline](docs/standard-pipeline.md) ·
 [Public databases](docs/public-databases.md) ·
 [Agent playbook](docs/agent-playbook.md) ·
+[ARG–MGE–host–strain evidence](docs/arg-mge-host-strain.md) ·
 [References](docs/references.md) ·
 [Platforms](docs/multi-platform.md)
 
@@ -59,7 +60,8 @@ supported, `--dry-run` to preview, and `--prune` when switching an existing
 destination to a smaller profile. The comprehensive library stays available via
 `full`; compact `routing`/`core` and task profiles (`contamination`, `long-read`,
 `virome`, `strain-resolved`, `eukaryotic`, `pangenome`,
-`metatranscriptomics`, `metabolic-modeling`, and `workflows`) limit loaded
+`metatranscriptomics`, `metabolic-modeling`, `resistome-mobilome`,
+`transmission`, and `workflows`) limit loaded
 context. See
 [the complete platform matrix](docs/multi-platform.md).
 
@@ -112,17 +114,26 @@ validate every stage boundary, and report what was actually run. See the
 
 Auto-bins → `anvio` refine → `checkm2` / `gunc` / `mag-qc` → `gtdbtk`
 
+> Resistome / mobilome / host linkage / HGT
+
+`resistome-analysis` → `rgi` / `amrfinderplus` / `args-oap` / `deeparg` /
+`pathofact` · `mobilome-analysis` → `genomad` / `plasx` / `mobmess` ·
+`arg-mge-host-linkage` → long-read / Hi-C / CRISPR evidence ·
+`horizontal-gene-transfer` → `metachip` / `waafle` / `hgtector` / `gubbins`
+
 > Viral / plasmid / MGE mining
 
 `virome-analysis` → `genomad` / `virsorter2` / `vibrant` → `checkv` →
-`votu-workflow` → `vcontact` / `iphop` · `mobileog` / `isescan` /
-`integronfinder` / `mob-suite` · plasmids: `plasmaag` · isolates: `cge-finders`
-(`staramr` / `abricate` / `plasmidfinder` → `pmlst` / `mlst`)
+`votu-workflow` → `vcontact` / `iphop` / `spacepharer` · `mobileog` /
+`isescan` / `integronfinder` / `mob-suite` · plasmids: `plasx` / `mobmess` /
+`plasmaag` · isolates: `cge-finders` (`staramr` / `abricate` /
+`plasmidfinder` → `pmlst` / `mlst`)
 
 > Additional task routes
 
 Contamination: `contamination-control` · long reads: `long-read-qc` · strains:
-`strain-resolved-analysis` · microbial eukaryotes: `eukaryotic-metagenomics` ·
+`strain-resolved-analysis` → `strain-transmission` · typed propagation graphs:
+`transfer-network-analysis` · microbial eukaryotes: `eukaryotic-metagenomics` ·
 pangenomes: `pangenome-analysis` · RNA: `metatranscriptomics` · community
 models: `community-metabolic-modeling` · source attribution: `source-tracking`
 

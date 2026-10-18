@@ -1,0 +1,6 @@
+interface:
+  display_name: "Transfer network analysis"
+  short_description: "Build evidence-typed propagation graphs"
+  default_prompt: "Use $transfer-network-analysis to validate typed network edges and analyze ARG, MGE, host, HGT, source, strain, and transmission layers without conflating their meanings."
+policy:
+  allow_implicit_invocation: true

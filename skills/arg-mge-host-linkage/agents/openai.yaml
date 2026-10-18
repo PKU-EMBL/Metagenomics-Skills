@@ -1,0 +1,6 @@
+interface:
+  display_name: "ARG–MGE–host linkage"
+  short_description: "Grade physical and host-link evidence"
+  default_prompt: "Use $arg-mge-host-linkage to integrate coordinate, long-read, Hi-C, CRISPR, and host evidence without treating sample co-occurrence as physical linkage or transfer."
+policy:
+  allow_implicit_invocation: true

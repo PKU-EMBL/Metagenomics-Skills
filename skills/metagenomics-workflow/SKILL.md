@@ -85,7 +85,10 @@ study-design + setup (+ public-databases)
 | Interactive MAG polish | After auto-bins → `anvio` → re-QC |
 | Environmental unknowns | QC → `singlem` (± `binchicken` coassembly) |
 | Viral ecology | `virome-analysis` → discovery → `checkv` → `votu-workflow` → taxonomy/`iphop` |
-| Strain transmission or microdiversity | `strain-resolved-analysis` → `strainphlan` / `metasnv` / `instrain` |
+| Strain microdiversity | `strain-resolved-analysis` → `strainphlan` / `metasnv` / `instrain` / `midas2` / `strainge` / `strainfacts` |
+| Shared strain / transmission | `strain-transmission` → background/callability gates → `poppunk` / `gubbins` / `transphylo` as justified |
+| Resistome and physical ARG context | `resistome-analysis` → `arg-mge-host-linkage` |
+| Mobilome / HGT | `mobilome-analysis` → `horizontal-gene-transfer`; typed graphs → `transfer-network-analysis` |
 | Microbial eukaryotes | `eukaryotic-metagenomics` → `tiara`/`whokaryote` → `metaeuk` → `eukcc` |
 | Pangenome | harmonized genomes → `pangenome-analysis` → `panaroo` / `ppanggolin` |
 | Community RNA | `metatranscriptomics` → host/rRNA depletion → quantification/function |
@@ -104,8 +107,9 @@ study-design + setup (+ public-databases)
       clean step (`anvio` / `deepurify`) is followed by re-QC
 - [ ] Accepted and rejected bins remain traceable through `mag-qc`
 - [ ] Taxonomy/function layers and abundance semantics are not merged unlabeled
-- [ ] Mining routes through `microbial-mining`; DBs/thresholds are pinned and
-      computational hits remain hypotheses
+- [ ] Mining routes through `microbial-mining`; ARG detection, quantification,
+      MGE co-location, host linkage, HGT, strain sharing and direct transmission
+      remain separate evidence layers with pinned DBs/thresholds
 - [ ] Trees route through `phylogenomics` (ANI is not a phylogeny)
 - [ ] Statistics route through `research-analysis`; sample IDs, transforms,
       covariates, effect sizes, uncertainty, and FDR are recorded
@@ -117,6 +121,8 @@ study-design + setup (+ public-databases)
 `tool-selection` · `research-analysis` · `microbial-mining` · `homology-search` ·
 `phylogenomics` · `metagenomics-llm` · `public-databases` · `study-design` ·
 `mag-qc` · `contamination-control` · `long-read-qc` · `virome-analysis` ·
-`strain-resolved-analysis` · `eukaryotic-metagenomics` · `pangenome-analysis` ·
+`strain-resolved-analysis` · `strain-transmission` · `resistome-analysis` ·
+`mobilome-analysis` · `arg-mge-host-linkage` · `horizontal-gene-transfer` ·
+`transfer-network-analysis` · `eukaryotic-metagenomics` · `pangenome-analysis` ·
 `metatranscriptomics` · `community-metabolic-modeling` · `source-tracking` ·
 stage skills under `skills/`

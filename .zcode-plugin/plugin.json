@@ -1,6 +1,6 @@
 {
   "name": "metagenomics",
-  "version": "1.23.0",
+  "version": "1.24.0",
   "description": "Portable shotgun-metagenomics workflows, tool guidance, quality gates, and reporting skills.",
   "description_i18n": {
     "en": "Portable shotgun-metagenomics workflows, tool guidance, quality gates, and reporting skills.",

@@ -31,13 +31,13 @@ codex plugin add metagenomics@metagenomics-skills
 git clone https://github.com/PKU-EMBL/Metagenomics-Skills.git
 cd Metagenomics-Skills
 
-# Recommended for most sessions: 48 high-use skills with routing hubs
+# Recommended for most sessions: 54 high-use skills with routing hubs
 ./scripts/install-platforms.sh --user --profile core kimi zcode qwen
 
 # Shared location read by Codex, Kimi Code, and ZCode; plus Qwen's native path
 ./scripts/install-platforms.sh --user --profile core agents qwen
 
-# Every platform and all 201 skills (largest startup catalog)
+# Every platform and all 226 skills (largest startup catalog)
 ./scripts/install-platforms.sh --user --profile full all
 ```
 
@@ -95,6 +95,8 @@ Example prompts:
 - "Environmental samples with many unknowns — SingleM vs MetaPhlAn?"
 - "After binning: Deepurify or Anvi'o before GTDB-Tk?"
 - "Viral contigs: geNomad → CheckV → vConTACT workflow"
+- "Grade ARG–plasmid–host evidence without treating co-occurrence as linkage"
+- "Test household strain sharing without calling every close pair direct transmission"
 - "Element cycling (N/S/Fe) on MAGs — METABOLIC vs FeGenie vs DRAM?"
 - "Downstream stats and figures after MetaPhlAn — microeco vs MaAsLin2?"
 - "Route protein language models for remote homology"
@@ -106,7 +108,10 @@ Example prompts:
 | Composition only | QC → `metaphlan` / `singlem` / `kraken2` → `research-analysis` |
 | Genome-resolved catalogue | QC → assembly → mapping → `basalt` ★ → `mag-qc` → `gtdbtk` |
 | Interactive MAG polish | bins → `anvio` → re-QC |
-| Viral / MGE ecology | `genomad` → `checkv` → `vcontact` (± `mobileog` / `mob-suite`) |
+| Viral / MGE ecology | `virome-analysis` / `mobilome-analysis` → discovery/QC/typing/host evidence |
+| ARG–MGE–host / HGT | `resistome-analysis` → `arg-mge-host-linkage` / `horizontal-gene-transfer` |
+| Strain sharing / transmission | `strain-resolved-analysis` → `strain-transmission` |
+| Typed transfer graph | `transfer-network-analysis` after layer-specific validation |
 | Isolate CGE Finders | `cge-finders` → `staramr` / `abricate` / `plasmidfinder` → `pmlst` / `mlst` |
 | Mining (BGC / AMR / cycling / DOM) | `microbial-mining` |
 | Paper stats & figures | `research-analysis` → `microeco` / `maaslin2` / … |

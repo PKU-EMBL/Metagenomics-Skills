@@ -2,8 +2,8 @@
 name: microbial-mining
 description: >
   Route microbial / genome mining after assembly or binning: BGCs (antiSMASH,
-  BiG-SCAPE), AMR (RGI, DeepARG, ResFinder), mobile elements (geNomad, VirSorter2,
-  CheckV, mobileOG-db, ISEScan, IntegronFinder, MOB-suite, CGE Finders), antimicrobial
+  BiG-SCAPE), resistomes and ARG context, mobile elements and plasmid systems,
+  ARG–MGE–host linkage, viruses (geNomad, VirSorter2, CheckV), antimicrobial
   peptides (Macrel), element cycling (METABOLIC, MEBS, FeGenie), DOM/biosurfactant/HC
   biodegradation (dbCAN, HADEG, BioSurfDB), metabolism (DRAM, gapseq), defense
   (DefenseFinder, PADLOC), quorum sensing (QSAP), and annotation substrates
@@ -26,8 +26,11 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 | Claim type | Prefer | Caution |
 |------------|--------|---------|
 | Natural products / BGCs | `antismash` → `bigscape` | Cluster ≠ characterized compound |
-| AMR / resistome | `rgi` (± `deeparg`); isolates also `resfinder` / `staramr` | Hit ≠ expression / phenotype; keep CARD vs ResFinder separate |
-| Viral contigs, vOTUs, taxonomy, hosts | `virome-analysis` → `genomad`/`virsorter2`/`vibrant` → `checkv` → `votu-workflow` → `vcontact`/`iphop` | Quality and host links remain computational evidence |
+| AMR / resistome | `resistome-analysis` → `rgi` / `amrfinderplus` / `args-oap` / `deeparg` / `pathofact`; isolates also `resfinder` / `staramr` | Detection, abundance, phenotype, mobility and host are separate layers |
+| ARG–MGE–host evidence | `arg-mge-host-linkage` | Co-occurrence ≠ physical linkage; host link ≠ transfer |
+| Mobilome / plasmid systems | `mobilome-analysis` → `genomad` / `plasx` / `mobmess` / `mob-suite` | Plasmid-like ≠ complete or conjugative |
+| HGT candidates | `horizontal-gene-transfer` → `metachip` / `waafle` / `hgtector` / `gubbins` | Historical candidate ≠ observed transfer |
+| Viral contigs, vOTUs, taxonomy, hosts | `virome-analysis` → `genomad`/`virsorter2`/`vibrant` → `checkv` → `votu-workflow` → `vcontact`/`iphop`/`spacepharer` | Quality and host links remain computational evidence |
 | MGE protein machinery | `mobileog` | Category hit ≠ complete element |
 | Insertion sequences | `isescan` | IS ≠ plasmid |
 | Integrons / cassettes | `integronfinder` | Cassette ≠ expressed ARG |
@@ -51,9 +54,11 @@ Parallel track after assembly/binning — not a replacement for taxonomy tables.
 ```text
 Mining goal?
 ├─ BGCs → antismash → (many genomes) bigscape
-├─ Resistome → rgi (± deeparg); isolates → resfinder / staramr (± pointfinder)
-├─ Viruses → virome-analysis → genomad/virsorter2/vibrant → checkv → votu-workflow → vcontact/iphop
-├─ Plasmids → genomad → mob-suite/plasmidfinder or plasmaag
+├─ Resistome → resistome-analysis → rgi / amrfinderplus / args-oap / deeparg / pathofact
+├─ ARG–MGE–host linkage → arg-mge-host-linkage → coordinate/long-read/Hi-C/CRISPR gates
+├─ HGT → horizontal-gene-transfer → metachip / waafle / hgtector / gubbins
+├─ Viruses → virome-analysis → genomad/virsorter2/vibrant → checkv → votu-workflow → vcontact/iphop/spacepharer
+├─ Plasmids → mobilome-analysis → genomad / plasx → mobmess / mob-suite / plasmidfinder / plasmaag
 ├─ MGE detail
 │   ├─ Protein machinery → mobileog
 │   ├─ IS elements → isescan
@@ -84,15 +89,18 @@ Mining goal?
 bins/MAGs (checkm2 / mag-qc / gunc)
    → bakta | prokka
    ├─→ antismash → bigscape
-   ├─→ rgi (± deeparg); isolates → cge-finders / staramr
+   ├─→ resistome-analysis → rgi / amrfinderplus / deeparg / pathofact
    ├─→ element-cycling → metabolic / mebs / fegenie
    ├─→ dom-biosurfactant → dbcan / hadeg / biosurfdb
    ├─→ dram → dbcan / gapseq
    ├─→ defensefinder / padloc
    └─→ qsap
 contigs
-   → virome-analysis → genomad | virsorter2 | vibrant → checkv → votu-workflow → vcontact / iphop
-   → mobileog / isescan / integronfinder / mob-suite
+   → virome-analysis → genomad | virsorter2 | vibrant → checkv → votu-workflow → vcontact / iphop / spacepharer
+   → mobilome-analysis → genomad / plasx / mobmess / mob-suite
+   → arg-mge-host-linkage → metator / hicbin / viralcc / spacepharer
+   → horizontal-gene-transfer → metachip / waafle / hgtector
+   → mobileog / isescan / integronfinder
    → cge-finders (plasmidfinder · resfinder · virulencefinder · …)
    → plasmaag (multi-sample plasmid recovery)
    → macrel
@@ -108,7 +116,11 @@ contigs
 
 ## Related skills
 
-`antismash` · `bigscape` · `virome-analysis` · `votu-workflow` · `genomad` ·
+`antismash` · `bigscape` · `resistome-analysis` · `mobilome-analysis` ·
+`arg-mge-host-linkage` · `horizontal-gene-transfer` · `transfer-network-analysis` ·
+`amrfinderplus` · `args-oap` · `pathofact` · `plasx` · `mobmess` · `metachip` ·
+`waafle` · `hgtector` · `metator` · `hicbin` · `viralcc` · `spacepharer` ·
+`virome-analysis` · `votu-workflow` · `genomad` ·
 `virsorter2` · `vibrant` · `checkv` · `vcontact` · `iphop` ·
 `mobileog` · `isescan` · `integronfinder` · `mob-suite` · `plasmaag` ·
 `cge-finders` · `plasmidfinder` · `resfinder` · `pointfinder` · `disinfinder` ·

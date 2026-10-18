@@ -1,0 +1,6 @@
+interface:
+  display_name: "Horizontal gene transfer"
+  short_description: "Audit HGT candidates and directions"
+  default_prompt: "Use $horizontal-gene-transfer to choose a timescale-appropriate method, validate HGT candidates, and preserve uncertainty in donor, direction, context, and networks."
+policy:
+  allow_implicit_invocation: true
