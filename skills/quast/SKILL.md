@@ -10,6 +10,9 @@ metadata:
   metagenomics.tags: "assembly, qc, quast"
   metagenomics.upstream: "https://github.com/ablab/quast"
   metagenomics.stage: "assessment"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "QUAST/metaQUAST CLI template statically reviewed; not executed here"
 ---
 
 # QUAST / metaQUAST
@@ -33,10 +36,26 @@ combine with mapping rate, bin recovery (`mag-qc`), and compute cost.
 
 ## How to run
 
+Use `metaquast.py` when its metagenome/reference logic is needed; use `quast.py`
+for reference-free contiguity summaries.
+
 ```bash
-metaquast.py contigs.fa -o temp/quast -t 16
-# or quast.py for generic stats without refs
+set -Eeuo pipefail
+assembly="${1:?usage: assess-assembly.sh ASSEMBLY_FASTA OUTPUT_DIR}"
+out="${2:?usage: assess-assembly.sh ASSEMBLY_FASTA OUTPUT_DIR}"
+threads="${THREADS:-16}"
+test -s "$assembly" || exit 2
+[[ "$threads" =~ ^[1-9][0-9]*$ ]] || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$(dirname "$out")" logs
+
+metaquast.py "$assembly" -o "$out" -t "$threads" \
+  >"logs/$(basename "$out").metaquast.stdout.log" \
+  2>"logs/$(basename "$out").metaquast.stderr.log"
 ```
+
+For a valid curated reference set, add the release-pinned reference option shown
+by the installed version's help and preserve the reference manifest/checksums.
 
 ## Key parameters
 
@@ -54,6 +73,23 @@ Assembly assessment?
 ├─ No refs → QUAST stats + downstream bin QC
 └─ CAMI gold standards → cami / AMBER (not QUAST alone)
 ```
+
+## Validation, recovery, and provenance
+
+```bash
+test -s "$out/report.tsv"
+test -s "$out/report.html"
+grep -q '^Assembly' "$out/report.tsv"
+```
+
+Inspect warnings, total span, contig counts at declared cutoffs, N50/L50 and
+largest contig together, ambiguous bases, and reference-based errors only when
+the reference set is biologically appropriate. Compare assemblers on downstream
+read recruitment and genome/bin recovery, not N50 alone.
+
+QUAST output directories contain intermediate and downloaded material; do not
+merge reruns into them. Record QUAST version, mode, thresholds, references and
+checksums, input checksum, command, logs, and machine-readable reports.
 
 ## Related skills
 

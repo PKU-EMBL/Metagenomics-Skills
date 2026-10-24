@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "assembly, long-read"
   metagenomics.upstream: "https://github.com/fenderglass/Flye"
   metagenomics.stage: "assembly"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "Flye meta-mode CLI template statically reviewed; not executed here"
 ---
 
 # metaFlye
@@ -27,12 +30,31 @@ Primary long-read metagenome assembler for noisy ONT/PacBio CLR. For HiFi prefer
 
 ## How to run
 
-```bash
-conda install -c conda-forge -c bioconda flye
+Choose the read-mode flag from basecaller/chemistry metadata, not from filename.
 
-flye --meta --nano-raw reads.fastq.gz --out-dir temp/asm/flye -t 32
-# or --pacbio-raw / --nano-hq per chemistry
+```bash
+set -Eeuo pipefail
+reads="${1:?usage: assemble-lr.sh READS.fastq.gz OUTPUT_DIR}"
+out="${2:?usage: assemble-lr.sh READS.fastq.gz OUTPUT_DIR}"
+threads="${THREADS:-32}"
+read_mode="${READ_MODE:---nano-hq}"
+test -s "$reads" || exit 2
+[[ "$threads" =~ ^[1-9][0-9]*$ ]] || exit 2
+case "$read_mode" in
+  --nano-raw|--nano-hq|--pacbio-raw|--pacbio-hifi) ;;
+  *) echo "unsupported READ_MODE: $read_mode" >&2; exit 2 ;;
+esac
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$(dirname "$out")" logs
+
+flye --meta "$read_mode" "$reads" --out-dir "$out" --threads "$threads" \
+  >"logs/$(basename "$out").flye.stdout.log" \
+  2>"logs/$(basename "$out").flye.stderr.log"
 ```
+
+Do not pool technologies or samples unless the assembly design explicitly calls
+for it. HiFi may also justify `metamdbg`; pilot when assembler choice affects the
+biological endpoint.
 
 ## Key parameters
 
@@ -45,6 +67,23 @@ flye --meta --nano-raw reads.fastq.gz --out-dir temp/asm/flye -t 32
 - Prefer ONT/PacBio community assemblies; polish when chemistry requires
 - Downstream: long-read-aware binning (`lorbin`, SemiBin2 LR)
 
+## Validation, recovery, and provenance
+
+```bash
+test -s "$out/assembly.fasta"
+test -s "$out/assembly_info.txt"
+test -s "$out/flye.log"
+seqkit stats -T "$out/assembly.fasta"
+```
+
+Inspect Flye warnings, repeat/graph summaries, total span, contig-length
+spectrum, read recruitment, and `$quast` results; contiguity alone does not prove
+correctness. Resume only an unchanged run with Flye's documented resume behavior;
+otherwise retain the partial directory and start under a new path. Record Flye
+version, read-mode flag, input checksum, command, resource use, logs, and assembly
+checksum.
+
 ## Related skills
 
-minimap2 · metamdbg · megahit · metaspades · `tool-selection` · `metagenomics-workflow`
+`minimap2` · `metamdbg` · `megahit` · `metaspades` · `quast` ·
+`tool-selection` · `metagenomics-workflow`

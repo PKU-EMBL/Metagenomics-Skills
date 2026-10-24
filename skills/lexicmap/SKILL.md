@@ -13,6 +13,9 @@ metadata:
   metagenomics.tags: "alignment, search, LexicMap, genomes, BLAST"
   metagenomics.upstream: "https://github.com/shenwei356/LexicMap"
   metagenomics.stage: "mapping"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "index/search CLI checked against current upstream quick start; not executed here"
 ---
 
 # LexicMap
@@ -44,14 +47,52 @@ genome warehouses (`progenomes`, AllTheBacteria, GTDB reps).
 
 ## How to run
 
+Build one immutable index from a genome directory (`-I`) or an explicit file list
+(`-S -X`), then query that index repeatedly.
+
 ```bash
-# Build one immutable index, record its manifest, then query it repeatedly.
-lexicmap index -d genomes_dir -o db/lexicmap_idx
-lexicmap search -d db/lexicmap_idx -q query.fa -o temp/lexicmap/hits.tsv
+set -Eeuo pipefail
+genomes="${1:?usage: lexicmap-index.sh GENOME_DIR OUTPUT_DIR}"
+out="${2:?usage: lexicmap-index.sh GENOME_DIR OUTPUT_DIR}"
+test -d "$genomes" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+lexicmap index -I "$genomes" -O "$out/reference.lmi" \
+  >"$out/index.stdout.log" 2>"$out/index.stderr.log"
+test -d "$out/reference.lmi"
 ```
+
+```bash
+set -Eeuo pipefail
+index="${1:?usage: lexicmap-search.sh INDEX QUERY_FASTA OUTPUT_DIR}"
+query="${2:?usage: lexicmap-search.sh INDEX QUERY_FASTA OUTPUT_DIR}"
+out="${3:?usage: lexicmap-search.sh INDEX QUERY_FASTA OUTPUT_DIR}"
+test -d "$index" && test -s "$query" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+lexicmap search -d "$index" "$query" -o "$out/hits.tsv" \
+  --align-min-match-pident 80 --min-qcov-per-hsp 70 \
+  --min-qcov-per-genome 70 --top-n-genomes 10000 \
+  >"$out/search.stdout.log" 2>"$out/search.stderr.log"
+test -e "$out/hits.tsv"
+```
+
+For plasmids or other long/circular queries, use a separately justified coverage,
+minimum-match-length, and top-N policy; do not reuse gene defaults blindly.
+
+## Validation, recovery, and provenance
+
+Verify index completion, genome count, stable genome IDs, input manifest
+coverage, and index checksum/size. For searches, inspect the header and validate
+`qcovGnm`, `qcovHSP`, identity, aligned length, E-value, and hit multiplicity
+against the biological question. Zero hits can be valid; truncated logs or a
+missing header are not. LexicMap is not intended as a short-read coverage mapper.
+
+Record LexicMap version, index options, genome manifest/releases/checksums, query
+checksum, thresholds, top-N policy, commands, logs, and result checksum. Rebuild
+under a new path when the genome collection or incompatible software changes.
 
 ## Related skills
 
 `homology-search` · `phylign` · `minimap2` · `diamond` · `mmseqs2` · `erast` ·
-`progenomes` · `gtdb` · `plasmaag` ·
-`tool-selection`
+`progenomes` · `gtdb` · `plasmaag` · `tool-selection`

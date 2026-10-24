@@ -11,6 +11,9 @@ metadata:
   metagenomics.tags: "mapping, alignment, short-read, coverage"
   metagenomics.upstream: "https://github.com/BenLangmead/bowtie2"
   metagenomics.stage: "mapping"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "Bowtie2/Samtools paired-end coverage template statically reviewed; not executed here"
 ---
 
 # Bowtie 2
@@ -49,22 +52,34 @@ species”.
 
 ## How to run
 
+Build one index per immutable assembly, then map each manifest-defined read pair
+into a separate output directory.
+
 ```bash
-conda install -c bioconda bowtie2 samtools
+set -Eeuo pipefail
+id="${1:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+ref="${2:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+r1="${3:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+r2="${4:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+out="${5:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+threads="${THREADS:-16}"
+[[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || exit 2
+for input in "$ref" "$r1" "$r2"; do test -s "$input" || exit 2; done
+[[ "$threads" =~ ^[1-9][0-9]*$ ]] || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out/index"
 
-mkdir -p temp/map
-bowtie2-build --threads 8 contigs.fa temp/map/contigs
-
-bowtie2 -x temp/map/contigs \
-  -1 temp/hr/${id}_1.fastq -2 temp/hr/${id}_2.fastq \
-  -p 16 --very-sensitive-local \
-  2> temp/map/${id}.bowtie2.log \
-  | samtools sort -@ 8 -o temp/map/${id}.bam
-samtools index temp/map/${id}.bam
-
-# Multi-sample depth for MetaBAT2
-jgi_summarize_bam_contig_depths --outputDepth temp/map/depth.txt temp/map/*.bam
+bowtie2-build --threads "$threads" "$ref" "$out/index/reference" \
+  >"$out/bowtie2-build.stdout.log" 2>"$out/bowtie2-build.stderr.log"
+bowtie2 -x "$out/index/reference" -1 "$r1" -2 "$r2" \
+  -p "$threads" --very-sensitive-local \
+  2>"$out/${id}.bowtie2.stderr.log" \
+  | samtools sort -@ "$threads" -o "$out/${id}.bam" -
+samtools index "$out/${id}.bam"
 ```
+
+For multi-sample binning, build the depth table from an explicit, ordered BAM
+manifest; do not rely on an unreviewed wildcard or mix references/mappers.
 
 ## Key parameters
 
@@ -86,9 +101,18 @@ jgi_summarize_bam_contig_depths --outputDepth temp/map/depth.txt temp/map/*.bam
 | stderr overall alignment rate | Library/assembly sanity |
 
 ```bash
-samtools flagstat temp/map/${id}.bam
-# Typical clean metagenomes: often 50–90% mapped; near-0% ⇒ wrong contigs/reads
+samtools quickcheck -v "$out/${id}.bam"
+samtools view -H "$out/${id}.bam" | grep -q '^@HD.*SO:coordinate'
+test -s "$out/${id}.bam.bai"
+samtools flagstat -@ 4 -O tsv "$out/${id}.bam" >"$out/${id}.flagstat.tsv"
+samtools idxstats "$out/${id}.bam" >"$out/${id}.idxstats.tsv"
 ```
+
+Inspect paired/primary mapping, insert-size behavior, reference names, and depth
+rather than applying a universal mapping-rate cutoff. Preserve Bowtie2/Samtools
+versions, reference/read checksums, sensitivity and alignment-policy flags,
+commands, logs, BAM checksum, and QC tables. Failed streams can leave partial
+BAMs; only expose downstream after these checks pass.
 
 ## Decision tree
 

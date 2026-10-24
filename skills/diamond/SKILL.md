@@ -10,6 +10,9 @@ metadata:
   metagenomics.tags: "mapping, protein, blast"
   metagenomics.upstream: "https://github.com/bbuchfink/diamond"
   metagenomics.stage: "mapping"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "DIAMOND database/search template statically reviewed; not executed here"
 ---
 
 # DIAMOND
@@ -37,11 +40,25 @@ protein searches (eggNOG-mapper, DAS Tool protein search, custom NR/UniRef).
 
 ## How to run
 
-```bash
-conda install -c conda-forge -c bioconda diamond
+Build an immutable database from a release-pinned reference, then search under a
+fresh result directory.
 
-diamond makedb --in proteins.faa -d ref
-diamond blastp -q query.faa -d ref -o hits.tsv -p 16 -f 6
+```bash
+set -Eeuo pipefail
+reference="${1:?usage: diamond-search.sh REFERENCE_FAA QUERY_FAA OUTPUT_DIR}"
+query="${2:?usage: diamond-search.sh REFERENCE_FAA QUERY_FAA OUTPUT_DIR}"
+out="${3:?usage: diamond-search.sh REFERENCE_FAA QUERY_FAA OUTPUT_DIR}"
+threads="${THREADS:-16}"
+for input in "$reference" "$query"; do test -s "$input" || exit 2; done
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+
+diamond makedb --in "$reference" --db "$out/reference" \
+  >"$out/makedb.stdout.log" 2>"$out/makedb.stderr.log"
+diamond blastp --query "$query" --db "$out/reference" \
+  --out "$out/hits.tsv" --threads "$threads" --sensitive \
+  --outfmt 6 qseqid sseqid pident length evalue bitscore qcovhsp scovhsp \
+  >"$out/search.stdout.log" 2>"$out/search.stderr.log"
 ```
 
 ## Key parameters
@@ -49,6 +66,19 @@ diamond blastp -q query.faa -d ref -o hits.tsv -p 16 -f 6
 | `blastp/blastx` | mode | |
 | `-f 6` | tabular | BLAST-like |
 
+## Validation, recovery, and provenance
+
+A zero-row hit table can be valid, but the file and completed logs must exist.
+When non-empty, require eight tab-separated fields, valid numeric ranges, and
+query IDs that join back to the input. Apply identity, coverage, E-value, and
+best-hit/orthology rules explicitly; a local match is not automatically a
+functional assignment.
+
+Archive DIAMOND version, sensitivity mode, output fields, reference release and
+checksum, query checksum, database build/search commands, logs, and result
+checksum. Keep the unfiltered hit table before downstream thresholds.
+
 ## Related skills
 
-eggnog-mapper · mmseqs2 · blast · `tool-selection` · `metagenomics-workflow`
+`eggnog-mapper` · `mmseqs2` · `homology-search` · `tool-selection` ·
+`metagenomics-workflow`

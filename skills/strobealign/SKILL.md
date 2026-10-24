@@ -10,6 +10,9 @@ metadata:
   metagenomics.tags: "mapping, alignment, short-read, coverage"
   metagenomics.upstream: "https://github.com/ksahlin/strobealign"
   metagenomics.stage: "mapping"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "paired-end alignment template checked against upstream usage; not executed here"
 ---
 
 # strobealign
@@ -44,18 +47,27 @@ depth table without documenting the switch.
 ## How to run
 
 ```bash
-conda install -c bioconda strobealign samtools
+set -Eeuo pipefail
+id="${1:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+ref="${2:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+r1="${3:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+r2="${4:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+out="${5:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+threads="${THREADS:-16}"
+[[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || exit 2
+for input in "$ref" "$r1" "$r2"; do test -s "$input" || exit 2; done
+[[ "$threads" =~ ^[1-9][0-9]*$ ]] || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
 
-strobealign -t 16 contigs.fa \
-  temp/hr/${id}_1.fastq temp/hr/${id}_2.fastq \
-  2> temp/map/${id}.strobealign.log \
-  | samtools sort -@ 8 -o temp/map/${id}.bam
-samtools index temp/map/${id}.bam
-samtools flagstat temp/map/${id}.bam | tee temp/map/${id}.flagstat
+strobealign -t "$threads" "$ref" "$r1" "$r2" \
+  2>"$out/${id}.strobealign.stderr.log" \
+  | samtools sort -@ "$threads" -o "$out/${id}.bam" -
+samtools index "$out/${id}.bam"
 ```
 
-Reference indexing is handled internally / cached — follow version notes if
-you pin a shared index directory.
+On-the-fly indexing is the default. If using a persistent `.sti` index, verify
+that it was generated from the exact reference and a compatible release.
 
 ## Key parameters
 
@@ -81,6 +93,21 @@ Need Illumina contig coverage for binning?
 | Version CLI differs | Check `strobealign --help` for your build |
 | Lower map rate vs Bowtie2 | Confirm same contigs/reads; compare flagstat |
 | Pipe breaks mid-run | Ensure samtools sort tempdir has space |
+
+## Validation, recovery, and provenance
+
+```bash
+samtools quickcheck -v "$out/${id}.bam"
+samtools view -H "$out/${id}.bam" | grep -q '^@HD.*SO:coordinate'
+test -s "$out/${id}.bam.bai"
+samtools flagstat -@ 4 -O tsv "$out/${id}.bam" >"$out/${id}.flagstat.tsv"
+```
+
+Review paired/primary mapping, reference IDs, depth distribution, and a pilot
+comparison when switching mapper families. Do not combine BAMs from different
+references or undocumented alignment policies in one coverage matrix. Preserve
+Strobealign/Samtools versions, reference/read checksums, index provenance,
+commands, logs, BAM checksum, and QC table.
 
 ## Related skills
 
