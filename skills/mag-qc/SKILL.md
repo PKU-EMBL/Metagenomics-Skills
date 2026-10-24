@@ -12,6 +12,9 @@ metadata:
   metagenomics.category: "evaluation"
   metagenomics.tags: "qc, checkm2, drep, completeness, contamination"
   metagenomics.stage: "assessment"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "quality-policy guidance reviewed; example CheckM2 command not executed here"
 ---
 
 # MAG Quality Control
@@ -59,7 +62,18 @@ bins
 ## CheckM2
 
 ```bash
-checkm2 predict --input bins/ --output-directory checkm2_out --threads 16
+set -Eeuo pipefail
+bins="${1:?usage: qc-mags.sh BINS_DIR OUTPUT_DIR}"
+out="${2:?usage: qc-mags.sh BINS_DIR OUTPUT_DIR}"
+threads="${THREADS:-16}"
+test -d "$bins" || exit 2
+find "$bins" -maxdepth 1 -type f -print -quit | grep -q . || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$(dirname "$out")" logs
+checkm2 predict --input "$bins" --output-directory "$out" --threads "$threads" \
+  >"logs/$(basename "$out").checkm2.stdout.log" \
+  2>"logs/$(basename "$out").checkm2.stderr.log"
+test -s "$out/quality_report.tsv"
 ```
 
 Record database path/version. Do not silently mix CheckM1 and CheckM2 across
@@ -71,6 +85,21 @@ design comparisons.
 2. Prefer higher completeness, lower contamination
 3. Prefer better contiguity and read support
 4. Prefer taxonomic consistency; discordant GUNC → review
+
+## Required deliverables and acceptance
+
+Create one audit table with stable genome ID, source binner/refinement lineage,
+FASTA checksum, size/contiguity, CheckM2 values and release, GUNC metrics and
+release, taxonomy, coverage support, dereplication cluster, decision, and explicit
+rejection reason. Every input must appear exactly once. Keep raw and rounded
+metrics separate and retain rejected bins.
+
+Refinement or decontamination invalidates prior QC: rerun all gates on the exact
+exported FASTA. Evaluate threshold sensitivity, novel-lineage discordance, and
+representative selection. Archive commands, environments, databases/checksums,
+logs, QC tables, decision code, accepted/rejected manifests, and final checksums.
+Labels such as medium/high quality are operational criteria unless all required
+standards and evidence are explicitly documented.
 
 ## Related skills
 

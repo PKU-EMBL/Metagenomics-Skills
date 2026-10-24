@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "binning, vae, deep-learning"
   metagenomics.upstream: "https://github.com/RasmussenLab/vamb"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "current vamb bin default contract checked against upstream docs; not executed here"
 ---
 
 # VAMB
@@ -41,12 +44,31 @@ when publishing catalogues.
 
 ## How to run
 
-```bash
-conda install -c conda-forge -c bioconda vamb
+Current Vamb uses the `vamb bin default` interface. Place only BAMs mapped to the
+exact input FASTA in the dedicated BAM directory, or supply a precomputed
+abundance TSV.
 
-vamb --outdir temp/bins/vamb --fasta contigs.fa --bamfiles temp/map/*.bam -p 16
-# GPU optional depending on VAMB version / docs
+```bash
+set -Eeuo pipefail
+assembly="${1:?usage: run-vamb.sh ASSEMBLY BAM_DIR OUTPUT_DIR}"
+bamdir="${2:?usage: run-vamb.sh ASSEMBLY BAM_DIR OUTPUT_DIR}"
+out="${3:?usage: run-vamb.sh ASSEMBLY BAM_DIR OUTPUT_DIR}"
+threads="${THREADS:-16}"
+seed="${VAMB_SEED:-1}"
+test -s "$assembly" && test -d "$bamdir" || exit 2
+find "$bamdir" -maxdepth 1 -type f -name '*.bam' -print -quit | grep -q . || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$(dirname "$out")" logs
+
+vamb bin default --outdir "$out" --fasta "$assembly" --bamdir "$bamdir" \
+  -p "$threads" --seed "$seed" --minfasta 200000 \
+  >"logs/$(basename "$out").vamb.stdout.log" \
+  2>"logs/$(basename "$out").vamb.stderr.log"
 ```
+
+For multi-assembly binsplitting, preserve Vamb's required sample/contig naming
+scheme and separator. `--cuda` accelerates supported installations but does not
+guarantee bitwise reproducibility.
 
 ## Key parameters
 
@@ -63,7 +85,20 @@ vamb --outdir temp/bins/vamb --fasta contigs.fa --bamfiles temp/map/*.bam -p 16
   comparisons — diversity of algorithms matters.
 - Closely related strains may still collapse; validate with `skani` / `instrain`.
 
+## Validation, recovery, and provenance
+
+Require completed logs, composition/abundance artifacts, cluster tables, and a
+non-empty `bins` directory when `--minfasta` is used. Verify Vamb's reference
+hash checks, BAM/reference identity, sample order, binsplit behavior, unique
+contig assignment, and binned fraction. Reassess bins with `checkm2` and `gunc`
+and compare seed/model sensitivity for priority conclusions.
+
+Use a new output directory after changing FASTA, abundance, model, seed, or Vamb
+release. Record Vamb/PyTorch versions, CPU/GPU and seed, input checksums,
+reference-hash status, commands, logs, cluster mapping, QC tables, and bin
+checksums. Deep embeddings and clusters remain computational predictions.
+
 ## Related skills
 
 `semibin2` · `comebin` · `metabat2` · `dastool` · `basalt` · `skani` ·
-`tool-selection` · `metagenomics-workflow`
+`checkm2` · `gunc` · `tool-selection` · `metagenomics-workflow`

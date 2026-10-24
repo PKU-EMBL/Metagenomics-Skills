@@ -13,6 +13,9 @@ metadata:
   metagenomics.tags: "MAG, ensemble-binning, binning, metabat, maxbin"
   metagenomics.upstream: "https://github.com/bxlab/metaWRAP"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed-legacy"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "legacy module CLI template statically reviewed; not executed here"
 ---
 
 # MetaWRAP
@@ -44,19 +47,35 @@ Depth guidance: ~≥6 Gb/sample typical; complex soils often ≥30 Gb.
 
 ## How to run
 
-```bash
-metawrap binning -o temp/bin -t 32 \
-  -a contigs.fa --metabat2 --maxbin2 \
-  reads/*_1.fastq reads/*_2.fastq
-# CONCOCT optional; costly
+This single-sample command shape preserves mate identity. For cohorts, generate
+the ordered read argument list from a validated manifest rather than wildcards.
 
-metawrap bin_refinement -o temp/bin_refine -t 32 \
-  -A temp/bin/metabat2_bins/ \
-  -B temp/bin/maxbin2_bins/ \
-  -c 50 -x 10
+```bash
+set -Eeuo pipefail
+assembly="${1:?usage: run-metawrap.sh ASSEMBLY R1 R2 RUN_ROOT}"
+r1="${2:?usage: run-metawrap.sh ASSEMBLY R1 R2 RUN_ROOT}"
+r2="${3:?usage: run-metawrap.sh ASSEMBLY R1 R2 RUN_ROOT}"
+root="${4:?usage: run-metawrap.sh ASSEMBLY R1 R2 RUN_ROOT}"
+threads="${THREADS:-32}"
+for input in "$assembly" "$r1" "$r2"; do test -s "$input" || exit 2; done
+test ! -e "$root" || { echo "use a new run root: $root" >&2; exit 2; }
+mkdir -p "$root"
+
+metawrap binning -o "$root/binning" -t "$threads" \
+  -a "$assembly" --metabat2 --maxbin2 "$r1" "$r2" \
+  >"$root/binning.stdout.log" 2>"$root/binning.stderr.log"
+
+test -d "$root/binning/metabat2_bins"
+test -d "$root/binning/maxbin2_bins"
+metawrap bin_refinement -o "$root/refinement" -t "$threads" \
+  -A "$root/binning/metabat2_bins" \
+  -B "$root/binning/maxbin2_bins" \
+  -c 50 -x 10 \
+  >"$root/refinement.stdout.log" 2>"$root/refinement.stderr.log"
 ```
 
-Modes: mixed co-assembly, per-sample, or subgroup binning for huge cohorts.
+CONCOCT is optional and costly. Treat mixed coassembly, per-sample, and subgroup
+binning as study-design choices, not interchangeable command variants.
 
 ## Key parameters
 
@@ -93,6 +112,21 @@ Operational takeaways for this package:
   prefer **`basalt`**; keep MetaWRAP when you want the packaged CheckM-era
   refinement catalogue.
 
+## Validation, recovery, and provenance
+
+Require non-empty per-binner outputs, completed module logs, and a refinement
+summary in which each candidate is accepted, rejected, or traceable. Reassess
+all refined/reassembled bins with current `checkm2` and `gunc`; MetaWRAP's
+bundled CheckM-era scores must not be silently treated as CheckM2. Inspect read
+recruitment, contiguity, completeness/contamination, and candidate overlap.
+
+MetaWRAP modules maintain substantial work directories. Resume only under the
+pinned release's documented behavior with unchanged inputs; otherwise preserve
+partial results and rerun under a new root. Record MetaWRAP/dependency versions,
+database releases, assembly/read checksums, sample order, commands, logs,
+thresholds, candidate-to-final lineage, and final checksums.
+
 ## Related skills
 
-`basalt` · `dastool` · `megahit` · `drep` · `coverm` · `gtdbtk` · `checkm2` · `mag-qc`
+`basalt` · `dastool` · `megahit` · `drep` · `coverm` · `gtdbtk` · `checkm2` ·
+`gunc` · `mag-qc`

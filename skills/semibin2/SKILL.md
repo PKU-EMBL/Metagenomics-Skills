@@ -10,6 +10,9 @@ metadata:
   metagenomics.tags: "binning, semibin, self-supervised"
   metagenomics.upstream: "https://github.com/BigDataBiology/SemiBin"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "SemiBin2 easy-mode CLI checked against current upstream usage; not executed here"
 ---
 
 # SemiBin2
@@ -38,18 +41,30 @@ Still a **single binner**: for catalogues, feed into `basalt` ★ / `metawrap` /
 
 ## How to run
 
+This short-read example uses one coordinate-sorted BAM. Select a pretrained
+environment only when it matches the biome; omit it to train from the data.
+
 ```bash
-conda install -c conda-forge -c bioconda semibin2
+set -Eeuo pipefail
+assembly="${1:?usage: run-semibin.sh ASSEMBLY SORTED_BAM OUTPUT_DIR}"
+bam="${2:?usage: run-semibin.sh ASSEMBLY SORTED_BAM OUTPUT_DIR}"
+out="${3:?usage: run-semibin.sh ASSEMBLY SORTED_BAM OUTPUT_DIR}"
+threads="${THREADS:-16}"
+environment="${SEMIBIN_ENVIRONMENT:-global}"
+test -s "$assembly" && test -s "$bam" || exit 2
+samtools quickcheck -v "$bam"
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$(dirname "$out")" logs
 
-# short-read / general easy mode
-SemiBin2 single_easy_bin \
-  -i contigs.fa \
-  -b temp/map/*.bam \
-  -o temp/bins/semibin2 \
-  -t 16
-
-# multi-sample / long-read modes: see SemiBin2 docs (environment + DBSCAN options)
+SemiBin2 single_easy_bin --input-fasta "$assembly" --input-bam "$bam" \
+  --environment "$environment" --output "$out" --threads "$threads" \
+  >"logs/$(basename "$out").semibin2.stdout.log" \
+  2>"logs/$(basename "$out").semibin2.stderr.log"
 ```
+
+For long-read assemblies add `--sequencing-type long_read`. Multi-sample mode
+requires a combined FASTA with documented sample-prefixed contig IDs and BAMs
+mapped individually to that exact FASTA.
 
 ## Key parameters
 
@@ -73,7 +88,20 @@ SemiBin2 single_easy_bin \
 - Long-read alternative/complement: `lorbin`
 - Ensemble: `basalt` ★ · `metawrap` · `dastool`
 
+## Validation, recovery, and provenance
+
+Require a completed log and non-empty `output_bins` directory; reconcile contig
+IDs, binned/unbinned bases, and any reclustered bins. Run `checkm2` and `gunc`,
+inspect model/environment choice, and compare against complementary binners on a
+pilot. For long-read mode, validate the declared sequencing type and DBSCAN
+outputs separately.
+
+Use a fresh output for changed BAMs, environment/model, seed, or mode. Record
+SemiBin2/PyTorch versions, CPU/GPU details, model/environment, sequencing type,
+assembly/BAM checksums, sample order, command, logs, contig2bin mapping, QC
+results, and bin checksums.
+
 ## Related skills
 
 `metabat2` · `vamb` · `comebin` · `lorbin` · `dastool` · `basalt` · `bowtie2` ·
-`tool-selection` · `metagenomics-workflow`
+`checkm2` · `gunc` · `tool-selection` · `metagenomics-workflow`

@@ -15,6 +15,9 @@ metadata:
   metagenomics.tags: "BASALT, MAG, ensemble-binning, refinement, multi-assembly, PKU-EMBL"
   metagenomics.upstream: "https://github.com/PKU-EMBL/BASALT"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "Conda BASALT workflow and checkpoint contract statically reviewed; not executed here"
 ---
 
 # BASALT / BASALT-Air
@@ -81,21 +84,39 @@ CLIs and checkpoints are **not interchangeable**.
 Docs: [usage](https://basalt-guide.readthedocs.io/en/latest/usage.html)
 
 ```bash
-mkdir -p /project/basalt_runs/study_01 && cd /project/basalt_runs/study_01
-ln -s /data/assembly.fasta .
-ln -s /data/R1.fastq .
-ln -s /data/R2.fastq .
+set -Eeuo pipefail
+assembly="${1:?usage: run-basalt.sh ASSEMBLY R1 R2 RUN_DIR}"
+r1="${2:?usage: run-basalt.sh ASSEMBLY R1 R2 RUN_DIR}"
+r2="${3:?usage: run-basalt.sh ASSEMBLY R1 R2 RUN_DIR}"
+run_dir="${4:?usage: run-basalt.sh ASSEMBLY R1 R2 RUN_DIR}"
+threads="${THREADS:-32}"
+memory_gb="${MEMORY_GB:-128}"
+for input in "$assembly" "$r1" "$r2"; do test -s "$input" || exit 2; done
+gzip -t "$r1" "$r2"
+assembly="$(realpath "$assembly")"
+r1="$(realpath "$r1")"
+r2="$(realpath "$r2")"
+test ! -e "$run_dir" || { echo "use a new run directory: $run_dir" >&2; exit 2; }
+mkdir -p "$run_dir"
+run_dir="$(cd "$run_dir" && pwd)"
+ln -s "$assembly" "$run_dir/assembly.fasta"
+ln -s "$r1" "$run_dir/R1.fastq.gz"
+ln -s "$r2" "$run_dir/R2.fastq.gz"
 
-BASALT \
-  -a assembly.fasta \
-  -s R1.fastq,R2.fastq \
-  -t 32 -m 128 \
-  --sensitive sensitive \
-  --refinepara quick \
-  --min-cpn 35 --max-ctn 20 \
-  -q checkm2 --mode new \
-  -o study_01_basalt
+(
+  cd "$run_dir"
+  BASALT -a assembly.fasta -s R1.fastq.gz,R2.fastq.gz \
+    -t "$threads" -m "$memory_gb" \
+    --sensitive sensitive --refinepara quick \
+    --min-cpn 35 --max-ctn 20 \
+    -q checkm2 --mode new -o study_basalt \
+    >BASALT.stdout.log 2>BASALT.stderr.log
+)
 ```
+
+The example uses one short-read pair. For multiple samples, construct the exact
+comma-within-pair and slash-between-samples argument from a validated manifest;
+never interleave or infer mates from unordered globs.
 
 PE syntax: `,` within a pair; `/` between samples. HiFi → `-hf` only (never `-l`).
 
@@ -149,6 +170,23 @@ From Qiu *et al.* (BASALT paper), useful operational points:
   contamination ≤5. Keep refinement entry gates distinct from publication filters
   in Methods (`mag-qc`).
 
+## Validation, recovery, and provenance
+
+Require completed `BASALT_command.txt`, `Basalt_log.txt`, checkpoint state, and a
+non-empty set of uniquely named final bin FASTAs. Reconcile every input
+assembly/read pair to the run manifest, inspect failed binners/stages, then rerun
+`checkm2` and `gunc` on exported MAGs. Compare accepted/rejected counts,
+completeness/contamination, contiguity, read support, and dereplication outcomes;
+do not infer success from the number of bins alone.
+
+Use `--mode continue` only in the original directory with identical inputs,
+BASALT code, models, databases, and parameters. Otherwise preserve the failed
+run and start fresh. Archive input checksums, environment/container, BASALT
+edition/version or commit, `BASALT_WEIGHT` files and checksums, database
+releases, commands, logs, checkpoints, QC tables, and final-bin checksums.
+
 ## Related skills
 
-`dastool` · `metawrap` · `lorbin` · `comebin` · `semibin2` · `vamb` · `study-design` · `megahit` · `metaspades` · `kneaddata` · `checkm2` · `mag-qc` · `drep`
+`dastool` · `metawrap` · `lorbin` · `comebin` · `semibin2` · `vamb` ·
+`study-design` · `megahit` · `metaspades` · `kneaddata` · `checkm2` · `gunc` ·
+`mag-qc` · `drep`

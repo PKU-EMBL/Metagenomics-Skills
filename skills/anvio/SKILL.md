@@ -13,6 +13,9 @@ metadata:
   metagenomics.tags: "anvio, visualization, MAG, refinement, interactive"
   metagenomics.upstream: "https://github.com/merenlab/anvio"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "contigs-database/profile workflow statically reviewed; interactive refinement not executed here"
 ---
 
 # Anvi'o
@@ -57,18 +60,35 @@ Do not treat interactive aesthetics as QC — still run `checkm2` / `gunc` /
 
 ## How to run
 
-Preflight the installed release with `anvi-script-reformat-fasta --help` and preserve its version. This minimal sequence initializes a contigs database before profile import/refinement:
+The BAM must have been mapped to the exact FASTA used for the contigs database.
+If contig names need simplification, reformat **before mapping** and retain the
+name map; do not simplify the FASTA and then profile an old BAM.
 
 ```bash
-set -euo pipefail
-[[ -s contigs.fa ]] || exit 2
-anvi-script-reformat-fasta contigs.fa -o contigs_fixed.fa --simplify-names
-anvi-gen-contigs-database -f contigs_fixed.fa -o CONTIGS.db -n PROJECT
-anvi-run-hmms -c CONTIGS.db -T 16
-[[ -s sample.bam ]] || exit 2
-anvi-profile -i sample.bam -c CONTIGS.db -o PROFILE_sample -T 16
-# For multiple samples, profile each BAM and pass the resulting PROFILE.db files to anvi-merge.
+set -Eeuo pipefail
+id="${1:?usage: build-anvio-profile.sh SAMPLE_ID CONTIGS BAM OUTPUT_DIR}"
+contigs="${2:?usage: build-anvio-profile.sh SAMPLE_ID CONTIGS BAM OUTPUT_DIR}"
+bam="${3:?usage: build-anvio-profile.sh SAMPLE_ID CONTIGS BAM OUTPUT_DIR}"
+out="${4:?usage: build-anvio-profile.sh SAMPLE_ID CONTIGS BAM OUTPUT_DIR}"
+threads="${THREADS:-16}"
+[[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || exit 2
+test -s "$contigs" && test -s "$bam" || exit 2
+samtools quickcheck -v "$bam"
+{ test -s "$bam.bai" || test -s "${bam%.bam}.bai"; } || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+
+anvi-gen-contigs-database -f "$contigs" -o "$out/CONTIGS.db" -n "$id" \
+  >"$out/gen-contigs.stdout.log" 2>"$out/gen-contigs.stderr.log"
+anvi-run-hmms -c "$out/CONTIGS.db" -T "$threads" \
+  >"$out/hmms.stdout.log" 2>"$out/hmms.stderr.log"
+anvi-profile -i "$bam" -c "$out/CONTIGS.db" \
+  -o "$out/PROFILE_${id}" -T "$threads" \
+  >"$out/profile.stdout.log" 2>"$out/profile.stderr.log"
 ```
+
+Profile each sample separately against the same contigs database, then merge the
+resulting profile databases with a release-compatible `anvi-merge` command.
 
 ## Decision tree
 
@@ -79,8 +99,21 @@ Need interactive MAG refinement / multi-omics viz?
 └─ Only QC metrics → checkm2 / gunc / mag-qc
 ```
 
+## Validation, recovery, and provenance
+
+Require readable contigs/profile databases, completed logs, BAM/reference name
+agreement, and expected contig/read counts. Before and after manual refinement,
+export collections with stable bin IDs and rerun `checkm2`, `gunc`, taxonomy,
+and read-support checks. Preserve the original automatic bins and an explicit
+contig move/add/remove audit; screenshots alone are not reproducible evidence.
+
+Do not overwrite databases after failed migrations or release changes. Record
+Anvi'o release, database schemas, dependency versions, FASTA/BAM checksums,
+commands, logs, profile/merge sample order, collection exports, refinement notes,
+and final-bin checksums. Interactive judgment is curator evidence, not
+experimental validation.
+
 ## Related skills
 
 `basalt` · `metawrap` · `coverm` · `checkm2` · `gunc` · `deepurify` ·
-`visualization` · `tool-selection`
-`mag-qc`
+`visualization` · `tool-selection` · `mag-qc`
