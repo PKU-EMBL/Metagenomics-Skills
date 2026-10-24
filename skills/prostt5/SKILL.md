@@ -13,6 +13,9 @@ metadata:
   metagenomics.tags: "ProstT5, ProtT5, PLM, protein-language-model, 3Di, Foldseek, Rostlab"
   metagenomics.upstream: "https://github.com/mheinzinger/ProstT5"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "Foldseek ProstT5 database workflow checked against current upstream documentation; not executed here"
 ---
 
 # ProstT5 (ProtT5 → AA ↔ 3Di)
@@ -51,16 +54,34 @@ LDDT features that need coordinates.
 
 ## How to run
 
-```bash
-# preferred production path — Foldseek wraps ProstT5
-foldseek databases ProstT5 weights tmp
-foldseek createdb query.fasta queryDB --prostt5-model weights
-# or:
-foldseek easy-search query.fasta targetDB res.m8 tmp --prostt5-model weights
-# GPU: --gpu 1 (Foldseek CUDA build); see foldseek skill
+Download and checksum the model once in setup. This production template converts
+protein FASTA into a Foldseek database with predicted 3Di tokens.
 
-# standalone HF inference: follow mheinzinger/ProstT5 README
+```bash
+set -Eeuo pipefail
+proteins="${1:?usage: build-prostt5-db.sh PROTEINS_FASTA MODEL OUTPUT_DIR}"
+model="${2:?usage: build-prostt5-db.sh PROTEINS_FASTA MODEL OUTPUT_DIR}"
+out="${3:?usage: build-prostt5-db.sh PROTEINS_FASTA MODEL OUTPUT_DIR}"
+threads="${THREADS:-8}"
+test -s "$proteins" && test -e "$model" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+gpu_args=()
+[[ "${PROSTT5_GPU:-0}" = 1 ]] && gpu_args=(--gpu 1)
+foldseek createdb "$proteins" "$out/query_db" --prostt5-model "$model" \
+  --threads "$threads" "${gpu_args[@]}" \
+  >"$out/createdb.stdout.log" 2>"$out/createdb.stderr.log"
+test -e "$out/query_db" && test -e "$out/query_db_ss"
+foldseek convert2fasta "$out/query_db_ss" "$out/query.3di.fasta" \
+  >"$out/convert.stdout.log" 2>"$out/convert.stderr.log"
+test -s "$out/query.3di.fasta"
+seqkit stats -T "$proteins" "$out/query.3di.fasta" >"$out/sequence-stats.tsv"
+awk 'NR==2{n=$4} NR==3 && $4!=n{exit 1} END{if(NR!=3) exit 1}' \
+  "$out/sequence-stats.tsv"
 ```
+
+Standalone Hugging Face embedding/translation is a distinct workflow: pin model
+revision, tokenizer, generation settings, precision, device, seed and batching.
 
 ## Decision tree
 
@@ -72,6 +93,20 @@ Need structure-aware protein search from FASTA?
 ├─ Have AFDB/PDB structures → foldseek (coords)
 └─ Classical sequence → mmseqs2 / diamond
 ```
+
+## Validation, recovery, and provenance
+
+Reconcile input proteins and 3Di records, lengths, invalid/ambiguous residues,
+failed translations, truncation, device precision, and CPU/GPU reproducibility.
+Use structural benchmarks or known controls to assess downstream retrieval.
+Remember that 3Di-only databases lack coordinates and cannot provide TM-score,
+LDDT, interfaces, residue geometry, or experimental structure confidence.
+
+Use fresh output after changing FASTA, model, software, device, or options.
+Record ProstT5/Hugging Face revision and checksum, Foldseek/transformers/torch
+versions, hardware/precision, input checksum, command/logs, database components,
+3Di checksum and failures. Predicted 3Di is a model representation, not a solved
+structure or validated function.
 
 ## Related skills
 

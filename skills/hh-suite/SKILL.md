@@ -12,6 +12,9 @@ metadata:
   metagenomics.tags: "HHblits, HHsearch, HH-suite, HMM, remote-homology, search"
   metagenomics.upstream: "https://github.com/soedinglab/hh-suite"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "HHblits/HHsearch database-prefix workflow statically reviewed; not executed here"
 ---
 
 # HH-suite3
@@ -41,17 +44,37 @@ careful pinning.
 
 ## How to run
 
+Use a single protein query (or justified input MSA) and a frozen HH-suite database
+prefix whose components belong to the same release.
+
 ```bash
-set -euo pipefail
-DB=${HH_DB_PREFIX:?set HH_DB_PREFIX to a pinned HH-suite database prefix}
-[[ -s query.faa && -s "${DB}_a3m.ffdata" && -s "${DB}_a3m.ffindex" ]] || exit 2
-mkdir -p temp/hh
-hhblits -i query.faa -o temp/hh/query.hhr -oa3m temp/hh/query.a3m \
-  -n 1 -d "$DB"
-test -s temp/hh/query.hhr && test -s temp/hh/query.a3m
-hhsearch -i temp/hh/query.a3m -d "$DB" -o temp/hh/query_hhsearch.hhr
-test -s temp/hh/query_hhsearch.hhr
+set -Eeuo pipefail
+query="${1:?usage: run-hhsuite.sh QUERY_FASTA OUTPUT_DIR}"
+out="${2:?usage: run-hhsuite.sh QUERY_FASTA OUTPUT_DIR}"
+db="${HH_DB_PREFIX:?set HH_DB_PREFIX to a pinned database prefix}"
+threads="${THREADS:-8}"
+iterations="${HHBLITS_ITERATIONS:-3}"
+test -s "$query" || exit 2
+for component in \
+  "${db}_a3m.ffdata" "${db}_a3m.ffindex" \
+  "${db}_hhm.ffdata" "${db}_hhm.ffindex" \
+  "${db}_cs219.ffdata" "${db}_cs219.ffindex"; do
+  test -s "$component" || exit 2
+done
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+hhblits -i "$query" -d "$db" -n "$iterations" -cpu "$threads" \
+  -o "$out/hhblits.hhr" -oa3m "$out/query.a3m" \
+  >"$out/hhblits.stdout.log" 2>"$out/hhblits.stderr.log"
+test -s "$out/hhblits.hhr" && test -s "$out/query.a3m"
+hhsearch -i "$out/query.a3m" -d "$db" -cpu "$threads" \
+  -o "$out/hhsearch.hhr" >"$out/hhsearch.stdout.log" \
+  2>"$out/hhsearch.stderr.log"
+test -s "$out/hhsearch.hhr"
 ```
+
+Predeclare iteration, inclusion, probability/E-value, coverage, diversity and
+maximum-sequence controls; defaults are not interchangeable across databases.
 
 ## Decision tree
 
@@ -62,6 +85,20 @@ Remote homology without structure?
 ├─ Structure / 3Di → foldseek
 └─ Vector DB → erast
 ```
+
+## Validation, recovery, and provenance
+
+Require HHR/A3M outputs, logs, query reconciliation, and valid no-hit reports.
+Inspect MSA depth/diversity/coverage, low complexity, Neff, probability/E-value,
+aligned columns, secondary matches, domain boundaries, consensus drift across
+iterations, and agreement with structure/sequence tools. Avoid transfer from
+short profile overlaps alone.
+
+Use fresh output after changing query, database, settings, or release. Record
+HH-suite version/build, database name/date/component checksums, query checksum,
+all options, commands/logs, HHR/A3M checksums, selected-hit rules, and MSA
+trimming. Profile probability supports homology, not orthology or a specific
+biochemical function without contextual evidence.
 
 ## Related skills
 

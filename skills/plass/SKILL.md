@@ -13,6 +13,9 @@ metadata:
   metagenomics.tags: "PLASS, PenguiN, assembly, protein, metagenomics"
   metagenomics.upstream: "https://github.com/soedinglab/plass"
   metagenomics.stage: "assembly"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "paired/single assemble interface checked against current upstream README; not executed here"
 ---
 
 # PLASS / PenguiN
@@ -44,13 +47,29 @@ from upstream.
 
 ## How to run
 
+This paired-end template preserves explicit mate identity and writes a protein
+catalogue, not nucleotide contigs.
+
 ```bash
-conda install -c bioconda plass
-plass assemble reads_1.fastq.gz reads_2.fastq.gz assembly.fas tmp
-# single-end
-plass assemble reads.fastq.gz assembly.fas tmp
-# PenguiN nucleotide assembly is a separate `penguin guided_nuclassemble` workflow.
+set -Eeuo pipefail
+r1="${1:?usage: run-plass.sh R1_FASTQ R2_FASTQ OUTPUT_DIR}"
+r2="${2:?usage: run-plass.sh R1_FASTQ R2_FASTQ OUTPUT_DIR}"
+out="${3:?usage: run-plass.sh R1_FASTQ R2_FASTQ OUTPUT_DIR}"
+threads="${THREADS:-16}"
+for file in "$r1" "$r2"; do
+  test -s "$file" || exit 2
+  [[ "$file" != *.gz ]] || gzip -t "$file"
+done
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out/tmp"
+plass assemble "$r1" "$r2" "$out/proteins.fasta" "$out/tmp" \
+  --threads "$threads" >"$out/plass.stdout.log" 2>"$out/plass.stderr.log"
+test -s "$out/proteins.fasta"
+seqkit stats -T "$out/proteins.fasta" >"$out/protein-stats.tsv"
 ```
+
+Single-end input uses the distinct three-positional-argument form. PenguiN
+nucleotide assembly is a separate `penguin guided_nuclassemble` workflow.
 
 ## Decision tree
 
@@ -61,6 +80,20 @@ Goal from metagenomic reads?
 ├─ Protein-guided nt assembly (viruses/…) → penguin (plass package)
 └─ Then search proteins → mmseqs2 / hh-suite / foldseek
 ```
+
+## Validation, recovery, and provenance
+
+Require valid protein FASTA, statistics, logs and an input/read reconciliation.
+Inspect sequence count/length, invalid residues, redundancy, low-complexity,
+short ORFs, known marker recovery, parameter sensitivity, and comparison with
+proteins predicted from nucleotide assemblies. PLASS proteins lack contig,
+coverage, neighborhood and bin context unless independently linked.
+
+Use fresh output after changing reads, parameters, binary, or mode. Record PLASS
+version/build, paired input checksums and library provenance, command/logs,
+temporary-space policy, output checksum/statistics, clustering/deduplication and
+annotation settings. Protein recovery is not proof of a complete gene, genome,
+organism, or expressed product.
 
 ## Related skills
 

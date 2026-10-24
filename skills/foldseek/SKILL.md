@@ -13,6 +13,9 @@ metadata:
   metagenomics.tags: "Foldseek, 3Di, structure-search, AFDB, multimer, ProstT5, homology"
   metagenomics.upstream: "https://github.com/steineggerlab/foldseek"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "easy-search/ProstT5/multimer interfaces checked against current upstream README; not executed here"
 ---
 
 # Foldseek
@@ -69,26 +72,32 @@ Hard rules:
 
 ## How to run
 
+This monomer template searches structures against an already pinned Foldseek
+target database and exports interpretable structural fields.
+
 ```bash
-# databases (examples)
-foldseek databases Alphafold/Proteome afdb tmp
-foldseek databases PDB pdb tmp
-
-# monomer structure search
-foldseek easy-search query.pdb afdb aln.m8 tmp
-
-# FASTA without structures → ProstT5 3Di
-foldseek databases ProstT5 weights tmp
-foldseek easy-search QUERY.faa pdb res.m8 tmp --prostt5-model weights
-
-# structural clustering
-foldseek easy-cluster structures/ clu tmp -c 0.9
-
-# complexes (Foldseek-Multimer)
-foldseek easy-multimersearch query_complex.pdb.gz pdb mm_result tmp
+set -Eeuo pipefail
+query="${1:?usage: search-foldseek.sh QUERY_STRUCTURE_OR_DIR TARGET_DB OUTPUT_DIR}"
+target="${2:?usage: search-foldseek.sh QUERY_STRUCTURE_OR_DIR TARGET_DB OUTPUT_DIR}"
+out="${3:?usage: search-foldseek.sh QUERY_STRUCTURE_OR_DIR TARGET_DB OUTPUT_DIR}"
+threads="${THREADS:-8}"
+test -e "$query" && test -e "$target" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out/tmp"
+foldseek easy-search "$query" "$target" "$out/hits.tsv" "$out/tmp" \
+  --threads "$threads" \
+  --format-output 'query,target,evalue,bits,prob,alntmscore,qtmscore,ttmscore,lddt' \
+  >"$out/foldseek.stdout.log" 2>"$out/foldseek.stderr.log"
+test -f "$out/hits.tsv"
+printf 'hits\t%s\n' "$(wc -l <"$out/hits.tsv" | tr -d ' ')" \
+  >"$out/validation.tsv"
 ```
 
-Webserver for interactive queries: https://search.foldseek.com
+For FASTA queries, add a checksummed ProstT5 model via `--prostt5-model`; TM-score,
+LDDT and coordinate-dependent fields are unavailable for 3Di-only databases.
+Use `easy-multimersearch` for complexes and preserve its `_report` output.
+Download/build databases in a separate frozen setup step.
+Webserver: https://search.foldseek.com
 
 ## Key parameters
 
@@ -113,6 +122,20 @@ Homology / structure need?
 ├─ Conserved neighborhoods → spacedust
 └─ Structure NR catalogue → foldseek easy-cluster
 ```
+
+## Validation, recovery, and provenance
+
+Reconcile all queries to hits/no-hits and inspect duplicate targets, coverage,
+E-value/probability, TM/LDDT metrics, alignment mode, multidomain behavior,
+query/target-normalized scores, structure confidence, clustered-DB expansion,
+and controls. Visualize and independently check top novel hits; do not transfer
+a specific function from global fold alone.
+
+Use fresh output after changing query, database, model, mode, or thresholds.
+Record Foldseek version/build/device, database release/build/checksum, structure
+source and confidence policy, ProstT5 revision when used, input checksums,
+command/logs, native fields, and filters. Keep monomer, multimer, motif and
+sequence-only evidence separately labeled.
 
 ## Related skills
 

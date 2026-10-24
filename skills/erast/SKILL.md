@@ -12,6 +12,9 @@ metadata:
   metagenomics.tags: "ERAST, vector-DB, embedding, homology, PLM, search"
   metagenomics.upstream: "https://github.com/TencentAILabHealthcare/ERAST"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed-experimental"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "local protein pipeline arguments checked against upstream pipeline README; not executed here"
 ---
 
 # ERAST
@@ -46,26 +49,54 @@ unless you rebuild locally; embedding hits need careful annotation transfer.
 
 **Web:** https://ai4s.tencent.com/erast
 
-**Local pipeline** reviewed from `pipeline/readme.md`:
+**Local protein pipeline**, using absolute paths because the scripts run from a
+pinned checkout:
 
 ```bash
-# Pfam + ESM2 embeddings + homology prediction (protein mode).
-PFAMDB=${PFAMDB:?set PFAMDB to the pinned Pfam assets}
-MODEL_PATH=${MODEL_PATH:?set MODEL_PATH to the pinned ESM2/ERAST checkpoint}
-[[ -e "$PFAMDB" && -e "$MODEL_PATH" ]] || exit 2
-cd pipeline
-python pfam_scan.py -out example/pfam_q.json -outfmt json example/q.fa "$PFAMDB"
-python pfam_scan.py -out example/pfam_t.json -outfmt json example/t.fa "$PFAMDB"
-python encode.py --res_path example/q_emb.npy --model_path "$MODEL_PATH" --fa_path example/q.fa
-python encode.py --res_path example/t_emb.npy --model_path "$MODEL_PATH" --fa_path example/t.fa
-python predict.py --fa_q example/q.fa --fa_t example/t.fa \
-  --emb_q example/q_emb.npy --emb_t example/t_emb.npy \
-  --pfam_q example/pfam_q.json --pfam_t example/pfam_t.json \
-  --out example/out.jsonl --mode p
-# Nucleotide runs use the separately prepared nucleotide artifacts and --mode n.
+set -Eeuo pipefail
+pipeline="${ERAST_PIPELINE:?set ERAST_PIPELINE to the checkout pipeline directory}"
+pfam="${PFAMDB:?set PFAMDB to a pinned Pfam directory}"
+model="${ERAST_MODEL_PATH:?set ERAST_MODEL_PATH to the pinned embedding model}"
+query="${1:?usage: run-erast.sh ABS_QUERY_FASTA ABS_TARGET_FASTA ABS_OUTPUT_DIR}"
+target="${2:?usage: run-erast.sh ABS_QUERY_FASTA ABS_TARGET_FASTA ABS_OUTPUT_DIR}"
+out="${3:?usage: run-erast.sh ABS_QUERY_FASTA ABS_TARGET_FASTA ABS_OUTPUT_DIR}"
+[[ "$pipeline" = /* && "$pfam" = /* && "$model" = /* && \
+   "$query" = /* && "$target" = /* && "$out" = /* ]] || exit 2
+for file in "$query" "$target" "$pfam/Pfam-A.hmm" \
+  "$pfam/Pfam-A.hmm.dat" "$pfam/Pfam-A.hmm.h3f" "$pfam/Pfam-A.hmm.h3i" \
+  "$pfam/Pfam-A.hmm.h3m" "$pfam/Pfam-A.hmm.h3p"; do
+  test -s "$file" || exit 2
+done
+test -f "$pipeline/predict.py" && test -e "$model" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+reranker_args=()
+if [[ -n "${ERAST_RERANKER:-}" ]]; then
+  test -e "$ERAST_RERANKER" || exit 2
+  reranker_args=(--reranker "$ERAST_RERANKER")
+fi
+(
+  cd "$pipeline"
+  python ./pfam_scan.py -out "$out/query.pfam.json" -outfmt json "$query" "$pfam"
+  python ./pfam_scan.py -out "$out/target.pfam.json" -outfmt json "$target" "$pfam"
+  python ./encode.py --res_path "$out/query.emb.npy" --model_path "$model" \
+    --fa_path "$query" --mode p
+  python ./encode.py --res_path "$out/target.emb.npy" --model_path "$model" \
+    --fa_path "$target" --mode p
+  python ./predict.py --fa_q "$query" --fa_t "$target" \
+    --emb_q "$out/query.emb.npy" --emb_t "$out/target.emb.npy" \
+    --pfam_q "$out/query.pfam.json" --pfam_t "$out/target.pfam.json" \
+    --out "$out/predictions.jsonl" "${reranker_args[@]}" --mode p
+) >"$out/erast.stdout.log" 2>"$out/erast.stderr.log"
+for file in query.pfam.json target.pfam.json query.emb.npy target.emb.npy; do
+  test -s "$out/$file"
+done
+test -f "$out/predictions.jsonl"
 ```
 
-EHSM checkpoint: Zenodo record noted in upstream README.
+Nucleotide mode has a distinct embedding/prediction contract and no Pfam stage;
+do not reuse the protein command by merely changing the FASTA alphabet. The EHSM
+reranker checkpoint is separate from the embedding model.
 
 ## Decision tree
 
@@ -77,6 +108,19 @@ Need homology at extreme scale / vector retrieval?
 ├─ Routine catalogues → mmseqs2 / diamond
 └─ Unsure → homology-search
 ```
+
+## Validation, recovery, and provenance
+
+Reconcile every query to hits or an explicit no-hit state. Inspect duplicate IDs,
+sequence type/length limits, Pfam coverage, embedding shape, nearest-neighbor and
+reranker score distributions, ties, controls, and agreement with classical
+search. Validate annotation-transfer thresholds on a held-out set.
+
+Use fresh outputs after changing sequences, Pfam, models, reranker, code, or
+mode. Record ERAST commit, Python/package/device versions, Pfam release/checksum,
+model and EHSM identifiers/revisions/checksums, query/target checksums, commands,
+logs, intermediate arrays, and result checksums. Web searches must record access
+date/index release and are not equivalent to the local target set.
 
 ## Related skills
 

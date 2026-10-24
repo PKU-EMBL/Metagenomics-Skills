@@ -11,6 +11,9 @@ metadata:
   metagenomics.tags: "Unicore, Foldseek, ProstT5, phylogeny, core-genes, 3Di"
   metagenomics.upstream: "https://github.com/steineggerlab/unicore"
   metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "easy-core input/output and GPU interface checked against current upstream README; not executed here"
 ---
 
 # Unicore
@@ -41,13 +44,33 @@ GPU: `--gpu` requires Foldseek≥10 / ProstT5 and a Turing-or-newer NVIDIA GPU; 
 
 ## How to run
 
+Input must contain only one uniquely named `.fasta` proteome per taxon. Pin and
+checksum ProstT5 weights before the run.
+
 ```bash
-conda install -c bioconda unicore
-# proteomes → structural cores → tree
-unicore easy-core example/data example/results weights tmp
-# GPU ProstT5 path
-unicore easy-core --gpu example/data example/results weights tmp
+set -Eeuo pipefail
+proteomes="${1:?usage: run-unicore.sh PROTEOME_DIR PROSTT5_MODEL OUTPUT_DIR}"
+model="${2:?usage: run-unicore.sh PROTEOME_DIR PROSTT5_MODEL OUTPUT_DIR}"
+out="${3:?usage: run-unicore.sh PROTEOME_DIR PROSTT5_MODEL OUTPUT_DIR}"
+test -d "$proteomes" && test -e "$model" || exit 2
+shopt -s nullglob
+files=("$proteomes"/*.fasta)
+((${#files[@]} >= 4)) || { echo "at least four proteomes are required" >&2; exit 2; }
+if find "$proteomes" -maxdepth 1 -type f ! -name '*.fasta' -print -quit | grep -q .; then
+  echo "proteome directory must contain only .fasta files" >&2; exit 2
+fi
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out/tmp"
+gpu_args=()
+[[ "${UNICORE_GPU:-0}" = 1 ]] && gpu_args=(--gpu)
+unicore easy-core "${gpu_args[@]}" "$proteomes" "$out/results" "$model" \
+  "$out/tmp" >"$out/unicore.stdout.log" 2>"$out/unicore.stderr.log"
+test -s "$out/results/cluster/clust.tsv"
+test -s "$out/results/tree/iqtree.treefile"
 ```
+
+The default core definition is single-copy presence in 80% of taxa. Any threshold,
+Foldseek clustering, IQ-TREE or partition changes must be recorded.
 
 ## Decision tree
 
@@ -58,6 +81,21 @@ Phylogeny from many proteomes/MAGs?
 ├─ Structural core genes / 3Di → unicore
 └─ Single divergent protein family → lucaphylo / foldmason + iqtree
 ```
+
+## Validation, recovery, and provenance
+
+Require proteome parsing, cluster/core profiles, per-core AA/3Di alignments,
+IQ-TREE artifacts, final tree, logs and taxon reconciliation. Inspect proteome
+quality/size, duplicate IDs, core occupancy/copy number, missing data, structural
+cluster sensitivity, alignment quality, gene-tree conflict, model/support,
+outgroup/rooting and long branches. Compare pivotal topology with a classical
+sequence-marker workflow.
+
+Use fresh output after changing proteomes, model, thresholds, device, software or
+options. Record Unicore/Foldseek/IQ-TREE versions, ProstT5 revision/checksum,
+hardware, proteome checksums/QC, commands/logs, core tables/MSAs/tree checksums,
+seed/model/support and rooting. A structural-core tree is computational evidence,
+not taxonomy or a resolved history without diagnostics.
 
 ## Related skills
 
