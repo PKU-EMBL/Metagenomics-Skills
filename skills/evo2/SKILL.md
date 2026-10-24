@@ -12,6 +12,9 @@ metadata:
   metagenomics.tags: "Evo2, Evo, gLM, DNA, generative, OpenGenome2, Arc-Institute"
   metagenomics.upstream: "https://github.com/ArcInstitute/evo2"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed-experimental"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "current Vortex forward-pass interface checked against upstream README; not executed here"
 ---
 
 # Evo 2
@@ -48,22 +51,52 @@ Validate outputs after hardware/config changes (upstream tests).
 
 ## How to run
 
-```bash
-# Reviewed light path: 7B checkpoint without Transformer Engine.
-pip install evo2   # after system CUDA / deps per README
-python - <<'PY'
-from evo2 import Evo2
+```python
+import importlib.metadata as md
+import json, os, sys
+from pathlib import Path
 import torch
-evo2_model = Evo2('evo2_7b')
-sequence = 'ACGT'
-input_ids = torch.tensor(
-    evo2_model.tokenizer.tokenize(sequence), dtype=torch.int
-).unsqueeze(0).to('cuda:0')
-# Pass `input_ids` to the pinned model API for the declared embedding/generation task.
-PY
+from evo2 import Evo2
+
+if len(sys.argv) != 2:
+    raise SystemExit("usage: python smoke_evo2.py FRESH_OUTPUT_DIR")
+out = Path(sys.argv[1])
+if out.exists():
+    raise SystemExit(f"refusing to overwrite: {out}")
+out.mkdir(parents=True)
+log = (out / "run.log").open("w")
+sys.stdout = log; sys.stderr = log
+if not torch.cuda.is_available():
+    raise RuntimeError("Evo 2 local inference requires a supported CUDA GPU")
+model_name = os.getenv("EVO2_MODEL", "evo2_7b")
+sequence = os.getenv("EVO2_SMOKE_SEQUENCE", "ACGT")
+if not sequence or set(sequence.upper()) - set("ACGTN"):
+    raise ValueError("smoke sequence must contain only A/C/G/T/N")
+model = Evo2(model_name)
+input_ids = torch.tensor(model.tokenizer.tokenize(sequence), dtype=torch.int)
+input_ids = input_ids.unsqueeze(0).to("cuda:0")
+with torch.inference_mode():
+    outputs, _ = model(input_ids)
+logits = outputs[0]
+torch.save(logits.cpu(), out / "smoke-logits.pt")
+metadata = {
+    "model": model_name, "sequence_length": len(sequence),
+    "input_shape": list(input_ids.shape), "logit_shape": list(logits.shape),
+    "evo2_package": md.version("evo2"), "torch": torch.__version__,
+    "gpu": torch.cuda.get_device_name(0)}
+(out / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
+assert (out / "smoke-logits.pt").stat().st_size > 0
+print(json.dumps(metadata, sort_keys=True))
+log.flush()
+sys.stdout = sys.__stdout__; sys.stderr = sys.__stderr__
+log.close()
 ```
 
-Also: NVIDIA hosted API / NIM options documented upstream.
+Run as `python smoke_evo2.py fresh_output_dir` in a pinned CUDA/container stack.
+The smoke test verifies a forward pass only. Embedding work must name the layer;
+generation must freeze prompt, sampling parameters and seed, retain all outputs,
+and follow institutional sequence-design governance. Hosted API/NIM use must
+record endpoint/model version and data-governance terms.
 
 ## Decision tree
 
@@ -75,6 +108,21 @@ Long DNA LM / design?
 ├─ Metagenomic gLM2 / OMG corpus → omg
 └─ Classical search → homology-search
 ```
+
+## Validation, recovery, and provenance
+
+Run upstream hardware/configuration tests, then validate task outputs with frozen
+positive/negative controls, classical baselines, leakage-aware splits, multiple
+seeds, calibration and external or held-out data. Inspect context boundaries,
+strand treatment, layer choice, numerical precision, likelihood normalization,
+generation diversity/validity and hardware reproducibility. Model likelihood or
+generation is not biological function, fitness, safety or experimental success.
+
+Use fresh outputs after changing sequence, model, package, kernels, device or
+settings. Record model name/weights identity and license, Evo2/Vortex/container
+commits, CUDA/cuDNN/driver/GPU/precision, input/split checksums, layer/prompt,
+seeds/sampling, commands/logs, raw artifacts and metrics. Never claim a 1 Mb
+context was used unless the actual tokenized length and memory path were logged.
 
 ## Related skills
 
