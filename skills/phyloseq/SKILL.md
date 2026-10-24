@@ -11,6 +11,9 @@ metadata:
   metagenomics.tags: "phyloseq, Bioconductor, R, microbiome, diversity, visualization"
   metagenomics.upstream: "https://github.com/joey711/phyloseq"
   metagenomics.stage: "report"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "object-construction and ID reconciliation template statically reviewed; not executed here"
 ---
 
 # phyloseq
@@ -38,11 +41,25 @@ Pin Bioconductor release. Avoid double rarefaction without stating rationale.
 ## How to run
 
 ```r
+args <- commandArgs(trailingOnly = TRUE)
+stopifnot(length(args) == 4L)
+counts_path <- args[[1]]; taxonomy_path <- args[[2]]
+metadata_path <- args[[3]]; out <- args[[4]]
+stopifnot(file.exists(counts_path), file.exists(taxonomy_path),
+          file.exists(metadata_path), !dir.exists(out), !file.exists(out))
+dir.create(out, recursive = TRUE, showWarnings = FALSE)
+log_con <- file(file.path(out, "build.log"), open = "wt")
+sink(log_con, type = "output"); sink(log_con, type = "message")
+on.exit({sink(type = "message"); sink(type = "output"); close(log_con)}, add = TRUE)
+
 library(phyloseq)
-counts <- as.matrix(read.delim("counts.tsv", row.names = 1, check.names = FALSE))
-tax <- as.matrix(read.delim("taxonomy.tsv", row.names = 1, check.names = FALSE))
-meta <- read.delim("metadata.tsv", row.names = 1, check.names = FALSE)
-stopifnot(all(is.finite(counts)), all(counts >= 0))
+counts <- as.matrix(read.delim(counts_path, row.names = 1, check.names = FALSE))
+tax <- as.matrix(read.delim(taxonomy_path, row.names = 1, check.names = FALSE))
+meta <- read.delim(metadata_path, row.names = 1, check.names = FALSE)
+stopifnot(!anyDuplicated(rownames(counts)), !anyDuplicated(colnames(counts)),
+          !anyDuplicated(rownames(tax)), !anyDuplicated(rownames(meta)),
+          is.numeric(counts), all(is.finite(counts)), all(counts >= 0),
+          all(abs(counts - round(counts)) < 1e-8))
 stopifnot(setequal(colnames(counts), rownames(meta)))
 stopifnot(all(rownames(counts) %in% rownames(tax)))
 meta <- meta[colnames(counts), , drop = FALSE]
@@ -50,10 +67,20 @@ tax <- tax[rownames(counts), , drop = FALSE]
 ps <- phyloseq(otu_table(counts, taxa_are_rows = TRUE),
                sample_data(meta), tax_table(tax))
 stopifnot(nsamples(ps) == nrow(meta), ntaxa(ps) == nrow(counts))
-saveRDS(ps, "phyloseq.rds")
+saveRDS(ps, file.path(out, "phyloseq.rds"))
+write.table(data.frame(sample_id = sample_names(ps), status = "matched"),
+            file.path(out, "sample-id-join.tsv"), sep = "\t",
+            quote = FALSE, row.names = FALSE)
+capture.output(sessionInfo(), file = file.path(out, "sessionInfo.txt"))
+stopifnot(file.info(file.path(out, "phyloseq.rds"))$size > 0,
+          inherits(readRDS(file.path(out, "phyloseq.rds")), "phyloseq"))
 ```
 
-Install a pinned Bioconductor/phyloseq release outside the analysis script. Add a phylogenetic tree only after its tip IDs are reconciled to taxa; transformations must create a new named object rather than silently replacing raw counts.
+Run the saved script as `Rscript build_phyloseq.R counts.tsv taxonomy.tsv
+metadata.tsv fresh_output_dir`, redirecting process stdout/stderr if your scheduler
+does not retain them. Install a pinned Bioconductor/phyloseq release outside the
+analysis script. Add a tree only after reconciling tip IDs; transformations must
+create named derived objects rather than replace raw counts.
 
 ## Decision tree
 
@@ -64,6 +91,19 @@ R microbiome data structure / classic plots?
 ├─ DA models → ancombc / maaslin2
 └─ Networks → spieceasi / sparcc
 ```
+
+## Validation, recovery, and provenance
+
+Audit feature/sample orientation, duplicate/unmatched IDs, integer count status,
+zero-sum samples/features, taxonomy rank consistency, tree-tip reconciliation,
+and metadata types/missingness. Preserve the raw-count object; name and document
+all prevalence filters, agglomeration, transforms, rarefaction, and subsets.
+
+Use a fresh output after any source-table or package change. Archive source
+checksums, ID-join report, construction script/log, R/Bioconductor/package
+versions, RDS checksum, derived-object lineage, seeds, and figure/model scripts.
+A phyloseq object is a container, not evidence that downstream assumptions or
+inference are valid.
 
 ## Related skills
 
