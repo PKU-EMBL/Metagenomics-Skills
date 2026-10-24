@@ -11,6 +11,9 @@ metadata:
   metagenomics.tags: "staramr, CGE, ResFinder, PointFinder, PlasmidFinder, AMR, plasmid"
   metagenomics.upstream: "https://github.com/phac-nml/staramr"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "search/db-info/PointFinder interface checked against current upstream README; not executed here"
 ---
 
 # staramr
@@ -42,13 +45,30 @@ CARD; keep `rgi` separate. For PointFinder, set the correct
 
 ## How to run
 
+Use the database bundled with a pinned staramr release or update once and freeze
+it before the cohort. PointFinder must be enabled only with a supported,
+independently established organism.
+
 ```bash
-# bioconda recommended
-mamba install -c bioconda -c conda-forge staramr
-staramr db update   # or pin a local DB directory
-staramr search --pointfinder-organism salmonella \
-  -o staramr_out assembly.fasta
-# outputs include summary, resfinder, pointfinder, plasmidfinder TSVs
+set -Eeuo pipefail
+assembly="${1:?usage: run-staramr.sh ASSEMBLY_FASTA OUTPUT_DIR}"
+out="${2:?usage: run-staramr.sh ASSEMBLY_FASTA OUTPUT_DIR}"
+threads="${THREADS:-8}"
+test -s "$assembly" || exit 2
+test ! -e "$out" && test ! -e "${out}.logs" || {
+  echo "use new output and log paths" >&2; exit 2;
+}
+mkdir -p "$(dirname "$out")" "${out}.logs"
+point_args=()
+if [[ -n "${POINTFINDER_ORGANISM:-}" ]]; then
+  point_args=(--pointfinder-organism "$POINTFINDER_ORGANISM")
+fi
+staramr db info >"${out}.logs/database-info.txt"
+staramr search -n "$threads" -o "$out" "${point_args[@]}" "$assembly" \
+  >"${out}.logs/staramr.stdout.log" 2>"${out}.logs/staramr.stderr.log"
+test -s "$out/summary.tsv"
+test -s "$out/detailed_summary.tsv"
+test -s "$out/settings.txt"
 ```
 
 ## Decision tree
@@ -61,6 +81,20 @@ Need Res + Point + Plasmid in one pass?
 ├─ Virulence / named MGEs → virulencefinder / mobileelementfinder
 └─ CARD meta catalogue → rgi
 ```
+
+## Validation, recovery, and provenance
+
+Require summary, detailed, ResFinder, PointFinder, PlasmidFinder, MLST,
+settings, hit FASTAs, logs, and database info; retain negative isolates. Inspect
+quality-module assumptions, identity/overlap, fragmented/duplicate genes,
+mutation support and organism validity, replicon context, novel/partial STs, and
+cross-database conflicts. Do not silently exclude genes or negatives.
+
+Use fresh outputs after changing assembly, databases, thresholds, organism, or
+release. Record staramr/BLAST/mlst versions, all CGE commits and gene-drug table
+versions, assembly checksum, command, settings/logs, result checksums, and
+interpretation rules. Report predicted microbiological resistance separately
+from clinical resistance and laboratory AST.
 
 ## Related skills
 

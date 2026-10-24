@@ -11,6 +11,10 @@ metadata:
   metagenomics.tags: "PADLOC, defense, defenseome, CRISPR, antiviral, genome-mining"
   metagenomics.upstream: "https://github.com/padlocbio/padloc"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.upstream-version: "2.x interface"
+  metagenomics.command-status: "PADLOC 2 input/database CLI checked against upstream documentation; not executed here"
 ---
 
 # PADLOC
@@ -48,11 +52,35 @@ Annotate proteins first (`bakta` / `prokka`). Pin **padloc-db** version.
 
 ## How to run
 
+PADLOC 2.x requires PADLOC-DB 2.x. Install a named database release before the
+study; do not run `--db-update` between samples.
+
 ```bash
-# install padloc + download padloc-db per upstream README
-padloc --fna genome.fna --outdir padloc_out
-# or: padloc --faa proteins.faa --gff features.gff --outdir padloc_out
+set -Eeuo pipefail
+genome="${1:?usage: run-padloc.sh GENOME_FASTA OUTPUT_DIR}"
+out="${2:?usage: run-padloc.sh GENOME_FASTA OUTPUT_DIR}"
+threads="${THREADS:-8}"
+test -s "$genome" || exit 2
+test ! -e "$out" && test ! -e "${out}.logs" || {
+  echo "use new output and log paths" >&2; exit 2;
+}
+mkdir -p "$(dirname "$out")" "${out}.logs"
+data_args=()
+if [[ -n "${PADLOC_DATA:-}" ]]; then
+  test -d "$PADLOC_DATA" || exit 2
+  data_args=(--data "$PADLOC_DATA")
+fi
+padloc --version >"${out}.logs/software-version.txt"
+padloc "${data_args[@]}" --db-version >"${out}.logs/database-version.txt"
+padloc --fna "$genome" --outdir "$out" --cpu "$threads" \
+  "${data_args[@]}" >"${out}.logs/padloc.stdout.log" \
+  2>"${out}.logs/padloc.stderr.log"
+find "$out" -type f -name '*_padloc.csv' -print -quit | grep -q .
+find "$out" -type f -name '*_padloc.gff' -print -quit | grep -q .
 ```
+
+For existing proteins, provide the coordinate-matched FAA and GFF together;
+apply `--fix-prodigal` only to affected Prodigal files after checking IDs.
 
 ## Decision tree
 
@@ -64,6 +92,19 @@ Defenseome / antiviral systems?
 ├─ Dark conserved neighborhoods → spacedust
 └─ Virus/plasmid contigs → genomad → checkv
 ```
+
+## Validation, recovery, and provenance
+
+Require CSV, GFF, domtblout, protein/GFF intermediates as applicable, version
+files, and logs. Reconcile genomes and proteins; inspect complete versus partial
+systems, model/domain support, gene order, overlapping calls, contig-edge
+truncation, and optional ncRNA/CRISPR evidence. Keep PADLOC and DefenseFinder
+calls separate before a documented consensus step.
+
+Use fresh outputs after changing input, database, optional evidence, or release.
+Record PADLOC/PADLOC-DB versions and database checksum, HMMER/Prodigal versions,
+input and annotation checksums, command, logs, outputs and filtering rules.
+Predicted systems indicate genomic potential, not measured antiviral activity.
 
 ## Related skills
 
