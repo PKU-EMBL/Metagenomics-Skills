@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "binning, maxbin"
   metagenomics.upstream: "https://sourceforge.net/projects/maxbin2/"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed-legacy"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "MaxBin 2 CLI template statically reviewed; not executed here"
 ---
 
 # MaxBin 2
@@ -37,10 +40,22 @@ feed into `basalt` ★ / `metawrap` / `dastool`.
 
 ## How to run
 
+The abundance file must use contig IDs matching the assembly exactly. Repeat
+`-abund` only for validated, consistently ordered sample-specific tables.
+
 ```bash
-run_MaxBin.pl -contig contigs.fa -abund depth.txt \
-  -out temp/bins/maxbin -thread 16
-# multiple -abund for multi-sample; see MaxBin docs for format
+set -Eeuo pipefail
+assembly="${1:?usage: run-maxbin.sh ASSEMBLY ABUNDANCE OUTPUT_DIR}"
+abundance="${2:?usage: run-maxbin.sh ASSEMBLY ABUNDANCE OUTPUT_DIR}"
+out="${3:?usage: run-maxbin.sh ASSEMBLY ABUNDANCE OUTPUT_DIR}"
+threads="${THREADS:-16}"
+for input in "$assembly" "$abundance"; do test -s "$input" || exit 2; done
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+
+run_MaxBin.pl -contig "$assembly" -abund "$abundance" \
+  -out "$out/maxbin" -thread "$threads" \
+  >"$out/maxbin.stdout.log" 2>"$out/maxbin.stderr.log"
 ```
 
 ## Key parameters
@@ -61,7 +76,19 @@ Single classical binner?
 └─ Catalogue / multi-assembly → basalt ★
 ```
 
+## Validation, recovery, and provenance
+
+Require a completed summary/log and non-empty bin FASTAs with unique contig
+membership. Reconcile assembly IDs against the abundance table, quantify binned
+and unbinned bases, inspect marker summaries, and run `checkm2` plus `gunc` on
+exported bins. Compare MaxBin2 as one ensemble member; do not select it solely by
+raw bin count.
+
+Rerun changed inputs or abundance sets under a new prefix. Record MaxBin2 and
+marker/database versions, assembly/abundance checksums, sample order, command,
+logs, minimum-contig settings, contig2bin table, QC results, and bin checksums.
+
 ## Related skills
 
-`metabat2` · `concoct` · `dastool` · `metawrap` · `basalt` · `checkm2` ·
+`metabat2` · `concoct` · `dastool` · `metawrap` · `basalt` · `checkm2` · `gunc` ·
 `tool-selection`

@@ -12,6 +12,10 @@ metadata:
   metagenomics.tags: "decontamination, MAG, Deepurify, QC"
   metagenomics.upstream: "https://github.com/ericcombiolab/Deepurify"
   metagenomics.stage: "assessment"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.upstream-version: "2.4.3 interface"
+  metagenomics.command-status: "deepurify clean CLI checked against upstream v2.4.3 documentation; not executed here"
 ---
 
 # Deepurify
@@ -48,13 +52,31 @@ inspect high-value novel lineages manually (`anvio`).
 
 ## How to run
 
+Use `clean` for an existing bin set. `iter-clean` is a separate contigs+BAM
+re-binning workflow and must not be substituted silently.
+
 ```bash
-# verify CLI in upstream README for your version
-deepurify \
-  -i bins/ \
-  -o temp/deepurify \
-  # model / DB paths per docs
+set -Eeuo pipefail
+bins="${1:?usage: deepurify-clean.sh BINS_DIR DB_DIR OUTPUT_DIR}"
+db="${2:?usage: deepurify-clean.sh BINS_DIR DB_DIR OUTPUT_DIR}"
+out="${3:?usage: deepurify-clean.sh BINS_DIR DB_DIR OUTPUT_DIR}"
+suffix="${BIN_SUFFIX:-fa}"
+threads="${THREADS:-16}"
+gpu_num="${GPU_NUM:-0}"
+test -d "$bins" && test -d "$db" || exit 2
+find "$bins" -maxdepth 1 -type f -name "*.${suffix}" -print -quit | grep -q . || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$(dirname "$out")/logs"
+name="$(basename "$out")"
+
+deepurify clean -i "$bins" -o "$out" -db "$db" \
+  --bin_suffix "$suffix" --gpu_num "$gpu_num" --num_process "$threads" \
+  >"$(dirname "$out")/logs/${name}.deepurify.stdout.log" \
+  2>"$(dirname "$out")/logs/${name}.deepurify.stderr.log"
 ```
+
+For GPU execution, explicitly record device IDs, CUDA/PyTorch versions, and
+batch/thread settings. Pin the Deepurify-DB snapshot and checksum.
 
 ## Decision tree
 
@@ -65,6 +87,19 @@ MAG contamination problem?
 ├─ Interactive contig surgery → anvio
 └─ Prevent upstream → multi-coverage binning + ensemble (basalt ★)
 ```
+
+## Validation, recovery, and provenance
+
+Reconcile every input MAG to unchanged, cleaned, split, rejected, or failed
+outputs. Compare pre/post contig membership, total length, completeness,
+contamination, GUNC, taxonomy, coverage coherence, and key genes; gains in one
+quality score do not justify loss of biologically supported contigs. Rerun
+`checkm2` and `gunc` independently on all retained sub-MAGs.
+
+Never merge partial outputs from changed models/databases. Preserve original
+bins and run changed settings under a new path. Record Deepurify/model/database
+versions and checksums, dependency and hardware details, commands, logs,
+input-output lineage, removed-contig tables, QC comparisons, and final checksums.
 
 ## Related skills
 

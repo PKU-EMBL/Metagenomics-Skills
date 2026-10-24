@@ -13,6 +13,9 @@ metadata:
   metagenomics.tags: "MAG, ensemble-binning, DAS_Tool, refinement"
   metagenomics.upstream: "https://github.com/cmks/DAS_Tool"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "DAS Tool and conversion CLI checked against upstream usage; not executed here"
 ---
 
 # DAS Tool
@@ -52,22 +55,31 @@ want a packaged binning + CheckM-style refinement suite.
 
 ## How to run
 
-```bash
-conda install -c bioconda das_tool
+Use only predictions generated from the same immutable assembly and namespace.
 
-# Convert FASTA bins → contig2bin if needed
-Fasta_to_Contigs2Bin.sh -i metabat2_bins -e fa > metabat2.contigs2bin.tsv
-Fasta_to_Contigs2Bin.sh -i maxbin2_bins -e fasta > maxbin2.contigs2bin.tsv
+```bash
+set -Eeuo pipefail
+assembly="${1:?usage: run-dastool.sh ASSEMBLY METABAT_BINS MAXBIN_BINS OUTPUT_DIR}"
+metabat_bins="${2:?usage: run-dastool.sh ASSEMBLY METABAT_BINS MAXBIN_BINS OUTPUT_DIR}"
+maxbin_bins="${3:?usage: run-dastool.sh ASSEMBLY METABAT_BINS MAXBIN_BINS OUTPUT_DIR}"
+out="${4:?usage: run-dastool.sh ASSEMBLY METABAT_BINS MAXBIN_BINS OUTPUT_DIR}"
+threads="${THREADS:-8}"
+test -s "$assembly" && test -d "$metabat_bins" && test -d "$maxbin_bins" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+
+Fasta_to_Contigs2Bin.sh -i "$metabat_bins" -e fa \
+  >"$out/metabat.contigs2bin.tsv" 2>"$out/metabat.convert.stderr.log"
+Fasta_to_Contigs2Bin.sh -i "$maxbin_bins" -e fasta \
+  >"$out/maxbin.contigs2bin.tsv" 2>"$out/maxbin.convert.stderr.log"
+test -s "$out/metabat.contigs2bin.tsv"
+test -s "$out/maxbin.contigs2bin.tsv"
 
 DAS_Tool \
-  -i metabat2.contigs2bin.tsv,maxbin2.contigs2bin.tsv \
-  -l metabat,maxbin \
-  -c contigs.fa \
-  -o temp/dastool/run1 \
-  -t 8 \
-  --write_bins \
-  --write_bin_evals \
-  --search_engine diamond
+  -i "$out/metabat.contigs2bin.tsv,$out/maxbin.contigs2bin.tsv" \
+  -l metabat,maxbin -c "$assembly" -o "$out/run" -t "$threads" \
+  --write_bins --write_bin_evals --search_engine diamond \
+  >"$out/dastool.stdout.log" 2>"$out/dastool.stderr.log"
 ```
 
 ## Key parameters
@@ -117,6 +129,21 @@ Practical rule from the paper’s logic: diversify binners (MetaBAT2 + MaxBin2 +
 CONCOCT/SemiBin2/VAMB/COMEBin), then aggregate — do not run DAS Tool on a
 single contig2bin table expecting magic.
 
+## Validation, recovery, and provenance
+
+Require non-empty summary, final contig2bin map, bin-evaluation table, and FASTA
+bin directory. Verify every assigned contig exists exactly once in the source
+assembly, input labels match table order, and duplicate contig assignments within
+an input set are resolved before running. Reassess exported bins with `checkm2`
+and `gunc`; SCG score is selection evidence, not a publication-quality metric.
+
+Use `--resume` only with the exact prior proteins, inputs, database, and release.
+Otherwise keep the old prefix and start a new one. Archive DAS Tool/dependency
+versions, SCG database/search-engine version, assembly and table checksums,
+commands, logs, score parameters, input evaluations, selected-bin lineage, and
+final checksums.
+
 ## Related skills
 
-`metawrap` · `basalt` · `megahit` · `metaspades` · `checkm2` · `drep` · `mag-qc` · `tool-selection`
+`metawrap` · `basalt` · `megahit` · `metaspades` · `checkm2` · `gunc` · `drep` ·
+`mag-qc` · `tool-selection`
