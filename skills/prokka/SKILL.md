@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "annotation, orf, prokaryote"
   metagenomics.upstream: "https://github.com/tseemann/prokka"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed-legacy"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "Prokka per-genome CLI template statically reviewed; not executed here"
 ---
 
 # Prokka
@@ -38,7 +41,24 @@ Fragmented MAGs yield incomplete/wrong gene calls — filter with `mag-qc` first
 ## How to run
 
 ```bash
-prokka bins/bin.fa --outdir temp/prokka/${id} --prefix ${id} --cpus 8 --force
+set -Eeuo pipefail
+id="${1:?usage: annotate-prokka.sh GENOME_ID GENOME_FASTA OUTPUT_DIR}"
+genome="${2:?usage: annotate-prokka.sh GENOME_ID GENOME_FASTA OUTPUT_DIR}"
+out="${3:?usage: annotate-prokka.sh GENOME_ID GENOME_FASTA OUTPUT_DIR}"
+threads="${THREADS:-8}"
+kingdom="${PROKKA_KINGDOM:-Bacteria}"
+[[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || exit 2
+case "$kingdom" in Bacteria|Archaea) ;; *) exit 2 ;; esac
+test -s "$genome" || exit 2
+log_dir="${out}.logs"
+test ! -e "$out" && test ! -e "$log_dir" || {
+  echo "use new output and log paths" >&2; exit 2;
+}
+mkdir -p "$(dirname "$out")" "$log_dir"
+
+prokka "$genome" --outdir "$out" --prefix "$id" --cpus "$threads" \
+  --kingdom "$kingdom" \
+  >"$log_dir/prokka.stdout.log" 2>"$log_dir/prokka.stderr.log"
 ```
 
 ## Key parameters
@@ -57,6 +77,19 @@ Annotate a bacterial/archaeal genome/MAG?
 ├─ Classic rapid GBK/GFF → prokka
 └─ Only proteins for catalogue → prodigal
 ```
+
+## Validation, recovery, and provenance
+
+Require non-empty GFF, GenBank, FAA, FFN, and summary outputs. Reconcile input
+contigs, feature counts and IDs, kingdom/genetic code, coding density, partial
+calls, and warnings. Inspect missing rRNA/tRNA in the context of completeness and
+fragmentation. Keep one stable locus-tag namespace per genome/catalogue.
+
+Never use `--force` on an unarchived result. Run changed genomes, databases, or
+parameters under a new path. Record Prokka and dependency/database versions,
+input/output checksums, kingdom/genetic code/locus-tag settings, command, logs,
+and feature summary. Product names are homology-supported annotations, not
+experimentally verified functions.
 
 ## Related skills
 

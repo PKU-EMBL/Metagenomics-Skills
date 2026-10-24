@@ -12,6 +12,9 @@ metadata:
   metagenomics.tags: "MMseqs2, cluster, search, taxonomy, Linclust"
   metagenomics.upstream: "https://github.com/soedinglab/MMseqs2"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "easy-cluster/search/taxonomy command shapes statically reviewed; not executed here"
 ---
 
 # MMseqs2
@@ -56,17 +59,29 @@ still a **different claim** from `kraken2` / `metabuli` read profilers or
 
 ## How to run
 
+Choose one mode per immutable output root. This example creates a non-redundant
+protein catalogue; search and taxonomy require separate result directories and
+release-pinned target databases.
+
 ```bash
-# NR clustering
-mmseqs easy-cluster genes.faa temp/mmseqs/clu temp/mmseqs/tmp \
-  --min-seq-id 0.9 -c 0.8 --cov-mode 1
+set -Eeuo pipefail
+proteins="${1:?usage: cluster-mmseqs.sh PROTEINS_FAA OUTPUT_DIR}"
+out="${2:?usage: cluster-mmseqs.sh PROTEINS_FAA OUTPUT_DIR}"
+threads="${THREADS:-16}"
+test -s "$proteins" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out/tmp"
 
-# protein search
-mmseqs easy-search query.faa targetDB aln.m8 temp/mmseqs/tmp
-
-# contig taxonomy (prepare taxDB first — see wiki / databases workflow)
-mmseqs easy-taxonomy contigs.fa taxonomyDB temp/mmseqs/tax temp/mmseqs/tmp
+mmseqs easy-cluster "$proteins" "$out/nr" "$out/tmp" \
+  --min-seq-id 0.90 -c 0.80 --cov-mode 1 --threads "$threads" \
+  >"$out/mmseqs.stdout.log" 2>"$out/mmseqs.stderr.log"
+test -s "$out/nr_rep_seq.fasta"
+test -s "$out/nr_cluster.tsv"
 ```
+
+Protein search uses `mmseqs easy-search QUERY TARGET RESULT TMP`; contig taxonomy
+uses `easy-taxonomy` with a taxonomy-aware database. Preserve their full output
+fields and database build manifests.
 
 ## Key parameters
 
@@ -89,6 +104,19 @@ Sequence vs structure homology?
 ├─ Motif geometry → folddisco
 └─ PLM remote homology, sequence-only → plmsearch / deepblast
 ```
+
+## Validation, recovery, and provenance
+
+For clustering, verify input-to-cluster completeness, unique representative IDs,
+sequence counts, identity/coverage semantics, and cluster-size distribution. For
+search/taxonomy, validate output fields, query coverage, E-values, taxonomic
+ranks, and no-hit records. Keep raw mappings before best-hit or LCA filtering.
+
+Use a new result and temporary directory after changing inputs, thresholds,
+database, or release. Record MMseqs2 version/commit, target/taxonomy database
+release and checksum, input checksum, sensitivity and coverage settings,
+commands, logs, cluster/search tables, and result checksums. Similarity and LCA
+assignments are not experimental functions or read abundance.
 
 ## Related skills
 

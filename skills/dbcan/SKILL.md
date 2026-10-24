@@ -9,13 +9,18 @@ license: MIT
 metadata:
   metagenomics.category: "analysis-tools"
   metagenomics.tags: "CAZy, CAZyme, DOM, glycan, substrate, genome-mining, dbCAN3"
-  metagenomics.upstream: "https://github.com/linnabrown/run_dbcan"
+  metagenomics.upstream: "https://github.com/bcb-unl/run_dbcan"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.upstream-version: "run_dbcan 5 interface"
+  metagenomics.command-status: "CAZyme_annotation CLI checked against official v5 documentation; not executed here"
 ---
 
 # dbCAN (run_dbcan / dbCAN3)
 
-Upstream: [linnabrown/run_dbcan](https://github.com/linnabrown/run_dbcan) ·
+Upstream: [bcb-unl/run_dbcan](https://github.com/bcb-unl/run_dbcan) ·
+Documentation: https://run-dbcan.readthedocs.io/ ·
 Server: https://bcb.unl.edu/dbCAN2/
 
 ## Citation
@@ -46,12 +51,32 @@ dbCAN-sub is stronger than a single hit.
 
 ## How to run
 
+run_dbcan 5 uses subcommands. This protein-mode example runs the three core
+methods against a pinned database prepared with `run_dbcan database`.
+
 ```bash
-# Preflight a pinned dbCAN bundle containing the enabled HMM/substrate assets.
-[[ -d db/dbcan ]] || exit 2
-run_dbcan proteins.faa protein --out_dir temp/dbcan/${id} --db_dir db/dbcan -t 16
-# CGC + substrate: supply GFF / use substrate_prediction per run_dbcan docs
+set -Eeuo pipefail
+proteins="${1:?usage: annotate-dbcan.sh PROTEINS_FAA DB_DIR OUTPUT_DIR}"
+db="${2:?usage: annotate-dbcan.sh PROTEINS_FAA DB_DIR OUTPUT_DIR}"
+out="${3:?usage: annotate-dbcan.sh PROTEINS_FAA DB_DIR OUTPUT_DIR}"
+threads="${THREADS:-16}"
+test -s "$proteins" && test -d "$db" || exit 2
+log_dir="${out}.logs"
+test ! -e "$out" && test ! -e "$log_dir" || {
+  echo "use new output and log paths" >&2; exit 2;
+}
+mkdir -p "$(dirname "$out")" "$log_dir"
+
+run_dbcan CAZyme_annotation \
+  --input_raw_data "$proteins" --output_dir "$out" --db_dir "$db" \
+  --mode protein --methods diamond --methods hmm --methods dbCANsub \
+  --threads "$threads" --log-file "$log_dir/run_dbcan.log" \
+  >"$log_dir/dbcan.stdout.log" 2>"$log_dir/dbcan.stderr.log"
 ```
+
+For CGC and substrate prediction, retain genome coordinates/GFF and use the
+version-matched `easy_CGC` or `easy_substrate` workflow. Legacy run_dbcan 4 uses
+a different positional interface and must be reported separately.
 
 ## Decision tree
 
@@ -62,6 +87,19 @@ Glycan / DOM polymer capacity?
 ├─ Broad distillate → dram
 └─ Route menu → dom-biosurfactant
 ```
+
+## Validation, recovery, and provenance
+
+Require `overview.txt` plus method-specific DIAMOND, HMM, and dbCAN-sub outputs;
+reconcile input protein IDs and retain method agreement instead of collapsing to
+an undocumented Boolean. For CGCs, verify GFF/protein ID consistency, genomic
+neighborhoods, boundaries, substrate evidence, and contig-edge truncation.
+
+Use fresh outputs after changing database, methods, or release. Record run_dbcan
+and dependency versions, database snapshot/checksum, input/GFF checksums,
+methods and thresholds, commands, logs, method-level and consensus tables, and
+result checksums. CAZyme/substrate calls indicate predicted capacity, not measured
+DOM transformation.
 
 ## Related skills
 
