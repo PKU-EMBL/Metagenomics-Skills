@@ -12,6 +12,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "research-analysis, statistics, visualization, differential-abundance, network, Nextflow, Snakemake"
   metagenomics.stage: "report"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "inferential routing and delivery contract reviewed; model execution is delegated to child skills"
 ---
 
 # Research analysis (stats · figures · reports · workflows)

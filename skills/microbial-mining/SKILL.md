@@ -14,6 +14,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "genome-mining, BGC, AMR, MGE, virus, metabolism, element-cycling, DOM, biosurfactant, defense, QS, routing"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "mining routes and evidence boundaries reviewed; execution is delegated to child skills"
 ---
 
 # Microbial mining
@@ -105,6 +108,19 @@ contigs
    → plasmaag (multi-sample plasmid recovery)
    → macrel
 ```
+
+## Required mining deliverable
+
+Create one candidate manifest keyed by genome/contig/protein and coordinates,
+with detector, software/database release, raw score/threshold, completeness or
+edge status, abundance/context evidence, cross-tool support, and claim tier.
+Include every input as hit, no-hit, filtered, or failed. Keep raw detector tables
+unchanged and derive consensus in a separate versioned table.
+
+Report sequence detection, pathway/system completeness, abundance, physical
+linkage, host assignment, mobility, phenotype/activity, and experimental
+validation as distinct evidence columns. A candidate can advance tiers only
+when the additional evidence was actually generated and inspected.
 
 ## Never
 

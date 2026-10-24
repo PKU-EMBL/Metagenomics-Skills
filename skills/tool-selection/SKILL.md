@@ -11,11 +11,27 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "guidance, tool-selection, mapping, binning, mining, research-analysis, workflow"
   metagenomics.stage: "utilities"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "routing matrix reviewed; selected tools must be executed through their own skills"
 ---
 
 # Tool Selection
 
 Start from the **stage**, then the deliverable.
+
+## Selection contract
+
+Before naming a tool, state the scientific claim, input unit/technology, sample
+count and pairing, expected deliverable, database/license constraints, compute,
+and whether the request is exploratory or publication-bound. Return a primary
+choice, justified alternatives, incompatibilities, validation gate, and the
+specific child skill to load. Tool popularity or benchmark rank alone is not a
+selection criterion.
+
+Never combine outputs merely because tools address the same broad stage. Define
+how identifiers, taxonomies, scores, abundance units, database releases, and
+failure/no-hit states will be reconciled before proposing an ensemble.
 
 ## By stage
 

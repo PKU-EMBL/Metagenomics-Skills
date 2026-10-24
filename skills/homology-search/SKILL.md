@@ -10,6 +10,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "homology, search, Steinegger, Foldseek, MMseqs2, vector-DB, routing"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "search-paradigm routing reviewed; execution is delegated to child skills"
 ---
 
 # Homology search routing
@@ -50,6 +53,21 @@ Hard rules:
 2. Pin software **and** database/index release
 3. Low pLDDT structures inflate Foldseek false positives
 4. `plass` proteins ≠ binnable contigs; `metaeuk` is for eukaryotes
+
+## Search and evidence contract
+
+Require query molecule/type, search objective, expected evolutionary distance,
+reference/index release, scale/resources, sensitivity/coverage target, and
+whether coordinates, taxonomy, alignments, or structures are needed. Deliver raw
+hits plus a normalized table preserving query/target IDs, method, score scale,
+E-value/probability, aligned coverage, identity or structural similarity,
+rank/tie policy, database release, and no-hit/failed queries.
+
+Cross-method consensus must be defined before inspection and retain each native
+score. Similarity supports homology only within method-appropriate evidence;
+function, orthology, taxonomy, and common ancestry require additional context.
+Inspect low-complexity, short-query, multidomain, paralog, database-redundancy,
+and structure-confidence failure modes.
 
 ## Decision tree
 

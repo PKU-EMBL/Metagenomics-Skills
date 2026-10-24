@@ -11,6 +11,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "study-design, co-assembly, pooling, provenance"
   metagenomics.stage: "utilities"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "design and manifest contract reviewed; no computational analysis is executed by this skill"
 ---
 
 # Study Design

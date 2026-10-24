@@ -12,6 +12,9 @@ metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "setup, onboarding, installation, conda"
   metagenomics.stage: "utilities"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "preflight and pinned BASALT install recipe statically reviewed; not executed here"
 ---
 
 # Setup
@@ -31,16 +34,27 @@ until existing runtimes, storage, network policy, and user scope are known.
 ## Agent preflight
 
 ```bash
-set -euo pipefail
-printf 'host=%s\n' "$(hostname)"
-uname -a
-printf 'cpus='; (command -v nproc >/dev/null && nproc) || getconf _NPROCESSORS_ONLN || true
-if command -v free >/dev/null; then free -h; elif command -v vm_stat >/dev/null; then vm_stat; fi
-command -v micromamba || command -v conda || true
-command -v apptainer || command -v singularity || command -v docker || true
-df -h .
-quota -s 2>/dev/null || true
-printf 'TMPDIR=%s\n' "${TMPDIR:-<unset>}"
+set -Eeuo pipefail
+report="${1:-provenance/preflight.txt}"
+test ! -e "$report" || { echo "use a new report path: $report" >&2; exit 2; }
+mkdir -p "$(dirname "$report")"
+{
+  printf 'host=%s\n' "$(hostname)"
+  uname -a
+  printf 'cpus='
+  (command -v nproc >/dev/null && nproc) || getconf _NPROCESSORS_ONLN || true
+  if command -v free >/dev/null; then
+    free -h
+  elif command -v vm_stat >/dev/null; then
+    vm_stat
+  fi
+  command -v micromamba || command -v conda || true
+  command -v apptainer || command -v singularity || command -v docker || true
+  df -h .
+  quota -s 2>/dev/null || true
+  printf 'TMPDIR=%s\n' "${TMPDIR:-<unset>}"
+} >"$report" 2>&1
+test -s "$report"
 ```
 
 Then report, without installing yet:
@@ -89,14 +103,50 @@ exact FASTA/database release before reuse.
 
 ## BASALT install (Conda edition)
 
-See `basalt` skill and https://basalt-guide.readthedocs.io/en/latest/installation.html
+Read the `basalt` skill and
+https://basalt-guide.readthedocs.io/en/latest/installation.html first. Execute
+only after the preflight and user-approved storage/environment scope.
 
 ```bash
-git clone --branch V1.2.2 --depth 1 https://github.com/PKU-EMBL/BASALT.git
-cd BASALT
-micromamba create -n basalt -f basalt_environment.yml --strict-channel-priority --yes
-micromamba run -n basalt bash install.sh
+set -Eeuo pipefail
+prefix="${1:?usage: install-basalt.sh INSTALL_PREFIX}"
+env_name="${BASALT_ENV_NAME:-basalt-1.2.2}"
+checkout="$prefix/BASALT-V1.2.2"
+logs="$prefix/logs/BASALT-V1.2.2"
+test ! -e "$checkout" && test ! -e "$logs" || {
+  echo "use a new install prefix or preserve the existing installation" >&2; exit 2;
+}
+mkdir -p "$prefix" "$logs"
+git clone --branch V1.2.2 --depth 1 https://github.com/PKU-EMBL/BASALT.git \
+  "$checkout" >"$logs/clone.stdout.log" 2>"$logs/clone.stderr.log"
+micromamba create -n "$env_name" -f "$checkout/basalt_environment.yml" \
+  --strict-channel-priority --yes \
+  >"$logs/environment.stdout.log" 2>"$logs/environment.stderr.log"
+(
+  cd "$checkout"
+  micromamba run -n "$env_name" bash install.sh
+) >"$logs/install.stdout.log" 2>"$logs/install.stderr.log"
+micromamba run -n "$env_name" BASALT --help >"$logs/BASALT.help.txt"
+git -C "$checkout" rev-parse HEAD >"$logs/source-commit.txt"
+test -s "$logs/BASALT.help.txt"
+test -s "$logs/source-commit.txt"
 ```
+
+Do not infer database or model readiness from `--help`; verify CheckM2 data and
+all five `BASALT_WEIGHT` files separately in the `basalt` preflight.
+
+## Setup acceptance and recovery
+
+An installation is usable only after version/help checks, a tool-provided smoke
+test where available, database/index integrity checks, and write/read tests in
+the intended runtime context. Archive lockfiles or container digests, source
+commits, commands, logs, checksums, environment variables, install paths, and
+failed attempts. Never claim a large database is installed until expected files,
+checksums and a representative query were inspected.
+
+Preserve failed installations for diagnosis or remove only the dedicated new
+prefix after confirming it contains no reusable/user data. Do not mutate a
+shared environment to repair one project; create a new pinned environment.
 
 ## Related skills
 

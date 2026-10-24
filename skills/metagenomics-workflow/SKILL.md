@@ -12,6 +12,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "guidance, pipeline, workflow, QC, assembly, mapping, binning, taxonomy, function, mining, research-analysis"
   metagenomics.stage: "utilities"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "orchestration contract reviewed; executable commands are delegated to stage skills"
 ---
 
 # Metagenomics Workflow
@@ -94,6 +97,20 @@ study-design + setup (+ public-databases)
 | Community RNA | `metatranscriptomics` → host/rRNA depletion → quantification/function |
 | Metabolic simulation | QC genomes/models → `community-metabolic-modeling` → `carveme` / `micom` |
 | Source attribution | controls and candidate sources → `source-tracking` → `feast` |
+
+## Required workflow deliverable
+
+Return a machine-readable stage ledger with stable run/sample IDs, immutable
+input checksums, exact parent-child output paths, software/database releases,
+resource estimates, commands/logs, validation status, resume eligibility, and
+failure reason. For each stage, classify outputs as `planned`, `prepared`,
+`executed`, `verified`, `failed`, or `not_run`; never use file existence alone as
+success. Preserve rejected reads/bins and zero-result samples in audit tables.
+
+Every downstream handoff must name its unit and semantics (reads, contigs, genes,
+MAGs, relative abundance, coverage, or presence/absence). A workflow completion
+claim requires inspection of final artifacts and all stage gates, not merely a
+zero process exit.
 
 ## Quality gates
 

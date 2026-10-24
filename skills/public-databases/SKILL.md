@@ -5,7 +5,7 @@ description: >
   benchmark datasets. Use when: (1) Choosing SRA/ENA vs MGnify vs GTDB vs proGenomes vs
   CAMI, (2) Distinguishing raw archives, genome warehouses, biome catalogues, tool
   indexes, and gold-standard benchmarks, (3) Pinning data releases for Methods, (4)
-  Planning downloads for UHGG, GTDB R10+, KEGG, CARD, bioBakery, Kraken, CheckM2. Child
+  Planning downloads for UHGG, current GTDB releases, KEGG, CARD, bioBakery, Kraken, CheckM2. Child
   skills: sra-ena, mgnify, gtdb, progenomes, cami, kegg, biobakery-databases. For
   software install use setup.
 license: MIT
@@ -13,6 +13,9 @@ metadata:
   metagenomics.category: "utilities"
   metagenomics.tags: "database, catalogue, UHGG, GTDB, MGnify, CAMI, proGenomes, SRA, ENA, KEGG"
   metagenomics.stage: "utilities"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "resource routing and provenance requirements reviewed; downloads are delegated to child skills"
 ---
 
 # Public databases
@@ -24,7 +27,7 @@ in your disk layout:
 |-------|----------|--------|
 | Raw / submitted reads | NCBI SRA, EBI ENA | `sra-ena` |
 | Analysed studies + biome MAG/protein catalogues | MGnify, UHGG | `mgnify` |
-| Rank-normalized taxonomy + species reps | GTDB (e.g. R10-RS226) | `gtdb` · `gtdbtk` |
+| Rank-normalized taxonomy + species reps | GTDB (for example R11-RS232) | `gtdb` · `gtdbtk` |
 | Uniformly annotated genome warehouse | proGenomes4 | `progenomes` |
 | Gold-standard benchmarks / simulators | CAMI / CAMI II, CAMISIM | `cami` |
 | Pathway / ortholog knowledge bases | KEGG, eggNOG, MetaCyc | `kegg` · `eggnog-mapper` · `biobakery-databases` |
@@ -96,6 +99,19 @@ Need public metagenomics data/reference?
 └─ Unsure
       → this skill + tool-selection
 ```
+
+## Acquisition and acceptance contract
+
+Before transfer, record license/access terms, expected bytes/files, destination,
+available space, official URL/API, release identifier, published checksums, and
+whether credentials or controlled-access handling apply. Download into a staging
+area, verify size/checksum/archive integrity, inventory records, then atomically
+promote to a read-only release directory. Never update an index in place during
+an analysis.
+
+For a derived tool index, retain both the primary-resource manifest and the
+exact build command/software version. Acceptance requires a representative query
+or tool-specific integrity check; a completed transfer alone is not validation.
 
 ## Provenance checklist (pin in Methods)
 
