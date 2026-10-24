@@ -12,6 +12,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "element-cycling, biogeochemistry, C, N, S, Fe, P, CH4, METABOLIC, MEBS, FeGenie"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "biogeochemical routing and claim boundaries reviewed; execution is delegated"
 ---
 
 # Element cycling (biogeochemistry)
@@ -51,6 +54,20 @@ Hard rules:
    pathways unlabeled
 3. Low-completeness MAGs under-call pathways — filter with `mag-qc` first
 4. Siderophores / secondary metabolites ≠ proven secretion (`fegenie` / `antismash`)
+
+## Inputs and required delivery
+
+Predeclare the element, transformation, analysis unit, minimum MAG quality,
+required marker set/pathway rule, abundance layer, and environmental measurements
+that will be compared. Deliver a gene-level evidence table with coordinates and
+thresholds, a pathway/module completeness table with missing markers, a
+MAG/community abundance table with units, and a claim matrix naming the tool and
+database supporting each transformation.
+
+Retain absent/uncertain calls and normalize opportunities for MAG completeness
+and sampling depth where appropriate. Gene presence supports potential only;
+flux, direction, rate, substrate use, and in situ activity require transcript,
+protein, isotope, geochemical, cultivation, or other independent evidence.
 
 ## Decision tree
 

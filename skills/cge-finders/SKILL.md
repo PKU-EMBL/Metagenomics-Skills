@@ -13,6 +13,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "CGE, Finder, PlasmidFinder, ResFinder, PointFinder, DisinFinder, VirulenceFinder, MobileElementFinder, pMLST, staramr, ABRicate, MLST, AMR, plasmid, MGE"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "routing and claim-separation guidance reviewed; execution is delegated to child skills"
 ---
 
 # CGE Finders
@@ -50,6 +53,20 @@ Hard rules:
 3. Do not equate Finder hits with phenotype or complete circular plasmids
 4. Keep ResFinder / DisinFinder / RGI-CARD tables separate unless cross-mapped
 5. Report chromosomal `mlst` ST and plasmid `pmlst` ST as distinct claims
+
+## Required inputs and delivery contract
+
+Require stable isolate/genome IDs, assembly quality, organism assignment when a
+species-specific mutation panel is requested, exact software/database releases,
+and predeclared identity/coverage rules. Deliver separate raw and interpreted
+tables for acquired genes, point mutations, replicons, plasmid ST, chromosomal
+ST, virulence markers, biocide genes, and named MGEs; include no-hit and failed
+samples.
+
+Cross-map databases only through a documented ontology table. Preserve
+coordinates and contig context so plasmid/MGE support can be graded separately
+from gene detection. Any phenotype field must identify the tool/database rule and
+remain a prediction unless matched to laboratory susceptibility testing.
 
 ## Decision tree
 

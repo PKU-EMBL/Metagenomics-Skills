@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "defense, CRISPR, genome-mining"
   metagenomics.upstream: "https://github.com/mdmparis/defense-finder"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "run/models-dir CLI checked against current upstream documentation; not executed here"
 ---
 
 # DefenseFinder
@@ -29,10 +32,28 @@ system models — often run both for surveys) and viral MGE mining
 
 ## How to run
 
-```bash
-conda install -c conda-forge -c bioconda defense-finder
+Protein inputs must remain in genomic order because system architecture is part
+of the evidence. Freeze the model release rather than running `update` mid-study.
 
-defense-finder run genome.faa --out temp/defense/${id}
+```bash
+set -Eeuo pipefail
+proteins="${1:?usage: run-defensefinder.sh ORDERED_PROTEINS_FAA OUTPUT_DIR}"
+out="${2:?usage: run-defensefinder.sh ORDERED_PROTEINS_FAA OUTPUT_DIR}"
+threads="${THREADS:-8}"
+test -s "$proteins" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$(dirname "$out")"
+model_args=()
+if [[ -n "${DEFENSEFINDER_MODELS:-}" ]]; then
+  test -d "$DEFENSEFINDER_MODELS" || exit 2
+  model_args=(--models-dir "$DEFENSEFINDER_MODELS")
+fi
+
+defense-finder run -o "$out" -w "$threads" --preserve-raw \
+  "${model_args[@]}" "$proteins" \
+  >"${out}.stdout.log" 2>"${out}.stderr.log"
+find "$out" -type f -name '*systems*.tsv' -print -quit | grep -q .
+find "$out" -type f -name '*genes*.tsv' -print -quit | grep -q .
 ```
 
 ## Key parameters
@@ -45,6 +66,20 @@ defense-finder run genome.faa --out temp/defense/${id}
 - Run mining on **QC-filtered genomes/MAGs** (or contigs for MGE/virus screens)
 - Computational hits are hypotheses — state validation limits in Methods
 - Pin software + database releases
+
+## Validation, recovery, and provenance
+
+Require systems, genes, and HMM hit tables plus raw MacSyFinder output when
+requested. Reconcile input proteins, system boundaries, complete/incomplete
+status, model coverage, duplicate/overlapping systems, and contig-edge effects.
+Cross-check survey-level conclusions with PADLOC while keeping model-specific
+calls separate.
+
+Use fresh outputs after changing proteins, models, coverage, or release. Record
+DefenseFinder/MacSyFinder versions, model repository commit/checksum, ordered
+protein and genome annotation checksums, command, logs, raw/system tables, and
+result checksums. Predicted systems indicate genomic potential, not measured
+phage resistance.
 
 ## Related skills
 

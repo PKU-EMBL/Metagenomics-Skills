@@ -12,6 +12,9 @@ metadata:
   metagenomics.tags: "ABRicate, AMR, virulence, PlasmidFinder, ResFinder, CARD, VFDB, screening"
   metagenomics.upstream: "https://github.com/tseemann/abricate"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed-legacy"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "ABRicate screen/summary interface checked against upstream usage; not executed here"
 ---
 
 # ABRicate
@@ -42,14 +45,33 @@ sensitivity — pin them in Methods. Metagenome contigs: expect fragmented hits.
 
 ## How to run
 
+Freeze the installed databases before screening; do not update them in the middle
+of a cohort.
+
 ```bash
-mamba install -c bioconda -c conda-forge abricate
-abricate --list                    # available DBs
-abricate --db resfinder assembly.fasta > resfinder.tsv
-abricate --db plasmidfinder assembly.fasta > plasmidfinder.tsv
-abricate --db vfdb assembly.fasta > vfdb.tsv
-abricate --summary *.tsv > summary.tsv
-# update DBs periodically: abricate --setupdb / upstream instructions
+set -Eeuo pipefail
+id="${1:?usage: screen-abricate.sh SAMPLE_ID ASSEMBLY OUTPUT_DIR}"
+assembly="${2:?usage: screen-abricate.sh SAMPLE_ID ASSEMBLY OUTPUT_DIR}"
+out="${3:?usage: screen-abricate.sh SAMPLE_ID ASSEMBLY OUTPUT_DIR}"
+[[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || exit 2
+test -s "$assembly" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+abricate --list >"$out/database-manifest.tsv"
+
+IFS=, read -r -a databases <<<"${ABRICATE_DATABASES:-resfinder,plasmidfinder,vfdb}"
+reports=()
+for db in "${databases[@]}"; do
+  [[ "$db" =~ ^[A-Za-z0-9._-]+$ ]] || exit 2
+  report="$out/${id}.${db}.tsv"
+  abricate --db "$db" "$assembly" >"$report" 2>"$out/${id}.${db}.stderr.log"
+  grep -q '^#FILE' "$report"
+  reports+=("$report")
+done
+abricate --summary "${reports[@]}" >"$out/${id}.summary.tsv" \
+  2>"$out/${id}.summary.stderr.log"
+test -s "$out/${id}.summary.tsv"
+test -s "$out/database-manifest.tsv"
 ```
 
 ## Decision tree
@@ -63,6 +85,18 @@ Multi-DB gene screen on assemblies?
 ├─ Official PlasmidFinder CLI → plasmidfinder
 └─ Plasmid ST schemes → pmlst
 ```
+
+## Validation, recovery, and provenance
+
+Require raw per-database tables with headers, a summary table, and the database
+manifest. Retain no-hit samples. Inspect identity, coverage, coordinates,
+fragmentation, overlapping/duplicate hits, database discordance, and whether a
+hit lies on a plasmid/MGE-supported sequence. Do not infer phenotype, gene
+expression, or complete plasmids from an ABRicate row.
+
+Use fresh outputs after changing assemblies, databases, or thresholds. Record
+ABRicate/BLAST versions, every database name/date/sequence count and checksum,
+assembly checksum, command, logs, raw/summary checksums, and filtering rules.
 
 ## Related skills
 
