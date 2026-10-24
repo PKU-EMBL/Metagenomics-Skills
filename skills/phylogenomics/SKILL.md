@@ -11,6 +11,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "phylogeny, tree, IQ-TREE, PhyloPhlAn, evolution, GTDB, routing"
   metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "tree/placement/ANI routing reviewed; execution is delegated to child skills"
 ---
 
 # Phylogenomics / evolutionary routing
@@ -43,6 +46,20 @@ Hard rules:
 
 RAxML-NG / ASTRAL remain valid for specialized species-tree workflows; prefer
 documenting them explicitly if used instead of IQ-TREE2.
+
+## Required phylogenomic deliverable
+
+Define taxa and outgroup, orthology/marker rule, alignment and trimming, partition
+or concatenation strategy, substitution-model selection, support procedure,
+rooting, missing-data and contamination filters, and tree purpose before running.
+Deliver sequence/marker manifests, per-marker and concatenated alignments,
+partition/model files, uncollapsed tree with branch lengths/support, logs,
+software/database provenance, and a taxon inclusion/exclusion audit.
+
+Inspect marker occupancy, paralogy, recombination/HGT, compositional bias,
+long-branch attraction, topology sensitivity, support calibration, and gene-tree
+conflict. Do not convert weakly supported placements, ANI thresholds, taxonomy
+labels, or PLM distances into a resolved evolutionary history.
 
 ## Decision tree
 

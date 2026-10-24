@@ -10,6 +10,9 @@ metadata:
   metagenomics.category: "evaluation"
   metagenomics.tags: "visualization, diversity, statistics, figures, research-analysis"
   metagenomics.stage: "report"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "figure design and reporting checklist reviewed; rendering is delegated to analysis skills"
 ---
 
 # Visualization and statistics (checklist)
@@ -23,6 +26,22 @@ Route via `research-analysis`. For modular R pipelines prefer `microeco`.
 3. Report normalization, rarefaction (if any), test, and multiple-testing correction
 4. Do not plot bins as “high-quality genomes” before `mag-qc` / `checkm2` filters
 5. Prefer vector PDF/SVG for journal figures; keep scripts + seed for reproducibility
+
+## Input and figure contract
+
+Require a validated sample/feature table, metadata ID-join report, declared
+abundance unit, transform/normalization, taxonomic/functional level, contrast,
+statistical result table, and palette/accessibility plan. Every figure must ship
+with source data, executable code, session information, fixed random seed where
+relevant, and a caption that states `n`, exclusions, uncertainty display, test,
+and multiplicity correction.
+
+Use raw points with summaries where feasible; show denominators and missingness.
+Keep relative, absolute, coverage, presence/absence, and model-adjusted values in
+separate panels or explicit scales. Ordinations require distance and transform;
+heatmaps require scaling direction; stacked bars must identify the remainder.
+Do not use truncated axes, hidden zeroes, unlabelled smoothing, decorative 3-D,
+or network layouts as quantitative evidence.
 
 ## By stage
 
@@ -54,6 +73,14 @@ Route via `research-analysis`. For modular R pipelines prefer `microeco`.
 | Multivariable volcano / coefficients | `maaslin2` |
 | Cladogram / LDA scores | `lefse` |
 | Multi-sample QC HTML | `multiqc` |
+
+## Figure acceptance
+
+Verify plotted values against source tables, sample counts against the manifest,
+legend/category completeness, color-blind and grayscale readability, vector/text
+integrity, panel consistency, and export dimensions. Inspect both the rendered
+artifact and machine-readable source; a script that exits successfully is not
+proof that labels, scales, or biological interpretation are correct.
 
 ## Related skills
 
