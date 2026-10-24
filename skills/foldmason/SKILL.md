@@ -11,6 +11,9 @@ metadata:
   metagenomics.tags: "FoldMason, structure-MSA, Foldseek, alignment"
   metagenomics.upstream: "https://github.com/steineggerlab/foldmason"
   metagenomics.stage: "function"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "easy-msa outputs and report mode checked against current upstream README; not executed here"
 ---
 
 # FoldMason
@@ -40,11 +43,30 @@ clustering dark proteins or AFDB hits into families.
 
 ## How to run
 
+Use a curated directory of homologous PDB/mmCIF structures with unique IDs; avoid
+an unordered shell glob that can omit compressed files or exceed argument limits.
+
 ```bash
-conda install -c bioconda foldmason
-foldmason easy-msa structures/*.pdb result.fasta tmp --report-mode 1
-# HTML report when --report-mode 1; webserver also available
+set -Eeuo pipefail
+structures="${1:?usage: run-foldmason.sh STRUCTURE_DIR OUTPUT_DIR}"
+out="${2:?usage: run-foldmason.sh STRUCTURE_DIR OUTPUT_DIR}"
+threads="${THREADS:-8}"
+test -d "$structures" || exit 2
+find "$structures" -maxdepth 1 -type f \( -name '*.pdb' -o -name '*.cif' -o \
+  -name '*.pdb.gz' -o -name '*.cif.gz' \) -print -quit | grep -q . || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out/tmp"
+foldmason easy-msa "$structures" "$out/result" "$out/tmp" \
+  --report-mode 1 --threads "$threads" \
+  >"$out/foldmason.stdout.log" 2>"$out/foldmason.stderr.log"
+test -s "$out/result_aa.fa"
+test -s "$out/result_3di.fa"
+test -s "$out/result.nw"
+test -s "$out/result.html"
 ```
+
+For large sets, evaluate `--precluster`; for refined alignments, record
+`--refine-iters`. These choices change which structures and columns drive the MSA.
 
 ## Decision tree
 
@@ -55,6 +77,19 @@ Have a set of related structures?
 ├─ Short motif → folddisco
 └─ Sequence MSA → hh-suite / classical aligners
 ```
+
+## Validation, recovery, and provenance
+
+Require AA/3Di MSAs, guide tree, HTML report, logs, and one reconciled row per
+input structure. Inspect exclusions, duplicate IDs, chain choice, sequence/3Di
+lengths, gap/occupancy patterns, LDDT, outliers, preclustering/refinement effects,
+and low-confidence coordinates. The guide tree is an alignment aid unless
+independently justified as phylogeny.
+
+Use fresh output after changing structures, options, or binary. Record FoldMason
+and Foldseek versions/builds, structure sources/checksums and confidence policy,
+input manifest, command/logs, settings, MSA/tree checksums, and exclusions.
+Structural alignment supports shared geometry, not identical function or history.
 
 ## Related skills
 

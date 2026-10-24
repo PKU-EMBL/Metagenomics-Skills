@@ -12,6 +12,9 @@ metadata:
   metagenomics.tags: "Folddisco, motif, structure-search, AFDB, Foldseek"
   metagenomics.upstream: "https://github.com/steineggerlab/folddisco"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "current motif query/output options checked against upstream README; not executed here"
 ---
 
 # Folddisco
@@ -46,18 +49,29 @@ manual residue chemistry checks; pin index version (v2 `*.tar.lz4` vs legacy).
 
 ## How to run
 
+Define motif residues from a named structure before searching a pinned index.
+Default output includes partial matches, so retain coverage/RMSD fields.
+
 ```bash
-# example: catalytic triad against a prebuilt index
-folddisco query -i index/h_sapiens_folddisco -p query/4CHA.pdb -q B57,B102,C195 -t 6
-
-# whole-structure motif sampling (omit -q); long queries may use --sampling-ratio
-folddisco query -i index/afdb50_v4_folddisco -p query.pdb -t 8 --skip-match
-
-# prebuilt indices (examples): AFDB50, ESM30, PDB, Swiss-Prot
-# https://opendata.mmseqs.org/folddisco/
+set -Eeuo pipefail
+index="${1:?usage: query-folddisco.sh INDEX QUERY_STRUCTURE RESIDUES OUTPUT_DIR}"
+query="${2:?usage: query-folddisco.sh INDEX QUERY_STRUCTURE RESIDUES OUTPUT_DIR}"
+residues="${3:?usage: query-folddisco.sh INDEX QUERY_STRUCTURE RESIDUES OUTPUT_DIR}"
+out="${4:?usage: query-folddisco.sh INDEX QUERY_STRUCTURE RESIDUES OUTPUT_DIR}"
+threads="${THREADS:-8}"
+test -s "$query" || exit 2
+if [[ ! -e "$index" ]] && ! compgen -G "${index}*" >/dev/null; then exit 2; fi
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+folddisco query -i "$index" -p "$query" -q "$residues" -t "$threads" \
+  --header --per-structure >"$out/hits.tsv" 2>"$out/folddisco.stderr.log"
+test -s "$out/hits.tsv"
+head -n 1 "$out/hits.tsv" | grep -q 'tid'
 ```
 
-Web: https://search.foldseek.com/folddisco
+For whole-structure sampling, omit `-q` and predeclare `--sampling-ratio` and
+`--skip-match`; this is a different evidence mode. Prebuilt indexes are at
+https://opendata.mmseqs.org/folddisco/. Web: https://search.foldseek.com/folddisco
 
 ## Key parameters
 
@@ -79,6 +93,19 @@ Structure-aware annotation need?
 ├─ Sequence only → mmseqs2 / plmsearch
 └─ Gene neighborhood modules → spacedust
 ```
+
+## Validation, recovery, and provenance
+
+Require header-preserving raw hits and explicit no-hit queries. Inspect residue
+numbering/chain IDs, missing atoms, motif chemistry, node coverage, IDF, RMSD,
+partial/confident status, database redundancy, structure confidence, and
+sensitivity to distance/angle/substitution settings. Confirm shortlisted hits by
+coordinate visualization and independent alignment or biochemical context.
+
+Use fresh output after changing motif, structure, index, thresholds, or release.
+Record Folddisco version/commit, index release/checksum, source structure and
+residue definition, command/log, output fields, filters, and reviewed coordinates.
+Geometric similarity is a candidate motif, not measured catalysis or binding.
 
 ## Related skills
 
