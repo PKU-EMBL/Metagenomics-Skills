@@ -10,6 +10,10 @@ metadata:
   metagenomics.tags: "Nextflow, nf-core, workflow, reproducibility, pipeline, HPC"
   metagenomics.upstream: "https://github.com/nextflow-io/nextflow"
   metagenomics.stage: "utilities"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.upstream-version: "Nextflow 26.10.3; nf-core/mag 5.5.0"
+  metagenomics.command-status: "current run/report/trace/work-dir/resume interface reviewed; pipeline not executed here"
 ---
 
 # Nextflow
@@ -44,17 +48,32 @@ processes.
 
 ```bash
 set -euo pipefail
-[[ -s samplesheet.csv ]] || exit 2
-nextflow -version
-nextflow pull nf-core/mag -r 5.5.0
-nextflow run nf-core/mag -r 5.5.0 -profile singularity \
-  --input samplesheet.csv --outdir result/nf-core-mag \
-  -with-report result/nf-core-mag.execution-report.html \
-  -with-trace result/nf-core-mag.trace.tsv
-# A local pinned DSL2 project runs as: nextflow run main.nf -resume
+samplesheet=${1:?usage: run-mag.sh SAMPLESHEET.csv FRESH_RUN_DIR}
+run=${2:?usage: run-mag.sh SAMPLESHEET.csv FRESH_RUN_DIR}
+[[ -s "$samplesheet" ]] || exit 2
+[[ ! -e "$run" ]] || { echo "refusing to overwrite: $run" >&2; exit 3; }
+mkdir -p "$run/logs" "$run/provenance" "$run/work"
+export NXF_VER=26.10.3
+nextflow -version >"$run/provenance/nextflow.version.txt" 2>&1
+sha256sum "$samplesheet" >"$run/provenance/samplesheet.sha256"
+printf 'pipeline\trevision\tprofile\n%s\t%s\t%s\n' \
+  'nf-core/mag' '5.5.0' 'singularity' >"$run/provenance/run.tsv"
+nextflow -log "$run/logs/nextflow.log" run nf-core/mag -r 5.5.0 \
+  -profile singularity --input "$samplesheet" --outdir "$run/results" \
+  -work-dir "$run/work" -with-report "$run/execution-report.html" \
+  -with-trace "$run/trace.tsv" -with-timeline "$run/timeline.html" \
+  -with-dag "$run/dag.html" 2>&1 | tee "$run/logs/console.log"
+test -s "$run/execution-report.html"; test -s "$run/trace.tsv"
+find "$run/results" -type f -size +0c -print -quit | grep -q .
+awk -F '\t' 'NR==1 {for(i=1;i<=NF;i++) if($i=="status") c=i;
+  if(!c) bad=2; next} c && $c !~ /^(COMPLETED|CACHED)$/ {bad=1}
+  END {exit bad}' "$run/trace.tsv"
 ```
 
-For the complete release-specific contract and output gates, use `$nf-core-mag` or `$nf-core-taxprofiler`; do not transfer parameters between pipelines.
+For the complete release-specific contract and output gates, use `$nf-core-mag`
+or `$nf-core-taxprofiler`; do not transfer parameters between pipelines. Inspect
+the pipeline schema before launch, because Nextflow options use one dash and
+pipeline parameters use two.
 
 ## Decision tree
 
@@ -64,6 +83,22 @@ Need reproducible pipeline orchestration?
 ├─ Python/Snakefile ecosystem → snakemake
 └─ Ad-hoc scripts only → setup + stage skills
 ```
+
+## Validation, recovery, and provenance
+
+Validate the samplesheet schema, unique sample IDs, paired R1/R2 identity and lane
+policy before launch. Inspect trace failures/retries, final deliverables, MultiQC,
+per-stage sample reconciliation and scientific quality gates; workflow completion
+alone is not analytical validation. Include explicit no-hit/filtered samples in
+final tables.
+
+After an infrastructure interruption, repeat the identical command against the
+same `work` directory with `-resume` and append a new console log. Do not resume
+after changing inputs, parameters, code revision, containers or database
+releases; start a fresh run. Archive Nextflow and Java versions, pipeline tag and
+commit, full config/profile/params, samplesheet checksum, container digests,
+database releases, work/output locations, reports/trace/timeline/DAG, commands,
+logs, resource use and validation summaries. Avoid mutable branches and tags.
 
 ## Related skills
 
