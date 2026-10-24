@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "mapping, alignment, short-read"
   metagenomics.upstream: "https://github.com/lh3/bwa"
   metagenomics.stage: "mapping"
+  metagenomics.maturity: "reviewed-legacy"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "BWA-MEM/Samtools paired-end template statically reviewed; not executed here"
 ---
 
 # BWA / BWA-MEM
@@ -29,13 +32,27 @@ Classic alternative to Bowtie2 for coverage mapping. Prefer **bwa-mem2** on larg
 
 ## How to run
 
-```bash
-conda install -c conda-forge -c bioconda bwa
+Build an index with an explicit prefix and retain the exact reference checksum.
 
-bwa index contigs.fa
-bwa mem -t 16 contigs.fa clean_1.fq.gz clean_2.fq.gz \
-  | samtools sort -@ 8 -o temp/map/${id}.bam
-samtools index temp/map/${id}.bam
+```bash
+set -Eeuo pipefail
+id="${1:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+ref="${2:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+r1="${3:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+r2="${4:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+out="${5:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+threads="${THREADS:-16}"
+[[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || exit 2
+for input in "$ref" "$r1" "$r2"; do test -s "$input" || exit 2; done
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out/index"
+
+bwa index -p "$out/index/reference" "$ref" \
+  >"$out/bwa-index.stdout.log" 2>"$out/bwa-index.stderr.log"
+bwa mem -t "$threads" "$out/index/reference" "$r1" "$r2" \
+  2>"$out/${id}.bwa.stderr.log" \
+  | samtools sort -@ "$threads" -o "$out/${id}.bam" -
+samtools index "$out/${id}.bam"
 ```
 
 ## Key parameters
@@ -49,6 +66,22 @@ samtools index temp/map/${id}.bam
 - Prefer `bwa-mem2` for speed when compatible; keep BWA when Methods require BWA-MEM
 - Indexes ≠ Bowtie2 / strobealign
 
+## Validation, recovery, and provenance
+
+```bash
+samtools quickcheck -v "$out/${id}.bam"
+samtools view -H "$out/${id}.bam" | grep -q '^@HD.*SO:coordinate'
+test -s "$out/${id}.bam.bai"
+samtools flagstat -@ 4 -O tsv "$out/${id}.bam" >"$out/${id}.flagstat.tsv"
+```
+
+Inspect paired/primary mapping rates, insert-size behavior, reference contig
+names, and depth distribution before coverage or binning. Failed streams can
+leave partial BAMs, so publish/rename only after validation. Record BWA and
+Samtools versions, reference/read checksums, read-group policy, full command,
+logs, flagstat, and BAM checksum.
+
 ## Related skills
 
-bwa-mem2 · bowtie2 · samtools · coverm · `tool-selection` · `metagenomics-workflow`
+`bwa-mem2` · `bowtie2` · `samtools` · `coverm` · `tool-selection` ·
+`metagenomics-workflow`

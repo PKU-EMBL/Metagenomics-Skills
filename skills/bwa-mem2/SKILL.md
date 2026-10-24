@@ -10,6 +10,9 @@ metadata:
   metagenomics.tags: "mapping, alignment, short-read, bwa"
   metagenomics.upstream: "https://github.com/bwa-mem2/bwa-mem2"
   metagenomics.stage: "mapping"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "BWA-MEM2/Samtools paired-end template checked against upstream usage; not executed here"
 ---
 
 # BWA-MEM2
@@ -44,15 +47,28 @@ choose BWA-MEM2 when SOPs/scripts already assume BWA-MEM flags and SAM fields.
 
 ## How to run
 
-```bash
-conda install -c bioconda bwa-mem2 samtools
+Use a BWA-MEM2-specific index prefix; it is not interchangeable with classic
+BWA index files.
 
-bwa-mem2 index contigs.fa
-bwa-mem2 mem -t 16 contigs.fa \
-  temp/hr/${id}_1.fastq temp/hr/${id}_2.fastq \
-  2> temp/map/${id}.bwa-mem2.log \
-  | samtools sort -@ 8 -o temp/map/${id}.bam
-samtools index temp/map/${id}.bam
+```bash
+set -Eeuo pipefail
+id="${1:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+ref="${2:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+r1="${3:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+r2="${4:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+out="${5:?usage: map-one.sh SAMPLE_ID REF R1 R2 OUTPUT_DIR}"
+threads="${THREADS:-16}"
+[[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || exit 2
+for input in "$ref" "$r1" "$r2"; do test -s "$input" || exit 2; done
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out/index"
+
+bwa-mem2 index -p "$out/index/reference" "$ref" \
+  >"$out/bwa-mem2-index.stdout.log" 2>"$out/bwa-mem2-index.stderr.log"
+bwa-mem2 mem -t "$threads" "$out/index/reference" "$r1" "$r2" \
+  2>"$out/${id}.bwa-mem2.stderr.log" \
+  | samtools sort -@ "$threads" -o "$out/${id}.bam" -
+samtools index "$out/${id}.bam"
 ```
 
 ## Key parameters
@@ -79,6 +95,21 @@ Need BWA-MEM-like mapping?
 | Index load errors | Rebuild with `bwa-mem2 index` |
 | Divergent SM tags | Set `-R` consistently across lanes |
 | Huge unsorted SAM | Stream to `samtools sort` (never dump SAM) |
+
+## Validation, recovery, and provenance
+
+```bash
+samtools quickcheck -v "$out/${id}.bam"
+samtools view -H "$out/${id}.bam" | grep -q '^@HD.*SO:coordinate'
+test -s "$out/${id}.bam.bai"
+samtools flagstat -@ 4 -O tsv "$out/${id}.bam" >"$out/${id}.flagstat.tsv"
+```
+
+Inspect paired/primary mapping rates, insert-size behavior, reference contig
+names, and coverage distribution. Rebuild indexes after incompatible version or
+format changes; never silently reuse classic BWA indexes. Preserve BWA-MEM2 and
+Samtools versions, index/reference checksum, read checksums, commands, logs,
+flagstat, BAM checksum, and read-group policy.
 
 ## Related skills
 
