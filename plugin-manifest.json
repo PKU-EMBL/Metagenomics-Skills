@@ -1,7 +1,7 @@
 {
   "name": "Metagenomics Skills",
   "description": "Portable Agent Skills for reproducible shotgun metagenomics: study design, QC, assembly, mapping, binning, taxonomy, function, mining, statistics, and reporting",
-  "version": "1.24.0",
+  "version": "1.25.0",
   "author": "PKU-EMBL",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",
   "homepage": "https://github.com/PKU-EMBL/Metagenomics-Skills",

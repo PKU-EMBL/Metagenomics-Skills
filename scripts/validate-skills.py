@@ -28,7 +28,7 @@ LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 CODE_FENCE_RE = re.compile(r"^```(bash|python)\r?\n(.*?)^```\s*$", re.MULTILINE | re.DOTALL)
 SPEC_FIELDS = {"name", "description", "license", "compatibility", "metadata", "allowed-tools"}
 MAX_SKILL_LINES = 500
-EXPECTED_VERSION = "1.24.0"
+EXPECTED_VERSION = "1.25.0"
 PACKAGE_NAME = "metagenomics-skills"
 PLUGIN_ID = "metagenomics"
 

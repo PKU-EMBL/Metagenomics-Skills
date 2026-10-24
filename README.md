@@ -8,6 +8,9 @@ Codex, Cursor, Kimi Code, ZCode, Qwen Code, and other compatible coding agents:
 
 **QC → assembly → mapping → binning → taxonomy → function → microbial mining → research analysis**
 
+Current release: **v1.25.0**. It adds publication-grade execution, validation,
+recovery, provenance, and evidence-boundary contracts across 101 existing Skills.
+
 One skill per core tool (mappers, assemblers, binners, profilers, miners such as
 antiSMASH / geNomad / DRAM, …) plus databases, language-model hubs, homology /
 phylogenomics routing, and paper-facing stats/figures (`research-analysis`).

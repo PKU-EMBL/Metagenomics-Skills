@@ -2,7 +2,7 @@
 
 Skills grouped by scientific stage (QC → assembly → mapping → binning → taxonomy → function → microbial mining → research analysis), plus homology, phylogenomics, and language-model hubs.
 
-Total: **226** skills.
+Release: **v1.25.0** · Total: **226** skills.
 
 For ARG, mobile-element, host, HGT, source, strain-sharing, and transmission evidence,
 see the [typed evidence guide](arg-mge-host-strain.md).
