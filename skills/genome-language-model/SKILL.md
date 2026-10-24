@@ -13,6 +13,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "genome-language-model, gLM, NTv3, DNABERT, Caduceus, Evo2, OMG, gLM2"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "gLM routing and evaluation contract reviewed; execution is delegated to child skills"
 ---
 
 # Genome language model
@@ -50,6 +53,20 @@ Hard rules:
 3. Do not merge gLM scores with BLAST/MMseqs/Foldseek tables unlabeled
 4. Prefer multi-species / microbial-aware checkpoints for MAG work
 5. GPU needs for large gLMs differ from KneadData/MEGAHIT nodes
+
+## Model experiment contract
+
+Before selecting a checkpoint, define the prediction/generation claim, sequence
+unit and strand policy, maximum context/window overlap, model license/access,
+compute/precision, pooling or layer, frozen split and homology/genome-level
+leakage rule, classical baseline, primary metric, calibration and external test.
+Return a model card addendum rather than embeddings alone.
+
+Deliver immutable input/split manifests, checkpoint/config/tokenizer identity,
+window-to-sequence map, raw predictions/embeddings or generations, complete
+metrics including failed/no-call units, baseline comparison, sensitivity across
+seeds/windows/strands, resource use, and provenance. Foundation-model output is
+a computational feature, not direct functional, taxonomic or experimental proof.
 
 ## Decision tree
 

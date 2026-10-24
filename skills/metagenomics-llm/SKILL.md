@@ -13,6 +13,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "LLM, PLM, gLM, Foldseek, MMseqs2, Folddisco, structure-search, AI"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "AI/search routing and evidence boundaries reviewed; execution is delegated"
 ---
 
 # Metagenomics × LMs & structure search
@@ -104,6 +107,19 @@ metabolic models
 trees / evolution
    └─ phylogenomics
 ```
+
+## Required AI/search deliverable
+
+Keep one evidence table per paradigm with native identifiers/scores, query and
+target coverage, database/model release, no-hit/failure state, and coordinate or
+window mapping. Any consensus table must retain the source row and a predeclared
+combination rule. Benchmark against an appropriate classical method and a held-out
+set; do not select a model because it yields more desired annotations.
+
+For model work, archive checkpoint/config/tokenizer/license, split and leakage
+audit, seeds, layer/pooling/windowing, hardware/precision, calibration and full
+metrics. For structure search, archive structure confidence and alignment/motif
+fields. Candidate novelty requires checking training/reference overlap.
 
 ## Methods caveats
 

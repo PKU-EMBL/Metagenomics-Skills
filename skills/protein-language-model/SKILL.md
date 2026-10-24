@@ -13,6 +13,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "protein-language-model, PLM, pLM, ESM, ESMC, SaProt, ProstT5, remote-homology"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "PLM routing and evaluation contract reviewed; execution is delegated to child skills"
 ---
 
 # Protein language model
@@ -56,6 +59,20 @@ Hard rules:
 3. ProstT5 3Di DBs lack Cα — no TM-score / LDDT features that need coordinates
 4. SaProt 35M/650M want SA tokens; do not treat frozen AA-only as equivalent
 5. GPU needs for large PLMs differ from KneadData/MEGAHIT nodes
+
+## Model experiment contract
+
+Define protein unit, task, checkpoint/license, maximum length and chunk policy,
+ambiguous-residue handling, layer/pooling or token representation, structure
+source/confidence when applicable, frozen homology-aware split, baseline search,
+primary metric, calibration and compute before inference. Prevent near-identical
+proteins, families, structures or database entries crossing evaluation splits.
+
+Deliver an input-to-output manifest, checkpoint/config/tokenizer revision,
+embeddings/scores with native scale, no-call/failure rows, complete held-out
+metrics, baseline comparison, seed/chunk/layer sensitivity, resource profile and
+provenance. Annotation transfer requires coverage/domain/context checks; PLM
+similarity, 3Di prediction and fold similarity remain separate evidence types.
 
 ## Decision tree
 
