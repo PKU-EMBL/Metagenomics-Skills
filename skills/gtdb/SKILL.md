@@ -13,6 +13,9 @@ metadata:
   metagenomics.tags: "database, GTDB, taxonomy, genomes"
   metagenomics.upstream: "https://gtdb.ecogenomic.org/"
   metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "release 232 file layout and checksum workflow verified against the live archive; no large files downloaded"
 ---
 
 # GTDB (Genome Taxonomy Database)
@@ -45,14 +48,19 @@ Distinguish three packages people confuse:
 
 Always pin the **GTDB release ID** (e.g. R10-RS226 from `VERSION.txt` / release notes) next to GTDB-Tk software version.
 
-## GTDB release 10 (R10-RS226) notes
+## Release notes
 
-From Parks *et al.* (*Nucleic Acids Res.* 2026):
+Parks *et al.* describe **R10-RS226** (~715k bacterial and ~17k archaeal
+genomes) in the 2026 database paper. The live archive currently exposes
+**R11-RS232** under `release232/232.0/`; its release notes report 901,341 genomes
+in 199,923 species clusters. Treat these as distinct snapshots.
 
-- ~715k bacterial + ~17k archaeal genomes; ~137k bacterial / ~7k archaeal **species clusters**
-- Major new deep lineages are rarer each release (diversity saturation signal), but **species discovery continues** (>95% species still ungenomed under their projections) — do not claim “GTDB is complete”
-- Website / ANI methodology updates (e.g. skani in recent releases) — match GTDB-Tk data package to the release you cite
-- Prefer `releases/<release>/` over assuming `latest/` stays frozen mid-study
+- Major new deep lineages are rarer each release, but species discovery continues;
+  do not claim that GTDB is complete.
+- Website, representatives, taxonomy, and ANI methods can change by release.
+- Match GTDB-Tk data packages to the release used for classification.
+- Resolve `latest/VERSION.txt` only for discovery, then freeze the explicit
+  `releaseNNN/NNN.0/` URL and checksums before analysis.
 
 ## Prerequisites
 
@@ -64,14 +72,34 @@ From Parks *et al.* (*Nucleic Acids Res.* 2026):
 
 ## How to fetch release metadata
 
+This pinned example downloads only metadata/taxonomy tables, not representative
+genome bundles.
+
 ```bash
-mkdir -p db/gtdb && cd db/gtdb
-wget -c https://data.gtdb.ecogenomic.org/releases/latest/VERSION.txt
-wget -c https://data.gtdb.ecogenomic.org/releases/latest/RELEASE_NOTES.txt
-wget -c https://data.gtdb.ecogenomic.org/releases/latest/bac120_taxonomy.tsv.gz
-wget -c https://data.gtdb.ecogenomic.org/releases/latest/ar53_taxonomy.tsv.gz
-# Mirror choice: see https://gtdb.ecogenomic.org/downloads for regional mirrors
+set -Eeuo pipefail
+release="${GTDB_RELEASE_PATH:-release232/232.0}"
+[[ "$release" =~ ^release[0-9]+/[0-9]+[.]0$ ]] || exit 2
+number="${release#release}"
+number="${number%%/*}"
+out="db/gtdb/r${number}"
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+base="https://data.gtdb.ecogenomic.org/releases/${release}"
+for file in VERSION.txt RELEASE_NOTES.txt FILE_DESCRIPTIONS.txt MD5SUM.txt \
+  "bac120_taxonomy_r${number}.tsv.gz" "ar53_taxonomy_r${number}.tsv.gz"; do
+  curl --fail --location --retry 3 "$base/$file" -o "$out/$file" \
+    2>>"$out/download.stderr.log"
+done
+(
+  cd "$out"
+  grep -E '(^|/)(bac120|ar53)_taxonomy_.*[.]tsv[.]gz$' MD5SUM.txt \
+    | md5sum --check -
+) >"$out/checksums.log"
 ```
+
+Mirror choice is documented at https://gtdb.ecogenomic.org/downloads. For
+GTDB-Tk classification, install its complete release-coupled reference bundle,
+not an ad hoc genome tarball, and apply the checks in `$gtdbtk`.
 
 For GTDB-Tk classification, install its complete release-coupled reference bundle—not an ad-hoc genome tarball—and apply the checks in `$gtdbtk`.
 
@@ -94,6 +122,20 @@ GTDB-related task?
 └─ Read-based species tables only → metaphlan / kraken2 (not GTDB placement)
 ```
 
+## Validation, recovery, and provenance
+
+Verify archive checksums, `VERSION.txt`, release notes, expected table headers,
+unique genome accessions, lineage rank syntax, and bacterial/archaeal separation.
+Do not combine taxonomy or metadata rows from different releases without an
+explicit crosswalk. Download representative genomes only after estimating
+storage and preserving their manifest.
+
+Archive the explicit release URL, download date, mirror, `MD5SUM.txt`, local
+checksums, file sizes, parsing code, and any accession/taxonomy crosswalk. GTDB
+labels are release-specific taxonomic assignments, not read-level presence or
+formal nomenclatural validation.
+
 ## Related skills
 
-`gtdbtk` · `public-databases` · `mgnify` · `progenomes` · `cami` · `checkm2` · `drep` · `mag-qc` · `visualization`
+`gtdbtk` · `public-databases` · `mgnify` · `progenomes` · `cami` · `checkm2` ·
+`drep` · `mag-qc` · `visualization`

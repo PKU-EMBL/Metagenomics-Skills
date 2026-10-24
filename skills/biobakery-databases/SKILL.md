@@ -12,6 +12,9 @@ metadata:
   metagenomics.tags: "database, bioBakery, ChocoPhlAn, UniRef, MetaPhlAn, HUMAnN"
   metagenomics.upstream: "https://github.com/biobakery/biobakery"
   metagenomics.stage: "utilities"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "database helper interfaces statically reviewed; large downloads not executed here"
 ---
 
 # bioBakery databases (MetaPhlAn / HUMAnN)
@@ -46,16 +49,28 @@ Disk: tens to hundreds of GB depending on UniRef choice.
 
 ## How to install (HUMAnN helpers)
 
-```bash
-# After humann is installed in the env:
-mkdir -p db/humann
-humann_databases --download chocophlan full db/humann
-humann_databases --download uniref uniref90_diamond db/humann
-humann_databases --download utility_mapping full db/humann
+Run large downloads only after checking free space, network policy, and bundle
+names against the installed helper.
 
-humann_config --update database_folders nucleotide db/humann/chocophlan
-humann_config --update database_folders protein db/humann/uniref
-humann_config --update database_folders utility_mapping db/humann/utility_mapping
+```bash
+set -Eeuo pipefail
+root="${1:?usage: install-humann-dbs.sh NEW_DATABASE_ROOT}"
+log_dir="${root}.logs"
+test ! -e "$root" && test ! -e "$log_dir" || {
+  echo "use new database and log paths" >&2; exit 2;
+}
+mkdir -p "$root" "$log_dir"
+humann_databases --download chocophlan full "$root" \
+  >"$log_dir/chocophlan.stdout.log" 2>"$log_dir/chocophlan.stderr.log"
+humann_databases --download uniref uniref90_diamond "$root" \
+  >"$log_dir/uniref.stdout.log" 2>"$log_dir/uniref.stderr.log"
+humann_databases --download utility_mapping full "$root" \
+  >"$log_dir/utility.stdout.log" 2>"$log_dir/utility.stderr.log"
+
+humann_config --update database_folders nucleotide "$root/chocophlan"
+humann_config --update database_folders protein "$root/uniref"
+humann_config --update database_folders utility_mapping "$root/utility_mapping"
+find "$root" -type f -size +0c -print | sort >"$root/files.manifest"
 ```
 
 These are HUMAnN 3 helper interfaces; capture `humann_databases --help`, package version, downloaded bundle names and checksums before configuring paths.
@@ -63,10 +78,17 @@ These are HUMAnN 3 helper interfaces; capture `humann_databases --help`, package
 ## How to install (MetaPhlAn)
 
 ```bash
-set -euo pipefail
-mkdir -p db/metaphlan
-metaphlan --install --db_dir db/metaphlan
-find db/metaphlan -type f -size +0c | grep -q .
+set -Eeuo pipefail
+root="${1:?usage: install-metaphlan-db.sh NEW_DATABASE_ROOT}"
+log_dir="${root}.logs"
+test ! -e "$root" && test ! -e "$log_dir" || {
+  echo "use new database and log paths" >&2; exit 2;
+}
+mkdir -p "$root" "$log_dir"
+metaphlan --install --db_dir "$root" \
+  >"$log_dir/install.stdout.log" 2>"$log_dir/install.stderr.log"
+find "$root" -type f -size +0c -print | sort >"$root/files.manifest"
+test -s "$root/files.manifest"
 ```
 
 Confirm the DB build string printed in MetaPhlAn logs and archive it.
@@ -81,14 +103,26 @@ Profiling DB need?
 └─ Genome taxonomy for MAGs → gtdb / gtdbtk
 ```
 
-## Verify
+## Verify, recovery, and provenance
 
 ```bash
+set -Eeuo pipefail
+root="${1:?usage: verify-biobakery-db.sh DATABASE_ROOT}"
+test -d "$root" && test -s "$root/files.manifest" || exit 2
 metaphlan --version
 humann --version
 humann_config --print
-ls db/metaphlan db/humann | head
+find "$root" -type f -size 0 -print >"$root/empty-files.txt"
+test ! -s "$root/empty-files.txt"
+sha256sum "$root/files.manifest" >"$root/files.manifest.sha256"
 ```
+
+Inspect helper logs, expected index shards, bundle/readme metadata, configured
+paths, and a small tool-provided test before cohort use. Interrupted downloads
+must be resumed only through supported helpers or moved aside; never combine
+unknown partial bundles. Record software/helper versions, exact bundle/index
+names, UniRef level, URLs, download date, file manifest/checksums, configuration,
+and storage path. A database install is not validated merely because files exist.
 
 ## Related skills
 
