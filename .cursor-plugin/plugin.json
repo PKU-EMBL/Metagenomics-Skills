@@ -1,6 +1,6 @@
 {
   "name": "metagenomics",
-  "version": "1.24.0",
+  "version": "1.25.0",
   "description": "Cursor-compatible shotgun-metagenomics skills — planning, tool execution, quality gates, statistics, and reporting",
   "skills": "./skills/",
   "repository": "https://github.com/PKU-EMBL/Metagenomics-Skills",

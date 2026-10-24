@@ -12,6 +12,9 @@ Codex、Cursor、Kimi Code、ZCode、Qwen Code 等 coding agent 使用。Skills
 负责给 Agent 提供领域流程、命令模式、质量门控和解释边界；它们不会代替
 Conda/容器环境、数据库或计算资源。
 
+当前版本为 **v1.25.0**：对 101 个既有 Skills 统一补强了发布级执行、验证、
+恢复、provenance 与证据边界契约。
+
 ## 快速安装
 
 ### Claude Code

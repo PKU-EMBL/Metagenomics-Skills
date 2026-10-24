@@ -1,3 +1,34 @@
+## [1.25.0] - 2026-10-24
+
+### Changed
+- Hardened 101 existing Skills across QC, assembly, mapping, MAG recovery,
+  taxonomy, annotation, genome mining, phylogenomics, language models,
+  benchmarking, databases, workflow orchestration, statistics, and reporting
+- Added consistent reviewed-maturity, last-reviewed, and truthful command-status
+  metadata to every Skill, with fresh-output defaults, quoted paths, logs,
+  verification gates, recovery rules, provenance manifests, and explicit no-hit,
+  filtered, failed, and zero-result states
+- Updated reviewed command contracts for current upstream interfaces including
+  BiG-SCAPE 2, BUSCO, CONCOCT, inStrain, IQ-TREE, Macrel, METABOLIC-G/C,
+  PADLOC 2, QSAP, VirSorter2, Foldseek-family tools, Evo 2, Nextflow 26.10,
+  Snakemake 9, AMBER, OPAL, ENA, KEGG REST, VMH, and proGenomes4
+- Strengthened evidence boundaries so detection, abundance, linkage, taxonomy,
+  function, network association, model prediction, phenotype, and experimental
+  validation are not merged without labels or supporting tests
+- Expanded the `ai-search` profile with Foldcomp, PLASS, and Unicore, and
+  synchronized all platform manifests and validator expectations at package
+  version 1.25.0 (226 Skills)
+
+### Validation
+- Repository validation: 226 Skills, 94 OpenAI UI manifests, 238 executable code
+  fences, zero warnings, and zero errors
+- Modified Bash/Python examples passed static syntax checks; targeted KEGG, VMH,
+  proGenomes4, and ENA single-/paired-end templates were smoke-tested and their
+  outputs inspected
+- R examples in `phyloseq`, `sparcc`, and `spieceasi` remain explicitly
+  static-reviewed because `Rscript` was unavailable in the release environment;
+  no scientific analysis or large database download is represented as completed
+
 ## [1.24.0] - 2026-10-18
 
 ### Added
