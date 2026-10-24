@@ -41,7 +41,10 @@ proteins="${1:?usage: run-defensefinder.sh ORDERED_PROTEINS_FAA OUTPUT_DIR}"
 out="${2:?usage: run-defensefinder.sh ORDERED_PROTEINS_FAA OUTPUT_DIR}"
 threads="${THREADS:-8}"
 test -s "$proteins" || exit 2
-test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+test ! -e "$out" && test ! -e "${out}.stdout.log" && \
+  test ! -e "${out}.stderr.log" || {
+  echo "use new output and log paths" >&2; exit 2;
+}
 mkdir -p "$(dirname "$out")"
 model_args=()
 if [[ -n "${DEFENSEFINDER_MODELS:-}" ]]; then

@@ -12,6 +12,10 @@ metadata:
   metagenomics.tags: "METABOLIC, biogeochemistry, C, N, S, P, element-cycling, MAG"
   metagenomics.upstream: "https://github.com/AnantharamanLab/METABOLIC"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed-legacy"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.upstream-version: "4.0 interface"
+  metagenomics.command-status: "METABOLIC-G/C input contracts checked against upstream wiki; not executed here"
 ---
 
 # METABOLIC
@@ -47,11 +51,44 @@ Heavy DB install (KOfam etc.). Pin METABOLIC version, module cutoff, and DB.
 
 ## How to run
 
+METABOLIC expects its scripts and dependent databases together. The genome
+folder must contain only `.fasta` genomes with globally unique sequence IDs.
+Use absolute paths because this template runs from the pinned METABOLIC root.
+
 ```bash
-# Genome-only METABOLIC-G interface; preflight the pinned release with `-help`.
-perl METABOLIC-G.pl -t 40 -m-cutoff 0.75 -in-gn Genome_files -kofam-db full -o METABOLIC_out
-# Community/read evidence uses the distinct METABOLIC-C.pl input contract.
+set -Eeuo pipefail
+home="${METABOLIC_HOME:?set METABOLIC_HOME to a pinned v4.0 checkout}"
+genomes="${1:?usage: run-metabolic-g.sh ABS_GENOME_DIR ABS_OUTPUT_DIR}"
+out="${2:?usage: run-metabolic-g.sh ABS_GENOME_DIR ABS_OUTPUT_DIR}"
+threads="${THREADS:-20}"
+[[ "$genomes" = /* && "$out" = /* ]] || exit 2
+test -f "$home/METABOLIC-G.pl" && test -d "$genomes" || exit 2
+test ! -e "$out" && test ! -e "${out}.logs" || {
+  echo "use new output and log paths" >&2; exit 2;
+}
+shopt -s nullglob
+genome_files=("$genomes"/*.fasta)
+((${#genome_files[@]} > 0)) || exit 2
+if find "$genomes" -maxdepth 1 -type f ! -name '*.fasta' -print -quit | grep -q .; then
+  echo "genome directory must contain only .fasta files" >&2; exit 2
+fi
+awk '/^>/{id=$1; sub(/^>/,"",id); if (++seen[id]>1) exit 1}' \
+  "${genome_files[@]}"
+mkdir -p "$(dirname "$out")" "${out}.logs"
+
+(
+  cd "$home"
+  perl ./METABOLIC-G.pl -t "$threads" -m-cutoff 0.75 \
+    -in-gn "$genomes" -kofam-db full -o "$out"
+) >"${out}.logs/METABOLIC-G.stdout.log" \
+  2>"${out}.logs/METABOLIC-G.stderr.log"
+test -s "$out/METABOLIC_run.log"
+find "$out" -type f -name 'METABOLIC_result.xlsx' -size +0c -print -quit | grep -q .
 ```
+
+For METABOLIC-C, provide nucleotide `.fasta` genomes and a text file whose each
+line is an absolute `R1.fastq,R2.fastq` pair to `-r`; verify equal pair counts and
+do not collapse mates. Record `-rt`, `-st`, `-tax`, and mapping behavior.
 
 ## Decision tree
 
@@ -62,6 +99,20 @@ Multi-element biogeochem on MAGs?
 ├─ Fe genes/siderophores → fegenie
 └─ Distilled sheets → dram
 ```
+
+## Validation, recovery, and provenance
+
+Require run/log files, gene and KEGG hit tables, module/trait matrices, result
+workbook, figure inputs, and an input-genome reconciliation including no-hit or
+failed genomes. Inspect unique IDs, HMM/motif support, module cutoff sensitivity,
+MAG completeness/contamination, pathway missing steps, coverage units, taxonomic
+aggregation, and whether figures agree with source tables.
+
+Do not reuse partial outputs except through the documented second-run workflow.
+Record METABOLIC code commit/release, KOfam and bundled HMM/template checksums,
+all dependency versions, genome/read manifests and checksums, every option,
+commands, logs, intermediate/output checksums, and exclusions. Trait calls and
+MW-scores describe predicted potential/relative contribution, not process rates.
 
 ## Related skills
 
