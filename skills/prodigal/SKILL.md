@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "genes, orf"
   metagenomics.upstream: "https://github.com/hyattpd/Prodigal"
   metagenomics.stage: "gene"
+  metagenomics.maturity: "reviewed-legacy"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "Prodigal metagenome-mode CLI template statically reviewed; not executed here"
 ---
 
 # Prodigal
@@ -30,9 +33,16 @@ errors—garbage contigs produce garbage ORFs. Optionally keep only complete gen
 ## How to run
 
 ```bash
-prodigal -i contigs.fa \
-  -d genes.fna -a genes.faa \
-  -o genes.gff -p meta -f gff
+set -Eeuo pipefail
+contigs="${1:?usage: call-genes.sh CONTIGS_FASTA OUTPUT_DIR}"
+out="${2:?usage: call-genes.sh CONTIGS_FASTA OUTPUT_DIR}"
+test -s "$contigs" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+
+prodigal -i "$contigs" -d "$out/genes.fna" -a "$out/genes.faa" \
+  -o "$out/genes.gff" -p meta -f gff \
+  >"$out/prodigal.stdout.log" 2>"$out/prodigal.stderr.log"
 ```
 
 ## Decision tree
@@ -42,6 +52,17 @@ Have contigs?
 ├─ Build gene catalogue → prodigal → cd-hit → salmon → eggnog-mapper
 └─ Only MAGs → predict genes per MAG later for annotation
 ```
+
+## Validation, recovery, and provenance
+
+Require non-empty nucleotide, protein, and GFF outputs with matching gene IDs.
+Reconcile sequence counts, translation table, partial-gene flags, stop codons,
+length distribution, coding density, and contigs with no calls. Preserve partial
+status if filtering complete genes; do not silently discard edge-truncated ORFs.
+
+Use fresh outputs after changing contigs, mode, or genetic code. Record Prodigal
+version, input/output checksums, mode and translation table, command, logs, and
+feature summary. ORFs inherit assembly errors and remain predictions.
 
 ## Related skills
 
