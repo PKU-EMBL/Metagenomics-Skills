@@ -10,6 +10,9 @@ metadata:
   metagenomics.tags: "FastTree, phylogeny, approximate-ML, tree"
   metagenomics.upstream: "https://github.com/morgannprice/fasttree"
   metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "protein/nucleotide FastTreeMP command templates statically reviewed; not executed here"
 ---
 
 # FastTree
@@ -44,12 +47,30 @@ Always state FastTree vs IQ-TREE in Methods if both appear.
 
 ## How to run
 
+The input must already be a curated multiple-sequence alignment with unique IDs.
+Choose `protein` or `nucleotide` explicitly.
+
 ```bash
-# protein MSA example
-FastTreeMP -lg < markers.fa > temp/fasttree/tree.nwk
-# nucleotide
-FastTreeMP -gtr -nt < markers.fna > temp/fasttree/tree.nwk
+set -Eeuo pipefail
+msa="${1:?usage: run-fasttree.sh ALIGNMENT OUTPUT_DIR}"
+out="${2:?usage: run-fasttree.sh ALIGNMENT OUTPUT_DIR}"
+datatype="${FASTTREE_DATATYPE:-protein}"
+test -s "$msa" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+case "$datatype" in
+  protein) model_args=(-lg) ;;
+  nucleotide) model_args=(-gtr -nt) ;;
+  *) echo "FASTTREE_DATATYPE must be protein or nucleotide" >&2; exit 2 ;;
+esac
+FastTreeMP "${model_args[@]}" "$msa" >"$out/tree.nwk" \
+  2>"$out/fasttree.stderr.log"
+test -s "$out/tree.nwk"
+grep -q '[();]' "$out/tree.nwk"
 ```
+
+The nucleotide template uses GTR; the protein template uses LG. Any gamma,
+CAT, pseudocount, constraint, or support changes must be predeclared.
 
 ## Decision tree
 
@@ -59,6 +80,20 @@ Tree speed vs rigor?
 ├─ Final ML + UFBoot → iqtree
 └─ Full MAG phylogenomics workflow → phylophlan
 ```
+
+## Validation, recovery, and provenance
+
+Require a parseable Newick tree, stderr progress log, one leaf per intended
+alignment ID, branch lengths, and an inclusion/exclusion audit. Inspect duplicate
+IDs, alignment occupancy, outgroup/rooting, extreme branches, unresolved nodes,
+model appropriateness, and topology sensitivity to filtering. FastTree support
+values are not conventional bootstrap replicates; label them correctly.
+
+Use a fresh output after changing MSA, model, binary, or options. Record FastTree
+binary/version (including precision/OpenMP build), alignment checksum and
+construction/trimming, datatype/model/options, command, log, unrooted tree
+checksum, rooting/annotation script, and final tree checksum. Upgrade key final
+claims to IQ-TREE or justify the approximate analysis.
 
 ## Related skills
 

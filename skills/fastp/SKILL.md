@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "qc, fastq, trimming"
   metagenomics.upstream: "https://github.com/OpenGene/fastp"
   metagenomics.stage: "qc"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "paired-end fastp command and report contract statically reviewed; not executed here"
 ---
 
 # fastp
@@ -58,10 +61,12 @@ threads="${THREADS:-8}"
 for file in "$r1" "$r2"; do
   test -s "$file" || { echo "missing/empty input: $file" >&2; exit 2; }
 done
+gzip -t "$r1" "$r2"
 mkdir -p "$out" logs
 for file in \
   "$out/${id}_1.fastq.gz" "$out/${id}_2.fastq.gz" \
   "$out/${id}_fastp.json" "$out/${id}_fastp.html" \
+  "$out/${id}.paired-stats.tsv" \
   "logs/${id}.fastp.stdout.log" "logs/${id}.fastp.stderr.log"; do
   test ! -e "$file" || { echo "refusing to overwrite: $file" >&2; exit 2; }
 done
@@ -72,6 +77,13 @@ fastp \
   -j "$out/${id}_fastp.json" -h "$out/${id}_fastp.html" \
   --thread "$threads" \
   >"logs/${id}.fastp.stdout.log" 2>"logs/${id}.fastp.stderr.log"
+gzip -t "$out/${id}_1.fastq.gz" "$out/${id}_2.fastq.gz"
+seqkit stats -T "$out/${id}_1.fastq.gz" "$out/${id}_2.fastq.gz" \
+  >"$out/${id}.paired-stats.tsv"
+awk 'NR==2{n=$4} NR==3 && $4!=n{exit 1} END{if(NR!=3) exit 1}' \
+  "$out/${id}.paired-stats.tsv"
+jq -e '.summary.before_filtering and .summary.after_filtering' \
+  "$out/${id}_fastp.json" >/dev/null
 ```
 
 ## Key parameters
@@ -103,22 +115,18 @@ Short-read shotgun?
 └─ Long-read only → not fastp (use long-read QC)
 ```
 
-## Verify
+## Validation, recovery, and provenance
 
-```bash
-test -s "temp/qc/${id}_fastp.json"
-test -s "temp/qc/${id}_fastp.html"
-seqkit stats -T "temp/qc/${id}_1.fastq.gz" "temp/qc/${id}_2.fastq.gz"
-jq '{before: .summary.before_filtering,
-     after: .summary.after_filtering,
-     duplication_rate: .duplication.rate,
-     adapter_trimmed_reads: .adapter_cutting.adapter_trimmed_reads}' \
-  "temp/qc/${id}_fastp.json"
-```
+Require non-empty paired FASTQs, equal R1/R2 record counts, valid JSON/HTML,
+completed logs, and an input-to-output count/base audit. Inspect adapter content,
+quality-by-cycle, duplication, insert-size/overlap, overrepresented sequences,
+length distribution, poly-G/poly-X behavior, and unexpectedly large loss. Host
+or taxonomic contamination is a separate downstream check.
 
-Require equal retained R1/R2 record counts and inspect unexpectedly large read or
-base loss. Archive JSON/HTML and logs; do not call the library “clean” from exit
-status alone.
+Use fresh outputs after changing reads, options, or release. Record fastp/seqkit
+versions, raw/output checksums, manifest pairing, complete command, JSON/HTML,
+logs, validation table, and every nondefault filter. “QC passed” means declared
+metrics were inspected; it does not mean the library is contamination-free.
 
 ## Related skills
 

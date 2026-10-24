@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "binning, concoct"
   metagenomics.upstream: "https://github.com/BinPro/CONCOCT"
   metagenomics.stage: "binning"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "canonical cut/coverage/cluster/merge/extract workflow reviewed; not executed here"
 ---
 
 # CONCOCT
@@ -38,26 +41,49 @@ Operational rules:
 
 ## How to run
 
+Provide an ordered BAM manifest with one explicit path per line; its order becomes
+the coverage-column order.
+
 ```bash
-set -euo pipefail
-conda install -c conda-forge -c bioconda concoct
-[[ -s contigs.fa && -d temp/map ]] || exit 2
-mapfile -t bams < <(find temp/map -maxdepth 1 -name '*.bam' -size +0c | sort)
-(( ${#bams[@]} > 0 )) || exit 3
-mkdir -p temp/concoct result/concoct/bins
-cut_up_fasta.py contigs.fa -c 10000 -o 0 --merge_last \
-  -b temp/concoct/contigs_10k.bed > temp/concoct/contigs_10k.fa
-concoct_coverage_table.py temp/concoct/contigs_10k.bed "${bams[@]}" \
-  > temp/concoct/coverage.tsv
-concoct --composition_file temp/concoct/contigs_10k.fa \
-  --coverage_file temp/concoct/coverage.tsv -b temp/concoct/run_
-merge_cutup_clustering.py temp/concoct/run_clustering_gt1000.csv \
-  > result/concoct/clustering_merged.csv
-extract_fasta_bins.py contigs.fa result/concoct/clustering_merged.csv \
-  --output_path result/concoct/bins
+set -Eeuo pipefail
+assembly="${1:?usage: run-concoct.sh ASSEMBLY BAM_LIST OUTPUT_DIR}"
+bam_list="${2:?usage: run-concoct.sh ASSEMBLY BAM_LIST OUTPUT_DIR}"
+out="${3:?usage: run-concoct.sh ASSEMBLY BAM_LIST OUTPUT_DIR}"
+test -s "$assembly" && test -s "$bam_list" || exit 2
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+bams=()
+while IFS= read -r bam || [[ -n "$bam" ]]; do
+  [[ -z "$bam" || "$bam" = \#* ]] && continue
+  test -s "$bam" || exit 2
+  test -s "$bam.bai" || test -s "${bam%.bam}.bai" || exit 2
+  samtools quickcheck "$bam"
+  bams+=("$bam")
+done <"$bam_list"
+((${#bams[@]} > 0)) || exit 2
+mkdir -p "$out/work/concoct_output" "$out/bins" "$out/logs"
+cp "$bam_list" "$out/bam-manifest.txt"
+
+(
+  cut_up_fasta.py "$assembly" -c 10000 -o 0 --merge_last \
+    -b "$out/work/contigs_10k.bed" >"$out/work/contigs_10k.fa"
+  concoct_coverage_table.py "$out/work/contigs_10k.bed" "${bams[@]}" \
+    >"$out/work/coverage.tsv"
+  concoct --composition_file "$out/work/contigs_10k.fa" \
+    --coverage_file "$out/work/coverage.tsv" -b "$out/work/concoct_output/"
+  merge_cutup_clustering.py "$out/work/concoct_output/clustering_gt1000.csv" \
+    >"$out/clustering_merged.csv"
+  extract_fasta_bins.py "$assembly" "$out/clustering_merged.csv" \
+    --output_path "$out/bins"
+) >"$out/logs/concoct.stdout.log" 2>"$out/logs/concoct.stderr.log"
+
+test -s "$out/work/coverage.tsv"
+test -s "$out/clustering_merged.csv"
+n_bins="$(find "$out/bins" -maxdepth 1 -type f -name '*.fa' | wc -l | tr -d ' ')"
+printf 'candidate_bins\t%s\n' "$n_bins" >"$out/validation.tsv"
 ```
 
-Require each BAM to be coordinate-sorted, indexed, and aligned to this exact assembly.
+Require every BAM to be coordinate-sorted/indexed and aligned to the exact
+assembly checksum; header compatibility must be checked before the run.
 
 ## Key parameters
 
@@ -74,7 +100,11 @@ Require each BAM to be coordinate-sorted, indexed, and aligned to this exact ass
 
 Reconcile all FASTA IDs across BED, coverage, chunk clustering and merged assignments; require unique final contig membership and non-empty candidate FASTAs or an explicit no-bin outcome. Summarize binned/unbinned bases and assess candidates with CheckM2/GUNC before ensemble selection. Inspect sample order and coverage variance; a one-sample run loses much of CONCOCT's differential-coverage signal.
 
-Use a fresh prefix/output after changing assembly, BAMs, chunking or release. Record CONCOCT and mapping/samtools versions, full command, assembly/BAM checksums, ordered sample manifest, chunk policy, coverage/assignment checksums and candidate QC. Clusters are candidate bins, not validated genomes.
+Use a fresh prefix/output after changing assembly, BAMs, chunking or release.
+Record CONCOCT and mapping/samtools versions, full command, assembly/BAM
+checksums, ordered sample manifest, chunk policy, logs, coverage/assignment
+checksums, explicit zero-bin outcome, and candidate QC. Clusters are candidate
+bins, not validated genomes.
 
 ## Related skills
 

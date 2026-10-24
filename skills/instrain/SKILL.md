@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "strain, microdiversity, snp"
   metagenomics.upstream: "https://github.com/MrOlm/inStrain"
   metagenomics.stage: "strain"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "profile/compare interfaces checked against current user manual; not executed here"
 ---
 
 # inStrain
@@ -40,15 +43,38 @@ optional compare for shared strains.
 
 ## How to run
 
+Profile one sample against the same dereplicated reference used to build its BAM.
+Optional `INSTRAIN_STB` must be a coordinate-matched scaffold-to-bin TSV.
+
 ```bash
-set -euo pipefail
-[[ -s "temp/map/${id}.bam" && -s genomes.fa ]] || exit 2
-inStrain profile "temp/map/${id}.bam" genomes.fa \
-  -o "temp/instrain/${id}" -p 16
-# After profiling at least two samples against the same reference:
-inStrain compare -i temp/instrain/sample1 temp/instrain/sample2 \
-  -o temp/instrain/cohort_compare -p 16
+set -Eeuo pipefail
+bam="${1:?usage: profile-instrain.sh SORTED_BAM REFERENCE_FASTA OUTPUT_DIR}"
+reference="${2:?usage: profile-instrain.sh SORTED_BAM REFERENCE_FASTA OUTPUT_DIR}"
+out="${3:?usage: profile-instrain.sh SORTED_BAM REFERENCE_FASTA OUTPUT_DIR}"
+threads="${THREADS:-16}"
+test -s "$bam" && test -s "$reference" || exit 2
+test -s "$bam.bai" || test -s "${bam%.bam}.bai" || exit 2
+samtools quickcheck "$bam"
+test ! -e "$out" && test ! -e "${out}.logs" || {
+  echo "use new output and log paths" >&2; exit 2;
+}
+mkdir -p "$(dirname "$out")" "${out}.logs"
+stb_args=()
+if [[ -n "${INSTRAIN_STB:-}" ]]; then
+  test -s "$INSTRAIN_STB" || exit 2
+  stb_args=(-s "$INSTRAIN_STB")
+fi
+inStrain profile "$bam" "$reference" -o "$out" -p "$threads" \
+  "${stb_args[@]}" >"${out}.logs/profile.stdout.log" \
+  2>"${out}.logs/profile.stderr.log"
+test -s "$out/output/scaffold_info.tsv"
+test -s "$out/output/mapping_info.tsv"
 ```
+
+For cohort comparison, build an ordered list of completed profiles mapped to the
+identical reference, then run `inStrain compare -i <profiles...> -o <fresh-out>
+-p <threads>`. Require `output/comparisonsTable.tsv`; record coverage overlap,
+minimum coverage/frequency, ANI and clustering thresholds.
 
 ## Key parameters
 
@@ -58,7 +84,22 @@ inStrain compare -i temp/instrain/sample1 temp/instrain/sample2 \
 | Coverage / breadth filters | Record the installed defaults and predeclare every override |
 | `compare` | Shared-strain detection across profiles |
 
+## Validation, recovery, and provenance
+
+Inspect mapping/read-filter retention, breadth, depth, expected breadth,
+read-to-reference ANI, SNV/SNS counts, linkage, scaffold/genome summaries, and
+callability before comparing samples. Shared-strain calls require comparable
+profiles, sufficient overlap, threshold sensitivity, and background prevalence;
+they do not by themselves prove transmission.
+
+Use fresh outputs after changing BAM, reference, STB, filters, or release. Record
+inStrain/mapper/samtools versions, identical reference and BAM checksums, mapping
+parameters, STB, profile/compare commands, logs, native objects and table
+checksums, all thresholds, and excluded sample pairs. Never compare profiles
+built against different FASTA content/order without documented reconciliation.
+
 ## Related skills
 
 `bowtie2` · `strobealign` · `drep` · `skani` · `coverm` · `metaphlan` ·
-`tool-selection` · `metagenomics-workflow`
+`strain-resolved-analysis` · `strain-transmission` · `tool-selection` ·
+`metagenomics-workflow`
