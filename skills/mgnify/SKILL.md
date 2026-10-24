@@ -12,6 +12,9 @@ metadata:
   metagenomics.tags: "database, MGnify, UHGG, genome-catalogue, EBI"
   metagenomics.upstream: "https://github.com/EBI-Metagenomics"
   metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "API and UHGG v2.0.2 archive paths verified live; no catalogue-scale download executed"
 ---
 
 # MGnify (incl. UHGG / biome catalogues)
@@ -81,24 +84,46 @@ run unless you intentionally reanalyse the same ENA runs.
 ## How to browse / API
 
 ```bash
-# List human-gut catalogue metadata (example)
-curl -s "https://www.ebi.ac.uk/metagenomics/api/v1/genome-catalogues/human-gut-v2-0-2" \
-  | python -m json.tool | head
+set -Eeuo pipefail
+catalogue="${MGNIFY_CATALOGUE:-human-gut-v2-0-2}"
+out="metadata/mgnify/$catalogue"
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+url="https://www.ebi.ac.uk/metagenomics/api/v1/genome-catalogues/$catalogue"
+curl --fail --location --retry 3 "$url" -o "$out/api.json" \
+  2>"$out/curl.stderr.log"
+python3 -m json.tool "$out/api.json" >"$out/api.pretty.json"
+python3 - "$out/api.json" <<'PY'
+import json, sys
+with open(sys.argv[1], encoding="utf-8") as handle:
+    data = json.load(handle)["data"]
+assert data["id"] and data["attributes"]["name"]
+print(data["id"], data["attributes"]["name"])
+PY
 ```
 
-Prefer the live catalogue ID/version from the website or API — do not hardcode
-obsolete versions into Methods without checking.
+Prefer the live catalogue ID/version from the website or API, then freeze it in
+the analysis manifest.
 
 ## How to download genome catalogues (FTP)
 
 ```bash
-# Example layout (pin the version you actually use):
-# https://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_genomes/human-gut/<version>/
-
-mkdir -p db/mgnify/human-gut && cd db/mgnify/human-gut
-wget -c https://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_genomes/human-gut/v2.0.2/genomes-all_metadata.tsv
-# species_catalogue/, protein_catalogue/, optional kraken2_db_* when published
+set -Eeuo pipefail
+version="${MGNIFY_VERSION:-v2.0.2}"
+out="db/mgnify/human-gut/$version"
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+base="https://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_genomes/human-gut/$version"
+for file in "README_${version#v}.txt" genomes-all_metadata.tsv; do
+  curl --fail --location --retry 3 "$base/$file" -o "$out/$file" \
+    2>>"$out/download.stderr.log"
+done
+sha256sum "$out"/* >"$out/SHA256SUMS.local"
 ```
+
+Inspect the live directory before large transfers. `species_catalogue/`,
+`protein_catalogue/`, Sourmash, and Kraken2 assets can be much larger and have
+separate semantics.
 
 Typical contents: species representatives, all-genomes metadata, protein
 catalogues (100/95/90/50% AA), sometimes prebuilt Kraken2 indexes.
@@ -122,6 +147,20 @@ MGnify vs other public resources?
 └─ Need marker/pathway indexes for profiling → biobakery-databases
 ```
 
+## Validation, recovery, and provenance
+
+Validate API type/ID, catalogue README, metadata header and unique genome IDs,
+file sizes/checksums, biome/version, taxonomy release, species-representative
+mapping, and published QC/dereplication rules. Reconcile every downloaded asset
+to the directory listing; do not treat a partial transfer as a complete catalogue.
+
+Archive catalogue ID/name/version, API response, FTP URLs, access date, README,
+checksums, parsing code, and selected reference manifest. Report whether matches
+are genome similarity, protein-family similarity, or read recruitment. A
+catalogue match contextualizes novelty; it does not prove presence in the study
+sample.
+
 ## Related skills
 
-`public-databases` · `sra-ena` · `gtdb` · `progenomes` · `cami` · `drep` · `coverm` · `gtdbtk` · `mag-qc` · `visualization`
+`public-databases` · `sra-ena` · `gtdb` · `progenomes` · `cami` · `drep` ·
+`coverm` · `gtdbtk` · `mag-qc` · `visualization`

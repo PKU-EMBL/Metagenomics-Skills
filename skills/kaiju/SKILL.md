@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "taxonomy, protein, classification"
   metagenomics.upstream: "https://github.com/bioinformatics-centre/kaiju"
   metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "paired-end kaiju and kaiju2table CLI checked against upstream usage; not executed here"
 ---
 
 # Kaiju
@@ -40,11 +43,27 @@ unlabeled.
 ## How to run
 
 ```bash
-kaiju -t nodes.dmp -f kaiju_db.fmi \
-  -i clean_1.fq.gz -j clean_2.fq.gz -z 16 \
-  -o temp/kaiju/${id}.out
-kaiju2table -t nodes.dmp -n names.dmp -r species \
-  -o temp/kaiju/${id}.tsv temp/kaiju/${id}.out
+set -Eeuo pipefail
+id="${1:?usage: classify-kaiju.sh SAMPLE_ID DB_FMI NODES NAMES R1 R2 OUTPUT_DIR}"
+db="${2:?usage: classify-kaiju.sh SAMPLE_ID DB_FMI NODES NAMES R1 R2 OUTPUT_DIR}"
+nodes="${3:?usage: classify-kaiju.sh SAMPLE_ID DB_FMI NODES NAMES R1 R2 OUTPUT_DIR}"
+names="${4:?usage: classify-kaiju.sh SAMPLE_ID DB_FMI NODES NAMES R1 R2 OUTPUT_DIR}"
+r1="${5:?usage: classify-kaiju.sh SAMPLE_ID DB_FMI NODES NAMES R1 R2 OUTPUT_DIR}"
+r2="${6:?usage: classify-kaiju.sh SAMPLE_ID DB_FMI NODES NAMES R1 R2 OUTPUT_DIR}"
+out="${7:?usage: classify-kaiju.sh SAMPLE_ID DB_FMI NODES NAMES R1 R2 OUTPUT_DIR}"
+threads="${THREADS:-16}"
+[[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || exit 2
+for input in "$db" "$nodes" "$names" "$r1" "$r2"; do test -s "$input" || exit 2; done
+gzip -t "$r1" "$r2"
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+
+kaiju -t "$nodes" -f "$db" -i "$r1" -j "$r2" -z "$threads" \
+  -o "$out/${id}.kaiju.out" \
+  >"$out/${id}.kaiju.stdout.log" 2>"$out/${id}.kaiju.stderr.log"
+kaiju2table -t "$nodes" -n "$names" -r species \
+  -o "$out/${id}.species.tsv" "$out/${id}.kaiju.out" \
+  >"$out/${id}.table.stdout.log" 2>"$out/${id}.table.stderr.log"
 ```
 
 ## Key parameters
@@ -70,6 +89,20 @@ Protein-aware read taxonomy?
 
 - Hits depend on protein DB completeness; unclassified ≠ empty community
 - Pin Kaiju + NCBI taxonomy dump versions used to build the DB
+
+## Validation, recovery, and provenance
+
+Require one Kaiju record per read or read pair and reconcile classified plus
+unclassified counts to input pairs. Check paired-name mismatch errors, mode
+(greedy/MEM), SEG policy, score/E-value thresholds, rank aggregation, controls,
+and taxonomy IDs absent from the pinned dump. Retain raw assignments before
+`kaiju2table` filtering.
+
+Use fresh outputs after changing database, taxonomy, mode, or thresholds. Record
+Kaiju version, database recipe/source/release/checksum, NCBI taxonomy date and
+checksums, read checksums, command, logs, raw/table checksums, and summary rules.
+Protein matches are reference-conditioned taxonomic evidence, not phenotype or
+absolute abundance.
 
 ## Related skills
 

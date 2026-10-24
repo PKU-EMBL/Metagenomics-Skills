@@ -9,6 +9,9 @@ metadata:
   metagenomics.tags: "taxonomy, marker, profile"
   metagenomics.upstream: "https://github.com/motu-tool/mOTUs"
   metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "paired-end mOTUs profile CLI checked against upstream usage; not executed here"
 ---
 
 # mOTUs
@@ -40,8 +43,25 @@ Pin mOTUs DB version; host-deplete first.
 
 ## How to run
 
+Install/download the database in a pinned environment (`motus downloadDB`), then
+profile one manifest-defined pair at a time.
+
 ```bash
-motus profile -f clean_1.fq.gz -r clean_2.fq.gz -t 16 -o temp/motus/${id}.motus
+set -Eeuo pipefail
+id="${1:?usage: profile-motus.sh SAMPLE_ID R1 R2 OUTPUT_DIR}"
+r1="${2:?usage: profile-motus.sh SAMPLE_ID R1 R2 OUTPUT_DIR}"
+r2="${3:?usage: profile-motus.sh SAMPLE_ID R1 R2 OUTPUT_DIR}"
+out="${4:?usage: profile-motus.sh SAMPLE_ID R1 R2 OUTPUT_DIR}"
+threads="${THREADS:-16}"
+[[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || exit 2
+for input in "$r1" "$r2"; do test -s "$input" || exit 2; done
+gzip -t "$r1" "$r2"
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+
+motus profile -f "$r1" -r "$r2" -t "$threads" \
+  -o "$out/${id}.motus.tsv" \
+  >"$out/${id}.motus.stdout.log" 2>"$out/${id}.motus.stderr.log"
 ```
 
 ## Key parameters
@@ -52,6 +72,21 @@ motus profile -f clean_1.fq.gz -r clean_2.fq.gz -t 16 -o temp/motus/${id}.motus
 | `-t` | Threads |
 | Downstream | Diversity / ecology tables — not MAG taxonomy (`gtdbtk`) |
 
+## Validation, recovery, and provenance
+
+Require a non-empty profile with the expected mOTUs/database/version headers and
+a unique sample identifier. Inspect mapped marker reads, unassigned fraction,
+rank/unknown mOTU handling, controls, and abundance/count units. Merge only
+profiles generated with the same software/database and compatible options; do
+not average mOTUs with MetaPhlAn or k-mer profiles.
+
+Use fresh outputs after changing reads, database, or profiling mode. Record
+mOTUs/BWA versions, database version/path/checksum where available, read
+checksums, full command, logs, profile checksum, and merge command. Marker-based
+relative abundance does not establish absolute load, viability, or absence below
+detection.
+
 ## Related skills
 
-`metaphlan` · `kraken2` · `sylph` · `metabuli` · `tool-selection` · `metagenomics-workflow`
+`metaphlan` · `kraken2` · `sylph` · `metabuli` · `tool-selection` ·
+`metagenomics-workflow`

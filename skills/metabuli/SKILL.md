@@ -14,6 +14,10 @@ metadata:
   metagenomics.tags: "taxonomy, Metabuli, DNA, amino-acid, classification"
   metagenomics.upstream: "https://github.com/steineggerlab/Metabuli"
   metagenomics.stage: "taxonomy"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.upstream-version: "1.2 interface"
+  metagenomics.command-status: "paired-end classify argument order checked against current documentation; not executed here"
 ---
 
 # Metabuli
@@ -57,14 +61,28 @@ nucleotide/protein DBs.
 
 ## How to run
 
+Metabuli 1.2 orders positional arguments as input read(s), database directory,
+output directory, then job ID.
+
 ```bash
-set -euo pipefail
-metabuli classify --help >/dev/null
-metabuli classify \
-  $METABULI_DB \
-  temp/hr/${id}_1.fastq temp/hr/${id}_2.fastq \
-  temp/metabuli/${id} \
-  --threads 16
+set -Eeuo pipefail
+id="${1:?usage: classify-metabuli.sh SAMPLE_ID DB_DIR R1 R2 OUTPUT_DIR}"
+db="${2:?usage: classify-metabuli.sh SAMPLE_ID DB_DIR R1 R2 OUTPUT_DIR}"
+r1="${3:?usage: classify-metabuli.sh SAMPLE_ID DB_DIR R1 R2 OUTPUT_DIR}"
+r2="${4:?usage: classify-metabuli.sh SAMPLE_ID DB_DIR R1 R2 OUTPUT_DIR}"
+out="${5:?usage: classify-metabuli.sh SAMPLE_ID DB_DIR R1 R2 OUTPUT_DIR}"
+threads="${THREADS:-16}"
+max_ram="${MAX_RAM_GB:-64}"
+[[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || exit 2
+test -d "$db" || exit 2
+for input in "$r1" "$r2"; do test -s "$input" || exit 2; done
+test ! -e "$out" || { echo "use a new output directory: $out" >&2; exit 2; }
+mkdir -p "$out"
+
+metabuli classify "$r1" "$r2" "$db" "$out/results" "$id" \
+  --threads "$threads" --max-ram "$max_ram" \
+  >"$out/${id}.metabuli.stdout.log" 2>"$out/${id}.metabuli.stderr.log"
+find "$out/results" -type f -size +0c -print -quit | grep -q .
 ```
 
 ## Decision tree
@@ -83,6 +101,20 @@ Taxonomic classification goal?
 - Do not average Metabuli with MetaPhlAn/Kraken without labeling method.
 - Pin Metabuli + DB release; report paired-end mode and filters.
 - Species labels for novel lineages remain reference-dependent.
+
+## Validation, recovery, and provenance
+
+Reconcile classified plus unclassified reads to the input accounting reported by
+the run, inspect rank distributions, close-species ambiguity, score/E-value
+filters, controls, and any refined abundance output separately from raw read
+assignments. Confirm paired reads remained synchronized. Do not equate a read
+classification with organism viability or merge results from different database
+releases unlabeled.
+
+Use a fresh output after changing database, sequence mode, RAM strategy, or
+thresholds. Record Metabuli version, database/taxonomy release and checksum,
+read checksums, paired/single/long-read mode, commands, logs, output schema,
+filtering/refinement steps, and result checksums.
 
 ## Related skills
 
