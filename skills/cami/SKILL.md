@@ -14,6 +14,10 @@ metadata:
   metagenomics.tags: "CAMI, CAMI2, benchmark, AMBER, OPAL, CAMISIM, gold-standard"
   metagenomics.upstream: "https://cami-challenge.org/"
   metagenomics.stage: "assessment"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.upstream-version: "AMBER 2.0.8; OPAL 1.0.14; CAMISIM 2.0.1"
+  metagenomics.command-status: "download and current AMBER/OPAL interfaces statically reviewed; benchmark runs not executed here"
 ---
 
 # CAMI (Critical Assessment of Metagenome Interpretation)
@@ -109,17 +113,21 @@ Resolve the immutable archive URL and dataset identifier from the portal/DOI bef
 
 ```bash
 set -euo pipefail
-dataset_id=${CAMI_DATASET_ID:?set the portal dataset identifier}
-source_url=${CAMI_SOURCE_URL:?set the immutable portal or DOI archive URL}
-mkdir -p "db/cami/$dataset_id" provenance
-curl --fail --location --retry 3 "$source_url" \
-  --output "db/cami/$dataset_id/source.archive"
-test -s "db/cami/$dataset_id/source.archive"
-sha256sum "db/cami/$dataset_id/source.archive" \
-  >"provenance/${dataset_id}.sha256"
+dataset_id=${CAMI_DATASET_ID:?set the portal/DOI dataset identifier}
+source_url=${CAMI_SOURCE_URL:?set an immutable portal or DOI archive URL}
+root=${CAMI_DOWNLOAD_DIR:-db/cami/$dataset_id}
+[[ "$dataset_id" =~ ^[A-Za-z0-9._-]+$ ]] || exit 2
+[[ ! -e "$root" ]] || { echo "refusing to overwrite: $root" >&2; exit 3; }
+mkdir -p "$root/source" "$root/logs" "$root/provenance"
+curl --fail --location --retry 3 --dump-header "$root/provenance/headers.txt" \
+  "$source_url" --output "$root/source/source.archive" \
+  2>"$root/logs/download.log"
+test -s "$root/source/source.archive"
+file "$root/source/source.archive" >"$root/provenance/file-type.txt"
+sha256sum "$root/source/source.archive" >"$root/provenance/source.sha256"
 printf 'dataset_id\turl\tretrieved_utc\n%s\t%s\t%s\n' \
   "$dataset_id" "$source_url" "$(date -u +%FT%TZ)" \
-  >"provenance/${dataset_id}.download.tsv"
+  >"$root/provenance/download.tsv"
 ```
 
 Extract into a new directory and inventory reads, assemblies, gold standards, taxonomy snapshot and expected checksums; never overwrite the source archive.
@@ -133,18 +141,42 @@ Extract into a new directory and inventory reads, assemblies, gold standards, ta
 | OPAL | https://github.com/CAMI-challenge/OPAL | Assess taxonomic profilers |
 | Portal | https://cami-challenge.org/ | Online evaluation / ranking |
 
+AMBER genome-binning assessment:
+
 ```bash
 set -euo pipefail
-mkdir -p result
-[[ -s gold.binning && -s prediction.binning ]] || exit 2
-amber.py -g gold.binning -l "candidate" prediction.binning \
-  -o result/amber --stdout \
-  >result/amber.stdout.log 2>result/amber.stderr.log
+gold=${CAMI_GOLD_BINNING:?set gold-standard Bioboxes mapping}
+pred=${CAMI_PRED_BINNING:?set candidate Bioboxes mapping}
+run=${CAMI_AMBER_RUN:?set a fresh result directory}
+[[ -s "$gold" && -s "$pred" ]] || exit 2
+[[ ! -e "$run" ]] || { echo "refusing to overwrite: $run" >&2; exit 3; }
+mkdir -p "$run/logs" "$run/provenance"
+grep -q '^@SampleID:' "$gold"; grep -q '^@SampleID:' "$pred"
+amber.py --version >"$run/provenance/amber.version.txt" 2>&1
+sha256sum "$gold" "$pred" >"$run/provenance/inputs.sha256"
+amber.py -g "$gold" -l "candidate" "$pred" -o "$run/amber" --stdout \
+  >"$run/logs/stdout.log" 2>"$run/logs/stderr.log"
+find "$run/amber" -type f -size +0c -print -quit | grep -q .
+! grep -Rqi 'traceback' "$run/logs"
+```
 
-[[ -s gold.profile && -s prediction.profile ]] || exit 3
-opal.py -g gold.profile -l "candidate" prediction.profile \
-  -o result/opal \
-  >result/opal.stdout.log 2>result/opal.stderr.log
+OPAL taxonomic-profile assessment:
+
+```bash
+set -euo pipefail
+gold=${CAMI_GOLD_PROFILE:?set gold-standard CAMI profile}
+pred=${CAMI_PRED_PROFILE:?set candidate CAMI profile}
+run=${CAMI_OPAL_RUN:?set a fresh result directory}
+[[ -s "$gold" && -s "$pred" ]] || exit 2
+[[ ! -e "$run" ]] || { echo "refusing to overwrite: $run" >&2; exit 3; }
+mkdir -p "$run/logs" "$run/provenance"
+grep -q '^@SampleID:' "$gold"; grep -q '^@SampleID:' "$pred"
+opal.py --version >"$run/provenance/opal.version.txt" 2>&1
+sha256sum "$gold" "$pred" >"$run/provenance/inputs.sha256"
+opal.py -g "$gold" -l "candidate" "$pred" -o "$run/opal" \
+  >"$run/logs/stdout.log" 2>"$run/logs/stderr.log"
+find "$run/opal" -type f -size +0c -print -quit | grep -q .
+! grep -Rqi 'traceback' "$run/logs"
 ```
 
 Inputs must use the correct CAMI Bioboxes format and SampleID. For taxonomic binning, also pin the NCBI taxonomy dump passed with `--ncbi_dir`; do not use it for genome-binning metrics.
@@ -170,6 +202,22 @@ Need public metagenome *data*?
 3. Do not equate CAMI “best tool” with production defaults for all biomes
 4. Keep sequence- vs taxonomic-abundance definitions explicit in profiler benchmarks
 5. Reference DBs frozen for a challenge (e.g. RefSeq snapshot dates) ≠ today’s GTDB/MGnify
+
+## Validation, recovery, and provenance
+
+Before scoring, reconcile sequence IDs and SampleIDs, confirm the challenge task,
+read technology, taxonomy snapshot, abundance definition and any filtering. Report
+all native metrics, not only a composite rank; retain unassigned sequences/taxa,
+zero predictions and tool failures. Compare methods on identical gold-standard
+units and resources, and use biological replicates or multiple simulations when
+making general performance claims.
+
+A failed archive download may be resumed only against the same immutable URL;
+verify the completed digest. Rerun AMBER/OPAL into a fresh directory after any
+input, taxonomy, label, filter or version change. Archive challenge/dataset and
+gold-standard IDs, DOI/URL, retrieval headers/date/checksum, software/container
+versions, taxonomy dump, exact commands/logs, resource use and complete outputs.
+A locally calculated hash is a fingerprint, not a publisher checksum.
 
 ## Related skills
 
