@@ -11,6 +11,9 @@ metadata:
   metagenomics.tags: "BioSurfDB, biosurfactant, biodegradation, hydrocarbon, DOM, portal"
   metagenomics.upstream: "https://www.biosurfdb.org/"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed-legacy-interface"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "portal contract reviewed; no stable public CLI/API or portal analysis executed here"
 ---
 
 # BioSurfDB
@@ -48,6 +51,15 @@ both MEGAN and BioSurfDB if used.
 BioSurfDB is an interactive web resource; the reviewed public site does not expose a stable versioned CLI/API, so do not invent one. Before upload, confirm data policy and avoid sensitive/unreleased sequence. Record access date, database/site version if displayed, query IDs/checksum, search program, database scope, all thresholds and downloaded raw hit/pathway tables. Take a local copy of the result schema and portal citations.
 
 For auditable local sequence analysis, route to `$hadeg` with its pinned FASTA/Proteinortho workflow or another licensed downloadable reference. If MEGAN mapping is used, preserve its mapping database release and parameters separately; portal screenshots alone are not machine-readable evidence.
+
+## Required deliverable
+
+Export a query manifest, no-hit-inclusive raw result table, threshold/settings
+record, database/site version or access date, and a candidate table separating
+sequence similarity, pathway membership, and supporting literature. If the
+portal cannot export machine-readable rows or disclose its active database,
+label the analysis exploratory/non-reproducible and route production screening
+to a pinned local reference.
 
 ## Decision tree
 

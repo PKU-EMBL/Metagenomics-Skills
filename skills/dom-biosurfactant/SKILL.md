@@ -11,6 +11,9 @@ metadata:
   metagenomics.category: "orchestration"
   metagenomics.tags: "DOM, biosurfactant, hydrocarbon, biodegradation, CAZyme, solubility, HADEG"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "routing and interpretation contract reviewed; tool execution is delegated"
 ---
 
 # DOM / biosurfactant / biodegradation
@@ -38,6 +41,19 @@ Hard rules:
 2. Do not merge CAZyme tables, HADEG hits, and antiSMASH regions unlabeled
 3. Hits ≠ emulsification assay or degradation rate
 4. Filter low-quality MAGs (`mag-qc`) before community-level claims
+
+## Inputs and required delivery
+
+Require the biological substrate/process claim, analysis unit (reads, contigs,
+MAGs, proteins), MAG/assembly quality, annotation IDs/GFF where neighborhoods are
+needed, and exact reference releases. Deliver separate evidence tables for
+CAZymes/substrates/CGCs, HADEG or BioSurfDB sequence hits, BGC regions, and broad
+metabolic annotations; retain coordinates, thresholds, no-hit units, and source
+provenance.
+
+Summarize pathway completeness and contig-edge uncertainty rather than counting
+genes alone. Any link to DOM concentration, emulsification, degradation kinetics,
+or product identity requires independent chemical/expression/experimental data.
 
 ## Decision tree
 

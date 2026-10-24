@@ -10,6 +10,9 @@ metadata:
   metagenomics.tags: "BGC, secondary-metabolite, genome-mining"
   metagenomics.upstream: "https://github.com/antismash/antismash"
   metagenomics.stage: "mining"
+  metagenomics.maturity: "reviewed"
+  metagenomics.last-reviewed: "2026-10-24"
+  metagenomics.command-status: "per-genome antiSMASH CLI template statically reviewed; not executed here"
 ---
 
 # antiSMASH
@@ -46,23 +49,35 @@ families across MAGs, follow with BiG-SCAPE (`bigscape`).
 
 ## How to run
 
+Install databases in a pinned environment before the study. This example is for
+one bacterial MAG FASTA; use a separate output per genome.
+
 ```bash
-conda install -c bioconda antismash
-download-antismash-databases
+set -Eeuo pipefail
+id="${1:?usage: run-antismash.sh GENOME_ID GENOME_FASTA OUTPUT_DIR}"
+genome="${2:?usage: run-antismash.sh GENOME_ID GENOME_FASTA OUTPUT_DIR}"
+out="${3:?usage: run-antismash.sh GENOME_ID GENOME_FASTA OUTPUT_DIR}"
+threads="${THREADS:-16}"
+taxon="${ANTISMASH_TAXON:-bacteria}"
+[[ "$id" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || exit 2
+case "$taxon" in bacteria|fungi) ;; *) exit 2 ;; esac
+test -s "$genome" || exit 2
+log_dir="${out}.logs"
+test ! -e "$out" && test ! -e "$log_dir" || {
+  echo "use new output and log paths" >&2; exit 2;
+}
+mkdir -p "$(dirname "$out")" "$log_dir"
 
-# From nucleotide FASTA (MAG)
-antismash bins/HQ_bin.fa \
-  --output-dir temp/antismash/${id} \
-  --html-title ${id} \
-  --cpus 16 \
-  --genefinding-tool prodigal \
-  --taxon bacteria
-
-# From Bakta/Prokka GenBank (preferred when available)
-antismash temp/bakta/${id}/${id}.gbff \
-  --output-dir temp/antismash/${id} \
-  --cpus 16
+antismash "$genome" --output-dir "$out" --html-title "$id" \
+  --cpus "$threads" --genefinding-tool prodigal --taxon "$taxon" \
+  >"$log_dir/antismash.stdout.log" 2>"$log_dir/antismash.stderr.log"
+test -s "$out/index.html"
+find "$out" -maxdepth 1 -type f -name '*.json' -print -quit | grep -q .
 ```
+
+For Bakta/Prokka GenBank input, omit or verify gene-finding options so existing
+annotations are handled as intended. Do not mix outputs from different module or
+database configurations in one comparative set.
 
 ## Key parameters
 
@@ -98,6 +113,21 @@ BGC mining goal?
 | Zero clusters on huge MAG | Check prodigal ran; try GenBank input |
 | Huge runtime | Use `--minimal` for pilot; full mode for finals |
 
+## Validation, recovery, and provenance
+
+Require HTML, JSON, annotated GenBank and region files, completed logs, unique
+record IDs, and an input-to-region audit including zero-region genomes. Inspect
+cluster boundaries, contig-edge truncation, product/class confidence, gene
+finding, known-cluster similarity, and MAG quality. Cross-genome family analysis
+must use compatible antiSMASH/module/database versions.
+
+Use a fresh directory after changing genome, database, modules, or release.
+Record antiSMASH and dependency versions, database/MIBiG snapshot and checksums,
+input/annotation checksums, taxon/gene-finding/module flags, commands, logs,
+region manifest, and output checksums. BGC predictions indicate biosynthetic
+potential, not expression or compound production.
+
 ## Related skills
 
-`microbial-mining` · `bakta` · `prokka` · `bigscape` · `dram` · `checkm2` · `mag-qc`
+`microbial-mining` · `bakta` · `prokka` · `bigscape` · `dram` · `checkm2` ·
+`mag-qc`
